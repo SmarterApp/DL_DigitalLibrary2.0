@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run test && ng serve",
-    "start-standalone": "npm run test && ng serve --c standalone",
+    "start": "npm run test && ng serve -o",
+    "start-standalone": "npm run test && ng serve --c standalone -o",
     "build": "npm run test && ng build --prod --aot --vendor-chunk",
     "build-standalone": "npm run test && ng build --c standalone --aot --vendor-chunk",
     "test": "ng test --source-map=false --watch=false",
+    "test-debug-chrome": "ng test --browsers=ChromeDebug",
+    "test-debug-firefox": "ng test --browsers=FirefoxDebug",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -39,6 +41,7 @@
     "karma": "~4.1.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-firefox-launcher": "^1.1.0",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.0",
