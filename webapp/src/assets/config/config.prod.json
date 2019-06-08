@@ -1,0 +1,12 @@
+{
+    "env": {
+        "name": "PROD"
+     },
+    "logging": {
+        "console": true,
+        "aws": true
+    },
+    "apiServer": {
+        "cdl": "https://prod.cdl.sbac.org/api/v1.0/"
+    }
+}

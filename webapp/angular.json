@@ -37,6 +37,9 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
+                }, {
+                  "replace": "src/assets/config/config.json",
+                  "with": "src/assets/config/config.prod.json"
                 }
               ],
               "optimization": true,
@@ -61,6 +64,20 @@
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.standalone.ts"
+                }, {
+                  "replace": "src/assets/config/config.json",
+                  "with": "src/assets/config/config.dev.json"
+                }
+              ]
+            },
+            "dev" : {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }, {
+                  "replace": "src/assets/config/config.json",
+                  "with": "src/assets/config/config.dev.json"
                 }
               ]
             }
@@ -74,6 +91,9 @@
           "configurations": {
             "production": {
               "browserTarget": "sb-digital-library:build:production"
+            }, 
+            "dev": {
+              "browserTarget": "sb-digital-library:build:dev"
             }, 
             "standalone": {
               "browserTarget": "sb-digital-library:build:standalone"
