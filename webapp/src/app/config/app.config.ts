@@ -7,15 +7,19 @@ import { IAppConfig } from './config.model';
 })
 export class AppConfig {
     static settings: IAppConfig;
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
     load() {
-        const jsonFile = `assets/config/config.json`;
+        const jsonFile = 'assets/config/config.json';
         return new Promise<void>((resolve, reject) => {
           this.http.get(jsonFile).subscribe(response => {
               AppConfig.settings = <IAppConfig>response;
               resolve();
           }, error =>  {
-              reject(`Could not load file '${jsonFile}': ${error}`);
+            let message = error.error.message
+                ? error.error.message
+                : error.error;
+
+              reject(`Unable to load configurations from file '${jsonFile}': ${message}`);
           });
         });
     }

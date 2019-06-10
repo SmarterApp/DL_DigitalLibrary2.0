@@ -23,6 +23,6 @@ export function initializeApp(appConfig: AppConfig) {
     useFactory: initializeApp,
     deps: [ AppConfig ], multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
