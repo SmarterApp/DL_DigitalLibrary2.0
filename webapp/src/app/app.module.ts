@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { AppConfig } from './config/app.config';
 import { DataModule } from './data/data.module';
 import { LayoutModule } from './layout/layout.module';
+import { HomeModule } from './home/home.module';
+import { ResourceComponent } from './resource/resource.component';
+import { ResourceModule } from './resource/resource.module';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -18,7 +21,9 @@ export function initializeApp(appConfig: AppConfig) {
     BrowserModule,
     AppRoutingModule,
     DataModule,
-    LayoutModule
+    LayoutModule,
+    HomeModule,
+    ResourceModule
   ],
   providers: [{ 
     provide: APP_INITIALIZER,
