@@ -1,17 +1,19 @@
 {
   "name": "sb-digital-library",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run test && ng serve -o",
-    "start-standalone": "npm run test && ng serve --c standalone -o",
-    "build": "npm run test && ng build --prod --aot --vendor-chunk",
-    "build-standalone": "npm run test && ng build --c standalone --aot --vendor-chunk",
+    "start": "npm run pre-build && ng serve -o",
+    "start-standalone": "npm run pre-build && ng serve --c standalone -o",
+    "build": "npm run pre-build && ng build --prod --aot --vendor-chunk",
+    "build-standalone": "npm run pre-build && ng build --c standalone --aot --vendor-chunk",
+    "pre-build": "node stamp-version && npm run test",
     "test": "ng test --source-map=false --watch=false",
     "test-debug-chrome": "ng test --browsers=ChromeDebug",
     "test-debug-firefox": "ng test --browsers=FirefoxDebug",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "node stamp-version"
   },
   "private": true,
   "dependencies": {
@@ -36,6 +38,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "git-describe": "^4.0.4",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
