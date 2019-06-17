@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/sbac-ui-kit/css/sbac-ui-kit.min.css",
               "src/styles.scss"
             ],
             "scripts": []
