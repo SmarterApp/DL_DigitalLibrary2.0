@@ -8,5 +8,6 @@
     },
     "apiServer": {
         "cdl": "https://prod.cdl.sbac.org/api/v1.0/"
-    }
+    },
+    "enableAnalytics": true
 }
