@@ -3,12 +3,14 @@ import { async, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { DataModule } from './data/data.module';
+import { Angulartics2Module } from 'angulartics2';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
+        Angulartics2Module.forRoot(),
         HttpClientModule,
         DataModule
       ],
