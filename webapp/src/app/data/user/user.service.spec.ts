@@ -13,4 +13,13 @@ describe('UserService', () => {
     const service: UserService = TestBed.get(UserService);
     expect(service).toBeTruthy();
   });
+
+  it('should get the current user', () => {
+    const service: UserService = TestBed.get(UserService);
+    service.getCurrentUser().subscribe(actual => {
+      expect(actual.firstName).toBe('Mary');
+      expect(actual.lastName).toBe('Anderson');
+      expect(actual.tenantName).toBe('California');
+    })
+  })
 });

@@ -1,8 +1,10 @@
+import { APP_BASE_HREF } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { AppModule } from 'src/app/app.module';
-import { AppContainerComponent } from './app-container.component';
-import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { mockRootActivatedRouteSnapshot } from 'src/app/data/mock-data';
+import { HeaderComponent } from '../header/header.component';
+import { AppContainerComponent } from './app-container.component';
 
 describe('AppContainerComponent', () => {
   let component: AppContainerComponent;
@@ -10,9 +12,11 @@ describe('AppContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ AppModule, AppRoutingModule ],
+      declarations: [ AppContainerComponent, HeaderComponent ],
+      imports: [ RouterTestingModule ],
       providers: [ 
-        { provide: ActivatedRoute, useValue: { snapshot: { data: { currentUser: { firstName: 'Test', lastName: 'TestLast', tenantName: 'Tenant' } } } } }
+        { provide: ActivatedRoute, useValue: mockRootActivatedRouteSnapshot },
+        { provide: APP_BASE_HREF, useValue: '/' }
       ]
     })
     .compileComponents();

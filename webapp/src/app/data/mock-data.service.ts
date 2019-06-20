@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { DataService } from './data.service';
+import { mockUser } from './mock-data';
 
 // Work around for: 
 // https://stackoverflow.com/questions/48953587/typescript-class-implements-class-with-private-functions
@@ -10,7 +11,7 @@ type PublicPart<T> = {[K in keyof T]: T[K]}
 @Injectable()
 export class MockDataService implements PublicPart<DataService> {
   readonly mockDataEndpoints = [
-    { pattern: '/userinfo', result: mockUser }
+    { pattern: /^\/userinfo$/, result: mockUser }
   ];
 
   constructor() {
@@ -18,14 +19,14 @@ export class MockDataService implements PublicPart<DataService> {
   }
 
   get(url: string, params?: any): Observable<any> {
-    const mockedEndpoint = this.mockDataEndpoints.find(x => url.match(x.pattern).length !=0 );
+    const mockedEndpoint = this.mockDataEndpoints.find(x => url.match(x.pattern) && url.match(x.pattern).length !=0 );
 
     if(mockedEndpoint && mockedEndpoint.result) {
       console.log(`Mocking API call for ${url}`, mockedEndpoint.result);
       return of(mockedEndpoint.result);
     }
 
-    return of('test');
+    return of(undefined);
   }
 
   downloadPdf(url: string): Observable<Blob> {
@@ -33,8 +34,3 @@ export class MockDataService implements PublicPart<DataService> {
   }
 }
 
-const mockUser = {
-  firstName: 'Mary',
-  lastName: 'Anderson',
-  tenantName: 'California'
-}

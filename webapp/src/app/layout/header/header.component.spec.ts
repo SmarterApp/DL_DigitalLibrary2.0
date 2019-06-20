@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HeaderComponent } from './header.component';
 import { ActivatedRoute } from '@angular/router';
+import { mockRootActivatedRouteSnapshot } from 'src/app/data/mock-data';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -11,7 +11,7 @@ describe('HeaderComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ HeaderComponent ],
       providers: [ 
-        { provide: ActivatedRoute, useValue: { snapshot: { data: { currentUser: { firstName: 'Test', lastName: 'TestLast', tenantName: 'Tenant' } } } } }
+        { provide: ActivatedRoute, useValue: mockRootActivatedRouteSnapshot }
       ]
     })
     .compileComponents();
