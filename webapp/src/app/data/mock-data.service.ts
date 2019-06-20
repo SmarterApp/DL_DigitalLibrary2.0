@@ -2,22 +2,39 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { DataService } from './data.service';
 
-// wWrk around for: 
+// Work around for: 
 // https://stackoverflow.com/questions/48953587/typescript-class-implements-class-with-private-functions
 // tldr; We can't implement a class with privates, so we need a wrapper type to pull out the publics.
 type PublicPart<T> = {[K in keyof T]: T[K]}
 
 @Injectable()
 export class MockDataService implements PublicPart<DataService> {
+  readonly mockDataEndpoints = [
+    { pattern: '/userinfo', result: mockUser }
+  ];
+
   constructor() {
-    console.log('mock data service used.');
+    console.log('Mock data service loaded.');
   }
 
   get(url: string, params?: any): Observable<any> {
+    const mockedEndpoint = this.mockDataEndpoints.find(x => url.match(x.pattern).length !=0 );
+
+    if(mockedEndpoint && mockedEndpoint.result) {
+      console.log(`Mocking API call for ${url}`, mockedEndpoint.result);
+      return of(mockedEndpoint.result);
+    }
+
     return of('test');
   }
 
   downloadPdf(url: string): Observable<Blob> {
     throw new Error("Method not implemented.");
   }
+}
+
+const mockUser = {
+  firstName: 'Mary',
+  lastName: 'Anderson',
+  tenantName: 'California'
 }

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppModule } from 'src/app/app.module';
 import { AppContainerComponent } from './app-container.component';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { ActivatedRoute } from '@angular/router';
 
 describe('AppContainerComponent', () => {
   let component: AppContainerComponent;
@@ -8,7 +10,10 @@ describe('AppContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ AppModule ]
+      imports: [ AppModule, AppRoutingModule ],
+      providers: [ 
+        { provide: ActivatedRoute, useValue: { snapshot: { data: { currentUser: { firstName: 'Test', lastName: 'TestLast', tenantName: 'Tenant' } } } } }
+      ]
     })
     .compileComponents();
   }));
