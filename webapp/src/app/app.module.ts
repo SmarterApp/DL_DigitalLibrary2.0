@@ -5,12 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppConfig } from './common/config/app.config';
 import { GlobalErrorHandler } from './common/global-error-handler';
+import { LoggingService } from './common/logging/logging.service';
 import { DataModule } from './data/data.module';
 import { HomeModule } from './home/home.module';
 import { LayoutModule } from './layout/layout.module';
 import { ResourceModule } from './resource/resource.module';
 
-export function initializeApp(appConfig: AppConfig) {
+function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
 }
 
@@ -34,7 +35,7 @@ export function initializeApp(appConfig: AppConfig) {
     deps: [ AppConfig ], multi: true 
   }, {
     provide: ErrorHandler,
-    useValue: GlobalErrorHandler
+    useClass: GlobalErrorHandler
   }],
   bootstrap: [ AppComponent ]
 })

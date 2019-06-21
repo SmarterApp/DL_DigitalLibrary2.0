@@ -12,4 +12,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  throwError(){
+    throw Error('boink.');
+  }
+
 }
