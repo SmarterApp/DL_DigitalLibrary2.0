@@ -16,7 +16,6 @@ export class MockDataService implements PublicPart<DataService> {
   ];
 
   constructor(private logger: LoggingService) {
-    // const logLevel = environment.production ? LoggerLevel.Warn : LoggerLevel.Info;
     this.logger.warn('Mock data service loaded.');
   }
 
