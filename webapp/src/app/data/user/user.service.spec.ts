@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { LoggingService } from 'src/app/logging/logging.service';
+import { LoggingService } from 'src/app/common/logging/logging.service';
 import { DataService } from '../data.service';
 import { initializeSettingsProvider } from '../mock-data';
 import { MockDataService } from '../mock-data.service';

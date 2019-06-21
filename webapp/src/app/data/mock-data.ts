@@ -1,6 +1,6 @@
 import { APP_INITIALIZER } from '@angular/core';
-import { AppConfig } from '../config/app.config';
-import { IAppConfig } from '../config/config.model';
+import { AppConfig } from '../common/config/app.config';
+import { IAppConfig } from '../common/config/config.model';
 
 export const mockUser = {
     firstName: 'Mary',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { LoggingService } from '../logging/logging.service';
+import { LoggingService } from '../common/logging/logging.service';
 import { DataService } from './data.service';
 import { mockUser } from './mock-data';
 
