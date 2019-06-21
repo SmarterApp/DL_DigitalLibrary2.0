@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { UserModel } from 'src/app/data/user/user.model';
 
 @Component({
   selector: 'sbdl-header',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  user: UserModel;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.user = this.route.snapshot.data.currentUser;
   }
 
 }
