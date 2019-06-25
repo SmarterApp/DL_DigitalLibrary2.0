@@ -1,13 +1,15 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Angulartics2Module } from 'angulartics2';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppConfig } from './config/app.config';
+import { AppConfig } from './common/config/app.config';
+
 import { DataModule } from './data/data.module';
 import { HomeModule } from './home/home.module';
 import { LayoutModule } from './layout/layout.module';
 import { ResourceModule } from './resource/resource.module';
+import { GlobalErrorHandler } from './common/global-error-handler';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -21,6 +23,7 @@ export function initializeApp(appConfig: AppConfig) {
     Angulartics2Module.forRoot(),
     BrowserModule,
     AppRoutingModule,
+    
     DataModule,
     LayoutModule,
     HomeModule,
@@ -29,8 +32,11 @@ export function initializeApp(appConfig: AppConfig) {
   providers: [{ 
     provide: APP_INITIALIZER,
     useFactory: initializeApp,
-    deps: [ AppConfig ], multi: true }
-  ],
+    deps: [ AppConfig ], multi: true 
+  }, {
+    provide: ErrorHandler,
+    useClass: GlobalErrorHandler
+  }],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

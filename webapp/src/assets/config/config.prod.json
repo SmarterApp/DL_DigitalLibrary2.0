@@ -4,7 +4,8 @@
      },
     "logging": {
         "console": true,
-        "aws": true
+        "aws": true,
+        "level": 4
     },
     "apiServer": {
         "cdl": "https://prod.cdl.sbac.org/api/v1.0/"

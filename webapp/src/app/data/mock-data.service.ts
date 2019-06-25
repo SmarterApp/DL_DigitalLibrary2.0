@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { LoggingService } from '../common/logging/logging.service';
 import { DataService } from './data.service';
 import { mockUser } from './mock-data';
 
@@ -14,15 +15,15 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /^\/userinfo$/, result: mockUser }
   ];
 
-  constructor() {
-    console.log('Mock data service loaded.');
+  constructor(private logger: LoggingService) {
+    this.logger.warn('Mock data service loaded.');
   }
 
   get(url: string, params?: any): Observable<any> {
     const mockedEndpoint = this.mockDataEndpoints.find(x => url.match(x.pattern) && url.match(x.pattern).length !=0 );
 
     if(mockedEndpoint && mockedEndpoint.result) {
-      console.log(`Mocking API call for ${url}`, mockedEndpoint.result);
+      this.logger.debug(`Mocking API call for ${url}`, mockedEndpoint.result);
       return of(mockedEndpoint.result);
     }
 

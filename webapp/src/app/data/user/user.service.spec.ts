@@ -1,12 +1,18 @@
 import { TestBed } from '@angular/core/testing';
-
-import { UserService } from './user.service';
+import { LoggingService } from 'src/app/common/logging/logging.service';
 import { DataService } from '../data.service';
+import { initializeSettingsProvider } from '../mock-data';
 import { MockDataService } from '../mock-data.service';
+import { UserService } from './user.service';
+
 
 describe('UserService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    providers: [ { provide: DataService, useClass: MockDataService }]
+    providers: [ 
+      { provide: DataService, useClass: MockDataService }, 
+      LoggingService, 
+      initializeSettingsProvider 
+    ]
   }));
 
   it('should be created', () => {
