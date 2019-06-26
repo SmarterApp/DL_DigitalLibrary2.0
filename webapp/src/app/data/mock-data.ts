@@ -1,9 +1,6 @@
-import { APP_INITIALIZER } from '@angular/core';
-import { AppConfig } from '../common/config/app.config';
-import { IAppConfig } from '../common/config/config.model';
-import { DataService } from './data.service';
-import { MockDataService } from './mock-data.service';
-import { LoggingService } from '../common/logging/logging.service';
+import { mockResourceImage } from 'src/app/data/mock-images';
+import { ResourceHeaderModel } from './resource/model/resource-header.model';
+import { ResourceModel } from './resource/model/resource.model';
 
 export const mockUser = {
     firstName: 'Mary',
@@ -11,33 +8,18 @@ export const mockUser = {
     tenantName: 'California'
 };
 
-export const mockRootActivatedRouteSnapshot = {
-    snapshot: { data: { currentUser: mockUser } } 
+export const mockResourceModel = <ResourceModel> {
+	header: <ResourceHeaderModel> { 
+		title: 'Resource Title ',
+		subjects: [],
+		grades: [],
+		targets: [],
+		claims: []
+	}
 };
 
-export function mockAppConfig() {
-    return () => {
-        AppConfig.settings = <IAppConfig>{ 
-            env: { name: 'Unit Tests' }, 
-            logging: { level: 7 }  // Set to level 0 to see debug logs
-        };
-    }
-  }
-
-export const initializeSettingsProvider = { 
-    provide: APP_INITIALIZER,
-    useFactory: (mockAppConfig),
-    deps: [ ], multi: true 
-};
-
-export const mockDataServiceProviders = [ 
-    { provide: DataService, useClass: MockDataService }, 
-    LoggingService, 
-    initializeSettingsProvider 
-];
-  
 //Example
-export const mockResource = {
+export const mockApiResourceExample = {
 	id: 1,
 	nid: 1234,
 	vid: 1234,
@@ -64,7 +46,7 @@ export const mockResource = {
 	connectionToFap: "",
 	studentAgency: "",
 	altBody: "",
-	documentId: "",
+    documentId: "",
 	resourceThumbnailUrl: "https://dl.com/image.png",
 	licenseInformation: "",
 	author: "Mary Smith",
@@ -102,4 +84,24 @@ export const mockResource = {
 	permanentLinkSettings: "Private",
 	temporaryPublicLink: "Enable Temporary Public Link",
 	temporaryPublicLinkTime: "5 mins"
-}
+};
+
+// Polyfills missing fields not provided by the example payload
+// in the API document from PCG.
+const polyfillMissingApiData = {
+	resourceThumbnail: mockResourceImage,
+	educationalAlignments: [
+		{ title: 'Problem Solving', shortName: '2'}
+	], 
+	targetAlignments: [
+		{ title: 'The Number System', shortName: 'B' }
+	],
+	learningGoals: 'The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.',
+	connectionsPlaylist: ['Grade 6 Fractions'],
+	standards: ['6.NS.A.1', '6.NS.A.1', '6.NS.A.1']
+};
+
+export const mockApiResource= {
+	...mockApiResourceExample,
+	...polyfillMissingApiData
+};

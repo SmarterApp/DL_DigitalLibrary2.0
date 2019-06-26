@@ -3,7 +3,7 @@ import { ResourceModel } from './model/resource.model';
 import { DataService } from '../data.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { ResourceHeaderModel } from './model/resource-header.model';
+import { ResourceHeaderModel, Alignment } from './model/resource-header.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,13 +30,21 @@ export class ResourceService {
       title: apiResource.title,
       subjects: apiResource.subjects,
       grades: apiResource.grades,
-      image: apiResource.resourceThumbnailImage,
+      image: apiResource.resourceThumbnail,
       author: apiResource.author,
       lastModified: new Date(apiResource.changed),
-      learningGoal: apiResource.learningGoals
+      learningGoal: apiResource.learningGoals,
+      claims: apiResource.educationalAlignments.map(ea => <Alignment>{
+        title: ea.title,
+        shortName: ea.shortName
+      }),
+      targets: apiResource.targetAlignments.map(ta => <Alignment>{
+        title: ta.title,
+        shortName: ta.shortName
+      }),
 
       // UNKNOWN
-      // connectionsPlaylist: string[];
+      connectionsPlaylist: apiResource.connectionsPlaylist,
 
       // UNKNOWN
       // claim: string;
@@ -47,7 +55,7 @@ export class ResourceService {
 
       // MAYBE, but this is NOT an array?
       // /api/v1/resource.connectionToCcss
-      // standards: string[];   
+      standards: apiResource.standards
 
       // UKNOWN
       // favorited: boolean;

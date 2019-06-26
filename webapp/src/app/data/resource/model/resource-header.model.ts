@@ -30,11 +30,11 @@ export interface ResourceHeaderModel {
     connectionsPlaylist: string[];
 
     // UNKNOWN
-    claim: string;
+    claims: Alignment[];
 
     // MAYBE, but this is an array?
     // /api/v1/resource.targetsAlignmentShortnames
-    target: string;
+    targets: Alignment[];
 
     // MAYBE, but this is NOT an array?
     // /api/v1/resource.connectionToCcss
@@ -42,4 +42,9 @@ export interface ResourceHeaderModel {
 
     // UKNOWN
     favorited: boolean;
+}
+
+export interface Alignment {
+    title: string;
+    shortName: string;
 }

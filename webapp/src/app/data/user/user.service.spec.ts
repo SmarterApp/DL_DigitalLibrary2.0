@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { mockDataServiceProviders } from '../mock-data';
 import { UserService } from './user.service';
+import { mockDataServiceProviders } from 'src/app/app.module.spec';
 
 describe('UserService', () => {
   beforeEach(() => TestBed.configureTestingModule({

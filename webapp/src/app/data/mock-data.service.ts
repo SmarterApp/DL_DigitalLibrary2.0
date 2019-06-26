@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { LoggingService } from '../common/logging/logging.service';
 import { DataService } from './data.service';
-import { mockResource, mockUser } from './mock-data';
+import { mockApiResource, mockUser } from './mock-data';
 
 // Work around for: 
 // https://stackoverflow.com/questions/48953587/typescript-class-implements-class-with-private-functions
@@ -13,7 +13,7 @@ type PublicPart<T> = {[K in keyof T]: T[K]}
 export class MockDataService implements PublicPart<DataService> {
   readonly mockDataEndpoints = [
     { pattern: /^\/userinfo$/, result: mockUser },
-    { pattern: /\/resource\/[0-9]/, result: mockResource }
+    { pattern: /\/resource\/[0-9]/, result: mockApiResource }
   ];
 
   constructor(private logger: LoggingService) {
