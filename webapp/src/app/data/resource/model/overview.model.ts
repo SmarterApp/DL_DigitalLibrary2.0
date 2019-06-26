@@ -5,7 +5,7 @@ export interface OverviewModel {
     description: string;
 
     // UNKNOWN
-    resourceMaterials: ResourceMaterial[]
+    resourceMaterials: ResourceMaterial[];
 
     // UNKNOWN
     differentiation: string;

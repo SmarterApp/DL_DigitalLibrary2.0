@@ -4,6 +4,7 @@ import { DataService } from '../data.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { ResourceHeaderModel, Alignment } from './model/resource-header.model';
+import { OverviewModel, ResourceMaterial } from './model/overview.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class ResourceService {
 
   private mapToResourceModel(apiResource: any): ResourceModel {
     return <ResourceModel> {
-      header: this.mapToResourceHeaderModel(apiResource)
+      header: this.mapToResourceHeaderModel(apiResource),
+      overview: this.mapToOverview(apiResource)
     };
   }
 
@@ -60,5 +62,26 @@ export class ResourceService {
       // UKNOWN
       // favorited: boolean;
     };
+  }
+
+  mapToOverview(apiModel: any): OverviewModel {
+    return <OverviewModel> {
+      // MAYBE
+      // /api/v1/resource.altBody 
+      description: apiModel.altBody,
+
+      // UNKNOWN
+      resourceMaterials: apiModel.attachments.map(a => <ResourceMaterial>{
+        title: a.name,
+        url: a.url,
+        description: a.description
+      }),
+
+      // UNKNOWN
+      differentiation: apiModel.differentiation,
+
+      // /api/v1/resource.successCriteria
+      successCriteria: apiModel.successCriteria
+    }
   }
 }
