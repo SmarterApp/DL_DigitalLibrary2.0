@@ -23,7 +23,7 @@ describe('ResourceService', () => {
       expect(actual.image).toBeDefined();
       expect(actual.author).toBe('Mary Smith');
       expect(actual.lastModified).toEqual(new Date('2018-08-16T06:50:38+00:00'));
-      expect(actual.learningGoal).toBe('');
+      expect(actual.learningGoal).toBe('The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.');
     })
   })
 });
