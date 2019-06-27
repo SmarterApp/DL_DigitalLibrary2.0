@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { mockResourceModel } from '../data/mock-data';
 import { HeaderComponent } from './header/header.component';
 import { ResourceComponent } from './resource.component';
+import { OverviewComponent } from './overview/overview.component';
 
 describe('ResourceComponent', () => {
   let component: ResourceComponent;
@@ -13,7 +14,7 @@ describe('ResourceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResourceComponent, HeaderComponent ],
+      declarations: [ ResourceComponent, HeaderComponent, OverviewComponent ],
       providers: [ { provide: ActivatedRoute, useValue: mockResourceActivatedRouteSnapshot } ]
     })
     .compileComponents();

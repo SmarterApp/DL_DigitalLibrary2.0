@@ -1,6 +1,7 @@
 import { mockResourceImage } from 'src/app/data/mock-images';
 import { ResourceHeaderModel } from './resource/model/resource-header.model';
 import { ResourceModel } from './resource/model/resource.model';
+import { OverviewModel, ResourceMaterial } from './resource/model/overview.model';
 
 export const mockUser = {
     firstName: 'Mary',
@@ -15,6 +16,12 @@ export const mockResourceModel = <ResourceModel> {
 		grades: [],
 		targets: [],
 		claims: []
+	},
+	overview: <OverviewModel> {
+		description: 'Test Description',
+		resourceMaterials: [ <ResourceMaterial>{  title: 'Material', url: 'www.google.com', description: 'test description'}],
+		successCriteria: 'Test Success Criteria',
+		differentiation: 'Test Differentiation'
 	}
 };
 

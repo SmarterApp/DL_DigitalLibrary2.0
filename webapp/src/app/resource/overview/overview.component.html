@@ -1,0 +1,22 @@
+<div class="container">
+    <h2>Overview</h2>
+    <div>
+      <p>{{ model.description }}</p>
+    </div>
+    <hr>
+    <div>
+      <h3>Resource Materials</h3>
+      <div *ngFor="let material of model.resourceMaterials">
+        <a [href]="material.url" target="_blank"> {{ material.title }} </a>
+        <p>{{material.description}}</p>
+      </div>
+    </div>
+    <div>
+      <h3>Differentiation based on student performance</h3>
+      <div [innerHtml]="model.differentiation"></div>
+    </div>
+    <div>
+      <h3>Success Criteria</h3>
+      <div [innerHtml]="model.successCriteria"></div>
+    </div>
+</div>
