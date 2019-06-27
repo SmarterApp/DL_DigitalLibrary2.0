@@ -2,9 +2,9 @@ import { APP_BASE_HREF } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { mockRootActivatedRouteSnapshot } from 'src/app/data/mock-data';
 import { HeaderComponent } from '../header/header.component';
 import { AppContainerComponent } from './app-container.component';
+import { mockRootActivatedRouteSnapshot } from 'src/app/app.module.spec';
 
 describe('AppContainerComponent', () => {
   let component: AppContainerComponent;

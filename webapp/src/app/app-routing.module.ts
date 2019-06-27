@@ -4,30 +4,28 @@ import { AppContainerComponent } from './layout/app-container/app-container.comp
 import { HomeComponent } from './home/home.component';
 import { ResourceComponent } from './resource/resource.component';
 import { CurrentUserResolve } from './layout/current-user.resolve';
+import { ResourceResolve } from './resource/resource.resolve';
 
 const routes: Routes = [
   {
     path: '',
     component: AppContainerComponent,
-    resolve: {
-      currentUser: CurrentUserResolve
-    },
+    resolve: { currentUser: CurrentUserResolve },
     children: [
       {
         path: '',
         component: HomeComponent
       }, {
-        path: 'resource',
-        component: ResourceComponent
+        path: 'resource/:resourceId',
+        component: ResourceComponent,
+        resolve: { resource: ResourceResolve }
       }
     ]
   }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes),
-  ],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule { }

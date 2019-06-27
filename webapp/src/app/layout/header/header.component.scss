@@ -5,6 +5,8 @@ header {
     background: #FFF;
     padding-top:30px;
     display: flex;
+    position: relative;
+    z-index: 2;
 }
 
 .navbar-header {

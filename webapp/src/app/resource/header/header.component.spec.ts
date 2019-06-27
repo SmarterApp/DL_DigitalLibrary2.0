@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
-import { mockRootActivatedRouteSnapshot } from 'src/app/app.module.spec';
+import { mockResourceModel } from 'src/app/data/mock-data';
 import { HeaderComponent } from './header.component';
+import { mockDataServiceProviders } from 'src/app/app.module.spec';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -9,10 +9,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ],
-      providers: [ 
-        { provide: ActivatedRoute, useValue: mockRootActivatedRouteSnapshot }
-      ]
+      declarations: [ HeaderComponent ]
     })
     .compileComponents();
   }));
@@ -20,10 +17,16 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
+    component.model = mockResourceModel.header;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render title in a h1 tag', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('Resource Title');
   });
 });
