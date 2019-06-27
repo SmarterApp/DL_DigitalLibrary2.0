@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppContainerComponent } from './layout/app-container/app-container.component';
 import { HomeComponent } from './home/home.component';
-import { ResourceComponent } from './resource/resource.component';
 import { CurrentUserResolve } from './layout/current-user.resolve';
 import { ResourceResolve } from './resource/resource.resolve';
+import { ResourceTypeStrategyComponent } from './resource/resource-type-strategy.component';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
         component: HomeComponent
       }, {
         path: 'resource/:resourceId',
-        component: ResourceComponent,
+        component: ResourceTypeStrategyComponent,
         resolve: { resource: ResourceResolve }
       }
     ]
