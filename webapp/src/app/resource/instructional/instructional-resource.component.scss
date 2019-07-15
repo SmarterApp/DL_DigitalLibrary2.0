@@ -1,0 +1,19 @@
+.instructional-resource {
+    display: grid;
+    grid-template: "outline resource-content metadata" 1fr / 311px 1fr 311px;
+    grid-gap: 20px;
+    .outline {
+        grid-area: outline;
+    }
+    .resource-content {
+        grid-area: resource-content;
+    }
+    .metadata {
+        grid-area: metadata;
+    }
+    div sbdl-outline,
+    div sbdl-metadata {
+      position: fixed;
+    }
+  
+}

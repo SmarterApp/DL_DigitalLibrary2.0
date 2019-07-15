@@ -1,23 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { mockResourceModel } from 'src/app/data/mock-data';
-import { HeaderComponent } from './header.component';
-import { mockDataServiceProviders } from 'src/app/app.module.spec';
+import { ResourceContentComponent } from './resource-content.component';
+import { OverviewComponent } from '../overview/overview.component';
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+describe('ResourceContentComponent', () => {
+  let component: ResourceContentComponent;
+  let fixture: ComponentFixture<ResourceContentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [ ResourceContentComponent, OverviewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(ResourceContentComponent);
     component = fixture.componentInstance;
-    component.model = mockResourceModel.header;
+    component.model = mockResourceModel;
     fixture.detectChanges();
   });
 

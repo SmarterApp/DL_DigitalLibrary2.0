@@ -1,0 +1,43 @@
+<div class="resource-content">
+  <div class="container">
+    <div>
+      {{ header.subjects[0] }} | {{ header.grades[0] }}
+    </div>
+    <h1>{{ header.title }}</h1>
+    <div class="image-container">
+        <div>
+          <img [src]="header.image" height="150"> 
+        </div>
+        <div class="metadata-container">
+          <div class="modified-info two-fr-grid">
+              <div>Contributed by: {{ header.author }}</div>
+              <div>Last Updated: {{ header.lastModified | date: 'shortDate' }}</div>
+          </div>
+          <div></div>
+          <div>
+            <h3>Learning Goal</h3>
+            <div>{{ header.learningGoal }}</div>
+          </div>
+          <div>
+            <h3>Connections Playlist</h3>
+            <div *ngFor="let playlist of header.connectionsPlaylist">[{{ playlist }}]</div>
+          </div>
+          <div class="two-fr-grid">
+            <div>
+              <h3>Claim</h3>
+              <div *ngFor="let claim of header.claims">{{ claim.shortName }} : {{ claim.title }}</div>
+            </div>
+            <div>
+              <h3>Target</h3>
+              <div *ngFor="let target of header.targets">{{ target.shortName }} | {{ target.title }}</div>
+            </div>
+          </div>
+          <div>
+            <h3>Standards</h3>
+            <span *ngFor="let standard of header.standards">[{{ standard }}]</span>
+          </div>
+        </div>
+    </div>
+    <sbdl-overview [model]="model.overview"></sbdl-overview>
+</div>
+
