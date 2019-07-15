@@ -1,6 +1,7 @@
 import { mockResourceImage } from 'src/app/data/mock-images';
 import { ResourceHeaderModel } from './resource/model/resource-header.model';
 import { ResourceModel } from './resource/model/resource.model';
+import { OverviewModel, ResourceMaterial } from './resource/model/overview.model';
 
 export const mockUser = {
     firstName: 'Mary',
@@ -15,6 +16,12 @@ export const mockResourceModel = <ResourceModel> {
 		grades: [],
 		targets: [],
 		claims: []
+	},
+	overview: <OverviewModel> {
+		description: 'Test Description',
+		resourceMaterials: [ <ResourceMaterial>{  title: 'Material', url: 'www.google.com', description: 'test description'}],
+		successCriteria: 'Test Success Criteria',
+		differentiation: 'Test Differentiation'
 	}
 };
 
@@ -89,6 +96,7 @@ export const mockApiResourceExample = {
 // Polyfills missing fields not provided by the example payload
 // in the API document from PCG.
 const polyfillMissingApiData = {
+	// metadata
 	resourceThumbnail: mockResourceImage,
 	educationalAlignments: [
 		{ title: 'Problem Solving', shortName: '2'}
@@ -98,7 +106,41 @@ const polyfillMissingApiData = {
 	],
 	learningGoals: 'The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.',
 	connectionsPlaylist: ['Grade 6 Fractions'],
-	standards: ['6.NS.A.1', '6.NS.A.1', '6.NS.A.1']
+	standards: ['6.NS.A.1', '6.NS.A.1', '6.NS.A.1'],
+
+	//overview
+	altBody: `
+		In this task, students will engage with division of fraction tasks that uset hes ame context but require sutdents to divide the fractions 
+		in the opposite order.  Sutdents solve the tasks by creating visual models, selecting the equations that appropriately represents the situation,
+		and confirming their solutions by solving said equations and comparing back to the visual models.  Students will work to answer the questions,
+		"How do these numbers and operations work together?"
+	`,
+	attachments: [ {
+		name: 'Illustrative Mathematics Task: How Many Containers in One Cup / Cups in One Container?',
+		url: 'https://tasks.illustrativemathematics.org/content-standards/tasks/408',
+		description: `
+			Students will need to be given a copy of the Illustrative Mathematics task.  This could be a paper copy for each student, or the task
+			could be projected via use of a Smartboard, or document camera.  The task could also be delivered to students electornically via
+			Google or another online platform.
+		`
+	}],
+	differentiation: `
+		<p>
+			If your students are <b>below</b>: Modify the number of problems to include a whole number divided by a fraction.  This may provide
+			access to students who are still making sense of fraction division.
+		</p>
+		<p>
+			If your students are <b>above</b>: Change one of the numbers to a mixed number to extend student understanding about division of
+			freactions with fractions greater than one.
+		</p>
+	`,
+	successCriteria: `
+		<ul>
+			<li>Students will be able to construct visual models to solve contextual problems involving division of fractions.</li>
+			<li>Students will be able to pair visual fraction models with appropriate equations.</li>
+			<li>Students will be able to compute the quotients of fractions.</li>
+		</ul>
+	`
 };
 
 export const mockApiResource= {
