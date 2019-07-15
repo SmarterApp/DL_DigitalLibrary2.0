@@ -1,21 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
-import { mockResourceModel } from '../../data/mock-data';
-import { HeaderComponent } from './header/header.component';
+import { ResourceModule } from '../resource.module';
+import { ActivatedResourceRouteModule } from '../resource.module.spec';
 import { InstructionalResourceComponent } from './instructional-resource.component';
-import { OverviewComponent } from './overview/overview.component';
+import { ResourceComponent } from '../resource-component.interface';
+import { mockResourceModel } from 'src/app/data/mock-data';
 
-describe('ResourceComponent', () => {
+describe('InstructionalResourceComponent', () => {
   let component: InstructionalResourceComponent;
   let fixture: ComponentFixture<InstructionalResourceComponent>;
-  const mockResourceActivatedRouteSnapshot = {
-      snapshot: { data: { resource: mockResourceModel } } 
-  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InstructionalResourceComponent, HeaderComponent, OverviewComponent ],
-      providers: [ { provide: ActivatedRoute, useValue: mockResourceActivatedRouteSnapshot } ]
+      imports: [ ResourceModule ],
+      providers: [  ]
     })
     .compileComponents();
   }));
@@ -23,6 +20,7 @@ describe('ResourceComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(InstructionalResourceComponent);
     component = fixture.componentInstance;
+    (<ResourceComponent>component).model = mockResourceModel;
     fixture.detectChanges();
   });
 

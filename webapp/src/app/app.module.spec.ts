@@ -6,7 +6,7 @@ import { DataService } from './data/data.service';
 import { mockUser } from './data/mock-data';
 import { MockDataService } from './data/mock-data.service';
 
-// Common mocks here.
+// Common AppModule mocks here.
 export const mockRootActivatedRouteSnapshot = {
     snapshot: { data: { currentUser: mockUser } } 
 };

@@ -3,8 +3,15 @@ import { OverviewModel } from "./overview.model";
 import { ResourceStepModel } from "./resource-step.model";
 import { ResourceStrategyModel } from "./resource-strategy.model";
 import { InstructionalMaterialModel } from "./instructional-material.model";
+import { ResourceType } from './resource-type.enum';
 
 export interface ResourceModel {
+    // /api/v1/resource.id
+    resourceId: number;
+
+    // /api/v1/resource.resourceType
+    resourceType: ResourceType;
+
     header: ResourceHeaderModel;
     overview: OverviewModel;
     steps: ResourceStepModel[];

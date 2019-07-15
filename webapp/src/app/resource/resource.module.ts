@@ -22,6 +22,6 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
   imports: [
     CommonModule
   ],
-  entryComponents: [ InstructionalResourceComponent ]
+  entryComponents: [ InstructionalResourceComponent, ResourceTypeStrategyComponent ]
 })
 export class ResourceModule { }

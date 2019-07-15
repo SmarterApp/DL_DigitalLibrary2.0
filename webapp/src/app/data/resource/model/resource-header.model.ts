@@ -1,7 +1,6 @@
 // Mockup: https://sketch.cloud/s/3lW3m/a/zGOLo5
 export interface ResourceHeaderModel {
-    // /api/v1/resource.id
-    resourceId: number;
+
 
     // /api/v1/resource.title
     title: string;
