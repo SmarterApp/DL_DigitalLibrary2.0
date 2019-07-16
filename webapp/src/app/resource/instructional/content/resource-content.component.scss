@@ -1,5 +1,19 @@
 @import "colors";
 
+.top-row {
+    display:flex;
+    justify-content: space-between;
+    
+    .actions {
+        display:flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 200px;
+        color: $brand-blue;
+        font-size: 1.2rem;
+    }
+}
+
 header {
     padding: 0 61px;
     h1 {

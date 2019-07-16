@@ -27,6 +27,10 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/fontawesome/css/fontawesome.css",
+              "src/assets/fontawesome/css/brands.css",
+              "src/assets/fontawesome/css/solid.css",
+              "src/assets/fontawesome/css/regular.css",
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
@@ -34,7 +38,12 @@
                 "src/ui-kit"
               ]
             },
-            "scripts": []
+            "scripts": [
+              "src/assets/fontawesome/js/brands.js",
+              "src/assets/fontawesome/js/solid.js",
+              "src/assets/fontawesome/js/regular.js",
+              "src/assets/fontawesome/js/fontawesome.js"
+            ]
           },
           "configurations": {
             "production": {
