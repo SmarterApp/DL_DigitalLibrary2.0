@@ -1,7 +1,5 @@
 // Mockup: https://sketch.cloud/s/3lW3m/a/zGOLo5
-export interface ResourceHeaderModel {
-
-
+export interface ResourceDetailsModel {
     // /api/v1/resource.title
     title: string;
 
@@ -17,6 +15,10 @@ export interface ResourceHeaderModel {
 
     // /api/v1/resource.author
     author: string;
+
+    // MAYBE
+    // /api/v1/resource.publisher
+    authorOrganization: string;
 
     // MAYBE (in payload but not in doc)
     // /api/v1/resource.changed

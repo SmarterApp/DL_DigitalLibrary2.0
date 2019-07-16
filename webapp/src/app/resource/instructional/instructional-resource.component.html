@@ -1,13 +1,13 @@
 <div *ngIf="model" class="instructional-resource" >
-  <div class="outline">
+  <nav class="outline">
     <sbdl-outline></sbdl-outline>
-  </div>
-  <div class="resource-content">
+  </nav>
+  <article class="resource-content">
     <sbdl-resource-content [model]="model"></sbdl-resource-content>
-  </div>
-  <div class="metadata">
+  </article>
+  <aside class="metadata">
     <sbdl-metadata></sbdl-metadata>
-  </div>
+  </aside>
 </div>
 <div *ngIf="!model">
   Resource not found.

@@ -1,4 +1,4 @@
-import { ResourceHeaderModel } from "./resource-header.model";
+import { ResourceDetailsModel } from "./resource-details.model";
 import { OverviewModel } from "./overview.model";
 import { ResourceStepModel } from "./resource-step.model";
 import { ResourceStrategyModel } from "./resource-strategy.model";
@@ -12,7 +12,7 @@ export interface ResourceModel {
     // /api/v1/resource.resourceType
     resourceType: ResourceType;
 
-    header: ResourceHeaderModel;
+    details: ResourceDetailsModel;
     overview: OverviewModel;
     steps: ResourceStepModel[];
     materials: InstructionalMaterialModel[];

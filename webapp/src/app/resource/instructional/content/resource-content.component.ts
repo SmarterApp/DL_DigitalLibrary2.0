@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ResourceHeaderModel } from 'src/app/data/resource/model/resource-header.model';
+import { ResourceDetailsModel } from 'src/app/data/resource/model/resource-details.model';
 import { ResourceModel } from 'src/app/data/resource/model/resource.model';
 
 @Component({
@@ -12,8 +12,8 @@ export class ResourceContentComponent implements OnInit {
   @Input()
   model: ResourceModel;
 
-  get header() {
-    return this.model.header;
+  get details() {
+    return this.model.details;
   }
 
   constructor() { }
