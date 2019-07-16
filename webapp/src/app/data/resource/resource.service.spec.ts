@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { ResourceService } from './resource.service';
 import { mockDataServiceProviders } from 'src/app/app.module.spec';
+import { ResourceType } from './model/resource-type.enum';
 
 describe('ResourceService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -16,7 +17,7 @@ describe('ResourceService', () => {
     const service: ResourceService = TestBed.get(ResourceService);
     service.get(1).subscribe(resource => {
       const actual = resource.header;
-      expect(actual.resourceId).toBe(1);
+      expect(resource.resourceId).toBe(1);
       expect(actual.title).toBe('Resource Title');
       expect(actual.subjects).toEqual(['ELA', 'Math']);
       expect(actual.grades).toEqual(['Grade 6', 'Grade 8', 'Grade 9']);
@@ -42,5 +43,13 @@ describe('ResourceService', () => {
       expect(actual.differentiation).toContain('If your students are <b>below</b>:');
       expect(actual.successCriteria).toContain('Students will be able to construct visual');
     })
-  })
+  });
+
+  it('should map resource type', () => {
+    const service: ResourceService = TestBed.get(ResourceService);
+    service.get(1).subscribe(resource => {
+      const actual = resource.resourceType;
+      expect(actual).toBe(ResourceType.Instructional);
+    })
+  });
 });

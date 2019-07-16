@@ -5,11 +5,18 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { ResourceHeaderModel, Alignment } from './model/resource-header.model';
 import { OverviewModel, ResourceMaterial } from './model/overview.model';
+import { ResourceType } from './model/resource-type.enum';
+import { resource } from 'selenium-webdriver/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResourceService {
+  // It's unclear what the potential values 
+  // the API will return here.
+  readonly apiResourceTypeMap: Map<string, ResourceType> = new Map([
+    ['Instructional and Professional Learning', ResourceType.Instructional ]
+  ]);
 
   constructor(private dataService: DataService) { }
 
@@ -20,7 +27,15 @@ export class ResourceService {
   }
 
   private mapToResourceModel(apiResource: any): ResourceModel {
+    const resourceType = this.apiResourceTypeMap.get(apiResource.resourceType);
+
+    if(resourceType == null) {
+      throw Error('Unexpected resourceType for: ' + apiResource.resourceType);
+    }
+
     return <ResourceModel> {
+      resourceId: apiResource.id,
+      resourceType: resourceType,
       header: this.mapToResourceHeaderModel(apiResource),
       overview: this.mapToOverview(apiResource)
     };
@@ -28,7 +43,6 @@ export class ResourceService {
 
   private mapToResourceHeaderModel(apiResource: any): ResourceHeaderModel {
     return <ResourceHeaderModel> {
-      resourceId: apiResource.id,
       title: apiResource.title,
       subjects: apiResource.subjects,
       grades: apiResource.grades,
