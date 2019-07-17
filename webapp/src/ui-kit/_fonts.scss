@@ -4,7 +4,7 @@ $font-title: "Montserrat",sans-serif;
 body {
     font-family: $font-body;
     font-size: 14.41px;
-    color: $neutral-primary;
+    color: $neutral-900;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -51,8 +51,12 @@ h6 {
 caption {
     font-size: 0.916rem;
     display: inline;
+    text-align: left;
 }
 
 .font-light {
     font-weight: 300;
+}
+.emphasis-medium {
+    opacity: 0.65;
 }

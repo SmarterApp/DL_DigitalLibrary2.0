@@ -1,19 +1,68 @@
+/* ------------------------------
+Smarter Balanced Brand Colors
+------------------------------ */
+
 $brand-steel: #484F5B;
 $brand-green: #4AA51D;
 $brand-blue: #007DA3;
 
-$accent-green: #5AC923;
-$accent-blue: #00B4EB;
-$accent-gold: #F2C94F;
+$brand-accent-green: #5AC923;
+$brand-accent-blue: #00B4EB;
+$brand-accent-gold: #F2C94F;
 
-$action-primary: $accent-blue;
-$action-primary-sub1: #009FCF;
-$action-primary-sub2: #0080A7;
 
-$neutral-primary: $brand-steel;
-$info-primary: #BA2CA3;
-$success-primary: $accent-green;
-$warning-primary: $accent-gold;
-$error-primary: #DB5461;
 
+
+/* ------------------------------
+Semantic UI Colors
+------------------------------ */
+
+// Neutrals
 $white: #FFFFFF;
+$neutral-50: #F6F7F7;
+$neutral-75: #E9EAEB;
+$neutral-100: #C8CACE;
+$neutral-200: #A4A7AD;
+$neutral-300: #7F848C;
+$neutral-400: #636974;
+$neutral-500: #484F5B; // Light text
+$neutral-600: #414853;
+$neutral-700: #383F49;
+$neutral-800: #303640;
+$neutral-900: #21262F;
+
+// Action
+$action-100: #E0F7FF;
+$action-300: #9AE0F5;
+$action-500: #00B4EB; // Dark text
+$action-600: #009FCF; // Light text
+$action-700: #0080A7;
+$action-900: #005F7B;
+
+// Info
+$info-100: #F5DDF0;
+$info-300: #DD8ACE;
+$info-500: #BA2CA3; // Light text
+$info-700: #A4018C;
+$info-900: #800670;
+
+// Success
+$success-100: #D2FABE;
+$success-300: #97EE6C;
+$success-500: #5AC923; // Dark text
+$success-700: #4AA71C; // Light text
+$success-900: #3B8715;
+
+// Warning
+$warning-100: #F9ECC3;
+$warning-300: #FAE197;
+$warning-500: #F2C94F; // Dark text
+$warning-700: #ECB30B;
+$warning-900: #D5A105;
+
+// Error
+$error-100: #F4CCD0;
+$error-300: #E68790;
+$error-500: #DB5461; // Dark text
+$error-700: #D2434F;
+$error-900: #C42933;

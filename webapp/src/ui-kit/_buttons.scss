@@ -16,13 +16,13 @@ button, .button {
 }
 
 button.primary, .button.primary {
-    background-color: $action-primary;
+    background-color: $action-600;
     color: $white;
 }
 
 button:focus, .button:focus,
 button:hover, .button.hover {
-    background-color: $action-primary-sub2;
+    background-color: $action-700;
 }
 
 button:hover, .button:hover {

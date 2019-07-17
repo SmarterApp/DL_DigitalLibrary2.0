@@ -1,25 +1,27 @@
 <div class="resource-content">
-  <div class="top-row">
-    <img src="/assets/images/yellow-spot.png">
-    <div class="actions">
-      <i class="far fa-share"></i> 
-      <i class="far fa-bookmark"></i> 
-      <i class="far fa-print"></i> 
-      <i class="far fa-expand-alt"></i> 
-    </div>
+  <div class="actions">
+    <!-- todo: make these use component: icon button -->
+    <i class="far fa-share"></i>
+    <i class="far fa-bookmark"></i>
+    <i class="far fa-print"></i>
+    <i class="far fa-expand-alt"></i>
   </div>
   <header>
     <h1>{{ details.title }}</h1>
-    <div class="subheader-section">
-      <div>
-        <div>{{ details.author }} • <span class="font-light">{{ details.authorOrganization}}</span></div>
-        <div><caption>Updated</caption> {{ details.lastModified | date: 'mediumDate' }}</div>
-      </div>
-      <div>
-        <button class="primary"><i class="far fa-paperclip"></i> Attachments</button>
-      </div>
-    </div>
+    <section class="byline">
+      {{ details.author }} •
+      <span class="font-light">{{ details.authorOrganization }}</span>
+    </section>
+    <caption>
+      <span class="emphasis-medium">Updated</span>
+      {{
+        details.lastModified | date: 'mediumDate'
+      }}
+    </caption>
+    <!-- todo: switch to dense button style -->
+    <button class="primary">
+      <i class="far fa-paperclip"></i> Attachments
+    </button>
   </header>
   <sbdl-overview [model]="model.overview"></sbdl-overview>
 </div>
-

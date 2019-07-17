@@ -1,22 +1,26 @@
-<div class="container">
-    <h2>Overview</h2>
-    <div>
-      <p>{{ model.description }}</p>
-    </div>
-    <hr>
-    <div>
-      <h3>Resource Materials</h3>
-      <div *ngFor="let material of model.resourceMaterials">
-        <a [href]="material.url" target="_blank"> {{ material.title }} </a>
-        <p>{{material.description}}</p>
-      </div>
-    </div>
-    <div>
-      <h3>Differentiation based on student performance</h3>
-      <div [innerHtml]="model.differentiation"></div>
-    </div>
-    <div>
-      <h3>Success Criteria</h3>
-      <div [innerHtml]="model.successCriteria"></div>
-    </div>
-</div>
+<h2>Overview</h2>
+<div [innerHtml]="model.description"></div>
+
+<hr />
+
+<h3>Attachments</h3>
+<!-- todo: refer to materials as attachments to avoid future confusion -->
+<!-- todo add download all button -->
+<ul class="attachments-list">
+  <li *ngFor="let material of model.resourceMaterials">
+    <!-- todo: make fields match comp -->
+    <a [href]="material.url" target="_blank"> {{ material.title }} </a>
+    <!-- todo this content goes under the title, not in the li. doesn't work when i move it though - AS -->
+    <p>{{ material.description }}</p>
+  </li>
+</ul>
+
+<hr />
+
+<h3>Differentiation based on student performance</h3>
+<div [innerHtml]="model.differentiation"></div>
+
+<hr />
+
+<h3>Success Criteria</h3>
+<div [innerHtml]="model.successCriteria"></div>
