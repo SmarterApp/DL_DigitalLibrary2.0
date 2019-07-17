@@ -3,13 +3,13 @@
 .top-row {
     display:flex;
     justify-content: space-between;
-    
+
     .actions {
         display:flex;
         justify-content: space-around;
         align-items: center;
         width: 175px;
-        color: $action-primary;
+        color: $action-600;
         font-size: 1.2rem;
         svg {
             color: $brand-blue;
@@ -44,7 +44,7 @@ h3 {
 }
 
 .two-fr-grid {
-    display: grid; 
+    display: grid;
     grid-template: 1fr / 1fr 1fr;
 }
 
