@@ -26,5 +26,19 @@
       <ng-template ngPluralCase="other">Standards</ng-template>
     </label>
     <div class="value">{{ model.standards | join }}</div>
-  </div>  
+  </div>
+  <div class="playlists">
+    <h6>Playlists</h6>
+    <caption>Connections playlists utilizing this resource.</caption>
+    <div *ngFor="let playlist of model.relatedPlaylists" class="playlist-card">
+
+        <div>{{ playlist.title }}</div>
+        <div [ngPlural]="playlist.numberOfResources" >
+          <ng-template ngPluralCase="=1">{{ playlist.numberOfResources }} resource</ng-template>
+          <ng-template ngPluralCase="other">{{ playlist.numberOfResources }} resources</ng-template>
+        </div>
+
+
+    </div>
+  </div>
 </div>

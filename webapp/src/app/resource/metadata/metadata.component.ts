@@ -14,6 +14,7 @@ export class MetadataComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.model.relatedPlaylists);
   }
 
 }

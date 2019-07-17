@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from '../data.service';
 import { OverviewModel, ResourceMaterial } from './model/overview.model';
-import { Alignment, ResourceDetailsModel } from './model/resource-details.model';
+import { Alignment, ResourceDetailsModel, Playlist } from './model/resource-details.model';
 import { ResourceType } from './model/resource-type.enum';
 import { ResourceModel } from './model/resource.model';
 import { coalesce } from 'src/app/common/utils';
@@ -51,24 +51,22 @@ export class ResourceService {
       authorOrganization: apiResource.publisher,
       lastModified: new Date(apiResource.changed),
       learningGoal: apiResource.learningGoals,
+
       claims: coalesce(apiResource.educationalAlignments, []).map(ea => <Alignment>{
         title: ea.title,
         shortName: ea.shortName
       }),
+
       targets: coalesce(apiResource.targetAlignments, []).map(ta => <Alignment>{
         title: ta.title,
         shortName: ta.shortName
       }),
 
-      // UNKNOWN
-      connectionsPlaylist: apiResource.connectionsPlaylist,
-
-      // UNKNOWN
-      // claim: string;
-
-      // MAYBE, but this is an array?
-      // /api/v1/resource.targetsAlignmentShortnames
-      // target: string;
+      relatedPlaylists: coalesce(apiResource.connectionsPlaylist, []).map(p => <Playlist>{
+        title: p.title,
+        numberOfResources: p.numberOfResources,
+        assessmentType: p.assessmentType
+      }),
 
       // MAYBE, but this is NOT an array?
       // /api/v1/resource.connectionToCcss

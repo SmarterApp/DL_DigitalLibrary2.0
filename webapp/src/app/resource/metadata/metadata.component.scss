@@ -1,10 +1,15 @@
 @import "colors";
+@import "fonts";
+
+h5,h6 {
+    margin-bottom: 0;
+    color: $brand-green; // Is this just in the metadata section?
+}
 
 .image-thumbnail {
     margin-top: 16px;
     border: 8px solid #FFFFFF;
     box-sizing: border-box;
-    /* 3dp — Elevation */
 
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 3px 3px rgba(0, 0, 0, 0.14);
     border-radius: 4px;
@@ -14,8 +19,6 @@
         object-fit: cover;
     }
 }
-
-@import "fonts";
 
 .subjects-grades {
     img {
@@ -49,11 +52,40 @@
         letter-spacing: -0.021em;
      }
     > .value { 
-        grid-area:  "value" ;
+        grid-area: "value" ;
         font-weight: bold;
         font-size: 14.1px;
         line-height: 117%;
+    }    
+}
+
+.playlists {
+    caption {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.825rem;
+        line-height: 18px;
+        color: rgba($neutral-900, 0.65);
     }
-    // grid-template-columns: repeat(auto-fill,minmax(140px, 1fr));
-    
+    .playlist-card {
+        padding: 21px;
+        position: relative;
+        border-radius: 4px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 0px 2px rgba(0, 0, 0, 0.14);
+        background: url('/assets/images/green-spot.png');
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        &:before {
+            content: '';
+            mix-blend-mode: multiply;
+            background-color: $brand-green;
+            display: block;
+            position: absolute;
+            width: 8px;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 0.2;
+        }
+    }            
 }
