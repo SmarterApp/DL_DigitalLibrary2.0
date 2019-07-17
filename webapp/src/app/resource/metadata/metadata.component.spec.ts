@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { mockResourceModel } from 'src/app/data/mock-data';
 import { MetadataComponent } from './metadata.component';
 
 describe('MetadataComponent', () => {
@@ -16,6 +16,7 @@ describe('MetadataComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MetadataComponent);
     component = fixture.componentInstance;
+    (<MetadataComponent>component).model = mockResourceModel.details;
     fixture.detectChanges();
   });
 

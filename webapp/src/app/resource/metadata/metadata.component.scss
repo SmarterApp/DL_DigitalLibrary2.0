@@ -1,0 +1,29 @@
+@import "colors";
+
+.image-thumbnail {
+    margin-top: 16px;
+    border: 8px solid #FFFFFF;
+    box-sizing: border-box;
+    /* 3dp — Elevation */
+
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 3px 3px rgba(0, 0, 0, 0.14);
+    border-radius: 4px;
+    img {
+        max-width: 279px;
+    }
+}
+
+.subjects-grades {
+    img {
+        margin-right: 8px;
+    }
+    display: flex;
+    margin-top: 32px;
+    color: $brand-green;
+    .subjects {
+        margin: 0;
+    }
+    .grades {
+        margin: 0;
+    }
+}

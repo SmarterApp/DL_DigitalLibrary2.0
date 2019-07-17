@@ -20,7 +20,9 @@ describe('ResourceService', () => {
       expect(resource.resourceId).toBe(1);
       expect(actual.title).toBe('Connecting Fraction Division Equations to Visual Models');
       expect(actual.subjects).toEqual(['ELA', 'Math']);
+      expect(actual.joinSubjects).toEqual('ELA, Math');
       expect(actual.grades).toEqual(['Grade 6', 'Grade 8', 'Grade 9']);
+      expect(actual.joinGrades).toEqual('Grade 6, Grade 8, Grade 9');
       expect(actual.image).toBeDefined();
       expect(actual.author).toBe('Mary Smith');
       expect(actual.authorOrganization).toBe('John Roberts');

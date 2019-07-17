@@ -1,3 +1,12 @@
 <div>
-  (metadata here)
+  <div class="image-thumbnail">
+    <img [src]="model.image">
+  </div>
+  <div class="subjects-grades">
+    <img src="/assets/images/math-2-problem-solving.png">
+    <div>
+      <h5 class="subjects">{{ model.joinSubjects }}</h5>
+      <h6 class="grades">{{ model.joinGrades }}</h6>
+    </div>
+  </div>
 </div>

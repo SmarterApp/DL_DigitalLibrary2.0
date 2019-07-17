@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ResourceModel } from './model/resource.model';
-import { DataService } from '../data.service';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { ResourceDetailsModel, Alignment } from './model/resource-details.model';
+import { map } from 'rxjs/operators';
+import { DataService } from '../data.service';
 import { OverviewModel, ResourceMaterial } from './model/overview.model';
+import { Alignment, ResourceDetailsModel } from './model/resource-details.model';
 import { ResourceType } from './model/resource-type.enum';
-import { resource } from 'selenium-webdriver/http';
+import { ResourceModel } from './model/resource.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,16 +35,18 @@ export class ResourceService {
     return <ResourceModel> {
       resourceId: apiResource.id,
       resourceType: resourceType,
-      details: this.mapToResourceHeaderModel(apiResource),
+      details: this.mapToResourceDetailsModel(apiResource),
       overview: this.mapToOverview(apiResource)
     };
   }
 
-  private mapToResourceHeaderModel(apiResource: any): ResourceDetailsModel {
+  private mapToResourceDetailsModel(apiResource: any): ResourceDetailsModel {
     return <ResourceDetailsModel> {
       title: apiResource.title,
       subjects: apiResource.subjects,
+      joinSubjects: apiResource.subjects.join(', '),
       grades: apiResource.grades,
+      joinGrades: apiResource.grades.join(', '),
       image: apiResource.resourceThumbnail,
       author: apiResource.author,
       authorOrganization: apiResource.publisher,

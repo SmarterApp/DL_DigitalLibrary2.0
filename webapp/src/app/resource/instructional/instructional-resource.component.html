@@ -6,7 +6,7 @@
     <sbdl-resource-content [model]="model"></sbdl-resource-content>
   </article>
   <aside class="metadata">
-    <sbdl-metadata></sbdl-metadata>
+    <sbdl-metadata [model]="model.details"></sbdl-metadata>
   </aside>
 </div>
 <div *ngIf="!model">
