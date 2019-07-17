@@ -48,8 +48,12 @@ h6 {
 caption {
     font-size: 0.916rem;
     display: inline;
+    text-align: left;
 }
 
 .font-light {
     font-weight: 300;
+}
+.emphasis-medium {
+    opacity: 0.65;
 }

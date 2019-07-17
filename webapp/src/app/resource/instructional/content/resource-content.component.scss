@@ -1,59 +1,63 @@
-@import "colors";
+@import "./../../../../ui-kit/colors";
+@import "./../../../../ui-kit/spacing";
 
-.top-row {
-    display:flex;
-    justify-content: space-between;
-
+.resource-content {
+    background-image: url('./../../../../assets/images/yellow-spot.png');
+    background-position: 46px top;
+    background-repeat: no-repeat;
     .actions {
         display:flex;
-        justify-content: space-around;
+        justify-content: flex-end;
         align-items: center;
-        width: 175px;
-        color: $action-600;
-        font-size: 1.2rem;
-        svg {
-            color: $brand-blue;
-            cursor: pointer;
-        };
-
-        svg:hover {
-            color: rgba($brand-blue, 0.8);
+        & > *:not(:first-child) {
+            margin-left: $spacer;
         }
     }
-}
 
-header {
-    padding: 0 61px;
-    h1 {
-        color: $brand-green;
+    header {
+        display: grid;
+        grid-template-areas: "title title"
+                             "byline button"
+                             "updated button";
+        grid-template-rows: repeat (3, auto);
+        grid-template-columns: 1fr auto;
+        h1 {
+            grid-area: title;
+            color: $brand-green;
+        }
+        .byline {
+            grid-area: byline;
+        }
+        caption {
+            grid-area: updated;
+        }
+        button {
+            grid-area: button;
+        }
     }
-    .subheader-section {
-        display: flex;
-        justify-content: space-between;
+
+    h3 {
+        text-transform: uppercase;
+        margin-bottom: 0;
     }
-}
 
-h3 {
-    text-transform: uppercase;
-    margin-bottom: 0;
-}
+    .modified-info {
+        font-size: 0.8em;
+        font-style: italic;
+    }
 
-.modified-info {
-    font-size: 0.8em;
-    font-style: italic;
-}
+    .two-fr-grid {
+        display: grid;
+        grid-template: 1fr / 1fr 1fr;
+    }
 
-.two-fr-grid {
-    display: grid;
-    grid-template: 1fr / 1fr 1fr;
-}
+    .image-container {
+        display: grid;
+        grid-template: 1fr / 1fr 4fr;
+    }
 
-.image-container {
-    display: grid;
-    grid-template: 1fr / 1fr 4fr;
-}
-
-.metadata-container {
-    display: grid;
-    grid-template: 1.2em 1fr 1fr  / 2fr 1fr;
+    .metadata-container {
+        display: grid;
+        grid-template: 1.2em 1fr 1fr  / 2fr 1fr;
+    }
 }
