@@ -3,10 +3,28 @@
     <img [src]="model.image">
   </div>
   <div class="subjects-grades">
+    <!-- TODO: should be mapped; -->
     <img src="/assets/images/math-2-problem-solving.png">
     <div>
-      <h5 class="subjects">{{ model.joinSubjects }}</h5>
-      <h6 class="grades">{{ model.joinGrades }}</h6>
+      <h5 class="subjects">{{ model.subjects | join }}</h5>
+      <h6 class="grades">{{ model.grades | join }}</h6>
     </div>
   </div>
+  <div class="details">
+    <label [ngPlural]="model.claims.length">
+      <ng-template ngPluralCase="=1">Claim</ng-template>
+      <ng-template ngPluralCase="other">Claims</ng-template>
+    </label>
+    <div class="value">{{ model.claims | join:{ field: 'title'} }}</div>
+    <label [ngPlural]="model.targets.length" >
+      <ng-template ngPluralCase="=1">Target</ng-template>
+      <ng-template ngPluralCase="other">Targets</ng-template>
+    </label>
+    <div class="value">{{ model.targets | join:{ field: 'title' } }}</div>
+    <label [ngPlural]="model.standards.length">
+      <ng-template ngPluralCase="=1">Standard</ng-template>
+      <ng-template ngPluralCase="other">Standards</ng-template>
+    </label>
+    <div class="value">{{ model.standards | join }}</div>
+  </div>  
 </div>

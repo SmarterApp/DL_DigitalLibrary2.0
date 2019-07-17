@@ -17,7 +17,8 @@ export const mockResourceModel = <ResourceModel> {
 		subjects: [],
 		grades: [],
 		targets: [],
-		claims: []
+		claims: [],
+		standards: []
 	},
 	overview: <OverviewModel> {
 		description: 'Test Description',
@@ -149,3 +150,12 @@ export const mockApiResource= {
 	...mockApiResourceExample,
 	...polyfillMissingApiData
 };
+
+export const mockApiResourceWithNulls = {
+	...mockApiResource,
+	subjects: undefined,
+	grades: undefined,
+	targetAlignments: undefined,
+	educationalAlignments: undefined,
+	standards: undefined
+}

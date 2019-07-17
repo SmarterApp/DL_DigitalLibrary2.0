@@ -20,15 +20,25 @@ describe('ResourceService', () => {
       expect(resource.resourceId).toBe(1);
       expect(actual.title).toBe('Connecting Fraction Division Equations to Visual Models');
       expect(actual.subjects).toEqual(['ELA', 'Math']);
-      expect(actual.joinSubjects).toEqual('ELA, Math');
       expect(actual.grades).toEqual(['Grade 6', 'Grade 8', 'Grade 9']);
-      expect(actual.joinGrades).toEqual('Grade 6, Grade 8, Grade 9');
       expect(actual.image).toBeDefined();
       expect(actual.author).toBe('Mary Smith');
       expect(actual.authorOrganization).toBe('John Roberts');
       expect(actual.lastModified).toEqual(new Date('2018-08-16T06:50:38+00:00'));
       expect(actual.learningGoal).toBe('The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.');
     })
+  });
+
+  it('should initialize for null arrays (templates assume arrays are initialized)', () =>{
+    const service: ResourceService = TestBed.get(ResourceService);
+    service.get(0).subscribe(resource => {
+      const actual = resource.details;
+      expect(actual.subjects).toEqual([]);
+      expect(actual.grades).toEqual([]);
+      expect(actual.targets).toEqual([]);
+      expect(actual.claims).toEqual([]);
+      expect(actual.standards).toEqual([]);
+    });
   });
 
   it('should map overview', () => {

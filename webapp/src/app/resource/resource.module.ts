@@ -8,6 +8,8 @@ import { ResourceComponent } from './resource-component.interface';
 import { ResourceHostDirective } from './resource-host.directive';
 import { OutlineComponent } from './outline/outline.component';
 import { MetadataComponent } from './metadata/metadata.component';
+import { JoinPipe } from '../pipes/join.pipe';
+import { PipesModule } from '../pipes/pipes.module';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -24,7 +26,8 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     MetadataComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    PipesModule
   ],
   entryComponents: [ InstructionalResourceComponent, ResourceTypeStrategyComponent ]
 })

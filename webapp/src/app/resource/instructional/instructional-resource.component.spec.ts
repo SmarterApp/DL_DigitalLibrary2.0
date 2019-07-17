@@ -4,6 +4,7 @@ import { ActivatedResourceRouteModule } from '../resource.module.spec';
 import { InstructionalResourceComponent } from './instructional-resource.component';
 import { ResourceComponent } from '../resource-component.interface';
 import { mockResourceModel } from 'src/app/data/mock-data';
+import { JoinPipe } from 'src/app/pipes/join.pipe';
 
 describe('InstructionalResourceComponent', () => {
   let component: InstructionalResourceComponent;

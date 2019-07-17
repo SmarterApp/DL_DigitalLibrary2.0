@@ -6,6 +6,7 @@ import { OverviewModel, ResourceMaterial } from './model/overview.model';
 import { Alignment, ResourceDetailsModel } from './model/resource-details.model';
 import { ResourceType } from './model/resource-type.enum';
 import { ResourceModel } from './model/resource.model';
+import { coalesce } from 'src/app/common/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -43,20 +44,18 @@ export class ResourceService {
   private mapToResourceDetailsModel(apiResource: any): ResourceDetailsModel {
     return <ResourceDetailsModel> {
       title: apiResource.title,
-      subjects: apiResource.subjects,
-      joinSubjects: apiResource.subjects.join(', '),
-      grades: apiResource.grades,
-      joinGrades: apiResource.grades.join(', '),
+      subjects: coalesce(apiResource.subjects, []),
+      grades: coalesce(apiResource.grades, []),
       image: apiResource.resourceThumbnail,
       author: apiResource.author,
       authorOrganization: apiResource.publisher,
       lastModified: new Date(apiResource.changed),
       learningGoal: apiResource.learningGoals,
-      claims: apiResource.educationalAlignments.map(ea => <Alignment>{
+      claims: coalesce(apiResource.educationalAlignments, []).map(ea => <Alignment>{
         title: ea.title,
         shortName: ea.shortName
       }),
-      targets: apiResource.targetAlignments.map(ta => <Alignment>{
+      targets: coalesce(apiResource.targetAlignments, []).map(ta => <Alignment>{
         title: ta.title,
         shortName: ta.shortName
       }),
@@ -73,7 +72,7 @@ export class ResourceService {
 
       // MAYBE, but this is NOT an array?
       // /api/v1/resource.connectionToCcss
-      standards: apiResource.standards
+      standards: coalesce(apiResource.standards, [])
 
       // UKNOWN
       // favorited: boolean;
@@ -100,4 +99,6 @@ export class ResourceService {
       successCriteria: apiModel.successCriteria
     }
   }
+
+
 }

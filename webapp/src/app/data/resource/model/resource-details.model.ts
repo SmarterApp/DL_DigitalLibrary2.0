@@ -6,14 +6,8 @@ export interface ResourceDetailsModel {
     // /api/v1/resource.subject
     subjects: string[];
 
-    // generated from subjects
-    joinSubjects: string[];
-
     // /api/v1/resource.grades
     grades: string[];
-
-    // generated from grades
-    joinGrades: string;
 
     // /api/v1/resource.resourceThumbnailImage
     // as a base-64 encoded string.

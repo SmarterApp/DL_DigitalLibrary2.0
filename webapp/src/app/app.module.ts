@@ -9,6 +9,7 @@ import { DataModule } from './data/data.module';
 import { HomeModule } from './home/home.module';
 import { LayoutModule } from './layout/layout.module';
 import { ResourceModule } from './resource/resource.module';
+import { JoinPipe } from './pipes/join.pipe';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
