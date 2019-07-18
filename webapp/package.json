@@ -9,13 +9,14 @@
     "build-standalone": "npm run pre-build && ng build --c standalone --aot --vendor-chunk",
     "build-debug": "npm run pre-build && ng build",
     "build-standalone-debug": "npm run pre-build && ng build --c standalone",
-    "pre-build": "node stamp-version && npm run test",
+    "pre-build": "node stamp-version && npm run sprites && npm run test",
     "test": "ng test --source-map=false --watch=false",
     "test-debug-chrome": "ng test --browsers=ChromeDebug",
     "test-debug-firefox": "ng test --browsers=FirefoxDebug",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "node stamp-version"
+    "postinstall": "node stamp-version",
+    "sprites": "svg-sprite --config sprite-config.json src/assets/svg/*.svg"
   },
   "private": true,
   "dependencies": {
@@ -52,6 +53,7 @@
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.0",
     "puppeteer": "^1.17.0",
+    "svg-sprite": "^1.5.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"

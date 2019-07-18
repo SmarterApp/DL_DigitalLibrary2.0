@@ -10,6 +10,7 @@ import { OutlineComponent } from './outline/outline.component';
 import { MetadataComponent } from './metadata/metadata.component';
 import { JoinPipe } from '../pipes/join.pipe';
 import { PipesModule } from '../pipes/pipes.module';
+import { SbdlCommonModule } from '../common/common.module';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -27,7 +28,8 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
   ],
   imports: [
     CommonModule,
-    PipesModule
+    PipesModule,
+    SbdlCommonModule
   ],
   entryComponents: [ InstructionalResourceComponent, ResourceTypeStrategyComponent ]
 })

@@ -1,0 +1,62 @@
+// Icons
+.icon {
+  display: inline-block;
+  height: 1em;
+  max-width: 1em;
+  
+  svg {
+    margin-top: -.1em;
+    max-height: 100%;
+    max-width: 100%;
+  }
+}
+
+.icon-lg {
+  font-size: 1.2em;
+}
+.icon-xlg {
+  font-size: 3em;
+}
+.icon-xxlg {
+  font-size: 4em;
+}
+.icon-sm {
+  .icon {
+    height: .8em;
+    max-width: .8em;
+  }
+}
+.icon-drop {
+  .icon {
+    height: .65em;
+    max-width: .65em;
+  }
+}
+
+svg[class^="icon-"] {
+    display: inline-block;
+    fill: currentColor;
+    height: 0.8em;
+    &.icon-pin {
+        transform: rotate(-45deg);
+        height: 0.7em;
+    }
+}
+
+// Are you in here because your svg colors are not applying?  Try remoivng the fill attribute of all the paths 
+// and then re-run the sprites command.
+svg path {
+  fill: currentColor;
+}
+
+// Defs only
+svg.defs-only {
+    display: block;
+    position: absolute;
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+}

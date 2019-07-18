@@ -31,14 +31,14 @@
     <h6>Playlists</h6>
     <caption>Connections playlists utilizing this resource.</caption>
     <div *ngFor="let playlist of model.relatedPlaylists" class="playlist-card">
-
-        <div>{{ playlist.title }}</div>
-        <div [ngPlural]="playlist.numberOfResources" >
-          <ng-template ngPluralCase="=1">{{ playlist.numberOfResources }} resource</ng-template>
-          <ng-template ngPluralCase="other">{{ playlist.numberOfResources }} resources</ng-template>
+        <sbdl-icon icon="assessment-6-7-number-system" class="icon-xxlg"></sbdl-icon>
+        <div class="playlist-title">
+          <div class="title">{{ playlist.title }}</div>
+          <div class="resources" [ngPlural]="playlist.numberOfResources" >
+            <ng-template ngPluralCase="=1">{{ playlist.numberOfResources }} resource</ng-template>
+            <ng-template ngPluralCase="other">{{ playlist.numberOfResources }} resources</ng-template>
+          </div>
         </div>
-
-
     </div>
   </div>
 </div>

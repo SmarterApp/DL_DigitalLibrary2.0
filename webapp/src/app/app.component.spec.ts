@@ -4,6 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { DataModule } from './data/data.module';
 import { Angulartics2Module } from 'angulartics2';
+import { SbdlCommonModule } from './common/common.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -12,7 +13,8 @@ describe('AppComponent', () => {
         RouterTestingModule,
         Angulartics2Module.forRoot(),
         HttpClientModule,
-        DataModule
+        DataModule,
+        SbdlCommonModule
       ],
       declarations: [
         AppComponent

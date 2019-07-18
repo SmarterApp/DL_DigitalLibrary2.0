@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { mockResourceModel } from 'src/app/data/mock-data';
+import { ResourceModule } from '../resource.module';
 import { MetadataComponent } from './metadata.component';
-import { JoinPipe } from 'src/app/pipes/join.pipe';
 
 describe('MetadataComponent', () => {
   let component: MetadataComponent;
@@ -9,7 +9,7 @@ describe('MetadataComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MetadataComponent, JoinPipe ]
+      imports: [ ResourceModule ]
     })
     .compileComponents();
   }));
