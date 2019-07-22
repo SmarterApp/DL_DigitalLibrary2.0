@@ -31,7 +31,7 @@
     <h6>Playlists</h6>
     <caption>Connections playlists utilizing this resource.</caption>
     <div *ngFor="let playlist of model.relatedPlaylists" class="playlist-card">
-        <sbdl-icon icon="assessment-6-7-number-system" class="icon-xxlg"></sbdl-icon>
+        <sbdl-icon [icon]="playlist.assessmentTypeIcon" class="icon-xxlg"></sbdl-icon>
         <div class="playlist-title">
           <div class="title">{{ playlist.title }}</div>
           <div class="resources" [ngPlural]="playlist.numberOfResources" >

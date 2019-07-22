@@ -18,6 +18,12 @@ export class ResourceService {
     ['Instructional and Professional Learning', ResourceType.Instructional ]
   ]);
 
+  // TODO: Define how assessment types are defined.  How will this be represented?
+  // TODO: Define all assessment type icons.
+  readonly assessmentTypeToIconMap: Map<number, string> = new Map([
+    [ 1, 'assessment-6-7-number-system' ]
+  ]);
+
   constructor(private dataService: DataService) { }
 
   get(id: number): Observable<ResourceModel> {
@@ -65,7 +71,8 @@ export class ResourceService {
       relatedPlaylists: coalesce(apiResource.connectionsPlaylist, []).map(p => <Playlist>{
         title: p.title,
         numberOfResources: p.numberOfResources,
-        assessmentType: p.assessmentType
+        assessmentType: p.assessmentType,
+        assessmentTypeIcon: this.assessmentTypeToIconMap.get(p.assessmentType)
       }),
 
       // MAYBE, but this is NOT an array?
