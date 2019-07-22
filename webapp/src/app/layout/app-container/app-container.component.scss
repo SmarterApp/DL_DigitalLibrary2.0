@@ -1,0 +1,17 @@
+.app-container {
+    display: grid;
+    grid-template: "navigation router-outlet" 1fr / 64px 1fr;
+
+    .navigation {
+        grid-area: navigation;
+        background: #5AC923; // todo: define color palette 
+        position: fixed;
+        width: 64px;
+        top: 0%;
+        bottom: 0%;
+    }
+    .router-outlet {
+        grid-area: router-outlet;
+        padding: 0 10px;
+    }
+}

@@ -1,0 +1,63 @@
+@import "./../../../../ui-kit/colors";
+@import "./../../../../ui-kit/spacing";
+
+.resource-content {
+    background-image: url('./../../../../assets/images/yellow-spot.png');
+    background-position: 46px top;
+    background-repeat: no-repeat;
+    .actions {
+        display:flex;
+        justify-content: flex-end;
+        align-items: center;
+        & > *:not(:first-child) {
+            margin-left: $spacer;
+        }
+    }
+
+    header {
+        display: grid;
+        grid-template-areas: "title title"
+                             "byline button"
+                             "updated button";
+        grid-template-rows: repeat (3, auto);
+        grid-template-columns: 1fr auto;
+        h1 {
+            grid-area: title;
+            color: $brand-green;
+        }
+        .byline {
+            grid-area: byline;
+        }
+        caption {
+            grid-area: updated;
+        }
+        button {
+            grid-area: button;
+        }
+    }
+
+    h3 {
+        text-transform: uppercase;
+        margin-bottom: 0;
+    }
+
+    .modified-info {
+        font-size: 0.8em;
+        font-style: italic;
+    }
+
+    .two-fr-grid {
+        display: grid;
+        grid-template: 1fr / 1fr 1fr;
+    }
+
+    .image-container {
+        display: grid;
+        grid-template: 1fr / 1fr 4fr;
+    }
+
+    .metadata-container {
+        display: grid;
+        grid-template: 1.2em 1fr 1fr  / 2fr 1fr;
+    }
+}

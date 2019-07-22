@@ -1,5 +1,5 @@
 import { mockResourceImage } from 'src/app/data/mock-images';
-import { ResourceHeaderModel } from './resource/model/resource-header.model';
+import { ResourceDetailsModel } from './resource/model/resource-details.model';
 import { ResourceModel } from './resource/model/resource.model';
 import { OverviewModel, ResourceMaterial } from './resource/model/overview.model';
 import { ResourceType } from './resource/model/resource-type.enum';
@@ -12,7 +12,7 @@ export const mockUser = {
 
 export const mockResourceModel = <ResourceModel> {
 	resourceType: ResourceType.Instructional,
-	header: <ResourceHeaderModel> { 
+	details: <ResourceDetailsModel> { 
 		title: 'Resource Title ',
 		subjects: [],
 		grades: [],
@@ -33,7 +33,7 @@ export const mockApiResourceExample = {
 	nid: 1234,
 	vid: 1234,
 	language: "english",
-	title: "Resource Title",
+	title: "Connecting Fraction Division Equations to Visual Models",
 	status: true,
 	created: "2018-08-16T06:50:38+00:00",
 	changed: "2018-08-16T06:50:38+00:00",

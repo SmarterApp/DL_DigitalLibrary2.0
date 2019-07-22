@@ -1,0 +1,13 @@
+/* ------------------------------
+Spacing
+------------------------------ */
+
+// default body font-size: 16px;
+// so 0.5rem gives us a base unit of 8px
+$unit: 0.5rem;
+
+$spacer-xs:   $unit / 2;
+$spacer-sm:   $unit;
+$spacer:      $unit * 2; // 16px
+$spacer-lg:   $unit * 4;
+$spacer-xl:   $unit * 8;

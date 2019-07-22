@@ -7,6 +7,8 @@
     "start-standalone": "npm run pre-build && ng serve --c standalone -o",
     "build": "npm run pre-build && ng build --prod --aot --vendor-chunk",
     "build-standalone": "npm run pre-build && ng build --c standalone --aot --vendor-chunk",
+    "build-debug": "npm run pre-build && ng build",
+    "build-standalone-debug": "npm run pre-build && ng build --c standalone",
     "pre-build": "node stamp-version && npm run test",
     "test": "ng test --source-map=false --watch=false",
     "test-debug-chrome": "ng test --browsers=ChromeDebug",

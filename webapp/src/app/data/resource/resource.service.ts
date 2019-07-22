@@ -3,7 +3,7 @@ import { ResourceModel } from './model/resource.model';
 import { DataService } from '../data.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { ResourceHeaderModel, Alignment } from './model/resource-header.model';
+import { ResourceDetailsModel, Alignment } from './model/resource-details.model';
 import { OverviewModel, ResourceMaterial } from './model/overview.model';
 import { ResourceType } from './model/resource-type.enum';
 import { resource } from 'selenium-webdriver/http';
@@ -36,18 +36,19 @@ export class ResourceService {
     return <ResourceModel> {
       resourceId: apiResource.id,
       resourceType: resourceType,
-      header: this.mapToResourceHeaderModel(apiResource),
+      details: this.mapToResourceHeaderModel(apiResource),
       overview: this.mapToOverview(apiResource)
     };
   }
 
-  private mapToResourceHeaderModel(apiResource: any): ResourceHeaderModel {
-    return <ResourceHeaderModel> {
+  private mapToResourceHeaderModel(apiResource: any): ResourceDetailsModel {
+    return <ResourceDetailsModel> {
       title: apiResource.title,
       subjects: apiResource.subjects,
       grades: apiResource.grades,
       image: apiResource.resourceThumbnail,
       author: apiResource.author,
+      authorOrganization: apiResource.publisher,
       lastModified: new Date(apiResource.changed),
       learningGoal: apiResource.learningGoals,
       claims: apiResource.educationalAlignments.map(ea => <Alignment>{

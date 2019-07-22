@@ -13,16 +13,17 @@ describe('ResourceService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should map reasource header', () => {
+  it('should map reasource details', () => {
     const service: ResourceService = TestBed.get(ResourceService);
     service.get(1).subscribe(resource => {
-      const actual = resource.header;
+      const actual = resource.details;
       expect(resource.resourceId).toBe(1);
-      expect(actual.title).toBe('Resource Title');
+      expect(actual.title).toBe('Connecting Fraction Division Equations to Visual Models');
       expect(actual.subjects).toEqual(['ELA', 'Math']);
       expect(actual.grades).toEqual(['Grade 6', 'Grade 8', 'Grade 9']);
       expect(actual.image).toBeDefined();
       expect(actual.author).toBe('Mary Smith');
+      expect(actual.authorOrganization).toBe('John Roberts');
       expect(actual.lastModified).toEqual(new Date('2018-08-16T06:50:38+00:00'));
       expect(actual.learningGoal).toBe('The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.');
     })
