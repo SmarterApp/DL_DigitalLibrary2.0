@@ -9,6 +9,10 @@ import { DataModule } from './data/data.module';
 import { HomeModule } from './home/home.module';
 import { LayoutModule } from './layout/layout.module';
 import { ResourceModule } from './resource/resource.module';
+import { JoinPipe } from './pipes/join.pipe';
+import { IconComponent } from './common/app-icon/icon.component';
+import { SvgDefsComponent } from './common/app-icon/svg-defs.component';
+import { SbdlCommonModule } from './common/common.module';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -26,7 +30,8 @@ export function initializeApp(appConfig: AppConfig) {
     DataModule,
     LayoutModule,
     HomeModule,
-    ResourceModule
+    ResourceModule,
+    SbdlCommonModule
   ],
   providers: [{ 
     provide: APP_INITIALIZER,

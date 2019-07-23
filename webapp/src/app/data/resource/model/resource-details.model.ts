@@ -28,7 +28,7 @@ export interface ResourceDetailsModel {
     learningGoal: string;
 
     // UNKNOWN
-    connectionsPlaylist: string[];
+    relatedPlaylists: Playlist[];
 
     // UNKNOWN
     claims: Alignment[];
@@ -48,4 +48,11 @@ export interface ResourceDetailsModel {
 export interface Alignment {
     title: string;
     shortName: string;
+}
+
+export interface Playlist {
+    title: string;
+    assessmentType: number;
+    assessmentTypeIcon: string;
+    numberOfResources: number;
 }

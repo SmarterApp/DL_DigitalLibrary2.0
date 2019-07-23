@@ -29,6 +29,18 @@ describe('ResourceService', () => {
     })
   });
 
+  it('should initialize for null arrays (templates assume arrays are initialized)', () =>{
+    const service: ResourceService = TestBed.get(ResourceService);
+    service.get(0).subscribe(resource => {
+      const actual = resource.details;
+      expect(actual.subjects).toEqual([]);
+      expect(actual.grades).toEqual([]);
+      expect(actual.targets).toEqual([]);
+      expect(actual.claims).toEqual([]);
+      expect(actual.standards).toEqual([]);
+    });
+  });
+
   it('should map overview', () => {
     const service: ResourceService = TestBed.get(ResourceService);
     service.get(1).subscribe(resource => {

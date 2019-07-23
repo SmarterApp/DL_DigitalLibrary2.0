@@ -17,7 +17,8 @@ export const mockResourceModel = <ResourceModel> {
 		subjects: [],
 		grades: [],
 		targets: [],
-		claims: []
+		claims: [],
+		standards: []
 	},
 	overview: <OverviewModel> {
 		description: 'Test Description',
@@ -107,7 +108,11 @@ const polyfillMissingApiData = {
 		{ title: 'The Number System', shortName: 'B' }
 	],
 	learningGoals: 'The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.',
-	connectionsPlaylist: ['Grade 6 Fractions'],
+	connectionsPlaylist: [ {
+		title: 'Grade 6 Fractions',
+		numberOfResources: 6,
+		assessmentType: 1 // how will this be defined?
+	}],
 	standards: ['6.NS.A.1', '6.NS.A.1', '6.NS.A.1'],
 
 	//overview
@@ -149,3 +154,12 @@ export const mockApiResource= {
 	...mockApiResourceExample,
 	...polyfillMissingApiData
 };
+
+export const mockApiResourceWithNulls = {
+	...mockApiResource,
+	subjects: undefined,
+	grades: undefined,
+	targetAlignments: undefined,
+	educationalAlignments: undefined,
+	standards: undefined
+}

@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ResourceDetailsModel } from 'src/app/data/resource/model/resource-details.model';
+import { Component, Input, OnInit } from '@angular/core';
 import { ResourceModel } from 'src/app/data/resource/model/resource.model';
 
 @Component({

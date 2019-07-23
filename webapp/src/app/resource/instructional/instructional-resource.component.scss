@@ -1,18 +1,31 @@
 .instructional-resource {
     display: grid;
-    grid-template: "outline resource-content metadata" 1fr / 311px 1fr 311px;
-    grid-gap: 20px;
+    grid-template: "outline resource-content metadata" 1fr / 331px 1fr 331px;
+    // grid-gap: 20px;
     .outline {
         grid-area: outline;
+        box-shadow: inset -10px 0px 18px -10px rgba(0, 0, 0, 0.2);
     }
     .resource-content {
         grid-area: resource-content;
+
+        padding: 0 24px;
     }
     .metadata {
         grid-area: metadata;
+
+        box-shadow: inset 10px 0px 18px -10px rgba(0, 0, 0, 0.2);
+       
+        background-image: url('/assets/images/green-spot-2.png'), url('/assets/images/yellow-spot-2.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: right 184px bottom, bottom right; 
     }
+    
     nav sbdl-outline,
     aside sbdl-metadata {
       position: fixed;
+      max-height: 100%;
+      overflow-y: auto;
     }
 }

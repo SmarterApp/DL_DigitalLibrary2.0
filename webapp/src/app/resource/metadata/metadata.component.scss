@@ -1,0 +1,116 @@
+@import "colors";
+@import "fonts";
+@import "spacing";
+
+h5,h6 {
+    margin-bottom: 0;
+    color: $brand-green; // Is this just in the metadata section?
+}
+
+.metadata-component {
+    padding-left: 20px;
+}
+
+.image-thumbnail {
+    margin-top: 16px;
+    margin-right: 5px;
+    border: 8px solid #FFFFFF;
+    box-sizing: border-box;
+
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 3px 3px rgba(0, 0, 0, 0.14);
+    border-radius: 4px;
+    img {
+        max-width: 279px;
+        max-height: 279px;
+        object-fit: cover;
+    }
+}
+
+.subjects-grades {
+    img {
+        margin-right: 8px;
+    }
+    display: flex;
+    margin-top: 32px;
+    color: $brand-green;
+    .subjects {
+        margin: 0;
+    }
+    .grades {
+        margin: 0;
+    }
+}
+
+.details {
+    font-family: $font-title;
+    margin-top: 15px;
+    display: grid;
+    grid-template: 
+        "label value" 2rem
+        "label value" 2rem
+        "label value" 2rem  / 85px 1fr;
+    > label { 
+        grid-area: "label";
+        font-style: normal;
+        font-weight: 200;
+        font-size: 14.1px;
+        line-height: 117%;
+        letter-spacing: -0.021em;
+     }
+    > .value { 
+        grid-area: "value" ;
+        font-weight: bold;
+        font-size: 14.1px;
+        line-height: 117%;
+    }    
+}
+
+.playlists {
+    caption {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.825rem;
+        line-height: 18px;
+        color: rgba($neutral-900, 0.65);
+    }
+    .playlist-card {
+        padding: 1rem;
+        margin: 1rem 1rem 1rem 0;
+        position: relative;
+        border-radius: 4px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 0px 2px rgba(0, 0, 0, 0.14);
+        background: url('/assets/images/green-spot.png');
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        display: flex;
+        &:before {
+            content: '';
+            mix-blend-mode: multiply;
+            background-color: $brand-green;
+            display: block;
+            position: absolute;
+            width: 8px;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 0.2;
+        }
+        sbdl-icon {
+            color: $white;
+            margin-right: $spacer;
+            height: 80px;
+        }
+        .playlist-title {
+            margin-top: 15px;
+            margin-left: 30px;
+            .title {
+                font-family: $font-title;
+                font-weight: 300;
+            }
+            .resources {
+                color: rgba($neutral-900, 0.65);
+                font-size: 0.825rem;
+            }
+        }
+    }            
+}

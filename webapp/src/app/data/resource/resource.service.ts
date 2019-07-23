@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ResourceModel } from './model/resource.model';
-import { DataService } from '../data.service';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { ResourceDetailsModel, Alignment } from './model/resource-details.model';
+import { map } from 'rxjs/operators';
+import { DataService } from '../data.service';
 import { OverviewModel, ResourceMaterial } from './model/overview.model';
+import { Alignment, ResourceDetailsModel, Playlist } from './model/resource-details.model';
 import { ResourceType } from './model/resource-type.enum';
-import { resource } from 'selenium-webdriver/http';
+import { ResourceModel } from './model/resource.model';
+import { coalesce } from 'src/app/common/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,12 @@ export class ResourceService {
   // the API will return here.
   readonly apiResourceTypeMap: Map<string, ResourceType> = new Map([
     ['Instructional and Professional Learning', ResourceType.Instructional ]
+  ]);
+
+  // TODO: Define how assessment types are defined.  How will this be represented?
+  // TODO: Define all assessment type icons.
+  readonly assessmentTypeToIconMap: Map<number, string> = new Map([
+    [ 1, 'assessment-6-7-number-system' ]
   ]);
 
   constructor(private dataService: DataService) { }
@@ -36,43 +42,42 @@ export class ResourceService {
     return <ResourceModel> {
       resourceId: apiResource.id,
       resourceType: resourceType,
-      details: this.mapToResourceHeaderModel(apiResource),
+      details: this.mapToResourceDetailsModel(apiResource),
       overview: this.mapToOverview(apiResource)
     };
   }
 
-  private mapToResourceHeaderModel(apiResource: any): ResourceDetailsModel {
+  private mapToResourceDetailsModel(apiResource: any): ResourceDetailsModel {
     return <ResourceDetailsModel> {
       title: apiResource.title,
-      subjects: apiResource.subjects,
-      grades: apiResource.grades,
+      subjects: coalesce(apiResource.subjects, []),
+      grades: coalesce(apiResource.grades, []),
       image: apiResource.resourceThumbnail,
       author: apiResource.author,
       authorOrganization: apiResource.publisher,
       lastModified: new Date(apiResource.changed),
       learningGoal: apiResource.learningGoals,
-      claims: apiResource.educationalAlignments.map(ea => <Alignment>{
+
+      claims: coalesce(apiResource.educationalAlignments, []).map(ea => <Alignment>{
         title: ea.title,
         shortName: ea.shortName
       }),
-      targets: apiResource.targetAlignments.map(ta => <Alignment>{
+
+      targets: coalesce(apiResource.targetAlignments, []).map(ta => <Alignment>{
         title: ta.title,
         shortName: ta.shortName
       }),
 
-      // UNKNOWN
-      connectionsPlaylist: apiResource.connectionsPlaylist,
-
-      // UNKNOWN
-      // claim: string;
-
-      // MAYBE, but this is an array?
-      // /api/v1/resource.targetsAlignmentShortnames
-      // target: string;
+      relatedPlaylists: coalesce(apiResource.connectionsPlaylist, []).map(p => <Playlist>{
+        title: p.title,
+        numberOfResources: p.numberOfResources,
+        assessmentType: p.assessmentType,
+        assessmentTypeIcon: this.assessmentTypeToIconMap.get(p.assessmentType)
+      }),
 
       // MAYBE, but this is NOT an array?
       // /api/v1/resource.connectionToCcss
-      standards: apiResource.standards
+      standards: coalesce(apiResource.standards, [])
 
       // UKNOWN
       // favorited: boolean;
@@ -99,4 +104,6 @@ export class ResourceService {
       successCriteria: apiModel.successCriteria
     }
   }
+
+
 }
