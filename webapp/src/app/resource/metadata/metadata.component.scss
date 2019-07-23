@@ -75,7 +75,7 @@ h5,h6 {
         color: rgba($neutral-900, 0.65);
     }
     .playlist-card {
-        padding: 1rem;
+        padding: 0.5rem 1rem;
         margin: 1rem 1rem 1rem 0;
         position: relative;
         border-radius: 4px;
@@ -100,7 +100,8 @@ h5,h6 {
         .assessment-type-icon {
             color: $white;
             font-size: 3rem;
-            height: 3rem;
+            margin-top: -0.125rem;
+            margin-bottom: 1rem;
         }
         .playlist-title {
             margin-left: 30px;
