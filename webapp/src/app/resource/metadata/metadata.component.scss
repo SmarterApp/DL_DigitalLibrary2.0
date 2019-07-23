@@ -45,10 +45,10 @@ h5,h6 {
     font-family: $font-title;
     margin-top: 15px;
     display: grid;
-    grid-template: 
-        "label value" 2rem
-        "label value" 2rem
-        "label value" 2rem  / 85px 1fr;
+    grid-template-areas: repeat(3, "label value");
+    grid-template-rows: repeat(3, $spacer-lg);
+    grid-template-columns: 85px 1fr;
+    margin-bottom: $spacer-lg;
     > label { 
         grid-area: "label";
         font-style: normal;
@@ -59,13 +59,14 @@ h5,h6 {
      }
     > .value { 
         grid-area: "value" ;
-        font-weight: bold;
+        font-weight: regular;
         font-size: 14.1px;
         line-height: 117%;
     }    
 }
 
 .playlists {
+    h6 { margin-top: 0; }
     caption {
         font-style: normal;
         font-weight: normal;
@@ -82,6 +83,7 @@ h5,h6 {
         background: url('/assets/images/green-spot.png');
         background-repeat: no-repeat;
         background-size: auto 100%;
+        background-color: $white;
         display: flex;
         &:before {
             content: '';
@@ -95,14 +97,16 @@ h5,h6 {
             left: 0;
             opacity: 0.2;
         }
-        sbdl-icon {
+        .assessment-type-icon {
             color: $white;
-            margin-right: $spacer;
-            height: 80px;
+            font-size: 3rem;
+            height: 3rem;
         }
         .playlist-title {
-            margin-top: 15px;
             margin-left: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             .title {
                 font-family: $font-title;
                 font-weight: 300;
@@ -111,6 +115,12 @@ h5,h6 {
                 color: rgba($neutral-900, 0.65);
                 font-size: 0.825rem;
             }
+        }
+        .playlist-icon {
+            color: $neutral-900;
+            font-size: 24px;
+            position: absolute;
+            right: 1rem;
         }
     }            
 }
