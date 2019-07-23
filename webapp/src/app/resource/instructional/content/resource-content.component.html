@@ -1,10 +1,9 @@
 <div class="resource-content">
   <div class="actions">
-    <!-- todo: make these use component: icon button -->
-    <i class="far fa-share"></i>
-    <i class="far fa-bookmark"></i>
-    <i class="far fa-print"></i>
-    <i class="far fa-expand-alt"></i>
+    <sbdl-button-icon><i class="far fa-share"></i></sbdl-button-icon>
+    <sbdl-button-icon><i class="far fa-bookmark"></i></sbdl-button-icon>
+    <sbdl-button-icon><i class="far fa-print"></i></sbdl-button-icon>
+    <sbdl-button-icon><i class="far fa-expand-alt"></i></sbdl-button-icon>
   </div>
   <header>
     <h1>{{ details.title }}</h1>
@@ -18,10 +17,9 @@
         details.lastModified | date: 'mediumDate'
       }}
     </caption>
-    <!-- todo: switch to dense button style -->
-    <button class="primary">
+    <sbdl-button class="primary">
       <i class="far fa-paperclip"></i> Attachments
-    </button>
+    </sbdl-button>    
   </header>
   <sbdl-overview [model]="model.overview"></sbdl-overview>
 </div>

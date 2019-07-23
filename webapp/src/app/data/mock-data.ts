@@ -113,7 +113,7 @@ const polyfillMissingApiData = {
 		numberOfResources: 6,
 		assessmentType: 1 // how will this be defined?
 	}],
-	standards: ['6.NS.A.1', '6.NS.A.1', '6.NS.A.1'],
+	standards: ['6.NS.A.1', '6.NS.A.3', '5.NS.A.4'],
 
 	//overview
 	altBody: `
