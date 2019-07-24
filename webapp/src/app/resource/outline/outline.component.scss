@@ -1,6 +1,5 @@
 @import 'colors';
 @import 'fonts';
-// @import 'mixins';
 
 .outline-container {
     margin-top: 4rem;
@@ -46,8 +45,8 @@
 
     ol > li:before {
         content: counter(customlistcounter) " ";
+        counter-increment: customListcounter;
         font-weight: 300;
-        padding-right: 6px;
         color: rgba(33, 38, 47, 0.65);
     }
     
@@ -59,6 +58,5 @@
         counter-increment: customlistcounter;
         font-size: 0.9rem;
         font-weight: 300;
-        margin-top: 1rem;
     }        
 }
