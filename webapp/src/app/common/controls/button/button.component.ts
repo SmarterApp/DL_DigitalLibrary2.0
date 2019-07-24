@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { MDCRipple } from '@material/ripple';
 
 @Component({
@@ -7,6 +7,9 @@ import { MDCRipple } from '@material/ripple';
 })
 export class ButtonComponent implements OnInit {
 
+  @ViewChild('button', { static: true })
+  button: ElementRef;
+
   @Input()
   label: string;
 
@@ -14,7 +17,7 @@ export class ButtonComponent implements OnInit {
 
   ngOnInit() {
     // required for ripple effect.
-    const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
+    const buttonRipple = new MDCRipple(this.button.nativeElement);
   }
 
 }

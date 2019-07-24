@@ -1,5 +1,6 @@
 @import 'colors';
 @import 'fonts';
+// @import 'mixins';
 
 .outline-container {
     margin-top: 4rem;
@@ -25,7 +26,9 @@
     }
     ul > li {
         border-top: 1px solid $neutral-100;
-        padding: 1rem;
+        &.steps {
+            padding: 1rem;
+        }
 
         sbdl-icon, svg { 
             color: rgba($neutral-900, 0.65);
@@ -57,5 +60,5 @@
         font-size: 0.9rem;
         font-weight: 300;
         margin-top: 1rem;
-    }
+    }        
 }

@@ -1,19 +1,36 @@
-button.primary, .button.primary, .primary > .mdc-button {
-    background-color: $action-600;
+@import 'fonts';
+
+.primary > .mdc-button:before,
+.primary > .mdc-button:after {
+  background-color: $white;
+}
+
+.primary > .mdc-button:not(:disabled){
     color: $white;
-}
-
-.primary > .mdc-button:focus {
     background-color: $action-700;
-
 }
-
-:root,.mdc-button{
-    --mdc-theme-primary: #ffffff;
-  }
   
-
 .mdc-icon-button {
     color: $action-700;
     font-size: 1.2rem;
 }
+
+.outline > .mdc-button:not(:disabled) {
+    color: $neutral-900;
+    width: 100%;
+    font-size: 1rem;
+    font-family: $font-title;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+    justify-content: initial;
+    align-items: initial;
+    padding: 1rem;
+    height: 3rem;
+}
+
+.outline >.mdc-button:before,
+.outline > .mdc-button:after {
+  background-color: $neutral-900;
+}
+
