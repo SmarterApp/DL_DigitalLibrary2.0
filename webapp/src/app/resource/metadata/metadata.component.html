@@ -1,4 +1,4 @@
-<div class="metadata-component">
+<div class="metadata-container">
   <div class="image-thumbnail">
     <img [src]="model.image">
   </div>
@@ -11,21 +11,9 @@
     </div>
   </div>
   <div class="details">
-    <label [ngPlural]="model.claims.length">
-      <ng-template ngPluralCase="=1">Claim</ng-template>
-      <ng-template ngPluralCase="other">Claims</ng-template>
-    </label>
-    <div class="value">{{ model.claims | join:{ field: 'title'} }}</div>
-    <label [ngPlural]="model.targets.length" >
-      <ng-template ngPluralCase="=1">Target</ng-template>
-      <ng-template ngPluralCase="other">Targets</ng-template>
-    </label>
-    <div class="value">{{ model.targets | join:{ field: 'title' } }}</div>
-    <label [ngPlural]="model.standards.length">
-      <ng-template ngPluralCase="=1">Standard</ng-template>
-      <ng-template ngPluralCase="other">Standards</ng-template>
-    </label>
-    <div class="value">{{ model.standards | join }}</div>
+    <ng-container *ngTemplateOutlet="alignment; context: { models: model.claims, title: 'Claim', titles: 'Claims' }"></ng-container>
+    <ng-container *ngTemplateOutlet="alignment; context: { models: model.targets, title: 'Target', titles: 'Targets' }"></ng-container>
+    <ng-container *ngTemplateOutlet="alignment; context: { models: model.standards, title: 'Standard', titles: 'Standards' }"></ng-container>
   </div>
   <div class="playlists">
     <h6>Playlists</h6>
@@ -34,7 +22,6 @@
         <sbdl-icon [icon]="playlist.assessmentTypeIcon" class="assessment-type-icon"></sbdl-icon>
         <div class="playlist-title">
           <div class="title">{{ playlist.title }}</div>
-          
           <div class="resources" [ngPlural]="playlist.numberOfResources" >
             <ng-template ngPluralCase="=1">{{ playlist.numberOfResources }} resource</ng-template>
             <ng-template ngPluralCase="other">{{ playlist.numberOfResources }} resources</ng-template>
@@ -44,3 +31,12 @@
     </div>
   </div>
 </div>
+<ng-template #alignment let-alignments="models" let-title="title" let-titles="titles">
+  <label *ngIf="alignments && alignments.length > 0" [ngPlural]="alignments.length">
+    <ng-template ngPluralCase="=1">{{title}}</ng-template>
+    <ng-template ngPluralCase="other">{{titles}}</ng-template>
+  </label>
+  <div *ngIf="alignments && alignments.length > 0" class="value">
+    <div *ngFor="let alignment of alignments" title="{{ alignment.title || alignment }}">{{ alignment.title || alignment }}</div>
+  </div>
+</ng-template>

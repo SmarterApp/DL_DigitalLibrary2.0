@@ -255,10 +255,13 @@ const polyfillMissingApiData2 = {
 	// metadata
 	resourceThumbnail: mockEvidenceImage,
 	educationalAlignments: [
-		{ title: 'Informational Texts', shortName: '1'}
+		{ title: 'Informational Texts Long text long test longer than this.', shortName: '1'},
+		{ title: 'R&I', shortName: '4'}
 	], 
 	targetAlignments: [
-		{ title: 'Key Texts', shortName: '6' }
+		{ title: 'Key Texts', shortName: '8' },
+		{ title: 'Central Ideas', shortName: '9' },
+		{ title: 'Use Evidence', shortName: '4' }
 	],
 	learningGoals: 'The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.',
 	connectionsPlaylist: [ {
