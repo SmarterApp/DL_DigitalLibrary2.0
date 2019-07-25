@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { SbdlCommonModule } from 'src/app/common/common.module';
 import { mockResourceModel } from 'src/app/data/mock-data';
-import { ResourceContentComponent } from './resource-content.component';
 import { OverviewComponent } from '../overview/overview.component';
+import { ResourceContentComponent } from './resource-content.component';
 
 describe('ResourceContentComponent', () => {
   let component: ResourceContentComponent;
@@ -9,6 +10,7 @@ describe('ResourceContentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ SbdlCommonModule ],
       declarations: [ ResourceContentComponent, OverviewComponent ]
     })
     .compileComponents();

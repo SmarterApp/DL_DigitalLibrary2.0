@@ -59,12 +59,12 @@ export class ResourceService {
       learningGoal: apiResource.learningGoals,
 
       claims: coalesce(apiResource.educationalAlignments, []).map(ea => <Alignment>{
-        title: ea.title,
+        title: `${ea.shortName}: ${ea.title}`,
         shortName: ea.shortName
       }),
 
       targets: coalesce(apiResource.targetAlignments, []).map(ta => <Alignment>{
-        title: ta.title,
+        title: `${ta.shortName}: ${ta.title}`,
         shortName: ta.shortName
       }),
 

@@ -1,35 +1,19 @@
-button, .button {
-    padding: 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-
-    font-family: "Open Sans";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 18px;
-    text-transform: uppercase;
-    text-decoration: none;
-    -webkit-transition-duration: 0.2s; /* Safari */
-    transition-duration: 0.2s;
-}
-
-button.primary, .button.primary {
+button.primary, .button.primary, .primary > .mdc-button {
     background-color: $action-600;
     color: $white;
 }
 
-button:focus, .button:focus,
-button:hover, .button.hover {
+.primary > .mdc-button:focus {
     background-color: $action-700;
+
 }
 
-button:hover, .button:hover {
-    opacity: 0.92;
-}
+:root,.mdc-button{
+    --mdc-theme-primary: #ffffff;
+  }
+  
 
-button:active, .button:active {
-    opacity: 0.68;
+.mdc-icon-button {
+    color: $action-700;
+    font-size: 1.2rem;
 }
-

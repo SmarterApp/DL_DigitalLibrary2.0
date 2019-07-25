@@ -35,7 +35,8 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/ui-kit"
+                "src/ui-kit",
+                "node_modules"
               ]
             },
             "scripts": [
@@ -136,7 +137,8 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/ui-kit"
+                "src/ui-kit",
+                "node_modules"
               ]
             },
             "scripts": []
