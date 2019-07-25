@@ -99,6 +99,8 @@ export const mockApiResourceExample = {
 // Polyfills missing fields not provided by the example payload
 // in the API document from PCG.
 const polyfillMissingApiData = {
+	favorite: false,
+
 	// metadata
 	resourceThumbnail: mockResourceImage,
 	educationalAlignments: [
@@ -252,6 +254,8 @@ export const mockApiResourceExample2 = {
 // Polyfills missing fields not provided by the example payload
 // in the API document from PCG.
 const polyfillMissingApiData2 = {
+	favorite: false,
+
 	// metadata
 	resourceThumbnail: mockEvidenceImage,
 	educationalAlignments: [

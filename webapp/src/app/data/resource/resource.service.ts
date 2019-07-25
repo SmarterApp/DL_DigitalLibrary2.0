@@ -52,6 +52,7 @@ export class ResourceService {
   private mapToResourceDetailsModel(apiResource: any): ResourceDetailsModel {
     return <ResourceDetailsModel> {
       title: apiResource.title,
+      favorite: apiResource.favorite,
       subjects: coalesce(apiResource.subjects, []),
       grades: coalesce(apiResource.grades, []),
       image: apiResource.resourceThumbnail,
@@ -79,9 +80,6 @@ export class ResourceService {
       // MAYBE, but this is NOT an array?
       // /api/v1/resource.connectionToCcss
       standards: coalesce(apiResource.standards, [])
-
-      // UKNOWN
-      // favorited: boolean;
     };
   }
 

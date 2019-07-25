@@ -37,6 +37,14 @@ export class DataService {
       );
   }
 
+  post(url: string, obj: any): Observable<any> {
+    return this.httpService.post(url, obj, { ... jsonContentType })
+      .pipe(
+          catchError(this.handleError)
+      );
+  }
+
+
   downloadPdf(url: string) {  
     return this.httpService.get(url, pdfContentType)
       .pipe(map(response => new Blob([ response ], { type: 'application/pdf' })))

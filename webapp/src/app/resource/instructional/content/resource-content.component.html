@@ -1,7 +1,9 @@
 <div class="resource-content">
   <div class="actions">
     <sbdl-button-icon><i class="far fa-share"></i></sbdl-button-icon>
-    <sbdl-button-icon><i class="fas fa-bookmark"></i></sbdl-button-icon>
+    <sbdl-button-icon (click)="toggleFavorite()">
+      <i class="fa-bookmark" [ngClass]="{'far': !model.details.favorite, 'fas': model.details.favorite}"></i>
+    </sbdl-button-icon>
     <sbdl-button-icon><i class="far fa-print"></i></sbdl-button-icon>
     <sbdl-button-icon><i class="far fa-expand-alt"></i></sbdl-button-icon>
   </div>

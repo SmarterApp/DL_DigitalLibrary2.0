@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppContainerComponent } from './app-container/app-container.component';
 import { HeaderComponent } from './header/header.component';
+import { SbdlCommonModule } from '../common/common.module';
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
     HeaderComponent
   ],
   imports: [
+    SbdlCommonModule,
     CommonModule,
     RouterModule
   ]

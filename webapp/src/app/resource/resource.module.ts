@@ -1,16 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InstructionalResourceComponent } from './instructional/instructional-resource.component';
+import { NgModule } from '@angular/core';
+import { SbdlCommonModule } from '../common/common.module';
+import { PipesModule } from '../pipes/pipes.module';
 import { ResourceContentComponent } from './instructional/content/resource-content.component';
+import { InstructionalResourceComponent } from './instructional/instructional-resource.component';
 import { OverviewComponent } from './instructional/overview/overview.component';
-import { ResourceTypeStrategyComponent } from './resource-type-strategy.component';
+import { MetadataComponent } from './metadata/metadata.component';
+import { OutlineComponent } from './outline/outline.component';
 import { ResourceComponent } from './resource-component.interface';
 import { ResourceHostDirective } from './resource-host.directive';
-import { OutlineComponent } from './outline/outline.component';
-import { MetadataComponent } from './metadata/metadata.component';
-import { JoinPipe } from '../pipes/join.pipe';
-import { PipesModule } from '../pipes/pipes.module';
-import { SbdlCommonModule } from '../common/common.module';
+import { ResourceTypeStrategyComponent } from './resource-type-strategy.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;

@@ -42,7 +42,7 @@ export interface ResourceDetailsModel {
     standards: string[];   
 
     // UKNOWN
-    favorited: boolean;
+    favorite: boolean;
 }
 
 export interface Alignment {
