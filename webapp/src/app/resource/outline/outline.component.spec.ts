@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { OutlineComponent } from './outline.component';
 import { SbdlCommonModule } from 'src/app/common/common.module';
+import { mockResourceModel } from 'src/app/data/mock-data';
 
 describe('OutlineComponent', () => {
   let component: OutlineComponent;
@@ -18,6 +18,7 @@ describe('OutlineComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(OutlineComponent);
     component = fixture.componentInstance;
+    (<OutlineComponent>component).model = mockResourceModel;
     fixture.detectChanges();
   });
 

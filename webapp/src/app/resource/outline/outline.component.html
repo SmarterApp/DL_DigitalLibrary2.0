@@ -2,7 +2,7 @@
   <h6>Outline</h6>
   <ul>
     <li>
-      <sbdl-button class="outline">
+      <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.getStarted)">
         <sbdl-icon icon="goal"></sbdl-icon>
         Get Started
       </sbdl-button>
@@ -11,11 +11,7 @@
       <sbdl-icon icon="steps"></sbdl-icon>
       Step-by-Step
       <ol>
-        <li><sbdl-button class="step">Engage Students</sbdl-button></li>
-        <li><sbdl-button class="step">Introduce Visual Representations test test test</sbdl-button></li>
-        <li><sbdl-button class="step">Numerical Representations</sbdl-button></li>
-        <li><sbdl-button class="step">Check-In</sbdl-button></li>
-        <li><sbdl-button class="step">Practice Problem</sbdl-button></li>
+        <li *ngFor="let step of model.steps" ><sbdl-button class="step">{{ step.title }}</sbdl-button></li>
       </ol>
     </li>
     <li>

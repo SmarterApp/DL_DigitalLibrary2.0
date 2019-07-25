@@ -147,7 +147,24 @@ const polyfillMissingApiData = {
 			<li>Students will be able to pair visual fraction models with appropriate equations.</li>
 			<li>Students will be able to compute the quotients of fractions.</li>
 		</ul>
-	`
+	`,
+	steps: [{
+		number: 1,
+		title: 'Engage Students'
+	}, {
+		number: 2,
+		title: 'Introduce Visual Representations'
+	}, {
+		number: 3,
+		title: 'Numerical Representation'
+	}, {
+		number: 4,
+		title: 'Check-In'
+	}, {
+		number: 5,
+		title: 'Practice Problem'
+	}]
+
 };
 
 export const mockApiResource= {
