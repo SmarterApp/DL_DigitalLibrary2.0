@@ -6,7 +6,7 @@
     <sbdl-button-icon><i class="far fa-expand-alt"></i></sbdl-button-icon>
   </div>
   <header>
-    <h1>{{ details.title }}</h1>
+    <h1 #getStarted>{{ details.title }}</h1>
     <section class="byline">
       {{ details.author }} •
       <span class="font-light">{{ details.authorOrganization }}</span>
@@ -21,5 +21,5 @@
       <i class="far fa-paperclip"></i> Attachments
     </sbdl-button>    
   </header>
-  <sbdl-overview [model]="model.overview"></sbdl-overview>
+  <sbdl-overview [model]="model.overview" (sectionElementLoaded)="setGetStarted($event)"></sbdl-overview>
 </div>

@@ -1,19 +1,67 @@
-button.primary, .button.primary, .primary > .mdc-button {
-    background-color: $action-600;
+@import 'fonts';
+
+.primary > .mdc-button:before,
+.primary > .mdc-button:after {
+  background-color: $white;
+}
+
+.primary > .mdc-button:not(:disabled){
     color: $white;
-}
-
-.primary > .mdc-button:focus {
     background-color: $action-700;
-
 }
-
-:root,.mdc-button{
-    --mdc-theme-primary: #ffffff;
-  }
   
-
 .mdc-icon-button {
     color: $action-700;
     font-size: 1.2rem;
+}
+
+.outline > .mdc-button:not(:disabled) {
+    color: $neutral-900;
+    width: 100%;
+    font-size: 1rem;
+    font-family: $font-title;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+    justify-content: initial;
+    align-items: initial;
+    padding: calc(1rem - 8px);
+    height: 3rem;
+}
+
+.outline > .mdc-button:not(:disabled):focus {
+    border-left: $action-500 solid 8px;
+}
+
+.step > .mdc-button:not(:disabled) {
+    color: $neutral-900;
+    width: 91%;
+    
+    // ellipsis for overflow
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    font-size: 0.9rem;
+    font-family: $font-body;
+    text-align: left;
+    
+    vertical-align: baseline; // aligns with numbers
+
+    text-transform: none;
+    letter-spacing: normal;
+    justify-content: initial;
+    align-items: initial;
+}
+
+.step > .mdc-button:not(:disabled):focus {
+    border-left: $action-500 solid 4px;
+}
+
+.step > .mdc-button:before,
+.step > .mdc-button:after,
+.outline >.mdc-button:before,
+.outline > .mdc-button:after {
+  background-color: $action-300;
 }

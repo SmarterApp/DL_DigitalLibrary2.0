@@ -7,6 +7,7 @@ import { Alignment, ResourceDetailsModel, Playlist } from './model/resource-deta
 import { ResourceType } from './model/resource-type.enum';
 import { ResourceModel } from './model/resource.model';
 import { coalesce } from 'src/app/common/utils';
+import { ResourceStepModel } from './model/resource-step.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +44,8 @@ export class ResourceService {
       resourceId: apiResource.id,
       resourceType: resourceType,
       details: this.mapToResourceDetailsModel(apiResource),
-      overview: this.mapToOverview(apiResource)
+      overview: this.mapToOverview(apiResource),
+      steps: this.mapToSteps(coalesce(apiResource.steps, []))
     };
   }
 
@@ -74,7 +76,6 @@ export class ResourceService {
         assessmentType: p.assessmentType,
         assessmentTypeIcon: this.assessmentTypeToIconMap.get(p.assessmentType)
       }),
-
       // MAYBE, but this is NOT an array?
       // /api/v1/resource.connectionToCcss
       standards: coalesce(apiResource.standards, [])
@@ -105,5 +106,11 @@ export class ResourceService {
     }
   }
 
-
+  mapToSteps(apiSteps: any[]):ResourceStepModel[] {
+    return apiSteps.map(s => <ResourceStepModel>{
+      stepNumber: s.number,
+      title: s.title,
+      content: s.content1
+    }).sort(x => x.stepNumber);
+  }
 }

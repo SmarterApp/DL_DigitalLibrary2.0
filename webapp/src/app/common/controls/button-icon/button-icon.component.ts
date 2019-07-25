@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MDCRipple } from '@material/ripple';
 
 @Component({
@@ -7,10 +7,13 @@ import { MDCRipple } from '@material/ripple';
 })
 export class ButtonIconComponent implements OnInit {
 
+  @ViewChild('button', { static: true })
+  button: ElementRef;
+
   constructor() { }
 
   ngOnInit() {
-    const iconButtonRipple = new MDCRipple(document.querySelector('.mdc-icon-button'));
+    const iconButtonRipple = new MDCRipple(this.button.nativeElement);
     iconButtonRipple.unbounded = true;
   }
 
