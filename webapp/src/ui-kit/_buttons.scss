@@ -25,13 +25,17 @@
     letter-spacing: normal;
     justify-content: initial;
     align-items: initial;
-    padding: 1rem;
+    padding: calc(1rem - 8px);
     height: 3rem;
+}
+
+.outline > .mdc-button:not(:disabled):focus {
+    border-left: $action-500 solid 8px;
 }
 
 .step > .mdc-button:not(:disabled) {
     color: $neutral-900;
-    width: 94%;
+    width: 91%;
     
     // ellipsis for overflow
     display: inline-block;
@@ -51,10 +55,13 @@
     align-items: initial;
 }
 
+.step > .mdc-button:not(:disabled):focus {
+    border-left: $action-500 solid 4px;
+}
+
 .step > .mdc-button:before,
 .step > .mdc-button:after,
 .outline >.mdc-button:before,
 .outline > .mdc-button:after {
-  background-color: $neutral-900;
+  background-color: $action-300;
 }
-

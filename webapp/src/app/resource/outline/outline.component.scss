@@ -25,13 +25,14 @@
     }
     ul > li {
         border-top: 1px solid $neutral-100;
+        padding: 8px 0 8px 8px;
         &.steps {
             padding: 1rem;
         }
 
         sbdl-icon, svg { 
             color: rgba($neutral-900, 0.65);
-            padding-right: 13px;
+            padding-right: 8px;
         };
     }
     ul > li:first-child { 
@@ -41,13 +42,16 @@
     ol {
         list-style-type: none;
         margin-left: 0;
+        padding-left: 8px;
+        padding-top: 17px;
     }
 
     ol > li:before {
-        content: counter(customlistcounter) " ";
+        content: counter(customlistcounter) "";
         counter-increment: customListcounter;
         font-weight: 300;
         color: rgba(33, 38, 47, 0.65);
+        padding-right:8px;
     }
     
     ol:first-child {
