@@ -59,7 +59,7 @@ export class ResourceService {
       author: apiResource.author,
       authorOrganization: apiResource.publisher,
       lastModified: new Date(apiResource.changed),
-      learningGoal: apiResource.learningGoals,
+      
 
       claims: coalesce(apiResource.educationalAlignments, []).map(ea => <Alignment>{
         title: `${ea.shortName}: ${ea.title}`,
@@ -88,6 +88,9 @@ export class ResourceService {
       // MAYBE
       // /api/v1/resource.altBody 
       description: apiModel.altBody,
+
+      // /api/v1/resource.learningGoals
+      learningGoal: apiModel.learningGoals,
 
       // UNKNOWN
       resourceMaterials: apiModel.attachments.map(a => <ResourceMaterial>{

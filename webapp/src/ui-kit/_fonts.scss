@@ -1,14 +1,18 @@
-$font-body: "Open Sans",sans-serif;
-$font-title: "Montserrat",sans-serif;
+$font-family-body: "Open Sans",sans-serif;
+$font-size-body: 16px;
+$font-size-body-2: 14.41px;
+
+$font-family-title: "Montserrat",sans-serif;
+
 
 body {
-    font-family: $font-body;
-    font-size: 14.41px;
+    font-family: $font-family-body;
+    font-size: $font-size-body;
     color: $neutral-900;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: $font-title;
+    font-family: $font-family-title;
     font-style: normal;
     line-height: 100%;
 }
