@@ -7,7 +7,7 @@ h5,h6 {
     color: $brand-green; // Is this just in the metadata section?
 }
 
-.metadata-component {
+.metadata-container {
     padding-left: 20px;
 }
 
@@ -45,8 +45,9 @@ h5,h6 {
     font-family: $font-title;
     margin-top: 15px;
     display: grid;
-    grid-template-areas: repeat(3, "label value");
-    grid-template-rows: repeat(3, $spacer-lg);
+    max-width: 331px;
+    grid-template-areas: "label value";
+    grid-row-gap: $spacer;
     grid-template-columns: 85px 1fr;
     margin-bottom: $spacer-lg;
     > label { 
@@ -62,6 +63,12 @@ h5,h6 {
         font-weight: regular;
         font-size: 14.1px;
         line-height: 117%;
+        > div {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 226px;
+        }
     }    
 }
 
