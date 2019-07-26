@@ -1,9 +1,9 @@
-import { Component, Input, OnInit, ViewChild, ElementRef, Output, EventEmitter, AfterViewInit } from '@angular/core';
-import { ResourceModel } from 'src/app/data/resource/model/resource.model';
-import { ScrollableElements } from '../../outline/scrollable-elements.model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { coalesce } from 'src/app/common/utils';
 import { FavoriteService } from 'src/app/data/favorite/favorite.service';
 import { FavoriteResource } from 'src/app/data/favorite/model/favorite-resource.model';
+import { ResourceModel } from 'src/app/data/resource/model/resource.model';
+import { ScrollableElements } from '../../outline/scrollable-elements.model';
 
 @Component({
   selector: 'sbdl-resource-content',
@@ -17,6 +17,8 @@ export class ResourceContentComponent implements OnInit {
 
   @Output()
   loadScrollableElements = new EventEmitter<ScrollableElements>();
+
+  togglingFavorite = false;
 
   private scrollableElements: ScrollableElements;
 
@@ -40,6 +42,11 @@ export class ResourceContentComponent implements OnInit {
   }
 
   toggleFavorite() {
+    if(this.togglingFavorite)
+      return;
+
+    // prevent multiple clicks
+    this.togglingFavorite = true;
     const favoriteResource: FavoriteResource = {
       resourceId: this.model.resourceId,
       favorite: !this.model.details.favorite
@@ -47,6 +54,7 @@ export class ResourceContentComponent implements OnInit {
 
     this.favoriteService.postFavoriteResource(favoriteResource).subscribe(res => {
       this.model.details.favorite = res.favorite;
+      this.togglingFavorite = false;
     });
   }
 }

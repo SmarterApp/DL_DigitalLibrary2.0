@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { LoggingService } from '../common/logging/logging.service';
 import { DataService } from './data.service';
 import { mockApiResource, mockUser, mockApiResourceWithNulls, mockApiResource2 } from './mock-data';
+import { delay } from 'rxjs/operators';
 
 // Work around for: 
 // https://stackoverflow.com/questions/48953587/typescript-class-implements-class-with-private-functions
@@ -44,7 +45,7 @@ export class MockDataService implements PublicPart<DataService> {
 
     if(mockedEndpoint && mockedEndpoint.post) {
       this.logger.debug(`Mocking API POST for ${url}`, obj);
-      return of(mockedEndpoint.post(obj));
+      return of(mockedEndpoint.post(obj)).pipe(delay(500));
     }
 
     return of(undefined);

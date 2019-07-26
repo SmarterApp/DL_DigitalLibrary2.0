@@ -11,7 +11,7 @@ export class ButtonComponent implements OnInit {
   button: ElementRef;
 
   @Input()
-  label: string;
+  disabled: boolean;
 
   constructor() { }
 
