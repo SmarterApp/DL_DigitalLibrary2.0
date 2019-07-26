@@ -176,6 +176,7 @@ export const mockApiResource= {
 
 export const mockApiResourceWithNulls = {
 	...mockApiResource,
+	id: 0,
 	subjects: undefined,
 	grades: undefined,
 	targetAlignments: undefined,

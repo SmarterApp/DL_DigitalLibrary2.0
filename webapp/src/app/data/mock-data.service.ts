@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { LoggingService } from '../common/logging/logging.service';
 import { DataService } from './data.service';
 import { mockApiResource, mockUser, mockApiResourceWithNulls, mockApiResource2 } from './mock-data';
@@ -56,14 +56,17 @@ export class MockDataService implements PublicPart<DataService> {
   }
 
   private setFavorite(object: any): any{
+    
     const resource = this.resources.find(x => x.id === object.resourceId);
     if(resource) {
       resource.favorite = object.favorite;
+      return { 
+        resourceId: resource.id,
+        favorite: resource.favorite
+      };
     }
-    return { 
-      resourceId: resource.id,
-      favorite: resource.favorite
-    };
+
+    return throwError('who knows');
   }
 }
 

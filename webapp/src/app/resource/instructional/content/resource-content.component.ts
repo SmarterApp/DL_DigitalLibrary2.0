@@ -55,6 +55,9 @@ export class ResourceContentComponent implements OnInit {
     this.favoriteService.postFavoriteResource(favoriteResource).subscribe(res => {
       this.model.details.favorite = res.favorite;
       this.togglingFavorite = false;
+    }, error => {
+      // TODO: Implement error notification system?
+      this.togglingFavorite = false;
     });
   }
 }
