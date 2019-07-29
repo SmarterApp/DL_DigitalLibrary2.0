@@ -10,6 +10,7 @@ import { OutlineComponent } from './outline/outline.component';
 import { ResourceComponent } from './resource-component.interface';
 import { ResourceHostDirective } from './resource-host.directive';
 import { ResourceTypeStrategyComponent } from './resource-type-strategy.component';
+import {TooltipModule} from 'ng2-tooltip-directive';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -27,6 +28,7 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
   ],
   imports: [
     CommonModule,
+    TooltipModule,
     PipesModule,
     SbdlCommonModule
   ],

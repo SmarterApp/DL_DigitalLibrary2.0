@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { mockDataServiceProviders } from 'src/app/app.module.spec';
 import { mockResourceModel } from 'src/app/data/mock-data';
 import { ResourceComponent } from '../resource-component.interface';
 import { ResourceModule } from '../resource.module';
 import { InstructionalResourceComponent } from './instructional-resource.component';
-import { mockDataServiceProviders } from 'src/app/app.module.spec';
 
 describe('InstructionalResourceComponent', () => {
   let component: InstructionalResourceComponent;

@@ -31,6 +31,7 @@
     "@material/button": "^3.1.0",
     "@material/icon-button": "^3.1.0",
     "angulartics2": "^7.5.2",
+    "ng2-tooltip-directive": "^2.1.9",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
