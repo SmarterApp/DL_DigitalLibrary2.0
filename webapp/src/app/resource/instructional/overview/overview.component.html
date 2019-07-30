@@ -1,19 +1,19 @@
 <article class="overview-container">
   <h4 #getStarted><sbdl-icon icon="goal"></sbdl-icon> Get Started</h4>
-  <div>
+  <section>
     <h5>Overview <sbdl-tooltip text="Define what the student will be able to do after completing this resource."></sbdl-tooltip></h5>
     <p [innerHtml]="model.description"></p>
-  </div>
+  </section>
   
-  <div>
+  <section>
     <h5>Learning Goal</h5>
     <p>{{ model.learningGoal }}</p>
-  </div>
-  <div>
+  </section>
+  <section>
     <h5>Success Criteria</h5>
     <div [innerHtml]="model.successCriteria"></div>
-  </div>
-  <div *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10]" class="placeholder">
+  </section>
+  <section *ngFor="let number of [0,1,2,3,4,5,6,7,8,9,10]" class="placeholder">
     <h4>Section {{ number }}</h4>
     <p>
         Boggarts lavender robes, Hermione Granger Fantastic Beasts and Where to Find Them. Bee in your bonnet Hand of Glory elder wand, spectacles House Cup Bertie Bott’s Every Flavor Beans Impedimenta. Stunning spells tap-dancing spider Slytherin’s Heir mewing kittens Remus Lupin. Palominos scarlet train black robes, Metamorphimagus Niffler dead easy second bedroom. Padma and Parvati Sorting Hat Minister of Magic blue turban remember my last.
@@ -26,5 +26,5 @@
     </p><p>
         Red hair crookshanks bludger Marauder’s Map Prongs sunshine daisies butter mellow Ludo Bagman. Beaters gobbledegook N.E.W.T., Honeydukes eriseD inferi Wormtail. Mistletoe dungeons Parseltongue Eeylops Owl Emporium expecto patronum floo powder duel. Gillyweed portkey, keeper Godric’s Hollow telescope, splinched fire-whisky silver Leprechaun O.W.L. stroke the spine. Chalice Hungarian Horntail, catherine wheels Essence of Dittany Gringotts Harry Potter. Prophecies Yaxley green eyes Remembrall horcrux hand of the servant. Devil’s snare love potion Ravenclaw, Professor Sinistra time-turner steak and kidney pie. Cabbage Daily Prophet letters from no one Dervish and Banges leg.
     </p>
-  </div>
+  </section>
 </article>

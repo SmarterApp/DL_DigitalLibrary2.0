@@ -3,8 +3,6 @@
 
 .outline-container {
     margin-top: 4rem;
-    max-width: var(--nav-width);
-    width: 331px;
 
     h6 {
         font-family: $font-family-title;
@@ -25,8 +23,12 @@
     }
     ul > li {
         border-top: 1px solid $neutral-100;
-        display: inline-block;
-        width: 301px;
+        // display: block;
+        width: 100%;
+        white-space: pre;
+        & > sbdl-button {
+            white-space: pre;
+        }
         padding: 8px 0 8px 8px;
         &.steps {
             padding: 1rem;
@@ -62,7 +64,7 @@
 
     ol > li { 
         counter-increment: customlistcounter;
-        display:inline-block;
+        display:block;
         font-size: 0.9rem;
         font-weight: 300;
         width: 301px;
