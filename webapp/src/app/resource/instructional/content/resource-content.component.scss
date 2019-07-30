@@ -27,6 +27,7 @@
         }
         caption {
             grid-area: updated;
+            z-index: -1;
         }
         button {
             grid-area: button;

@@ -2,10 +2,11 @@
 
 .instructional-resource {
     display: grid;
-    grid-template: "outline resource-content metadata" 1fr / 331px 1fr 331px;
+    grid-template: "outline resource-content metadata" 1fr / var(--nav-width) 1fr var(--nav-width);
     .outline {
         grid-area: outline;
         box-shadow: inset -10px 0px 18px -10px rgba(0, 0, 0, 0.2);
+        background-color: $white;
     }
     .resource-content {
         grid-area: resource-content;
@@ -24,6 +25,8 @@
         background-attachment: fixed;
         background-position: right 184px bottom, bottom right; 
         min-height: 100vh;
+        background-color: $white;
+        overflow-x: hidden;
     }
     
     nav sbdl-outline,
@@ -31,5 +34,6 @@
       position: fixed;
       max-height: 100%;
       overflow-y: auto;
+      overflow-x: hidden; // reading mode intentionally clips.
     }
 }

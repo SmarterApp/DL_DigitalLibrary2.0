@@ -45,7 +45,7 @@ h5,h6 {
     font-family: $font-family-title;
     margin-top: 15px;
     display: grid;
-    max-width: 331px;
+    max-width: var(--nav-width);
     grid-template-areas: "label value";
     grid-row-gap: $spacer;
     grid-template-columns: 85px 1fr;

@@ -3,7 +3,11 @@
     <sbdl-outline [model]="model" [scrollableElements]="scrollableElements"></sbdl-outline>
   </nav>
   <article class="resource-content">
-    <sbdl-resource-content [model]="model" (loadScrollableElements)="setScrollableElements($event)"></sbdl-resource-content>
+    <sbdl-resource-content 
+      [model]="model" 
+      (loadScrollableElements)="setScrollableElements($event)"
+      (readingModeChanged) = "readingModeChanged($event)"
+    ></sbdl-resource-content>
   </article>
   <aside class="metadata">
     <sbdl-metadata [model]="model.details"></sbdl-metadata>
