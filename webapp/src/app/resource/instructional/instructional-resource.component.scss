@@ -24,6 +24,15 @@
         overflow-x:initial;
         z-index:40;
     }
+
+    .metadata:hover {
+        width: 331px;
+        min-width: 331px;
+        margin-left: var(--outline-margin-right);
+        overflow-x:initial;
+        z-index:40;
+    }
+
     .resource-content {
         padding: 0 24px;
         flex-grow:1;
@@ -32,7 +41,8 @@
         grid-area: metadata;
         width: var(--nav-width);
         min-width: var(--nav-width);
-        transition-property: width, min-width;
+        transition-property: width, min-width, margin-left, z-index;
+        z-index: 0;
         transition-duration: 0.5s;
         transition-timing-function: ease-in;
 
@@ -46,7 +56,7 @@
         background-color: $white;
         overflow-x: hidden;
     }
-    
+
     nav sbdl-outline,
     aside sbdl-metadata {
       position: fixed;
@@ -64,6 +74,7 @@
         float:left;
     }
 
+    aside sbdl-metadata:hover,
     nav sbdl-outline:hover {
         width: 331px;
     }
