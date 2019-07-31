@@ -3,15 +3,16 @@
 .instructional-resource {
     display: grid;
     grid-template: "outline resource-content metadata" 1fr / 331px 1fr 331px;
-    // grid-gap: 20px;
     .outline {
         grid-area: outline;
         box-shadow: inset -10px 0px 18px -10px rgba(0, 0, 0, 0.2);
     }
     .resource-content {
         grid-area: resource-content;
-
         padding: 0 24px;
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
     }
     .metadata {
         grid-area: metadata;

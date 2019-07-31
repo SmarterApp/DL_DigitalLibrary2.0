@@ -1,12 +1,28 @@
 @import "colors";
+@import "fonts";
 
 .overview-container {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: $font-size-body-2;
+
+    h4,h5{
+        margin-bottom: 0;
+        margin-top: 1.5rem;
+        sbdl-icon {
+            margin-left: -2ch;
+            color: $neutral-300;
+        }
+    }
+}
+
+.placeholder {
     opacity: 0.1;
     border: dotted $neutral-300;
 }
 
-.overview-container:before {
-    content: 'Ignore: Work In Progress';
+.placeholder:before {
+    content: 'Placeholder';
     
     font-size: 80px;
     transform: rotate(-315deg);

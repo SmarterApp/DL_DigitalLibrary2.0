@@ -66,3 +66,11 @@ svg.defs-only {
     border: none;
     overflow: hidden;
 }
+
+sbdl-icon[icon="info"] {
+  font-size: 18px;
+}
+
+svg #info {
+  color: $info-500;
+}

@@ -42,7 +42,7 @@ h5,h6 {
 }
 
 .details {
-    font-family: $font-title;
+    font-family: $font-family-title;
     margin-top: 15px;
     display: grid;
     max-width: 331px;
@@ -116,7 +116,7 @@ h5,h6 {
             flex-direction: column;
             justify-content: center;
             .title {
-                font-family: $font-title;
+                font-family: $font-family-title;
                 font-weight: 300;
             }
             .resources {

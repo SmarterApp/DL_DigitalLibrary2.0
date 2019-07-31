@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HeaderComponent } from '../header/header.component';
 import { AppContainerComponent } from './app-container.component';
 import { mockRootActivatedRouteSnapshot } from 'src/app/app.module.spec';
+import { SbdlCommonModule } from 'src/app/common/common.module';
 
 describe('AppContainerComponent', () => {
   let component: AppContainerComponent;
@@ -13,7 +14,7 @@ describe('AppContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AppContainerComponent, HeaderComponent ],
-      imports: [ RouterTestingModule ],
+      imports: [ RouterTestingModule, SbdlCommonModule ],
       providers: [ 
         { provide: ActivatedRoute, useValue: mockRootActivatedRouteSnapshot },
         { provide: APP_BASE_HREF, useValue: '/' }

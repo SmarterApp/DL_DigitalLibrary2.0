@@ -19,7 +19,7 @@
     color: $neutral-900;
     width: 100%;
     font-size: 1rem;
-    font-family: $font-title;
+    font-family: $font-family-title;
     text-align: left;
     text-transform: none;
     letter-spacing: normal;
@@ -44,7 +44,7 @@
     overflow: hidden;
 
     font-size: 0.9rem;
-    font-family: $font-body;
+    font-family: $font-family-body;
     text-align: left;
     
     vertical-align: baseline; // aligns with numbers

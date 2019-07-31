@@ -52,13 +52,14 @@ export class ResourceService {
   private mapToResourceDetailsModel(apiResource: any): ResourceDetailsModel {
     return <ResourceDetailsModel> {
       title: apiResource.title,
+      favorite: apiResource.favorite,
       subjects: coalesce(apiResource.subjects, []),
       grades: coalesce(apiResource.grades, []),
       image: apiResource.resourceThumbnail,
       author: apiResource.author,
       authorOrganization: apiResource.publisher,
       lastModified: new Date(apiResource.changed),
-      learningGoal: apiResource.learningGoals,
+      
 
       claims: coalesce(apiResource.educationalAlignments, []).map(ea => <Alignment>{
         title: `${ea.shortName}: ${ea.title}`,
@@ -79,9 +80,6 @@ export class ResourceService {
       // MAYBE, but this is NOT an array?
       // /api/v1/resource.connectionToCcss
       standards: coalesce(apiResource.standards, [])
-
-      // UKNOWN
-      // favorited: boolean;
     };
   }
 
@@ -90,6 +88,9 @@ export class ResourceService {
       // MAYBE
       // /api/v1/resource.altBody 
       description: apiModel.altBody,
+
+      // /api/v1/resource.learningGoals
+      learningGoal: apiModel.learningGoals,
 
       // UNKNOWN
       resourceMaterials: apiModel.attachments.map(a => <ResourceMaterial>{

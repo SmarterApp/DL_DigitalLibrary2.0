@@ -4,6 +4,9 @@ export interface OverviewModel {
     // /api/v1/resource.altBody 
     description: string;
 
+    // /api/v1/resource.learningGoals
+    learningGoal: string;
+
     // UNKNOWN
     resourceMaterials: ResourceMaterial[];
 

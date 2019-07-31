@@ -1,7 +1,17 @@
 <div class="resource-content">
   <div class="actions">
     <sbdl-button-icon><i class="far fa-share"></i></sbdl-button-icon>
-    <sbdl-button-icon><i class="far fa-bookmark"></i></sbdl-button-icon>
+    <sbdl-button-icon (click)="toggleFavorite()">
+      <div *ngIf="!togglingFavorite && model.details.favorite">
+        <i class="fas fa-bookmark"></i>
+      </div>
+      <div *ngIf="!togglingFavorite && !model.details.favorite">
+          <i class="far fa-bookmark"></i>
+      </div>
+      <div *ngIf="togglingFavorite">
+        <i class="fas fa-spinner fa-spin"></i>
+      </div>
+    </sbdl-button-icon>
     <sbdl-button-icon><i class="far fa-print"></i></sbdl-button-icon>
     <sbdl-button-icon><i class="far fa-expand-alt"></i></sbdl-button-icon>
   </div>

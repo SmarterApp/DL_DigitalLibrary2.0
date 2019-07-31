@@ -26,13 +26,15 @@ export class ResourceTypeStrategyComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const component = this.componentMap.get(this.route.snapshot.data.resource.resourceType);
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
-
-    const viewContainerRef = this.hostDirective.viewContainerRef;
-    viewContainerRef.clear();
-    const componentRef = viewContainerRef.createComponent(componentFactory);
-
-    (<ResourceComponent>componentRef.instance).model = this.route.snapshot.data.resource;
+    this.route.data.subscribe(data => {
+      const component = this.componentMap.get(data.resource.resourceType);
+      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
+  
+      const viewContainerRef = this.hostDirective.viewContainerRef;
+      viewContainerRef.clear();
+      const componentRef = viewContainerRef.createComponent(componentFactory);
+  
+      (<ResourceComponent>componentRef.instance).model = data.resource;
+    });
   }
 }

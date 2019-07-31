@@ -23,9 +23,6 @@ export interface ResourceDetailsModel {
     // MAYBE (in payload but not in doc)
     // /api/v1/resource.changed
     lastModified: Date;
-   
-    // /api/v1/resource.learningGoals
-    learningGoal: string;
 
     // UNKNOWN
     relatedPlaylists: Playlist[];
@@ -42,7 +39,7 @@ export interface ResourceDetailsModel {
     standards: string[];   
 
     // UKNOWN
-    favorited: boolean;
+    favorite: boolean;
 }
 
 export interface Alignment {

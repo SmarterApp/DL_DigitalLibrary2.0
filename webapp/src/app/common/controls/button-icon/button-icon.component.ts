@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { MDCRipple } from '@material/ripple';
 
 @Component({
@@ -9,6 +9,9 @@ export class ButtonIconComponent implements OnInit {
 
   @ViewChild('button', { static: true })
   button: ElementRef;
+
+  @Input()
+  disabled: boolean;
 
   constructor() { }
 

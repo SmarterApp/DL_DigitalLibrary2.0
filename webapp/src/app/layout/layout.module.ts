@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { AppContainerComponent } from './app-container/app-container.component';
 import { HeaderComponent } from './header/header.component';
-import { RouterModule } from '@angular/router';
+import { SbdlCommonModule } from '../common/common.module';
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import { RouterModule } from '@angular/router';
     HeaderComponent
   ],
   imports: [
+    SbdlCommonModule,
     CommonModule,
     RouterModule
   ]
