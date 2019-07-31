@@ -13,7 +13,14 @@
       </div>
     </sbdl-button-icon>
     <sbdl-button-icon><i class="far fa-print"></i></sbdl-button-icon>
-    <sbdl-button-icon><i class="far fa-expand-alt"></i></sbdl-button-icon>
+    <sbdl-button-icon (click)="toggleReadingMode()">
+      <div *ngIf="readingMode">
+        <i class="far fa-compress-alt"></i>
+      </div>
+      <div *ngIf="!readingMode">
+        <i class="far fa-expand-alt"></i>
+      </div>
+    </sbdl-button-icon>
   </div>
   <header>
     <h1 #getStarted>{{ details.title }}</h1>
