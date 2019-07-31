@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, HostBinding, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, HostBinding, OnInit, HostListener } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { ResourceModel } from '../../data/resource/model/resource.model';
 import { ScrollableElements } from '../outline/scrollable-elements.model';
@@ -13,7 +13,7 @@ export class InstructionalResourceComponent implements OnInit, ResourceComponent
 
   model: ResourceModel;
   scrollableElements: ScrollableElements;
-  readingMode: boolean = false;
+  readingMode: boolean = window.innerWidth < 1024;
   navWidth = 331;
   cssVarStyle: SafeStyle;
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, HostBinding } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, HostBinding, HostListener } from '@angular/core';
 import { coalesce } from 'src/app/common/utils';
 import { FavoriteService } from 'src/app/data/favorite/favorite.service';
 import { FavoriteResource } from 'src/app/data/favorite/model/favorite-resource.model';
@@ -13,6 +13,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ResourceContentComponent implements OnInit {
 
+  readonly ReadingModeDefaultWidth = 1024;
+
   @Input()
   model: ResourceModel;
 
@@ -24,6 +26,17 @@ export class ResourceContentComponent implements OnInit {
   togglingFavorite = false;
   readingMode = false;
 
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event?) {
+    if(window.innerWidth < this.ReadingModeDefaultWidth && !this.readingMode) {
+      this.toggleReadingMode();
+    } else if(window.innerWidth >= this.ReadingModeDefaultWidth && this.readingMode){
+      this.toggleReadingMode();
+    }
+  }
+
+
   private scrollableElements: ScrollableElements;
 
   get details() {
@@ -33,6 +46,7 @@ export class ResourceContentComponent implements OnInit {
   constructor(private favoriteService: FavoriteService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    this.onResize();
   }
 
   setGetStarted($event) {
