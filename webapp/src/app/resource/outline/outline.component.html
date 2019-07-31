@@ -1,5 +1,10 @@
 <div class="outline-container">
-  <h6>Outline</h6>
+  <h6>
+    <span [hidden]="!readingMode">
+        <i class="fas fa-bars"></i>
+    </span> 
+    Outline
+  </h6>
   <ul>
     <li>
       <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.getStarted)">
