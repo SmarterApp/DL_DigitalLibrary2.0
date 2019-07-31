@@ -13,7 +13,7 @@ export class InstructionalResourceComponent implements OnInit, ResourceComponent
 
   model: ResourceModel;
   scrollableElements: ScrollableElements;
-  readingMode: boolean = window.innerWidth < 1024;
+  readingMode: boolean = window.innerWidth < 1200;
   navWidth = 331;
   cssVarStyle: SafeStyle;
 

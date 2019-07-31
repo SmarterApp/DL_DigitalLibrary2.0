@@ -13,7 +13,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ResourceContentComponent implements OnInit {
 
-  readonly ReadingModeDefaultWidth = 1024;
+  readonly ReadingModeDefaultWidth = 1200;
 
   @Input()
   model: ResourceModel;
