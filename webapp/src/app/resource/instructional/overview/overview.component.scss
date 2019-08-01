@@ -6,20 +6,6 @@
     margin-right: auto;
 }
 
-.leading-icon {
-    --icon-width: 1em;
-    --icon-margin: 0.25em;
-    text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin)));
-    sbdl-icon {
-        width: var(--icon-width);
-        height: auto;
-        margin-right: var(--icon-margin);
-        text-indent: 0;
-        color: $neutral-900;
-        opacity: 0.65;
-    }
-}
-
 .placeholder {
     opacity: 0.1;
     border: dotted $neutral-300;
