@@ -4,13 +4,6 @@
 .overview-container {
     margin-left: auto;
     margin-right: auto;
-
-    h4,h5{
-        sbdl-icon {
-            color: $neutral-900;
-            opacity: 0.65;
-        }
-    }
 }
 
 .leading-icon {
@@ -22,6 +15,8 @@
         height: auto;
         margin-right: var(--icon-margin);
         text-indent: 0;
+        color: $neutral-900;
+        opacity: 0.65;
     }
 }
 
