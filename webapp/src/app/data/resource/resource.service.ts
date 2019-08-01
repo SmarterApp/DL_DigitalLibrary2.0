@@ -119,6 +119,7 @@ export class ResourceService {
       performanceBasedDifferentiation: apiModel.differentiation,
       accessibilityStrategies: apiModel.accessibilityStrategies.map(x => <ResourceStrategyConnection>{
         title: x.title,
+        moreAboutUrl: x.link,
         description: x.description
       })
     };

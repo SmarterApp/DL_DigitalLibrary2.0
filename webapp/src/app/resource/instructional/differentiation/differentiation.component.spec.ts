@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DifferentiationComponent } from './differentiation.component';
+import { ResourceModule } from '../../resource.module';
+import { mockResourceModel } from 'src/app/data/mock-data';
 
 describe('DifferentiationComponent', () => {
   let component: DifferentiationComponent;
@@ -8,7 +10,7 @@ describe('DifferentiationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DifferentiationComponent ]
+      imports: [ ResourceModule ]
     })
     .compileComponents();
   }));
@@ -16,6 +18,7 @@ describe('DifferentiationComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DifferentiationComponent);
     component = fixture.componentInstance;
+    component.model = mockResourceModel.differentiation;
     fixture.detectChanges();
   });
 

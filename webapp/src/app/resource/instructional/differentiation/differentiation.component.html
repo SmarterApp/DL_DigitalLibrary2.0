@@ -1,9 +1,14 @@
-<article>
-  <h5 #header>Differentiation</h5>
+<article class="differentiation-container">
+  <h4 #header class="leading-icon"><i class="far fa-universal-access"></i>Differentiation</h4>
   <section>
     <h5>Performance-based Differentiation</h5>
+    <div [innerHtml]="model.performanceBasedDifferentiation"></div>
   </section>
   <section>
     <h5>Accessibility Strategies Used</h5>
+    <div *ngFor="let strategy of model.accessibilityStrategies">
+      <h6><a [href]="strategy.moreAboutUrl" target="_blank">{{ strategy.title }} <i class="far fa-arrow-right"></i></a></h6>
+      <p>{{ strategy.description }}</p>
+    </div>
   </section>
 </article>

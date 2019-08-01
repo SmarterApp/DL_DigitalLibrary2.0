@@ -1,0 +1,47 @@
+@import 'fonts';
+@import 'colors';
+@import 'spacing';
+
+.differentiation-container {
+    font-size: $font-size-body-2;
+    max-width: none;
+
+    .leading-icon{
+        display: inline-flex;
+        align-items: center;
+        margin-left: calc((-1) * (var(--icon-width) + var(--icon-margin)));
+        svg {
+            color: $brand-accent-gold;
+            background: url('/assets/images/yellow-spot-3.png') no-repeat;
+            background-size: contain;
+            padding: 10px;
+            font-size: 1.5rem;
+        }
+    }
+
+    h6 {
+        a,
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+            color: $neutral-900;
+            text-decoration: none;
+            font-weight: normal;
+        }
+    }
+
+    .fa-arrow-right {
+        color: $info-500;
+        padding-left: $spacer-sm;
+    }
+
+    section {
+        margin-left: auto;
+        margin-right: auto;
+        h6{
+            margin-bottom: 0;
+            margin-top: 1.5rem;
+        }
+    }
+}

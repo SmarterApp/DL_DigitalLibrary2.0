@@ -1,3 +1,5 @@
+@import "colors";
+
 $font-family-body: "Open Sans",sans-serif;
 $font-size-body: 16px;
 $font-size-body-2: 14.41px;
@@ -15,6 +17,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: $font-family-title;
     font-style: normal;
     line-height: 100%;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+
 }
 
 h1 {

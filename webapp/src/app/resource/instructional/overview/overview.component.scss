@@ -10,7 +10,6 @@
         margin-top: 1.5rem;
         sbdl-icon {
             color: $neutral-300;
-            margin-left: -9px;
         }
     }
 
@@ -18,19 +17,4 @@
         margin-left: auto;
         margin-right: auto;
     }
-}
-
-.placeholder {
-    opacity: 0.1;
-    border: dotted $neutral-300;
-}
-
-.placeholder:before {
-    content: 'Placeholder';
-    
-    font-size: 80px;
-    transform: rotate(-315deg);
-    margin-top: 300px;
-    margin-left: -100px;
-    position: absolute;
 }
