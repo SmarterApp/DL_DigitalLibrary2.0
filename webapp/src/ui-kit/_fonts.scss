@@ -1,13 +1,11 @@
-$font-family-body: "Open Sans",sans-serif;
-$font-size-body: 16px;
-$font-size-body-2: 14.41px;
-
-$font-family-title: "Montserrat",sans-serif;
-
+$font-family-body: 'Open Sans', sans-serif;
+$font-family-title: 'Montserrat', sans-serif;
 
 body {
+    font-size: 16px;
     font-family: $font-family-body;
-    font-size: $font-size-body;
+    font-weight: 400;
+    font-style: normal;
     color: $neutral-900;
 }
 
@@ -15,22 +13,24 @@ h1, h2, h3, h4, h5, h6 {
     font-family: $font-family-title;
     font-style: normal;
     line-height: 100%;
+    margin-top: 0;
+    margin-bottom: 0.5em;
 }
 
 h1 {
-    font-weight: bold;
-    font-size: 3.3175rem;
+    font-weight: 700;
+    font-size: 3.1375rem;
     letter-spacing: -0.005em;
 }
 
 h2 {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 2.59375rem;
 }
 
 h3 {
     font-weight: 600;
-    font-size: 2.15rem;
+    font-size: 2.14375rem;
     line-height: 104%;
 }
 
@@ -47,15 +47,53 @@ h5 {
 }
 
 h6 {
-    font-weight: normal;
+    font-weight: 400;
     font-size: 1.2125rem;
     line-height: 160%;
 }
 
-caption {
-    font-size: 0.916rem;
-    display: inline;
-    text-align: left;
+.subtitle-1 {
+    font-family: $font-family-title;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 160%;
+}
+
+.subtitle-2 {
+    font-family: $font-family-title;
+    font-weight: 400;
+    font-size: 0.900625rem;
+    line-height: 175%;
+}
+
+.body-1 {
+    font-family: $font-family-body;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 150%;
+}
+
+// lets set default copy style to body-2
+.body-2,
+p, ol, ul, table {
+    font-family: $font-family-body;
+    font-weight: 400;
+    font-size: 0.900625rem;
+    line-height: 150%;
+}
+
+.caption {
+    font-size: 0.825rem;
+}
+
+.overline {
+    font-family: $font-family-title;
+    font-weight: 400;
+    font-size: 0.900625rem;
+    line-height: 1.24913em;
+    /* identical to box height */
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
 }
 
 .font-light {

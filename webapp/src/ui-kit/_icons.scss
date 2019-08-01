@@ -2,7 +2,6 @@
 .icon {
   display: inline-flex;
   align-self: center;
-  
   svg {
     max-height: 100%;
     max-width: 100%;
@@ -49,7 +48,7 @@ svg[class^="icon-"] {
     }
 }
 
-// Are you in here because your svg colors are not applying?  Try removing the fill attribute of all the paths 
+// Are you in here because your svg colors are not applying?  Try removing the fill attribute of all the paths
 // and then re-run the sprites command.
 svg path {
   fill: currentColor;
