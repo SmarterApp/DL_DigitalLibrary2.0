@@ -5,6 +5,7 @@ import { ResourceStrategyModel } from "./resource-strategy.model";
 import { InstructionalMaterialModel } from "./instructional-material.model";
 import { ResourceType } from './resource-type.enum';
 import { DifferentiationModel } from './differentiation.model';
+import { FormativeModel } from './formative.model';
 
 export interface ResourceModel {
     // /api/v1/resource.id
@@ -18,6 +19,5 @@ export interface ResourceModel {
     steps: ResourceStepModel[];
     materials: InstructionalMaterialModel[];
     differentiation: DifferentiationModel;
-    
-    formativeStrategies: ResourceStrategyModel[];
+    formative: FormativeModel;
 }

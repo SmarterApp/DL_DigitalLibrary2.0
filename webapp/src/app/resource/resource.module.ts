@@ -12,6 +12,7 @@ import { ResourceHostDirective } from './resource-host.directive';
 import { ResourceTypeStrategyComponent } from './resource-type-strategy.component';
 import {TooltipModule} from 'ng2-tooltip-directive';
 import { DifferentiationComponent } from './instructional/differentiation/differentiation.component';
+import { FormativeComponent } from './instructional/formative/formative.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -25,7 +26,7 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     ResourceTypeStrategyComponent, 
     ResourceHostDirective, 
     OutlineComponent, 
-    MetadataComponent, DifferentiationComponent
+    MetadataComponent, DifferentiationComponent, FormativeComponent
   ],
   imports: [
     CommonModule,

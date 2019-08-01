@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { coalesce } from 'src/app/common/utils';
 import { DataService } from '../data.service';
-import { OverviewModel, ResourceMaterial } from './model/overview.model';
 import { DifferentiationModel } from './model/differentiation.model';
-import { Alignment, ResourceDetailsModel, Playlist } from './model/resource-details.model';
+import { FormativeModel } from './model/formative.model';
+import { OverviewModel, ResourceMaterial } from './model/overview.model';
+import { Alignment, Playlist, ResourceDetailsModel } from './model/resource-details.model';
+import { ResourceStepModel } from './model/resource-step.model';
+import { ResourceStrategyModel } from './model/resource-strategy.model';
 import { ResourceType } from './model/resource-type.enum';
 import { ResourceModel } from './model/resource.model';
-import { coalesce } from 'src/app/common/utils';
-import { ResourceStepModel } from './model/resource-step.model';
-import { ResourceStrategyConnection } from './model/resource-strategy.model';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,8 @@ export class ResourceService {
       details: this.mapToResourceDetailsModel(apiResource),
       overview: this.mapToOverview(apiResource),
       steps: this.mapToSteps(coalesce(apiResource.steps, [])),
-      differentiation: this.mapToDifferentiation(apiResource)
+      differentiation: this.mapToDifferentiation(apiResource),
+      formative: this.mapToFormative(apiResource)
     };
   }
 
@@ -117,11 +119,22 @@ export class ResourceService {
   mapToDifferentiation(apiModel): DifferentiationModel {
     return {
       performanceBasedDifferentiation: apiModel.differentiation,
-      accessibilityStrategies: apiModel.accessibilityStrategies.map(x => <ResourceStrategyConnection>{
+      accessibilityStrategies: apiModel.accessibilityStrategies.map(x => <ResourceStrategyModel>{
         title: x.title,
         moreAboutUrl: x.link,
         description: x.description
       })
     };
+  }
+
+  mapToFormative(apiModel): FormativeModel {
+    return {
+      howItsUsed: apiModel.connectionToFap,
+      strategies: apiModel.formativeStrategies.map(x => <ResourceStrategyModel>{
+        title: x.title,
+        moreAboutUrl: x.link,
+        description: x.description
+      })
+    }
   }
 }

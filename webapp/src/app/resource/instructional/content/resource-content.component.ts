@@ -71,6 +71,11 @@ export class ResourceContentComponent implements OnInit {
     this.emitScrollableElementsEvent();
   }
 
+  setFormative($event) {
+    this.scrollableElements = {...this.scrollableElements, formativeAssessmentProcess: $event };
+    this.emitScrollableElementsEvent();
+  }
+
   share() {
     this.popoverService.open(this.shareContainer, this.sharePopover);
   }
@@ -110,7 +115,7 @@ export class ResourceContentComponent implements OnInit {
   }
 
   private emitScrollableElementsEvent() {
-    if(this.scrollableElements.getStarted && this.scrollableElements.differentiation) {
+    if(this.scrollableElements.getStarted && this.scrollableElements.differentiation && this.scrollableElements.formativeAssessmentProcess) {
       this.loadScrollableElements.emit(this.scrollableElements);
     }
   }
