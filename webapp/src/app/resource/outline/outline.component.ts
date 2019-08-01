@@ -12,6 +12,9 @@ export class OutlineComponent implements OnInit {
   model: ResourceModel;
 
   @Input()
+  readingMode: boolean;
+
+  @Input()
   scrollableElements: ScrollableElements = <ScrollableElements>{};
 
   constructor() { }

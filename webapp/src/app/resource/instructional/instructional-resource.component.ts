@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, Component, HostBinding, OnInit, HostListener } from '@angular/core';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { ResourceModel } from '../../data/resource/model/resource.model';
-import { ResourceComponent } from '../resource-component.interface';
 import { ScrollableElements } from '../outline/scrollable-elements.model';
-import { Scroll } from '@angular/router';
+import { ResourceComponent } from '../resource-component.interface';
 
 @Component({
   selector: 'sbdl-resource',
@@ -12,13 +12,20 @@ import { Scroll } from '@angular/router';
 export class InstructionalResourceComponent implements OnInit, ResourceComponent {
 
   model: ResourceModel;
-
   scrollableElements: ScrollableElements;
+  readingMode: boolean = window.innerWidth < 1200;
+  navWidth = 331;
+  cssVarStyle: SafeStyle;
 
-  constructor(private cdRef: ChangeDetectorRef) { }
+  @HostBinding("style")
+  public get valueAsStyle(): any {
+    return this.cssVarStyle;
+  }
+
+  constructor(private cdRef: ChangeDetectorRef, private sanitizer: DomSanitizer) { }
 
   ngOnInit() { 
-
+    this.setCssVarStyle();
   }
 
   setScrollableElements($event) {
@@ -26,5 +33,19 @@ export class InstructionalResourceComponent implements OnInit, ResourceComponent
 
     // effectively notifies the outline component.
     this.cdRef.detectChanges();
+  }
+
+  readingModeChanged(readingMode: boolean) {
+    this.readingMode = readingMode;
+    this.setCssVarStyle();
+  }
+
+  private setCssVarStyle() {
+
+    const styles = this.readingMode 
+      ? `--nav-width:40px; --outline-margin-right:-291px`
+      : `--nav-width: 331px; --outline-margin-right: 0`;
+
+    this.cssVarStyle = this.sanitizer.bypassSecurityTrustStyle(styles);
   }
 }

@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, HostBinding, HostListener } from '@angular/core';
 import { coalesce } from 'src/app/common/utils';
 import { FavoriteService } from 'src/app/data/favorite/favorite.service';
 import { FavoriteResource } from 'src/app/data/favorite/model/favorite-resource.model';
 import { ResourceModel } from 'src/app/data/resource/model/resource.model';
 import { ScrollableElements } from '../../outline/scrollable-elements.model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'sbdl-resource-content',
@@ -12,13 +13,29 @@ import { ScrollableElements } from '../../outline/scrollable-elements.model';
 })
 export class ResourceContentComponent implements OnInit {
 
+  readonly ReadingModeDefaultWidth = 1200;
+
   @Input()
   model: ResourceModel;
 
   @Output()
   loadScrollableElements = new EventEmitter<ScrollableElements>();
 
+  @Output()
+  readingModeChanged = new EventEmitter<boolean>();
   togglingFavorite = false;
+  readingMode = false;
+
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event?) {
+    if(window.innerWidth < this.ReadingModeDefaultWidth && !this.readingMode) {
+      this.toggleReadingMode();
+    } else if(window.innerWidth >= this.ReadingModeDefaultWidth && this.readingMode){
+      this.toggleReadingMode();
+    }
+  }
+
 
   private scrollableElements: ScrollableElements;
 
@@ -26,9 +43,10 @@ export class ResourceContentComponent implements OnInit {
     return this.model.details;
   }
 
-  constructor(private favoriteService: FavoriteService) { }
+  constructor(private favoriteService: FavoriteService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    this.onResize();
   }
 
   setGetStarted($event) {
@@ -59,5 +77,10 @@ export class ResourceContentComponent implements OnInit {
       // TODO: Implement error notification system?
       this.togglingFavorite = false;
     });
+  }
+
+  toggleReadingMode() {
+    this.readingMode = !this.readingMode;
+    this.readingModeChanged.emit(this.readingMode);
   }
 }

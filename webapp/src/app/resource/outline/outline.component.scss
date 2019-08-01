@@ -3,8 +3,6 @@
 
 .outline-container {
     margin-top: 4rem;
-    max-width: 331px;
-    width: 331px;
 
     h6 {
         font-family: $font-family-title;
@@ -13,6 +11,10 @@
         color: rgba($neutral-900, 0.65);
         padding-left: 1rem;
         margin-bottom: 8px;
+        white-space: pre;
+        sbdl-icon, svg {
+            padding-right: 8px;
+        }
     }
 
     ul {
@@ -25,6 +27,11 @@
     }
     ul > li {
         border-top: 1px solid $neutral-100;
+        width: 100%;
+        white-space: pre;
+        & > sbdl-button {
+            white-space: pre;
+        }
         padding: 8px 0 8px 8px;
         &.steps {
             padding: 1rem;
@@ -60,7 +67,9 @@
 
     ol > li { 
         counter-increment: customlistcounter;
+        display:block;
         font-size: 0.9rem;
         font-weight: 300;
+        width: 301px;
     }        
 }
