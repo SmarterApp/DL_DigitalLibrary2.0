@@ -143,6 +143,16 @@ const polyfillMissingApiData = {
 			freactions with fractions greater than one.
 		</p>
 	`,
+	accessibilityStrategies: [{
+		title: 'Highlighter',
+		description: `A digital tool for marking desired text, item questions, item answers, or parts of
+			these with a color. Highlighted text remains available throughout each test segment. `
+
+	}, {
+		title: 'Line reader',
+		description: `The student uses an onscreen universal tool to assist in reading by raising and
+			lowering the tool for each line of text on the screen.`
+	}],
 	successCriteria: `
 		<ul>
 			<li>Students will be able to construct visual models to solve contextual problems involving division of fractions.</li>
@@ -306,6 +316,16 @@ const polyfillMissingApiData2 = {
 			freactions with fractions greater than one.
 		</p>
 	`,
+	accessibilityStrategies: [{
+		title: 'Highlighter',
+		description: `A digital tool for marking desired text, item questions, item answers, or parts of
+			these with a color. Highlighted text remains available throughout each test segment. `
+
+	}, {
+		title: 'Line reader',
+		description: `The student uses an onscreen universal tool to assist in reading by raising and
+			lowering the tool for each line of text on the screen.`
+	}],
 	successCriteria: `
 		<ul>
 			<li>Students will be able to construct visual models to solve contextual problems involving division of fractions.</li>
