@@ -14,8 +14,8 @@ export class OverviewComponent implements OnInit, AfterViewInit {
   @Output()
   sectionElementLoaded= new EventEmitter<any>();
 
-  @ViewChild('getStarted', { static: false })
-  getStartedElement: ElementRef;
+  @ViewChild('header', { static: false })
+  headerElement: ElementRef;
 
   constructor() { }
 
@@ -23,8 +23,8 @@ export class OverviewComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if(this.getStartedElement) {
-      this.sectionElementLoaded.emit(this.getStartedElement.nativeElement);
+    if(this.headerElement) {
+      this.sectionElementLoaded.emit(this.headerElement.nativeElement);
     }
   }
 }

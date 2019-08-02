@@ -1,0 +1,14 @@
+<article class="formative-container">
+  <h4 #header class="leading-icon"><sbdl-icon icon="strategies"></sbdl-icon>Formative Assesment Process</h4>
+  <section>
+    <h5>How its used</h5>
+    <div [innerHtml]="model.howItsUsed"></div>
+  </section>
+  <section>
+    <h5>Strategies Used</h5>
+    <div *ngFor="let strategy of model.strategies">
+      <h6><a [href]="strategy.moreAboutUrl" target="_blank">{{ strategy.title }} <i class="far fa-arrow-right"></i></a></h6>
+      <p>{{ strategy.description }}</p>
+    </div>
+  </section>
+</article>

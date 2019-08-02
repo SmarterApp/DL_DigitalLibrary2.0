@@ -1,9 +1,10 @@
-import { mockResourceImage, mockEvidenceImage } from 'src/app/data/mock-images';
-import { ResourceDetailsModel } from './resource/model/resource-details.model';
-import { ResourceModel } from './resource/model/resource.model';
-import { OverviewModel, ResourceMaterial } from './resource/model/overview.model';
-import { ResourceType } from './resource/model/resource-type.enum';
+import { mockEvidenceImage, mockResourceImage } from 'src/app/data/mock-images';
 import { DifferentiationModel } from './resource/model/differentiation.model';
+import { FormativeModel } from './resource/model/formative.model';
+import { OverviewModel, ResourceMaterial } from './resource/model/overview.model';
+import { ResourceDetailsModel } from './resource/model/resource-details.model';
+import { ResourceType } from './resource/model/resource-type.enum';
+import { ResourceModel } from './resource/model/resource.model';
 
 export const mockUser = {
     firstName: 'Mary',
@@ -29,6 +30,9 @@ export const mockResourceModel = <ResourceModel> {
 	},
 	differentiation: <DifferentiationModel>{ 
 		accessibilityStrategies: []
+	},
+	formative: <FormativeModel> {
+		strategies: []
 	}
 };
 
@@ -159,6 +163,60 @@ const polyfillMissingApiData = {
 		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
 		description: `The student uses an onscreen universal tool to assist in reading by raising and
 			lowering the tool for each line of text on the screen.`
+	}],
+	connectionToFap: `
+		<h6>Clarify Intended Learning</h6>
+		<p>
+			Students will participate in a Collaborative Discussion to describe the success criteria in their own words. Students may use words or pictures to 
+			express their understanding of how they will know they have been successful with this task.
+		</p>
+		<h6>Elicit Evidence</h6>
+		<ul>
+			<li>Students will create a visual model independently. The students may adjust their models as their thinking and reasoning changes through discussion.</li>
+			<li>Students will independently select the equations that appropriately match their representations and solve the equations.</li>
+			<li>Students will discuss their solutions – discussions will elicit evidence of student thinking.</li>
+		</ul>
+		<h6>Interpret Evidence</h6>
+		<p>Review the visual models for accuracy: labeling, scale, operation, and application.</p>
+		<h6>Act on Evidence</h6>
+		<p>
+			Feedback
+			<ul>
+				<li>The initial feedback will occur peer to peer.</li>
+				<li>As the teacher listens to the peer conversations, questioning techniques will be utilized to move learning forward.</li>
+			</ul>
+			Instructional Moves
+			<ul>
+				<li>Support students in creating fractional visual models</li>
+				<li>Select an equation that matches student skill</li>
+				<li>Perform error analysis of student calculations to address misconception</li>
+			</ul>
+		</p>
+	`,
+	formativeStrategies: [{
+		title: 'Verbal Feedback',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+		description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+	}, {
+		title: 'Peer-to-Peer Feedback',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+		description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+	}, {
+		title: 'Collaborative Discussion',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+		description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. `
+	}, {
+		title: 'Circulate the Room',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+		description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. `
+	}, {
+		title: 'Self-Assess',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+		description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+	}, {
+		title: 'Fold the Line',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+		description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
 	}],
 	successCriteria: `
 		<ul>
@@ -334,6 +392,26 @@ const polyfillMissingApiData2 = {
 		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
 		description: `The student uses an onscreen universal tool to assist in reading by raising and
 			lowering the tool for each line of text on the screen.`
+	}],
+	connectionToFap: `
+		<h6>Clarify Intended Learning</h6>
+		<p>
+			Students will participate in a Collaborative Discussion to describe the success criteria in their own words. Students may use words or pictures to 
+			express their understanding of how they will know they have been successful with this task.
+		</p>
+	`,
+	formativeStrategies: [{
+		title: 'Verbal Feedback',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+		description: `Learning performance feedback learning reproduce Henry Pluckrose certificate. Arrange Kirkpatrick recall learning recall, 
+			relate mentoring authoring tool andragogy mentos record describe writing technical writing. Facilitating list asynchronous, 
+			adaptive ADDIE draft Storyline instructional design. `
+	}, {
+		title: 'Fold the Line',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+		description: `Learning performance feedback learning reproduce Henry Pluckrose certificate. Arrange Kirkpatrick recall learning recall, 
+			relate mentoring authoring tool andragogy mentos record describe writing technical writing. Facilitating list asynchronous, 
+			adaptive ADDIE draft Storyline instructional design.`
 	}],
 	successCriteria: `
 		<ul>
