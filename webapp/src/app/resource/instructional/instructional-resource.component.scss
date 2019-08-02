@@ -1,10 +1,11 @@
 @import "colors";
 @import "spacing";
 
-.instructional-resource {
+:host {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
+    max-width: none;
     .outline {
         width: var(--nav-width);
         min-width: var(--nav-width);

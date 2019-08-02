@@ -1,22 +1,17 @@
-<div class="instructional-resource">
-  <nav class="outline">
-    <sbdl-outline
-      [model]="model"
-      [scrollableElements]="scrollableElements"
-      [readingMode]="readingMode"
-    ></sbdl-outline>
-  </nav>
-  <section class="resource-content">
-    <sbdl-resource-content
-      [model]="model"
-      (loadScrollableElements)="setScrollableElements($event)"
-      (readingModeChanged)="readingModeChanged($event)"
-    ></sbdl-resource-content>
-  </section>
-  <aside class="metadata">
-    <sbdl-metadata [model]="model.details"></sbdl-metadata>
-  </aside>
-</div>
-<div *ngIf="!model">
-  Resource not found.
-</div>
+<nav class="outline">
+  <sbdl-outline
+    [model]="model"
+    [scrollableElements]="scrollableElements"
+    [readingMode]="readingMode"
+  ></sbdl-outline>
+</nav>
+<section class="resource-content">
+  <sbdl-resource-content
+    [model]="model"
+    (loadScrollableElements)="setScrollableElements($event)"
+    (readingModeChanged)="readingModeChanged($event)"
+  ></sbdl-resource-content>
+</section>
+<aside class="metadata">
+  <sbdl-metadata [model]="model.details"></sbdl-metadata>
+</aside>
