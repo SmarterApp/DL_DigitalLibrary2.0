@@ -1,5 +1,5 @@
 @import "colors";
-@import "fonts";
+@import "typography";
 @import "spacing";
 
 h5,h6 {
@@ -49,7 +49,7 @@ h5,h6 {
     grid-row-gap: $spacer;
     grid-template-columns: 85px 1fr;
     margin-bottom: $spacer-lg;
-    > label { 
+    > label {
         grid-area: "label";
         font-style: normal;
         font-weight: 200;
@@ -57,7 +57,7 @@ h5,h6 {
         line-height: 117%;
         letter-spacing: -0.021em;
      }
-    > .value { 
+    > .value {
         grid-area: "value" ;
         font-weight: regular;
         font-size: 14.1px;
@@ -68,7 +68,7 @@ h5,h6 {
             overflow: hidden;
             max-width: 226px;
         }
-    }    
+    }
 }
 
 .playlists {
@@ -129,5 +129,5 @@ h5,h6 {
             position: absolute;
             right: 1rem;
         }
-    }            
+    }
 }

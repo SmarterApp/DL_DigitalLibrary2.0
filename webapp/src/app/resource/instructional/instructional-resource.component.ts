@@ -29,6 +29,7 @@ export class InstructionalResourceComponent implements OnInit, ResourceComponent
   }
 
   setScrollableElements($event) {
+    console.log($event);
     this.scrollableElements = $event;
 
     // effectively notifies the outline component.

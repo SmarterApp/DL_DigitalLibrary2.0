@@ -1,14 +1,30 @@
 @import "colors";
 @import "spacing";
+@import "typography";
 
-.resource-content {
-    background-image: url('./../../../../assets/images/yellow-spot.png');
-    background-position: 46px top;
-    background-repeat: no-repeat;
+:host {
+    position: relative;
+    display: block;
+    max-width: none;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -42px;
+        display: block;
+        width: 100px;
+        height: 46px;
+        background-image: url('./../../../../assets/images/yellow-spot.png');
+        background-position: top left;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
     .actions {
         display:flex;
-        justify-content: flex-end;        
+        justify-content: flex-end;
         align-items: center;
+        padding-top: $spacer-lg;
+        margin-bottom: $spacer;
     }
 
     header {
@@ -18,18 +34,30 @@
                              "updated button";
         grid-template-rows: repeat (3, auto);
         grid-template-columns: 1fr auto;
+        margin-bottom: $spacer-xl;
+        // calculating the max-width
+        // --measure + outside padding + inside padding + trailing and leading icons
+        max-width: calc(var(--measure) + #{$spacer-xl});
+        margin-left: $spacer-lg;
         h1 {
             grid-area: title;
             color: $brand-green;
         }
         .byline {
+            font-family: $font-family-title;
             grid-area: byline;
+            margin-bottom: $spacer-sm;
+            .font-light {
+                color: $neutral-500;
+            }
         }
-        caption {
+        .caption {
+            font-family: $font-family-title;
             grid-area: updated;
         }
-        button {
+        sbdl-button {
             grid-area: button;
+            align-self: center;
         }
     }
 

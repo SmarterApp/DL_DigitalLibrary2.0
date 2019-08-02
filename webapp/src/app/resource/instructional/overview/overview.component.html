@@ -1,15 +1,22 @@
 <article class="overview-container">
-  <h4 #header class="leading-icon"><sbdl-icon icon="goal"></sbdl-icon> Get Started</h4>
-  <section>
-    <h5>Overview <sbdl-tooltip text="Define what the student will be able to do after completing this resource."></sbdl-tooltip></h5>
+  <h4 #header class="leading-icon">
+    <sbdl-icon icon="goal"></sbdl-icon>Get Started
+  </h4>
+  <div>
+    <h5>
+      Overview
+      <sbdl-tooltip
+        text="Define what the student will be able to do after completing this resource."
+      ></sbdl-tooltip>
+    </h5>
     <p [innerHtml]="model.description"></p>
-  </section>
-  <section>
+  </div>
+  <div>
     <h5>Learning Goal</h5>
     <p>{{ model.learningGoal }}</p>
-  </section>
-  <section>
+  </div>
+  <div>
     <h5>Success Criteria</h5>
     <div [innerHtml]="model.successCriteria"></div>
-  </section>
+  </div>
 </article>

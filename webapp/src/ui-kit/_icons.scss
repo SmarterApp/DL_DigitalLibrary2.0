@@ -2,7 +2,6 @@
 .icon {
   display: inline-flex;
   align-self: center;
-  
   svg {
     max-height: 100%;
     max-width: 100%;
@@ -49,7 +48,24 @@ svg[class^="icon-"] {
     }
 }
 
-// Are you in here because your svg colors are not applying?  Try removing the fill attribute of all the paths 
+// Leading Icon
+// Usually used for headlines
+// requires <sbdl-icon> inside of a classed text element
+.leading-icon {
+  --icon-width: 1em;
+  --icon-margin: 0.25em;
+  text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin)));
+  sbdl-icon, .svg-inline--fa {
+      width: var(--icon-width);
+      height: auto;
+      margin-right: var(--icon-margin);
+      text-indent: 0;
+      color: $neutral-900;
+      opacity: 0.65;
+  }
+}
+
+// Are you in here because your svg colors are not applying?  Try removing the fill attribute of all the paths
 // and then re-run the sprites command.
 svg path {
   fill: currentColor;
@@ -73,16 +89,4 @@ sbdl-icon[icon="info"] {
 
 svg #info {
   color: $info-500;
-}
-
-.leading-icon {
-  --icon-width: 1em;
-  --icon-margin: 0.25em;
-  text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin)));
-  sbdl-icon, .svg-inline--fa {
-      width: var(--icon-width);
-      height: auto;
-      margin-right: var(--icon-margin);
-      text-indent: 0;
-  }
 }
