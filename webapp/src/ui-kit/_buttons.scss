@@ -1,4 +1,4 @@
-@import 'fonts';
+@import 'typography';
 
 .primary > .mdc-button:before,
 .primary > .mdc-button:after {
@@ -9,7 +9,7 @@
     color: $white;
     background-color: $action-700;
 }
-  
+
 .mdc-icon-button {
     color: $action-700;
     font-size: 1.2rem;
@@ -36,7 +36,7 @@
 .step > .mdc-button:not(:disabled) {
     color: $neutral-900;
     width: 91%;
-    
+
     // ellipsis for overflow
     display: inline-block;
     text-overflow: ellipsis;
@@ -46,7 +46,7 @@
     font-size: 0.9rem;
     font-family: $font-family-body;
     text-align: left;
-    
+
     vertical-align: baseline; // aligns with numbers
 
     text-transform: none;

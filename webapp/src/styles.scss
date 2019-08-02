@@ -1,26 +1,23 @@
+// Material Components
 @import "@material/button/mdc-button";
 @import "@material/icon-button/mdc-icon-button";
 
+// SBAC Digital Library UI Kit
 @import "ui-kit/colors";
-@import "ui-kit/fonts";
+@import "ui-kit/typography";
 @import "ui-kit/buttons";
 @import "ui-kit/icons";
 @import "ui-kit/tooltips";
-
-body {
-    background-color: #FFFFFF;
-    margin: 0;
-    font-family: "Open Sans",sans-serif;
-    font-size: 16px;
-}
 
 :root {
     --measure: 65ch;
     --nav-width: 331px;
 }
+
 * {
     max-width: var(--measure);
 }
+
 html,
 body,
 div,
@@ -31,3 +28,7 @@ footer {
     max-width: none;
 }
 
+body {
+    background-color: $white;
+    margin: 0;
+}
