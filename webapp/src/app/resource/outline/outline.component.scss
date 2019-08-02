@@ -72,4 +72,11 @@
         font-weight: 300;
         width: 301px;
     }
+
+    &::ng-deep {
+        .outline-scrolled > .mdc-button:not(:disabled) {
+            border-left: $action-500 solid 8px;
+        } 
+    }
+
 }

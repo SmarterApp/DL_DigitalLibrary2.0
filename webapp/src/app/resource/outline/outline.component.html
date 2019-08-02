@@ -1,4 +1,3 @@
-
 <h6>
   <span [hidden]="!readingMode">
       <i class="fas fa-bars"></i>
@@ -7,7 +6,10 @@
 </h6>
 <ul>
   <li>
-    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.getStarted)">
+    <sbdl-button 
+      class="outline" 
+      (click)="scrollToElement(scrollableElements.getStarted)" 
+      [ngClass]="{ 'outline-scrolled': getStartedScrolled }">
       <sbdl-icon icon="goal"></sbdl-icon>
       Get Started
     </sbdl-button>
@@ -26,13 +28,13 @@
     </sbdl-button>
   </li>
   <li>
-    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.differentiation)">
+    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.differentiation)" [ngClass]="{ 'outline-scrolled': differentiationScrolled }">
       <i class="far fa-universal-access"></i>
       Differentiation
     </sbdl-button>
   </li>
   <li>
-    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.formativeAssessmentProcess)">
+    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.formativeAssessmentProcess)" [ngClass]="{ 'outline-scrolled': formativeScrolled }">
       <sbdl-icon icon="strategies"></sbdl-icon>
       Formative Assessment Process
     </sbdl-button>  
