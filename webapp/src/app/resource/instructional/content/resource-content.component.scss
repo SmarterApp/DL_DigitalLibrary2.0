@@ -4,6 +4,8 @@
 
 :host {
     position: relative;
+    display: block;
+    max-width: none;
     &::before {
         content: '';
         position: absolute;
@@ -33,6 +35,10 @@
         grid-template-rows: repeat (3, auto);
         grid-template-columns: 1fr auto;
         margin-bottom: $spacer-xl;
+        // calculating the max-width
+        // --measure + outside padding + inside padding + trailing and leading icons
+        max-width: calc(var(--measure) + #{$spacer-xl});
+        margin-left: $spacer-lg;
         h1 {
             grid-area: title;
             color: $brand-green;

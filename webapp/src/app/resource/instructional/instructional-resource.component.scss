@@ -5,7 +5,6 @@
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-
     .outline {
         width: var(--nav-width);
         min-width: var(--nav-width);
@@ -37,6 +36,7 @@
     .resource-content {
         padding: 0 $spacer-lg;
         flex-grow:1;
+        max-width: none;
     }
     .metadata {
         grid-area: metadata;
