@@ -1,14 +1,18 @@
-<div *ngIf="model" class="instructional-resource">
+<div class="instructional-resource">
   <nav class="outline">
-    <sbdl-outline [model]="model" [scrollableElements]="scrollableElements" [readingMode]="readingMode"></sbdl-outline>
+    <sbdl-outline
+      [model]="model"
+      [scrollableElements]="scrollableElements"
+      [readingMode]="readingMode"
+    ></sbdl-outline>
   </nav>
-  <article class="resource-content">
-    <sbdl-resource-content 
-      [model]="model" 
+  <section class="resource-content">
+    <sbdl-resource-content
+      [model]="model"
       (loadScrollableElements)="setScrollableElements($event)"
-      (readingModeChanged) = "readingModeChanged($event)"
+      (readingModeChanged)="readingModeChanged($event)"
     ></sbdl-resource-content>
-  </article>
+  </section>
   <aside class="metadata">
     <sbdl-metadata [model]="model.details"></sbdl-metadata>
   </aside>

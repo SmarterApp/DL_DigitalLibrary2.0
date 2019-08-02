@@ -1,46 +1,47 @@
-<div class="resource-content">
-  <div class="actions">
+<div class="actions">
     <sbdl-button-icon (click)="share()"><i class="far fa-share"></i></sbdl-button-icon>
     <ng-container #shareButton></ng-container>
-    <sbdl-button-icon (click)="toggleFavorite()">
-      <div *ngIf="!togglingFavorite && model.details.favorite">
-        <i class="fas fa-bookmark"></i>
-      </div>
-      <div *ngIf="!togglingFavorite && !model.details.favorite">
-          <i class="far fa-bookmark"></i>
-      </div>
-      <div *ngIf="togglingFavorite">
-        <i class="fas fa-spinner fa-spin"></i>
-      </div>
-    </sbdl-button-icon>
-    <sbdl-button-icon><i class="far fa-print"></i></sbdl-button-icon>
-    <sbdl-button-icon (click)="toggleReadingMode()">
-      <div *ngIf="readingMode">
-        <i class="far fa-compress-alt"></i>
-      </div>
-      <div *ngIf="!readingMode">
-        <i class="far fa-expand-alt"></i>
-      </div>
-    </sbdl-button-icon>
-  </div>
-  <header>
-    <h1 #getStarted>{{ details.title }}</h1>
-    <section class="byline">
-      {{ details.author }} •
-      <span class="font-light">{{ details.authorOrganization }}</span>
-    </section>
-    <caption>
-      <span class="emphasis-medium">Updated</span>
-      {{
-        details.lastModified | date: 'mediumDate'
-      }}
-    </caption>
-    <sbdl-button class="primary">
-      <i class="far fa-paperclip"></i> Attachments
-    </sbdl-button>    
-  </header>
-  <sbdl-overview [model]="model.overview" (sectionElementLoaded)="setGetStarted($event)"></sbdl-overview>
+  <sbdl-button-icon (click)="toggleFavorite()">
+    <div *ngIf="!togglingFavorite && model.details.favorite">
+      <i class="fas fa-bookmark"></i>
+    </div>
+    <div *ngIf="!togglingFavorite && !model.details.favorite">
+      <i class="far fa-bookmark"></i>
+    </div>
+    <div *ngIf="togglingFavorite">
+      <i class="fas fa-spinner fa-spin"></i>
+    </div>
+  </sbdl-button-icon>
+  <sbdl-button-icon><i class="far fa-print"></i></sbdl-button-icon>
+  <sbdl-button-icon (click)="toggleReadingMode()">
+    <div *ngIf="readingMode">
+      <i class="far fa-compress-alt"></i>
+    </div>
+    <div *ngIf="!readingMode">
+      <i class="far fa-expand-alt"></i>
+    </div>
+  </sbdl-button-icon>
 </div>
+<header>
+  <h1 #getStarted>{{ details.title }}</h1>
+  <section class="byline">
+    {{ details.author }}&nbsp;&nbsp;&bull;&nbsp;&nbsp;<span
+      class="font-light"
+      >{{ details.authorOrganization }}</span
+    >
+  </section>
+  <span class="caption">
+    <span class="emphasis-medium">Updated</span>
+    {{ details.lastModified | date: 'mediumDate' }}
+  </span>
+  <sbdl-button class="primary">
+    <i class="far fa-paperclip"></i> Attachments
+  </sbdl-button>
+</header>
+<sbdl-overview
+  [model]="model.overview"
+  (sectionElementLoaded)="setGetStarted($event)"
+></sbdl-overview>
 <ng-template #sharePopover>
   <div class="share-popover">
       <h6>Share this resource</h6>

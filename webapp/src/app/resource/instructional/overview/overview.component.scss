@@ -1,22 +1,32 @@
 @import "colors";
-@import "fonts";
+@import "spacing";
+
+:host {
+    display: block;
+    max-width: none;
+}
 
 .overview-container {
-    max-width: none;
-    font-size: $font-size-body-2;
-
-    h4,h5{
-        margin-bottom: 0;
-        margin-top: 1.5rem;
-        sbdl-icon {
-            color: $neutral-300;
-            margin-left: -9px;
-        }
-    }
-
-    section {
-        margin-left: auto;
-        margin-right: auto;
+    max-width: var(--measure);
+    margin-right: $spacer-xl;
+    margin-left: $spacer-lg;
+    position: relative;
+}
+// .active
+.overview-container {
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($action-100, 0.2);
+        border-color: rgba($action-500, 0.4);
+        border-radius: 0.25rem;
+        border-width: 0 0 0 4px;
+        border-style: solid;
     }
 }
 
@@ -27,7 +37,7 @@
 
 .placeholder:before {
     content: 'Placeholder';
-    
+
     font-size: 80px;
     transform: rotate(-315deg);
     margin-top: 300px;
