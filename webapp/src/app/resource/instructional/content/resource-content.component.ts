@@ -81,7 +81,6 @@ export class ResourceContentComponent implements OnInit {
   }
 
   copyToClipboard(inputElement) {
-    console.log('copied');
     inputElement.select();
     document.execCommand('copy');
     inputElement.setSelectionRange(0, 0);
