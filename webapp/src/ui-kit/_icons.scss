@@ -90,15 +90,3 @@ sbdl-icon[icon="info"] {
 svg #info {
   color: $info-500;
 }
-
-.leading-icon {
-  --icon-width: 1em;
-  --icon-margin: 0.25em;
-  text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin)));
-  sbdl-icon, .svg-inline--fa {
-      width: var(--icon-width);
-      height: auto;
-      margin-right: var(--icon-margin);
-      text-indent: 0;
-  }
-}
