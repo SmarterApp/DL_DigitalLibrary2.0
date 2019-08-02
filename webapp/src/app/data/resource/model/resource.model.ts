@@ -4,6 +4,7 @@ import { ResourceStepModel } from "./resource-step.model";
 import { ResourceStrategyModel } from "./resource-strategy.model";
 import { InstructionalMaterialModel } from "./instructional-material.model";
 import { ResourceType } from './resource-type.enum';
+import { DifferentiationModel } from './differentiation.model';
 
 export interface ResourceModel {
     // /api/v1/resource.id
@@ -16,10 +17,7 @@ export interface ResourceModel {
     overview: OverviewModel;
     steps: ResourceStepModel[];
     materials: InstructionalMaterialModel[];
+    differentiation: DifferentiationModel;
     
-    // The UI for Formative Strategies and Accessibility Strategies 
-    // look very similar.  If it makes sense, we can use the same model
-    // for both for reusability on the UI components.
     formativeStrategies: ResourceStrategyModel[];
-    accessibilityStrategies: ResourceStrategyModel[];
 }

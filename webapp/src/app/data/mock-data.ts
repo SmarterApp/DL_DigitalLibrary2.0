@@ -3,6 +3,7 @@ import { ResourceDetailsModel } from './resource/model/resource-details.model';
 import { ResourceModel } from './resource/model/resource.model';
 import { OverviewModel, ResourceMaterial } from './resource/model/overview.model';
 import { ResourceType } from './resource/model/resource-type.enum';
+import { DifferentiationModel } from './resource/model/differentiation.model';
 
 export const mockUser = {
     firstName: 'Mary',
@@ -25,6 +26,9 @@ export const mockResourceModel = <ResourceModel> {
 		resourceMaterials: [ <ResourceMaterial>{  title: 'Material', url: 'www.google.com', description: 'test description'}],
 		successCriteria: 'Test Success Criteria',
 		differentiation: 'Test Differentiation'
+	},
+	differentiation: <DifferentiationModel>{ 
+		accessibilityStrategies: []
 	}
 };
 
@@ -134,15 +138,28 @@ const polyfillMissingApiData = {
 		`
 	}],
 	differentiation: `
+		<h6>Support</h6>
 		<p>
-			If your students are <b>below</b>: Modify the number of problems to include a whole number divided by a fraction.  This may provide
-			access to students who are still making sense of fraction division.
+			Modify the numbers in the problems to include a whole number divided by a fraction. This may provide access to students who are still making 
+			sense of fraction division.
 		</p>
-		<p>
-			If your students are <b>above</b>: Change one of the numbers to a mixed number to extend student understanding about division of
-			freactions with fractions greater than one.
-		</p>
+		<h6>Challenge</h6>
+		<p>Change one of the numbers to a mixed number to extend student understanding about division of fractions with fractions greater than one.</p>
+		<h6>Additional Differentiation Suggestions</h6>
+		<p>Optional content a resource author may want to include specific to students learning English or students with disabilities.</p>
 	`,
+	accessibilityStrategies: [{
+		title: 'Highlighter',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+		description: `A digital tool for marking desired text, item questions, item answers, or parts of
+			these with a color. Highlighted text remains available throughout each test segment. `
+
+	}, {
+		title: 'Line reader',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+		description: `The student uses an onscreen universal tool to assist in reading by raising and
+			lowering the tool for each line of text on the screen.`
+	}],
 	successCriteria: `
 		<ul>
 			<li>Students will be able to construct visual models to solve contextual problems involving division of fractions.</li>
@@ -306,6 +323,18 @@ const polyfillMissingApiData2 = {
 			freactions with fractions greater than one.
 		</p>
 	`,
+	accessibilityStrategies: [{
+		title: 'Highlighter',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+		description: `A digital tool for marking desired text, item questions, item answers, or parts of
+			these with a color. Highlighted text remains available throughout each test segment. `
+
+	}, {
+		title: 'Line reader',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+		description: `The student uses an onscreen universal tool to assist in reading by raising and
+			lowering the tool for each line of text on the screen.`
+	}],
 	successCriteria: `
 		<ul>
 			<li>Students will be able to construct visual models to solve contextual problems involving division of fractions.</li>

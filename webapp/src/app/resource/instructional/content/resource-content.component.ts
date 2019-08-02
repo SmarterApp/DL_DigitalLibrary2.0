@@ -62,13 +62,13 @@ export class ResourceContentComponent implements OnInit {
   }
 
   setGetStarted($event) {
-    this.scrollableElements = coalesce(this.scrollableElements, <ScrollableElements>{});
-    this.scrollableElements.getStarted = $event;
+    this.scrollableElements = {...this.scrollableElements, getStarted: $event };
+    this.emitScrollableElementsEvent();
+  }
 
-    if(this.scrollableElements.getStarted) {
-      // TODO: once all elements have been populated then emit the event.
-      this.loadScrollableElements.emit(this.scrollableElements);
-    }
+  setDifferentiation($event) {
+    this.scrollableElements = {...this.scrollableElements, differentiation: $event };
+    this.emitScrollableElementsEvent();
   }
 
   share() {
@@ -107,5 +107,11 @@ export class ResourceContentComponent implements OnInit {
   toggleReadingMode() {
     this.readingMode = !this.readingMode;
     this.readingModeChanged.emit(this.readingMode);
+  }
+
+  private emitScrollableElementsEvent() {
+    if(this.scrollableElements.getStarted && this.scrollableElements.differentiation) {
+      this.loadScrollableElements.emit(this.scrollableElements);
+    }
   }
 }

@@ -3,11 +3,13 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from '../data.service';
 import { OverviewModel, ResourceMaterial } from './model/overview.model';
+import { DifferentiationModel } from './model/differentiation.model';
 import { Alignment, ResourceDetailsModel, Playlist } from './model/resource-details.model';
 import { ResourceType } from './model/resource-type.enum';
 import { ResourceModel } from './model/resource.model';
 import { coalesce } from 'src/app/common/utils';
 import { ResourceStepModel } from './model/resource-step.model';
+import { ResourceStrategyConnection } from './model/resource-strategy.model';
 
 @Injectable({
   providedIn: 'root'
@@ -45,7 +47,8 @@ export class ResourceService {
       resourceType: resourceType,
       details: this.mapToResourceDetailsModel(apiResource),
       overview: this.mapToOverview(apiResource),
-      steps: this.mapToSteps(coalesce(apiResource.steps, []))
+      steps: this.mapToSteps(coalesce(apiResource.steps, [])),
+      differentiation: this.mapToDifferentiation(apiResource)
     };
   }
 
@@ -60,7 +63,6 @@ export class ResourceService {
       authorOrganization: apiResource.publisher,
       lastModified: new Date(apiResource.changed),
       
-
       claims: coalesce(apiResource.educationalAlignments, []).map(ea => <Alignment>{
         title: `${ea.shortName}: ${ea.title}`,
         shortName: ea.shortName
@@ -99,9 +101,6 @@ export class ResourceService {
         description: a.description
       }),
 
-      // UNKNOWN
-      differentiation: apiModel.differentiation,
-
       // /api/v1/resource.successCriteria
       successCriteria: apiModel.successCriteria
     }
@@ -113,5 +112,16 @@ export class ResourceService {
       title: s.title,
       content: s.content1
     }).sort(x => x.stepNumber);
+  }
+
+  mapToDifferentiation(apiModel): DifferentiationModel {
+    return {
+      performanceBasedDifferentiation: apiModel.differentiation,
+      accessibilityStrategies: apiModel.accessibilityStrategies.map(x => <ResourceStrategyConnection>{
+        title: x.title,
+        moreAboutUrl: x.link,
+        description: x.description
+      })
+    };
   }
 }

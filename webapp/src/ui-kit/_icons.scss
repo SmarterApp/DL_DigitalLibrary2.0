@@ -55,7 +55,7 @@ svg[class^="icon-"] {
   --icon-width: 1em;
   --icon-margin: 0.25em;
   text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin)));
-  sbdl-icon {
+  sbdl-icon, .svg-inline--fa {
       width: var(--icon-width);
       height: auto;
       margin-right: var(--icon-margin);

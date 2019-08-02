@@ -4,6 +4,7 @@ import { mockResourceModel } from 'src/app/data/mock-data';
 import { OverviewComponent } from '../overview/overview.component';
 import { ResourceContentComponent } from './resource-content.component';
 import { mockDataServiceProviders } from 'src/app/app.module.spec';
+import { ResourceModule } from '../../resource.module';
 
 describe('ResourceContentComponent', () => {
   let component: ResourceContentComponent;
@@ -11,8 +12,7 @@ describe('ResourceContentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ SbdlCommonModule ],
-      declarations: [ ResourceContentComponent, OverviewComponent ],
+      imports: [ ResourceModule ],
       providers: mockDataServiceProviders
     })
     .compileComponents();

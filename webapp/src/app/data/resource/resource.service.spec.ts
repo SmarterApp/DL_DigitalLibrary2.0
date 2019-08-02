@@ -52,7 +52,6 @@ describe('ResourceService', () => {
       expect(actualMaterial.url).toBe('https://tasks.illustrativemathematics.org/content-standards/tasks/408');
       expect(actualMaterial.description).toContain('Students will need to be given a copy of')
 
-      expect(actual.differentiation).toContain('If your students are <b>below</b>:');
       expect(actual.successCriteria).toContain('Students will be able to construct visual');
       expect(actual.learningGoal).toBe('The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.');
     })

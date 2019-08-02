@@ -30,17 +30,3 @@
     }
 }
 
-.placeholder {
-    opacity: 0.1;
-    border: dotted $neutral-300;
-}
-
-.placeholder:before {
-    content: 'Placeholder';
-
-    font-size: 80px;
-    transform: rotate(-315deg);
-    margin-top: 300px;
-    margin-left: -100px;
-    position: absolute;
-}
