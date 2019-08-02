@@ -1,0 +1,41 @@
+@import "colors";
+@import "spacing";
+
+.popover-parent {
+    position: relative;
+}
+
+.popover-container {      
+    position: absolute;
+    top: 1.5rem;
+    left: -23ch;
+    z-index: 1060;
+    display: block;
+    width: 40ch;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    text-align: start;
+    line-break: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid $neutral-100;
+    border-radius: .3rem;
+    padding: $spacer;
+    
+    // pointer on top
+    &:before {
+        content: "";
+        position: absolute;
+        border-style: solid;
+        border-width: 1px;
+        border-color:  $neutral-100 transparent transparent  $neutral-100;
+        background-color: $white;
+        width: 7px;
+        height: 7px;
+        transform: rotate(45deg);
+        top:-5px;
+        left: 20ch;
+    }
+}

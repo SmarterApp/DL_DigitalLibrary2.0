@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output, HostBinding, HostListener } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild, ViewContainerRef } from '@angular/core';
+import { PopoverService } from 'src/app/common/controls/popover/popover.service';
 import { coalesce } from 'src/app/common/utils';
 import { FavoriteService } from 'src/app/data/favorite/favorite.service';
 import { FavoriteResource } from 'src/app/data/favorite/model/favorite-resource.model';
 import { ResourceModel } from 'src/app/data/resource/model/resource.model';
 import { ScrollableElements } from '../../outline/scrollable-elements.model';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'sbdl-resource-content',
@@ -23,8 +23,17 @@ export class ResourceContentComponent implements OnInit {
 
   @Output()
   readingModeChanged = new EventEmitter<boolean>();
+
+  @ViewChild('shareButton', { static: false, read: ViewContainerRef })
+  shareContainer: ViewContainerRef;
+
+  @ViewChild('sharePopover', { static: false })
+  sharePopover: ElementRef;
+
   togglingFavorite = false;
   readingMode = false;
+  currentUrl: string;
+  showCopied = false;
 
 
   @HostListener('window:resize', ['$event'])
@@ -43,10 +52,13 @@ export class ResourceContentComponent implements OnInit {
     return this.model.details;
   }
 
-  constructor(private favoriteService: FavoriteService, private sanitizer: DomSanitizer) { }
+  constructor(
+    private popoverService: PopoverService,
+    private favoriteService: FavoriteService) { }
 
   ngOnInit() {
     this.onResize();
+    this.currentUrl = location.href;
   }
 
   setGetStarted($event) {
@@ -57,6 +69,19 @@ export class ResourceContentComponent implements OnInit {
       // TODO: once all elements have been populated then emit the event.
       this.loadScrollableElements.emit(this.scrollableElements);
     }
+  }
+
+  share() {
+    this.popoverService.open(this.shareContainer, this.sharePopover);
+  }
+
+  copyToClipboard(inputElement) {
+    console.log('copied');
+    inputElement.select();
+    document.execCommand('copy');
+    inputElement.setSelectionRange(0, 0);
+    this.showCopied = true;
+    setTimeout(() => this.showCopied = false, 5000);
   }
 
   toggleFavorite() {
