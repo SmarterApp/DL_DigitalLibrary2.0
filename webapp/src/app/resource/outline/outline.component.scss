@@ -76,7 +76,12 @@
     &::ng-deep {
         .outline-scrolled > .mdc-button:not(:disabled) {
             border-left: $action-500 solid 8px;
+            background-color: rgba($action-100,0.2);
         } 
+        
+        sbdl-button > .mdc-ripple-upgraded--background-focused {
+            background-color: $white !important;
+        }
     }
 
 }
