@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { MDCRipple } from '@material/ripple';
 
 @Component({
@@ -10,8 +10,17 @@ export class ButtonComponent implements OnInit {
   @ViewChild('button', { static: true })
   button: ElementRef;
 
+  /**
+   * Boolean value indicating if the button should be disabled
+   */
   @Input()
   disabled: boolean;
+
+  /**
+   * Emits when the button loses focus via [(blur)](https://angular.io/guide/user-input#on-blur)
+   */
+  @Output()
+  blur = new EventEmitter();
 
   constructor() { }
 
@@ -20,4 +29,7 @@ export class ButtonComponent implements OnInit {
     const buttonRipple = new MDCRipple(this.button.nativeElement);
   }
 
+  onBlur(event: any) {
+    this.blur.emit(event);
+  }
 }

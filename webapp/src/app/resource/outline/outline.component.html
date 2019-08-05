@@ -7,7 +7,7 @@
 </h6>
 <ul>
   <li>
-    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.getStarted)">
+    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.getStarted)" (blur)="removeClass(scrollableElements.getStarted)">
       <sbdl-icon icon="goal"></sbdl-icon>
       Get Started
     </sbdl-button>
@@ -26,13 +26,13 @@
     </sbdl-button>
   </li>
   <li>
-    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.differentiation)">
+    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.differentiation)" (blur)="removeClass(scrollableElements.differentiation)">
       <i class="far fa-universal-access"></i>
       Differentiation
     </sbdl-button>
   </li>
   <li>
-    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.formativeAssessmentProcess)">
+    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.formativeAssessmentProcess)" (blur)="removeClass(scrollableElements.formativeAssessmentProcess)">
       <sbdl-icon icon="strategies"></sbdl-icon>
       Formative Assessment Process
     </sbdl-button>  

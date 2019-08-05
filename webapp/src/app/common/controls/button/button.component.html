@@ -1,4 +1,4 @@
-<button #button class="mdc-button" [disabled]="disabled">
+<button #button class="mdc-button" [disabled]="disabled" (blur)="onBlur($event)">
   <span class="mdc-button__label">
     <ng-content></ng-content>
   </span>
