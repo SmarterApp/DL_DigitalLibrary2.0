@@ -78,4 +78,22 @@
     nav sbdl-outline:hover {
         width: 331px;
     }
+
+    &::ng-deep {
+        &.highlighted::before {
+            content: '';
+            position: absolute;
+            top: -$spacer;
+            bottom: -$spacer;
+            left: -3.5rem;
+            right: -$spacer-xl;
+            display: block;
+            background-color: rgba($action-100, 0.2);
+            border-color: rgba($action-500, 0.4);
+            border-radius: 0.25rem;
+            border-width: 0 0 0 4px;
+            border-style: solid;
+        }
+    }
+
 }
