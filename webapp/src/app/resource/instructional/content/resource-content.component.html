@@ -39,7 +39,7 @@
   </sbdl-button>
 </header>
 <sbdl-overview [model]="model.overview"  (sectionElementLoaded)="setGetStarted($event)"></sbdl-overview>
-<sbdl-step-by-step [models]="model.steps"></sbdl-step-by-step>
+<sbdl-step-by-step [models]="model.steps" (sectionElementLoaded)="setSteps($event)"></sbdl-step-by-step>
 <sbdl-differentiation [model]="model.differentiation" (sectionElementLoaded)="setDifferentiation($event)"></sbdl-differentiation>
 <sbdl-formative [model]="model.formative" (sectionElementLoaded)="setFormative($event)"></sbdl-formative>
 

@@ -21,6 +21,22 @@
 
         margin-block-start: 0;
         padding-inline-start: 0;
+
+        li {
+            position: relative; // required to keep the highlighted class only around this li.
+            margin-bottom: $spacer-lg;
+        }
+    }
+
+    .leading-icon {
+        text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin) + 9px));
+        sbdl-icon {
+            color: $brand-blue;
+            background: url('/assets/images/blue-spot.png') no-repeat;
+            background-size: contain;
+            padding: 7px;
+            font-size: 1.5rem;
+        }
     }
 
     &::ng-deep {
