@@ -9,7 +9,9 @@
         text="Define what the student will be able to do after completing this resource."
       ></sbdl-tooltip>
     </h5>
-    <p [innerHtml]="model.description"></p>
+    <p>
+      <sbdl-read-more [text] = "model.description"></sbdl-read-more>
+    </p>
   </div>
   <div>
     <h5>Learning Goal</h5>

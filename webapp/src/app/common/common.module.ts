@@ -7,6 +7,7 @@ import { TooltipComponent } from './controls/tooltip/tooltip.component';
 import { TooltipModule } from 'ng2-tooltip-directive';
 import { PopoverComponent } from './controls/popover/popover.component';
 import { CommonModule } from '@angular/common';
+import { ReadMoreComponent } from './controls/read-more/read-more.component';
 @NgModule({
     imports: [ TooltipModule, CommonModule ],
     declarations: [
@@ -15,12 +16,14 @@ import { CommonModule } from '@angular/common';
         IconComponent,
         SvgDefsComponent,
         TooltipComponent,
-        PopoverComponent
+        PopoverComponent,
+        ReadMoreComponent
     ],
     exports: [
         ButtonComponent,
         ButtonIconComponent,
         IconComponent,
+        ReadMoreComponent,
         SvgDefsComponent,
         TooltipComponent
     ],

@@ -127,8 +127,8 @@ const polyfillMissingApiData = {
 
 	//overview
 	altBody: `
-		In this task, students will engage with division of fraction tasks that uset hes ame context but require sutdents to divide the fractions 
-		in the opposite order.  Sutdents solve the tasks by creating visual models, selecting the equations that appropriately represents the situation,
+		In this task, students will engage with division of fraction tasks that use the same context but require students to divide the fractions 
+		in the opposite order.  Students solve the tasks by creating visual models, selecting the equations that appropriately represents the situation,
 		and confirming their solutions by solving said equations and comparing back to the visual models.  Students will work to answer the questions,
 		"How do these numbers and operations work together?"
 	`,
@@ -357,7 +357,7 @@ const polyfillMissingApiData2 = {
 
 	//overview
 	altBody: `
-		In this task, students will engage with division of fraction tasks that uset hes ame context but require sutdents to divide the fractions 
+		In this task, students will engage with division of fraction tasks that use the same context but require sutdents to divide the fractions 
 		in the opposite order.  Sutdents solve the tasks by creating visual models, selecting the equations that appropriately represents the situation,
 		and confirming their solutions by solving said equations and comparing back to the visual models.  Students will work to answer the questions,
 		"How do these numbers and operations work together?"
