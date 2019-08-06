@@ -1,34 +1,32 @@
-<div class="metadata-container">
-  <div class="image-thumbnail">
-    <img [src]="model.image">
+<div class="image-thumbnail">
+  <img [src]="model.image">
+</div>
+<div class="subjects-grades">
+  <!-- TODO: should be mapped; -->
+  <img src="/assets/images/math-2-problem-solving.png">
+  <div>
+    <h5 class="subjects">{{ model.subjects | join }}</h5>
+    <h6 class="grades">{{ model.grades | join }}</h6>
   </div>
-  <div class="subjects-grades">
-    <!-- TODO: should be mapped; -->
-    <img src="/assets/images/math-2-problem-solving.png">
-    <div>
-      <h5 class="subjects">{{ model.subjects | join }}</h5>
-      <h6 class="grades">{{ model.grades | join }}</h6>
-    </div>
-  </div>
-  <div class="details">
-    <ng-container *ngTemplateOutlet="alignment; context: { models: model.claims, title: 'Claim', titles: 'Claims' }"></ng-container>
-    <ng-container *ngTemplateOutlet="alignment; context: { models: model.targets, title: 'Target', titles: 'Targets' }"></ng-container>
-    <ng-container *ngTemplateOutlet="alignment; context: { models: model.standards, title: 'Standard', titles: 'Standards' }"></ng-container>
-  </div>
-  <div class="playlists">
-    <h6>Playlists</h6>
-    <caption>Connections playlists utilizing this resource.</caption>
-    <div *ngFor="let playlist of model.relatedPlaylists" class="playlist-card">
-        <sbdl-icon [icon]="playlist.assessmentTypeIcon" class="assessment-type-icon"></sbdl-icon>
-        <div class="playlist-title">
-          <div class="title">{{ playlist.title }}</div>
-          <div class="resources" [ngPlural]="playlist.numberOfResources" >
-            <ng-template ngPluralCase="=1">{{ playlist.numberOfResources }} resource</ng-template>
-            <ng-template ngPluralCase="other">{{ playlist.numberOfResources }} resources</ng-template>
-          </div>
+</div>
+<div class="details">
+  <ng-container *ngTemplateOutlet="alignment; context: { models: model.claims, title: 'Claim', titles: 'Claims' }"></ng-container>
+  <ng-container *ngTemplateOutlet="alignment; context: { models: model.targets, title: 'Target', titles: 'Targets' }"></ng-container>
+  <ng-container *ngTemplateOutlet="alignment; context: { models: model.standards, title: 'Standard', titles: 'Standards' }"></ng-container>
+</div>
+<div class="playlists">
+  <h6>Playlists</h6>
+  <span class="caption emphasis-medium">Connections playlists utilizing this resource.</span>
+  <div *ngFor="let playlist of model.relatedPlaylists" class="playlist-card">
+      <sbdl-icon [icon]="playlist.assessmentTypeIcon" class="assessment-type-icon"></sbdl-icon>
+      <div class="playlist-title">
+        <div class="title">{{ playlist.title }}</div>
+        <div class="resources" [ngPlural]="playlist.numberOfResources" >
+          <ng-template ngPluralCase="=1">{{ playlist.numberOfResources }} resource</ng-template>
+          <ng-template ngPluralCase="other">{{ playlist.numberOfResources }} resources</ng-template>
         </div>
-        <sbdl-icon icon="playlist-play" class="playlist-icon"></sbdl-icon>
-    </div>
+      </div>
+      <sbdl-icon icon="playlist-play" class="playlist-icon"></sbdl-icon>
   </div>
 </div>
 <ng-template #alignment let-alignments="models" let-title="title" let-titles="titles">

@@ -2,17 +2,26 @@
 @import 'colors';
 @import 'spacing';
 
+:host {
+    display: block;
+    max-width: none;
+}
+
 .formative-container {
-    font-size: $font-size-body-2;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: var(--measure);
+    width: var(--measure);
+    margin-right: $spacer-xl;
+    margin-left: $spacer-lg;
+    margin-bottom: $spacer-lg;
+    position: relative;
 
     .leading-icon {
+        text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin) + 10px));
         sbdl-icon {
             color: $brand-green;
             background: url('/assets/images/green-spot-3.png') no-repeat;
             background-size: contain;
-            padding: 10px;
+            padding: 7px;
             font-size: 1.5rem;
         }
     }
@@ -32,14 +41,5 @@
     .fa-arrow-right {
         color: $info-500;
         padding-left: $spacer-sm;
-    }
-
-    section {
-        margin-left: auto;
-        margin-right: auto;
-        h6{
-            margin-bottom: 0;
-            margin-top: 1.5rem;
-        }
     }
 }

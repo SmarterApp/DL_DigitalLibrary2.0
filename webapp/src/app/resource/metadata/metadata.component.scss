@@ -3,11 +3,11 @@
 @import "spacing";
 
 h5,h6 {
-    margin-bottom: 0;
+    margin-bottom: 0; 
     color: $brand-green; // Is this just in the metadata section?
 }
 
-.metadata-container {
+:host {
     padding-left: 20px;
 }
 

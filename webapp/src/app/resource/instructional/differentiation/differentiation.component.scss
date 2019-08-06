@@ -1,24 +1,19 @@
-@import 'fonts';
-@import 'colors';
-@import 'spacing';
+@import "colors";
+@import "spacing";
+@import "fonts";
+
+:host {
+    display: block;
+    max-width: none;
+}
 
 .differentiation-container {
-    font-size: $font-size-body-2;
-    margin-left: auto;
-    margin-right: auto;
-
-    .leading-icon{
-        display: inline-flex;
-        align-items: center;
-        margin-left: calc((-1) * (var(--icon-width) + var(--icon-margin)));
-        svg {
-            color: $brand-accent-gold;
-            background: url('/assets/images/yellow-spot-3.png') no-repeat;
-            background-size: contain;
-            padding: 10px;
-            font-size: 1.5rem;
-        }
-    }
+    max-width: var(--measure);
+    width: var(--measure);
+    margin-right: $spacer-xl;
+    margin-left: $spacer-lg;
+    margin-bottom: $spacer-lg;
+    position: relative;
 
     h6 {
         a,
@@ -32,17 +27,21 @@
         }
     }
 
+    .leading-icon{
+        display: inline-flex;
+        align-items: center;
+        margin-left: calc((-1) * (var(--icon-width) + var(--icon-margin) + 10px));
+        svg {
+            color: $warning-900;
+            background: url('/assets/images/yellow-spot-3.png') no-repeat;
+            background-size: contain;
+            padding: 7px;
+            font-size: 1.5rem;
+        }
+    }
+
     .fa-arrow-right {
         color: $info-500;
         padding-left: $spacer-sm;
-    }
-
-    section {
-        margin-left: auto;
-        margin-right: auto;
-        h6{
-            margin-bottom: 0;
-            margin-top: 1.5rem;
-        }
     }
 }

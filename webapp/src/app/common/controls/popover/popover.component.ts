@@ -14,6 +14,9 @@ export class PopoverComponent implements OnInit, AfterViewInit {
   @Output()
   onClose = new EventEmitter();
 
+  /**
+   * The ng-template to display in the popover.
+   */
   @Input()
   template;
 

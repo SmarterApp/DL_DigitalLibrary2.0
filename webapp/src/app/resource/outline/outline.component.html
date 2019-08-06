@@ -1,41 +1,40 @@
-<div class="outline-container">
-  <h6>
-    <span [hidden]="!readingMode">
-        <i class="fas fa-bars"></i>
-    </span> 
-    Outline
-  </h6>
-  <ul>
-    <li>
-      <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.getStarted)">
-        <sbdl-icon icon="goal"></sbdl-icon>
-        Get Started
-      </sbdl-button>
-    </li>
-    <li class="steps">
-      <sbdl-icon icon="steps"></sbdl-icon>
-      Step-by-Step
-      <ol>
-        <li *ngFor="let step of model.steps" ><sbdl-button class="step">{{ step.title }}</sbdl-button></li>
-      </ol>
-    </li>
-    <li>
-      <sbdl-button class="outline">
-        <i class="far fa-paperclip"></i>
-        Attachments
-      </sbdl-button>
-    </li>
-    <li>
-      <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.differentiation)">
-        <i class="far fa-universal-access"></i>
-        Differentiation
-      </sbdl-button>
-    </li>
-    <li>
-      <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.formativeAssessmentProcess)">
-        <sbdl-icon icon="strategies"></sbdl-icon>
-        Formative Assessment Process
-      </sbdl-button>  
-    </li>
-  </ul>
-</div>
+
+<h6>
+  <span [hidden]="!readingMode">
+      <i class="fas fa-bars"></i>
+  </span> 
+  Outline
+</h6>
+<ul>
+  <li>
+    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.getStarted)" (blur)="removeClass(scrollableElements.getStarted)">
+      <sbdl-icon icon="goal"></sbdl-icon>
+      Get Started
+    </sbdl-button>
+  </li>
+  <li class="steps">
+    <sbdl-icon icon="steps"></sbdl-icon>
+    Step-by-Step
+    <ol>
+      <li *ngFor="let step of model.steps" ><sbdl-button class="step">{{ step.title }}</sbdl-button></li>
+    </ol>
+  </li>
+  <li>
+    <sbdl-button class="outline">
+      <i class="far fa-paperclip"></i>
+      Attachments
+    </sbdl-button>
+  </li>
+  <li>
+    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.differentiation)" (blur)="removeClass(scrollableElements.differentiation)">
+      <i class="far fa-universal-access"></i>
+      Differentiation
+    </sbdl-button>
+  </li>
+  <li>
+    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.formativeAssessmentProcess)" (blur)="removeClass(scrollableElements.formativeAssessmentProcess)">
+      <sbdl-icon icon="strategies"></sbdl-icon>
+      Formative Assessment Process
+    </sbdl-button>  
+  </li>
+</ul>
