@@ -20,4 +20,4 @@ export interface ResourceModel {
     materials: InstructionalMaterialModel[];
     differentiation: DifferentiationModel;
     formative: FormativeModel;
-}
+} 

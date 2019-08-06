@@ -1,0 +1,31 @@
+@import "spacing";
+@import "fonts";
+
+:host {
+    display: block;
+    max-width: none;
+}
+
+.step-container {
+    max-width: var(--measure);
+    width: var(--measure);
+    margin-right: $spacer-xl;
+    margin-left: $spacer-lg;
+    margin-bottom: $spacer-lg;
+    position: relative;
+
+    ol {
+        font-weight: 500;
+        font-size: 1.4625rem;
+        line-height: 133%;
+
+        margin-block-start: 0;
+        padding-inline-start: 0;
+    }
+
+    &::ng-deep {
+        ul {
+            list-style-type: disc !important;
+        }
+    }
+}

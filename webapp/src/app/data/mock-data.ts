@@ -227,19 +227,132 @@ const polyfillMissingApiData = {
 	`,
 	steps: [{
 		number: 1,
-		title: 'Engage Students'
+		title: 'Engage Students',
+		content: `
+			<p>
+				Initiate the task by engaging students in the topic and clarifying intended learning. This task utilizes an approach called a Conceptual Bridge.
+			</p>
+			<p>
+				Ask students a simple division problem that you know they’ll be successful at – what is four divided by two? Ask a few students to share how they 
+				did the problem. They will likely say that they tried to figure out how many times three goes into six. Next ask them – what is two divided by ½? 
+				They will likely grapple through the task of figuring out how many times ½ goes into four. Ask them to explain why four makes sense. Then ask them – 
+				what is ½ divided by two – and ask a few students to share how they solved the problem and why. Then ask them – what is 2/3 divided by 1/2? Explain 
+				that is the type of problem they will be working to solve.
+			</p>`
 	}, {
 		number: 2,
-		title: 'Introduce Visual Representations'
+		title: 'Introduce Visual Representations',
+		content: `
+			<p>
+				Ask students to create a visual representation of the following scenario: ½ cup of water fills 2/3 of a container. 
+			</p>
+			<p>
+				Whiteboard or scratch paper may be useful for this task. 
+			</p>
+			<p>
+				As students are working, Circulate the Room to observe students working. As you circulate the room, pay attention to the following look-fors and 
+				take action to help move students forward as needed.
+			</p>
+			<ul>
+				<li>Confused about the terminology – cup vs. container. Clarify that a “cup” is a fixed amount, whereas a container can be a variety of sizes.</li>
+				<li>Struggling to understand what is meant by the word “fills”. Clarify that in this problem the ½ cup equals 2/3 of a container.</li>
+				<li>Not considering the scale of their drawings. Help them by explaining that it will help them to solve the problem if they consider the size of their representations.</li>
+				<li>Having trouble getting started. Help them start with the ½ cup since it is a simpler fraction. Depending on how they represent the ½ (e.g. area model, tape diagram, number 
+					line), help them then represent 2/3.</li>
+				<li>Labeling their representation appropriately. Work with students to add this element and explain the importance of labels.</li>
+			</ul>
+			<h6>Differentiation</h6>
+			<p><b>Support</b></p>
+			<p>
+				Modify the numbers in the problems to include a whole number divided by a fraction. This may provide access to students who are still making sense of fraction division.
+			</p>
+			<p><b>Challenge</b></p>
+			<p>
+				Change one of the numbers to a mixed number to extend student understanding about division of fractions with fractions greater than one.
+			</p>
+			<p>		
+				Students will create a visual model independently. You can pair them together to share their visual representations and explain their reasoning. 
+				Facilitate students providing Peer-to-Peer feedback. Consider providing Sentence Frames to support actionable student feedback. The students may 
+				adjust their models as their thinking and reasoning changes through discussion.
+			</p>
+			<p>
+				Strategically select student samples to be shared under a document camera for example, so that various types of visual fraction models will be 
+				explored by the whole class (e.g. area model, tape diagram, number line). Select student samples that represent variety amongst student work. Prime 
+				students prior to share their answers to these questions, so they will be confident in the moment.
+			</p>
+			<p>
+				Some possible questions to prompt students:
+				<ul>
+					<li>What are some advantages of each type of model?</li>
+					<li>What are some disadvantages of each type of model?</li>
+					<li>What other types of models may be appropriate for this situation?</li>
+				</ul>
+			</p>
+			<p>
+				Provide Verbal Feedback to students on-the-fly.
+			</p>
+		`
 	}, {
 		number: 3,
-		title: 'Numerical Representation'
+		title: 'Numerical Representation',
+		content: `
+			<p>
+				When students are ready, ask them (i.e., display the first problem in the student handout from Illustrative Mathematics): If 1/2 cup of water fills 2/3 of 
+				a plastic container, how many containers will 1 cup fill? Have them grapple independently before moving to a partner, and then whole class discussion.
+			</p>
+			<p>
+				Display the possible numerical representations. Students will independently select the equations that appropriately match their representations and solve 
+				the equations.
+			</p>
+			<p>		
+				With their partner, students will discuss their ideas. Again the teacher will Circulate the Room to elicit evidence of student thinking. Look for:
+			</p>
+			<ul>
+				<li>Did the student choose an equation with the wrong operation?</li>
+				<li>Did the student choose an equation that reversed the dividend and divisor?</li>
+				<li>
+					When solving the problem, did the student make an error in application of the division algorithm? Is the error in a basic arithmetic fact? (e.g.  
+					if the error is a basic math fact issue it could be supported through use of work in the area of computational fluency, arithmetic fact charts or 
+					a calculator, or if the error is a misapplication of the division algorithm it could be supported through reteach, or use of an alternate division 
+					algorithm)
+				</li>
+			</ul>
+			<p>Teacher will select a few students to share their discoveries with the class.</p>
+			<p>
+				Select students that represent a variety of ideas and approaches. Prime students prior to share their answers to these questions, so they will be 
+				confident in the moment.
+			</p>
+			<p>Possible probing questions:</p>
+			<ul>
+				<li>Is your answer what you expected? Why?</li>
+				<li>If your calculation didn’t match your model, in which result to you have more confidence? Why?</li>
+			</ul>
+		`
 	}, {
 		number: 4,
-		title: 'Check-In'
+		title: 'Check-In',
+		content: `
+			<p>
+				Ask students to Self-Assess their understanding of the first problem. Ask them to decide whether they are ready to try what they’ve learned to a new 
+				problem, or more practice (training wheels). Depending on the votes, decide whether to have the whole class move on to a practice problem, reteach, 
+				or some combination where some of the class gets additional instruction while the rest of the class attempts the next problem. Additionally, you can 
+				ask students to line up according to how confident they are in creating visual representations of division fraction problems. Use the Fold the Line 
+				approach and have students partner with a students who is on the opposite end of the confidence spectrum. Have them solve the problem together. 
+			</p>
+		`
 	}, {
 		number: 5,
-		title: 'Practice Problem'
+		title: 'Practice Problem',
+		content: `
+			<p>Depending on how the lesson is going you can decide how to make use of the following practice problem:</p>
+			<p>If 1/2 cup of water fills 2/3 of a plastic container, how many cups of water will the full container hold?</p>
+			<p>Solve the problem by drawing a picture.</p>
+			<p>Which of the following multiplication or divisions equations represents this situation? Explain your reasoning.</p>
+			<p>1/2 × 2/3 = ? </p>
+			<p>1/2 ÷ 2/3 = ? </p>
+			<p>2/3 ÷ 1/2 = ? </p>
+			<p>Solve the arithmetic problem you chose in part (3) and verify that you get the same answer as you did with your picture.</p>
+		`
 	}]
 
 };
