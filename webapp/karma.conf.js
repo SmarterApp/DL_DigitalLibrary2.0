@@ -31,8 +31,12 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['ChromeHeadless'],
     customLaunchers: {
-        ChromeDebug: { base: 'Chrome' }, 
-        FirefoxDebug: { base: 'Firefox' }
+        ChromeDebug: { base: 'Chrome', },
+        FirefoxDebug: { base: 'Firefox' },
+        ChromeNoSandbox: {
+          base: 'ChromeHeadless',
+          flags: ['--no-sandbox']
+        }
     },
     singleRun: false,
     restartOnFileChange: true
