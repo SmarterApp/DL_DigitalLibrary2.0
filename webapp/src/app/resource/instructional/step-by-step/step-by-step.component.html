@@ -1,0 +1,11 @@
+<article #header class="step-container">
+  <h4 class="leading-icon">
+    <sbdl-icon icon="steps"></sbdl-icon>Step By Step
+  </h4>
+  <ol>
+    <li *ngFor="let step of models" #steps>
+      <h5>{{ step.title }}</h5>
+      <div [innerHtml]="step.content"></div>
+    </li>
+  </ol>
+</article>

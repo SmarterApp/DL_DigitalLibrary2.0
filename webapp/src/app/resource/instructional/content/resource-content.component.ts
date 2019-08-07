@@ -76,6 +76,11 @@ export class ResourceContentComponent implements OnInit {
     this.emitScrollableElementsEvent();
   }
 
+  setSteps($event) {
+    this.scrollableElements = {...this.scrollableElements, steps: $event };
+    this.emitScrollableElementsEvent();
+  }
+
   share() {
     this.popoverService.open(this.shareContainer, this.sharePopover);
   }
@@ -114,7 +119,10 @@ export class ResourceContentComponent implements OnInit {
   }
 
   private emitScrollableElementsEvent() {
-    if(this.scrollableElements.getStarted && this.scrollableElements.differentiation && this.scrollableElements.formativeAssessmentProcess) {
+    if(this.scrollableElements.getStarted 
+        && this.scrollableElements.differentiation 
+        && this.scrollableElements.steps
+        && this.scrollableElements.formativeAssessmentProcess) {
       this.loadScrollableElements.emit(this.scrollableElements);
     }
   }

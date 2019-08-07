@@ -112,7 +112,7 @@ export class ResourceService {
     return apiSteps.map(s => <ResourceStepModel>{
       stepNumber: s.number,
       title: s.title,
-      content: s.content1
+      content: s.content
     }).sort(x => x.stepNumber);
   }
 

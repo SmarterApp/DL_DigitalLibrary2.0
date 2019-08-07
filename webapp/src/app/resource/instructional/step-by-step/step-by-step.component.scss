@@ -1,0 +1,47 @@
+@import "spacing";
+@import "fonts";
+
+:host {
+    display: block;
+    max-width: none;
+}
+
+.step-container {
+    max-width: var(--measure);
+    width: var(--measure);
+    margin-right: $spacer-xl;
+    margin-left: $spacer-lg;
+    margin-bottom: $spacer-lg;
+    position: relative;
+
+    ol {
+        font-weight: 500;
+        font-size: 1.4625rem;
+        line-height: 133%;
+
+        margin-block-start: 0;
+        padding-inline-start: 0;
+
+        li {
+            position: relative; // required to keep the highlighted class only around this li.
+            margin-bottom: $spacer-lg;
+        }
+    }
+
+    .leading-icon {
+        text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin) + 9px));
+        sbdl-icon {
+            color: $brand-blue;
+            background: url('/assets/images/blue-spot.png') no-repeat;
+            background-size: contain;
+            padding: 7px;
+            font-size: 1.5rem;
+        }
+    }
+
+    &::ng-deep {
+        ul {
+            list-style-type: disc !important;
+        }
+    }
+}
