@@ -135,6 +135,9 @@ const polyfillMissingApiData = {
 	attachments: [ {
 		name: 'Illustrative Mathematics Task: How Many Containers in One Cup / Cups in One Container?',
 		url: 'https://tasks.illustrativemathematics.org/content-standards/tasks/408',
+		mimeType: 'application/msword',
+		fileSize: 183000,
+		type: 'activity',
 		description: `
 			Students will need to be given a copy of the Illustrative Mathematics task.  This could be a paper copy for each student, or the task
 			could be projected via use of a Smartboard, or document camera.  The task could also be delivered to students electornically via

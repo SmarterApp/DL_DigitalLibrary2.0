@@ -40,6 +40,7 @@
 </header>
 <sbdl-overview [model]="model.overview"  (sectionElementLoaded)="setGetStarted($event)"></sbdl-overview>
 <sbdl-step-by-step [models]="model.steps" (sectionElementLoaded)="setSteps($event)"></sbdl-step-by-step>
+<sbdl-attachments [models]="model.attachments" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
 <sbdl-differentiation [model]="model.differentiation" (sectionElementLoaded)="setDifferentiation($event)"></sbdl-differentiation>
 <sbdl-formative [model]="model.formative" (sectionElementLoaded)="setFormative($event)"></sbdl-formative>
 

@@ -22,7 +22,7 @@
     </ol>
   </li>
   <li>
-    <sbdl-button class="outline">
+    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.attachments)" (blur)="removeClass(scrollableElements.attachments)">
       <i class="far fa-paperclip"></i>
       Attachments
     </sbdl-button>

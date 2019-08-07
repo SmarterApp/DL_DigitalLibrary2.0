@@ -1,8 +1,7 @@
 import { ResourceDetailsModel } from "./resource-details.model";
 import { OverviewModel } from "./overview.model";
 import { ResourceStepModel } from "./resource-step.model";
-import { ResourceStrategyModel } from "./resource-strategy.model";
-import { InstructionalMaterialModel } from "./instructional-material.model";
+import { AttachmentModel } from "./attachment.model";
 import { ResourceType } from './resource-type.enum';
 import { DifferentiationModel } from './differentiation.model';
 import { FormativeModel } from './formative.model';
@@ -17,7 +16,7 @@ export interface ResourceModel {
     details: ResourceDetailsModel;
     overview: OverviewModel;
     steps: ResourceStepModel[];
-    materials: InstructionalMaterialModel[];
+    attachments: AttachmentModel[];
     differentiation: DifferentiationModel;
     formative: FormativeModel;
 } 
