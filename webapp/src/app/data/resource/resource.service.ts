@@ -29,9 +29,9 @@ export class ResourceService {
     [ 1, 'assessment-6-7-number-system' ]
   ]);
 
-  readonly mimeTypeToFileTypeMap: Map<string, FileType> = new Map([
-    [ 'application/msword', FileType.Word ],
-    [ 'application/pdf', FileType.Pdf ]
+  readonly fileExtensionToFileTypeMap: Map<string, FileType> = new Map([
+    [ '.docx', FileType.Word ],
+    [ '.pdf', FileType.Pdf ]
   ]);
 
   constructor(private dataService: DataService) { }
@@ -103,13 +103,6 @@ export class ResourceService {
       // /api/v1/resource.learningGoals
       learningGoal: apiModel.learningGoals,
 
-      // UNKNOWN
-      resourceMaterials: apiModel.attachments.map(a => <ResourceMaterial>{
-        title: a.name,
-        url: a.url,
-        description: a.description
-      }),
-
       // /api/v1/resource.successCriteria
       successCriteria: apiModel.successCriteria
     }
@@ -124,13 +117,20 @@ export class ResourceService {
   }
 
   mapToAttachments(apiAttachments: any[]):AttachmentModel[] {
-    return apiAttachments.map(a => <AttachmentModel> {
-      title: a.name,
-      downloadUrl: a.url,
-      fileType: coalesce(this.mimeTypeToFileTypeMap.get(a.mimeType), FileType.Unknown),
-      fileSizeInKB: Math.round(a.fileSize / 1000),
-      type: a.type
-    })
+        return apiAttachments.map(a =>  { 
+          const filename = a.url.substring(a.url.lastIndexOf('/') + 1).toLowerCase();
+          const fileExtension = filename.substring(filename.lastIndexOf('.'));
+
+          return <AttachmentModel>{
+            title: a.name,
+            downloadUrl: a.url,
+            fileType: coalesce(this.fileExtensionToFileTypeMap.get(fileExtension), FileType.Unknown),
+            filename: filename,
+            fileExtension: fileExtension,
+            fileSizeInKB: Math.round(a.fileSize / 1000),
+            type: a.type
+        };
+      })
   }
 
   mapToDifferentiation(apiModel): DifferentiationModel {

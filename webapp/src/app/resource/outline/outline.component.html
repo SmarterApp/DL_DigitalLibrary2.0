@@ -12,7 +12,7 @@
       Get Started
     </sbdl-button>
   </li>
-  <li class="steps">
+  <li *ngIf="model.steps.length > 0" class="steps">
     <sbdl-icon icon="steps"></sbdl-icon>
     Step-by-Step
     <ol>
@@ -21,7 +21,7 @@
       </li>
     </ol>
   </li>
-  <li>
+  <li *ngIf="model.attachments.length > 0s">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.attachments)" (blur)="removeClass(scrollableElements.attachments)">
       <i class="far fa-paperclip"></i>
       Attachments

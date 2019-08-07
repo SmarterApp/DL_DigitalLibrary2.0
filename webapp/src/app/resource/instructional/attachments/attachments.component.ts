@@ -24,6 +24,8 @@ export class AttachmentsComponent implements OnInit {
   ngAfterViewInit(): void {
     if(this.headerElement) {
       this.sectionElementLoaded.emit(this.headerElement.nativeElement);
+    } else {
+      this.sectionElementLoaded.emit({});
     }
   }
 }

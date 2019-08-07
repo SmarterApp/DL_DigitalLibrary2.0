@@ -87,6 +87,16 @@ sbdl-icon[icon="info"] {
   font-size: 18px;
 }
 
+
+// Icons that should always have the same color
 svg #info {
   color: $info-500;
+}
+
+.fa-file-pdf {
+  color: #ff0000;
+}
+
+.fa-file-word {
+  color: #2B5797;
 }

@@ -2,6 +2,8 @@ export interface AttachmentModel {
     title: string;
     fileType: FileType;
     fileSizeInKB: number;
+    filename: string;
+    fileExtension: string;
     downloadUrl: string;
     type: string;
 }

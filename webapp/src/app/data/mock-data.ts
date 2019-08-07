@@ -28,6 +28,8 @@ export const mockResourceModel = <ResourceModel> {
 		successCriteria: 'Test Success Criteria',
 		differentiation: 'Test Differentiation'
 	},
+	attachments: [],
+	steps: [],
 	differentiation: <DifferentiationModel>{ 
 		accessibilityStrategies: []
 	},
@@ -134,15 +136,15 @@ const polyfillMissingApiData = {
 	`,
 	attachments: [ {
 		name: 'Illustrative Mathematics Task: How Many Containers in One Cup / Cups in One Container?',
-		url: 'https://tasks.illustrativemathematics.org/content-standards/tasks/408',
-		mimeType: 'application/msword',
+		// Assumption: we will be able to glean filename and file extension from the url path.
+		url: '/assets/mock-downloads/instructional-resource-content.docx',
 		fileSize: 183000,
-		type: 'activity',
-		description: `
-			Students will need to be given a copy of the Illustrative Mathematics task.  This could be a paper copy for each student, or the task
-			could be projected via use of a Smartboard, or document camera.  The task could also be delivered to students electornically via
-			Google or another online platform.
-		`
+		type: 'activity'
+	}, { 
+		name: 'Illustrative Mathematics Task: Video Game Credits',
+		url: '/assets/mock-downloads/video-game-credits.pdf',
+		fileSize: 82060,
+		type: 'activity'
 	}],
 	differentiation: `
 		<h6>Support</h6>
@@ -368,6 +370,8 @@ export const mockApiResource= {
 export const mockApiResourceWithNulls = {
 	...mockApiResource,
 	id: 0,
+	attachments: undefined,
+	steps: undefined,
 	subjects: undefined,
 	grades: undefined,
 	targetAlignments: undefined,
@@ -479,13 +483,16 @@ const polyfillMissingApiData2 = {
 		"How do these numbers and operations work together?"
 	`,
 	attachments: [ {
-		name: 'Illustrative Mathematics Task: How Many Containers in One Cup / Cups in One Container?',
-		url: 'https://tasks.illustrativemathematics.org/content-standards/tasks/408',
-		description: `
-			Students will need to be given a copy of the Illustrative Mathematics task.  This could be a paper copy for each student, or the task
-			could be projected via use of a Smartboard, or document camera.  The task could also be delivered to students electornically via
-			Google or another online platform.
-		`
+		name: 'Note Taking',
+		// Assumption: we will be able to glean filename and file extension from the url path.
+		url: '/assets/mock-downloads/note_taking.docx',
+		fileSize: 11664,
+		type: 'informational'
+	}, { 
+		name: 'Textual Evidence',
+		url: '/assets/mock-downloads/textual_evidence_revised.docx',
+		fileSize: 24928,
+		type: 'informational'
 	}],
 	differentiation: `
 		<p>

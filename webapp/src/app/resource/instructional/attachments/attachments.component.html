@@ -1,4 +1,4 @@
-<article #header class="attachments-container">
+<article *ngIf="models.length > 0" #header class="attachments-container">
   <h4 class="leading-icon">
       <i class="far fa-paperclip"></i>Attachments
   </h4>
@@ -6,11 +6,13 @@
   <div *ngFor="let attachment of models" class="attachment-card">
     <div class="type-info">
       <span class="attachment-type">{{ attachment.type }}</span>
-      <i class="far fa-file-word"></i>
+      <i class="far {{attachment.fileType | fileTypeIcon }}"></i>
     </div>
     <p>{{ attachment.title }}</p>
     <div>
-      <a href="javascript:void(0)" class="download-link">Download (.doc {{ attachment.fileSizeInKB }} KB)</a>
+      <a [href]="attachment.downloadUrl" [download]="attachment.filename" class="download-link">
+        Download ({{attachment.fileExtension}} {{ attachment.fileSizeInKB }} KB)
+      </a>
     </div>
   </div>
 </article>

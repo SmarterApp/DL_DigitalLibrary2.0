@@ -20,6 +20,7 @@
         background-repeat: no-repeat;
         background-size: auto 100%;
         border-radius: 2px;
+        margin-bottom: $spacer;
         
         // background-position: left 184px bottom;
         /* 1dp — Elevation */
@@ -39,10 +40,6 @@
                 letter-spacing: 0.08em;
                 color: rgba(33, 38, 47, 0.65);;
             }
-            .fa-file-word {
-                color: #2B5797;
-            }
-
         }
         .download-link {
             color: rgba($neutral-900, 0.65);
