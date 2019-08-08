@@ -20,7 +20,8 @@ export class ResourceService {
   // It's unclear what the potential values 
   // the API will return here.
   readonly apiResourceTypeMap: Map<string, ResourceType> = new Map([
-    ['Instructional and Professional Learning', ResourceType.Instructional ]
+    ['Instructional and Professional Learning', ResourceType.Instructional ],
+    ['Instructional', ResourceType.Instructional ]
   ]);
 
   // TODO: Define how assessment types are defined.  How will this be represented?
@@ -38,12 +39,16 @@ export class ResourceService {
 
   get(id: number): Observable<ResourceModel> {
     return this.dataService
-      .get(`/resource/${id}`)
+      .get(`/resources/${id}`)
       .pipe(map(apiModel => this.mapToResourceModel(apiModel)));
   }
 
   private mapToResourceModel(apiResource: any): ResourceModel {
-    const resourceType = this.apiResourceTypeMap.get(apiResource.resourceType);
+    const apiResourceType = Array.isArray(apiResource.resourceType)
+      ? apiResource.resourceType[0]
+      : apiResource.resourceType;
+    
+    const resourceType = this.apiResourceTypeMap.get(apiResourceType);
 
     if(resourceType == null) {
       throw Error('Unexpected resourceType for: ' + apiResource.resourceType);
@@ -65,12 +70,12 @@ export class ResourceService {
     return <ResourceDetailsModel> {
       title: apiResource.title,
       favorite: apiResource.favorite,
-      subjects: coalesce(apiResource.subjects, []),
-      grades: coalesce(apiResource.grades, []),
+      subjects: coalesce(apiResource.subject, []),
+      grades: coalesce(apiResource.grade, []),
       image: apiResource.resourceThumbnail,
       author: apiResource.author,
       authorOrganization: apiResource.publisher,
-      lastModified: new Date(apiResource.changed),
+      lastModified: new Date(apiResource.updated),
       
       claims: coalesce(apiResource.educationalAlignments, []).map(ea => <Alignment>{
         title: `${ea.shortName}: ${ea.title}`,
@@ -136,7 +141,7 @@ export class ResourceService {
   mapToDifferentiation(apiModel): DifferentiationModel {
     return {
       performanceBasedDifferentiation: apiModel.differentiation,
-      accessibilityStrategies: apiModel.accessibilityStrategies.map(x => <ResourceStrategyModel>{
+      accessibilityStrategies: coalesce(apiModel.accessibilityStrategies,[]).map(x => <ResourceStrategyModel>{
         title: x.title,
         moreAboutUrl: x.link,
         description: x.description
@@ -147,7 +152,7 @@ export class ResourceService {
   mapToFormative(apiModel): FormativeModel {
     return {
       howItsUsed: apiModel.connectionToFap,
-      strategies: apiModel.formativeStrategies.map(x => <ResourceStrategyModel>{
+      strategies: coalesce(apiModel.formativeStrategies,[]).map(x => <ResourceStrategyModel>{
         title: x.title,
         moreAboutUrl: x.link,
         description: x.description

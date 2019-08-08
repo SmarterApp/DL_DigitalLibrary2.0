@@ -14,13 +14,13 @@ type PublicPart<T> = {[K in keyof T]: T[K]}
 export class MockDataService implements PublicPart<DataService> {
   readonly mockGetDataEndpoints = [
     { pattern: /^\/userinfo$/, result: mockUser },
-    { pattern: /\/resource\/0$/, result: mockApiResourceWithNulls },
-    { pattern: /\/resource\/2$/, result: mockApiResource2 },
-    { pattern: /\/resource\/[0-9]/, result: mockApiResource }
+    { pattern: /\/resources\/0$/, result: mockApiResourceWithNulls },
+    { pattern: /\/resources\/2$/, result: mockApiResource2 },
+    { pattern: /\/resources\/[0-9]/, result: mockApiResource }
   ];
 
   readonly mockPostDataEndpoints = [
-    { pattern: /^\/favorites\/resource$/, post: body => this.setFavorite(body) },
+    { pattern: /^\/favorites\/resources$/, post: body => this.setFavorite(body) },
   ];
 
   readonly resources = [ mockApiResource, mockApiResource2 ];

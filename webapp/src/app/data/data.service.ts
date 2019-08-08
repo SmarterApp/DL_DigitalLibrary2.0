@@ -2,12 +2,17 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { AppConfig } from '../common/config/app.config';
 
 const jsonContentType = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
   })
 };
+
+const jsonHeaders = {
+  'Content-Type':  'application/json'
+}
 
 const pdfContentType = <any>{
   headers: new HttpHeaders({
@@ -31,7 +36,16 @@ export class DataService {
   constructor(private httpService: HttpClient) { }
 
   get(url: string, params?: any): Observable<any> {
-    return this.httpService.get(url, { ... jsonContentType, params: params })
+    const fullUrl = AppConfig.settings.apiServer.cdl + url;
+    const options = {
+      headers: new HttpHeaders({
+        ...jsonHeaders,
+        'Authorization': 'Bearer ' + AppConfig.settings.apiServer.authToken
+      }),
+      params: params
+    };
+
+    return this.httpService.get(fullUrl, options)
       .pipe(
           catchError(this.handleError)
       );

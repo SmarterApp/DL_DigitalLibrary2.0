@@ -30,7 +30,7 @@
       >{{ details.authorOrganization }}</span
     >
   </section>
-  <span class="caption">
+  <span *ngIf="details.lastModified" class="caption">
     <span class="emphasis-medium">Updated</span>
     {{ details.lastModified | date: 'mediumDate' }}
   </span>
@@ -43,7 +43,6 @@
 <sbdl-attachments [models]="model.attachments" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
 <sbdl-differentiation [model]="model.differentiation" (sectionElementLoaded)="setDifferentiation($event)"></sbdl-differentiation>
 <sbdl-formative [model]="model.formative" (sectionElementLoaded)="setFormative($event)"></sbdl-formative>
-
 <ng-template #sharePopover>
   <div class="share-popover">
       <h6>Share this resource</h6>
