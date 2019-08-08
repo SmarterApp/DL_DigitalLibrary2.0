@@ -12,8 +12,13 @@ phases:
       - cd webapp && npm install
   build:
     commands:
+      # CWD is $repo/webapp
       - echo "Build started by $CODEBUILD_INITIATOR"
       - npm run build-ci
+  post_build:
+    commands:
+      # CWD is $repo/webapp
+      - codebuild/deploy.sh
 
 artifacts:
   files:
