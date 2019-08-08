@@ -23,7 +23,7 @@ export class OutlineComponent implements OnInit {
   }
 
   scrollToElement(element: Element): void {
-    element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
     element.classList.add('highlighted');
   }
 

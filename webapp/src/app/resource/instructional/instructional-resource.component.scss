@@ -83,7 +83,7 @@
         &.highlighted::before {
             content: '';
             position: absolute;
-            top: -$spacer;
+            top: 0;
             bottom: -$spacer;
             left: -3.5rem;
             right: -$spacer-xl;
