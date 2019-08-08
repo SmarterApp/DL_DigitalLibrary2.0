@@ -14,6 +14,7 @@ import {TooltipModule} from 'ng2-tooltip-directive';
 import { DifferentiationComponent } from './instructional/differentiation/differentiation.component';
 import { FormativeComponent } from './instructional/formative/formative.component';
 import { StepByStepComponent } from './instructional/step-by-step/step-by-step.component';
+import { AttachmentsComponent } from './instructional/attachments/attachments.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -27,7 +28,7 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     ResourceTypeStrategyComponent, 
     ResourceHostDirective, 
     OutlineComponent, 
-    MetadataComponent, DifferentiationComponent, FormativeComponent, StepByStepComponent
+    MetadataComponent, DifferentiationComponent, FormativeComponent, StepByStepComponent, AttachmentsComponent
   ],
   imports: [
     CommonModule,

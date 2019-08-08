@@ -11,6 +11,7 @@ import { ResourceStepModel } from './model/resource-step.model';
 import { ResourceStrategyModel } from './model/resource-strategy.model';
 import { ResourceType } from './model/resource-type.enum';
 import { ResourceModel } from './model/resource.model';
+import { AttachmentModel, FileType } from './model/attachment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,11 @@ export class ResourceService {
   // TODO: Define all assessment type icons.
   readonly assessmentTypeToIconMap: Map<number, string> = new Map([
     [ 1, 'assessment-6-7-number-system' ]
+  ]);
+
+  readonly fileExtensionToFileTypeMap: Map<string, FileType> = new Map([
+    [ '.docx', FileType.Word ],
+    [ '.pdf', FileType.Pdf ]
   ]);
 
   constructor(private dataService: DataService) { }
@@ -49,6 +55,7 @@ export class ResourceService {
       details: this.mapToResourceDetailsModel(apiResource),
       overview: this.mapToOverview(apiResource),
       steps: this.mapToSteps(coalesce(apiResource.steps, [])),
+      attachments: this.mapToAttachments(coalesce(apiResource.attachments, [])),
       differentiation: this.mapToDifferentiation(apiResource),
       formative: this.mapToFormative(apiResource)
     };
@@ -96,13 +103,6 @@ export class ResourceService {
       // /api/v1/resource.learningGoals
       learningGoal: apiModel.learningGoals,
 
-      // UNKNOWN
-      resourceMaterials: apiModel.attachments.map(a => <ResourceMaterial>{
-        title: a.name,
-        url: a.url,
-        description: a.description
-      }),
-
       // /api/v1/resource.successCriteria
       successCriteria: apiModel.successCriteria
     }
@@ -114,6 +114,23 @@ export class ResourceService {
       title: s.title,
       content: s.content
     }).sort(x => x.stepNumber);
+  }
+
+  mapToAttachments(apiAttachments: any[]):AttachmentModel[] {
+        return apiAttachments.map(a =>  { 
+          const filename = a.url.substring(a.url.lastIndexOf('/') + 1).toLowerCase();
+          const fileExtension = filename.substring(filename.lastIndexOf('.'));
+
+          return <AttachmentModel>{
+            title: a.name,
+            downloadUrl: a.url,
+            fileType: coalesce(this.fileExtensionToFileTypeMap.get(fileExtension), FileType.Unknown),
+            filename: filename,
+            fileExtension: fileExtension,
+            fileSizeInKB: Math.round(a.fileSize / 1000),
+            type: a.type
+        };
+      })
   }
 
   mapToDifferentiation(apiModel): DifferentiationModel {

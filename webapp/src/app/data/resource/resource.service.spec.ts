@@ -1,7 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { ResourceService } from './resource.service';
-import { mockDataServiceProviders } from 'src/app/app.module.spec';
+import { mockDataServiceProviders, initializeSettingsProvider } from 'src/app/app.module.spec';
 import { ResourceType } from './model/resource-type.enum';
+import { FileType } from './model/attachment.model';
+import { DataService } from '../data.service';
+import { MockDataService } from '../mock-data.service';
+import { LoggingService } from 'src/app/common/logging/logging.service';
+import { mockApiResource } from '../mock-data';
+import { of } from 'rxjs';
 
 describe('ResourceService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -37,6 +43,8 @@ describe('ResourceService', () => {
       expect(actual.targets).toEqual([]);
       expect(actual.claims).toEqual([]);
       expect(actual.standards).toEqual([]);
+      expect(resource.steps).toEqual([]);
+      expect(resource.attachments).toEqual([]);
     });
   });
 
@@ -45,15 +53,63 @@ describe('ResourceService', () => {
     service.get(1).subscribe(resource => {
       const actual = resource.overview;
       expect(actual.description).toContain('In this task, students will engage');
-      expect(actual.resourceMaterials.length).toBe(1);
-
-      const actualMaterial = actual.resourceMaterials[0];
-      expect(actualMaterial.title).toBe('Illustrative Mathematics Task: How Many Containers in One Cup / Cups in One Container?');
-      expect(actualMaterial.url).toBe('https://tasks.illustrativemathematics.org/content-standards/tasks/408');
-      expect(actualMaterial.description).toContain('Students will need to be given a copy of')
-
       expect(actual.successCriteria).toContain('Students will be able to construct visual');
       expect(actual.learningGoal).toBe('The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.');
+    })
+  });
+
+  it('should map attachments', () => {
+    const service: ResourceService = TestBed.get(ResourceService);
+    service.get(1).subscribe(resource => {
+      const actual = resource.attachments[0];
+
+      expect(actual.title).toBe('Illustrative Mathematics Task: How Many Containers in One Cup / Cups in One Container?')
+      expect(actual.downloadUrl).toBe('/assets/mock-downloads/instructional-resource-content.docx');
+      expect(actual.filename).toBe('instructional-resource-content.docx');
+      expect(actual.fileExtension).toBe('.docx');
+      expect(actual.fileType).toBe(FileType.Word);
+      expect(actual.fileSizeInKB).toBe(183);
+      expect(actual.type).toBe('activity');
+    })
+  });
+
+  it('should map attachments', () => {
+    const service: ResourceService = TestBed.get(ResourceService);
+    service.get(1).subscribe(resource => {
+      const actual = resource.attachments[0];
+
+      expect(actual.title).toBe('Illustrative Mathematics Task: How Many Containers in One Cup / Cups in One Container?')
+      expect(actual.downloadUrl).toBe('/assets/mock-downloads/instructional-resource-content.docx');
+      expect(actual.filename).toBe('instructional-resource-content.docx');
+      expect(actual.fileExtension).toBe('.docx');
+      expect(actual.fileType).toBe(FileType.Word);
+      expect(actual.fileSizeInKB).toBe(183);
+      expect(actual.type).toBe('activity');
+    })
+  });
+
+  it('should map unknown extension to unknown file type', () => {
+    // Change the testing module to return a resource with an attachment that has a file extension not in the file type map.
+    TestBed.configureTestingModule({
+      providers: [ 
+          { provide: DataService, 
+            useValue: { 
+              get: (id) => {
+                return of({ 
+                  ... mockApiResource, 
+                  attachments: [ {... mockApiResource.attachments[0], url: '/test.xyz' } ] })
+                }
+            } 
+          }, 
+          LoggingService, 
+          initializeSettingsProvider 
+      ]
+    });
+
+    const service: ResourceService = TestBed.get(ResourceService);
+    service.get(1).subscribe(resource => {
+      const actual = resource.attachments[0];
+      expect(actual.fileType).toBe(FileType.Unknown);
     })
   });
 

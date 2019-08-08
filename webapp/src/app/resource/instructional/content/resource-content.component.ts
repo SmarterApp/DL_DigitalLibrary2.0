@@ -45,7 +45,6 @@ export class ResourceContentComponent implements OnInit {
     }
   }
 
-
   private scrollableElements: ScrollableElements;
 
   get details() {
@@ -78,6 +77,11 @@ export class ResourceContentComponent implements OnInit {
 
   setSteps($event) {
     this.scrollableElements = {...this.scrollableElements, steps: $event };
+    this.emitScrollableElementsEvent();
+  }
+
+  setAttachments($event) {
+    this.scrollableElements = {...this.scrollableElements, attachments: $event };
     this.emitScrollableElementsEvent();
   }
 
@@ -122,6 +126,7 @@ export class ResourceContentComponent implements OnInit {
     if(this.scrollableElements.getStarted 
         && this.scrollableElements.differentiation 
         && this.scrollableElements.steps
+        && this.scrollableElements.attachments
         && this.scrollableElements.formativeAssessmentProcess) {
       this.loadScrollableElements.emit(this.scrollableElements);
     }

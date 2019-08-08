@@ -8,7 +8,6 @@ import { ResourceStepModel } from 'src/app/data/resource/model/resource-step.mod
 })
 export class StepByStepComponent implements OnInit, AfterViewInit {
 
-
   @Input()
   models: ResourceStepModel[];
 
@@ -24,7 +23,10 @@ export class StepByStepComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.sectionElementLoaded.emit(this.stepElementRefs.map(x => x.nativeElement));
+    if(this.stepElementRefs) {
+      this.sectionElementLoaded.emit(this.stepElementRefs.map(x => x.nativeElement));
+    } else {
+      this.sectionElementLoaded.emit([]);
+    }
   }
-
 }

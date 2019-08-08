@@ -1,12 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { StepByStepComponent } from './step-by-step.component';
 import { ResourceModule } from '../../resource.module';
+import { AttachmentsComponent } from './attachments.component';
 import { mockResourceModel } from 'src/app/data/mock-data';
 
-describe('StepByStepComponent', () => {
-  let component: StepByStepComponent;
-  let fixture: ComponentFixture<StepByStepComponent>;
+describe('AttachmentsComponent', () => {
+  let component: AttachmentsComponent;
+  let fixture: ComponentFixture<AttachmentsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,9 +15,9 @@ describe('StepByStepComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StepByStepComponent);
+    fixture = TestBed.createComponent(AttachmentsComponent);
     component = fixture.componentInstance;
-    component.models = mockResourceModel.steps;
+    component.models = mockResourceModel.attachments;
     fixture.detectChanges();
   });
 
