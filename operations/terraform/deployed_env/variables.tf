@@ -19,3 +19,9 @@ variable "route53_zone_id" {
 variable "log_bucket_id" {
   description = "Id of the S3 bucket to which logs should be written."
 }
+
+variable "cloudfront_ssl_certificate_arn" {
+  description = "ARN of the managed SSL certificate to use for this environment."
+  default = "arn:aws:acm:us-east-1:021548413574:certificate/4f3ba860-b25a-401e-a871-cc1270dee9be"
+}
+

@@ -106,7 +106,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   viewer_certificate {
     # Note that this certificate is managed outside of this Terraform
     # module
-    acm_certificate_arn = "arn:aws:acm:us-east-1:021548413574:certificate/4f3ba860-b25a-401e-a871-cc1270dee9be"
+    acm_certificate_arn = "${var.cloudfront_ssl_certificate_arn}"
     ssl_support_method  = "sni-only"
   }
 }
