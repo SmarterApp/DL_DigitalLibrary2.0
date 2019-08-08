@@ -14,7 +14,9 @@ phases:
     commands:
       # CWD is $repo/webapp
       - echo "Build started by $CODEBUILD_INITIATOR"
-      - npm run build-ci
+      # TODO we may eventually want logic here to allow different environment
+      # targets to point at either the mock API or the live API
+      - npm run build-ci --c standalone
   post_build:
     commands:
       # CWD is $repo/webapp
