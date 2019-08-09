@@ -2,7 +2,7 @@
 @import 'typography';
 
 :host {
-    margin-top: 4rem;
+    padding-top: 4rem;
 
     h6 {
         font-family: $font-family-title;
@@ -25,6 +25,7 @@
         font-size: 1rem;
         color: $neutral-900;
     }
+
     ul > li {
         border-top: 1px solid $neutral-100;
         width: 100%;
@@ -33,14 +34,14 @@
             white-space: pre;
         }
         padding: 8px 0 8px 8px;
-        &.steps {
-            padding: 1rem;
-        }
-
         sbdl-icon, svg {
             color: rgba($neutral-900, 0.65);
             padding-right: 8px;
         };
+    }
+
+    .steps-header {
+        padding: 0.5rem;
     }
     ul > li:first-child {
         border-top: none;
@@ -48,9 +49,7 @@
 
     ol {
         list-style-type: none;
-        margin-left: 0;
-        padding-left: 8px;
-        padding-top: 17px;
+        padding-left: 13px;
     }
 
     ol > li:before {

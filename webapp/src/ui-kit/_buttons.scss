@@ -36,9 +36,9 @@
 
 .step > .mdc-button:not(:disabled) {
     color: $neutral-900;
-    width: calc(100% + 17px);
-    margin-left: -12px;
-    padding-left: 31px;
+    width: calc(100% + 15px);
+    margin-left: -15px;
+    padding-left: 36px;
     padding-right: 28px;
 
     // ellipsis for overflow
@@ -61,6 +61,7 @@
 
 .step > .mdc-button:not(:disabled):focus {
     border-left: $action-500 solid 4px;
+    margin-left: -19px;
 }
 
 .step > .mdc-button:before,
