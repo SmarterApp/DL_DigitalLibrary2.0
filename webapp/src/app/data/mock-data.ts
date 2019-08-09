@@ -463,7 +463,7 @@ const polyfillMissingApiData2 = {
 		{ title: 'Central Ideas', shortName: '9' },
 		{ title: 'Use Evidence', shortName: '4' }
 	],
-	learningGoals: 'The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.',
+	learningGoals: 'The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.  The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.',
 	connectionsPlaylist: [ {
 		title: 'Grade 6 Science',
 		numberOfResources: 24,
