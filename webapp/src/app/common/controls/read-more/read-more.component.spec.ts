@@ -1,7 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ReadMoreComponent } from './read-more.component';
-import { By } from '@angular/platform-browser';
 
 describe('ReadMoreComponent', () => {
   let component: ReadMoreComponent;
