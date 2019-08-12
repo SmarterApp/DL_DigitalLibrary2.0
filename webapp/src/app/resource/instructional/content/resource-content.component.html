@@ -37,7 +37,7 @@
     <span class="emphasis-medium">Updated</span>
     {{ details.lastModified | date: 'mediumDate' }}
   </span>
-  <sbdl-button class="primary">
+  <sbdl-button class="primary" (click)="scrollToAttachments()">
     <i class="far fa-paperclip"></i> Attachments
   </sbdl-button>
 </header>
