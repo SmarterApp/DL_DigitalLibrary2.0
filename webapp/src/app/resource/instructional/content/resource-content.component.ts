@@ -89,6 +89,12 @@ export class ResourceContentComponent implements OnInit {
     this.popoverService.open(this.shareContainer, this.sharePopover);
   }
 
+  scrollToAttachments() {
+    if(this.scrollableElements && this.scrollableElements.attachments) {
+      this.scrollableElements.attachments.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+    }
+  }
+
   copyToClipboard(inputElement) {
     inputElement.select();
     document.execCommand('copy');

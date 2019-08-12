@@ -1,1 +1,1 @@
-{{ displayText }} <a href="javascript:void(0)" (click)="toggleCollapsed()">{{ collapsed ? 'more' : 'less' }}</a>
+{{ displayText }}<a *ngIf="collapsible" href="javascript:void(0)" (click)="toggleCollapsed()">{{ collapsed ? 'more' : 'less' }}</a>

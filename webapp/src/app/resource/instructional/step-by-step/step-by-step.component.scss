@@ -7,8 +7,8 @@
 }
 
 .step-container {
+    padding-top: $spacer;
     max-width: var(--measure);
-    width: var(--measure);
     margin-right: $spacer-xl;
     margin-left: $spacer-lg;
     margin-bottom: $spacer-lg;
@@ -24,7 +24,7 @@
 
         li {
             position: relative; // required to keep the highlighted class only around this li.
-            margin-bottom: $spacer-lg;
+            padding-top: $spacer;
         }
     }
 

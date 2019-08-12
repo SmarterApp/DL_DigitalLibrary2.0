@@ -1,6 +1,7 @@
 @import "spacing";
 @import "fonts";
 @import "colors";
+@import "@material/ripple/mdc-ripple";
 
 :host {
     display: block;
@@ -8,22 +9,31 @@
 }
 
 .attachments-container {
+    padding-top: $spacer;
     max-width: var(--measure);
-    width: var(--measure);
     margin-right: $spacer-xl;
     margin-left: $spacer-lg;
     margin-bottom: $spacer-lg;
     position: relative;
 
     .attachment-card  {
+        @include mdc-ripple-surface;
+        @include mdc-ripple-radius-bounded;
+        @include mdc-states;
+
         background-image: url('/assets/images/attachment-card-bg.png');
         background-repeat: no-repeat;
         background-size: auto 100%;
+    
         border-radius: 2px;
         margin-bottom: $spacer;
-        
-        // background-position: left 184px bottom;
-        /* 1dp — Elevation */
+        cursor: pointer;
+        display: block;
+        color: $neutral-900;
+
+        // keeps the ripple inside the card.
+        position: relative;
+        overflow: hidden;
 
         box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 0px 2px rgba(0, 0, 0, 0.14);
         padding: $spacer $spacer $spacer $spacer-md;
@@ -41,7 +51,7 @@
                 color: rgba(33, 38, 47, 0.65);;
             }
         }
-        .download-link {
+        .download-text{
             color: rgba($neutral-900, 0.65);
         }
     }

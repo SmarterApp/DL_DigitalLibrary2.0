@@ -6,20 +6,12 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
     max-width: none;
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: calc(50% - 32.4ch - 42px);
-        display: block;
-        width: 100px;
-        height: 46px;
-        background-image: url('./../../../../assets/images/yellow-spot.png');
-        background-position: top left;
-        background-size: cover;
-        background-repeat: no-repeat;
+    .top-header {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: baseline;
     }
     .actions {
         align-self: flex-end;
@@ -64,6 +56,19 @@
     .modified-info {
         font-size: 0.8em;
         font-style: italic;
+    }
+
+    hr {
+        width:100%;
+        height: 1px;
+        color: $neutral-900;
+        background-color: $neutral-900;
+        border:none;
+
+        padding-left: 5rem;
+        opacity: 0.2;
+        transform: translateX(-1.5rem);
+        margin-bottom: 51px;
     }
 }
 

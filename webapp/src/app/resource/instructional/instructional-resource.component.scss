@@ -36,7 +36,6 @@
 
     .resource-content {
         padding: 0 $spacer-lg;
-        flex-grow:1;
         max-width: none;
     }
     .metadata {
@@ -83,7 +82,7 @@
         &.highlighted::before {
             content: '';
             position: absolute;
-            top: -$spacer;
+            top: 0;
             bottom: -$spacer;
             left: -3.5rem;
             right: -$spacer-xl;
