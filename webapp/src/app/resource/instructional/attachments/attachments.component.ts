@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter, ViewChildren } from '@angular/core';
+import { MDCRipple } from '@material/ripple/component';
 
 @Component({
   selector: 'sbdl-attachments',
@@ -16,16 +17,25 @@ export class AttachmentsComponent implements OnInit {
   @ViewChild('header', { static: false })
   headerElement: ElementRef;
 
+
+  @ViewChildren('attachments')
+  attachmentElementRefs: ElementRef[];
+
   constructor() { }
 
   ngOnInit() {
   }
-
+  
   ngAfterViewInit(): void {
     if(this.headerElement) {
       this.sectionElementLoaded.emit(this.headerElement.nativeElement);
     } else {
       this.sectionElementLoaded.emit({});
+    }
+
+    // Add ripples
+    for(let attachmentRef of this.attachmentElementRefs) {
+      MDCRipple.attachTo(attachmentRef.nativeElement);
     }
   }
 }
