@@ -13,6 +13,8 @@ h5,h6 {
 }
 
 .image-thumbnail {
+    width: fit-content;
+    background-color: $white;
     margin-top: 16px;
     margin-right: 5px;
     border: 8px solid #FFFFFF;
