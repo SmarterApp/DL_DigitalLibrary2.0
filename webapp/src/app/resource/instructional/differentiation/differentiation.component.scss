@@ -8,8 +8,8 @@
 }
 
 .differentiation-container {
+    padding-top: $spacer;
     max-width: var(--measure);
-    width: var(--measure);
     margin-right: $spacer-xl;
     margin-left: $spacer-lg;
     margin-bottom: $spacer-lg;
@@ -28,15 +28,14 @@
     }
 
     .leading-icon{
-        display: inline-flex;
-        align-items: center;
-        margin-left: calc((-1) * (var(--icon-width) + var(--icon-margin) + 10px));
+        margin-left: -19px;
         svg {
             color: $warning-900;
             background: url('/assets/images/yellow-spot-3.png') no-repeat;
             background-size: contain;
             padding: 7px;
-            font-size: 1.5rem;
+            margin-bottom: -7px;
+            font-size: 2rem;
         }
     }
 

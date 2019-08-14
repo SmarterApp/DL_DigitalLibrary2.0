@@ -1,10 +1,10 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild, ViewContainerRef } from '@angular/core';
 import { PopoverService } from 'src/app/common/controls/popover/popover.service';
-import { coalesce } from 'src/app/common/utils';
 import { FavoriteService } from 'src/app/data/favorite/favorite.service';
 import { FavoriteResource } from 'src/app/data/favorite/model/favorite-resource.model';
 import { ResourceModel } from 'src/app/data/resource/model/resource.model';
 import { ScrollableElements } from '../../outline/scrollable-elements.model';
+import { getCssVar } from 'src/app/common/utils';
 
 @Component({
   selector: 'sbdl-resource-content',
@@ -12,8 +12,6 @@ import { ScrollableElements } from '../../outline/scrollable-elements.model';
   styleUrls: ['./resource-content.component.scss']
 })
 export class ResourceContentComponent implements OnInit {
-
-  readonly ReadingModeDefaultWidth = 1200;
 
   @Input()
   model: ResourceModel;
@@ -32,16 +30,20 @@ export class ResourceContentComponent implements OnInit {
 
   togglingFavorite = false;
   readingMode = false;
+  hideReadingModeToggle = false;
   currentUrl: string;
   showCopied = false;
 
+  private readingModeDefaultWidth = 1200;
 
   @HostListener('window:resize', ['$event'])
   onResize(event?) {
-    if(window.innerWidth < this.ReadingModeDefaultWidth && !this.readingMode) {
+    if(window.innerWidth < this.readingModeDefaultWidth && !this.readingMode) {
       this.toggleReadingMode();
-    } else if(window.innerWidth >= this.ReadingModeDefaultWidth && this.readingMode){
+      this.hideReadingModeToggle = true;
+    } else if((window.innerWidth >= this.readingModeDefaultWidth) && this.readingMode){
       this.toggleReadingMode();
+      this.hideReadingModeToggle = false;
     }
   }
 
@@ -55,9 +57,11 @@ export class ResourceContentComponent implements OnInit {
     private popoverService: PopoverService,
     private favoriteService: FavoriteService) { }
 
+
   ngOnInit() {
     this.onResize();
     this.currentUrl = location.href;
+    this.readingModeDefaultWidth = getCssVar('--breakpoint-lg');
   }
 
   setGetStarted($event) {
@@ -76,7 +80,7 @@ export class ResourceContentComponent implements OnInit {
   }
 
   setSteps($event) {
-    this.scrollableElements = {...this.scrollableElements, steps: $event };
+    this.scrollableElements = {...this.scrollableElements, steps: $event }; 
     this.emitScrollableElementsEvent();
   }
 
@@ -87,6 +91,12 @@ export class ResourceContentComponent implements OnInit {
 
   share() {
     this.popoverService.open(this.shareContainer, this.sharePopover);
+  }
+
+  scrollToAttachments() {
+    if(this.scrollableElements && this.scrollableElements.attachments) {
+      this.scrollableElements.attachments.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+    }
   }
 
   copyToClipboard(inputElement) {

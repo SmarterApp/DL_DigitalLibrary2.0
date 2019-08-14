@@ -3,16 +3,14 @@
       <i class="far fa-paperclip"></i>Attachments
   </h4>
   <p>This resource relies on the following materials. Download them to use.</p>
-  <div *ngFor="let attachment of models" class="attachment-card">
+  <a *ngFor="let attachment of models" [href]="attachment.downloadUrl" [download]="attachment.filename"  class="attachment-card"  #attachments>
     <div class="type-info">
       <span class="attachment-type">{{ attachment.type }}</span>
       <i class="far {{attachment.fileType | fileTypeIcon }}"></i>
     </div>
     <p>{{ attachment.title }}</p>
-    <div>
-      <a [href]="attachment.downloadUrl" [download]="attachment.filename" class="download-link">
+    <div class="download-text">
         Download ({{attachment.fileExtension}} {{ attachment.fileSizeInKB }} KB)
-      </a>
     </div>
-  </div>
+  </a>
 </article>

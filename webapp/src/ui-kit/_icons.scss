@@ -38,16 +38,6 @@ sbdl-icon {
   }
 }
 
-svg[class^="icon-"] {
-    display: inline-block;
-    fill: currentColor;
-    height: 0.8em;
-    &.icon-pin {
-        transform: rotate(-45deg);
-        height: 0.7em;
-    }
-}
-
 // Leading Icon
 // Usually used for headlines
 // requires <sbdl-icon> inside of a classed text element
@@ -65,9 +55,10 @@ svg[class^="icon-"] {
   }
 }
 
-// Are you in here because your svg colors are not applying?  Try removing the fill attribute of all the paths
-// and then re-run the sprites command.
-svg path {
+/* all other browsers*/
+svg path, 
+/*firefox https://stackoverflow.com/questions/27866893/svg-fill-not-being-applied-in-firefox */
+symbol path {
   fill: currentColor;
 }
 
@@ -87,9 +78,8 @@ sbdl-icon[icon="info"] {
   font-size: 18px;
 }
 
-
 // Icons that should always have the same color
-svg #info {
+svg #info, symbol #info {
   color: $info-500;
 }
 

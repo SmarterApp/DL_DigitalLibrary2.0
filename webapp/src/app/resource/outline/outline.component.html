@@ -1,7 +1,7 @@
 
-<h6>
-  <span [hidden]="!readingMode">
-      <i class="fas fa-bars"></i>
+<h6 class="outline-header">
+  <span *ngIf="readingMode && !mobile">
+    <i class="fas fa-bars"></i>
   </span> 
   Outline
 </h6>
@@ -13,8 +13,10 @@
     </sbdl-button>
   </li>
   <li *ngIf="model.steps.length > 0" class="steps">
-    <sbdl-icon icon="steps"></sbdl-icon>
-    Step-by-Step
+    <div class="steps-header">
+      <sbdl-icon icon="steps"></sbdl-icon>
+      Step-by-Step
+    </div>
     <ol>
       <li *ngFor="let step of model.steps; let i = index" >
         <sbdl-button class="step" (click)="scrollToElement(scrollableElements.steps[i])" (blur)="removeClass(scrollableElements.steps[i])">{{ step.title }}</sbdl-button>

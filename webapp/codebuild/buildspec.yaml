@@ -1,0 +1,31 @@
+version: 0.2
+
+env:
+  git-credential-helper: yes
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+  pre_build:
+    commands:
+      - cd webapp && npm install
+  build:
+    commands:
+      # CWD is $repo/webapp
+      - echo "Build started by $CODEBUILD_INITIATOR"
+      - npm run build-ci
+  post_build:
+    commands:
+      # CWD is $repo/webapp
+      - codebuild/deploy.sh
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: webapp/dist/sb-digital-library
+  name: sb-digital-library-webapp-$(git describe --always --dirty).zip
+
+cache:
+  paths:
+    - 'webapp/node_modules'

@@ -6,14 +6,16 @@
     align-items: stretch;
     justify-content: space-between;
     max-width: none;
+
     .outline {
+        box-sizing: border-box;
         width: var(--nav-width);
         min-width: var(--nav-width);
         grid-area: outline;
         box-shadow: inset -10px 0px 18px -10px rgba(0, 0, 0, 0.2);
         background-color: $white;
         transition-property: width, min-width, margin-right, z-index;
-        z-index: 0;
+        z-index: 2;
         transition-duration: 0.5s;
         transition-timing-function: ease-in;
     }
@@ -23,7 +25,6 @@
         min-width: 331px;
         margin-right: var(--outline-margin-right);
         overflow-x:initial;
-        z-index:40;
     }
 
     .metadata:hover {
@@ -31,20 +32,20 @@
         min-width: 331px;
         margin-left: var(--outline-margin-right);
         overflow-x:initial;
-        z-index:40;
     }
 
     .resource-content {
         padding: 0 $spacer-lg;
-        flex-grow:1;
+        box-sizing: border-box;
         max-width: none;
+        z-index: 1;
     }
     .metadata {
         grid-area: metadata;
         width: var(--nav-width);
         min-width: var(--nav-width);
         transition-property: width, min-width, margin-left, z-index;
-        z-index: 0;
+        z-index: 2;
         transition-duration: 0.5s;
         transition-timing-function: ease-in;
 
@@ -83,7 +84,7 @@
         &.highlighted::before {
             content: '';
             position: absolute;
-            top: -$spacer;
+            top: 0;
             bottom: -$spacer;
             left: -3.5rem;
             right: -$spacer-xl;
@@ -97,3 +98,41 @@
     }
 
 }
+@media only screen and (max-width: $breakpoint-sm) {
+    :host {
+        --nav-width: 100vw;
+        flex-direction: column;
+        > * {
+            width: 100%;
+            max-width: none;
+        }
+
+        nav sbdl-outline,
+        aside sbdl-metadata {
+          position: relative;
+          max-width: 100%;
+        }
+
+        .outline, .metadata,
+        .outline:hover, .metadata:hover {
+            width: 100%;
+            transition: none;
+            min-width: none;           
+        }
+
+        .metadata {
+            padding-left: $spacer-xl;
+            box-sizing: border-box;
+            background-attachment: scroll;
+        }
+
+        .metadata:hover {
+            margin-left: 0;
+        }
+
+        .outline:hover {
+            margin-right: 0;
+        }
+    }
+}
+

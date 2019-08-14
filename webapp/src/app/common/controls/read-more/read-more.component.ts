@@ -1,35 +1,53 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
+/**
+ * This component shows a "more" link and truncates the given text if the length is more 
+ * than the MaxNumberOfCharacters.,  When expanded, "more" changes to "less".
+ */
 @Component({
   selector: 'sbdl-read-more',
   templateUrl: './read-more.component.html'
 })
-export class ReadMoreComponent implements OnInit, OnChanges {
+export class ReadMoreComponent implements OnInit {
+  /**
+   * The text to truncate if the length is over the MaxNumberOfCharacters
+   */
   @Input()
-  text: string;
+  set text(value: string) {
+    this._text = value;
+    this.onTextChanges();
+  }
+
+  get text(): string {
+    return this._text;
+  }
 
   readonly MaxNumberOfCharacters = 168;
+
   displayText: string;
-
   collapsed: boolean = true;
+  collapsible: boolean = false;
 
-  @Input()
-  truncated: boolean;
+  private _text: string;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  ngOnChanges() {
-    this.truncated = this.text && this.text.length > this.MaxNumberOfCharacters;
-    this.displayText = this.text != null && this.collapsed
-      ? this.text.substring(0, this.MaxNumberOfCharacters) + '...'
-      : this.text;
-  }
-
   toggleCollapsed() {
     this.collapsed = !this.collapsed;
-    this.ngOnChanges();
+    this.toggleDisplayText();
+  }
+
+  private onTextChanges() {
+    this.collapsible = this.text && this.text.length > this.MaxNumberOfCharacters;
+    this.toggleDisplayText();
+  }
+
+  private toggleDisplayText() {
+    this.displayText = this.text && this.collapsed && this.collapsible
+      ? this.text.substring(0, this.MaxNumberOfCharacters) + '...'
+      : this.text;
   }
 }
