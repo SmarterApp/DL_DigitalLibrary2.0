@@ -123,6 +123,7 @@
         .metadata {
             padding-left: $spacer-xl;
             box-sizing: border-box;
+            background-attachment: scroll;
         }
 
         .metadata:hover {
