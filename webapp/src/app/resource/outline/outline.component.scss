@@ -5,6 +5,10 @@
     padding-top: 4rem;
     z-index: inherit;
 
+    .outline-header {
+        margin-top: 1rem;
+    }
+
     h6 {
         font-family: $font-family-title;
         font-weight: normal;
@@ -71,6 +75,5 @@
         display:block;
         font-size: 0.9rem;
         font-weight: 300;
-        width: 301px;
     }
 }

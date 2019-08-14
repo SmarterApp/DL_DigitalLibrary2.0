@@ -4,6 +4,7 @@ import { FavoriteService } from 'src/app/data/favorite/favorite.service';
 import { FavoriteResource } from 'src/app/data/favorite/model/favorite-resource.model';
 import { ResourceModel } from 'src/app/data/resource/model/resource.model';
 import { ScrollableElements } from '../../outline/scrollable-elements.model';
+import { getCssVar } from 'src/app/common/utils';
 
 @Component({
   selector: 'sbdl-resource-content',
@@ -40,7 +41,7 @@ export class ResourceContentComponent implements OnInit {
     if(window.innerWidth < this.readingModeDefaultWidth && !this.readingMode) {
       this.toggleReadingMode();
       this.hideReadingModeToggle = true;
-    } else if(window.innerWidth >= this.readingModeDefaultWidth && this.readingMode){
+    } else if((window.innerWidth >= this.readingModeDefaultWidth) && this.readingMode){
       this.toggleReadingMode();
       this.hideReadingModeToggle = false;
     }
@@ -60,7 +61,7 @@ export class ResourceContentComponent implements OnInit {
   ngOnInit() {
     this.onResize();
     this.currentUrl = location.href;
-    this.readingModeDefaultWidth = +getComputedStyle(document.documentElement).getPropertyValue('--breakpoint-lg').replace('px', '');
+    this.readingModeDefaultWidth = getCssVar('--breakpoint-lg');
   }
 
   setGetStarted($event) {
