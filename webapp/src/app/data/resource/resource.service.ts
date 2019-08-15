@@ -12,6 +12,7 @@ import { ResourceStepModel } from './model/resource-step.model';
 import { ResourceStrategyModel } from './model/resource-strategy.model';
 import { ResourceType } from './model/resource-type.enum';
 import { ResourceModel } from './model/resource.model';
+import { AttachmentService } from './attachment.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,12 +31,9 @@ export class ResourceService {
     [ 1, 'assessment-6-7-number-system' ]
   ]);
 
-  readonly fileExtensionToFileTypeMap: Map<string, FileType> = new Map([
-    [ '.docx', FileType.Word ],
-    [ '.pdf', FileType.Pdf ]
-  ]);
 
-  constructor(private dataService: DataService) { }
+
+  constructor(private dataService: DataService, private attachmentService: AttachmentService) { }
 
   get(id: number): Observable<ResourceModel> {
     let resourceModel: any;
@@ -48,18 +46,23 @@ export class ResourceService {
           : of([]);
       }))
       .pipe(map(attachments => {
-        if(attachments && attachments.length > 0 && attachments[0]) {
-          resourceModel.attachments = attachments;
-        }
-        return this.mapToResourceModel(resourceModel);
-      }));
+        const model = this.mapToResourceModel(resourceModel);
+        model.attachments = coalesce(attachments, []);
+        return model;
+      })); 
   }
 
   getAttachments(documents: string[]): Observable<any>[] {
     let observables = [];
     
     for(let doc of documents) {
-      observables.push(this.dataService.get(doc.replace('/api','').replace('/download','')));
+      const regexGroups = doc.match(/\/file_documents\/([0-9]*)\/download/);
+      if(regexGroups && regexGroups.length > 1){
+        const id = +regexGroups[1];
+        if(!isNaN(id)) {
+          observables.push(this.attachmentService.get(id));
+        }
+      }
     }
 
     return observables;
@@ -82,7 +85,6 @@ export class ResourceService {
       details: this.mapToResourceDetailsModel(apiResource),
       overview: this.mapToOverview(apiResource),
       steps: this.mapToSteps(coalesce(apiResource.steps, [])),
-      attachments: this.mapToAttachments(coalesce(apiResource.attachments, [])),
       differentiation: this.mapToDifferentiation(apiResource),
       formative: this.mapToFormative(apiResource)
     };
@@ -143,23 +145,7 @@ export class ResourceService {
     }).sort(x => x.stepNumber);
   }
 
-  mapToAttachments(apiAttachments: any[]):AttachmentModel[] {
-        return apiAttachments.map(a =>  { 
-          const filename = a.name;
-          const fileExtension = filename.substring(filename.lastIndexOf('.'));
 
-          return <AttachmentModel>{
-            title: a.name,
-            id: a.id,
-            downloadUrl: "/api/file_documents/" + a.id + "/download",
-            fileType: coalesce(this.fileExtensionToFileTypeMap.get(fileExtension), FileType.Unknown),
-            filename: filename,
-            fileExtension: fileExtension,
-            fileSizeInKB: a.fileSize ? Math.round(a.fileSize / 1000): undefined,
-            type: a['@type']
-        };
-      })
-  }
 
   mapToDifferentiation(apiModel): DifferentiationModel {
     return {
@@ -180,6 +166,6 @@ export class ResourceService {
         moreAboutUrl: x.link,
         description: x.description
       })
-    }
+    };
   }
 }
