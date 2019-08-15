@@ -32,6 +32,8 @@ h5,h6 {
 .subjects-grades {
     img {
         margin-right: 8px;
+        object-fit: none;
+        align-self: flex-start;
     }
     display: flex;
     background-color: $white;

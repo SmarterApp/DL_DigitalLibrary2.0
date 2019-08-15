@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { forkJoin, Observable, of } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
 import { coalesce } from 'src/app/common/utils';
 import { DataService } from '../data.service';
+import { AttachmentModel, FileType } from './model/attachment.model';
 import { DifferentiationModel } from './model/differentiation.model';
 import { FormativeModel } from './model/formative.model';
-import { OverviewModel, ResourceMaterial } from './model/overview.model';
+import { OverviewModel } from './model/overview.model';
 import { Alignment, Playlist, ResourceDetailsModel } from './model/resource-details.model';
 import { ResourceStepModel } from './model/resource-step.model';
 import { ResourceStrategyModel } from './model/resource-strategy.model';
 import { ResourceType } from './model/resource-type.enum';
 import { ResourceModel } from './model/resource.model';
-import { AttachmentModel, FileType } from './model/attachment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -38,9 +38,31 @@ export class ResourceService {
   constructor(private dataService: DataService) { }
 
   get(id: number): Observable<ResourceModel> {
+    let resourceModel: any;
     return this.dataService
       .get(`/resources/${id}`)
-      .pipe(map(apiModel => this.mapToResourceModel(apiModel)));
+      .pipe(mergeMap(apiModel => {
+        resourceModel = apiModel;
+        return apiModel.documents && apiModel.documents.length > 0
+          ? forkJoin(this.getAttachments(apiModel.documents))
+          : of([]);
+      }))
+      .pipe(map(attachments => {
+        if(attachments && attachments.length > 0 && attachments[0]) {
+          resourceModel.attachments = attachments;
+        }
+        return this.mapToResourceModel(resourceModel);
+      }));
+  }
+
+  getAttachments(documents: string[]): Observable<any>[] {
+    let observables = [];
+    
+    for(let doc of documents) {
+      observables.push(this.dataService.get(doc.replace('/api','').replace('/download','')));
+    }
+
+    return observables;
   }
 
   private mapToResourceModel(apiResource: any): ResourceModel {
@@ -123,17 +145,18 @@ export class ResourceService {
 
   mapToAttachments(apiAttachments: any[]):AttachmentModel[] {
         return apiAttachments.map(a =>  { 
-          const filename = a.url.substring(a.url.lastIndexOf('/') + 1).toLowerCase();
+          const filename = a.name;
           const fileExtension = filename.substring(filename.lastIndexOf('.'));
 
           return <AttachmentModel>{
             title: a.name,
-            downloadUrl: a.url,
+            id: a.id,
+            downloadUrl: "/api/file_documents/" + a.id + "/download",
             fileType: coalesce(this.fileExtensionToFileTypeMap.get(fileExtension), FileType.Unknown),
             filename: filename,
             fileExtension: fileExtension,
-            fileSizeInKB: Math.round(a.fileSize / 1000),
-            type: a.type
+            fileSizeInKB: a.fileSize ? Math.round(a.fileSize / 1000): undefined,
+            type: a['@type']
         };
       })
   }

@@ -10,7 +10,7 @@
     </div>
     <p>{{ attachment.title }}</p>
     <div class="download-text">
-        Download ({{attachment.fileExtension}} {{ attachment.fileSizeInKB }} KB)
+        Download ({{attachment.fileExtension}} {{ attachment.fileSizeInKB ? attachment.fileSizeInKB + ' KB' : '' }})
     </div>
   </a>
 </article>

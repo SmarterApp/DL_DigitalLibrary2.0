@@ -93,6 +93,10 @@ export const mockApiResourceExample = {
 	supportingEvidence: "",
 	principles: "",
 	mediaType: ["Video"],
+	documents: [
+		"/api/file_documents/53/download",
+        "/api/file_documents/52/download"
+	],
 	intendedStudent: ["All Students"],
 	educationalUse: ["Unit", "Lesson"],
 	classroomTechnologies: ["Internet"],
@@ -107,7 +111,7 @@ export const mockApiResourceExample = {
 };
 
 // Polyfills missing fields not provided by the example payload
-// in the API document from PCG.
+// in the API document.
 const polyfillMissingApiData = {
 	favorite: false,
 
@@ -376,7 +380,8 @@ export const mockApiResourceWithNulls = {
 	grade: undefined,
 	targetAlignments: undefined,
 	educationalAlignments: undefined,
-	standards: undefined
+	standards: undefined,
+	documents: undefined
 }
 
 
@@ -448,7 +453,7 @@ export const mockApiResourceExample2 = {
 };
 
 // Polyfills missing fields not provided by the example payload
-// in the API document from PCG.
+// in the API document
 const polyfillMissingApiData2 = {
 	favorite: false,
 
@@ -563,3 +568,23 @@ export const mockApiResource2 = {
 	...mockApiResourceExample2,
 	...polyfillMissingApiData2
 };
+
+export const mockDocument52 = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/52",
+    "@type": "FileDocument",
+    "id": 52,
+    "name": "SBAC Running Record Analysis.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": null
+}
+
+export const mockDocument53 = {
+	"@context": "/api/contexts/FileDocument",
+	"@id": "/api/file_documents/53",
+	"@type": "FileDocument",
+	"id": 53,
+	"name": "Editorial_Vocabulary_Cameli2013.pdf",
+	"path": "15d4a90dba2441666f775be72bdbd1e39816d684.pdf",
+	"mimeType": null
+}

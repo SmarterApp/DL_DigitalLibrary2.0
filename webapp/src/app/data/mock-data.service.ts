@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { LoggingService } from '../common/logging/logging.service';
 import { DataService } from './data.service';
-import { mockApiResource, mockUser, mockApiResourceWithNulls, mockApiResource2 } from './mock-data';
-import { delay } from 'rxjs/operators';
+import { mockApiResource, mockApiResource2, mockApiResourceWithNulls, mockDocument52, mockDocument53, mockUser } from './mock-data';
 
 // Work around for: 
 // https://stackoverflow.com/questions/48953587/typescript-class-implements-class-with-private-functions
@@ -16,7 +16,9 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /^\/userinfo$/, result: mockUser },
     { pattern: /\/resources\/0$/, result: mockApiResourceWithNulls },
     { pattern: /\/resources\/2$/, result: mockApiResource2 },
-    { pattern: /\/resources\/[0-9]/, result: mockApiResource }
+    { pattern: /\/resources\/[0-9]/, result: mockApiResource },
+    { pattern: /\/file_documents\/52/, result: mockDocument52 },
+    { pattern: /\/file_documents\/53/, result: mockDocument53 }
   ];
 
   readonly mockPostDataEndpoints = [
