@@ -13,6 +13,8 @@ h5,h6 {
 }
 
 .image-thumbnail {
+    width: fit-content;
+    background-color: $white;
     margin-top: 16px;
     margin-right: 5px;
     border: 8px solid #FFFFFF;
@@ -32,6 +34,7 @@ h5,h6 {
         margin-right: 8px;
     }
     display: flex;
+    background-color: $white;
     margin-top: 32px;
     color: $brand-green;
     .subjects {
@@ -50,6 +53,7 @@ h5,h6 {
     grid-row-gap: $spacer;
     grid-template-columns: 85px 1fr;
     margin-bottom: $spacer-lg;
+    background-color: $white;
     > label {
         grid-area: "label";
         font-style: normal;

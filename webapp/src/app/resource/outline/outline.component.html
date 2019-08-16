@@ -1,7 +1,7 @@
 
-<h6>
-  <span [hidden]="!readingMode">
-      <i class="fas fa-bars"></i>
+<h6 class="outline-header">
+  <span *ngIf="readingMode && !mobile">
+    <i class="fas fa-bars"></i>
   </span> 
   Outline
 </h6>

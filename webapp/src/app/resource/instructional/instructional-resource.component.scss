@@ -6,7 +6,9 @@
     align-items: stretch;
     justify-content: space-between;
     max-width: none;
+
     .outline {
+        box-sizing: border-box;
         width: var(--nav-width);
         min-width: var(--nav-width);
         grid-area: outline;
@@ -34,6 +36,7 @@
 
     .resource-content {
         padding: 0 $spacer-lg;
+        box-sizing: border-box;
         max-width: none;
         z-index: 1;
     }
@@ -95,3 +98,41 @@
     }
 
 }
+@media only screen and (max-width: $breakpoint-sm) {
+    :host {
+        --nav-width: 100vw;
+        flex-direction: column;
+        > * {
+            width: 100%;
+            max-width: none;
+        }
+
+        nav sbdl-outline,
+        aside sbdl-metadata {
+          position: relative;
+          max-width: 100%;
+        }
+
+        .outline, .metadata,
+        .outline:hover, .metadata:hover {
+            width: 100%;
+            transition: none;
+            min-width: none;           
+        }
+
+        .metadata {
+            padding-left: $spacer-xl;
+            box-sizing: border-box;
+            background-attachment: scroll;
+        }
+
+        .metadata:hover {
+            margin-left: 0;
+        }
+
+        .outline:hover {
+            margin-right: 0;
+        }
+    }
+}
+
