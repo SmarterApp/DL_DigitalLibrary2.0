@@ -23,7 +23,7 @@ export class MockDataService implements PublicPart<DataService> {
   ];
 
   readonly mockPostDataEndpoints = [
-    { pattern: /^\/favorites\/resources$/, post: body => this.setFavorite(body) },
+    { pattern: /^\/favorites\/resource$/, post: body => this.setFavorite(body) },
   ];
 
   readonly mockDownloadEndpoints = [
