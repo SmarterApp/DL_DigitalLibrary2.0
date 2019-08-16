@@ -584,7 +584,7 @@ export const mockDocument53 = {
 	"@id": "/api/file_documents/53",
 	"@type": "FileDocument",
 	"id": 53,
-	"name": "Editorial_Vocabulary_Cameli2013.pdf",
-	"path": "15d4a90dba2441666f775be72bdbd1e39816d684.pdf",
+	"name": "note_taking.docx",
+	"path": "15d4a90dba2441666f775be72bdbd1e39816d684.docx",
 	"mimeType": null
 }

@@ -64,10 +64,10 @@ describe('ResourceService', () => {
     service.get(1).subscribe(resource => {
       const actual = resource.attachments[0];
 
-      expect(actual.title).toBe('Editorial_Vocabulary_Cameli2013.pdf')
-      expect(actual.filename).toBe('Editorial_Vocabulary_Cameli2013.pdf');
-      expect(actual.fileExtension).toBe('.pdf');
-      expect(actual.fileType).toBe(FileType.Pdf);
+      expect(actual.title).toBe('note_taking.docx')
+      expect(actual.filename).toBe('note_taking.docx');
+      expect(actual.fileExtension).toBe('.docx');
+      expect(actual.fileType).toBe(FileType.Word);
       expect(actual.type).toBe('FileDocument');
     }, err => {
       fail(err);

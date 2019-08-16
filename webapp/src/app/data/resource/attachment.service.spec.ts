@@ -19,11 +19,24 @@ describe('AttachmentService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should map attachments', () => {
+  it('should map word attachments', () => {
     const service: AttachmentService = TestBed.get(AttachmentService);
     service.get(53).subscribe(actual => {
-      expect(actual.title).toBe('Editorial_Vocabulary_Cameli2013.pdf')
-      expect(actual.filename).toBe('Editorial_Vocabulary_Cameli2013.pdf');
+      expect(actual.title).toBe('note_taking.docx')
+      expect(actual.filename).toBe('note_taking.docx');
+      expect(actual.fileExtension).toBe('.docx');
+      expect(actual.fileType).toBe(FileType.Word);
+      expect(actual.type).toBe('FileDocument');
+    }, err => {
+      fail(err);
+    })
+  });
+
+  it('should map pdf attachments', () => {
+    const service: AttachmentService = TestBed.get(AttachmentService);
+    service.get(52).subscribe(actual => {
+      expect(actual.title).toBe('SBAC Running Record Analysis.pdf')
+      expect(actual.filename).toBe('SBAC Running Record Analysis.pdf');
       expect(actual.fileExtension).toBe('.pdf');
       expect(actual.fileType).toBe(FileType.Pdf);
       expect(actual.type).toBe('FileDocument');
