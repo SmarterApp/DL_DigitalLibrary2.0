@@ -1,0 +1,10 @@
+.text-container {
+    display: block;
+    overflow-y: hidden;
+    --max-height: 44px;
+    transition: max-height 0.5s ease-in-out;
+
+    &.collapsed {
+      max-height:  var(--max-height);
+    }
+}

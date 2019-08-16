@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, HostBinding, HostListener } from '@angular/core';
+import { getCssVar } from '../../utils';
+import { SafeStyle, DomSanitizer } from '@angular/platform-browser';
 
 /**
  * This component shows a "more" link and truncates the given text if the length is more 
@@ -6,9 +8,10 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
  */
 @Component({
   selector: 'sbdl-read-more',
-  templateUrl: './read-more.component.html'
+  templateUrl: './read-more.component.html',
+  styleUrls: ['./read-more.component.scss']
 })
-export class ReadMoreComponent implements OnInit {
+export class ReadMoreComponent implements OnInit, AfterViewInit {
   /**
    * The text to truncate if the length is over the MaxNumberOfCharacters
    */
@@ -22,32 +25,38 @@ export class ReadMoreComponent implements OnInit {
     return this._text;
   }
 
-  readonly MaxNumberOfCharacters = 168;
+  @ViewChild('textContainer', { static: true })
+  textContainer: ElementRef;
+  
+  private maxHeightInPx = 44;
 
-  displayText: string;
+  cssVarStyle: SafeStyle;
   collapsed: boolean = true;
   collapsible: boolean = false;
 
   private _text: string;
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
   }
 
+  ngAfterViewInit() {
+    this.maxHeightInPx = getCssVar('--max-height', this.textContainer.nativeElement);
+    this.onTextChanges();
+  }
+
   toggleCollapsed() {
     this.collapsed = !this.collapsed;
-    this.toggleDisplayText();
   }
 
   private onTextChanges() {
-    this.collapsible = this.text && this.text.length > this.MaxNumberOfCharacters;
-    this.toggleDisplayText();
+    if(this.textContainer && this.textContainer.nativeElement) {
+      const contentHeight = this.textContainer.nativeElement.offsetHeight;
+      this.collapsible = contentHeight > this.maxHeightInPx;
+      this.collapsed = this.collapsible;
+    }
   }
 
-  private toggleDisplayText() {
-    this.displayText = this.text && this.collapsed && this.collapsible
-      ? this.text.substring(0, this.MaxNumberOfCharacters) + '...'
-      : this.text;
-  }
 }
