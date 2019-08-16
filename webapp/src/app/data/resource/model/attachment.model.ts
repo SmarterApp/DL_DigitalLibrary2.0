@@ -1,4 +1,5 @@
 export interface AttachmentModel {
+    id: number;
     title: string;
     fileType: FileType;
     fileSizeInKB: number;

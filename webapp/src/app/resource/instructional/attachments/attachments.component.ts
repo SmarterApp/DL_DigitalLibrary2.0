@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter, ViewChildren } from '@angular/core';
 import { MDCRipple } from '@material/ripple/component';
+import { AttachmentModel } from 'src/app/data/resource/model/attachment.model';
+import { AttachmentService } from 'src/app/data/resource/attachment.service';
 
 @Component({
   selector: 'sbdl-attachments',
@@ -21,7 +23,7 @@ export class AttachmentsComponent implements OnInit {
   @ViewChildren('attachments')
   attachmentElementRefs: ElementRef[];
 
-  constructor() { }
+  constructor(private service: AttachmentService) { }
 
   ngOnInit() {
   }
@@ -37,5 +39,22 @@ export class AttachmentsComponent implements OnInit {
     for(let attachmentRef of this.attachmentElementRefs) {
       MDCRipple.attachTo(attachmentRef.nativeElement);
     }
+  }
+
+  download(attachment: AttachmentModel) {
+    this.service
+      .download(attachment.id)
+      .subscribe(blob => {
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = attachment.filename;
+        link.hidden = true;
+        document.body.appendChild(link);
+        link.click();
+        setTimeout(function() {
+          window.URL.revokeObjectURL(link.href);
+          document.body.removeChild(link);
+        }, 100);
+      })
   }
 }

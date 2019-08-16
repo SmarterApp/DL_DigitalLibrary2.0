@@ -53,7 +53,7 @@ export class MockDataService implements PublicPart<DataService> {
     return of(undefined);
   }
 
-  downloadPdf(url: string): Observable<Blob> {
+  downloadBlob(url: string): Observable<Blob> {
     throw new Error("Method not implemented.");
   }
 

@@ -12,6 +12,7 @@ export class AttachmentService {
 
   readonly fileExtensionToFileTypeMap: Map<string, FileType> = new Map([
     [ '.docx', FileType.Word ],
+    [ '.doc', FileType.Word ],
     [ '.pdf', FileType.Pdf ]
   ]);
 
@@ -23,9 +24,13 @@ export class AttachmentService {
       .pipe(map(apiModel => this.mapToAttachment(apiModel)));
   }
 
-  mapToAttachment(apiAttachment: any):AttachmentModel {
+  download(id: number): Observable<Blob> {
+    return this.dataService.downloadBlob(`/file_documents/${id}/download`);
+  }
+
+  private mapToAttachment(apiAttachment: any):AttachmentModel {
     const filename = apiAttachment.name;
-    const fileExtension = filename.substring(filename.lastIndexOf('.'));
+    const fileExtension = filename.toLowerCase().substring(filename.lastIndexOf('.'));
 
     return <AttachmentModel>{
       title: apiAttachment.name,

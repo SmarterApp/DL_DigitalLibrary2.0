@@ -14,15 +14,6 @@ const jsonHeaders = {
   'Content-Type':  'application/json'
 }
 
-const pdfContentType = <any>{
-  headers: new HttpHeaders({
-    'Content-Type':  'application/pdf',
-    Accept : 'application/pdf',
-    observe : 'response'
-  }),
-  responseType : 'arraybuffer',
-};
-
 /**
  * Wrapper service for Angular's HttpClient.  As a best practice, we shouldn't ever use
  * HttpClient directly except for here, so that any future Angular HttpClient API changes
@@ -39,7 +30,7 @@ export class DataService {
     const fullUrl = AppConfig.settings.apiServer.cdl + url;
     const options = {
       headers: new HttpHeaders({
-        ...jsonHeaders,
+        ... jsonHeaders,
         'Authorization': 'Bearer ' + AppConfig.settings.apiServer.authToken
       }),
       params: params
@@ -51,18 +42,29 @@ export class DataService {
       );
   }
 
-  post(url: string, obj: any): Observable<any> {
-    return this.httpService.post(url, obj, { ... jsonContentType })
+  downloadBlob(url: string, params?: any): Observable<Blob> {
+    const fullUrl = AppConfig.settings.apiServer.cdl + url;
+    const options = <any>{
+      headers: new HttpHeaders({
+        'Content-Type':  'application/octet-stream',
+        'Authorization': 'Bearer ' + AppConfig.settings.apiServer.authToken
+      }),
+      params: params,
+      responseType : 'arraybuffer',
+    };
+
+    return this.httpService.get(fullUrl, options)
+      .pipe(map(response => new Blob([ response ])))
       .pipe(
           catchError(this.handleError)
       );
   }
 
-
-  downloadPdf(url: string) {  
-    return this.httpService.get(url, pdfContentType)
-      .pipe(map(response => new Blob([ response ], { type: 'application/pdf' })))
-      .pipe(catchError(this.handleError));
+  post(url: string, obj: any): Observable<any> {
+    return this.httpService.post(url, obj, { ... jsonContentType })
+      .pipe(
+          catchError(this.handleError)
+      );
   }
 
   private handleError(error: HttpErrorResponse) {

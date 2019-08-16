@@ -5,7 +5,7 @@ import { FileType } from './model/attachment.model';
 import { mockDataServiceProviders, initializeSettingsProvider } from 'src/app/app.module.spec';
 import { DataService } from '../data.service';
 import { of } from 'rxjs';
-import { mockApiResource } from '../mock-data';
+import { mockApiResource, mockDocument52 } from '../mock-data';
 import { LoggingService } from 'src/app/common/logging/logging.service';
 import { ResourceService } from './resource.service';
 
@@ -33,27 +33,39 @@ describe('AttachmentService', () => {
   });
 
   it('should map unknown extension to unknown file type', () => {
+    seedTestBedFileName('file.xyz');
+    const service: AttachmentService = TestBed.get(AttachmentService);
+    service.get(52).subscribe(actual => {
+      expect(actual.fileType).toBe(FileType.Unknown);
+    }, err => {
+      fail(err);
+    });
+  });
+
+  it('should map extension and be case insensitive', () => {
+    seedTestBedFileName('test.DOCX');
+    const service: AttachmentService = TestBed.get(AttachmentService);
+    service.get(52).subscribe(actual => {
+      expect(actual.fileType).toBe(FileType.Word);
+    }, err => {
+      fail(err);
+    });
+  });
+
+  function seedTestBedFileName(filename: string) {
     // Change the testing module to return a resource with an attachment that has a file extension not in the file type map.
     TestBed.configureTestingModule({
       providers: [ 
           { provide: DataService, 
             useValue: { 
               get: (id) => {
-                return of({ 
-                  ... mockApiResource, 
-                  attachments: [ {... mockApiResource.attachments[0], url: '/test.xyz' } ] })
-                }
+                return of({ ... mockDocument52, name: filename  })
+              }
             }
           }, 
           LoggingService, 
           initializeSettingsProvider 
       ]
     });
-
-    const service: ResourceService = TestBed.get(ResourceService);
-    service.get(1).subscribe(resource => {
-      const actual = resource.attachments[0];
-      expect(actual.fileType).toBe(FileType.Unknown);
-    })
-  });
+  }
 });

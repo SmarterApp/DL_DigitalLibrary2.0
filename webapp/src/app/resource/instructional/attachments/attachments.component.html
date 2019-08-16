@@ -3,7 +3,7 @@
       <i class="far fa-paperclip"></i>Attachments
   </h4>
   <p>This resource relies on the following materials. Download them to use.</p>
-  <a *ngFor="let attachment of models" [href]="attachment.downloadUrl" [download]="attachment.filename"  class="attachment-card"  #attachments>
+  <div *ngFor="let attachment of models" href="javascript:void(0)" (click)="download(attachment)"  class="attachment-card"  #attachments>
     <div class="type-info">
       <span class="attachment-type">{{ attachment.type }}</span>
       <i class="far {{attachment.fileType | fileTypeIcon }}"></i>
@@ -12,5 +12,5 @@
     <div class="download-text">
         Download ({{attachment.fileExtension}} {{ attachment.fileSizeInKB ? attachment.fileSizeInKB + ' KB' : '' }})
     </div>
-  </a>
+  </div>
 </article>
