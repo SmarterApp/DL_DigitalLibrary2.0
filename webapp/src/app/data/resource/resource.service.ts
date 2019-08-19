@@ -5,7 +5,7 @@ import { coalesce } from 'src/app/common/utils';
 import { DataService } from '../data.service';
 import { AttachmentModel, FileType } from './model/attachment.model';
 import { DifferentiationModel } from './model/differentiation.model';
-import { FormativeModel } from './model/formative.model';
+import { FormativeModel, FormativeAssessmentProcess } from './model/formative.model';
 import { OverviewModel } from './model/overview.model';
 import { Alignment, Playlist, ResourceDetailsModel } from './model/resource-details.model';
 import { ResourceStepModel } from './model/resource-step.model';
@@ -13,6 +13,7 @@ import { ResourceStrategyModel } from './model/resource-strategy.model';
 import { ResourceType } from './model/resource-type.enum';
 import { ResourceModel } from './model/resource.model';
 import { AttachmentService } from './attachment.service';
+import { WebElementCondition } from 'selenium-webdriver';
 
 @Injectable({
   providedIn: 'root'
@@ -145,8 +146,6 @@ export class ResourceService {
     }).sort(x => x.stepNumber);
   }
 
-
-
   mapToDifferentiation(apiModel): DifferentiationModel {
     return {
       performanceBasedDifferentiation: apiModel.differentiation,
@@ -159,8 +158,18 @@ export class ResourceService {
   }
 
   mapToFormative(apiModel): FormativeModel {
+    const process = apiModel.formativeAssessmentProcess;
+
     return {
       howItsUsed: apiModel.connectionToFap,
+      formativeAssessmentProcess: process
+        ? <FormativeAssessmentProcess> {
+          clarifyIntendedLearning: process.clarifyIntendedLearning,
+          elicitEvidence: process.elicitEvidence,
+          interpretEvidence: process.interpretEvidence,
+          actOnEvidence: process.actOnEvidence
+        } 
+        : undefined, 
       strategies: coalesce(apiModel.formativeStrategies,[]).map(x => <ResourceStrategyModel>{
         title: x.title,
         moreAboutUrl: x.link,

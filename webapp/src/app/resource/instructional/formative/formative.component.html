@@ -2,7 +2,19 @@
   <h4  class="leading-icon"><sbdl-icon icon="strategies"></sbdl-icon>Formative Assesment Process</h4>
   <section>
     <h5>How its used</h5>
-    <div [innerHtml]="model.howItsUsed"></div>
+    <div *ngIf="model.formativeAssessmentProcess; else howItsUsed">
+      <h6>Clarify Intended Learning</h6>
+      <div [innerHtml]="model.formativeAssessmentProcess.clarifyIntendedLearning"></div>
+      <h6>Elicit Evidence</h6>
+      <div [innerHtml]="model.formativeAssessmentProcess.elicitEvidence"></div>
+      <h6>Interpret Evidence</h6>
+      <div [innerHtml]="model.formativeAssessmentProcess.interpretEvidence"></div>
+      <h6>Act on Evidence</h6>
+      <div [innerHtml]="model.formativeAssessmentProcess.actOnEvidence"></div>
+    </div>
+    <ng-template #howItsUsed>
+      <div [innerHtml]="model.howItsUsed"></div>
+    </ng-template>
   </section>
   <section>
     <h5>Strategies Used</h5>

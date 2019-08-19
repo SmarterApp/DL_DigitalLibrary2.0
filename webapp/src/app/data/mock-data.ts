@@ -173,21 +173,20 @@ const polyfillMissingApiData = {
 		description: `The student uses an onscreen universal tool to assist in reading by raising and
 			lowering the tool for each line of text on the screen.`
 	}],
-	connectionToFap: `
-		<h6>Clarify Intended Learning</h6>
+	formativeAssessmentProcess: {
+		clarifyIntendedLearning: `		
 		<p>
 			Students will participate in a Collaborative Discussion to describe the success criteria in their own words. Students may use words or pictures to 
 			express their understanding of how they will know they have been successful with this task.
-		</p>
-		<h6>Elicit Evidence</h6>
+		</p>`,
+		elicitEvidence: `
 		<ul>
 			<li>Students will create a visual model independently. The students may adjust their models as their thinking and reasoning changes through discussion.</li>
 			<li>Students will independently select the equations that appropriately match their representations and solve the equations.</li>
 			<li>Students will discuss their solutions – discussions will elicit evidence of student thinking.</li>
-		</ul>
-		<h6>Interpret Evidence</h6>
-		<p>Review the visual models for accuracy: labeling, scale, operation, and application.</p>
-		<h6>Act on Evidence</h6>
+		</ul>`,
+		interpretEvidence: `<p>Review the visual models for accuracy: labeling, scale, operation, and application.</p>`,
+		actOnEvidence: `		
 		<p>
 			Feedback
 			<ul>
@@ -200,8 +199,8 @@ const polyfillMissingApiData = {
 				<li>Select an equation that matches student skill</li>
 				<li>Perform error analysis of student calculations to address misconception</li>
 			</ul>
-		</p>
-	`,
+		</p>`		
+	},
 	formativeStrategies: [{
 		title: 'Verbal Feedback',
 		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
@@ -522,11 +521,11 @@ const polyfillMissingApiData2 = {
 			lowering the tool for each line of text on the screen.`
 	}],
 	connectionToFap: `
-		<h6>Clarify Intended Learning</h6>
-		<p>
-			Students will participate in a Collaborative Discussion to describe the success criteria in their own words. Students may use words or pictures to 
-			express their understanding of how they will know they have been successful with this task.
-		</p>
+		Socratic Circles offer a controlled, pedagogical strategy that can bring democratic dialogue into our classrooms, 
+		a type of real-world, student-centered learning where the teacher acts as facilitator. As students construct their 
+		dialogue and their meaning of the piece of text, they are activating prior knowledge, making connections, and 
+		synthesizing new schemata in their quest for understanding. It is the students—not the teacher—who guide and direct 
+		the focus of the conversation in a search for meaning, understanding and knowledge.
 	`,
 	formativeStrategies: [{
 		title: 'Verbal Feedback',
