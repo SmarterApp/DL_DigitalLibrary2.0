@@ -1,0 +1,9 @@
+.text-container {
+    display: block;
+    overflow-y: hidden;
+    --max-height: 44px;
+
+    &.collapsed {
+      max-height:  var(--max-height);
+    }
+}
