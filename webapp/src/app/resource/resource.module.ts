@@ -12,7 +12,7 @@ import { OverviewComponent } from './instructional/overview/overview.component';
 import { StepByStepComponent } from './instructional/step-by-step/step-by-step.component';
 import { MetadataComponent } from './metadata/metadata.component';
 import { OutlineComponent } from './outline/outline.component';
-import { ProfessionalResourceComponent } from './professional-resource/professional-resource.component';
+import { ProfessionalResourceComponent } from './professional/professional-resource.component';
 import { ResourceComponent } from './resource-component.interface';
 import { ResourceHostDirective } from './resource-host.directive';
 import { ResourceTypeStrategyComponent } from './resource-type-strategy.component';

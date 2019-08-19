@@ -4,7 +4,7 @@ import { InstructionalResourceComponent } from './instructional/instructional-re
 import { ResourceComponent } from './resource-component.interface';
 import { ResourceHostDirective } from './resource-host.directive';
 import { ActivatedRoute } from '@angular/router';
-import { ProfessionalResourceComponent } from './professional-resource/professional-resource.component';
+import { ProfessionalResourceComponent } from './professional/professional-resource.component';
 
 /***
  * This component will render the correct resource component based on the determined resource type.
