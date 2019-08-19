@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AppContainerComponent } from './layout/app-container/app-container.component';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { CurrentUserResolve } from './layout/current-user.resolve';
-import { ResourceResolve } from './resource/resource.resolve';
+import { AppContainerComponent } from './layout/app-container/app-container.component';
 import { ResourceTypeStrategyComponent } from './resource/resource-type-strategy.component';
+import { ResourceResolve } from './resource/resource.resolve';
 
 const routes: Routes = [
   {
     path: '',
     component: AppContainerComponent,
-    resolve: { currentUser: CurrentUserResolve },
+    // resolve: { currentUser: CurrentUserResolve },
     children: [
       {
         path: '',

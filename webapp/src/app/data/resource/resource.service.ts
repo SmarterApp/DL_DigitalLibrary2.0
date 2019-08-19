@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { forkJoin, Observable, of } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
 import { coalesce } from 'src/app/common/utils';
 import { DataService } from '../data.service';
+import { AttachmentModel, FileType } from './model/attachment.model';
 import { DifferentiationModel } from './model/differentiation.model';
 import { FormativeModel } from './model/formative.model';
-import { OverviewModel, ResourceMaterial } from './model/overview.model';
+import { OverviewModel } from './model/overview.model';
 import { Alignment, Playlist, ResourceDetailsModel } from './model/resource-details.model';
 import { ResourceStepModel } from './model/resource-step.model';
 import { ResourceStrategyModel } from './model/resource-strategy.model';
 import { ResourceType } from './model/resource-type.enum';
 import { ResourceModel } from './model/resource.model';
-import { AttachmentModel, FileType } from './model/attachment.model';
+import { AttachmentService } from './attachment.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class ResourceService {
   // It's unclear what the potential values 
   // the API will return here.
   readonly apiResourceTypeMap: Map<string, ResourceType> = new Map([
-    ['Instructional and Professional Learning', ResourceType.Instructional ]
+    ['Instructional and Professional Learning', ResourceType.Instructional ],
+    ['Instructional', ResourceType.Instructional ]
   ]);
 
   // TODO: Define how assessment types are defined.  How will this be represented?
@@ -29,21 +31,49 @@ export class ResourceService {
     [ 1, 'assessment-6-7-number-system' ]
   ]);
 
-  readonly fileExtensionToFileTypeMap: Map<string, FileType> = new Map([
-    [ '.docx', FileType.Word ],
-    [ '.pdf', FileType.Pdf ]
-  ]);
 
-  constructor(private dataService: DataService) { }
+
+  constructor(private dataService: DataService, private attachmentService: AttachmentService) { }
 
   get(id: number): Observable<ResourceModel> {
+    let resourceModel: any;
     return this.dataService
-      .get(`/resource/${id}`)
-      .pipe(map(apiModel => this.mapToResourceModel(apiModel)));
+      .get(`/resources/${id}`)
+      .pipe(mergeMap(apiModel => {
+        resourceModel = apiModel;
+        return apiModel.documents && apiModel.documents.length > 0
+          ? forkJoin(this.getAttachments(apiModel.documents))
+          : of([]);
+      }))
+      .pipe(map(attachments => {
+        const model = this.mapToResourceModel(resourceModel);
+        model.attachments = coalesce(attachments, []);
+        return model;
+      })); 
+  }
+
+  getAttachments(documents: string[]): Observable<any>[] {
+    let observables = [];
+    
+    for(let doc of documents) {
+      const regexGroups = doc.match(/\/file_documents\/([0-9]*)\/download/);
+      if(regexGroups && regexGroups.length > 1){
+        const id = +regexGroups[1];
+        if(!isNaN(id)) {
+          observables.push(this.attachmentService.get(id));
+        }
+      }
+    }
+
+    return observables;
   }
 
   private mapToResourceModel(apiResource: any): ResourceModel {
-    const resourceType = this.apiResourceTypeMap.get(apiResource.resourceType);
+    const apiResourceType = Array.isArray(apiResource.resourceType)
+      ? apiResource.resourceType[0]
+      : apiResource.resourceType;
+    
+    const resourceType = this.apiResourceTypeMap.get(apiResourceType);
 
     if(resourceType == null) {
       throw Error('Unexpected resourceType for: ' + apiResource.resourceType);
@@ -55,7 +85,6 @@ export class ResourceService {
       details: this.mapToResourceDetailsModel(apiResource),
       overview: this.mapToOverview(apiResource),
       steps: this.mapToSteps(coalesce(apiResource.steps, [])),
-      attachments: this.mapToAttachments(coalesce(apiResource.attachments, [])),
       differentiation: this.mapToDifferentiation(apiResource),
       formative: this.mapToFormative(apiResource)
     };
@@ -65,12 +94,12 @@ export class ResourceService {
     return <ResourceDetailsModel> {
       title: apiResource.title,
       favorite: apiResource.favorite,
-      subjects: coalesce(apiResource.subjects, []),
-      grades: coalesce(apiResource.grades, []),
+      subjects: coalesce(apiResource.subject, []),
+      grades: coalesce(apiResource.grade, []),
       image: apiResource.resourceThumbnail,
       author: apiResource.author,
       authorOrganization: apiResource.publisher,
-      lastModified: new Date(apiResource.changed),
+      lastModified: new Date(apiResource.updated),
       
       claims: coalesce(apiResource.educationalAlignments, []).map(ea => <Alignment>{
         title: `${ea.shortName}: ${ea.title}`,
@@ -116,27 +145,12 @@ export class ResourceService {
     }).sort(x => x.stepNumber);
   }
 
-  mapToAttachments(apiAttachments: any[]):AttachmentModel[] {
-        return apiAttachments.map(a =>  { 
-          const filename = a.url.substring(a.url.lastIndexOf('/') + 1).toLowerCase();
-          const fileExtension = filename.substring(filename.lastIndexOf('.'));
 
-          return <AttachmentModel>{
-            title: a.name,
-            downloadUrl: a.url,
-            fileType: coalesce(this.fileExtensionToFileTypeMap.get(fileExtension), FileType.Unknown),
-            filename: filename,
-            fileExtension: fileExtension,
-            fileSizeInKB: Math.round(a.fileSize / 1000),
-            type: a.type
-        };
-      })
-  }
 
   mapToDifferentiation(apiModel): DifferentiationModel {
     return {
       performanceBasedDifferentiation: apiModel.differentiation,
-      accessibilityStrategies: apiModel.accessibilityStrategies.map(x => <ResourceStrategyModel>{
+      accessibilityStrategies: coalesce(apiModel.accessibilityStrategies,[]).map(x => <ResourceStrategyModel>{
         title: x.title,
         moreAboutUrl: x.link,
         description: x.description
@@ -147,11 +161,11 @@ export class ResourceService {
   mapToFormative(apiModel): FormativeModel {
     return {
       howItsUsed: apiModel.connectionToFap,
-      strategies: apiModel.formativeStrategies.map(x => <ResourceStrategyModel>{
+      strategies: coalesce(apiModel.formativeStrategies,[]).map(x => <ResourceStrategyModel>{
         title: x.title,
         moreAboutUrl: x.link,
         description: x.description
       })
-    }
+    };
   }
 }

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
+import { delay, map } from 'rxjs/operators';
 import { LoggingService } from '../common/logging/logging.service';
 import { DataService } from './data.service';
-import { mockApiResource, mockUser, mockApiResourceWithNulls, mockApiResource2 } from './mock-data';
-import { delay } from 'rxjs/operators';
+import { mockApiResource, mockApiResource2, mockApiResourceWithNulls, mockDocument52, mockDocument53, mockUser } from './mock-data';
+import { HttpHeaders, HttpClient, HttpXhrBackend } from '@angular/common/http';
 
 // Work around for: 
 // https://stackoverflow.com/questions/48953587/typescript-class-implements-class-with-private-functions
@@ -14,14 +15,22 @@ type PublicPart<T> = {[K in keyof T]: T[K]}
 export class MockDataService implements PublicPart<DataService> {
   readonly mockGetDataEndpoints = [
     { pattern: /^\/userinfo$/, result: mockUser },
-    { pattern: /\/resource\/0$/, result: mockApiResourceWithNulls },
-    { pattern: /\/resource\/2$/, result: mockApiResource2 },
-    { pattern: /\/resource\/[0-9]/, result: mockApiResource }
+    { pattern: /\/resources\/0$/, result: mockApiResourceWithNulls },
+    { pattern: /\/resources\/2$/, result: mockApiResource2 },
+    { pattern: /\/resources\/[0-9]/, result: mockApiResource },
+    { pattern: /\/file_documents\/52/, result: mockDocument52 },
+    { pattern: /\/file_documents\/53/, result: mockDocument53 }
   ];
 
   readonly mockPostDataEndpoints = [
     { pattern: /^\/favorites\/resource$/, post: body => this.setFavorite(body) },
   ];
+
+  readonly mockDownloadEndpoints = [
+    { pattern: /\/file_documents\/52/, result: '/assets/mock-downloads/SBAC Running Record Analysis.pdf' },
+    { pattern: /\/file_documents\/53/, result: '/assets/mock-downloads/note_taking.docx' },
+    { pattern: /\/file_documents\/[0-9]*/, result: '/assets/mock-downloads/video-game-credits.pdf' }
+  ]
 
   readonly resources = [ mockApiResource, mockApiResource2 ];
 
@@ -51,8 +60,21 @@ export class MockDataService implements PublicPart<DataService> {
     return of(undefined);
   }
 
-  downloadPdf(url: string): Observable<Blob> {
-    throw new Error("Method not implemented.");
+  downloadBlob(url: string): Observable<Blob> {
+    // Don't want to inject httpClient in a mock data service which shouldn't be using one, but downlaoding from our assets
+    // folder is an exception which won't be used in unit tests, only in standalone mode.
+    const httpClient = new HttpClient(new HttpXhrBackend({ build: () => new XMLHttpRequest() }));
+    const mockedEndpoint = this.mockDownloadEndpoints.find(x => url.match(x.pattern) && url.match(x.pattern).length !=0 );
+    const options = <any>{
+      headers: new HttpHeaders({
+        'Content-Type':  'application/octet-stream',
+      }),
+      responseType : 'arraybuffer',
+    };
+
+    return httpClient
+      .get(mockedEndpoint.result, options)
+      .pipe(map(response => new Blob([ response ])));
   }
 
   private setFavorite(object: any): any{

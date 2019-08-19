@@ -47,7 +47,7 @@ export const mockApiResourceExample = {
 	title: "Connecting Fraction Division Equations to Visual Models",
 	status: true,
 	created: "2018-08-16T06:50:38+00:00",
-	changed: "2018-08-16T06:50:38+00:00",
+	updated: "2018-08-16T06:50:38+00:00",
 	deletedAt: null,
 	promote: true,
 	uuid: "24cvq2414v124v5145b14bbv4",
@@ -75,8 +75,8 @@ export const mockApiResourceExample = {
 	licenseSecondary: "Creative Commons Attribution",
 	copyrightClearaceForms: "",
 	pii: "None",
-	subjects: ["ELA", "Math"],
-	grades: ["Grade 6", "Grade 8", "Grade 9"],
+	subject: ["ELA", "Math"],
+	grade: ["Grade 6", "Grade 8", "Grade 9"],
 	alignmentTags: "",
 	educationAlignments: [
 		{ title: "", shortName: "" },
@@ -93,6 +93,10 @@ export const mockApiResourceExample = {
 	supportingEvidence: "",
 	principles: "",
 	mediaType: ["Video"],
+	documents: [
+		"/api/file_documents/53/download",
+        "/api/file_documents/52/download"
+	],
 	intendedStudent: ["All Students"],
 	educationalUse: ["Unit", "Lesson"],
 	classroomTechnologies: ["Internet"],
@@ -107,7 +111,7 @@ export const mockApiResourceExample = {
 };
 
 // Polyfills missing fields not provided by the example payload
-// in the API document from PCG.
+// in the API document.
 const polyfillMissingApiData = {
 	favorite: false,
 
@@ -372,11 +376,12 @@ export const mockApiResourceWithNulls = {
 	id: 0,
 	attachments: undefined,
 	steps: undefined,
-	subjects: undefined,
-	grades: undefined,
+	subject: undefined,
+	grade: undefined,
 	targetAlignments: undefined,
 	educationalAlignments: undefined,
-	standards: undefined
+	standards: undefined,
+	documents: undefined
 }
 
 
@@ -388,7 +393,7 @@ export const mockApiResourceExample2 = {
 	title: "Finding and Citing Textual Evidence",
 	status: true,
 	created: "2019-03-16T06:50:38+00:00",
-	changed: "2019-03-21T06:50:38+00:00",
+	updated: "2019-03-21T06:50:38+00:00",
 	deletedAt: null,
 	promote: true,
 	uuid: "24cvq2414v124v5145b14bbv4",
@@ -416,8 +421,8 @@ export const mockApiResourceExample2 = {
 	licenseSecondary: "Creative Commons Attribution",
 	copyrightClearaceForms: "",
 	pii: "None",
-	subjects: ["ELA"],
-	grades: ["Grade 6"],
+	subject: ["ELA"],
+	grade: ["Grade 6"],
 	alignmentTags: "",
 	educationAlignments: [
 		{ title: "", shortName: "" },
@@ -448,7 +453,7 @@ export const mockApiResourceExample2 = {
 };
 
 // Polyfills missing fields not provided by the example payload
-// in the API document from PCG.
+// in the API document
 const polyfillMissingApiData2 = {
 	favorite: false,
 
@@ -563,3 +568,23 @@ export const mockApiResource2 = {
 	...mockApiResourceExample2,
 	...polyfillMissingApiData2
 };
+
+export const mockDocument52 = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/52",
+    "@type": "FileDocument",
+    "id": 52,
+    "name": "SBAC Running Record Analysis.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": null
+}
+
+export const mockDocument53 = {
+	"@context": "/api/contexts/FileDocument",
+	"@id": "/api/file_documents/53",
+	"@type": "FileDocument",
+	"id": 53,
+	"name": "note_taking.docx",
+	"path": "15d4a90dba2441666f775be72bdbd1e39816d684.docx",
+	"mimeType": null
+}

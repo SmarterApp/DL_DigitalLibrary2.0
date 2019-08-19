@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ResourceModule } from '../../resource.module';
 import { AttachmentsComponent } from './attachments.component';
 import { mockResourceModel } from 'src/app/data/mock-data';
+import { mockDataServiceProviders } from 'src/app/app.module.spec';
 
 describe('AttachmentsComponent', () => {
   let component: AttachmentsComponent;
@@ -9,7 +10,8 @@ describe('AttachmentsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ ResourceModule ]
+      imports: [ ResourceModule ],
+      providers: [ ...mockDataServiceProviders ]
     })
     .compileComponents();
   }));

@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { AppConfig } from '../common/config/app.config';
 
 const jsonContentType = {
   headers: new HttpHeaders({
@@ -9,14 +10,9 @@ const jsonContentType = {
   })
 };
 
-const pdfContentType = <any>{
-  headers: new HttpHeaders({
-    'Content-Type':  'application/pdf',
-    Accept : 'application/pdf',
-    observe : 'response'
-  }),
-  responseType : 'arraybuffer',
-};
+const jsonHeaders = {
+  'Content-Type':  'application/json'
+}
 
 /**
  * Wrapper service for Angular's HttpClient.  As a best practice, we shouldn't ever use
@@ -31,7 +27,34 @@ export class DataService {
   constructor(private httpService: HttpClient) { }
 
   get(url: string, params?: any): Observable<any> {
-    return this.httpService.get(url, { ... jsonContentType, params: params })
+    const fullUrl = AppConfig.settings.apiServer.cdl + url;
+    const options = {
+      headers: new HttpHeaders({
+        ... jsonHeaders,
+        'Authorization': 'Bearer ' + AppConfig.settings.apiServer.authToken
+      }),
+      params: params
+    };
+
+    return this.httpService.get(fullUrl, options)
+      .pipe(
+          catchError(this.handleError)
+      );
+  }
+
+  downloadBlob(url: string, params?: any): Observable<Blob> {
+    const fullUrl = AppConfig.settings.apiServer.cdl + url;
+    const options = <any>{
+      headers: new HttpHeaders({
+        'Content-Type':  'application/octet-stream',
+        'Authorization': 'Bearer ' + AppConfig.settings.apiServer.authToken
+      }),
+      params: params,
+      responseType : 'arraybuffer',
+    };
+
+    return this.httpService.get(fullUrl, options)
+      .pipe(map(response => new Blob([ response ])))
       .pipe(
           catchError(this.handleError)
       );
@@ -42,13 +65,6 @@ export class DataService {
       .pipe(
           catchError(this.handleError)
       );
-  }
-
-
-  downloadPdf(url: string) {  
-    return this.httpService.get(url, pdfContentType)
-      .pipe(map(response => new Blob([ response ], { type: 'application/pdf' })))
-      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
