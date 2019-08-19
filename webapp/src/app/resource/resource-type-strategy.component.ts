@@ -4,6 +4,7 @@ import { InstructionalResourceComponent } from './instructional/instructional-re
 import { ResourceComponent } from './resource-component.interface';
 import { ResourceHostDirective } from './resource-host.directive';
 import { ActivatedRoute } from '@angular/router';
+import { ProfessionalResourceComponent } from './professional-resource/professional-resource.component';
 
 /***
  * This component will render the correct resource component based on the determined resource type.
@@ -14,8 +15,9 @@ import { ActivatedRoute } from '@angular/router';
   template: `<ng-template sbdlResourceHost></ng-template>`
 })
 export class ResourceTypeStrategyComponent implements OnInit {
-  readonly componentMap: Map<ResourceType, Type<ResourceComponent>> = new Map([
-    [ ResourceType.Instructional, InstructionalResourceComponent ]
+  readonly componentMap: Map<ResourceType, Type<ResourceComponent>> = new Map<ResourceType, Type<ResourceComponent>>([
+    [ ResourceType.Instructional, InstructionalResourceComponent ],
+    [ ResourceType.Professional, ProfessionalResourceComponent ],
   ]);
 
   @ViewChild(ResourceHostDirective, {static: true}) hostDirective: ResourceHostDirective;
@@ -34,7 +36,7 @@ export class ResourceTypeStrategyComponent implements OnInit {
       viewContainerRef.clear();
       const componentRef = viewContainerRef.createComponent(componentFactory);
   
-      (<ResourceComponent>componentRef.instance).model = data.resource;
+      componentRef.instance.model = data.resource;
     });
   }
 }

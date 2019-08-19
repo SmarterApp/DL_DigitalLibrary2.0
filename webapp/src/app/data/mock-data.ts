@@ -587,3 +587,8 @@ export const mockDocument53 = {
 	"path": "15d4a90dba2441666f775be72bdbd1e39816d684.docx",
 	"mimeType": null
 }
+
+export const mockProfessionalResource = {
+	...mockApiResource,
+	resourceType: "Professional Learning",
+}
