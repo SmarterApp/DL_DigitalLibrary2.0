@@ -1,3 +1,17 @@
-<p>
-  professional-resource works!
-</p>
+<nav class="outline">
+  <sbdl-outline
+    [model]="model"
+    [scrollableElements]="scrollableElements"
+    [readingMode]="readingMode"
+  ></sbdl-outline>
+</nav>
+<section class="resource-content">
+  <sbdl-resource-content
+    [model]="model"
+    (loadScrollableElements)="setScrollableElements($event)"
+    (readingModeChanged)="readingModeChanged($event)"
+  ></sbdl-resource-content>
+</section>
+<aside class="metadata">
+  (metadata)
+</aside>

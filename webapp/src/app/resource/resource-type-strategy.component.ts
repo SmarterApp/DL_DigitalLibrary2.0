@@ -1,7 +1,7 @@
 import { Component, ComponentFactoryResolver, OnInit, Type, ViewChild } from '@angular/core';
 import { ResourceType } from '../data/resource/model/resource-type.enum';
 import { InstructionalResourceComponent } from './instructional/instructional-resource.component';
-import { ResourceComponent } from './resource-component.interface';
+import { ResourceComponent } from './resource.component';
 import { ResourceHostDirective } from './resource-host.directive';
 import { ActivatedRoute } from '@angular/router';
 import { ProfessionalResourceComponent } from './professional/professional-resource.component';

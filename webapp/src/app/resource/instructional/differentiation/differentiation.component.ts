@@ -26,5 +26,4 @@ export class DifferentiationComponent implements OnInit, AfterViewInit {
       this.sectionElementLoaded.emit(this.headerElement.nativeElement);
     }
   }
-
 }
