@@ -1,0 +1,13 @@
+
+<h1>{{ details.title }}</h1>
+<section class="byline">
+  {{ details.author }}&nbsp;&nbsp;&bull;&nbsp;&nbsp;
+  <span class="font-light">{{ details.authorOrganization }}</span>
+</section>
+<span *ngIf="details.lastModified" class="caption">
+  <span class="emphasis-medium">Updated</span>
+  {{ details.lastModified | date: 'mediumDate' }}
+</span>
+<sbdl-button *ngIf="model.attachments.length > 0" class="primary" (click)="emitAttachmentsClicked()">
+  <i class="far fa-paperclip"></i> Attachments
+</sbdl-button>

@@ -17,6 +17,7 @@ import { ResourceHostDirective } from './resource-host.directive';
 import { ResourceTypeStrategyComponent } from './resource-type-strategy.component';
 import { ResourceComponent } from './resource.component';
 import { ActionsComponent } from './components/actions/actions.component';
+import { HeaderComponent } from './components/header/header.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -35,7 +36,7 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     FormativeComponent, 
     StepByStepComponent, 
     AttachmentsComponent, 
-    ProfessionalResourceComponent, ActionsComponent
+    ProfessionalResourceComponent, ActionsComponent, HeaderComponent
   ],
   imports: [
     CommonModule,

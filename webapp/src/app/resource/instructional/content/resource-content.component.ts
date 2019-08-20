@@ -20,10 +20,6 @@ export class ResourceContentComponent implements OnInit {
 
   private scrollableElements: ScrollableElements;
 
-  get details() {
-    return this.model.details;
-  }
-
   constructor() { }
 
   ngOnInit() {
@@ -65,12 +61,6 @@ export class ResourceContentComponent implements OnInit {
   }
 
   private emitScrollableElementsEvent() {
-    if(this.scrollableElements.getStarted 
-        && this.scrollableElements.differentiation 
-        && this.scrollableElements.steps
-        && this.scrollableElements.attachments
-        && this.scrollableElements.formativeAssessmentProcess) {
-      this.loadScrollableElements.emit(this.scrollableElements);
-    }
+    this.loadScrollableElements.emit(this.scrollableElements);
   }
 }

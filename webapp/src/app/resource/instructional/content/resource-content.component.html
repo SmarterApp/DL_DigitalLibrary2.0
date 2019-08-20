@@ -2,29 +2,18 @@
   <img src="/assets/images/yellow-spot.png" />
   <sbdl-actions [model]= "model" (readingModeChanged)="emitReadingModeChanged($event)"></sbdl-actions>
 </div>
-<header>
-  <h1>{{ details.title }}</h1>
-  <section class="byline">
-    {{ details.author }}&nbsp;&nbsp;&bull;&nbsp;&nbsp;<span
-      class="font-light"
-      >{{ details.authorOrganization }}</span
-    >
-  </section>
-  <span *ngIf="details.lastModified" class="caption">
-    <span class="emphasis-medium">Updated</span>
-    {{ details.lastModified | date: 'mediumDate' }}
-  </span>
-  <sbdl-button *ngIf="model.attachments.length > 0" class="primary" (click)="scrollToAttachments()">
-    <i class="far fa-paperclip"></i> Attachments
-  </sbdl-button>
-</header>
+<sbdl-header [model]="model" (attachmentsClicked)="scrollToAttachments()"></sbdl-header>
+
 <sbdl-overview [model]="model.overview"  (sectionElementLoaded)="setGetStarted($event)"></sbdl-overview>
 <hr *ngIf="model.steps.length > 0"/>
+
 <sbdl-step-by-step [models]="model.steps" (sectionElementLoaded)="setSteps($event)"></sbdl-step-by-step>
 <hr *ngIf="model.attachments.length > 0"/>
+
 <sbdl-attachments [models]="model.attachments" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
 <hr/>
+
 <sbdl-differentiation [model]="model.differentiation" (sectionElementLoaded)="setDifferentiation($event)"></sbdl-differentiation>
 <hr/>
-<sbdl-formative [model]="model.formative" (sectionElementLoaded)="setFormative($event)"></sbdl-formative>
 
+<sbdl-formative [model]="model.formative" (sectionElementLoaded)="setFormative($event)"></sbdl-formative>

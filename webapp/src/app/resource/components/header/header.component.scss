@@ -1,0 +1,37 @@
+@import "spacing";
+@import "colors";
+@import "fonts";
+
+:host {
+    display: grid;
+    grid-template-areas: "title title"
+                         "byline button"
+                         "updated button";
+    grid-template-rows: repeat (3, auto);
+    grid-template-columns: 1fr auto;
+    margin-bottom: $spacer-xl;
+    // calculating the max-width
+    // --measure + outside padding + inside padding + trailing and leading icons
+    max-width: calc(var(--measure) + #{$spacer-xl});
+    margin-left: $spacer-lg;
+    h1 {
+        grid-area: title;
+        color: $brand-green;
+    }
+    .byline {
+        font-family: $font-family-title;
+        grid-area: byline;
+        margin-bottom: $spacer-sm;
+        .font-light {
+            color: $neutral-500;
+        }
+    }
+    .caption {
+        font-family: $font-family-title;
+        grid-area: updated;
+    }
+    sbdl-button {
+        grid-area: button;
+        align-self: center;
+    }
+}
