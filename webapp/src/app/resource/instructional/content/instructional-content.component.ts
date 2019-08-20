@@ -3,11 +3,11 @@ import { ResourceModel } from 'src/app/data/resource/model/resource.model';
 import { ScrollableElements } from '../../outline/scrollable-elements.model';
 
 @Component({
-  selector: 'sbdl-resource-content',
-  templateUrl: './resource-content.component.html',
-  styleUrls: ['./resource-content.component.scss']
+  selector: 'sbdl-instructional-content',
+  templateUrl: './instructional-content.component.html',
+  styleUrls: ['./instructional-content.component.scss']
 })
-export class ResourceContentComponent implements OnInit {
+export class InstructionalContentComponent implements OnInit {
 
   @Input()
   model: ResourceModel;
