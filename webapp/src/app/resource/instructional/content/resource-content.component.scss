@@ -13,7 +13,7 @@
         width: 100%;
         align-items: baseline;
     }
-    .actions {
+    .sbdl-actions {
         align-self: flex-end;
         padding-top: $spacer-lg;
         margin-bottom: $spacer;
@@ -70,27 +70,5 @@
         opacity: 0.2;
         transform: translateX(-1.5rem);
         margin-bottom: 51px;
-    }
-}
-
-.share-popover {
-    h6 {
-        margin: 0;
-        color: $brand-green;
-    }
-    .copy-clipboard {
-        width: 100%;
-        display:inline-flex;
-        align-items: center;
-        justify-items: center;
-        justify-content: space-between;
-        input {
-            font-size: 1rem;
-            flex-grow: 1;
-        }
-    }
-    .copy-success {
-        font-size: 10px;
-        margin-left: -6px;
     }
 }
