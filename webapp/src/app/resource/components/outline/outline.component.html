@@ -5,8 +5,8 @@
   </span> 
   Outline
 </h6>
-<ul>
-  <li>
+<ul *ngIf="scrollableElements">
+  <li *ngIf="scrollableElements.getStarted">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.getStarted)" (blur)="removeClass(scrollableElements.getStarted)">
       <sbdl-icon icon="goal"></sbdl-icon>
       Get Started
@@ -23,19 +23,19 @@
       </li>
     </ol>
   </li>
-  <li *ngIf="model.attachments.length > 0">
+  <li *ngIf="scrollableElements.attachments">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.attachments)" (blur)="removeClass(scrollableElements.attachments)">
       <i class="far fa-paperclip"></i>
       Attachments
     </sbdl-button>
   </li>
-  <li>
+  <li *ngIf="scrollableElements.differentiation">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.differentiation)" (blur)="removeClass(scrollableElements.differentiation)">
       <i class="far fa-universal-access"></i>
       Differentiation
     </sbdl-button>
   </li>
-  <li>
+  <li *ngIf="scrollableElements.formativeAssessmentProcess">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.formativeAssessmentProcess)" (blur)="removeClass(scrollableElements.formativeAssessmentProcess)">
       <sbdl-icon icon="strategies"></sbdl-icon>
       Formative Assessment Process

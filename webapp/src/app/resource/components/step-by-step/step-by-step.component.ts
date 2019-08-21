@@ -25,8 +25,6 @@ export class StepByStepComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     if(this.stepElementRefs) {
       this.sectionElementLoaded.emit(this.stepElementRefs.map(x => x.nativeElement));
-    } else {
-      this.sectionElementLoaded.emit([]);
     }
   }
 }

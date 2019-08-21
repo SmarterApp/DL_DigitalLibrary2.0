@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, HostBinding, OnInit } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { ResourceModel } from '../data/resource/model/resource.model';
-import { ScrollableElements } from './outline/scrollable-elements.model';
+import { ScrollableElements } from './components/outline/scrollable-elements.model';
 
 export class ResourceComponent implements OnInit {
 

@@ -1,13 +1,13 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ResourceModel } from 'src/app/data/resource/model/resource.model';
 import { ScrollableElements } from '../../components/outline/scrollable-elements.model';
 
 @Component({
-  selector: 'sbdl-instructional-content',
-  templateUrl: './instructional-content.component.html',
-  styleUrls: ['./instructional-content.component.scss']
+  selector: 'sbdl-professional-content',
+  templateUrl: './professional-content.component.html',
+  styleUrls: ['./professional-content.component.scss']
 })
-export class InstructionalContentComponent implements OnInit {
+export class ProfessionalContentComponent implements OnInit {
 
   @Input()
   model: ResourceModel;
@@ -23,16 +23,6 @@ export class InstructionalContentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
-
-  setGetStarted($event) {
-    this.scrollableElements = {...this.scrollableElements, getStarted: $event };
-    this.emitScrollableElementsEvent();
-  }
-
-  setDifferentiation($event) {
-    this.scrollableElements = {...this.scrollableElements, differentiation: $event };
-    this.emitScrollableElementsEvent();
   }
 
   setFormative($event) {

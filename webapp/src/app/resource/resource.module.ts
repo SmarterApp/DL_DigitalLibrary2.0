@@ -12,12 +12,13 @@ import { InstructionalContentComponent } from './instructional/content/instructi
 import { DifferentiationComponent } from './instructional/differentiation/differentiation.component';
 import { GetStartedComponent } from './instructional/get-started/get-started.component';
 import { InstructionalResourceComponent } from './instructional/instructional-resource.component';
-import { MetadataComponent } from './metadata/metadata.component';
-import { OutlineComponent } from './outline/outline.component';
+import { MetadataComponent } from './instructional/metadata/metadata.component';
+import { OutlineComponent } from './components/outline/outline.component';
 import { ProfessionalResourceComponent } from './professional/professional-resource.component';
 import { ResourceHostDirective } from './resource-host.directive';
 import { ResourceTypeStrategyComponent } from './resource-type-strategy.component';
 import { ResourceComponent } from './resource.component';
+import { ProfessionalContentComponent } from './professional/content/professional-content.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -26,17 +27,20 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
 @NgModule({
   declarations: [ 
     InstructionalContentComponent,
-    GetStartedComponent, 
+    GetStartedComponent,
     InstructionalResourceComponent,
-    ResourceTypeStrategyComponent, 
-    ResourceHostDirective, 
-    OutlineComponent, 
-    MetadataComponent, 
-    DifferentiationComponent, 
-    FormativeComponent, 
-    StepByStepComponent, 
-    AttachmentsComponent, 
-    ProfessionalResourceComponent, ActionsComponent, HeaderComponent
+    ResourceTypeStrategyComponent,
+    ResourceHostDirective,
+    OutlineComponent,
+    MetadataComponent,
+    DifferentiationComponent,
+    FormativeComponent,
+    StepByStepComponent,
+    AttachmentsComponent,
+    ProfessionalResourceComponent,
+    ActionsComponent,
+    HeaderComponent,
+    ProfessionalContentComponent
   ],
   imports: [
     CommonModule,

@@ -3,7 +3,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { LoggingService } from '../common/logging/logging.service';
 import { DataService } from './data.service';
-import { mockApiResource, mockApiResource2, mockApiResourceWithNulls, mockDocument52, mockDocument53, mockUser, mockProfessionalResource } from './mock-data';
+import { mockApiResource, mockApiResource2, mockApiResourceWithNulls, mockDocument52, mockDocument53, mockUser, mockProfessionalResource, mockDocument54, mockDocument55 } from './mock-data';
 import { HttpHeaders, HttpClient, HttpXhrBackend } from '@angular/common/http';
 
 // Work around for: 
@@ -20,7 +20,9 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /\/resources\/3$/, result: mockProfessionalResource },
     { pattern: /\/resources\/[0-9]/, result: mockApiResource },
     { pattern: /\/file_documents\/52/, result: mockDocument52 },
-    { pattern: /\/file_documents\/53/, result: mockDocument53 }
+    { pattern: /\/file_documents\/53/, result: mockDocument53 },
+    { pattern: /\/file_documents\/54/, result: mockDocument54 },
+    { pattern: /\/file_documents\/55/, result: mockDocument55 }
   ];
 
   readonly mockPostDataEndpoints = [
