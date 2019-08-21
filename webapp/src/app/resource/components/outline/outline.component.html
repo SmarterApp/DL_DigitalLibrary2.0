@@ -12,6 +12,12 @@
       Get Started
     </sbdl-button>
   </li>
+  <li *ngIf="scrollableElements.overview">
+    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.overview)" (blur)="removeClass(scrollableElements.overview)">
+      <sbdl-icon icon="goal"></sbdl-icon>
+      Overview
+    </sbdl-button>
+  </li>
   <li *ngIf="model.steps.length > 0" class="steps">
     <div class="steps-header">
       <sbdl-icon icon="steps"></sbdl-icon>

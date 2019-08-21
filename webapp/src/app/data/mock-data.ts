@@ -665,13 +665,11 @@ const polyfillMissingProfApiData = {
 	// metadata
 	resourceThumbnail: mockProfImage,
 	category: 'Formative Assessment Process',
-	learningGoals: 'The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.',
+	learningGoals: 'Participants will deepen their understanding of the formative assessment process.',
 	//overview
 	altBody: `
-		In this task, students will engage with division of fraction tasks that use the same context but require students to divide the fractions 
-		in the opposite order.  Students solve the tasks by creating visual models, selecting the equations that appropriately represents the situation,
-		and confirming their solutions by solving said equations and comparing back to the visual models.  Students will work to answer the questions,
-		"How do these numbers and operations work together?"
+		What makes the formative assessment process such a powerful process within the teaching-learning cycle? In this activity, 
+		educators will review the components of the formative assessment process and then evaluate its impact on learning.
 	`,
 	formativeStrategies: [{
 		title: 'Verbal Feedback',
@@ -700,9 +698,8 @@ const polyfillMissingProfApiData = {
 	}],
 	successCriteria: `
 		<ul>
-			<li>Students will be able to construct visual models to solve contextual problems involving division of fractions.</li>
-			<li>Students will be able to pair visual fraction models with appropriate equations.</li>
-			<li>Students will be able to compute the quotients of fractions.</li>
+			<li>Participants will discuss insights with a partner or small group.</li>
+			<li>Participants will create reflection summary, on a poster, and/or in bullet points with peer.</li>
 		</ul>
 	`,
 	steps: [{

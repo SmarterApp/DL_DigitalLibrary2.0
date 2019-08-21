@@ -20,6 +20,7 @@ import { ResourceTypeStrategyComponent } from './resource-type-strategy.componen
 import { ResourceComponent } from './resource.component';
 import { ProfessionalContentComponent } from './professional/content/professional-content.component';
 import { ProfessionalMetadataComponent } from './professional/metadata/professional-metadata.component';
+import { OverviewComponent } from './professional/overview/overview.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -42,7 +43,8 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     ActionsComponent,
     HeaderComponent,
     ProfessionalContentComponent,
-    ProfessionalMetadataComponent
+    ProfessionalMetadataComponent,
+    OverviewComponent
   ],
   imports: [
     CommonModule,
