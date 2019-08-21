@@ -1,4 +1,4 @@
-import { mockEvidenceImage, mockResourceImage } from 'src/app/data/mock-images';
+import { mockEvidenceImage, mockResourceImage, mockProfImage } from 'src/app/data/mock-images';
 import { DifferentiationModel } from './resource/model/differentiation.model';
 import { FormativeModel } from './resource/model/formative.model';
 import { OverviewModel, ResourceMaterial } from './resource/model/overview.model';
@@ -660,25 +660,12 @@ export const mockApiProfResourceExample = {
 	temporaryPublicLinkTime: "5 mins"
 };
 
-
 const polyfillMissingProfApiData = {
 	favorite: false,
 	// metadata
-	resourceThumbnail: mockResourceImage,
-	educationalAlignments: [
-		{ title: 'Problem Solving', shortName: '2'}
-	], 
-	targetAlignments: [
-		{ title: 'The Number System', shortName: 'B' }
-	],
+	resourceThumbnail: mockProfImage,
+	category: 'Formative Assessment Process',
 	learningGoals: 'The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.',
-	connectionsPlaylist: [ {
-		title: 'Grade 6 Fractions',
-		numberOfResources: 6,
-		assessmentType: 1 // how will this be defined?
-	}],
-	standards: ['6.NS.A.1', '6.NS.A.3', '5.NS.A.4'],
-
 	//overview
 	altBody: `
 		In this task, students will engage with division of fraction tasks that use the same context but require students to divide the fractions 
@@ -686,7 +673,6 @@ const polyfillMissingProfApiData = {
 		and confirming their solutions by solving said equations and comparing back to the visual models.  Students will work to answer the questions,
 		"How do these numbers and operations work together?"
 	`,
-	differentiation: undefined,
 	formativeStrategies: [{
 		title: 'Verbal Feedback',
 		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',

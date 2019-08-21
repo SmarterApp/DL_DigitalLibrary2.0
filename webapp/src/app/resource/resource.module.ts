@@ -19,6 +19,7 @@ import { ResourceHostDirective } from './resource-host.directive';
 import { ResourceTypeStrategyComponent } from './resource-type-strategy.component';
 import { ResourceComponent } from './resource.component';
 import { ProfessionalContentComponent } from './professional/content/professional-content.component';
+import { ProfessionalMetadataComponent } from './professional/metadata/professional-metadata.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -40,7 +41,8 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     ProfessionalResourceComponent,
     ActionsComponent,
     HeaderComponent,
-    ProfessionalContentComponent
+    ProfessionalContentComponent,
+    ProfessionalMetadataComponent
   ],
   imports: [
     CommonModule,

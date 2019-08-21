@@ -40,6 +40,9 @@ export interface ResourceDetailsModel {
 
     // UKNOWN
     favorite: boolean;
+
+    // UNKNOWN
+    category: string;
 }
 
 export interface Alignment {

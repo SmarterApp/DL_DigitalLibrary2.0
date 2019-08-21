@@ -117,7 +117,8 @@ export class ResourceService {
       }),
       // MAYBE, but this is NOT an array?
       // /api/v1/resource.connectionToCcss
-      standards: coalesce(apiResource.standards, [])
+      standards: coalesce(apiResource.standards, []),
+      category: apiResource.category
     };
   }
 
