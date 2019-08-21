@@ -2,11 +2,11 @@ import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit, ViewChil
 import { OverviewModel } from 'src/app/data/resource/model/overview.model';
 
 @Component({
-  selector: 'sbdl-overview',
-  templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.scss']
+  selector: 'sbdl-get-started',
+  templateUrl: './get-started.component.html',
+  styleUrls: ['./get-started.component.scss']
 })
-export class OverviewComponent implements OnInit, AfterViewInit {
+export class GetStartedComponent implements OnInit, AfterViewInit {
 
   @Input()
   model: OverviewModel;

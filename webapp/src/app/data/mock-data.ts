@@ -1,4 +1,4 @@
-import { mockEvidenceImage, mockResourceImage } from 'src/app/data/mock-images';
+import { mockEvidenceImage, mockResourceImage, mockProfImage } from 'src/app/data/mock-images';
 import { DifferentiationModel } from './resource/model/differentiation.model';
 import { FormativeModel } from './resource/model/formative.model';
 import { OverviewModel, ResourceMaterial } from './resource/model/overview.model';
@@ -584,6 +584,201 @@ export const mockDocument53 = {
 	"@type": "FileDocument",
 	"id": 53,
 	"name": "note_taking.docx",
+	"path": "15d4a90dba2441666f775be72bdbd1e39816d684.docx",
+	"mimeType": null
+}
+
+//Example
+export const mockApiProfResourceExample = {
+	id: 1,
+	nid: 1234,
+	vid: 1234,
+	language: "english",
+	title: "Quotes for Understanding the Formative Assessment Process",
+	status: true,
+	created: "2018-08-16T06:50:38+00:00",
+	updated: "2019-08-19T16:50:38+00:00",
+	deletedAt: null,
+	promote: true,
+	uuid: "24cvq2414v124v5145b14bbv4",
+	temp: false,
+	uniqueViews: 302,
+	totalViews: 350,
+	resourceState: "Create",
+	html5: false,
+	asserDownloads: 100,
+	uniqueDownloads: 20,
+	avgRating: "3.5",
+	isHidden: false,
+	resourceType: "Professional Learning",
+	intendedEndUser: "Teacher",
+	attributes: "Clarify Intended Learning",
+	connectionToFap: "",
+	studentAgency: "",
+	altBody: "",
+    documentId: "",
+	resourceThumbnailUrl: "https://dl.com/image.png",
+	licenseInformation: "",
+	author: "Steve Green",
+	publisher: "Amy Thierry",
+	license: "Creative Commons Attribution",
+	licenseSecondary: "Creative Commons Attribution",
+	copyrightClearaceForms: "",
+	pii: "None",
+	subject: ["ELA", "Math"],
+	grade: ["Grade 6", "Grade 8", "Grade 9"],
+	alignmentTags: "",
+	educationAlignments: [
+		{ title: "", shortName: "" },
+		{ title: "" }
+	],
+	targetAlignments: [
+		{ title: "", shortName: "" },
+		{ title: "" }
+	],
+	connectionToCcss: "",
+	learningGoals: "",
+	successCriteria: "",
+	contexts: "",
+	supportingEvidence: "",
+	principles: "",
+	mediaType: ["Video"],
+	documents: [
+		"/api/file_documents/54/download",
+        "/api/file_documents/55/download"
+	],
+	intendedStudent: ["All Students"],
+	educationalUse: ["Unit", "Lesson"],
+	classroomTechnologies: ["Internet"],
+	moduleType: ["Score Report"],
+	subscriptionPackageType: "Summative and formative resource",
+	viewPermissions: "All states",
+	state: ["California"],
+	resourceActions: "Allow primary material to be downloaded",
+	permanentLinkSettings: "Private",
+	temporaryPublicLink: "Enable Temporary Public Link",
+	temporaryPublicLinkTime: "5 mins"
+};
+
+const polyfillMissingProfApiData = {
+	favorite: false,
+	// metadata
+	resourceThumbnail: mockProfImage,
+	category: 'Formative Assessment Process',
+	learningGoals: 'The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.',
+	//overview
+	altBody: `
+		In this task, students will engage with division of fraction tasks that use the same context but require students to divide the fractions 
+		in the opposite order.  Students solve the tasks by creating visual models, selecting the equations that appropriately represents the situation,
+		and confirming their solutions by solving said equations and comparing back to the visual models.  Students will work to answer the questions,
+		"How do these numbers and operations work together?"
+	`,
+	formativeStrategies: [{
+		title: 'Verbal Feedback',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+		description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+	}, {
+		title: 'Peer-to-Peer Feedback',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+		description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+	}, {
+		title: 'Collaborative Discussion',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+		description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. `
+	}, {
+		title: 'Circulate the Room',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+		description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. `
+	}, {
+		title: 'Self-Assess',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+		description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+	}, {
+		title: 'Fold the Line',
+		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+		description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+	}],
+	successCriteria: `
+		<ul>
+			<li>Students will be able to construct visual models to solve contextual problems involving division of fractions.</li>
+			<li>Students will be able to pair visual fraction models with appropriate equations.</li>
+			<li>Students will be able to compute the quotients of fractions.</li>
+		</ul>
+	`,
+	steps: [{
+		number: 1,
+		title: 'Setting Up',
+		content: `
+			<p>
+				Print the provided quotes (preferably on poster size paper) and display for participants to preview as they come into 
+				the training and during the gallery walk.
+			</p>`
+	}, {
+		number: 2,
+		title: 'Gallery Walk',
+		content: `
+			<p>
+				Have participants preview all of the posters and quotes by circulating the room using the Gallery Walk strategy. As an option, 
+				you may play music. Allot enough time, if possible, provide up to 15-minutes , for everyone to circulate the entire room to 
+				read and think about each of the quotes.
+			</p>
+		`
+	}, {
+		number: 3,
+		title: 'Take a Stand',
+		content: `
+			<p>
+				Upon completing the Gallery Walk, ask participants to stand next to the quote that they resonate the most with. 
+				Provide up to 15-minutes to allow educators to discuss and share their thoughts about the quote they chose. Prompt 
+				participants to share why they selected the quote and then to dig deeper into the meaning of the quote and connect 
+				their thoughts and wonderings about the formative assessment process to the quote.
+			</p>
+		`
+	}, {
+		number: 4,
+		title: 'In Your Own Words',
+		content: `
+			<p>
+				Have each group synthesize their discussion into a summary, bullet points, and/or a visual representation on 
+				poster paper to share out. In some cases, this could look like a rewording of the quote that connects with the 
+				conversation, or it could end up being something that builds on the quote and extends understanding to make it 
+				more concrete. Provide up to 15-minutes.
+			</p>
+		`
+	}, {
+		number: 5,
+		title: 'Whole Group Share Out',
+		content: `
+			<p>
+				Each group will share out their statements and insights based on their discussions and poster. Provide up to 
+				15-minutes for this step.
+			</p>
+		`
+	}]
+
+};
+
+export const mockProfessionalResource = {
+	...mockApiProfResourceExample,
+	...polyfillMissingProfApiData
+}
+
+export const mockDocument54 = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/52",
+    "@type": "FileDocument",
+    "id": 52,
+    "name": "Formative Assessment Quotes for Charts.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": null
+}
+
+export const mockDocument55 = {
+	"@context": "/api/contexts/FileDocument",
+	"@id": "/api/file_documents/53",
+	"@type": "FileDocument",
+	"id": 53,
+	"name": "Formative Assessment Quotes.pdf",
 	"path": "15d4a90dba2441666f775be72bdbd1e39816d684.docx",
 	"mimeType": null
 }

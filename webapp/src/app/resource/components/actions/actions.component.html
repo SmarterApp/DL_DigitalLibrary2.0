@@ -1,0 +1,35 @@
+
+<sbdl-button-icon (click)="share()"><i class="far fa-share"></i></sbdl-button-icon>
+<ng-container #shareButton></ng-container>
+<sbdl-button-icon (click)="toggleFavorite()">
+  <div *ngIf="!togglingFavorite && model.details.favorite">
+    <i class="fas fa-bookmark"></i>
+  </div>
+  <div *ngIf="!togglingFavorite && !model.details.favorite">
+    <i class="far fa-bookmark"></i>
+  </div>
+  <div *ngIf="togglingFavorite">
+    <i class="fas fa-spinner fa-spin"></i>
+  </div>
+</sbdl-button-icon>
+<sbdl-button-icon><i class="far fa-print"></i></sbdl-button-icon>
+<sbdl-button-icon [hidden]="hideReadingModeToggle" (click)="toggleReadingMode()">
+  <div *ngIf="readingMode">
+    <i class="far fa-compress-alt"></i>
+  </div>
+  <div *ngIf="!readingMode">
+    <i class="far fa-expand-alt"></i>
+  </div>
+</sbdl-button-icon>
+<ng-template #sharePopover>
+  <div class="share-popover">
+      <h6>Share this resource</h6>
+      <div class="copy-clipboard">
+          <input #url readonly type="text" [value]="currentUrl">
+          <sbdl-button-icon (click)="copyToClipboard(url)">
+            <i class="fas fa-copy" title="Copy to clipboard"></i>
+            <div class="copy-success" [hidden]="!showCopied">Copied!</div>
+          </sbdl-button-icon>
+      </div>
+  </div>
+</ng-template>

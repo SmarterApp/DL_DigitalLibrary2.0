@@ -6,12 +6,12 @@
   ></sbdl-outline>
 </nav>
 <section class="resource-content">
-  <sbdl-instructional-content
+  <sbdl-professional-content
     [model]="model"
     (loadScrollableElements)="setScrollableElements($event)"
     (readingModeChanged)="readingModeChanged($event)"
-  ></sbdl-instructional-content>
+  ></sbdl-professional-content>
 </section>
 <aside class="metadata">
-  <sbdl-instructional-metadata [model]="model.details"></sbdl-instructional-metadata>
+  <sbdl-professional-metadata [model]="model.details"></sbdl-professional-metadata>
 </aside>

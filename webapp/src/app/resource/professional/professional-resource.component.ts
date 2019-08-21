@@ -3,14 +3,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ResourceComponent } from '../resource.component';
 
 @Component({
-  selector: 'sbdl-resource',
-  templateUrl: './instructional-resource.component.html',
+  selector: 'sbdl-professional-resource',
+  templateUrl: './professional-resource.component.html',
   styleUrls: ['./../resource.component.scss']
 })
-export class InstructionalResourceComponent extends ResourceComponent {
+export class ProfessionalResourceComponent extends ResourceComponent {
   constructor(cdRef: ChangeDetectorRef, sanitizer: DomSanitizer) {
     super(cdRef, sanitizer);
    }
 }
-
-

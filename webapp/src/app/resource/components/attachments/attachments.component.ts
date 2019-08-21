@@ -31,10 +31,7 @@ export class AttachmentsComponent implements OnInit {
   ngAfterViewInit(): void {
     if(this.headerElement) {
       this.sectionElementLoaded.emit(this.headerElement.nativeElement);
-    } else {
-      this.sectionElementLoaded.emit({});
     }
-
     // Add ripples
     for(let attachmentRef of this.attachmentElementRefs) {
       MDCRipple.attachTo(attachmentRef.nativeElement);

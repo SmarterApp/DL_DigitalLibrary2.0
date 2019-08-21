@@ -1,0 +1,42 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+
+:host {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: none;
+    .top-header {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: baseline;
+    }
+    .sbdl-actions {
+        align-self: flex-end;
+        padding-top: $spacer-lg;
+        margin-bottom: $spacer;
+    }
+
+
+
+    .modified-info {
+        font-size: 0.8em;
+        font-style: italic;
+    }
+
+    hr {
+        width:100%;
+        box-sizing: border-box;
+        height: 1px;
+        color: $neutral-900;
+        background-color: $neutral-900;
+        border:none;
+
+        padding-left: 5rem;
+        opacity: 0.2;
+        transform: translateX(-1.5rem);
+        margin-bottom: 51px;
+    }
+}

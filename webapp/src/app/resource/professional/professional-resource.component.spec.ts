@@ -1,13 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { mockDataServiceProviders } from 'src/app/app.module.spec';
+import { ResourceModule } from '../resource.module';
+import { ProfessionalResourceComponent } from './professional-resource.component';
 import { mockResourceModel } from 'src/app/data/mock-data';
 import { ResourceComponent } from '../resource.component';
-import { ResourceModule } from '../resource.module';
-import { InstructionalResourceComponent } from './instructional-resource.component';
 
-describe('InstructionalResourceComponent', () => {
-  let component: InstructionalResourceComponent;
-  let fixture: ComponentFixture<InstructionalResourceComponent>;
+describe('ProfessionalResourceComponent', () => {
+  let component: ProfessionalResourceComponent;
+  let fixture: ComponentFixture<ProfessionalResourceComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -18,7 +18,7 @@ describe('InstructionalResourceComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InstructionalResourceComponent);
+    fixture = TestBed.createComponent(ProfessionalResourceComponent);
     component = fixture.componentInstance;
     (<ResourceComponent>component).model = mockResourceModel;
     fixture.detectChanges();

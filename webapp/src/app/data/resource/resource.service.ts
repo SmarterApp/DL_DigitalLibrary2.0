@@ -3,17 +3,15 @@ import { forkJoin, Observable, of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { coalesce } from 'src/app/common/utils';
 import { DataService } from '../data.service';
-import { AttachmentModel, FileType } from './model/attachment.model';
+import { AttachmentService } from './attachment.service';
 import { DifferentiationModel } from './model/differentiation.model';
-import { FormativeModel, FormativeAssessmentProcess } from './model/formative.model';
+import { FormativeAssessmentProcess, FormativeModel } from './model/formative.model';
 import { OverviewModel } from './model/overview.model';
 import { Alignment, Playlist, ResourceDetailsModel } from './model/resource-details.model';
 import { ResourceStepModel } from './model/resource-step.model';
 import { ResourceStrategyModel } from './model/resource-strategy.model';
 import { ResourceType } from './model/resource-type.enum';
 import { ResourceModel } from './model/resource.model';
-import { AttachmentService } from './attachment.service';
-import { WebElementCondition } from 'selenium-webdriver';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +21,8 @@ export class ResourceService {
   // the API will return here.
   readonly apiResourceTypeMap: Map<string, ResourceType> = new Map([
     ['Instructional and Professional Learning', ResourceType.Instructional ],
-    ['Instructional', ResourceType.Instructional ]
+    ['Instructional', ResourceType.Instructional ],
+    ['Professional Learning', ResourceType.Professional ]
   ]);
 
   // TODO: Define how assessment types are defined.  How will this be represented?
@@ -31,8 +30,6 @@ export class ResourceService {
   readonly assessmentTypeToIconMap: Map<number, string> = new Map([
     [ 1, 'assessment-6-7-number-system' ]
   ]);
-
-
 
   constructor(private dataService: DataService, private attachmentService: AttachmentService) { }
 
@@ -120,7 +117,8 @@ export class ResourceService {
       }),
       // MAYBE, but this is NOT an array?
       // /api/v1/resource.connectionToCcss
-      standards: coalesce(apiResource.standards, [])
+      standards: coalesce(apiResource.standards, []),
+      category: apiResource.category
     };
   }
 
