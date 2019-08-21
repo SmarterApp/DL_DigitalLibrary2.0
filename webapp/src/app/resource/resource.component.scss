@@ -49,7 +49,7 @@
         transition-duration: 0.5s;
         transition-timing-function: ease-in;
 
-        box-shadow: inset 10px 0px 18px -10px rgba(0, 0, 0, 0.2);
+        box-shadow: inset 10px 0px 18px -10px rgba(182, 109, 109, 0.2);
 
         background-image: url('/assets/images/green-spot-2.png'), url('/assets/images/yellow-spot-2.png');
         background-repeat: no-repeat;
@@ -61,7 +61,7 @@
     }
 
     nav sbdl-outline,
-    aside sbdl-metadata {
+    aside sbdl-instructional-metadata {
       position: fixed;
       max-height: 100%;
       height: 100%;
@@ -108,7 +108,7 @@
         }
 
         nav sbdl-outline,
-        aside sbdl-metadata {
+        aside sbdl-instructional-metadata {
           position: relative;
           max-width: 100%;
         }
