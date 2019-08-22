@@ -24,12 +24,11 @@
     text-transform: none;
     letter-spacing: normal;
     justify-content: initial;
-    align-items: initial;
     padding: calc(1rem - 8px);
     height: 3rem;
 }
 
-.outline > .mdc-button:not(:disabled):focus {
+.outline > .mdc-button:not(:disabled):focus{
     border-left: $action-500 solid 6px;
     margin-left: -6px;
 }
@@ -56,7 +55,6 @@
     text-transform: none;
     letter-spacing: normal;
     justify-content: initial;
-    align-items: initial;
 }
 
 .step > .mdc-button:not(:disabled):focus {
