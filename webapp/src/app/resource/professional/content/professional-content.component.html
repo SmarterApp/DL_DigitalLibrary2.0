@@ -4,6 +4,9 @@
 </div>
 <sbdl-header [model]="model" (attachmentsClicked)="scrollToAttachments()"></sbdl-header>
 
+<sbdl-overview [model]="model.overview" (sectionElementLoaded)="setOverview($event)"></sbdl-overview>
+<hr/>
+
 <sbdl-step-by-step [models]="model.steps" (sectionElementLoaded)="setSteps($event)"></sbdl-step-by-step>
 <hr *ngIf="model.attachments.length > 0"/>
 

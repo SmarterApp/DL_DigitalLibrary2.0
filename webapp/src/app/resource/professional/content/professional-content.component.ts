@@ -40,6 +40,11 @@ export class ProfessionalContentComponent implements OnInit {
     this.emitScrollableElementsEvent();
   }
 
+  setOverview($event) {
+    this.scrollableElements = {...this.scrollableElements, overview: $event };
+    this.emitScrollableElementsEvent();
+  }
+
   scrollToAttachments() {
     if(this.scrollableElements && this.scrollableElements.attachments) {
       this.scrollableElements.attachments.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
