@@ -1,0 +1,17 @@
+@import "spacing";
+@import "fonts";
+@import "colors";
+
+:host {
+    display: block;
+    max-width: none;
+}
+
+.comments-container {
+    padding-top: $spacer;
+    max-width: var(--measure);
+    margin-right: $spacer-xl;
+    margin-left: $spacer-lg;
+    margin-bottom: $spacer-lg;
+    position: relative;
+}
