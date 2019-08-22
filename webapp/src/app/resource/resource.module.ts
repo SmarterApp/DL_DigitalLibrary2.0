@@ -21,6 +21,7 @@ import { ResourceComponent } from './resource.component';
 import { ProfessionalContentComponent } from './professional/content/professional-content.component';
 import { ProfessionalMetadataComponent } from './professional/metadata/professional-metadata.component';
 import { OverviewComponent } from './professional/overview/overview.component';
+import { CommentsComponent } from './components/comments/comments.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -44,7 +45,8 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     HeaderComponent,
     ProfessionalContentComponent,
     ProfessionalMetadataComponent,
-    OverviewComponent
+    OverviewComponent,
+    CommentsComponent
   ],
   imports: [
     CommonModule,

@@ -17,6 +17,7 @@ export interface ResourceModel {
     overview: OverviewModel;
     steps: ResourceStepModel[];
     attachments: AttachmentModel[];
+    comments: string;
     differentiation: DifferentiationModel;
     formative: FormativeModel;
 } 

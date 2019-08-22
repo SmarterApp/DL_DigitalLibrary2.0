@@ -18,6 +18,11 @@
         z-index: 2;
         transition-duration: 0.5s;
         transition-timing-function: ease-in;
+
+        background-image: url('/assets/images/blue-spot-2.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: bottom left 64px;
     }
 
     .outline:hover {

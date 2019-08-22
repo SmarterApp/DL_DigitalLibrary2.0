@@ -20,7 +20,7 @@ export const mockResourceModel = <ResourceModel> {
 		grades: [],
 		targets: [],
 		claims: [],
-		standards: []
+		standards: [],
 	},
 	overview: <OverviewModel> {
 		description: 'Test Description',
@@ -30,6 +30,7 @@ export const mockResourceModel = <ResourceModel> {
 	},
 	attachments: [],
 	steps: [],
+	comments: 'test comment',
 	differentiation: <DifferentiationModel>{ 
 		accessibilityStrategies: []
 	},
@@ -361,8 +362,15 @@ const polyfillMissingApiData = {
 			<p>2/3 ÷ 1/2 = ? </p>
 			<p>Solve the arithmetic problem you chose in part (3) and verify that you get the same answer as you did with your picture.</p>
 		`
-	}]
-
+	}],
+	comments: `
+		<p>
+			Depending on the time in the meeting, training, etc., this activity can be adapted by eliminating the gallery walk and 
+			assigning quotes to partners or tables. If time is limited, the quotes could be displayed prior to the meeting, training, 
+			etc., in the staff room or on tables during the week prior to the training.
+		</p>
+		<p>It is important to provide adequate time for participants to discuss and reflect on their quote and to share their findings with their peers.</p>
+	`
 };
 
 export const mockApiResource= {
@@ -751,8 +759,15 @@ const polyfillMissingProfApiData = {
 				15-minutes for this step.
 			</p>
 		`
-	}]
-
+	}],
+	comments: `
+		<p>
+			Depending on the time in the meeting, training, etc., this activity can be adapted by eliminating the gallery walk and 
+			assigning quotes to partners or tables. If time is limited, the quotes could be displayed prior to the meeting, training, 
+			etc., in the staff room or on tables during the week prior to the training.
+		</p>
+		<p>It is important to provide adequate time for participants to discuss and reflect on their quote and to share their findings with their peers.</p>
+	`
 };
 
 export const mockProfessionalResource = {

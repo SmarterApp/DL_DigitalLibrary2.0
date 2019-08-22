@@ -83,6 +83,7 @@ export class ResourceService {
       details: this.mapToResourceDetailsModel(apiResource),
       overview: this.mapToOverview(apiResource),
       steps: this.mapToSteps(coalesce(apiResource.steps, [])),
+      comments: apiResource.comments,
       differentiation: this.mapToDifferentiation(apiResource),
       formative: this.mapToFormative(apiResource)
     };

@@ -45,6 +45,11 @@ export class InstructionalContentComponent implements OnInit {
     this.emitScrollableElementsEvent();
   }
 
+  setComments($event) {
+    this.scrollableElements = {...this.scrollableElements, comments: $event };
+    this.emitScrollableElementsEvent();
+  }
+
   setAttachments($event) {
     this.scrollableElements = {...this.scrollableElements, attachments: $event };
     this.emitScrollableElementsEvent();
