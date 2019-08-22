@@ -14,6 +14,6 @@
 <hr/>
 
 <sbdl-comments [model]="model" (sectionElementLoaded)="setComments($event)"></sbdl-comments>
-<hr/>
+<hr *ngIf="model.comments"/>
 
 <sbdl-formative [model]="model.formative" (sectionElementLoaded)="setFormative($event)"></sbdl-formative>
