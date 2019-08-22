@@ -10,11 +10,18 @@ export class FormativeComponent implements OnInit {
   @Input()
   model: FormativeModel;
 
+  @Input()
+  showProfLearningContent: boolean;
+
   @Output()
   sectionElementLoaded= new EventEmitter<any>();
 
   @ViewChild('header', { static: false })
   headerElement: ElementRef;
+
+  get showHowItsUsed(){
+    return this.model.howItsUsed || this.model.formativeAssessmentProcess;
+  }
 
   constructor() { }
 
