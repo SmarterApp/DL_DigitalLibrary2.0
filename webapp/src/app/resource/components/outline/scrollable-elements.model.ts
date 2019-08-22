@@ -5,6 +5,7 @@ export class ScrollableElements {
     overview: any;
     steps: any[];
     attachments: any;
+    comments: any;
     differentiation: any;
     formativeAssessmentProcess: any;
 }

@@ -13,7 +13,7 @@
 <sbdl-attachments [models]="model.attachments" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
 <hr/>
 
-<sbdl-comments [model]="model"></sbdl-comments>
+<sbdl-comments [model]="model" (sectionElementLoaded)="setComments($event)"></sbdl-comments>
 <hr/>
 
 <sbdl-formative [model]="model.formative" (sectionElementLoaded)="setFormative($event)"></sbdl-formative>

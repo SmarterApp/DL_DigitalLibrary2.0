@@ -41,6 +41,12 @@
       Differentiation
     </sbdl-button>
   </li>
+  <li *ngIf="scrollableElements.comments">
+    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.comments)" (blur)="removeClass(scrollableElements.comments)">
+      <i class="far fa-comment-dots"></i>
+      Comments and Suggestions
+    </sbdl-button>
+  </li>
   <li *ngIf="scrollableElements.formativeAssessmentProcess">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.formativeAssessmentProcess)" (blur)="removeClass(scrollableElements.formativeAssessmentProcess)">
       <sbdl-icon icon="strategies"></sbdl-icon>
