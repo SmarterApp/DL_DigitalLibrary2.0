@@ -5,9 +5,7 @@
   <ol>
     <li *ngFor="let step of models" #steps>
       <h5>{{ step.title }}</h5>
-      <div [innerHtml]="step.content"></div>
+      <dynamic-html [content]="step.content"></dynamic-html>
     </li>
   </ol>
-  <sbdl-tooltip text="tool tip text here."><sbdl-icon icon="strategies"></sbdl-icon> Conceptual Bridge</sbdl-tooltip>
-  <dynamic-html [content]="sampleHtml"></dynamic-html>
 </article>
