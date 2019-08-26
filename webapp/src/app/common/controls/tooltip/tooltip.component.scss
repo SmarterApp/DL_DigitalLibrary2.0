@@ -1,6 +1,7 @@
 @import "colors";
 
-sbdl-icon {
+:host {
     cursor: pointer;
+    color: $info-500;
 }
 
