@@ -1,0 +1,12 @@
+<div class="top-header">
+  <img src="/assets/images/yellow-spot.png" />
+  <sbdl-actions [model]= "model" (readingModeChanged)="emitReadingModeChanged($event)"></sbdl-actions>
+</div>
+<sbdl-header [model]="model" (attachmentsClicked)="scrollToAttachments()"></sbdl-header>
+
+<sbdl-overview [model]="model.overview" (sectionElementLoaded)="setOverview($event)"></sbdl-overview>
+
+<hr *ngIf="model.attachments.length > 0"/>
+<sbdl-attachments [models]="model.attachments" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
+<hr/>
+

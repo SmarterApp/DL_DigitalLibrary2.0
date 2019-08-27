@@ -1,0 +1,17 @@
+<nav class="outline">
+  <sbdl-outline
+    [model]="model"
+    [scrollableElements]="scrollableElements"
+    [readingMode]="readingMode"
+  ></sbdl-outline>
+</nav>
+<section class="resource-content">
+  <sbdl-strategy-content
+    [model]="model"
+    (loadScrollableElements)="setScrollableElements($event)"
+    (readingModeChanged)="readingModeChanged($event)"
+  ></sbdl-strategy-content>
+</section>
+<aside class="metadata">
+
+</aside>

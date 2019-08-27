@@ -22,6 +22,8 @@ import { ProfessionalContentComponent } from './professional/content/professiona
 import { ProfessionalMetadataComponent } from './professional/metadata/professional-metadata.component';
 import { OverviewComponent } from './professional/overview/overview.component';
 import { CommentsComponent } from './components/comments/comments.component';
+import { StrategyComponent } from './strategy/strategy.component';
+import { StrategyContentComponent } from './strategy/content/strategy-content.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -46,7 +48,9 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     ProfessionalContentComponent,
     ProfessionalMetadataComponent,
     OverviewComponent,
-    CommentsComponent
+    CommentsComponent,
+    StrategyComponent,
+    StrategyContentComponent
   ],
   imports: [
     CommonModule,
@@ -54,10 +58,13 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     PipesModule,
     SbdlCommonModule
   ],
-  entryComponents: [ 
+  entryComponents: [
+    // Resource components are loaded dynamically so they need to be explicitly set here 
+    // in order to be used.
     InstructionalResourceComponent, 
     ProfessionalResourceComponent, 
-    ResourceTypeStrategyComponent 
+    ResourceTypeStrategyComponent,
+    StrategyComponent
   ]
 })
 export class ResourceModule { }

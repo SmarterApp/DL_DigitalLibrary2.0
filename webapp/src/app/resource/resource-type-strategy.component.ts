@@ -5,6 +5,7 @@ import { ResourceComponent } from './resource.component';
 import { ResourceHostDirective } from './resource-host.directive';
 import { ActivatedRoute } from '@angular/router';
 import { ProfessionalResourceComponent } from './professional/professional-resource.component';
+import { StrategyComponent } from './strategy/strategy.component';
 
 /***
  * This component will render the correct resource component based on the determined resource type.
@@ -18,6 +19,8 @@ export class ResourceTypeStrategyComponent implements OnInit {
   readonly componentMap: Map<ResourceType, Type<ResourceComponent>> = new Map<ResourceType, Type<ResourceComponent>>([
     [ ResourceType.Instructional, InstructionalResourceComponent ],
     [ ResourceType.Professional, ProfessionalResourceComponent ],
+    [ ResourceType.AccessibilityStrategy, StrategyComponent ],
+    [ ResourceType.FormativeStrategy, StrategyComponent ],
   ]);
 
   @ViewChild(ResourceHostDirective, {static: true}) hostDirective: ResourceHostDirective;
