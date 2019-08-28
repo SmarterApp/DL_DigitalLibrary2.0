@@ -139,7 +139,11 @@ export class ResourceService {
       learningGoal: apiModel.learningGoals,
 
       // /api/v1/resource.successCriteria
-      successCriteria: apiModel.successCriteria
+      successCriteria: apiModel.successCriteria,
+
+      studentBenefits: apiModel.studentBenefits,
+
+      suggestedMaterials: apiModel.suggestedMaterials
     }
   }
 

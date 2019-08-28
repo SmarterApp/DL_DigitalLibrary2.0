@@ -870,6 +870,38 @@ export const mockApiAccessStrategyResource = {
 	temporaryPublicLinkTime: "5 mins"
 };
 
+const polyfillMissingAccessApiData = {
+	favorite: false,
+	// metadata
+	resourceThumbnail: mockProfImage,
+	//overview
+	altBody: `
+		A digital tool for marking desired text, item questions, item answers, or parts of these with a color.
+	`,
+	studentBenefits: `
+		<p>
+			Using this tool can help students:
+			<ul>
+				<li>Retain information</li>
+				<li>Support studying</li>
+				<li>Improve focus</li>
+				<li>Improve the learning experience</li>
+			</ul>
+		</p>
+	`,
+	suggestedMaterials: `
+		<ul>
+			<li>Highlighters</li>
+			<li>Low Odor</li>
+		</ul>
+	`
+};
+
+export const mockAccessibilityStrategy = {
+	...mockApiAccessStrategyResource,
+	...polyfillMissingAccessApiData
+}
+
 export const mockApiFormativeStrategyResource = {
 	id: 1,
 	nid: 1234,
@@ -940,3 +972,36 @@ export const mockApiFormativeStrategyResource = {
 	temporaryPublicLink: "Enable Temporary Public Link",
 	temporaryPublicLinkTime: "5 mins"
 };
+
+const polyfillMissingFormativeApiData = {
+	favorite: false,
+	// metadata
+	resourceThumbnail: mockProfImage,
+	//overview
+	altBody: `
+		At the beginning of a unit, have students draw three columns on a piece of paper, labeled “K,” “W,” and “L.” 
+		Ask students what they already know.
+	`,
+	studentBenefits: `
+		<p>
+			Using this tool can help students:
+			<ul>
+				<li>Organize info before, during and after a lesson or unit</li>
+				<li>Write down connections by activating prior knowledge</li>
+				<li>Ask questions to direct new learning</li>
+			</ul>
+		</p>
+	`,
+	suggestedMaterials: `
+		<ul>
+			<li>Graphic organizers for notetaking</li>
+			<li>Assistive technology-digital notetaking apps</li>
+			<li>Three or Four-column note forms or chart paper (paper & pen)</li>
+		</ul>
+	`
+};
+
+export const mockFormativeStrategy = {
+	...mockApiFormativeStrategyResource,
+	...polyfillMissingFormativeApiData
+}

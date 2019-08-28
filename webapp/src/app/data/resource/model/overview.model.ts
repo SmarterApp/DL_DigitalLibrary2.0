@@ -15,6 +15,10 @@ export interface OverviewModel {
 
     // /api/v1/resource.successCriteria
     successCriteria: string;
+
+    studentBenefits: string;
+
+    suggestedMaterials: string;
 }
 
 export interface ResourceMaterial {

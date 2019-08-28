@@ -24,6 +24,7 @@ import { OverviewComponent } from './professional/overview/overview.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { StrategyComponent } from './strategy/strategy.component';
 import { StrategyContentComponent } from './strategy/content/strategy-content.component';
+import { StrategyOverviewComponent } from './strategy/overview/strategy-overview.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -50,7 +51,8 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     OverviewComponent,
     CommentsComponent,
     StrategyComponent,
-    StrategyContentComponent
+    StrategyContentComponent,
+    StrategyOverviewComponent
   ],
   imports: [
     CommonModule,
