@@ -173,6 +173,14 @@ const polyfillMissingApiData = {
 		link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
 		description: `The student uses an onscreen universal tool to assist in reading by raising and
 			lowering the tool for each line of text on the screen.`
+	}, {
+		title: 'Sentence Frames',
+		link: 'https://lvp.digitalpromiseglobal.org/content-area/literacy-4-6/strategies/sentence-frames-literacy-4-6/summary',
+		description: `
+			Sentence frames or stems provide language support for students' writing and participation in academic discussions. As a scaffold for 
+			students to start and structure an explanation, sentence frames help all students develop more fluent Foundational Writing Skills and, 
+			in particular, allow students with varying English proficiency to use more complex Syntax and academic Vocabulary.
+		`
 	}],
 	formativeAssessmentProcess: {
 		clarifyIntendedLearning: `		

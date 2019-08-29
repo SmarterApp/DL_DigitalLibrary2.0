@@ -5,7 +5,7 @@
   <ol>
     <li *ngFor="let step of models" #steps>
       <h5>{{ step.title }}</h5>
-      <div [innerHtml]="step.content"></div>
+      <dynamic-html [content]="step.content"></dynamic-html>
     </li>
   </ol>
 </article>
