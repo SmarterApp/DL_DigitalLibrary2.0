@@ -1,15 +1,23 @@
 import { Component, OnInit, Input, HostListener, ElementRef, ViewChildren, AfterViewInit, ApplicationRef } from '@angular/core';
 import { TooltipDirective } from 'ng2-tooltip-directive';
+import { OnMount } from '../dynamic/interfaces';
 
 @Component({
   selector: 'sbdl-tooltip',
   templateUrl: './tooltip.component.html',
   styleUrls: ['./tooltip.component.scss']
 })
-export class TooltipComponent implements OnInit, AfterViewInit {
+export class TooltipComponent implements OnInit, AfterViewInit, OnMount {
+  dynamicOnMount(attrs?: Map<string, string>, content?: string, element?: Element): void {
+    // const text = attrs.get('text');
+    this.text = attrs.get('text');
+    this.dynamicLoadedContent = content;
+  }
 
   @Input()
   text: string;
+
+  dynamicLoadedContent: string;
 
   @ViewChildren(TooltipDirective) 
   tooltipDirective; 

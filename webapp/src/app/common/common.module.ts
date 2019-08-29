@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ANALYZE_FOR_ENTRY_COMPONENTS } from '@angular/core';
 import { IconComponent } from './app-icon/icon.component';
 import { SvgDefsComponent } from './app-icon/svg-defs.component';
 import { ButtonComponent } from './controls/button/button.component';
@@ -8,6 +8,19 @@ import { TooltipModule } from 'ng2-tooltip-directive';
 import { PopoverComponent } from './controls/popover/popover.component';
 import { CommonModule } from '@angular/common';
 import { ReadMoreComponent } from './controls/read-more/read-more.component';
+import { DynamicHTMLComponent } from './controls/dynamic/dynamic-html.component';
+import { DynamicHTMLRenderer } from './controls/dynamic/dynamic-html-render';
+import { DynamicHTMLOptions } from './controls/dynamic/options';
+
+// This object contains the components which can be loaded dyanmically via
+// the dynamic-html component.
+const dynamicOptions = {
+    components: [
+        { component: TooltipComponent, selector: 'sbdl-tooltip' },
+        { component: IconComponent, selector: 'sbdl-icon' }
+    ]
+};
+
 @NgModule({
     imports: [ TooltipModule, CommonModule ],
     declarations: [
@@ -17,7 +30,8 @@ import { ReadMoreComponent } from './controls/read-more/read-more.component';
         SvgDefsComponent,
         TooltipComponent,
         PopoverComponent,
-        ReadMoreComponent
+        ReadMoreComponent,
+        DynamicHTMLComponent
     ],
     exports: [
         ButtonComponent,
@@ -25,7 +39,13 @@ import { ReadMoreComponent } from './controls/read-more/read-more.component';
         IconComponent,
         ReadMoreComponent,
         SvgDefsComponent,
-        TooltipComponent
+        TooltipComponent,
+        DynamicHTMLComponent
+    ],
+    providers: [
+        DynamicHTMLRenderer,
+        { provide: DynamicHTMLOptions, useValue: dynamicOptions },
+        { provide: ANALYZE_FOR_ENTRY_COMPONENTS, useValue: dynamicOptions.components, multi: true },
     ],
     entryComponents: [ PopoverComponent ]
 })

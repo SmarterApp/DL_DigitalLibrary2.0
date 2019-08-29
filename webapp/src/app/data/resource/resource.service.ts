@@ -12,6 +12,7 @@ import { ResourceStepModel } from './model/resource-step.model';
 import { ResourceStrategyModel } from './model/resource-strategy.model';
 import { ResourceType } from './model/resource-type.enum';
 import { ResourceModel } from './model/resource.model';
+import { EmbedStrategyLinksService } from './embed-strategy-links.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,9 @@ export class ResourceService {
     [ 1, 'assessment-6-7-number-system' ]
   ]);
 
-  constructor(private dataService: DataService, private attachmentService: AttachmentService) { }
+  constructor(private dataService: DataService, 
+    private embedStrategyLinkService: EmbedStrategyLinksService,
+    private attachmentService: AttachmentService) { }
 
   get(id: number): Observable<ResourceModel> {
     let resourceModel: any;
@@ -47,7 +50,8 @@ export class ResourceService {
         const model = this.mapToResourceModel(resourceModel);
         model.attachments = coalesce(attachments, []);
         return model;
-      })); 
+      }))
+      .pipe(map(resource => this.embedStrategyLinks(resource)))
   }
 
   getAttachments(documents: string[]): Observable<any>[] {
@@ -175,5 +179,13 @@ export class ResourceService {
         description: x.description
       })
     };
+  }
+
+  private embedStrategyLinks(resource: ResourceModel) {
+    for(let step of resource.steps) {
+      step.content = this.embedStrategyLinkService.embedStrategyLinks(step.content, resource);
+    }
+    
+    return resource;
   }
 }

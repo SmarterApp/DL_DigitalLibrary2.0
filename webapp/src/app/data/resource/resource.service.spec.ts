@@ -3,10 +3,11 @@ import { mockDataServiceProviders } from 'src/app/app.module.spec';
 import { FileType } from './model/attachment.model';
 import { ResourceType } from './model/resource-type.enum';
 import { ResourceService } from './resource.service';
+import { EmbedStrategyLinksService } from './embed-strategy-links.service';
 
 describe('ResourceService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    providers: [ ...mockDataServiceProviders ]
+    providers: [ ...mockDataServiceProviders, EmbedStrategyLinksService ]
   }));
 
   it('should be created', () => {
