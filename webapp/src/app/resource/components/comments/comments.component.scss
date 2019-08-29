@@ -18,7 +18,7 @@
     .leading-icon{
         margin-left: -11px;
         svg {
-            color: gba(72, 79, 91, 0.8);
+            color: $warning-900;
             background: url('/assets/images/yellow-spot-4.png') no-repeat;
             background-size: contain;
             padding: 7px;
