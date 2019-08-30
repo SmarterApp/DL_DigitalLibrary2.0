@@ -33,5 +33,4 @@ export class StrategyMetadataComponent implements OnInit, AfterViewInit {
       MDCRipple.attachTo(linkRef.nativeElement);
     }
   }
-
 }
