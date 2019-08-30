@@ -50,7 +50,7 @@
   <li *ngIf="scrollableElements.formativeAssessmentProcess">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.formativeAssessmentProcess)" (blur)="removeClass(scrollableElements.formativeAssessmentProcess)">
       <sbdl-icon icon="strategies"></sbdl-icon>
-      Formative Assessment Process
+      {{ isProfessional ? 'Formative Assessment Strategies' : 'Formative Assessment Process' }}
     </sbdl-button>  
   </li>
 </ul>

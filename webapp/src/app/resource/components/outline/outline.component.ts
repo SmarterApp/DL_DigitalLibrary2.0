@@ -2,6 +2,7 @@ import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { ResourceModel } from 'src/app/data/resource/model/resource.model';
 import { ScrollableElements } from './scrollable-elements.model';
 import { getCssVar } from 'src/app/common/utils';
+import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
 
 @Component({
   selector: 'sbdl-outline',
@@ -21,6 +22,10 @@ export class OutlineComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event?) {    
     this.mobile = window.innerWidth <= this.breakpointSmall;
+  }
+
+  get isProfessional() {
+    return this.model.resourceType === ResourceType.Professional;
   }
    
   mobile = false;
