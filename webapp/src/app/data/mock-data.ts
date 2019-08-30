@@ -802,3 +802,206 @@ export const mockDocument55 = {
 	"path": "15d4a90dba2441666f775be72bdbd1e39816d684.docx",
 	"mimeType": null
 }
+
+export const mockApiAccessStrategyResource = {
+	id: 1,
+	nid: 1234,
+	vid: 1234,
+	language: "english",
+	title: "Highlighter",
+	status: true,
+	created: "2018-08-16T06:50:38+00:00",
+	updated: "2019-08-21T16:50:38+00:00",
+	deletedAt: null,
+	promote: true,
+	uuid: "24cvq2414v124v5145b14bbv4",
+	temp: false,
+	uniqueViews: 302,
+	totalViews: 350,
+	resourceState: "Create",
+	html5: false,
+	asserDownloads: 100,
+	uniqueDownloads: 20,
+	avgRating: "3.5",
+	isHidden: false,
+	resourceType: "Accessibility Strategy",
+	intendedEndUser: "Teacher",
+	attributes: "Clarify Intended Learning",
+	connectionToFap: "",
+	studentAgency: "",
+	altBody: "",
+    documentId: "",
+	resourceThumbnailUrl: "https://dl.com/image.png",
+	licenseInformation: "",
+	author: "Amy Thierry",
+	publisher: "Smarter Balanced",
+	license: "Creative Commons Attribution",
+	licenseSecondary: "Creative Commons Attribution",
+	copyrightClearaceForms: "",
+	pii: "None",
+	subject: [],
+	grade: [],
+	alignmentTags: "",
+	educationAlignments: [
+		{ title: "", shortName: "" },
+		{ title: "" }
+	],
+	targetAlignments: [
+		{ title: "", shortName: "" },
+		{ title: "" }
+	],
+	connectionToCcss: "",
+	learningGoals: "",
+	successCriteria: "",
+	contexts: "",
+	supportingEvidence: "",
+	principles: "",
+	mediaType: ["Video"],
+	intendedStudent: ["All Students"],
+	educationalUse: ["Unit", "Lesson"],
+	classroomTechnologies: ["Internet"],
+	moduleType: ["Score Report"],
+	subscriptionPackageType: "Summative and formative resource",
+	viewPermissions: "All states",
+	state: ["California"],
+	resourceActions: "Allow primary material to be downloaded",
+	permanentLinkSettings: "Private",
+	temporaryPublicLink: "Enable Temporary Public Link",
+	temporaryPublicLinkTime: "5 mins"
+};
+
+const polyfillMissingAccessApiData = {
+	favorite: false,
+	// metadata
+	resourceThumbnail: mockProfImage,
+	//overview
+	altBody: `
+		A digital tool for marking desired text, item questions, item answers, or parts of these with a color.
+	`,
+	studentBenefits: `
+		<p>
+			Using this tool can help students:
+			<ul>
+				<li>Retain information</li>
+				<li>Support studying</li>
+				<li>Improve focus</li>
+				<li>Improve the learning experience</li>
+			</ul>
+		</p>
+	`,
+	suggestedMaterials: `
+		<ul>
+			<li>Highlighters</li>
+			<li>Low Odor</li>
+		</ul>
+	`
+};
+
+export const mockAccessibilityStrategy = {
+	...mockApiAccessStrategyResource,
+	...polyfillMissingAccessApiData
+}
+
+export const mockApiFormativeStrategyResource = {
+	id: 1,
+	nid: 1234,
+	vid: 1234,
+	language: "english",
+	title: "K-W-L Strategy",
+	status: true,
+	created: "2018-08-16T06:50:38+00:00",
+	updated: "2019-08-22T16:50:38+00:00",
+	deletedAt: null,
+	promote: true,
+	uuid: "24cvq2414v124v5145b14bbv4",
+	temp: false,
+	uniqueViews: 302,
+	totalViews: 350,
+	resourceState: "Create",
+	html5: false,
+	asserDownloads: 100,
+	uniqueDownloads: 20,
+	avgRating: "3.5",
+	isHidden: false,
+	resourceType: "Formative Strategy",
+	intendedEndUser: "Teacher",
+	attributes: "Clarify Intended Learning",
+	connectionToFap: "",
+	studentAgency: "",
+	altBody: "",
+    documentId: "",
+	resourceThumbnailUrl: "https://dl.com/image.png",
+	licenseInformation: "",
+	author: "Amy Thierry",
+	publisher: "Smarter Balanced",
+	license: "Creative Commons Attribution",
+	licenseSecondary: "Creative Commons Attribution",
+	copyrightClearaceForms: "",
+	pii: "None",
+	subject: [],
+	grade: [],
+	alignmentTags: "",
+	educationAlignments: [
+		{ title: "", shortName: "" },
+		{ title: "" }
+	],
+	targetAlignments: [
+		{ title: "", shortName: "" },
+		{ title: "" }
+	],
+	connectionToCcss: "",
+	learningGoals: "",
+	successCriteria: "",
+	contexts: "",
+	supportingEvidence: "",
+	principles: "",
+	mediaType: ["Video"],
+	documents: [
+		"/api/file_documents/54/download",
+        "/api/file_documents/55/download"
+	],
+	intendedStudent: ["All Students"],
+	educationalUse: ["Unit", "Lesson"],
+	classroomTechnologies: ["Internet"],
+	moduleType: ["Score Report"],
+	subscriptionPackageType: "Summative and formative resource",
+	viewPermissions: "All states",
+	state: ["California"],
+	resourceActions: "Allow primary material to be downloaded",
+	permanentLinkSettings: "Private",
+	temporaryPublicLink: "Enable Temporary Public Link",
+	temporaryPublicLinkTime: "5 mins"
+};
+
+const polyfillMissingFormativeApiData = {
+	favorite: false,
+	// metadata
+	resourceThumbnail: mockProfImage,
+	//overview
+	altBody: `
+		At the beginning of a unit, have students draw three columns on a piece of paper, labeled “K,” “W,” and “L.” 
+		Ask students what they already know.
+	`,
+	studentBenefits: `
+		<p>
+			Using this tool can help students:
+			<ul>
+				<li>Organize info before, during and after a lesson or unit</li>
+				<li>Write down connections by activating prior knowledge</li>
+				<li>Ask questions to direct new learning</li>
+			</ul>
+		</p>
+	`,
+	suggestedMaterials: `
+		<ul>
+			<li>Graphic organizers for notetaking</li>
+			<li>Assistive technology-digital notetaking apps</li>
+			<li>Three or Four-column note forms or chart paper (paper & pen)</li>
+		</ul>
+	`
+};
+
+export const mockFormativeStrategy = {
+	...mockApiFormativeStrategyResource,
+	...polyfillMissingFormativeApiData
+}

@@ -1,7 +1,8 @@
 <div 
     class="text-container" 
     #textContainer 
-    [ngClass]="{'collapsed': collapsed }">
-    {{ text }}
+    [ngClass]="{'collapsed': collapsed }"
+    [innerHtml]="text"
+    >
 </div>
 <a *ngIf="collapsible" href="javascript:void(0)" (click)="toggleCollapsed()">{{ collapsed ? '... more' : 'less' }}</a>

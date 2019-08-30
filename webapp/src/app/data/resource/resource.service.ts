@@ -23,7 +23,9 @@ export class ResourceService {
   readonly apiResourceTypeMap: Map<string, ResourceType> = new Map([
     ['Instructional and Professional Learning', ResourceType.Instructional ],
     ['Instructional', ResourceType.Instructional ],
-    ['Professional Learning', ResourceType.Professional ]
+    ['Professional Learning', ResourceType.Professional ],
+    ['Accessibility Strategy', ResourceType.AccessibilityStrategy ],
+    ['Formative Strategy', ResourceType.FormativeStrategy ]
   ]);
 
   // TODO: Define how assessment types are defined.  How will this be represented?
@@ -137,7 +139,11 @@ export class ResourceService {
       learningGoal: apiModel.learningGoals,
 
       // /api/v1/resource.successCriteria
-      successCriteria: apiModel.successCriteria
+      successCriteria: apiModel.successCriteria,
+
+      studentBenefits: apiModel.studentBenefits,
+
+      suggestedMaterials: apiModel.suggestedMaterials
     }
   }
 

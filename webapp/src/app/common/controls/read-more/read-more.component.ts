@@ -13,7 +13,7 @@ import { SafeStyle, DomSanitizer } from '@angular/platform-browser';
 })
 export class ReadMoreComponent implements OnInit, AfterViewInit {
   /**
-   * The text to truncate if the length is over the MaxNumberOfCharacters
+   * The text to truncate if the height is over the max height.
    */
   @Input()
   set text(value: string) {

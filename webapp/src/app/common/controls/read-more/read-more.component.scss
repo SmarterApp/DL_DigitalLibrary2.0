@@ -6,4 +6,14 @@
     &.collapsed {
       max-height:  var(--max-height);
     }
-}
+    &::ng-deep {
+      p:first-child {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      ul {
+        margin-top: 0;
+      }
+    }
+  }
+    
