@@ -4,9 +4,12 @@ import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
 @Injectable({
   providedIn: 'root'
 })
-export class StrategyMetadataComponentService {
-  readonly strategyMetadataMap: Map<ResourceType, StrategyStaticMetdata> = new Map([
+export class MetadataComponentService {
+  readonly strategyMetadataMap: Map<ResourceType, StaticMetadata> = new Map([
     [ 
+      ResourceType.Professional, <StaticMetadata>{
+      resourceType: 'Professional Learning'
+    } ], [ 
       ResourceType.AccessibilityStrategy, {
       resourceType: 'Accessibility Strategy',
       linkTitle: 'Learn more about accessibility',
@@ -39,12 +42,12 @@ export class StrategyMetadataComponentService {
 
   constructor() { }
 
-  getStaticMetadata(resourceType: ResourceType): StrategyStaticMetdata {
+  getStaticMetadata(resourceType: ResourceType): StaticMetadata {
     return this.strategyMetadataMap.get(resourceType);
   }
 }
 
-export interface StrategyStaticMetdata {
+export interface StaticMetadata {
   resourceType: string;
   linkTitle: string;
   links: MoreInfoLink[];
