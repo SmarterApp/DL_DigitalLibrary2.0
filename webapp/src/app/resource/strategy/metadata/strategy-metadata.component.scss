@@ -1,0 +1,102 @@
+@import "colors";
+@import "typography";
+@import "fonts";
+@import "spacing";
+@import "@material/ripple/mdc-ripple";
+
+h5 {
+    margin-bottom: $spacer-sm; 
+    color: $brand-green; // Is this just in the metadata section?
+}
+
+:host {
+    padding-left: 20px;
+    z-index: inherit;
+    // position: relative;
+}
+
+.image-thumbnail {
+    width: fit-content;
+    background-color: $white;
+    margin-top: 16px;
+    margin-right: 5px;
+    margin-bottom: $spacer-lg;
+    border: 8px solid #FFFFFF;
+    box-sizing: border-box;
+
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 3px 3px rgba(0, 0, 0, 0.14);
+    border-radius: 4px;
+    img {
+        max-width: 279px;
+        max-height: 279px;
+        object-fit: cover;
+    }
+}
+
+.details {
+    font-family: $font-family-title;
+    display: flex;
+    margin-bottom: $spacer-xl;
+    label {
+        grid-area: "label";
+        font-style: normal;
+        font-weight: 200;
+        font-size: 14.1px;
+        line-height: 117%;
+        letter-spacing: -0.021em;
+        width: 85px;
+    }
+    .value {
+        flex-grow: 1;
+        font-weight: regular;
+        font-size: 14.1px;
+        line-height: 117%;
+        max-width: 200px;
+    }
+}
+
+.link-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: $spacer-md;
+    margin-right: $spacer;
+}
+
+.link-card  {
+    @include mdc-ripple-surface;
+    @include mdc-ripple-radius-bounded;
+    @include mdc-states;
+
+    background-image: url('/assets/images/attachment-card-bg.png');
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+
+    border-radius: 2px;
+    margin-bottom: $spacer;
+    margin-right: $spacer;
+    // cursor: pointer;
+    display: block;
+    color: $neutral-900;
+    background-color: $white;
+
+    // keeps the ripple inside the card.
+    position: relative;
+    overflow: hidden;
+
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 0px 2px rgba(0, 0, 0, 0.14);
+    padding: $spacer $spacer $spacer $spacer-md;
+
+    .type-info {
+        display: flex;
+        justify-content: space-between;
+
+        .link-subtitle {
+            text-transform: uppercase;
+            font-family: $font-family-title;
+            font-size: $font-size-body-2;
+            line-height: 18px;
+            letter-spacing: 0.08em;
+            color: rgba(33, 38, 47, 0.65);;
+        }
+    }
+}

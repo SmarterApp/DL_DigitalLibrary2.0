@@ -1,4 +1,4 @@
-import { mockEvidenceImage, mockResourceImage, mockProfImage } from 'src/app/data/mock-images';
+import { mockEvidenceImage, mockResourceImage, mockProfImage, mockFormativeImage, mockAccessImage } from 'src/app/data/mock-images';
 import { DifferentiationModel } from './resource/model/differentiation.model';
 import { FormativeModel } from './resource/model/formative.model';
 import { OverviewModel, ResourceMaterial } from './resource/model/overview.model';
@@ -175,7 +175,7 @@ const polyfillMissingApiData = {
 			lowering the tool for each line of text on the screen.`
 	}, {
 		title: 'Sentence Frames',
-		link: 'https://lvp.digitalpromiseglobal.org/content-area/literacy-4-6/strategies/sentence-frames-literacy-4-6/summary',
+		link: 'https://portal.smarterbalanced.org/library/en/ela-construct-relevant-vocabulary.pdf',
 		description: `
 			Sentence frames or stems provide language support for students' writing and participation in academic discussions. As a scaffold for 
 			students to start and structure an explanation, sentence frames help all students develop more fluent Foundational Writing Skills and, 
@@ -873,7 +873,8 @@ export const mockApiAccessStrategyResource = {
 const polyfillMissingAccessApiData = {
 	favorite: false,
 	// metadata
-	resourceThumbnail: mockProfImage,
+	resourceThumbnail: mockAccessImage,
+	category: 'Universal Tool',
 	//overview
 	altBody: `
 		A digital tool for marking desired text, item questions, item answers, or parts of these with a color.
@@ -976,7 +977,7 @@ export const mockApiFormativeStrategyResource = {
 const polyfillMissingFormativeApiData = {
 	favorite: false,
 	// metadata
-	resourceThumbnail: mockProfImage,
+	resourceThumbnail: mockFormativeImage,
 	//overview
 	altBody: `
 		At the beginning of a unit, have students draw three columns on a piece of paper, labeled “K,” “W,” and “L.” 

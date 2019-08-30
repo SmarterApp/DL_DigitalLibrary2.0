@@ -25,6 +25,7 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { StrategyComponent } from './strategy/strategy.component';
 import { StrategyContentComponent } from './strategy/content/strategy-content.component';
 import { StrategyOverviewComponent } from './strategy/overview/strategy-overview.component';
+import { StrategyMetadataComponent } from './strategy/metadata/strategy-metadata.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -52,7 +53,8 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     CommentsComponent,
     StrategyComponent,
     StrategyContentComponent,
-    StrategyOverviewComponent
+    StrategyOverviewComponent,
+    StrategyMetadataComponent
   ],
   imports: [
     CommonModule,
