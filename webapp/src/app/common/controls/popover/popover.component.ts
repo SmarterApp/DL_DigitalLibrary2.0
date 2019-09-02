@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, HostListener, Output, EventEmitter, AfterViewInit, Input, TemplateRef, HostBinding, ViewChildren, ViewChild, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 import { SafeStyle, DomSanitizer } from '@angular/platform-browser';
+import { PopoverOptions } from './popover.service';
 
 @Component({
   selector: 'sbdl-popover',
@@ -23,13 +24,7 @@ export class PopoverComponent implements OnInit, AfterViewInit {
   template: any;
 
   @Input()
-  cssClass: string;
-
-  @Input()
-  placement = 'bottom';
-
-  @Input()
-  offset: any;
+  options = <PopoverOptions>{};
 
   @HostListener('window:resize', ['$event'])
   onResize(event?) {    
@@ -43,13 +38,14 @@ export class PopoverComponent implements OnInit, AfterViewInit {
   constructor(private sanitizer: DomSanitizer) { }
 
   ngAfterViewInit(): void {
-    if(this.offset) {
+    const offset = this.options.offset;
+    if(offset) {
       const rect= this.container.nativeElement.getBoundingClientRect();
       const height = rect.bottom - rect.top;
-      const top = this.placement === 'top' ? this.offset.top - height - 28 : this.offset.top;
+      const top = this.options.placement === 'top' ? offset.top - height - 28 : offset.top;
       
       setTimeout( () => 
-        { this.cssVarStyle = this.sanitizer.bypassSecurityTrustStyle(`position: absolute; top: ${top}px; left: ${this.offset.left}px`); }, 0
+        { this.cssVarStyle = this.sanitizer.bypassSecurityTrustStyle(`position: absolute; top: ${top}px; left: ${offset.left}px`); }, 0
       );
     }
   }

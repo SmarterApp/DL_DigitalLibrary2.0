@@ -28,18 +28,15 @@ export class PopoverService {
     }, 0);
   }
 
-  openOnBody(template: any, offset: any, cssClass?: string, placement?: string) {
+  openOnBody(template: any, options: PopoverOptions) {
         // Create a component reference from the component 
       const popoverRef = this.resolver
         .resolveComponentFactory(PopoverComponent)
         .create(this.injector);
 
       popoverRef.instance.template = template;
-      popoverRef.instance.placement = placement;
-      popoverRef.instance.offset = offset;
-      popoverRef.instance.cssClass = cssClass;
-      
-
+      popoverRef.instance.options = options;
+    
       // Attach component to the appRef so that it's inside the ng component tree
       this.appRef.attachView(popoverRef.hostView);
       
@@ -57,4 +54,27 @@ export class PopoverService {
         });
       }, 0);
   }
+}
+
+export interface PopoverOptions {
+  /**
+   *  How to place the popover.
+   */
+  placement: 'top' | 'bottom';
+
+  /**
+   * Css class to apply to the popover container.
+   */
+  cssClass: 'tooltip';
+
+  /**
+   * When attached to the body, the offset in which the popover should display.
+   */
+  offset: Offset;
+  
+}
+
+export interface Offset {
+  top: number;
+  left: number;
 }

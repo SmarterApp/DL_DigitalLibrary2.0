@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TooltipModule } from 'ng2-tooltip-directive';
 import { SbdlCommonModule } from '../common/common.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { ActionsComponent } from './components/actions/actions.component';
@@ -56,7 +55,6 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
   ],
   imports: [
     CommonModule,
-    TooltipModule,
     PipesModule,
     SbdlCommonModule
   ],

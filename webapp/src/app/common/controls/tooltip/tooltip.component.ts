@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, HostListener, ElementRef, ViewChildren, AfterViewInit, ApplicationRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { TooltipDirective } from 'ng2-tooltip-directive';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { OnMount } from '../dynamic/interfaces';
 import { PopoverService } from '../popover/popover.service';
 
@@ -8,7 +7,7 @@ import { PopoverService } from '../popover/popover.service';
   templateUrl: './tooltip.component.html',
   styleUrls: ['./tooltip.component.scss']
 })
-export class TooltipComponent implements OnInit, AfterViewInit, OnMount {
+export class TooltipComponent implements OnInit, OnMount {
   dynamicOnMount(attrs?: Map<string, string>, content?: string, element?: Element): void {
     // const text = attrs.get('text');
     this.text = attrs.get('text');
@@ -20,32 +19,28 @@ export class TooltipComponent implements OnInit, AfterViewInit, OnMount {
 
   dynamicLoadedContent: string;
 
-  @ViewChildren(TooltipDirective) 
-  tooltipDirective; 
-
   @ViewChild('tooltip', { static: false })
   tooltipContainer: ElementRef;
 
   @ViewChild('tooltipPopover', { static: false })
   tooltipPopover: ElementRef;
 
-  tooltip: TooltipDirective;
 
   ngOnInit() {
-  }
-
-  ngAfterViewInit() {
-    this.tooltip = this.tooltipDirective.find(elem => elem.id === "tooltip"); 
   }
 
   constructor(private popoverService: PopoverService) {
   }
 
   openTooltipPopover() {
-    this.popoverService.openOnBody(this.tooltipPopover, this.offset(this.tooltipContainer.nativeElement), 'tooltip', 'top'); 
+    this.popoverService.openOnBody(this.tooltipPopover,{ 
+      offset: this.offset(this.tooltipContainer.nativeElement), 
+      cssClass: 'tooltip', 
+      placement: 'top' 
+    }); 
   }
 
-  offset(el) {
+  private offset(el) {
     const rect = el.getBoundingClientRect(),
     width = rect.right - rect.left,
     
