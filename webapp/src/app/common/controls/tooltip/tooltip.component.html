@@ -4,6 +4,9 @@
 </span>
 <ng-container #tooltipButton></ng-container>
 <ng-template #tooltipPopover>
+    <div class="close-button" (click)="close()">
+        <sbdl-icon icon="circle-close"></sbdl-icon>
+    </div>
     <div>
         {{ text }}
     </div>

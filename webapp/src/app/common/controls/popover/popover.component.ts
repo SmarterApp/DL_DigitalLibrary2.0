@@ -31,7 +31,6 @@ export class PopoverComponent implements OnInit, AfterViewInit {
     this.onClose.emit();
   }
 
-
   @ViewChild('container', { static: false })
   container: ElementRef;
 
@@ -52,7 +51,7 @@ export class PopoverComponent implements OnInit, AfterViewInit {
 
   @HostListener('document:click', ['$event.path'])
   onClickOutside($event: Array<any>) {
-    const elementRefInPath = $event.find(node => node.className && node.className.indexOf('popover-container') !== -1);
+    const elementRefInPath = $event.find(node => node.className && node.className.indexOf && node.className.indexOf('popover-container') !== -1);
     if (!elementRefInPath) {      
       this.onClose.emit();
     } 

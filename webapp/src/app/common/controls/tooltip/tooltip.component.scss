@@ -4,3 +4,9 @@
     cursor: pointer;
     color: $info-500;
 }
+
+.close-button {
+    display:flex;
+    justify-content: flex-end;
+    cursor: pointer;
+}

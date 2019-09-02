@@ -40,6 +40,10 @@ export class TooltipComponent implements OnInit, OnMount {
     }); 
   }
 
+  close() {
+    
+  }
+
   private offset(el) {
     const rect = el.getBoundingClientRect(),
     width = rect.right - rect.left,
