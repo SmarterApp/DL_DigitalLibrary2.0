@@ -1,4 +1,3 @@
-
 <h6 class="outline-header">
   <span *ngIf="readingMode && !mobile">
     <i class="fas fa-bars"></i>
@@ -43,8 +42,8 @@
   </li>
   <li *ngIf="scrollableElements.comments">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.comments)" (blur)="removeClass(scrollableElements.comments)">
-      <i class="far fa-comment-dots"></i>
-      Comments and Suggestions
+      <i class="far {{ commentsSection.fontAwesomeIcon }}"></i>
+      {{ commentsSection.title }}
     </sbdl-button>
   </li>
   <li *ngIf="scrollableElements.formativeAssessmentProcess">

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ResourceModel } from 'src/app/data/resource/model/resource.model';
 import { ScrollableElements } from '../../components/outline/scrollable-elements.model';
+import { commentsSectionOptions } from '../../components/section/section.definitions';
 
 @Component({
   selector: 'sbdl-instructional-content',
@@ -19,6 +20,8 @@ export class InstructionalContentComponent implements OnInit {
   readingModeChanged = new EventEmitter<boolean>();
 
   private scrollableElements: ScrollableElements;
+
+  commentsOptions = commentsSectionOptions;
 
   constructor() { }
 

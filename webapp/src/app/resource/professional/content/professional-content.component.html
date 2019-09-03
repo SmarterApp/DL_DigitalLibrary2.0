@@ -13,7 +13,7 @@
 <sbdl-attachments [models]="model.attachments" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
 <hr/>
 
-<sbdl-comments [model]="model" (sectionElementLoaded)="setComments($event)"></sbdl-comments>
+<sbdl-section [contentHtml]="model.comments" [options]="commentsOptions" (sectionElementLoaded)="setComments($event)"></sbdl-section>
 <hr *ngIf="model.comments"/>
 
 <sbdl-formative [model]="model.formative" showProfLearningContent="true" (sectionElementLoaded)="setFormative($event)"></sbdl-formative>

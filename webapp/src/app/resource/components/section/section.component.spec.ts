@@ -1,12 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommentsComponent } from './comments.component';
+import { SectionComponent } from './section.component';
 import { ResourceModule } from '../../resource.module';
 import { mockResourceModel } from 'src/app/data/mock-data';
+import { commentsSectionOptions } from './section.definitions';
 
-describe('CommentsComponent', () => {
-  let component: CommentsComponent;
-  let fixture: ComponentFixture<CommentsComponent>;
+describe('SectionComponent', () => {
+  let component: SectionComponent;
+  let fixture: ComponentFixture<SectionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,9 +17,10 @@ describe('CommentsComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CommentsComponent);
+    fixture = TestBed.createComponent(SectionComponent);
     component = fixture.componentInstance;
-    component.model = mockResourceModel;
+    component.contentHtml = mockResourceModel.comments;
+    component.options = commentsSectionOptions;
     fixture.detectChanges();
   });
 

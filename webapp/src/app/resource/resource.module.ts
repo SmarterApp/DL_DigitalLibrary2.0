@@ -19,7 +19,7 @@ import { ResourceTypeStrategyComponent } from './resource-type-strategy.componen
 import { ResourceComponent } from './resource.component';
 import { ProfessionalContentComponent } from './professional/content/professional-content.component';
 import { OverviewComponent } from './professional/overview/overview.component';
-import { CommentsComponent } from './components/comments/comments.component';
+import { SectionComponent } from './components/section/section.component';
 import { StrategyComponent } from './strategy/strategy.component';
 import { StrategyContentComponent } from './strategy/content/strategy-content.component';
 import { StrategyOverviewComponent } from './strategy/overview/strategy-overview.component';
@@ -47,7 +47,7 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     HeaderComponent,
     ProfessionalContentComponent,
     OverviewComponent,
-    CommentsComponent,
+    SectionComponent,
     StrategyComponent,
     StrategyContentComponent,
     StrategyOverviewComponent,

@@ -14,7 +14,7 @@ export class MetadataComponentService {
       resourceType: 'Accessibility Strategy',
       linkTitle: 'Learn more about accessibility',
       links: [ <MoreInfoLink>{
-          title: 'Usability, Accessibility, and Accommmodations Guidelines',
+          title: 'Usability, Accessibility, and Accommodations Guidelines',
           url: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
           faIcon: 'fa-file-pdf'
         }, <MoreInfoLink>{

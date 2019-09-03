@@ -10,8 +10,8 @@ import { HomeModule } from './home/home.module';
 import { LayoutModule } from './layout/layout.module';
 import { ResourceModule } from './resource/resource.module';
 import { JoinPipe } from './pipes/join.pipe';
-import { IconComponent } from './common/app-icon/icon.component';
-import { SvgDefsComponent } from './common/app-icon/svg-defs.component';
+import { IconComponent } from './common/icon/icon.component';
+import { SvgDefsComponent } from './common/icon/svg-defs.component';
 import { SbdlCommonModule } from './common/common.module';
 
 export function initializeApp(appConfig: AppConfig) {
