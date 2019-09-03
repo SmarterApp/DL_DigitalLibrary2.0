@@ -4,10 +4,10 @@
 </span>
 <ng-container #tooltipButton></ng-container>
 <ng-template #tooltipPopover>
-    <div class="close-button" (click)="close()">
-        <sbdl-icon icon="circle-close"></sbdl-icon>
+    <div class="close-button" >
+        <sbdl-icon icon="circle-close" (click)="close()"></sbdl-icon>
     </div>
-    <div>
-        {{ text }}
-    </div>
+    <h6>{{ title }}</h6>
+    <p>{{ text }}</p>
+    <a class="read-more" *ngIf="readMoreUrl" [href]="readMoreUrl" target="_blank">Keep Reading <i class="far fa-arrow-right"></i></a>
 </ng-template>

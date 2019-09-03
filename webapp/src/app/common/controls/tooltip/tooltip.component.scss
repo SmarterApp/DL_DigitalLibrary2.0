@@ -1,4 +1,5 @@
 @import "colors";
+@import "typography";
 
 :host {
     cursor: pointer;
@@ -8,5 +9,22 @@
 .close-button {
     display:flex;
     justify-content: flex-end;
-    cursor: pointer;
+    sbdl-icon { 
+        cursor: pointer;
+    }
+}
+
+a.read-more {
+    color: $white;
+    text-decoration: underline;
+}
+
+h6 {
+    font-weight: 600;
+    font-family: $font-family-body;
+    margin-bottom: 0;
+}
+
+p {
+    margin-top: 0;
 }

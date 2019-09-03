@@ -1,5 +1,5 @@
-import { Component, OnInit, ElementRef, HostListener, Output, EventEmitter, AfterViewInit, Input, TemplateRef, HostBinding, ViewChildren, ViewChild, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
-import { SafeStyle, DomSanitizer } from '@angular/platform-browser';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { PopoverOptions } from './popover.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class PopoverComponent implements OnInit, AfterViewInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event?) {    
-    this.onClose.emit();
+    this.close();
   }
 
   @ViewChild('container', { static: false })
@@ -53,7 +53,11 @@ export class PopoverComponent implements OnInit, AfterViewInit {
   onClickOutside($event: Array<any>) {
     const elementRefInPath = $event.find(node => node.className && node.className.indexOf && node.className.indexOf('popover-container') !== -1);
     if (!elementRefInPath) {      
-      this.onClose.emit();
+      this.close();
     } 
+  }
+
+  close() {
+    this.onClose.emit();
   }
 }

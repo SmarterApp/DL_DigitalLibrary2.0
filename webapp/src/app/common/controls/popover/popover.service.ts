@@ -11,24 +11,26 @@ export class PopoverService {
     private appRef: ApplicationRef,
     private injector: Injector) { }
 
-  open(viewContainerRef: ViewContainerRef, template: any) {
+  open(viewContainerRef: ViewContainerRef, template: any): PopoverComponent {
     viewContainerRef.clear();
 
     const popOverFactory = this.resolver.resolveComponentFactory(PopoverComponent)
     const injector = ReflectiveInjector.resolveAndCreate([], this.injector);
 
-    const popover = viewContainerRef.createComponent(popOverFactory, 0, injector);
-    popover.instance.template = template;
+    const popoverRef = viewContainerRef.createComponent(popOverFactory, 0, injector);
+    popoverRef.instance.template = template;
     
     setTimeout(() => {
-      popover.instance.onClose.subscribe(() => { 
-        this.appRef.detachView(popover.hostView);
-        popover.destroy();
+      popoverRef.instance.onClose.subscribe(() => { 
+        this.appRef.detachView(popoverRef.hostView);
+        popoverRef.destroy();
       });
     }, 0);
+
+    return popoverRef.instance;
   }
 
-  openOnBody(template: any, options: PopoverOptions) {
+  openOnBody(template: any, options: PopoverOptions): PopoverComponent {
         // Create a component reference from the component 
       const popoverRef = this.resolver
         .resolveComponentFactory(PopoverComponent)
@@ -53,6 +55,8 @@ export class PopoverService {
           popoverRef.destroy();
         });
       }, 0);
+
+      return popoverRef.instance;
   }
 }
 

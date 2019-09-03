@@ -55,13 +55,13 @@
     background-color: $white;
     background-blend-mode: multiply, darken, normal;
     background-position: -92px 0px;
-    background-size: 151%;
+    background-size:151%;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 8px 10px rgba(0, 0, 0, 0.14) !important;
     border:none;
     &:before {
         background-color: #b05fa0;
         border: none;
-    }
+    } 
     &.top:before {
         background-color: #a2408e;
     }
