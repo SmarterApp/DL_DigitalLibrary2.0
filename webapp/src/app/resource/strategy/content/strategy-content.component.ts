@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ResourceModel } from 'src/app/data/resource/model/resource.model';
 import { ScrollableElements } from '../../components/outline/scrollable-elements.model';
+import { commentsSectionOptions, strategyInActionOptions, instructionalUseOptions } from '../../components/section/section.definitions';
 
 @Component({
   selector: 'sbdl-strategy-content',
@@ -19,6 +20,10 @@ export class StrategyContentComponent implements OnInit {
 
   private scrollableElements: ScrollableElements;
 
+  instructionalUse = instructionalUseOptions;
+  commentsSection = commentsSectionOptions;
+  strategySection = strategyInActionOptions;
+  
   constructor() { }
 
   ngOnInit() {

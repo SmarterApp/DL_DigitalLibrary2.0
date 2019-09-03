@@ -35,4 +35,5 @@ export interface SectionOptions {
   title: string;
   fontAwesomeIcon?: string;
   sbdlIcon?: string;
+  iconBackground: 'yellow'|'blue'|'green'|'none';
 }

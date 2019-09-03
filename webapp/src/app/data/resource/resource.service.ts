@@ -91,7 +91,10 @@ export class ResourceService {
       steps: this.mapToSteps(coalesce(apiResource.steps, [])),
       comments: apiResource.comments,
       differentiation: this.mapToDifferentiation(apiResource),
-      formative: this.mapToFormative(apiResource)
+      formative: this.mapToFormative(apiResource),
+
+      strategyInActions: apiResource.strategyInActions,
+      instructionalUse: apiResource.instructionalUse
     };
   }
 

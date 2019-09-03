@@ -875,6 +875,27 @@ const polyfillMissingAccessApiData = {
 			<li>Highlighters</li>
 			<li>Low Odor</li>
 		</ul>
+	`,
+	comments: `
+		<ul>
+			<li>Provide scaffolding to help students differentiate between main ideas, supporting details, conclusions, or text structure.</li>
+			<li>Highlighter colors need to be selected appropriately for students with color-related disabilities.</li>
+			<li>Highlighter grips (holders, assistive technology) need to be provided for students with physical disabilities.</li>
+		</ul>
+	`,
+	instructionalUse: `
+		<ul>
+			<li>Students can use highlighter tools to digitally or physically mark desired text with a color.</li>
+			<li>Students can use highlighters to distinguish useful/meaningful text and primary/secondary information when completing an assignment.</li>
+			<li>Students can denote main ideas, supporting details, and conclusions.</li>
+		</ul>
+	`,
+	strategyInActions: `
+		<a href="https://sampleitems.smarterbalanced.org/BrowseItems" target="_blank">Try out the Highlighter on the Sample Items Website</a>
+		<p>
+			To access the tool, first navigate to any sample item. Select text with your mouse. With your mouse on the selected text, select the right 
+			mouse button and then Highlight Selection, or select the highlight option from the context menu. 
+		</p>
 	`
 };
 

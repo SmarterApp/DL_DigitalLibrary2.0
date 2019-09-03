@@ -10,3 +10,11 @@
 <sbdl-attachments [models]="model.attachments" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
 <hr/>
 
+<sbdl-section [contentHtml]="model.instructionalUse" [options]="instructionalUse"></sbdl-section>
+<hr/>
+
+<sbdl-section [contentHtml]="model.comments" [options]="commentsSection"></sbdl-section>
+<hr/>
+
+<sbdl-section [contentHtml]="model.strategyInActions" [options]="strategySection"></sbdl-section>
+<hr/>

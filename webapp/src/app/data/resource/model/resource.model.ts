@@ -20,4 +20,7 @@ export interface ResourceModel {
     comments: string;
     differentiation: DifferentiationModel;
     formative: FormativeModel;
+
+    instructionalUse: string;
+    strategyInActions: string;
 } 
