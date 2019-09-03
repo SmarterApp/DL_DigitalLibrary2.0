@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { StrategyMetadataComponentService } from './strategy-metadata-component.service';
+import { MetadataComponentService } from './metadata-component.service';
 
 describe('StrategyMetadataComponentService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: StrategyMetadataComponentService = TestBed.get(StrategyMetadataComponentService);
+    const service: MetadataComponentService = TestBed.get(MetadataComponentService);
     expect(service).toBeTruthy();
   });
 });

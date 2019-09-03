@@ -19,13 +19,12 @@ import { ResourceHostDirective } from './resource-host.directive';
 import { ResourceTypeStrategyComponent } from './resource-type-strategy.component';
 import { ResourceComponent } from './resource.component';
 import { ProfessionalContentComponent } from './professional/content/professional-content.component';
-import { ProfessionalMetadataComponent } from './professional/metadata/professional-metadata.component';
 import { OverviewComponent } from './professional/overview/overview.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { StrategyComponent } from './strategy/strategy.component';
 import { StrategyContentComponent } from './strategy/content/strategy-content.component';
 import { StrategyOverviewComponent } from './strategy/overview/strategy-overview.component';
-import { StrategyMetadataComponent } from './strategy/metadata/strategy-metadata.component';
+import { MetadataComponent } from './components/metadata/metadata.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -48,13 +47,12 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     ActionsComponent,
     HeaderComponent,
     ProfessionalContentComponent,
-    ProfessionalMetadataComponent,
     OverviewComponent,
     CommentsComponent,
     StrategyComponent,
     StrategyContentComponent,
     StrategyOverviewComponent,
-    StrategyMetadataComponent
+    MetadataComponent
   ],
   imports: [
     CommonModule,

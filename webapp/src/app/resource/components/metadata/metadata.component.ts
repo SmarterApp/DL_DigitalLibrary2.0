@@ -1,15 +1,15 @@
 import { Component, OnInit, Input, ViewChildren, ElementRef, AfterViewInit } from '@angular/core';
 import { ResourceDetailsModel } from 'src/app/data/resource/model/resource-details.model';
 import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
-import { StrategyStaticMetdata, StrategyMetadataComponentService } from './strategy-metadata-component.service';
+import { StaticMetadata, MetadataComponentService } from './metadata-component.service';
 import { MDCRipple } from '@material/ripple';
 
 @Component({
-  selector: 'sbdl-strategy-metadata',
-  templateUrl: './strategy-metadata.component.html',
-  styleUrls: ['./strategy-metadata.component.scss']
+  selector: 'sbdl-metadata',
+  templateUrl: './metadata.component.html',
+  styleUrls: ['./metadata.component.scss']
 })
-export class StrategyMetadataComponent implements OnInit, AfterViewInit {
+export class MetadataComponent implements OnInit, AfterViewInit {
   @Input()
   model: ResourceDetailsModel;
 
@@ -19,9 +19,9 @@ export class StrategyMetadataComponent implements OnInit, AfterViewInit {
   @ViewChildren('links')
   linkElementRefs: ElementRef[];
 
-  staticData: StrategyStaticMetdata;
+  staticData: StaticMetadata;
 
-  constructor(private service: StrategyMetadataComponentService) { }
+  constructor(private service: MetadataComponentService) { }
 
   ngOnInit() {
     this.staticData = this.service.getStaticMetadata(this.resourceType);
@@ -33,5 +33,4 @@ export class StrategyMetadataComponent implements OnInit, AfterViewInit {
       MDCRipple.attachTo(linkRef.nativeElement);
     }
   }
-
 }
