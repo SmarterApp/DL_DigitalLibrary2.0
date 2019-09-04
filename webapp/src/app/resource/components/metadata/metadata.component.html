@@ -9,8 +9,7 @@
 <h6 class="link-title">{{ staticData.linkTitle }}</h6>
 <a *ngFor="let link of staticData.links" [href]="link.url" class="link-card" target="_blank" #links> 
   <div class="type-info">
-    <span class="link-subtitle">{{ link.subtitle }}</span>
+    <span>{{ link.title }}</span>
     <i class="far {{ link.faIcon }}"></i>
   </div>
-  <p>{{ link.title }}</p>
 </a>
