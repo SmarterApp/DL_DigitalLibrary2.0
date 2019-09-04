@@ -16,13 +16,14 @@ describe('EmbedStrategLinksService', () => {
       differentiation: {
         accessibilityStrategies: [{
           title: 'Walk the Line',
-          description: 'test description'
+          description: 'test description',
+          moreAboutUrl: 'google.com'
         }]
       },
       formative: { }
     });
 
-    expect(actual).toBe('<div>Test this is a <sbdl-tooltip text="test description" style="white-space:nowrap;"><i class="far fa-universal-access"></i> Walk the Line</sbdl-tooltip> test.</div>');
+    expect(actual).toBe('<div>Test this is a <sbdl-tooltip title="Accessibility Strategy" text="test description" readMoreUrl="google.com" style="white-space:nowrap;"><i class="far fa-universal-access"></i> Walk the Line</sbdl-tooltip> test.</div>');
   });
 
   it('should embed formative strategy links', () => {
@@ -31,10 +32,11 @@ describe('EmbedStrategLinksService', () => {
       differentiation: {},
       formative: { strategies:  [{
         title: 'Collaborative Discussion',
-        description: 'test collab discussion'
+        description: 'test collab discussion',
+        moreAboutUrl: 'collab.org'
       }] }
     });
 
-    expect(actual).toBe('<div>Test this is a <sbdl-tooltip text="test collab discussion" style="white-space:nowrap;"><sbdl-icon icon="strategies"></sbdl-icon> Collaborative Discussion</sbdl-tooltip> test.</div>');
+    expect(actual).toBe(`<div>Test this is a <sbdl-tooltip title="Formative Assessment Strategy" text="test collab discussion" readMoreUrl="collab.org" style="white-space:nowrap;"><sbdl-icon icon="strategies"></sbdl-icon> Collaborative Discussion</sbdl-tooltip> test.</div>`);
   });
 });

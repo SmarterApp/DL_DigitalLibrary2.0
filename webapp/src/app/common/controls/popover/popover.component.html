@@ -1,4 +1,4 @@
-<div role="tooltip" class="popover-container">
+<div role="tooltip" class="popover-container {{options.cssClass}}" #container [ngClass]="{'top': options.placement === 'top'}">
   <div class="popover-content">
     <ng-container *ngTemplateOutlet="template"></ng-container>
   </div>

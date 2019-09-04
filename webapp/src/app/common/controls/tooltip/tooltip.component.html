@@ -1,4 +1,13 @@
-<span id="tooltip" [tooltip]="text" placement="top" trigger="click" hide-delay="15000">
+<span (click)="openTooltipPopover()" #tooltip>
     <dynamic-html [content]="dynamicLoadedContent"></dynamic-html>
     <ng-content></ng-content>
 </span>
+<ng-container #tooltipButton></ng-container>
+<ng-template #tooltipPopover>
+    <div class="close-button" >
+        <sbdl-icon icon="circle-close" (click)="close()"></sbdl-icon>
+    </div>
+    <h6>{{ title }}</h6>
+    <p>{{ text }}</p>
+    <a class="read-more" *ngIf="readMoreUrl" [href]="readMoreUrl" target="_blank">Keep Reading <i class="far fa-arrow-right"></i></a>
+</ng-template>

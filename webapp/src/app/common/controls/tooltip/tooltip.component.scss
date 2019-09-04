@@ -1,7 +1,30 @@
 @import "colors";
+@import "typography";
 
 :host {
     cursor: pointer;
     color: $info-500;
 }
 
+.close-button {
+    display:flex;
+    justify-content: flex-end;
+    sbdl-icon { 
+        cursor: pointer;
+    }
+}
+
+a.read-more {
+    color: $white;
+    text-decoration: underline;
+}
+
+h6 {
+    font-weight: 600;
+    font-family: $font-family-body;
+    margin-bottom: 0;
+}
+
+p {
+    margin-top: 0;
+}

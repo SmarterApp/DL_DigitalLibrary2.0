@@ -4,7 +4,6 @@ import { SvgDefsComponent } from './app-icon/svg-defs.component';
 import { ButtonComponent } from './controls/button/button.component';
 import { ButtonIconComponent } from './controls/button-icon/button-icon.component';
 import { TooltipComponent } from './controls/tooltip/tooltip.component';
-import { TooltipModule } from 'ng2-tooltip-directive';
 import { PopoverComponent } from './controls/popover/popover.component';
 import { CommonModule } from '@angular/common';
 import { ReadMoreComponent } from './controls/read-more/read-more.component';
@@ -22,7 +21,7 @@ const dynamicOptions = {
 };
 
 @NgModule({
-    imports: [ TooltipModule, CommonModule ],
+    imports: [ CommonModule ],
     declarations: [
         ButtonComponent,
         ButtonIconComponent,
