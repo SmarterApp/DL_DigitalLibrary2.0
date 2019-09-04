@@ -7,7 +7,7 @@
     max-width: none;
 }
 
-.comments-container {
+.section-container {
     padding-top: $spacer;
     max-width: var(--measure);
     margin-right: $spacer-xl;
@@ -46,6 +46,20 @@
             background-size: contain;
             padding: 7px;
             font-size: 1.5rem;
+        }
+    }
+    
+    ::ng-deep{
+        a {
+            color: $success-900;
+            text-decoration: underline;
+        }
+        a:after {
+            content: ' \f061';
+            font-family: 'Font Awesome 5 Pro';
+            text-decoration: none;
+            display: inline-block;
+            padding-left: 8px;
         }
     }
 }

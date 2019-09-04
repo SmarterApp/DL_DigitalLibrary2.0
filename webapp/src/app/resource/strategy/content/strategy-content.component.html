@@ -8,13 +8,12 @@
 
 <hr *ngIf="model.attachments.length > 0"/>
 <sbdl-attachments [models]="model.attachments" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
-<hr/>
 
+<hr *ngIf="model.instructionalUse"/>
 <sbdl-section [contentHtml]="model.instructionalUse" [options]="instructionalUse"></sbdl-section>
-<hr/>
 
+<hr *ngIf="model.comments"/>
 <sbdl-section [contentHtml]="model.comments" [options]="commentsSection"></sbdl-section>
-<hr/>
 
+<hr *ngIf="model.strategyInActions"/>
 <sbdl-section [contentHtml]="model.strategyInActions" [options]="strategySection"></sbdl-section>
-<hr/>
