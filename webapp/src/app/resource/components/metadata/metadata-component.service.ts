@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
 
+/**
+ * Metadata Component Service which returns static data for the metadata component.
+ * This is returned as a service instead of static constants because it is unclear at this time
+ * whether this should be returned by the api or stored as json data on the client.
+ */
 @Injectable({
   providedIn: 'root'
 })

@@ -4,6 +4,7 @@ export class ScrollableElements {
     getStarted: any;
     overview: any;
     steps: any[];
+    customStrategySection: ScrollableSection;
     attachments: any;
     comments: any;
     differentiation: any;

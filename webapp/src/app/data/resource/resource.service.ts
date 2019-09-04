@@ -93,8 +93,9 @@ export class ResourceService {
       differentiation: this.mapToDifferentiation(apiResource),
       formative: this.mapToFormative(apiResource),
 
-      strategyInActions: apiResource.strategyInActions,
-      instructionalUse: apiResource.instructionalUse
+      strategyInAction: apiResource.strategyInAction,
+      instructionalUse: apiResource.instructionalUse,
+      stepByStep: apiResource.stepByStep
     };
   }
 

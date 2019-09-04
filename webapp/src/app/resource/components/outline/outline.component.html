@@ -28,6 +28,13 @@
       </li>
     </ol>
   </li>
+  <li *ngIf="scrollableElements.customStrategySection">
+    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.customStrategySection.elementRef)" (blur)="removeClass(scrollableElements.customStrategySection.elementRef)">
+      <sbdl-icon *ngIf="scrollableElements.customStrategySection.sbdlIcon" [icon]="scrollableElements.customStrategySection.sbdlIcon"></sbdl-icon>
+      <i *ngIf="scrollableElements.customStrategySection.fontAwesomeIcon" class="far {{scrollableElements.customStrategySection.fontAwesomeIcon}}"></i>
+      {{ scrollableElements.customStrategySection.title }}
+    </sbdl-button>  
+  </li>
   <li *ngIf="scrollableElements.attachments">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.attachments)" (blur)="removeClass(scrollableElements.attachments)">
       <i class="far fa-paperclip"></i>

@@ -890,7 +890,7 @@ const polyfillMissingAccessApiData = {
 			<li>Students can denote main ideas, supporting details, and conclusions.</li>
 		</ul>
 	`,
-	strategyInActions: `
+	strategyInAction: `
 		<a href="https://sampleitems.smarterbalanced.org/BrowseItems" target="_blank">Try out the Highlighter on the Sample Items Website</a>
 		<p>
 			To access the tool, first navigate to any sample item. Select text with your mouse. With your mouse on the selected text, select the right 
@@ -1000,6 +1000,40 @@ const polyfillMissingFormativeApiData = {
 			<li>Assistive technology-digital notetaking apps</li>
 			<li>Three or Four-column note forms or chart paper (paper & pen)</li>
 		</ul>
+	`,
+	stepByStep: `
+		<ul>
+			<li>Students take notes and ask key questions before starting research projects</li>
+			<li>Organize information to help study for tests.</li>
+			<li>Make decisions about presenting information and how to demonstrate learning.</li>
+			<li>Individualize classroom activities</li>
+			<li>Students can synthesize information into a visual aid.</li>
+		</ul>
+	`,
+	comments: `
+		<ul>
+			<li>Gauge where students previous knowledge is and if additional scaffolding is needed</li>
+			<li>Check accuracy of information researched</li>
+			<li>Check to see if the questions students generated are answered adequately</li>
+			<li>Check organization of notes</li>
+		</ul>
+	`,
+	strategyInAction: `
+		<h6>Clairfy</h6>
+		<p>“K” and “W” shows previous understanding and what students want to learn, explore or research.</p>
+		<h6>Elicit</h6>
+		<p>“What students write down for KW and L.  What did they learn, what questions do they have.</p>
+		<h6>Interpret</h6>
+		<p>
+			Matching the “L” to the lesson objectives or success criteria will allow a teacher to know how to 
+			act. Students area also interpreting to see if they have answered their own questions (W). Students 
+			are interpreting the growth of their learning.
+		</p>
+		<h6>Act</h6>
+		<p>
+			Teacher decides on next steps for reteaching or extension activities based on the student reflection. 
+			Students will pursue unanswered questions.
+		</p>
 	`
 };
 

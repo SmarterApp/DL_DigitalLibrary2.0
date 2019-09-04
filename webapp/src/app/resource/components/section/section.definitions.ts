@@ -17,3 +17,9 @@ export const strategyInActionOptions : SectionOptions = {
     fontAwesomeIcon: 'fa-universal-access',
     iconBackground: 'green'
 }
+
+export const stepByStepOptions: SectionOptions = {
+    title: 'Step-by-Step',
+    sbdlIcon: 'steps',
+    iconBackground: 'blue'
+}
