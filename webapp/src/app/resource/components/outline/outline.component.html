@@ -52,4 +52,11 @@
       {{ isProfessional ? 'Formative Assessment Strategies' : 'Formative Assessment Process' }}
     </sbdl-button>  
   </li>
+  <li *ngFor="let section of scrollableElements.sections" >
+    <sbdl-button class="outline" (click)="scrollToElement(section.elementRef)" (blur)="removeClass(section.elementRef)">
+      <sbdl-icon *ngIf="section.sbdlIcon" [icon]="section.sbdlIcon"></sbdl-icon>
+      <i *ngIf="section.fontAwesomeIcon" class="far {{section.fontAwesomeIcon}}"></i>
+      {{ section.title }}
+    </sbdl-button>  
+  </li>
 </ul>

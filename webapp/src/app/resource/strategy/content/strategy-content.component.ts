@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ResourceModel } from 'src/app/data/resource/model/resource.model';
-import { ScrollableElements } from '../../components/outline/scrollable-elements.model';
+import { ScrollableElements, ScrollableSection } from '../../components/outline/scrollable-elements.model';
 import { commentsSectionOptions, strategyInActionOptions, instructionalUseOptions } from '../../components/section/section.definitions';
+import { SectionOptions } from '../../components/section/section.component';
+import { Scroll } from '@angular/router';
 
 @Component({
   selector: 'sbdl-strategy-content',
@@ -18,15 +20,17 @@ export class StrategyContentComponent implements OnInit {
   @Output()
   readingModeChanged = new EventEmitter<boolean>();
 
+  sections: ContentSection[];
   private scrollableElements: ScrollableElements;
-
-  instructionalUse = instructionalUseOptions;
-  commentsSection = commentsSectionOptions;
-  strategySection = strategyInActionOptions;
   
   constructor() { }
 
   ngOnInit() {
+    this.sections = [
+      { ...instructionalUseOptions, contentHtml: this.model.instructionalUse },
+      { ...commentsSectionOptions, contentHtml: this.model.comments },
+      { ...strategyInActionOptions, contentHtml: this.model.strategyInActions }
+    ];
   }
 
   setAttachments($event) {
@@ -36,6 +40,25 @@ export class StrategyContentComponent implements OnInit {
 
   setOverview($event) {
     this.scrollableElements = {...this.scrollableElements, overview: $event };
+    this.emitScrollableElementsEvent();
+  }
+
+  setSection($event: any, section: ContentSection) {
+    section.elementRef = $event;
+
+    this.scrollableElements = this.scrollableElements || <ScrollableElements>{};
+    const sections = this.scrollableElements.sections || [];
+    this.scrollableElements = { 
+      ...this.scrollableElements, 
+        sections: [ 
+          ... sections, {
+            title: section.title,
+            sbdlIcon: section.sbdlIcon,
+            fontAwesomeIcon: section.fontAwesomeIcon,
+            elementRef: section.elementRef
+          } 
+        ] 
+    };
     this.emitScrollableElementsEvent();
   }
 
@@ -52,5 +75,9 @@ export class StrategyContentComponent implements OnInit {
   private emitScrollableElementsEvent() {
     this.loadScrollableElements.emit(this.scrollableElements);
   }
+}
 
+interface ContentSection extends SectionOptions {
+  contentHtml: string;
+  elementRef?: any;
 }

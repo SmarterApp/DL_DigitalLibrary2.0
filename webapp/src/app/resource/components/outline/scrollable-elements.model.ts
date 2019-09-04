@@ -8,4 +8,12 @@ export class ScrollableElements {
     comments: any;
     differentiation: any;
     formativeAssessmentProcess: any;
+    sections: ScrollableSection[];
+}
+
+export class ScrollableSection {
+    title: string;
+    fontAwesomeIcon: string;
+    sbdlIcon: string;
+    elementRef: any;
 }
