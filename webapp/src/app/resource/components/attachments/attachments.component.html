@@ -3,7 +3,7 @@
       <i class="far fa-paperclip"></i>Attachments
   </h4>
   <p>This resource relies on the following materials. Download them to use.</p>
-  <div *ngFor="let attachment of models" (click)="download(attachment)"  class="attachment-card"  #attachments>
+  <a href="javascript:void(0);" *ngFor="let attachment of models" (click)="download(attachment)"  class="attachment-card"  #attachments>
     <div class="type-info">
       <span class="attachment-type">{{ attachment.type }}</span>
       <i class="far {{attachment.fileType | fileTypeIcon }}"></i>
@@ -12,5 +12,9 @@
     <div class="download-text">
         Download ({{attachment.fileExtension}} {{ attachment.fileSizeInKB ? attachment.fileSizeInKB + ' KB' : '' }})
     </div>
+  </a>
+  <h6 *ngIf="videoLinks">Videos</h6>
+  <div *ngFor="let link of videoLinks" class="video-embed">
+    <iframe width="560" title="Youtube Video" height="315" [src]="link | safeUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 </article>

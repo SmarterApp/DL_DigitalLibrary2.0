@@ -151,6 +151,10 @@ const polyfillMissingApiData = {
 		fileSize: 82060,
 		type: 'activity'
 	}],
+	videoLinks: [
+		'https://www.youtube.com/embed/Zc6I1RYlzOY',
+		'https://www.youtube.com/embed/HS8cVQin_fc'
+	],
 	differentiation: `
 		<h6>Support</h6>
 		<p>

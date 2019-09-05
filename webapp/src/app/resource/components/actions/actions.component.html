@@ -1,7 +1,7 @@
 
-<sbdl-button-icon (click)="share()"><i class="far fa-share"></i></sbdl-button-icon>
+<sbdl-button-icon buttonTitle="Share" (click)="share()"><i class="far fa-share"></i></sbdl-button-icon>
 <ng-container #shareButton></ng-container>
-<sbdl-button-icon (click)="toggleFavorite()">
+<sbdl-button-icon buttonTitle="Bookmark" (click)="toggleFavorite()">
   <div *ngIf="!togglingFavorite && model.details.favorite">
     <i class="fas fa-bookmark"></i>
   </div>
@@ -12,8 +12,8 @@
     <i class="fas fa-spinner fa-spin"></i>
   </div>
 </sbdl-button-icon>
-<sbdl-button-icon><i class="far fa-print"></i></sbdl-button-icon>
-<sbdl-button-icon [hidden]="hideReadingModeToggle" (click)="toggleReadingMode()">
+<sbdl-button-icon buttonTitle="Print"><i class="far fa-print"></i></sbdl-button-icon>
+<sbdl-button-icon buttonTitle="Toggle Reading Mode" [hidden]="hideReadingModeToggle" (click)="toggleReadingMode()">
   <div *ngIf="readingMode">
     <i class="far fa-compress-alt"></i>
   </div>

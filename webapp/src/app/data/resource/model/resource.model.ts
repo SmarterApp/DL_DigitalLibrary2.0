@@ -16,7 +16,10 @@ export interface ResourceModel {
     details: ResourceDetailsModel;
     overview: OverviewModel;
     steps: ResourceStepModel[];
+
     attachments: AttachmentModel[];
+    videoLinks: string[];
+
     comments: string;
     differentiation: DifferentiationModel;
     formative: FormativeModel;

@@ -10,7 +10,7 @@
 <sbdl-step-by-step [models]="model.steps" (sectionElementLoaded)="setSteps($event)"></sbdl-step-by-step>
 <hr *ngIf="model.attachments.length > 0"/>
 
-<sbdl-attachments [models]="model.attachments" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
+<sbdl-attachments [models]="model.attachments" [videoLinks]="model.videoLinks" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
 <hr/>
 
 <sbdl-differentiation [model]="model.differentiation" (sectionElementLoaded)="setDifferentiation($event)"></sbdl-differentiation>

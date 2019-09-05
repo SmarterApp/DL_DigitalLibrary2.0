@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter, ViewChildren } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter, ViewChildren, SecurityContext } from '@angular/core';
 import { MDCRipple } from '@material/ripple/component';
 import { AttachmentModel } from 'src/app/data/resource/model/attachment.model';
 import { AttachmentService } from 'src/app/data/resource/attachment.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'sbdl-attachments',
@@ -11,14 +12,16 @@ import { AttachmentService } from 'src/app/data/resource/attachment.service';
 export class AttachmentsComponent implements OnInit {
 
   @Input()
-  models: any[];
+  models: AttachmentModel[];
+
+  @Input()
+  videoLinks: string[];
 
   @Output()
   sectionElementLoaded= new EventEmitter<any>();
 
   @ViewChild('header', { static: false })
   headerElement: ElementRef;
-
 
   @ViewChildren('attachments')
   attachmentElementRefs: ElementRef[];

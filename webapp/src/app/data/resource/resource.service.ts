@@ -95,7 +95,9 @@ export class ResourceService {
 
       strategyInAction: apiResource.strategyInAction,
       instructionalUse: apiResource.instructionalUse,
-      stepByStep: apiResource.stepByStep
+      stepByStep: apiResource.stepByStep,
+
+      videoLinks: apiResource.videoLinks
     };
   }
 
