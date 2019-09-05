@@ -16,7 +16,7 @@
     position: relative;
 
     .leading-icon {
-        text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin) + 10px));
+        margin-left:-16px;
         sbdl-icon {
             color: $brand-green;
             background: url('/assets/images/green-spot-3.png') no-repeat;
@@ -49,5 +49,14 @@
 
     .prof-learning-content {
         margin-bottom: $spacer-lg;
+    }
+
+    .strategy-link {
+        p {
+            margin-top: 0;
+        }
+        h6 {
+            margin-bottom: 3px;
+        }
     }
 }

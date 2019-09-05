@@ -101,6 +101,18 @@
             border-width: 0 0 0 4px;
             border-style: solid;
         }
+        &article:not(.highlighted):not(.step-container)::before {
+            content: '';
+            position: absolute;
+            top: 4rem;
+            bottom: 0;
+            left: -2.05rem;
+            display: block;
+            border-color: $neutral-75;
+            border-radius: 0.25rem;
+            border-width: 0 0 0 2px;
+            border-style: solid;
+        }
     }
 
 }
