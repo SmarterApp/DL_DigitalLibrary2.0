@@ -3,6 +3,7 @@ import { ResourceModel } from 'src/app/data/resource/model/resource.model';
 import { ScrollableElements } from './scrollable-elements.model';
 import { getCssVar } from 'src/app/common/utils';
 import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
+import { commentsSectionOptions } from '../section/section.definitions';
 
 @Component({
   selector: 'sbdl-outline',
@@ -29,6 +30,7 @@ export class OutlineComponent implements OnInit {
   }
    
   mobile = false;
+  commentsSection = commentsSectionOptions;
   private breakpointSmall = 500;
 
   constructor() { }

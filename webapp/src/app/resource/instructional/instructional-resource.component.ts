@@ -12,5 +12,3 @@ export class InstructionalResourceComponent extends ResourceComponent {
     super(cdRef, sanitizer);
    }
 }
-
-

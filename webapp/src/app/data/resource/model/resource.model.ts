@@ -20,4 +20,12 @@ export interface ResourceModel {
     comments: string;
     differentiation: DifferentiationModel;
     formative: FormativeModel;
+
+    instructionalUse: string;
+    strategyInAction: string;
+
+    // How is this different than steps?
+    // In Formative Assessment Strategy it's represented
+    // as a block of html rather than a collection of steps.
+    stepByStep: string;
 } 

@@ -1,6 +1,6 @@
 import { NgModule, ANALYZE_FOR_ENTRY_COMPONENTS } from '@angular/core';
-import { IconComponent } from './app-icon/icon.component';
-import { SvgDefsComponent } from './app-icon/svg-defs.component';
+import { IconComponent } from './icon/icon.component';
+import { SvgDefsComponent } from './icon/svg-defs.component';
 import { ButtonComponent } from './controls/button/button.component';
 import { ButtonIconComponent } from './controls/button-icon/button-icon.component';
 import { TooltipComponent } from './controls/tooltip/tooltip.component';

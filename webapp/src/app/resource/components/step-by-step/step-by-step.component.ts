@@ -17,8 +17,6 @@ export class StepByStepComponent implements OnInit, AfterViewInit {
   @ViewChildren('steps')
   stepElementRefs: ElementRef[];
 
-  sampleHtml = '<sbdl-tooltip text="tool tip text here."><sbdl-icon icon="strategies"></sbdl-icon> Conceptual Bridge</sbdl-tooltip>';
-
   constructor() { }
 
   ngOnInit() {
@@ -28,9 +26,5 @@ export class StepByStepComponent implements OnInit, AfterViewInit {
     if(this.stepElementRefs) {
       this.sectionElementLoaded.emit(this.stepElementRefs.map(x => x.nativeElement));
     }
-  }
-  
-  click(event){
-
   }
 }

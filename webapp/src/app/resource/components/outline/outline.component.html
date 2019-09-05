@@ -1,4 +1,3 @@
-
 <h6 class="outline-header">
   <span *ngIf="readingMode && !mobile">
     <i class="fas fa-bars"></i>
@@ -29,6 +28,13 @@
       </li>
     </ol>
   </li>
+  <li *ngIf="scrollableElements.customStrategySection">
+    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.customStrategySection.elementRef)" (blur)="removeClass(scrollableElements.customStrategySection.elementRef)">
+      <sbdl-icon *ngIf="scrollableElements.customStrategySection.sbdlIcon" [icon]="scrollableElements.customStrategySection.sbdlIcon"></sbdl-icon>
+      <i *ngIf="scrollableElements.customStrategySection.fontAwesomeIcon" class="far {{scrollableElements.customStrategySection.fontAwesomeIcon}}"></i>
+      {{ scrollableElements.customStrategySection.title }}
+    </sbdl-button>  
+  </li>
   <li *ngIf="scrollableElements.attachments">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.attachments)" (blur)="removeClass(scrollableElements.attachments)">
       <i class="far fa-paperclip"></i>
@@ -43,14 +49,21 @@
   </li>
   <li *ngIf="scrollableElements.comments">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.comments)" (blur)="removeClass(scrollableElements.comments)">
-      <i class="far fa-comment-dots"></i>
-      Comments and Suggestions
+      <i class="far {{ commentsSection.fontAwesomeIcon }}"></i>
+      {{ commentsSection.title }}
     </sbdl-button>
   </li>
   <li *ngIf="scrollableElements.formativeAssessmentProcess">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.formativeAssessmentProcess)" (blur)="removeClass(scrollableElements.formativeAssessmentProcess)">
       <sbdl-icon icon="strategies"></sbdl-icon>
       {{ isProfessional ? 'Formative Assessment Strategies' : 'Formative Assessment Process' }}
+    </sbdl-button>  
+  </li>
+  <li *ngFor="let section of scrollableElements.sections" >
+    <sbdl-button class="outline" (click)="scrollToElement(section.elementRef)" (blur)="removeClass(section.elementRef)">
+      <sbdl-icon *ngIf="section.sbdlIcon" [icon]="section.sbdlIcon"></sbdl-icon>
+      <i *ngIf="section.fontAwesomeIcon" class="far {{section.fontAwesomeIcon}}"></i>
+      {{ section.title }}
     </sbdl-button>  
   </li>
 </ul>
