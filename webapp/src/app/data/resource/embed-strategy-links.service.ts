@@ -26,7 +26,7 @@ export class EmbedStrategyLinksService {
 
     for(let strategy of strategies) {
       content = content.replace(strategy.title, 
-        `<sbdl-tooltip title="Accessibility Strategy" text="${strategy.description}" readMoreUrl="${strategy.moreAboutUrl}" style="white-space:nowrap;"><i class="far fa-universal-access"></i> ${strategy.title}</sbdl-tooltip>`
+        `<sbdl-tooltip title="Accessibility Strategy" text="${strategy.description}" readMoreUrl="${strategy.moreAboutUrl}" style="white-space:nowrap;"><i class="far fa-universal-access"></i> <span class="gradient-hover">${strategy.title}</span></sbdl-tooltip>`
       );
     }
     return content;
@@ -39,7 +39,7 @@ export class EmbedStrategyLinksService {
 
     for(let strategy of strategies) {
       content = content.replace(strategy.title, 
-        `<sbdl-tooltip title="Formative Assessment Strategy" text="${strategy.description}" readMoreUrl="${strategy.moreAboutUrl}" style="white-space:nowrap;"><sbdl-icon icon="strategies"></sbdl-icon> ${strategy.title}</sbdl-tooltip>`
+        `<sbdl-tooltip title="Formative Assessment Strategy" text="${strategy.description}" readMoreUrl="${strategy.moreAboutUrl}" style="white-space:nowrap;"><sbdl-icon icon="strategies"></sbdl-icon> <span class="gradient-hover">${strategy.title}</span></sbdl-tooltip>`
       );
     }
     return content;

@@ -23,7 +23,7 @@ describe('EmbedStrategLinksService', () => {
       formative: { }
     });
 
-    expect(actual).toBe('<div>Test this is a <sbdl-tooltip title="Accessibility Strategy" text="test description" readMoreUrl="google.com" style="white-space:nowrap;"><i class="far fa-universal-access"></i> Walk the Line</sbdl-tooltip> test.</div>');
+    expect(actual).toBe('<div>Test this is a <sbdl-tooltip title="Accessibility Strategy" text="test description" readMoreUrl="google.com" style="white-space:nowrap;"><i class="far fa-universal-access"></i> <span class="gradient-hover">Walk the Line</span></sbdl-tooltip> test.</div>');
   });
 
   it('should embed formative strategy links', () => {
@@ -37,6 +37,6 @@ describe('EmbedStrategLinksService', () => {
       }] }
     });
 
-    expect(actual).toBe(`<div>Test this is a <sbdl-tooltip title="Formative Assessment Strategy" text="test collab discussion" readMoreUrl="collab.org" style="white-space:nowrap;"><sbdl-icon icon="strategies"></sbdl-icon> Collaborative Discussion</sbdl-tooltip> test.</div>`);
+    expect(actual).toBe(`<div>Test this is a <sbdl-tooltip title="Formative Assessment Strategy" text="test collab discussion" readMoreUrl="collab.org" style="white-space:nowrap;"><sbdl-icon icon="strategies"></sbdl-icon> <span class="gradient-hover">Collaborative Discussion</span></sbdl-tooltip> test.</div>`);
   });
 });
