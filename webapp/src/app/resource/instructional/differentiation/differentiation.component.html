@@ -6,7 +6,7 @@
   </section>
   <section>
     <h5>Accessibility Strategies Used</h5>
-    <div *ngFor="let strategy of model.accessibilityStrategies">
+    <div *ngFor="let strategy of model.accessibilityStrategies" class="strategy-link">
       <h6><a [href]="strategy.moreAboutUrl" target="_blank">{{ strategy.title }} <i class="far fa-arrow-right"></i></a></h6>
       <p>{{ strategy.description }}</p>
     </div>
