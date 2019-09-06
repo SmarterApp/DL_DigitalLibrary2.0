@@ -128,6 +128,7 @@ const polyfillMissingApiData = {
 	connectionsPlaylist: [ {
 		title: 'Grade 6 Fractions',
 		numberOfResources: 6,
+		resourceId: 8,
 		assessmentType: 1 // how will this be defined?
 	}],
 	standards: ['6.NS.A.1', '6.NS.A.3', '5.NS.A.4'],
@@ -491,10 +492,12 @@ const polyfillMissingApiData2 = {
 	connectionsPlaylist: [ {
 		title: 'Grade 6 Science',
 		numberOfResources: 24,
+		resourceId: 28,
 		assessmentType: 1 // how will this be defined?
 	}, {
 		title: 'Citing Sources',
 		numberOfResources: 18,
+		resourceId: 29,
 		assessmentType: 1 // how will this be defined?
 	}],
 	standards: ['CCSS.ELA-Literacy.RST.6-8.1', 'CCSS.ELA-Literacy.RST.6-8.2'],

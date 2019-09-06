@@ -124,6 +124,7 @@ export class ResourceService {
 
       relatedPlaylists: coalesce(apiResource.connectionsPlaylist, []).map(p => <Playlist>{
         title: p.title,
+        resourceId: p.resourceId,
         numberOfResources: p.numberOfResources,
         assessmentType: p.assessmentType,
         assessmentTypeIcon: this.assessmentTypeToIconMap.get(p.assessmentType)

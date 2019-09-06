@@ -24,6 +24,8 @@ import { StrategyComponent } from './strategy/strategy.component';
 import { StrategyContentComponent } from './strategy/content/strategy-content.component';
 import { StrategyOverviewComponent } from './strategy/overview/strategy-overview.component';
 import { MetadataComponent } from './components/metadata/metadata.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { RouterModule } from '@angular/router';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -56,7 +58,8 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
   imports: [
     CommonModule,
     PipesModule,
-    SbdlCommonModule
+    SbdlCommonModule,
+    RouterModule
   ],
   entryComponents: [
     // Resource components are loaded dynamically so they need to be explicitly set here 

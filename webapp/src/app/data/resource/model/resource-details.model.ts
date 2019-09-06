@@ -52,6 +52,7 @@ export interface Alignment {
 
 export interface Playlist {
     title: string;
+    resourceId: number;
     assessmentType: number;
     assessmentTypeIcon: string;
     numberOfResources: number;
