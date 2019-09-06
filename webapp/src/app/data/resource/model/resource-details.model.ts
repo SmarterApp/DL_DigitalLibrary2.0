@@ -7,7 +7,7 @@ export interface ResourceDetailsModel {
     subjects: string[];
 
     // /api/v1/resource.grades
-    grades: string[];
+    grades: number[];
 
     // /api/v1/resource.resourceThumbnailImage
     // as a base-64 encoded string.

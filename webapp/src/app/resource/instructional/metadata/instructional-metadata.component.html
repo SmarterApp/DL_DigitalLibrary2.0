@@ -6,7 +6,13 @@
   <img src="/assets/images/math-2-problem-solving.png">
   <div>
     <h5 class="subjects">{{ model.subjects | join }}</h5>
-    <h6 class="grades">{{ model.grades | join }}</h6>
+    <h6 class="grades">
+        <span [ngPlural]="model.grades.length" >
+          <ng-template ngPluralCase="=1">Grade</ng-template>
+          <ng-template ngPluralCase="other">Grades</ng-template>
+        </span>
+      {{ model.grades | join:{conjunction:'and'} }}
+    </h6>
   </div>
 </div>
 <div class="details">

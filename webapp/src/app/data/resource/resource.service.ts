@@ -106,7 +106,7 @@ export class ResourceService {
       title: apiResource.title,
       favorite: apiResource.favorite,
       subjects: coalesce(apiResource.subject, []),
-      grades: coalesce(apiResource.grade, []),
+      grades: coalesce(apiResource.grades, []),
       image: apiResource.resourceThumbnail,
       author: apiResource.author,
       authorOrganization: apiResource.publisher,

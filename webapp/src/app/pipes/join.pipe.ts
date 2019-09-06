@@ -10,7 +10,17 @@ export class JoinPipe implements PipeTransform {
 
     const array = args && args.field ? value.map(x => x[args.field]) :  value;
     const separator = args && args.separator ? args.separator : ', ';
+    const conjunction = args && args.conjunction ? args.conjunction : undefined;
 
-    return array.join(separator);
+    const joinedString = array.join(separator);
+
+    if(!conjunction)
+      return joinedString;
+
+    const lastIndex = joinedString.lastIndexOf(separator);
+    return joinedString.slice(0, lastIndex) 
+      + joinedString
+        .slice(lastIndex)
+        .replace(separator, (array.length > 2 ? separator : ' ') + conjunction + ' ');
   }
 }

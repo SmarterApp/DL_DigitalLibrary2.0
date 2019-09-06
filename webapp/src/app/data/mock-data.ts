@@ -78,6 +78,7 @@ export const mockApiResourceExample = {
 	pii: "None",
 	subject: ["ELA", "Math"],
 	grade: ["Grade 6", "Grade 8", "Grade 9"],
+	
 	alignmentTags: "",
 	educationAlignments: [
 		{ title: "", shortName: "" },
@@ -118,6 +119,7 @@ const polyfillMissingApiData = {
 
 	// metadata
 	resourceThumbnail: mockResourceImage,
+	grades: [6, 8, 9],
 	educationalAlignments: [
 		{ title: 'Problem Solving', shortName: '2'}
 	], 
@@ -398,6 +400,7 @@ export const mockApiResourceWithNulls = {
 	steps: undefined,
 	subject: undefined,
 	grade: undefined,
+	grades: undefined,
 	targetAlignments: undefined,
 	educationalAlignments: undefined,
 	standards: undefined,
@@ -488,6 +491,7 @@ const polyfillMissingApiData2 = {
 		{ title: 'Central Ideas', shortName: '9' },
 		{ title: 'Use Evidence', shortName: '4' }
 	],
+	grades: [6],
 	learningGoals: 'The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.  The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.',
 	connectionsPlaylist: [ {
 		title: 'Grade 6 Science',
