@@ -10,7 +10,7 @@
 <sbdl-section [contentHtml]="customSection.contentHtml" [options]="customSection" (sectionElementLoaded)="setCustomSection($event, customSection)"></sbdl-section>
 
 <hr *ngIf="model.attachments.length > 0"/>
-<sbdl-attachments [models]="model.attachments" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
+<sbdl-attachments [models]="model.attachments" [videoLinks]="model.videoLinks" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
 
 <div *ngFor="let section of sections">
   <hr *ngIf="section.contentHtml"/>
