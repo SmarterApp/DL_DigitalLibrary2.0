@@ -46,4 +46,3 @@ module "staging_env" {
   route53_zone_id = var.route53_zone_id
   webapp_url_base = var.webapp_url_base
 }
-

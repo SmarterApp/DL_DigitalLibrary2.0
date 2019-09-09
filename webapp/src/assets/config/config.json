@@ -10,5 +10,9 @@
     "apiServer": {
         "cdl": "https://dev.cdl.sbac.org/api/v1.0/"
     },
-    "enableAnalytics": false
+    "enableAnalytics": false,
+    "okta": {
+      "clientId": "0oamt7hm566G44ZVm0h7",
+      "domain": "smarterbalanced.oktapreview.com"
+    }
 }
