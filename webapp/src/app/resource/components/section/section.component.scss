@@ -16,7 +16,7 @@
     position: relative;
 
     .leading-icon.yellow {
-        margin-left: -11px;
+        margin-left: -16px;
         sbdl-icon, svg {
             color: $warning-900;
             background: url('/assets/images/yellow-spot-4.png') no-repeat;
@@ -28,7 +28,7 @@
     }
 
     .leading-icon.blue {
-        text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin) + 9px));
+        margin-left: -16px;
         sbdl-icon, svg {
             color: $brand-blue;
             background: url('/assets/images/blue-spot.png') no-repeat;
@@ -39,7 +39,8 @@
     }
 
     .leading-icon.green {
-        text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin) + 10px));
+        margin-left: -16px;
+        // text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin) + 10px));
         sbdl-icon, svg {
             color: $success-900;
             background: url('/assets/images/green-spot-3.png') no-repeat;

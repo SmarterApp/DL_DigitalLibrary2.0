@@ -46,6 +46,7 @@
 
     .steps-header {
         padding: 0.5rem;
+        font-weight: 400;
     }
     ul > li:first-child {
         border-top: none;
@@ -74,6 +75,5 @@
         counter-increment: customlistcounter;
         display:block;
         font-size: 0.9rem;
-        font-weight: 300;
     }
 }

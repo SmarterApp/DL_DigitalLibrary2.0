@@ -78,6 +78,7 @@ export const mockApiResourceExample = {
 	pii: "None",
 	subject: ["ELA", "Math"],
 	grade: ["Grade 6", "Grade 8", "Grade 9"],
+	
 	alignmentTags: "",
 	educationAlignments: [
 		{ title: "", shortName: "" },
@@ -118,6 +119,7 @@ const polyfillMissingApiData = {
 
 	// metadata
 	resourceThumbnail: mockResourceImage,
+	grades: [6, 8, 9],
 	educationalAlignments: [
 		{ title: 'Problem Solving', shortName: '2'}
 	], 
@@ -128,6 +130,7 @@ const polyfillMissingApiData = {
 	connectionsPlaylist: [ {
 		title: 'Grade 6 Fractions',
 		numberOfResources: 6,
+		resourceId: 8,
 		assessmentType: 1 // how will this be defined?
 	}],
 	standards: ['6.NS.A.1', '6.NS.A.3', '5.NS.A.4'],
@@ -397,6 +400,7 @@ export const mockApiResourceWithNulls = {
 	steps: undefined,
 	subject: undefined,
 	grade: undefined,
+	grades: undefined,
 	targetAlignments: undefined,
 	educationalAlignments: undefined,
 	standards: undefined,
@@ -487,14 +491,17 @@ const polyfillMissingApiData2 = {
 		{ title: 'Central Ideas', shortName: '9' },
 		{ title: 'Use Evidence', shortName: '4' }
 	],
+	grades: [6],
 	learningGoals: 'The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.  The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.',
 	connectionsPlaylist: [ {
 		title: 'Grade 6 Science',
 		numberOfResources: 24,
+		resourceId: 28,
 		assessmentType: 1 // how will this be defined?
 	}, {
 		title: 'Citing Sources',
 		numberOfResources: 18,
+		resourceId: 29,
 		assessmentType: 1 // how will this be defined?
 	}],
 	standards: ['CCSS.ELA-Literacy.RST.6-8.1', 'CCSS.ELA-Literacy.RST.6-8.2'],

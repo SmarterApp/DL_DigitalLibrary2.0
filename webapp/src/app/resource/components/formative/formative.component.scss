@@ -16,7 +16,7 @@
     position: relative;
 
     .leading-icon {
-        text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin) + 10px));
+        margin-left:-16px;
         sbdl-icon {
             color: $brand-green;
             background: url('/assets/images/green-spot-3.png') no-repeat;
@@ -30,24 +30,37 @@
         margin-bottom: $spacer;
     }
 
-    h6 {
-        a,
-        a:link,
-        a:visited,
-        a:hover,
-        a:active {
-            color: $neutral-900;
-            text-decoration: none;
-            font-weight: normal;
-        }
-    }
+    .strategy-link {
+        h6 {
+            a,
+            a:link,
+            a:visited,
+            a:active {
+                color: $neutral-900;
+                font-weight: normal;
+            }
 
-    .fa-arrow-right {
-        color: $info-500;
-        padding-left: $spacer-sm;
+            a:hover {
+                text-decoration: underline;
+                color: $info-500;
+            }
+
+            .fa-arrow-right {
+                color: $info-500;
+                padding-left: $spacer-sm;
+            }
+
+            margin-bottom: 3px;
+        }
+
+        p {
+            margin-top: 0;
+        }
     }
 
     .prof-learning-content {
         margin-bottom: $spacer-lg;
     }
+
+
 }

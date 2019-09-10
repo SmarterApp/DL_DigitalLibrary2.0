@@ -15,32 +15,43 @@
     margin-bottom: $spacer-lg;
     position: relative;
 
-    h6 {
-        a,
-        a:link,
-        a:visited,
-        a:hover,
-        a:active {
-            color: $neutral-900;
-            text-decoration: none;
-            font-weight: normal;
+    .strategy-link {
+        h6 {
+            a,
+            a:link,
+            a:visited,
+            a:active {
+                color: $neutral-900;
+                font-weight: normal;
+            }
+
+            a:hover {
+                text-decoration: underline;
+                color: $info-500;
+            }
+
+            .fa-arrow-right {
+                color: $info-500;
+                padding-left: $spacer-sm;
+            }
+
+            margin-bottom: 3px;
+        }
+
+        p {
+            margin-top: 0;
         }
     }
 
     .leading-icon{
-        margin-left: -19px;
+        margin-left: -16px;
         svg {
             color: $warning-900;
             background: url('/assets/images/yellow-spot-3.png') no-repeat;
             background-size: contain;
             padding: 7px;
             margin-bottom: -7px;
-            font-size: 2rem;
+            font-size: 1.75rem;
         }
-    }
-
-    .fa-arrow-right {
-        color: $info-500;
-        padding-left: $spacer-sm;
     }
 }

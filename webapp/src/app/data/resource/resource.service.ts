@@ -106,7 +106,7 @@ export class ResourceService {
       title: apiResource.title,
       favorite: apiResource.favorite,
       subjects: coalesce(apiResource.subject, []),
-      grades: coalesce(apiResource.grade, []),
+      grades: coalesce(apiResource.grades, []),
       image: apiResource.resourceThumbnail,
       author: apiResource.author,
       authorOrganization: apiResource.publisher,
@@ -124,6 +124,7 @@ export class ResourceService {
 
       relatedPlaylists: coalesce(apiResource.connectionsPlaylist, []).map(p => <Playlist>{
         title: p.title,
+        resourceId: p.resourceId,
         numberOfResources: p.numberOfResources,
         assessmentType: p.assessmentType,
         assessmentTypeIcon: this.assessmentTypeToIconMap.get(p.assessmentType)
