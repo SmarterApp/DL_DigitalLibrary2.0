@@ -14,7 +14,10 @@ export class DetailedMetadataComponent implements OnInit, AfterViewInit {
 
   @ViewChildren('playlistRef')
   playlists: ElementRef[];
-
+  
+  @ViewChildren('resourceRef')
+  resources: ElementRef[];
+  
   constructor() { }
 
   ngOnInit() {
@@ -24,6 +27,9 @@ export class DetailedMetadataComponent implements OnInit, AfterViewInit {
     // Add ripples
     for(let playlist of this.playlists) {
       MDCRipple.attachTo(playlist.nativeElement);
+    }
+    for(let resource of this.resources) {
+      MDCRipple.attachTo(resource.nativeElement);
     }
   }
 }

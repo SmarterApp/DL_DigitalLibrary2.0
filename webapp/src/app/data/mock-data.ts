@@ -1133,6 +1133,10 @@ const polyfillMissingPlaylistApiData = {
 		{ title: 'Analyze / Integrate System', shortName: '2' }
 	],
 	standards: ['8.NS.A.1', '8.NS.A.2', '8.NS.A.3', '8.NS.A.4'],
+	resources: [
+		{ id: 4, title: 'Claim It!' },
+		{ id: 2, title: 'Making Sense of the Source: Paraphrasing Evidence' }
+	],
 	//overview
 	altBody: `
 		Students can engage in research/inquiry to investigate topics, and to analyze, integrate, and present information. This target focuses on analyzing.

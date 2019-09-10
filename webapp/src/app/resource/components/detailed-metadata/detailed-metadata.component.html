@@ -20,7 +20,7 @@
   <ng-container *ngTemplateOutlet="alignment; context: { models: model.targets, title: 'Target', titles: 'Targets' }"></ng-container>
   <ng-container *ngTemplateOutlet="alignment; context: { models: model.standards, title: 'Standard', titles: 'Standards' }"></ng-container>
 </div>
-<div class="playlists">
+<div *ngIf="model.relatedPlaylists.length > 0" class="playlists">
   <h6>Playlists</h6>
   <span class="caption emphasis-medium">Connections playlists utilizing this resource.</span>
   <a #playlistRef [routerLink]="['/resource', playlist.resourceId ]" *ngFor="let playlist of model.relatedPlaylists" class="playlist-card">
@@ -33,6 +33,16 @@
       </div>
     </div>
     <sbdl-icon icon="playlist-play" class="playlist-icon"></sbdl-icon>
+  </a>
+</div>
+<div *ngIf="model.relatedResources.length > 0">
+  <h6>Playlist Resources</h6>
+  <span class="caption emphasis-medium">Quick links to the referenced materials.</span>
+  <a #resourceRef *ngFor="let resource of model.relatedResources" [routerLink]="['/resource', resource.resourceId ]" class="link-card"> 
+    <div class="type-info">
+      <span>{{ resource.title }}</span>
+      <sbdl-icon icon="steps"></sbdl-icon>
+    </div>
   </a>
 </div>
 <ng-template #alignment let-alignments="models" let-title="title" let-titles="titles">
