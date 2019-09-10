@@ -3,6 +3,10 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { ResourceModel } from '../data/resource/model/resource.model';
 import { ScrollableElements } from './components/outline/scrollable-elements.model';
 
+/**
+ * Parent class that other resource component classes extend.
+ * No @Component attribute here because it is never used directly.
+ */
 export class ResourceComponent implements OnInit {
 
   model: ResourceModel;
