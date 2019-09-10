@@ -1,11 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
 import { ResourceModel } from 'src/app/data/resource/model/resource.model';
 import { ScrollableElements, ScrollableSection } from '../../components/outline/scrollable-elements.model';
-import { commentsSectionOptions, strategyInActionOptions, instructionalUseOptions, stepByStepOptions } from '../../components/section/section.definitions';
 import { SectionOptions } from '../../components/section/section.component';
-import { Scroll } from '@angular/router';
-import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { commentsSectionOptions, instructionalUseOptions, stepByStepOptions, strategyInActionOptions } from '../../components/section/section.definitions';
 
 @Component({
   selector: 'sbdl-strategy-content',

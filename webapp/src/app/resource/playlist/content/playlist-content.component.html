@@ -1,0 +1,8 @@
+<div class="top-header">
+  <img src="/assets/images/yellow-spot.png" alt="" />
+  <sbdl-actions [model]= "model" (readingModeChanged)="emitReadingModeChanged($event)"></sbdl-actions>
+</div>
+<sbdl-header [model]="model"></sbdl-header>
+
+<hr *ngIf="model.comments"/>
+<sbdl-section [contentHtml]="model.comments" [options]="commentsOptions" (sectionElementLoaded)="setComments($event, customSection)"></sbdl-section>

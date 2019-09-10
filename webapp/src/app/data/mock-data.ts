@@ -1052,3 +1052,107 @@ export const mockFormativeStrategy = {
 	...mockApiFormativeStrategyResource,
 	...polyfillMissingFormativeApiData
 }
+
+export const mockApiPlaylistResource = {
+	id: 1,
+	nid: 1234,
+	vid: 1234,
+	language: "english",
+	title: "Research: Analyze/Integrate Information",
+	status: true,
+	created: "2018-08-16T06:50:38+00:00",
+	updated: "2019-08-19T16:50:38+00:00",
+	deletedAt: null,
+	promote: true,
+	uuid: "24cvq2414v124v5145b14bbv4",
+	temp: false,
+	uniqueViews: 302,
+	totalViews: 350,
+	resourceState: "Create",
+	html5: false,
+	asserDownloads: 100,
+	uniqueDownloads: 20,
+	avgRating: "3.5",
+	isHidden: false,
+	resourceType: "Connections Playlist",
+	intendedEndUser: "Teacher",
+	attributes: "Clarify Intended Learning",
+	connectionToFap: "",
+	studentAgency: "",
+	altBody: "",
+    documentId: "",
+	resourceThumbnailUrl: "https://dl.com/image.png",
+	licenseInformation: "",
+	author: "Steve Green, Amy Thierry",
+	publisher: "Smarter Balanced",
+	license: "Creative Commons Attribution",
+	licenseSecondary: "Creative Commons Attribution",
+	copyrightClearaceForms: "",
+	pii: "None",
+	subject: [],
+	grade: [],
+	alignmentTags: "",
+	educationAlignments: [
+		{ title: "", shortName: "" },
+		{ title: "" }
+	],
+	targetAlignments: [
+		{ title: "", shortName: "" },
+		{ title: "" }
+	],
+	connectionToCcss: "",
+	learningGoals: "",
+	successCriteria: "",
+	contexts: "",
+	supportingEvidence: "",
+	principles: "",
+	mediaType: ["Video"],
+	intendedStudent: ["All Students"],
+	educationalUse: ["Unit", "Lesson"],
+	classroomTechnologies: ["Internet"],
+	moduleType: ["Score Report"],
+	subscriptionPackageType: "Summative and formative resource",
+	viewPermissions: "All states",
+	state: ["California"],
+	resourceActions: "Allow primary material to be downloaded",
+	permanentLinkSettings: "Private",
+	temporaryPublicLink: "Enable Temporary Public Link",
+	temporaryPublicLinkTime: "5 mins"
+};
+
+const polyfillMissingPlaylistApiData = {
+	favorite: false,
+	// metadata
+	resourceThumbnail: mockAccessImage,
+	category: 'Universal Tool',
+	//overview
+	altBody: `
+		Students can engage in research/inquiry to investigate topics, and to analyze, integrate, and present information. This target focuses on analyzing.
+	`,
+	studentBenefits: `
+		<p>
+			Using this tool can help students:
+			<ul>
+				<li>Retain information</li>
+				<li>Support studying</li>
+				<li>Improve focus</li>
+				<li>Improve the learning experience</li>
+			</ul>
+		</p>
+	`,
+	suggestedMaterials: `
+		<ul>
+			<li>Highlighters</li>
+			<li>Low Odor</li>
+		</ul>
+	`,
+	comments: `
+		<p>Students should have foundational reading and writing skills. </p>
+		<p>Research is a continuous process and students are able to revise and edit claims, evidence, or ideas based on their analysis of new evidence.</p>
+	`,
+};
+
+export const mockPlaylistResource = {
+	...mockApiPlaylistResource,
+	...polyfillMissingPlaylistApiData
+}

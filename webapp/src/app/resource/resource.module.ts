@@ -26,6 +26,8 @@ import { StrategyOverviewComponent } from './strategy/overview/strategy-overview
 import { MetadataComponent } from './components/metadata/metadata.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
+import { PlaylistComponent } from './playlist/playlist.component';
+import { PlaylistContentComponent } from './playlist/content/playlist-content.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -53,7 +55,9 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     StrategyComponent,
     StrategyContentComponent,
     StrategyOverviewComponent,
-    MetadataComponent
+    MetadataComponent,
+    PlaylistComponent,
+    PlaylistContentComponent
   ],
   imports: [
     CommonModule,
@@ -65,6 +69,7 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     // Resource components are loaded dynamically so they need to be explicitly set here 
     // in order to be used.
     InstructionalResourceComponent, 
+    PlaylistComponent,
     ProfessionalResourceComponent, 
     ResourceTypeStrategyComponent,
     StrategyComponent
