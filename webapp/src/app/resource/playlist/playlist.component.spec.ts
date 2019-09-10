@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PlaylistComponent } from './playlist.component';
 import { ResourceModule } from '../resource.module';
 import { mockResourceModel } from 'src/app/data/mock-data';
+import { mockDataServiceProviders } from 'src/app/app.module.spec';
 
 describe('PlaylistComponent', () => {
   let component: PlaylistComponent;
@@ -10,7 +11,8 @@ describe('PlaylistComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ ResourceModule ]
+      imports: [ ResourceModule ],
+      providers: [ mockDataServiceProviders ]
     })
     .compileComponents();
   }));
