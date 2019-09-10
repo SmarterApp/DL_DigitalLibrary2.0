@@ -11,7 +11,7 @@ import { InstructionalContentComponent } from './instructional/content/instructi
 import { DifferentiationComponent } from './instructional/differentiation/differentiation.component';
 import { GetStartedComponent } from './instructional/get-started/get-started.component';
 import { InstructionalResourceComponent } from './instructional/instructional-resource.component';
-import { InstructionalMetadataComponent } from './instructional/metadata/instructional-metadata.component';
+import { DetailedMetadataComponent } from './components/detailed-metadata/detailed-metadata.component';
 import { OutlineComponent } from './components/outline/outline.component';
 import { ProfessionalResourceComponent } from './professional/professional-resource.component';
 import { ResourceHostDirective } from './resource-host.directive';
@@ -41,7 +41,7 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     ResourceTypeStrategyComponent,
     ResourceHostDirective,
     OutlineComponent,
-    InstructionalMetadataComponent,
+    DetailedMetadataComponent,
     DifferentiationComponent,
     FormativeComponent,
     StepByStepComponent,
