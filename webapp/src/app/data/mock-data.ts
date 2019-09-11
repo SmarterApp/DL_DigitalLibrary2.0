@@ -78,7 +78,7 @@ export const mockApiResourceExample = {
 	licenseSecondary: "Creative Commons Attribution",
 	copyrightClearaceForms: "",
 	pii: "None",
-	subject: ["ELA", "Math"],
+	subject: ["Math"],
 	grade: ["Grade 6", "Grade 8", "Grade 9"],
 	
 	alignmentTags: "",

@@ -3,7 +3,7 @@
 </div>
 <div class="subjects-grades">
   <!-- TODO: should be mapped; -->
-  <img src="/assets/images/math-2-problem-solving.png">
+  <img *ngIf="claimImagePath" [src]="claimImagePath" alt="">
   <div>
     <h5 class="subjects">{{ model.subjects | join }}</h5>
     <h6 class="grades">

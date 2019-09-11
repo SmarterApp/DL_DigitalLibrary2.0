@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChildren } from '@angular/core';
 import { MDCRipple } from '@material/ripple';
 import { ResourceDetailsModel } from 'src/app/data/resource/model/resource-details.model';
+import { MetadataComponentService } from '../metadata/metadata-component.service';
+import { DetailedMetadataComponentService } from './detailed-metadata-component.service';
 
 @Component({
   selector: 'sbdl-detailed-metadata',
@@ -17,10 +19,15 @@ export class DetailedMetadataComponent implements OnInit, AfterViewInit {
   
   @ViewChildren('resourceRef')
   resources: ElementRef[];
+
+  claimImagePath: string;
   
-  constructor() { }
+  constructor(private service: DetailedMetadataComponentService) { }
 
   ngOnInit() {
+    if(this.model.subjects.length > 0 && this.model.claims.length > 0) {
+      this.claimImagePath = this.service.getClaimImagePath(this.model.subjects[0], this.model.claims[0].shortName);
+    }
   }
 
   ngAfterViewInit(): void {
