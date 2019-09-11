@@ -1,32 +1,23 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ResourceModel } from 'src/app/data/resource/model/resource.model';
-import { ScrollableElements, ScrollableSection } from '../../components/outline/scrollable-elements.model';
-import { commentsSectionOptions, strategyInActionOptions, instructionalUseOptions, stepByStepOptions } from '../../components/section/section.definitions';
-import { SectionOptions } from '../../components/section/section.component';
-import { Scroll } from '@angular/router';
+import { Component } from '@angular/core';
 import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { ScrollableElements, ScrollableSection } from '../../components/outline/scrollable-elements.model';
+import { SectionOptions } from '../../components/section/section.component';
+import { commentsSectionOptions, instructionalUseOptions, stepByStepOptions, strategyInActionOptions } from '../../components/section/section.definitions';
+import { ResourceContentComponent } from '../../resource-content.component';
 
 @Component({
   selector: 'sbdl-strategy-content',
   templateUrl: './strategy-content.component.html',
-  styleUrls: ['./strategy-content.component.scss']
+  styleUrls: ['./../../resource-content.component.scss']
 })
-export class StrategyContentComponent implements OnInit {
-  @Input()
-  model: ResourceModel;
-
-  @Output()
-  loadScrollableElements = new EventEmitter<ScrollableElements>();
-
-  @Output()
-  readingModeChanged = new EventEmitter<boolean>();
+export class StrategyContentComponent extends ResourceContentComponent {
 
   customSection: ContentSection;
   sections: ContentSection[];
-  private scrollableElements: ScrollableElements;
   
-  constructor() { }
+  constructor() { 
+    super();
+  }
 
   ngOnInit() {
     this.customSection = this.model.resourceType === ResourceType.AccessibilityStrategy 
@@ -37,16 +28,6 @@ export class StrategyContentComponent implements OnInit {
         { ...commentsSectionOptions, contentHtml: this.model.comments },
         { ...strategyInActionOptions, contentHtml: this.model.strategyInAction }
       ];
-  }
-
-  setAttachments($event) {
-    this.scrollableElements = {...this.scrollableElements, attachments: $event };
-    this.emitScrollableElementsEvent();
-  }
-
-  setOverview($event) {
-    this.scrollableElements = {...this.scrollableElements, overview: $event };
-    this.emitScrollableElementsEvent();
   }
 
   setCustomSection($event: any, section: ContentSection) {
@@ -65,20 +46,6 @@ export class StrategyContentComponent implements OnInit {
         sections: [ ...sections, this.mapToScrollableSection(section) ]
     };
     this.emitScrollableElementsEvent();
-  }
-
-  scrollToAttachments() {
-    if(this.scrollableElements && this.scrollableElements.attachments) {
-      this.scrollableElements.attachments.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
-    }
-  }
-
-  emitReadingModeChanged(event) {
-    this.readingModeChanged.emit(event);
-  }
-
-  private emitScrollableElementsEvent() {
-    this.loadScrollableElements.emit(this.scrollableElements);
   }
 
   private mapToScrollableSection(section: ContentSection):ScrollableSection {

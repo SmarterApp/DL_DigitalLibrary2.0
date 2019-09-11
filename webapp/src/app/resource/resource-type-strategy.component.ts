@@ -1,10 +1,11 @@
 import { Component, ComponentFactoryResolver, OnInit, Type, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ResourceType } from '../data/resource/model/resource-type.enum';
 import { InstructionalResourceComponent } from './instructional/instructional-resource.component';
-import { ResourceComponent } from './resource.component';
-import { ResourceHostDirective } from './resource-host.directive';
-import { ActivatedRoute } from '@angular/router';
+import { PlaylistComponent } from './playlist/playlist.component';
 import { ProfessionalResourceComponent } from './professional/professional-resource.component';
+import { ResourceHostDirective } from './resource-host.directive';
+import { ResourceComponent } from './resource.component';
 import { StrategyComponent } from './strategy/strategy.component';
 
 /***
@@ -21,6 +22,7 @@ export class ResourceTypeStrategyComponent implements OnInit {
     [ ResourceType.Professional, ProfessionalResourceComponent ],
     [ ResourceType.AccessibilityStrategy, StrategyComponent ],
     [ ResourceType.FormativeStrategy, StrategyComponent ],
+    [ ResourceType.ConnectionsPlaylist, PlaylistComponent ]
   ]);
 
   @ViewChild(ResourceHostDirective, {static: true}) hostDirective: ResourceHostDirective;

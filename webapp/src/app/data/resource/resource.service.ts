@@ -25,7 +25,8 @@ export class ResourceService {
     ['Instructional', ResourceType.Instructional ],
     ['Professional Learning', ResourceType.Professional ],
     ['Accessibility Strategy', ResourceType.AccessibilityStrategy ],
-    ['Formative Strategy', ResourceType.FormativeStrategy ]
+    ['Formative Strategy', ResourceType.FormativeStrategy ],
+    ['Connections Playlist', ResourceType.ConnectionsPlaylist ]
   ]);
 
   // TODO: Define how assessment types are defined.  How will this be represented?
