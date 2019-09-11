@@ -5,4 +5,4 @@
 <sbdl-header [model]="model"></sbdl-header>
 
 <hr *ngIf="model.comments"/>
-<sbdl-section [contentHtml]="model.comments" [options]="commentsOptions" (sectionElementLoaded)="setComments($event, customSection)"></sbdl-section>
+<sbdl-section [contentHtml]="model.comments" [options]="commentsOptions" (sectionElementLoaded)="setComments($event)"></sbdl-section>
