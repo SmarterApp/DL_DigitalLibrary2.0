@@ -26,9 +26,7 @@ export const mockResourceModel = <ResourceModel> {
 	},
 	overview: <OverviewModel> {
 		description: 'Test Description',
-		resourceMaterials: [ <ResourceMaterial>{  title: 'Material', url: 'www.google.com', description: 'test description'}],
 		successCriteria: 'Test Success Criteria',
-		differentiation: 'Test Differentiation'
 	},
 	attachments: [],
 	steps: [],
@@ -1144,21 +1142,15 @@ const polyfillMissingPlaylistApiData = {
 		Students can engage in research/inquiry to investigate topics, and to analyze, integrate, and present information. This target focuses on analyzing.
 	`,
 	studentBenefits: `
-		<p>
-			Using this tool can help students:
-			<ul>
-				<li>Retain information</li>
-				<li>Support studying</li>
-				<li>Improve focus</li>
-				<li>Improve the learning experience</li>
-			</ul>
-		</p>
-	`,
-	suggestedMaterials: `
 		<ul>
-			<li>Highlighters</li>
-			<li>Low Odor</li>
+			<li>In a world of easily accessible information, it is important for students to develop strong critical thinking skills.</li>
+			<li>Students can begin to grow intellectually through the process of logical reasoning to support their own authentic research-based ideas.</li>
 		</ul>
+	`,
+	academicVocabulary: `
+		<p>
+			research, paraphrase, plagiarism, credible, trustworthy, claim(s), thesis, evidence, support, conflicting information, parenthetical or signal/transitional phrases for citation, argument
+		</p>
 	`,
 	comments: `
 		<p>Students should have foundational reading and writing skills. </p>

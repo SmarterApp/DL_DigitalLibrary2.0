@@ -7,18 +7,14 @@ export interface OverviewModel {
     // /api/v1/resource.learningGoals
     learningGoal: string;
 
-    // UNKNOWN
-    resourceMaterials: ResourceMaterial[];
-
-    // UNKNOWN
-    differentiation: string;
-
     // /api/v1/resource.successCriteria
     successCriteria: string;
 
     studentBenefits: string;
 
     suggestedMaterials: string;
+
+    academicVocabulary: string;
 }
 
 export interface ResourceMaterial {

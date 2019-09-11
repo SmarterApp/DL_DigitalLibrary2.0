@@ -143,7 +143,7 @@ export class ResourceService {
   }
 
   mapToOverview(apiModel: any): OverviewModel {
-    return <OverviewModel> {
+    return {
       // MAYBE
       // /api/v1/resource.altBody 
       description: apiModel.altBody,
@@ -156,8 +156,10 @@ export class ResourceService {
 
       studentBenefits: apiModel.studentBenefits,
 
-      suggestedMaterials: apiModel.suggestedMaterials
-    }
+      suggestedMaterials: apiModel.suggestedMaterials,
+
+      academicVocabulary: apiModel.academicVocabulary
+    };
   }
 
   mapToSteps(apiSteps: any[]):ResourceStepModel[] {
