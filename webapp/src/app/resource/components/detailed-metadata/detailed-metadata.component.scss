@@ -79,22 +79,19 @@ h5,h6 {
     }
 }
 
+.caption { 
+    margin-bottom: $spacer; 
+}
+
 .playlists {
     h6 { margin-top: 0; }
-    caption {
-        font-style: normal;
-        font-weight: normal;
-        font-size: 0.825rem;
-        line-height: 18px;
-        color: rgba($neutral-900, 0.65);
-    }
     .playlist-card {
         @include mdc-ripple-surface;
         @include mdc-ripple-radius-bounded;
         @include mdc-states;
 
         padding: 0.5rem 1rem;
-        margin: 1rem 1rem 1rem 0;
+        margin: 0 1rem 1rem 0;
 
         position: relative;
         border-radius: 4px;
@@ -175,14 +172,9 @@ h5,h6 {
     .type-info {
         display: flex;
         justify-content: space-between;
-
-        .link-subtitle {
-            text-transform: uppercase;
-            font-family: $font-family-title;
-            font-size: $font-size-body-2;
-            line-height: 18px;
-            letter-spacing: 0.08em;
-            color: rgba(33, 38, 47, 0.65);;
+        .link-title {
+            max-width: 225px;
+            font-size: 13.2px;
         }
     }
 

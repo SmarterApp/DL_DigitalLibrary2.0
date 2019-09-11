@@ -21,6 +21,8 @@ export const mockResourceModel = <ResourceModel> {
 		targets: [],
 		claims: [],
 		standards: [],
+		relatedResources: [],
+		relatedPlaylists: []
 	},
 	overview: <OverviewModel> {
 		description: 'Test Description',
