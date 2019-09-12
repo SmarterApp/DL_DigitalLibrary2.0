@@ -12,6 +12,9 @@ export class HeaderComponent implements OnInit {
   @Input()
   model: ResourceModel;
 
+  @Input()
+  showGrades = false;
+
   @Output()
   attachmentsClicked = new EventEmitter();
 

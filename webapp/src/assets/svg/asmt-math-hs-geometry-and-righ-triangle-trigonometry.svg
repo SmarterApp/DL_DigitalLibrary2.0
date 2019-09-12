@@ -1,0 +1,47 @@
+<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0)">
+<path d="M41.3655 40.3158H0.583496V14.5026" stroke="#231F20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g style="mix-blend-mode:multiply">
+<g style="mix-blend-mode:multiply">
+<path d="M1.52002 14.7084L2.05342 15.0444" stroke="#231F20" stroke-width="0.5" stroke-linejoin="round"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M3.13672 15.7289L39.5045 38.6021" stroke="#231F20" stroke-width="0.5" stroke-linejoin="round" stroke-dasharray="3.05 3.05"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M40.0464 38.9424L40.5798 39.2784" stroke="#231F20" stroke-width="0.5" stroke-linejoin="round"/>
+</g>
+</g>
+<path d="M29.2401 2.56616C29.2401 5.03162 27.2451 7.03222 24.7797 7.03916M0.583496 31.2774C5.57595 31.2797 9.6219 35.3275 9.6219 40.32L0.583496 31.2774Z" stroke="#231F20" stroke-width="0.5" stroke-linejoin="round"/>
+<path d="M0.814453 6.22852H18.3201V16.6193" stroke="#231F20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g style="mix-blend-mode:multiply">
+<g style="mix-blend-mode:multiply">
+<path d="M16.7791 16.1237L16.2373 15.7961" stroke="#231F20" stroke-width="0.5" stroke-linejoin="round"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M15.166 15.1493L2.80957 7.68591" stroke="#231F20" stroke-width="0.5" stroke-linejoin="round" stroke-dasharray="2.99 2.99"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M2.27198 7.36259L1.73438 7.03918" stroke="#231F20" stroke-width="0.5" stroke-linejoin="round"/>
+</g>
+</g>
+<path d="M24.5991 26.4726V2.48218H41.5839" stroke="#231F20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g style="mix-blend-mode:multiply">
+<g style="mix-blend-mode:multiply">
+<path d="M41.2186 3.255L40.8574 3.77161" stroke="#231F20" stroke-width="0.5" stroke-linejoin="round"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M40.1516 4.77966L26.3882 24.4357" stroke="#231F20" stroke-width="0.5" stroke-linejoin="round" stroke-dasharray="2.93 2.93"/>
+</g>
+<g style="mix-blend-mode:multiply">
+<path d="M26.0355 24.9396L25.6743 25.4562" stroke="#231F20" stroke-width="0.5" stroke-linejoin="round"/>
+</g>
+</g>
+<path d="M18.32 9.02151C16.7823 9.01458 15.5395 7.76614 15.5396 6.22852" stroke="#231F20" stroke-width="0.5" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0">
+<rect width="42" height="42" fill="white"/>
+</clipPath>
+</defs>
+</svg>

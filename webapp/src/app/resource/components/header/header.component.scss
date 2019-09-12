@@ -34,4 +34,20 @@
         grid-area: button;
         align-self: center;
     }
+
+    .title-with-icons {
+        display: flex;
+        .circle {
+            padding: 10px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 24.2px;
+            margin-right: 8px;
+            margin-left: 0;
+            // width: 16px;
+            // height: 16px; 
+            background-color: $success-700;
+            color: $white;
+        }
+    }
 }

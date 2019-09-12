@@ -1,4 +1,11 @@
-<h1>{{ details.title }}</h1>
+<h1 *ngIf="!showGrades; else titleWithGrades">{{ details.title }}</h1>
+<ng-template #titleWithGrades>
+  <div class="title-with-icons">
+    <div><div class="circle">G8</div></div>
+    <h1>{{ details.title }}</h1>
+  </div>
+  
+</ng-template>
 <section class="byline">
   {{ details.author }}&nbsp;&nbsp;&bull;&nbsp;&nbsp;
   <span class="font-light">{{ details.authorOrganization }}</span>
