@@ -27,6 +27,8 @@ export interface ResourceDetailsModel {
     // UNKNOWN
     relatedPlaylists: Playlist[];
 
+    relatedResources: ResourceLink[];
+
     // UNKNOWN
     claims: Alignment[];
 
@@ -56,4 +58,9 @@ export interface Playlist {
     assessmentType: number;
     assessmentTypeIcon: string;
     numberOfResources: number;
+}
+
+export interface ResourceLink {
+    resourceId: number;
+    title: string;
 }

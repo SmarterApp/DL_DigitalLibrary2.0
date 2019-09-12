@@ -21,7 +21,7 @@ describe('ResourceService', () => {
       const actual = resource.details;
       expect(resource.resourceId).toBe(1);
       expect(actual.title).toBe('Connecting Fraction Division Equations to Visual Models');
-      expect(actual.subjects).toEqual(['ELA', 'Math']);
+      expect(actual.subjects).toEqual(['Math']);
       expect(actual.grades).toEqual([6,8,9]);
       expect(actual.image).toBeDefined();
       expect(actual.author).toBe('Mary Smith');

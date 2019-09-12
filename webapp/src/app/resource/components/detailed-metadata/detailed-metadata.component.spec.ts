@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { mockResourceModel } from 'src/app/data/mock-data';
 import { ResourceModule } from '../../resource.module';
-import { InstructionalMetadataComponent } from './instructional-metadata.component';
+import { DetailedMetadataComponent } from './detailed-metadata.component';
 
 describe('InstructionalMetadataComponent', () => {
-  let component: InstructionalMetadataComponent;
-  let fixture: ComponentFixture<InstructionalMetadataComponent>;
+  let component: DetailedMetadataComponent;
+  let fixture: ComponentFixture<DetailedMetadataComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -15,9 +15,9 @@ describe('InstructionalMetadataComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InstructionalMetadataComponent);
+    fixture = TestBed.createComponent(DetailedMetadataComponent);
     component = fixture.componentInstance;
-    (<InstructionalMetadataComponent>component).model = mockResourceModel.details;
+    (<DetailedMetadataComponent>component).model = mockResourceModel.details;
     fixture.detectChanges();
   });
 

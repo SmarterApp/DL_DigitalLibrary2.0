@@ -1,4 +1,4 @@
-import { mockEvidenceImage, mockResourceImage, mockProfImage, mockFormativeImage, mockAccessImage } from 'src/app/data/mock-images';
+import { mockEvidenceImage, mockResourceImage, mockProfImage, mockFormativeImage, mockAccessImage, mockPlaylistImg } from 'src/app/data/mock-images';
 import { DifferentiationModel } from './resource/model/differentiation.model';
 import { FormativeModel } from './resource/model/formative.model';
 import { OverviewModel, ResourceMaterial } from './resource/model/overview.model';
@@ -21,6 +21,8 @@ export const mockResourceModel = <ResourceModel> {
 		targets: [],
 		claims: [],
 		standards: [],
+		relatedResources: [],
+		relatedPlaylists: []
 	},
 	overview: <OverviewModel> {
 		description: 'Test Description',
@@ -76,7 +78,7 @@ export const mockApiResourceExample = {
 	licenseSecondary: "Creative Commons Attribution",
 	copyrightClearaceForms: "",
 	pii: "None",
-	subject: ["ELA", "Math"],
+	subject: ["Math"],
 	grade: ["Grade 6", "Grade 8", "Grade 9"],
 	
 	alignmentTags: "",
@@ -1089,7 +1091,7 @@ export const mockApiPlaylistResource = {
 	licenseSecondary: "Creative Commons Attribution",
 	copyrightClearaceForms: "",
 	pii: "None",
-	subject: [],
+	subject: ["ELA"],
 	grade: [],
 	alignmentTags: "",
 	educationAlignments: [
@@ -1123,8 +1125,20 @@ export const mockApiPlaylistResource = {
 const polyfillMissingPlaylistApiData = {
 	favorite: false,
 	// metadata
-	resourceThumbnail: mockAccessImage,
+	resourceThumbnail: mockPlaylistImg,
 	category: 'Universal Tool',
+	grades: ["8"],
+	educationalAlignments: [
+		{ title: 'Research / Inquiry', shortName: '4'}
+	], 
+	targetAlignments: [
+		{ title: 'Analyze / Integrate System', shortName: '2' }
+	],
+	standards: ['8.NS.A.1', '8.NS.A.2', '8.NS.A.3', '8.NS.A.4'],
+	resources: [
+		{ id: 4, title: 'Claim It!' },
+		{ id: 2, title: 'Making Sense of the Source: Paraphrasing Evidence' }
+	],
 	//overview
 	altBody: `
 		Students can engage in research/inquiry to investigate topics, and to analyze, integrate, and present information. This target focuses on analyzing.

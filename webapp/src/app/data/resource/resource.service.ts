@@ -7,7 +7,7 @@ import { AttachmentService } from './attachment.service';
 import { DifferentiationModel } from './model/differentiation.model';
 import { FormativeAssessmentProcess, FormativeModel } from './model/formative.model';
 import { OverviewModel } from './model/overview.model';
-import { Alignment, Playlist, ResourceDetailsModel } from './model/resource-details.model';
+import { Alignment, Playlist, ResourceDetailsModel, ResourceLink } from './model/resource-details.model';
 import { ResourceStepModel } from './model/resource-step.model';
 import { ResourceStrategyModel } from './model/resource-strategy.model';
 import { ResourceType } from './model/resource-type.enum';
@@ -129,6 +129,11 @@ export class ResourceService {
         numberOfResources: p.numberOfResources,
         assessmentType: p.assessmentType,
         assessmentTypeIcon: this.assessmentTypeToIconMap.get(p.assessmentType)
+      }),
+
+      relatedResources: coalesce(apiResource.resources, []).map(r => <ResourceLink> {
+        resourceId: r.id,
+        title: r.title
       }),
       // MAYBE, but this is NOT an array?
       // /api/v1/resource.connectionToCcss

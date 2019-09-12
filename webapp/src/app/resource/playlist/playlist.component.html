@@ -6,12 +6,12 @@
   ></sbdl-outline>
 </nav>
 <section class="resource-content">
-    <sbdl-playlist-content
-      [model]="model"
-      (loadScrollableElements)="setScrollableElements($event)"
-      (readingModeChanged)="readingModeChanged($event)"
+  <sbdl-playlist-content
+    [model]="model"
+    (loadScrollableElements)="setScrollableElements($event)"
+    (readingModeChanged)="readingModeChanged($event)"
   ></sbdl-playlist-content>
 </section>
 <aside class="metadata">
-  <!-- <sbdl-metadata [model]="model.details" [resourceType]="model.resourceType"></sbdl-metadata> -->
+  <sbdl-detailed-metadata [model]="model.details"></sbdl-detailed-metadata>
 </aside>
