@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ResourceModel } from 'src/app/data/resource/model/resource.model';
-
 
 @Component({
   selector: 'sbdl-header',
@@ -35,5 +34,5 @@ export class HeaderComponent implements OnInit {
   emitAttachmentsClicked() {
     this.attachmentsClicked.emit();
   }
-
+  
 }
