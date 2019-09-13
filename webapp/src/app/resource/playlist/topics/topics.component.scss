@@ -1,0 +1,27 @@
+@import "spacing";
+@import "colors";
+
+:host {
+    display: block;
+    max-width: none;
+}
+
+.topics-container {
+    padding-top: $spacer;
+    max-width: var(--measure);
+    margin-right: $spacer-xl;
+    margin-left: $spacer-lg;
+    margin-bottom: $spacer-lg;
+    position: relative;
+
+    .leading-icon {
+        text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin) + 9px));
+        svg {
+            color: $brand-blue;
+            background: url('/assets/images/blue-spot.png') no-repeat;
+            background-size: contain;
+            padding: 7px;
+            font-size: 1.5rem;
+        }
+    }
+}

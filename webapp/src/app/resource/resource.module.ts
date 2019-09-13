@@ -29,6 +29,7 @@ import { RouterModule } from '@angular/router';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { PlaylistContentComponent } from './playlist/content/playlist-content.component';
 import { PlaylistOverviewComponent } from './playlist/overview/playlist-overview.component';
+import { TopicsComponent } from './playlist/topics/topics.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -59,7 +60,8 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     MetadataComponent,
     PlaylistComponent,
     PlaylistContentComponent,
-    PlaylistOverviewComponent
+    PlaylistOverviewComponent,
+    TopicsComponent
   ],
   imports: [
     CommonModule,

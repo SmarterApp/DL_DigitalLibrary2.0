@@ -105,6 +105,9 @@ p, ol, ul, table {
 .emphasis-medium {
     opacity: 0.65;
 }
+.italics {
+    font-style: italic;
+}
 
 a {
     color: $action-700;

@@ -35,6 +35,13 @@
       {{ scrollableElements.customStrategySection.title }}
     </sbdl-button>  
   </li>
+
+  <li *ngIf="scrollableElements.topics">
+      <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.topics)" (blur)="removeClass(scrollableElements.topics)">
+        <i class="far fa-chart-network"></i>
+        Topics
+      </sbdl-button>
+    </li>
   <li *ngIf="scrollableElements.attachments">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.attachments)" (blur)="removeClass(scrollableElements.attachments)">
       <i class="far fa-paperclip"></i>

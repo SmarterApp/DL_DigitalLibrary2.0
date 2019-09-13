@@ -60,6 +60,11 @@ export class ResourceContentComponent {
       this.scrollableElements = {...this.scrollableElements, attachments: $event };
       this.emitScrollableElementsEvent();
     }
+
+    setTopics($event) {
+      this.scrollableElements = {...this.scrollableElements, topics: $event };
+      this.emitScrollableElementsEvent();
+    }
   
     scrollToAttachments() {
       if(this.scrollableElements && this.scrollableElements.attachments) {
