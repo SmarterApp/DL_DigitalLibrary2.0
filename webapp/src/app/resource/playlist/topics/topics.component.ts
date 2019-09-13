@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
+import { TopicSectionModel } from 'src/app/data/resource/model/topic-section.model';
 
 @Component({
   selector: 'sbdl-topics',
@@ -6,6 +7,8 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '
   styleUrls: ['./topics.component.scss']
 })
 export class TopicsComponent implements OnInit {
+  @Input()
+  model: TopicSectionModel;
 
   @Output()
   sectionElementLoaded= new EventEmitter<any>();
@@ -23,5 +26,4 @@ export class TopicsComponent implements OnInit {
       this.sectionElementLoaded.emit(this.headerElement.nativeElement);
     }
   }
-
 }

@@ -5,6 +5,7 @@ import { OverviewModel, ResourceMaterial } from './resource/model/overview.model
 import { ResourceDetailsModel } from './resource/model/resource-details.model';
 import { ResourceType } from './resource/model/resource-type.enum';
 import { ResourceModel } from './resource/model/resource.model';
+import { TopicSectionModel } from './resource/model/topic-section.model';
 
 export const mockUser = {
     firstName: 'Mary',
@@ -36,6 +37,9 @@ export const mockResourceModel = <ResourceModel> {
 	},
 	formative: <FormativeModel> {
 		strategies: []
+	},
+	topicSection: <TopicSectionModel> {
+		topics: []
 	}
 };
 

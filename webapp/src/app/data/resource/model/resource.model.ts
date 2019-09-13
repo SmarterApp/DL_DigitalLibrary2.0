@@ -5,6 +5,7 @@ import { AttachmentModel } from "./attachment.model";
 import { ResourceType } from './resource-type.enum';
 import { DifferentiationModel } from './differentiation.model';
 import { FormativeModel } from './formative.model';
+import { TopicSectionModel } from './topic-section.model';
 
 export interface ResourceModel {
     // /api/v1/resource.id
@@ -26,6 +27,7 @@ export interface ResourceModel {
 
     instructionalUse: string;
     strategyInAction: string;
+    topicSection: TopicSectionModel;
 
     // How is this different than steps?
     // In Formative Assessment Strategy it's represented

@@ -6,6 +6,6 @@
 
 <sbdl-playlist-overview [model]="model.overview" (sectionElementLoaded)="setOverview($event)"></sbdl-playlist-overview>
 <hr />
-<sbdl-topics (sectionElementLoaded)="setTopics($event)"></sbdl-topics>
+<sbdl-topics [model]="model.topicSection" (sectionElementLoaded)="setTopics($event)"></sbdl-topics>
 <hr *ngIf="model.comments"/>
 <sbdl-section [contentHtml]="model.comments" [options]="commentsOptions" (sectionElementLoaded)="setComments($event)"></sbdl-section>

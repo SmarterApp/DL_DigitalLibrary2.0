@@ -14,7 +14,7 @@ import { ResourceType } from './model/resource-type.enum';
 import { ResourceModel } from './model/resource.model';
 import { EmbedStrategyLinksService } from './embed-strategy-links.service';
 import { ResourceLinkModel } from './model/resource-link.model';
-import { TopicSectionModel, TopicModel } from './model/topics.model';
+import { TopicSectionModel, TopicModel } from './model/topic-section.model';
 
 @Injectable({
   providedIn: 'root'
@@ -103,7 +103,9 @@ export class ResourceService {
       instructionalUse: apiResource.instructionalUse,
       stepByStep: apiResource.stepByStep,
 
-      videoLinks: apiResource.videoLinks
+      videoLinks: apiResource.videoLinks,
+
+      topicSection: this.mapToTopicSection(apiResource, resourceType)
     };
   }
 
@@ -208,22 +210,22 @@ export class ResourceService {
     };
   }
 
-  mapToTopicSection(apiModel): TopicSectionModel {
-    return apiModel.resourceType === ResourceType.ConnectionsPlaylist  
+  mapToTopicSection(apiModel: any, resourceType: ResourceType): TopicSectionModel {
+    return resourceType === ResourceType.ConnectionsPlaylist
       ? {
         topics: coalesce(apiModel.topics, []).map(t => <TopicModel>{
             title: t.title,
             above: t.above,
             near: t.near,
             below: t.below,
-            resourceLinks: t.resources.map(r => <ResourceLinkModel> {
+            resourceLinks: coalesce(t.resources, []).map(r => <ResourceLinkModel> {
               resourceId: r.id,
               title: r.title
             })
           }),
         suggestionsForIntervention: apiModel.suggestionsForIntervention
       }
-      : undefined;
+    : undefined;
   }
 
   private embedStrategyLinks(resource: ResourceModel) {
