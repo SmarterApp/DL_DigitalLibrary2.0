@@ -11,6 +11,19 @@
           }
         }
       }
-    }
+    },
+    "shape": {
+      "transform": [
+          { "svgo": {
+              "plugins": [
+                  {   
+                    "removeAttrs": {
+                        "attrs": "fill"
+                    } 
+                  }
+              ]
+          }}
+      ]
+  }
   }
   

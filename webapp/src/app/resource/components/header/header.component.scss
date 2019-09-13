@@ -36,18 +36,29 @@
     }
 
     .title-with-icons {
+        margin-left: -59.34px;
         display: flex;
-        .circle {
-            padding: 10px;
-            border-radius: 50%;
-            font-weight: bold;
-            font-size: 24.2px;
-            margin-right: 8px;
-            margin-left: 0;
-            // width: 16px;
-            // height: 16px; 
-            background-color: $success-700;
-            color: $white;
+        .icon-col {
+            justify-self: center;
+            sbdl-icon {
+                font-size: 35px;
+                color: $success-700;
+                padding: 10px;
+            }
+
+            .circle {
+                padding: 10px;
+                border-radius: 50%;
+                font-weight: bold;
+                font-size: 24.2px;
+                margin-right: 8px;
+                margin-left: 0;
+                // width: 16px;
+                // height: 16px; 
+                background-color: $success-700;
+                color: $white;
+            }
         }
+
     }
 }

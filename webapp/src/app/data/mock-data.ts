@@ -497,12 +497,12 @@ const polyfillMissingApiData2 = {
 		title: 'Grade 6 Science',
 		numberOfResources: 24,
 		resourceId: 28,
-		assessmentType: 1 // how will this be defined?
+		assessmentType: 2 // how will this be defined?
 	}, {
 		title: 'Citing Sources',
 		numberOfResources: 18,
 		resourceId: 29,
-		assessmentType: 1 // how will this be defined?
+		assessmentType: 4 // how will this be defined?
 	}],
 	standards: ['CCSS.ELA-Literacy.RST.6-8.1', 'CCSS.ELA-Literacy.RST.6-8.2'],
 
@@ -1126,6 +1126,7 @@ const polyfillMissingPlaylistApiData = {
 	resourceThumbnail: mockPlaylistImg,
 	category: 'Universal Tool',
 	grades: ["8"],
+	assessmentType: 3,
 	educationalAlignments: [
 		{ title: 'Research / Inquiry', shortName: '4'}
 	], 
