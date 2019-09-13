@@ -1157,6 +1157,43 @@ const polyfillMissingPlaylistApiData = {
 		<p>Students should have foundational reading and writing skills. </p>
 		<p>Research is a continuous process and students are able to revise and edit claims, evidence, or ideas based on their analysis of new evidence.</p>
 	`,
+	topics: [{
+		title: 'Analyze multiple sources',
+		above: 'Analyze multiple sources (5-6) that provide conflicting information on the same topic and explain where the sources disagree on matters of fact or interpretation.',
+		near: 'Analyze multiple sources (3-4) that provide conflicting information on the same topic and identify where the sources disagree on matters of fact or interpretation.',
+		below: 'Locate conflicting information from two provided sources on the same topic.'
+	}, {
+		title: 'Create a Claim',
+		above: 'Synthesize ideas, facts, and details from multiple sources (5-6) to create an evidenced-based claim or thesis.',
+		near: 'Synthesize ideas, facts, and details from multiple sources (3-4) to create an evidenced-based claim or thesis.',
+		below: 'Use ideas, facts, and details to support a teacher-provided claim.',
+		resources: [{ id: 3, title: 'Claim it!' }]
+	}, {
+		title: 'Paraphrase',
+		above: 'Identify and paraphrase strong, concise textual evidence that supports the claim/thesis.',
+		near: 'Identify and paraphrase strong textual evidence that supports the claim/thesis.',
+		below: 'Identify and paraphrase textual evidence that supports a teacher-supplied claim/thesis.',
+		resources: [
+			{ id: 4, title: 'Making Sense of the Source: Paraphrasing Evidence arrow-right' },
+			{ id: 5, title: 'Link to Some other Resource Related to this Topic arrow-right' }
+		]
+	}, {
+		title: 'Cite',
+		above: 'Cite correctly using both signal phrases and parenthetical citations.',
+		near: 'Cite correctly using either signal phrases or parenthetical citations.',
+		below: 'Cite paraphrased textual evidence using teacher-supplied graphic organizers and sentence starters.'
+	}],
+	suggestionsForInterventions: `
+		<p>For students who are not yet at grade level, additional support may be needed to:</p>
+		<ul>
+			<li>Connecting skip counting to multiplication</li>
+			<li>Skip count using non-benchmark numbers.</li>
+			<li>Represent multiplication using an array model.</li>
+			<li>Connect the relationship between multiplication and division.</li>
+			<li>Use a multiplication strategy to find a product.</li>
+		</ul>
+		<p>Search for resources to support students in mastering these skills.</p>
+	`	
 };
 
 export const mockPlaylistResource = {

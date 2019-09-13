@@ -1,3 +1,5 @@
+import { ResourceLinkModel } from './resource-link.model';
+
 // Mockup: https://sketch.cloud/s/3lW3m/a/zGOLo5
 export interface ResourceDetailsModel {
     // /api/v1/resource.title
@@ -27,7 +29,7 @@ export interface ResourceDetailsModel {
     // UNKNOWN
     relatedPlaylists: Playlist[];
 
-    relatedResources: ResourceLink[];
+    relatedResources: ResourceLinkModel[];
 
     // UNKNOWN
     claims: Alignment[];
@@ -60,9 +62,4 @@ export interface Playlist {
     assessmentType: number;
     assessmentTypeIcon: string;
     numberOfResources: number;
-}
-
-export interface ResourceLink {
-    resourceId: number;
-    title: string;
 }
