@@ -2,7 +2,7 @@
 <ng-template #titleWithIcons>
   <div class="title-with-icons">
     <div class="icon-col">
-      <div class="circle">G8</div>
+      <div *ngIf="grade" class="circle">G{{ grade }}</div>
       <sbdl-icon [icon]="details.assessmentTypeIcon"></sbdl-icon>
     </div>
     <h1>{{ details.title }}</h1>

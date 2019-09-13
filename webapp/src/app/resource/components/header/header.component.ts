@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit {
   @Output()
   attachmentsClicked = new EventEmitter();
 
+  grade: number;
+
   get details() {
     return this.model.details;
   }
@@ -25,6 +27,9 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if(this.showIconsCol && this.model.details.grades.length > 0) {
+      this.grade = this.model.details.grades[0];
+    }
   }
 
   emitAttachmentsClicked() {
