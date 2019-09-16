@@ -1178,8 +1178,8 @@ const polyfillMissingPlaylistApiData = {
 		near: 'Identify and paraphrase strong textual evidence that supports the claim/thesis.',
 		below: 'Identify and paraphrase textual evidence that supports a teacher-supplied claim/thesis.',
 		resources: [
-			{ id: 4, title: 'Making Sense of the Source: Paraphrasing Evidence arrow-right' },
-			{ id: 5, title: 'Link to Some other Resource Related to this Topic arrow-right' }
+			{ id: 4, title: 'Making Sense of the Source: Paraphrasing Evidence' },
+			{ id: 5, title: 'Link to Some other Resource Related to this Topic' }
 		]
 	}, {
 		title: 'Cite',
