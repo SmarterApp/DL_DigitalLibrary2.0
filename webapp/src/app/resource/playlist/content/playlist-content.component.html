@@ -2,7 +2,7 @@
   <img src="/assets/images/yellow-spot.png" alt="" />
   <sbdl-actions [model]= "model" (readingModeChanged)="emitReadingModeChanged($event)"></sbdl-actions>
 </div>
-<sbdl-header [model]="model" showIconsCol="true"></sbdl-header>
+<sbdl-header [model]="model" [showIconsCol]="true"></sbdl-header>
 
 <sbdl-playlist-overview [model]="model.overview" (sectionElementLoaded)="setOverview($event)"></sbdl-playlist-overview>
 <hr />

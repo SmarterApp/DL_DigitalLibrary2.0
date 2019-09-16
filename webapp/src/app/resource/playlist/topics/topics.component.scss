@@ -29,9 +29,16 @@
         h6 {
             font-weight: bold;
         }
+            
+        .scale > div {
+            padding: $spacer;
+            width: 33%;
+        }
+
         .scale {
             display: flex;
             justify-content: space-between;
+            margin-bottom: $spacer-xl;
     
             .scale-title {
                 font-family: $font-family-title;
@@ -45,6 +52,7 @@
                 display: inline-block;
                 width: 6px;
                 margin-right: 8px;
+                margin-top: -2px;
 
                 display: inline-block;
                 vertical-align: middle;
@@ -54,20 +62,27 @@
                 height: 18px;
                 background: $success-900;
             }
+            .above {
+                padding-left: 0;
+            }
             .near > .scale-title:before {
                 background: $warning-900;
                 height: 12px;
+            }
+            .near {
+                background-color: rgba($warning-100, 0.4);
             }
             .below > .scale-title:before {
                 height: 6px;
                 background: $error-900;
             }
+
+            p {
+                font-size: 13.2px;
+                line-height: 18px;
+                margin-bottom: 0;
+            }
         }
-    
-        .scale > div {
-            padding-right: $spacer;
-        }
+
     }
-
-
 }
