@@ -1,4 +1,4 @@
-<article *ngIf="model" #header class="topics-container">
+<article *ngIf="model" class="topics-container">
   <h4 class="leading-icon">
     <i class="far fa-chart-network"></i>Topics
   </h4>
@@ -8,7 +8,13 @@
         and below the target level.  Included are differentiated instructional resources that support learning by engaging 
         students in the formative assessment process.
     </p>
-    <div *ngFor="let topic of model.topics" class="topic">
+    <div class="more-info">
+      <sbdl-icon icon="info"></sbdl-icon> More information on performance levels 
+      <span class="scale scale-above"></span>
+      <span class="scale scale-near"></span>
+      <span class="scale scale-below"></span>
+    </div>
+    <div *ngFor="let topic of model.topics" class="topic" #topicRefs>
       <h6>{{ topic.title }}</h6>
       <div class="topic-content">
         <div [ngPlural]="topic.resourceLinks.length" class="resource">
@@ -47,5 +53,9 @@
         </div>
       </div>
     </div>
+  </section>
+  <section #suggestionsRef class="suggestions">
+    <h5>Suggestions for Intervention</h5>
+    <div [innerHtml]="model.suggestionsForIntervention"></div>
   </section>
 </article>

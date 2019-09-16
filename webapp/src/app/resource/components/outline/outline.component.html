@@ -17,16 +17,27 @@
       Overview
     </sbdl-button>
   </li>
-  <li *ngIf="model.steps.length > 0" class="steps">
+  <li *ngIf="scrollableElements.steps" class="steps">
     <div class="steps-header">
       <sbdl-icon icon="steps"></sbdl-icon>
       Step-by-Step
     </div>
     <ol>
-      <li *ngFor="let step of model.steps; let i = index" >
-        <sbdl-button class="step" (click)="scrollToElement(scrollableElements.steps[i])" (blur)="removeClass(scrollableElements.steps[i])">{{ step.title }}</sbdl-button>
+      <li *ngFor="let step of scrollableElements.steps; let i = index" >
+        <sbdl-button class="step" (click)="scrollToElement(step.elementRef)" (blur)="removeClass(step.elementRef)">{{ step.title }}</sbdl-button>
       </li>
     </ol>
+  </li>
+  <li *ngIf="scrollableElements.topics">
+      <div class="steps-header">
+        <i class="far fa-chart-network"></i>
+        Topics
+      </div>
+      <ol class="topics">
+        <li *ngFor="let topic of scrollableElements.topics; let i = index" >
+          <sbdl-button class="step" (click)="scrollToElement(topic.elementRef)" (blur)="removeClass(topic.elementRef)">{{ topic.title }}</sbdl-button>
+        </li>
+      </ol>
   </li>
   <li *ngIf="scrollableElements.customStrategySection">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.customStrategySection.elementRef)" (blur)="removeClass(scrollableElements.customStrategySection.elementRef)">
@@ -35,13 +46,6 @@
       {{ scrollableElements.customStrategySection.title }}
     </sbdl-button>  
   </li>
-
-  <li *ngIf="scrollableElements.topics">
-      <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.topics)" (blur)="removeClass(scrollableElements.topics)">
-        <i class="far fa-chart-network"></i>
-        Topics
-      </sbdl-button>
-    </li>
   <li *ngIf="scrollableElements.attachments">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.attachments)" (blur)="removeClass(scrollableElements.attachments)">
       <i class="far fa-paperclip"></i>

@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, Input, ViewChildren } from '@angular/core';
 import { TopicSectionModel } from 'src/app/data/resource/model/topic-section.model';
+import { ScrollableSection } from '../../components/outline/scrollable-elements.model';
 
 @Component({
   selector: 'sbdl-topics',
@@ -13,8 +14,11 @@ export class TopicsComponent implements OnInit {
   @Output()
   sectionElementLoaded= new EventEmitter<any>();
 
-  @ViewChild('header', { static: false })
-  headerElement: ElementRef;
+  @ViewChildren('topicRefs')
+  topicRefs: ElementRef[];
+
+  @ViewChild('suggestionsRef', { static: false })
+  suggestionRef: ElementRef
 
   constructor() { }
 
@@ -22,8 +26,11 @@ export class TopicsComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    if(this.headerElement) {
-      this.sectionElementLoaded.emit(this.headerElement.nativeElement);
+    let i = 0;
+    if(this.topicRefs) {
+      const topicRefs = this.topicRefs.map(x => <ScrollableSection>{ title: this.model.topics[i++].title, elementRef: x.nativeElement });
+      topicRefs.push(<ScrollableSection>{ title: 'Suggestions for Intervention', elementRef: this.suggestionRef.nativeElement });
+      this.sectionElementLoaded.emit(topicRefs);
     }
   }
 }

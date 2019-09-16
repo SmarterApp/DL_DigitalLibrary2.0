@@ -1187,7 +1187,7 @@ const polyfillMissingPlaylistApiData = {
 		near: 'Cite correctly using either signal phrases or parenthetical citations.',
 		below: 'Cite paraphrased textual evidence using teacher-supplied graphic organizers and sentence starters.'
 	}],
-	suggestionsForInterventions: `
+	suggestionsForIntervention: `
 		<p>For students who are not yet at grade level, additional support may be needed to:</p>
 		<ul>
 			<li>Connecting skip counting to multiplication</li>

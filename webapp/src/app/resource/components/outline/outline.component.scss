@@ -62,9 +62,15 @@
         counter-increment: customListcounter;
         font-weight: 300;
         color: rgba(33, 38, 47, 0.65);
-
         position: absolute;
         padding-top: 8px;
+    }
+    
+    ol.topics > li:before {
+        content: '\f111  ';
+        font-family: 'Font Awesome 5 Pro';
+        font-weight: 400;
+        font-size: 13px;
     }
 
     ol:first-child {
