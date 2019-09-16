@@ -45,6 +45,8 @@ export interface ResourceDetailsModel {
 
     // UNKNOWN
     category: string;
+
+    assessmentTypeIcon: string;
 }
 
 export interface Alignment {

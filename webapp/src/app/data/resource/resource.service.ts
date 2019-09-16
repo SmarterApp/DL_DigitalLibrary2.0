@@ -32,7 +32,10 @@ export class ResourceService {
   // TODO: Define how assessment types are defined.  How will this be represented?
   // TODO: Define all assessment type icons.
   readonly assessmentTypeToIconMap: Map<number, string> = new Map([
-    [ 1, 'assessment-6-7-number-system' ]
+    [ 1, 'asmt-math-6-7-the-number-system' ],
+    [ 2, 'asmt-ela-summative' ],
+    [ 3, 'asmt-ela-research' ],
+    [ 4, 'asmt-ela-read-informational-texts' ],
   ]);
 
   constructor(private dataService: DataService, 
@@ -138,12 +141,13 @@ export class ResourceService {
       // MAYBE, but this is NOT an array?
       // /api/v1/resource.connectionToCcss
       standards: coalesce(apiResource.standards, []),
-      category: apiResource.category
+      category: apiResource.category,
+      assessmentTypeIcon: this.assessmentTypeToIconMap.get(apiResource.assessmentType)
     };
   }
 
   mapToOverview(apiModel: any): OverviewModel {
-    return <OverviewModel> {
+    return {
       // MAYBE
       // /api/v1/resource.altBody 
       description: apiModel.altBody,
@@ -156,8 +160,10 @@ export class ResourceService {
 
       studentBenefits: apiModel.studentBenefits,
 
-      suggestedMaterials: apiModel.suggestedMaterials
-    }
+      suggestedMaterials: apiModel.suggestedMaterials,
+
+      academicVocabulary: apiModel.academicVocabulary
+    };
   }
 
   mapToSteps(apiSteps: any[]):ResourceStepModel[] {

@@ -28,6 +28,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { PlaylistContentComponent } from './playlist/content/playlist-content.component';
+import { PlaylistOverviewComponent } from './playlist/overview/playlist-overview.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -57,7 +58,8 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     StrategyOverviewComponent,
     MetadataComponent,
     PlaylistComponent,
-    PlaylistContentComponent
+    PlaylistContentComponent,
+    PlaylistOverviewComponent
   ],
   imports: [
     CommonModule,
