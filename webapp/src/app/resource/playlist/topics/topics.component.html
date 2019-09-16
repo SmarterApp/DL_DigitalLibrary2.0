@@ -10,38 +10,40 @@
     </p>
     <div *ngFor="let topic of model.topics" class="topic">
       <h6>{{ topic.title }}</h6>
-      <div [ngPlural]="topic.resourceLinks.length" class="resource">
-          <ng-template ngPluralCase="=0">
-            Resource: <em class="emphasis-medium">Future resource</em>
-          </ng-template>
-          <ng-template ngPluralCase="=1">
-            Resource: <a [routerLink]="['/resource/', topic.resourceLinks[0].resourceId ]">{{ topic.resourceLinks[0].title }}</a>
-          </ng-template>
-          <ng-template ngPluralCase="other">
-            Resource:
-            <div *ngFor="let resource of topic.resourceLinks" class="resource-links">
-              <a [routerLink]="['/resource/', resource.resourceId ]">{{ resource.title }}</a>
-            </div>
-          </ng-template>
-      </div>
-      <div class="scale">
-        <div class="above">
-          <div class="scale-title">Above</div>
-          <p>
-            {{ topic.above }}
-          </p>
+      <div class="topic-content">
+        <div [ngPlural]="topic.resourceLinks.length" class="resource">
+            <ng-template ngPluralCase="=0">
+              Resource: <em class="emphasis-medium">Future resource</em>
+            </ng-template>
+            <ng-template ngPluralCase="=1">
+              Resource: <a [routerLink]="['/resource/', topic.resourceLinks[0].resourceId ]">{{ topic.resourceLinks[0].title }}</a>
+            </ng-template>
+            <ng-template ngPluralCase="other">
+              Resource:
+              <div *ngFor="let resource of topic.resourceLinks" class="resource-links">
+                <a [routerLink]="['/resource/', resource.resourceId ]">{{ resource.title }}</a>
+              </div>
+            </ng-template>
         </div>
-        <div class="near">
-          <div class="scale-title">Near</div>
-          <p>
-            {{ topic.near }}
-          </p>
-        </div>
-        <div class="below">
-          <div class="scale-title">Below</div>
-          <p>
-            {{ topic.below }}
-          </p>
+        <div class="scale">
+          <div class="above">
+            <div class="scale-title">Above</div>
+            <p>
+              {{ topic.above }}
+            </p>
+          </div>
+          <div class="near">
+            <div class="scale-title">Near</div>
+            <p>
+              {{ topic.near }}
+            </p>
+          </div>
+          <div class="below">
+            <div class="scale-title">Below</div>
+            <p>
+              {{ topic.below }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
