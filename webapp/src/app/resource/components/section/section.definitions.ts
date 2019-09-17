@@ -6,13 +6,13 @@ export const commentsSectionOptions: SectionOptions = {
     iconBackground: 'yellow'
 }
 
-export const instructionalUseOptions : SectionOptions = { 
+export const instructionalUseOptions: SectionOptions = { 
     title: 'Instructional Use',
     sbdlIcon: 'steps',
     iconBackground: 'blue'
 }
 
-export const strategyInActionOptions : SectionOptions = { 
+export const strategyInActionOptions: SectionOptions = { 
     title: 'Strategy In Action',
     fontAwesomeIcon: 'fa-universal-access',
     iconBackground: 'green'

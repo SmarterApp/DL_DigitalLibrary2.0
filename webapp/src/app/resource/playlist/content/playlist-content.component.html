@@ -9,3 +9,24 @@
 <sbdl-topics [model]="model.topicSection" (sectionElementLoaded)="setTopics($event)"></sbdl-topics>
 <hr *ngIf="model.comments"/>
 <sbdl-section [contentHtml]="model.comments" [options]="commentsOptions" (sectionElementLoaded)="setComments($event)"></sbdl-section>
+<hr/>
+<article class="info-card" #assessmentInfo>
+  <h5>What are Interim Assessments?</h5>
+  <section>
+    <iframe width="398.22" title="What are Interim Assessments?" height="224" src="https://www.youtube.com/embed/QcNfjKZ5cG4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="info-links">
+      <h6 class="header-link">
+        <a href="">Interim Overview Flier  <i class="far fa-arrow-right"></i></a>
+      </h6>
+      <p>
+        Dig into the details of the interims assessments available to you, and browse a complete list of assessment by grade and subject.
+      </p>
+    </div>
+    <h5>Access Your Interim Assessments</h5>
+    <p>
+        Wondering how to access the interim assessments associated with this playlist? Go to your assessment portal to access the test 
+        administration system in your area. For assistance, contact your state or district representative. 
+        <a href="http://www.smarterbalanced.org/contact/" target="_blank">Find contact information here. </a>
+    </p>
+  </section>
+</article>

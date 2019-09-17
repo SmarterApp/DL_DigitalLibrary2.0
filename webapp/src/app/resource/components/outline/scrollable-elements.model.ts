@@ -1,5 +1,3 @@
-import { ElementRef } from '@angular/core';
-
 export class ScrollableElements {
     getStarted: any;
     overview: any;
@@ -11,6 +9,7 @@ export class ScrollableElements {
     formativeAssessmentProcess: any;
     topics: ScrollableSection[];
     sections: ScrollableSection[];
+    assessmentInfo: any;
 }
 
 export class ScrollableSection {

@@ -77,4 +77,10 @@
       {{ section.title }}
     </sbdl-button>  
   </li>
+  <li *ngIf="scrollableElements.assessmentInfo">
+    <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.assessmentInfo)" (blur)="removeClass(scrollableElements.assessmentInfo)">
+      <i class="far fa-question-circle"></i>
+      What are Interim Assessments?
+    </sbdl-button>  
+  </li>
 </ul>
