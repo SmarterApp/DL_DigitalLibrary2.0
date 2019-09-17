@@ -1,5 +1,19 @@
 @import 'colors';
 @import 'spacing';
+@import 'typography';
+
+.external-resources {
+    padding: $spacer-lg;
+    padding-top: 0;
+    margin-bottom: $spacer-lg;
+    font-size: $font-size-body-2;
+    position: relative;
+
+    .external-resource:not(:last-child) {
+        margin-bottom: $spacer-lg;
+    }
+
+}
 
 .info-card {
     background-color: $neutral-50;

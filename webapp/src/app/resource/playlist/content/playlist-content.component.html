@@ -5,11 +5,26 @@
 <sbdl-header [model]="model" [showIconsCol]="true"></sbdl-header>
 
 <sbdl-playlist-overview [model]="model.overview" (sectionElementLoaded)="setOverview($event)"></sbdl-playlist-overview>
-<hr />
+<hr/>
 <sbdl-topics [model]="model.topicSection" (sectionElementLoaded)="setTopics($event)"></sbdl-topics>
 <hr *ngIf="model.comments"/>
 <sbdl-section [contentHtml]="model.comments" [options]="commentsOptions" (sectionElementLoaded)="setComments($event)"></sbdl-section>
 <hr/>
+<article class="external-resources">
+  <div class="external-resource">
+    <h5>Sample Items</h5>
+    <p>
+      Try out <a href="">sample items</a> for this target.
+    </p>
+  </div>
+  <div class="external-resource">
+    <h5>Content Explorer</h5>
+    <p>Visit the content explorer to learn more about:</p>
+    <div *ngFor="let target of model.details.targets">
+      <a href="">Target {{ target.title }}</a>
+    </div>
+  </div>
+</article>
 <article class="info-card" #assessmentInfo>
   <h5>What are Interim Assessments?</h5>
   <section>
