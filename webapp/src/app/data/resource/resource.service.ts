@@ -7,12 +7,14 @@ import { AttachmentService } from './attachment.service';
 import { DifferentiationModel } from './model/differentiation.model';
 import { FormativeAssessmentProcess, FormativeModel } from './model/formative.model';
 import { OverviewModel } from './model/overview.model';
-import { Alignment, Playlist, ResourceDetailsModel, ResourceLink } from './model/resource-details.model';
+import { Alignment, Playlist, ResourceDetailsModel } from './model/resource-details.model';
 import { ResourceStepModel } from './model/resource-step.model';
 import { ResourceStrategyModel } from './model/resource-strategy.model';
 import { ResourceType } from './model/resource-type.enum';
 import { ResourceModel } from './model/resource.model';
 import { EmbedStrategyLinksService } from './embed-strategy-links.service';
+import { ResourceLinkModel } from './model/resource-link.model';
+import { TopicSectionModel, TopicModel } from './model/topic-section.model';
 
 @Injectable({
   providedIn: 'root'
@@ -101,7 +103,9 @@ export class ResourceService {
       instructionalUse: apiResource.instructionalUse,
       stepByStep: apiResource.stepByStep,
 
-      videoLinks: apiResource.videoLinks
+      videoLinks: apiResource.videoLinks,
+
+      topicSection: this.mapToTopicSection(apiResource, resourceType)
     };
   }
 
@@ -134,7 +138,7 @@ export class ResourceService {
         assessmentTypeIcon: this.assessmentTypeToIconMap.get(p.assessmentType)
       }),
 
-      relatedResources: coalesce(apiResource.resources, []).map(r => <ResourceLink> {
+      relatedResources: coalesce(apiResource.resources, []).map(r => <ResourceLinkModel> {
         resourceId: r.id,
         title: r.title
       }),
@@ -204,6 +208,24 @@ export class ResourceService {
         description: x.description
       })
     };
+  }
+
+  mapToTopicSection(apiModel: any, resourceType: ResourceType): TopicSectionModel {
+    return resourceType === ResourceType.ConnectionsPlaylist
+      ? {
+        topics: coalesce(apiModel.topics, []).map(t => <TopicModel>{
+            title: t.title,
+            above: t.above,
+            near: t.near,
+            below: t.below,
+            resourceLinks: coalesce(t.resources, []).map(r => <ResourceLinkModel> {
+              resourceId: r.id,
+              title: r.title
+            })
+          }),
+        suggestionsForIntervention: apiModel.suggestionsForIntervention
+      }
+    : undefined;
   }
 
   private embedStrategyLinks(resource: ResourceModel) {

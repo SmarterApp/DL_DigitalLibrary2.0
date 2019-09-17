@@ -9,6 +9,7 @@ export class ScrollableElements {
     comments: any;
     differentiation: any;
     formativeAssessmentProcess: any;
+    topics: ScrollableSection[];
     sections: ScrollableSection[];
 }
 

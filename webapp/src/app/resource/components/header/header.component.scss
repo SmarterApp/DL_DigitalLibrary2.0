@@ -17,6 +17,7 @@
     h1 {
         grid-area: title;
         color: $brand-green;
+        word-break: break-word;
     }
     .byline {
         font-family: $font-family-title;

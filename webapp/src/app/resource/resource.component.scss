@@ -101,7 +101,7 @@
             border-width: 0 0 0 4px;
             border-style: solid;
         }
-        &article:not(.highlighted):not(.step-container)::before {
+        &article:not(.highlighted):not(.step-container):not(.topics-container)::before {
             content: '';
             position: absolute;
             top: 4rem;
@@ -114,7 +114,6 @@
             border-style: solid;
         }
     }
-
 }
 @media only screen and (max-width: $breakpoint-sm) {
     :host {

@@ -1,0 +1,181 @@
+@import "spacing";
+@import "colors";
+@import "typography";
+
+:host {
+    display: block;
+    max-width: none;
+}
+
+.topics-container {
+    padding-top: $spacer;
+    max-width: var(--measure);
+    margin-right: $spacer-xl;
+    margin-left: $spacer-lg;
+    margin-bottom: $spacer-lg;
+    position: relative;
+
+    .leading-icon {
+        text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin) + 9px));
+        svg {
+            color: $brand-blue;
+            background: url('/assets/images/blue-spot.png') no-repeat;
+            background-size: contain;
+            padding: 7px;
+            font-size: 1.5rem;
+        }
+    }
+
+    .more-info {
+        padding: $spacer;
+        margin-bottom: $spacer-lg;
+        background-color: rgba($info-100,0.2);
+        font-size: $font-size-body-2;
+        width: fit-content;
+
+        sbdl-icon {
+            margin-right: 6px;
+        }
+
+        .scale:after {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            margin-right: 2px;
+            margin-top: -2px;
+
+            display: inline-block;
+            vertical-align: middle;
+            line-height: normal;
+        }
+
+        .scale-above:after{
+            margin-left: $spacer;
+            height: 18px;
+            background: $success-900;
+        }
+        .scale-near:after{
+            height: 12px;
+            background: $warning-900;
+        }
+        .scale-below:after{
+            height: 6px;
+            background: $error-900;
+        }
+    }
+
+    .topic {
+        margin-left: -31px;
+
+        // Keeps the .highlighted around just this area.
+        position: relative;
+
+        &.highlighted:before {
+            margin-top: -1rem;
+            margin-bottom: 1rem;
+        }
+
+        h6 {
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+
+        h6:before {
+            content: ' \f111';
+            font-family: 'Font Awesome 5 Pro';
+            font-weight: 400;
+            text-decoration: none;
+            display: inline-block;
+            padding-right: 14px;
+        }
+
+        .topic-content {
+            border-left: 3px dashed $info-100;
+            
+            // seeamless dots to circle icon
+            margin-top: -0.25rem;
+            margin-bottom: -0.25rem;
+            padding-top: $spacer-sm;
+            padding-bottom: $spacer-xl + 0.25rem;
+
+            // margin-left and padding-left should add up to 31px (the width of the circle icon)
+            margin-left: 8px;
+            padding-left: 23px;
+        }
+
+        &:last-child > .topic-content {
+            border: none;
+        }
+
+        .resource {
+            margin-bottom: $spacer;
+            a:after {
+                content: ' \f061';
+                font-family: 'Font Awesome 5 Pro';
+                text-decoration: none;
+                display: inline-block;
+                padding-left: 8px;
+            }
+        }
+
+        .resource-links {
+            padding-top: 4px;
+        }
+            
+        .scale > div {
+            padding: $spacer;
+            width: 33%;
+        }
+
+        .scale {
+            display: flex;
+            justify-content: space-between;
+            
+            .scale-title {
+                font-family: $font-family-title;
+                font-size: $font-size-body-2;
+                text-transform: uppercase;
+                position: relative;
+            }
+
+            .scale-title:before {
+                content: "";
+                display: inline-block;
+                width: 6px;
+                margin-right: 8px;
+                margin-top: -2px;
+
+                display: inline-block;
+                vertical-align: middle;
+                line-height: normal;
+            }
+            .above > .scale-title:before {
+                height: 18px;
+                background: $success-900;
+            }
+            .above {
+                padding-left: 0;
+            }
+            .near > .scale-title:before {
+                background: $warning-900;
+                height: 12px;
+            }
+            .near {
+                background-color: rgba($warning-100, 0.4);
+            }
+            .below > .scale-title:before {
+                height: 6px;
+                background: $error-900;
+            }
+            p {
+                font-size: 13.2px;
+                line-height: 18px;
+                margin-bottom: 0;
+            }
+        } // .scale
+    } //.topic
+
+    .suggestions {
+        position: relative;
+    }
+}

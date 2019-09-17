@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChildren, ElementRef, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { ResourceStepModel } from 'src/app/data/resource/model/resource-step.model';
+import { ScrollableSection } from '../outline/scrollable-elements.model';
 
 @Component({
   selector: 'sbdl-step-by-step',
@@ -23,8 +24,10 @@ export class StepByStepComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    let i = 0;
     if(this.stepElementRefs) {
-      this.sectionElementLoaded.emit(this.stepElementRefs.map(x => x.nativeElement));
+      const stepRefs = this.stepElementRefs.map(x => <ScrollableSection>{ title: this.models[i++].title, elementRef: x.nativeElement });
+      this.sectionElementLoaded.emit(stepRefs);
     }
   }
 }
