@@ -8,7 +8,7 @@
     "start-stage": "npm run pre-build && ng serve --c stage -o",
     "build": "npm run pre-build && ng build --prod --aot --vendor-chunk",
     "build-stage": "npm run pre-build && ng build --c stage --aot --vendor-chunk",
-    "build-ci": "npm run pre-build-ci && ng build --c standalone --prod --aot --vendor-chunk",
+    "build-ci": "npm run pre-build-ci && ng build --c standalone --aot --vendor-chunk",
     "build-standalone": "npm run pre-build && ng build --c standalone --aot --vendor-chunk",
     "build-debug": "npm run pre-build && ng build",
     "build-standalone-debug": "npm run pre-build && ng build --c standalone",
