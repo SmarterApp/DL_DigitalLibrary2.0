@@ -17,7 +17,7 @@ export const mockResourceModel = <ResourceModel> {
 	resourceType: ResourceType.Instructional,
 	details: <ResourceDetailsModel> { 
 		title: 'Resource Title ',
-		subjects: [],
+		subjects: [ 'ELA' ],
 		grades: [],
 		targets: [],
 		claims: [],
