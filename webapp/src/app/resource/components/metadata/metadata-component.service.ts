@@ -13,10 +13,10 @@ export class MetadataComponentService {
   readonly strategyMetadataMap: Map<ResourceType, StaticMetadata> = new Map([
     [ 
       ResourceType.Professional, <StaticMetadata>{
-      resourceType: 'Professional Learning'
-    } ], [ 
+        // TODO: Add links if provided from team.
+      }
+    ], [ 
       ResourceType.AccessibilityStrategy, {
-      resourceType: 'Accessibility Strategy',
       linkTitle: 'Learn more about accessibility',
       links: [ <MoreInfoLink>{
           title: 'Usability, Accessibility, and Accommodations Guidelines',
@@ -30,7 +30,6 @@ export class MetadataComponentService {
       ]
     } ], [
       ResourceType.FormativeStrategy, {
-        resourceType: 'Formative Strategy',
         linkTitle: 'Learn how this strategy relates to  the Formative Assessment Process',
         links: [ <MoreInfoLink>{
           title: 'Formative Assessment Process Flier',
@@ -53,7 +52,6 @@ export class MetadataComponentService {
 }
 
 export interface StaticMetadata {
-  resourceType: string;
   linkTitle: string;
   links: MoreInfoLink[];
 }

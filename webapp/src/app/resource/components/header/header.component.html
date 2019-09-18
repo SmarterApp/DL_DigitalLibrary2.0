@@ -1,3 +1,4 @@
+<div class="resource-type">{{ model.resourceType | resourceType }}</div>
 <h1 *ngIf="!showIconsCol; else titleWithIcons">{{ details.title }}</h1>
 <ng-template #titleWithIcons>
   <div class="title-with-icons">
