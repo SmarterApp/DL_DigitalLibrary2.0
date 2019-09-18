@@ -1,0 +1,49 @@
+@import 'colors';
+@import 'spacing';
+
+.info-card {
+    background-color: $neutral-50;
+    border: 1px solid $neutral-75;
+    border-radius: 4px;
+    padding: $spacer-lg;
+    margin-bottom: $spacer-md;
+    position: relative;
+
+    iframe {
+        margin-bottom: $spacer;
+    }
+
+    .info-links {
+        margin-bottom: $spacer-lg;
+
+        .header-link {
+            margin-bottom: 0;
+    
+            a,
+            a:link,
+            a:visited,
+            a:active {
+                color: $neutral-900;
+                font-weight: normal;
+            }
+    
+            a:hover {
+                text-decoration: underline;
+                color: $info-500;
+            }
+    
+            .fa-arrow-right {
+                color: $info-500;
+                padding-left: $spacer-sm;
+            }
+        }
+    }
+
+    p {
+        margin-top: $spacer-sm;
+    }
+
+    section > h5 {
+        margin-bottom: 0;
+    }
+}
