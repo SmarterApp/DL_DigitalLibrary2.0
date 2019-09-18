@@ -1,3 +1,5 @@
+# S3 Buckets used by all environments for build and logging infrastructure
+
 resource "aws_s3_bucket" "logs" {
   bucket = "logs.${var.webapp_url_base}"
   acl = "log-delivery-write"
@@ -44,3 +46,4 @@ module "staging_env" {
   route53_zone_id = var.route53_zone_id
   webapp_url_base = var.webapp_url_base
 }
+

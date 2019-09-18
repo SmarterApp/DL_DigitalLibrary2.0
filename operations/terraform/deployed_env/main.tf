@@ -1,4 +1,9 @@
-data "aws_iam_policy_document" "website_bucket_policy" {
+output "deploy_bucket_arn" {
+  description = "ARN of the bucket that is created to host deployed artifacts."
+  value = aws_s3_bucket.deploy.arn
+}
+
+data "aws_iam_policy_document" "deploy_bucket_policy" {
   statement {
     actions     = [ "s3:GetObject" ]
     effect      = "Allow"
@@ -6,21 +11,25 @@ data "aws_iam_policy_document" "website_bucket_policy" {
 
     principals {
       type        = "AWS"
-      identifiers = [ "*" ]
+      identifiers = [ "${replace(aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn, " ", "_")}" ]
+    }
+  }
+
+  statement {
+    actions     = [ "s3:ListBucket" ]
+    effect      = "Allow"
+    resources   = [ "${aws_s3_bucket.deploy.arn}" ]
+
+    principals {
+      type        = "AWS"
+      identifiers = [ "${replace(aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn, " ", "_")}" ]
     }
   }
 }
 
 resource "aws_s3_bucket" "deploy" {
   bucket = "${var.environment}.${var.webapp_url_base}"
-  acl    = "public-read"
-
-  # We rely on the S3 website functionality to provide the implicit mapping of
-  # / to /index.html for CloudFront.
-  website {
-    index_document = "index.html"
-    error_document = "index.html"
-  }
+  acl    = "private"
 
   logging {
     target_bucket = "${var.log_bucket_id}" # bucket not managed by this module
@@ -32,21 +41,23 @@ resource "aws_s3_bucket" "deploy" {
   }
 }
 
-resource "aws_s3_bucket_policy" "website_bucket_policy" {
+resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
+  comment = "OAI for ${var.environment} environment."
+}
+
+resource "aws_s3_bucket_policy" "deploy_bucket_policy" {
   bucket = "${aws_s3_bucket.deploy.id}"
-  policy = "${data.aws_iam_policy_document.website_bucket_policy.json}"
+  policy = "${data.aws_iam_policy_document.deploy_bucket_policy.json}"
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
-    domain_name = "${aws_s3_bucket.deploy.id}.${aws_s3_bucket.deploy.website_domain}"
+    domain_name = "${aws_s3_bucket.deploy.bucket_regional_domain_name}"
+    # domain_name = "${aws_s3_bucket.deploy.id}.${aws_s3_bucket.deploy.website_domain}"
     origin_id   = "S3-${aws_s3_bucket.deploy.id}"
 
-    custom_origin_config {
-      http_port = 80
-      https_port = 443
-      origin_protocol_policy = "http-only"
-      origin_ssl_protocols = ["TLSv1.2"]
+    s3_origin_config {
+      origin_access_identity = "${aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path}"
     }
   }
 
