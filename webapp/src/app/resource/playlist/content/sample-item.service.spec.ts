@@ -21,7 +21,7 @@ describe('SampleItemService', () => {
       claims: [{ shortName: '1', title: ''}]
     });
 
-    expect(actual).toBe('http://sampleitems.smarterbalanced.org/BrowseItems?Claim=MATH1&Subject=MATH&Grade=3&Target=A,D');
+    expect(actual).toBe('http://sampleitems.smarterbalanced.org/BrowseItems?Claim=MATH1&Subject=MATH&Grade=1&Target=A,D');
   });
 
   it('should create a sample item url from a resouce with multiple claims', () => {
@@ -34,6 +34,20 @@ describe('SampleItemService', () => {
       claims: [{ shortName: '1', title: ''}, { shortName: '2', title: ''}]
     });
 
-    expect(actual).toBe('http://sampleitems.smarterbalanced.org/BrowseItems?Claim=MATH1,MATH2&Subject=MATH&Grade=3&Target=A,D');
+    expect(actual).toBe('http://sampleitems.smarterbalanced.org/BrowseItems?Claim=MATH1,MATH2&Subject=MATH&Grade=1&Target=A,D');
+  });
+
+
+  it('should create a sample item url from a resouce when grade is a high school grade', () => {
+    const service: SampleItemService = TestBed.get(SampleItemService);
+    const actual = service.generateUrl({
+      ...mockResourceModel.details, 
+      subjects: ['Math'],
+      targets: [{ shortName: 'A', title: ''},{shortName: 'D', title:'' }],
+      grades: [ 10 ],
+      claims: [{ shortName: '1', title: ''}, { shortName: '2', title: ''}]
+    });
+
+    expect(actual).toBe('http://sampleitems.smarterbalanced.org/BrowseItems?Claim=MATH1,MATH2&Subject=MATH&Grade=960&Target=A,D');
   });
 });

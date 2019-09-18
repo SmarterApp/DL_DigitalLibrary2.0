@@ -7,6 +7,19 @@ import { Alignment, ResourceDetailsModel } from 'src/app/data/resource/model/res
 export class SampleItemService {
 
   readonly baseUrl = 'http://sampleitems.smarterbalanced.org/BrowseItems';
+  readonly allGrades = 1023;
+  readonly gradeToSampleItemGradeIdMap: Map<number,number> = new Map([
+     [ 3, 1 ], // Grade 3
+     [ 4, 2 ], // Grade 4
+     [ 5, 4 ], // etc.
+     [ 6, 8 ],
+     [ 7, 16 ],
+     [ 8, 32 ],
+     [ 9, 960 ], // High School
+     [ 10, 960 ], // High School
+     [ 11, 960 ],
+     [ 12, 960 ],
+  ]);
 
   constructor() { }
 
@@ -28,7 +41,7 @@ export class SampleItemService {
   }
 
   private mapGrades(grades: number[]):string {
-    return grades.join(',');
+    return grades.map(x => this.gradeToSampleItemGradeIdMap.get(+x) || this.allGrades).join(',');
   }
 
   private mapTargets(targets: Alignment[]): string {
