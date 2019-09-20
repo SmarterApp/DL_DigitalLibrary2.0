@@ -22,7 +22,7 @@ import { TopicSectionModel, TopicModel } from './model/topic-section.model';
 export class ResourceService {
   // It's unclear what the potential values 
   // the API will return here.
-  readonly apiResourceTypeMap: Map<string, ResourceType> = new Map([
+  static readonly ApiResourceTypeMap: Map<string, ResourceType> = new Map([
     ['Instructional and Professional Learning', ResourceType.Instructional ],
     ['Instructional', ResourceType.Instructional ],
     ['Professional Learning', ResourceType.Professional ],
@@ -83,7 +83,7 @@ export class ResourceService {
       ? apiResource.resourceType[0]
       : apiResource.resourceType;
     
-    const resourceType = this.apiResourceTypeMap.get(apiResourceType);
+    const resourceType = ResourceService.ApiResourceTypeMap.get(apiResourceType);
 
     if(resourceType == null) {
       throw Error('Unexpected resourceType for: ' + apiResource.resourceType);

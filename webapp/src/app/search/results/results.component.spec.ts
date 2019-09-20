@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SearchModule } from '../search.module';
 import { ResultsComponent } from './results.component';
+import { of } from 'rxjs/internal/observable/of';
 
 describe('ResultsComponent', () => {
   let component: ResultsComponent;
@@ -11,7 +12,7 @@ describe('ResultsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ SearchModule, RouterTestingModule ],
-      providers: [ { provide: ActivatedRoute, useValue: { snapshot: { params: { q: '' } } } }, ]
+      providers: [ { provide: ActivatedRoute, useValue: { data: of({ data: { results: [] } }) } }, ]
     })
     .compileComponents();
   }));
@@ -19,6 +20,7 @@ describe('ResultsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ResultsComponent);
     component = fixture.componentInstance;
+    component.results = [];
     fixture.detectChanges();
   });
 

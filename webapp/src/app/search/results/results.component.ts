@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { ResourceResult } from 'src/app/data/search/resource-result.model';
 
 @Component({
   selector: 'sbdl-results',
@@ -7,13 +8,15 @@ import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
   styleUrls: ['./results.component.scss']
 })
 export class ResultsComponent implements OnInit {
-
   constructor(private route: ActivatedRoute) { }
 
   searchText: string;
+  results: ResourceResult[];
 
   ngOnInit() {
-    this.searchText = this.route.snapshot.params.q;
+    this.route.data.subscribe(data => {
+      this.results = data.results;
+      console.log(this.results);
+    });
   }
-
 }

@@ -1,4 +1,16 @@
 <article class="results-container">
-  <h6 class="results-header">Found 3 Resources</h6>
+  <h6 *ngIf="results" class="results-header">Found {{ results.length }} 
+    <span [ngPlural]="results.length" >
+      <ng-template ngPluralCase="=1">Resource</ng-template>
+      <ng-template ngPluralCase="other">Resources</ng-template>
+    </span>
+  </h6>
   <sbdl-search [model]="searchText"></sbdl-search>
+  <section class="search-results">
+    <div *ngFor="let result of results">
+      <div class="resource-type">{{ result.resourceType | resourceType }}</div>
+      <h6>{{ result.title }}</h6>
+      <p> {{ result.description }}</p>
+    </div>
+  </section>
 </article>

@@ -5,6 +5,7 @@ import { AppContainerComponent } from './layout/app-container/app-container.comp
 import { ResourceTypeStrategyComponent } from './resource/resource-type-strategy.component';
 import { ResourceResolve } from './resource/resource.resolve';
 import { ResultsComponent } from './search/results/results.component';
+import { ResourceResultResolve } from './search/results/resource-results.resolve';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
         resolve: { resource: ResourceResolve }
       }, {
         path: 'results',
-        component: ResultsComponent
+        component: ResultsComponent,
+        resolve: { results: ResourceResultResolve }
       }
     ]
   }

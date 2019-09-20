@@ -1,15 +1,16 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchComponent } from './search.component';
-import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
 import { SbdlCommonModule } from '../common/common.module';
+import { PipesModule } from '../pipes/pipes.module';
 import { ResultsComponent } from './results/results.component';
+import { SearchComponent } from './search.component';
 
 @NgModule({
   declarations: [SearchComponent, ResultsComponent],
   imports: [
     CommonModule,
-    SbdlCommonModule
+    SbdlCommonModule,
+    PipesModule
   ],
   exports: [ SearchComponent ]
 })
