@@ -10,6 +10,8 @@ import { ReadMoreComponent } from './controls/read-more/read-more.component';
 import { DynamicHTMLComponent } from './controls/dynamic/dynamic-html.component';
 import { DynamicHTMLRenderer } from './controls/dynamic/dynamic-html-render';
 import { DynamicHTMLOptions } from './controls/dynamic/options';
+import { TextFieldComponent } from './controls/text-field/text-field.component';
+import { FormsModule } from '@angular/forms';
 
 // This object contains the components which can be loaded dyanmically via
 // the dynamic-html component.
@@ -21,7 +23,7 @@ const dynamicOptions = {
 };
 
 @NgModule({
-    imports: [ CommonModule ],
+    imports: [ CommonModule, FormsModule ],
     declarations: [
         ButtonComponent,
         ButtonIconComponent,
@@ -30,7 +32,8 @@ const dynamicOptions = {
         TooltipComponent,
         PopoverComponent,
         ReadMoreComponent,
-        DynamicHTMLComponent
+        DynamicHTMLComponent,
+        TextFieldComponent
     ],
     exports: [
         ButtonComponent,
@@ -39,7 +42,8 @@ const dynamicOptions = {
         ReadMoreComponent,
         SvgDefsComponent,
         TooltipComponent,
-        DynamicHTMLComponent
+        DynamicHTMLComponent,
+        TextFieldComponent
     ],
     providers: [
         DynamicHTMLRenderer,
