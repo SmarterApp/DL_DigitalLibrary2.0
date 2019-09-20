@@ -1,0 +1,19 @@
+@import "colors";
+@import "spacing";
+
+:host {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: none;
+    flex-direction: column;
+
+    .results-container {
+        width: 100%;
+        h6.results-header {
+            width: 100%;
+            color: $brand-blue;
+            margin-top: $spacer-lg;
+        }
+    }
+}

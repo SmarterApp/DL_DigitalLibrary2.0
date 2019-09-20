@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sbdl-search',
@@ -10,13 +11,12 @@ export class SearchComponent implements OnInit {
   @Input()
   model: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  click(){
-    console.log(this.model);
+  submit(event){
+    this.router.navigate(['results', event === undefined ? {} : { q: event }]); 
   }
-
 }

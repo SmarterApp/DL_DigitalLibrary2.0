@@ -14,7 +14,7 @@ export class TextFieldComponent implements OnInit, AfterViewInit {
   fontAwesomeIcon: string;
 
   @Input()
-  model: any;
+  model: string;
 
   @Output()
   submit = new EventEmitter<string>();
@@ -26,13 +26,12 @@ export class TextFieldComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
   }
-
+  
   ngAfterViewInit() {
     const textField = new MDCTextField(this.textFieldRef.nativeElement);
   }
 
   onIconClick(event) {
-    console.log('click');
     this.submit.emit(this.model);
   }
 }
