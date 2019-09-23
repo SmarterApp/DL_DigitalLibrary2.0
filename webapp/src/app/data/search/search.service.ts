@@ -6,6 +6,7 @@ import { ResourceResult } from './resource-result.model';
 import { SearchRequestModel } from './search-request.model';
 import { coalesce } from 'src/app/common/utils';
 import { ResourceService } from '../resource/resource.service';
+import { Alignment } from '../resource/model/resource-details.model';
 
 @Injectable({
   providedIn: 'root'
@@ -32,12 +33,21 @@ export class SearchService {
       id: apiModel.id,
       title: apiModel.title,
       resourceType: ResourceService.ApiResourceTypeMap.get(apiModel.resourceType),
-      image: apiModel.image,
+      image: apiModel.resourceThumbnail,
       description: apiModel.altBody,
-      subjects: apiModel.subjects,
-      grades: apiModel.grades,
-      claims: apiModel.claims,
-      targets: apiModel.targets
+      
+      subjects: coalesce(apiModel.subject, []),
+      grades: coalesce(apiModel.grades, []),
+
+      claims: coalesce(apiModel.educationalAlignments, []).map(ea => <Alignment>{
+        title: `${ea.shortName}: ${ea.title}`,
+        shortName: ea.shortName
+      }),
+
+      targets: coalesce(apiModel.targetAlignments, []).map(ta => <Alignment>{
+        title: `${ta.shortName}: ${ta.title}`,
+        shortName: ta.shortName
+      }),
     });
   }
 }

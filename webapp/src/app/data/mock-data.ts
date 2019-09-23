@@ -621,7 +621,7 @@ export const mockDocument53 = {
 
 //Example
 export const mockApiProfResourceExample = {
-	id: 1,
+	id: 3,
 	nid: 1234,
 	vid: 1234,
 	language: "english",
@@ -656,17 +656,10 @@ export const mockApiProfResourceExample = {
 	licenseSecondary: "Creative Commons Attribution",
 	copyrightClearaceForms: "",
 	pii: "None",
-	subject: ["ELA", "Math"],
 	grade: ["Grade 6", "Grade 8", "Grade 9"],
 	alignmentTags: "",
-	educationAlignments: [
-		{ title: "", shortName: "" },
-		{ title: "" }
-	],
-	targetAlignments: [
-		{ title: "", shortName: "" },
-		{ title: "" }
-	],
+	educationAlignments: [],
+	targetAlignments: [],
 	connectionToCcss: "",
 	learningGoals: "",
 	successCriteria: "",
@@ -799,7 +792,7 @@ export const mockDocument55 = {
 }
 
 export const mockApiAccessStrategyResource = {
-	id: 1,
+	id: 4,
 	nid: 1234,
 	vid: 1234,
 	language: "english",
@@ -837,14 +830,8 @@ export const mockApiAccessStrategyResource = {
 	subject: [],
 	grade: [],
 	alignmentTags: "",
-	educationAlignments: [
-		{ title: "", shortName: "" },
-		{ title: "" }
-	],
-	targetAlignments: [
-		{ title: "", shortName: "" },
-		{ title: "" }
-	],
+	educationAlignments: [	],
+	targetAlignments: [	],
 	connectionToCcss: "",
 	learningGoals: "",
 	successCriteria: "",
@@ -920,7 +907,7 @@ export const mockAccessibilityStrategy = {
 }
 
 export const mockApiFormativeStrategyResource = {
-	id: 1,
+	id: 5,
 	nid: 1234,
 	vid: 1234,
 	language: "english",
@@ -958,14 +945,8 @@ export const mockApiFormativeStrategyResource = {
 	subject: [],
 	grade: [],
 	alignmentTags: "",
-	educationAlignments: [
-		{ title: "", shortName: "" },
-		{ title: "" }
-	],
-	targetAlignments: [
-		{ title: "", shortName: "" },
-		{ title: "" }
-	],
+	educationAlignments: [],
+	targetAlignments: [	],
 	connectionToCcss: "",
 	learningGoals: "",
 	successCriteria: "",
@@ -1058,7 +1039,7 @@ export const mockFormativeStrategy = {
 }
 
 export const mockApiPlaylistResource = {
-	id: 1,
+	id: 6,
 	nid: 1234,
 	vid: 1234,
 	language: "english",

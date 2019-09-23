@@ -93,7 +93,7 @@ export class MockDataService implements PublicPart<DataService> {
       mockFormativeStrategy,
       mockAccessibilityStrategy
     ])// Randomize the results to simulate different searches on subsequent calls
-    .splice(0, Math.floor(Math.random() * 6));
+    .splice(0, Math.floor(Math.random() * 5) + 1);
   }
 
   private setFavorite(object: any): any{
