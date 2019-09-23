@@ -4,9 +4,10 @@
 
 :host {
     display: grid;
-    grid-template-areas: "title title"
-                         "byline button"
-                         "updated button";
+    grid-template-areas:"type type" 
+                        "title title"
+                        "byline button"
+                        "updated button";
     grid-template-rows: repeat (3, auto);
     grid-template-columns: 1fr auto;
     margin-bottom: $spacer-xl;
@@ -14,6 +15,16 @@
     // --measure + outside padding + inside padding + trailing and leading icons
     max-width: calc(var(--measure) + #{$spacer-xl});
     margin-left: $spacer-lg;
+    .resource-type {
+        grid-area: type;
+
+        font-family: $font-family-title;
+        font-size: $font-size-body-2;
+        line-height: 18px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba($neutral-900, 0.65);
+    }
     h1 {
         grid-area: title;
         color: $brand-green;
