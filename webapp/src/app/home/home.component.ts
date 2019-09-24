@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SearchFilters } from '../data/search/search-filters.model';
 
 @Component({
   selector: 'sbdl-home',
@@ -7,20 +8,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  filters: any = {};
+  filters: SearchFilters = <SearchFilters>{};
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    const searchResults = this.route.snapshot.data;
-
-    if(searchResults) {
-      this.filters = this.route.snapshot.data.results.filters;
-    }
+    this.filters = this.route.snapshot.data.filters;
   }
-
-  throwError(){
-    throw Error('boink.');
-  }
-
 }

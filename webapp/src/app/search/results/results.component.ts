@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, ViewChildren, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ResourceResult } from 'src/app/data/search/resource-result.model';
 import { MDCRipple } from '@material/ripple';
-import { SearchFilters } from 'src/app/data/search/search-filters.model';
 import { Subscription } from 'rxjs';
+import { ResourceResult } from 'src/app/data/search/resource-result.model';
 
 @Component({
   selector: 'sbdl-results',
@@ -13,9 +12,7 @@ import { Subscription } from 'rxjs';
 export class ResultsComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private route: ActivatedRoute) { }
 
-  searchText: string;
   results: ResourceResult[];
-
   filters: any = {};
 
   @ViewChildren('searchResult')
@@ -29,14 +26,16 @@ export class ResultsComponent implements OnInit, AfterViewInit, OnDestroy {
       if(data.results) {
         this.results = data.results.results;
         this.filters = data.results.filters;
-        this.setSelectedResourceTypes(this.route.snapshot.params);
+
+        const params = this.route.snapshot.params;
+        this.filters = {... this.filters, freeText: params.q };
+        this.setSelectedResourceTypes(params);
       }
     });
 
     this.paramsSubscription = this.route.params.subscribe(params => {
-      this.filters.freeText = params.q;
+      this.filters = {... this.filters, freeText: params.q };
       this.setSelectedResourceTypes(params);
-      this.searchText = params.q;
     });
   }
 

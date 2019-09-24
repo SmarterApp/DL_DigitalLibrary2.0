@@ -1,4 +1,5 @@
 export interface SearchFilters {
+    freeText: string;
     resourceTypes: Filter[] 
 }
 

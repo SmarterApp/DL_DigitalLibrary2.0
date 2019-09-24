@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChildren } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MDCChipSet } from '@material/chips';
 import { SearchFilters } from '../data/search/search-filters.model';
 
@@ -40,4 +40,3 @@ export class SearchComponent implements OnInit, AfterViewInit {
     this.router.navigate(['results', { ...this.route.snapshot.params, resourceTypes: resourceTypeCodes.join(',') }]);
   }
 }
- 
