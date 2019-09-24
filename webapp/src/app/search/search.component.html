@@ -19,4 +19,16 @@
     <div class="emphasis-medium caption">Type</div>
     <sbdl-filter-chipset [filters]="filters.resourceTypes" (onChanged)="setResourceTypes($event)"></sbdl-filter-chipset>
   </div>
+  <div class="filter-container">
+    <div class="emphasis-medium caption">Grades</div>
+    <sbdl-filter-chipset [filters]="filters.grades" (onChanged)="setGrades($event)"></sbdl-filter-chipset>
+  </div>
+  <div class="filter-container">
+    <div class="emphasis-medium caption">Subjects</div>
+    <sbdl-filter-chipset [filters]="filters.subjects" (onChanged)="setSubjects($event)"></sbdl-filter-chipset>
+  </div>
+  <div class="filter-container">
+    <div class="emphasis-medium caption">Claims</div>
+    <sbdl-filter-chipset [filters]="filters.claims" (onChanged)="setClaims($event)"></sbdl-filter-chipset>
+  </div>
 </div>

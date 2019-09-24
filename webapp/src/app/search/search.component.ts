@@ -39,4 +39,16 @@ export class SearchComponent implements OnInit, AfterViewInit {
   setResourceTypes(resourceTypeCodes: string[]) {
     this.router.navigate(['results', { ...this.route.snapshot.params, resourceTypes: resourceTypeCodes.join(',') }]);
   }
+
+  setGrades(gradeCodes: string[]) {
+    this.router.navigate(['results', { ...this.route.snapshot.params, grades: gradeCodes.join(',') }]);
+  }
+
+  setSubjects(subjectCodes: string[]) {
+    this.router.navigate(['results', { ...this.route.snapshot.params, subjects: subjectCodes.join(',') }]);
+  }
+
+  setClaims(claimCodes: string[]) {
+    this.router.navigate(['results', { ...this.route.snapshot.params, claims: claimCodes.join(',') }]);
+  }
 }

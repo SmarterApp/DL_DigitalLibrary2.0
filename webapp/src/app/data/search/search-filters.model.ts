@@ -1,6 +1,9 @@
 export interface SearchFilters {
     freeText: string;
-    resourceTypes: Filter[] 
+    resourceTypes: Filter[];
+    grades: Filter[];
+    subjects: Filter[];
+    claims: Filter[];
 }
 
 export interface Filter {

@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MDCRipple } from '@material/ripple';
 import { Subscription } from 'rxjs';
 import { ResourceResult } from 'src/app/data/search/resource-result.model';
+import { Filter } from 'src/app/data/search/search-filters.model';
+import { FilterChip } from 'src/app/common/controls/filter-chipset/filter-chipset.component';
 
 @Component({
   selector: 'sbdl-results',
@@ -29,13 +31,13 @@ export class ResultsComponent implements OnInit, AfterViewInit, OnDestroy {
 
         const params = this.route.snapshot.params;
         this.filters = {... this.filters, freeText: params.q };
-        this.setSelectedResourceTypes(params);
+        this.setSelectedFilters(params);
       }
     });
 
     this.paramsSubscription = this.route.params.subscribe(params => {
       this.filters = {... this.filters, freeText: params.q };
-      this.setSelectedResourceTypes(params);
+      this.setSelectedFilters(params);
     });
   }
 
@@ -57,10 +59,17 @@ export class ResultsComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  private setSelectedResourceTypes(params: any) {
-    if(params.resourceTypes) {
-      const resourceTypeCodes = params.resourceTypes.split(',');
-      this.filters.resourceTypes.forEach(x => x.selected = resourceTypeCodes.indexOf(x.code) !== -1);
+  private setSelectedFilters(params: any) {
+    this.setSelectedParams(params.resourceTypes, this.filters.resourceTypes)
+    this.setSelectedParams(params.grades, this.filters.grades)
+    this.setSelectedParams(params.subjects, this.filters.subjects)
+    this.setSelectedParams(params.claims, this.filters.claims)
+  }
+
+  private setSelectedParams(params: string, filters: FilterChip[]) {
+    if(params) {
+      const paramCodes = params.split(',');
+      filters.forEach(x => x.selected = paramCodes.indexOf(x.code) !== -1);
     }
   }
 }

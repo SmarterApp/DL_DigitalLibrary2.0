@@ -18,9 +18,7 @@ export class SearchService {
 
   getDefaultFilters(): Observable<SearchFilters> {
     return this.dataService.get('/search/filters')
-      .pipe(map(x => <SearchFilters>{
-        resourceTypes: x.resourceTypes.map(x => <Filter>{ title: x.title, code: x.code })
-      }));
+      .pipe(map(x => this.mapSearchFilters(x)));
   }
 
   post(request: SearchRequestModel): Observable<ResourceSearchResults> {
@@ -38,8 +36,18 @@ export class SearchService {
 
   private mapSearchFilters(apiFilters) {
     return <SearchFilters>{
-      resourceTypes: apiFilters.resourceTypes.map(x => <Filter>{ title: x.title, code: x.code })
+      resourceTypes: apiFilters.resourceTypes.map(x => this.mapFilter(x)),
+      grades: apiFilters.grades.map(x => this.mapFilter(x)),
+      subjects: apiFilters.subjects.map(x => this.mapFilter(x)),
+      claims: apiFilters.claims.map(x => this.mapFilter(x))
     };
+  }
+
+  private mapFilter(apiFilter: any): Filter {
+    return { 
+      title: apiFilter.title,
+      code: apiFilter.code
+    }
   }
 
   private mapToResourceResultModels(apiModel: any): ResourceSearchResults {

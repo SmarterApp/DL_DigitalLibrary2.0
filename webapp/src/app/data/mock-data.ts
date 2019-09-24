@@ -20,6 +20,25 @@ export const mockSearchFilters = {
 		{ title: 'Connections Playlist', code: 'cp' },
 		{ title: 'Formative Assessment Strategies', code: 'fas' },
 		{ title: 'Accessibility Strategies', code: 'as' }
+	],
+	grades: [
+		{ title: '3', code: 'g3' },
+		{ title: '4', code: 'g4' },
+		{ title: '5', code: 'g5' },
+		{ title: '6', code: 'g6' },
+		{ title: '7', code: 'g7' },
+		{ title: '8', code: 'g8' },
+		{ title: 'High School', code: 'HS' }
+	],
+	subjects: [
+		{ title: 'Mathematics', code: 'math' },
+		{ title: 'English Language Arts', code: 'ela' }
+	],
+	claims: [
+		{ title: 'Claim 1: Reading', code: 'c1'},
+		{ title: 'Claim 2: Writing', code: 'c2'},
+		{ title: 'Claim 3: Speaking & Listening', code: 'c3'},
+		{ title: 'Claim 4: Research/Inquiry', code: 'c4'}
 	]
 };
 
