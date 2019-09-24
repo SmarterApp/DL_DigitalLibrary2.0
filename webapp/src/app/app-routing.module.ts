@@ -6,6 +6,7 @@ import { ResourceTypeStrategyComponent } from './resource/resource-type-strategy
 import { ResourceResolve } from './resource/resource.resolve';
 import { ResultsComponent } from './search/results/results.component';
 import { ResourceResultResolve } from './search/results/resource-results.resolve';
+import { SearchFiltersResolve } from './search/search-filters.resolve';
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent
+        component: HomeComponent,
+        resolve: { filters: SearchFiltersResolve }
       }, {
         path: 'resource/:resourceId',
         component: ResourceTypeStrategyComponent,

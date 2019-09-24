@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ResourceResult } from 'src/app/data/search/resource-result.model';
+import { ResourceSearchResults } from 'src/app/data/search/resource-result.model';
 import { SearchRequestModel } from 'src/app/data/search/search-request.model';
 import { SearchService } from 'src/app/data/search/search.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ResourceResultResolve implements Resolve<ResourceResult[]> {
+export class ResourceResultResolve implements Resolve<ResourceSearchResults> {
     constructor(private service: SearchService) { }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): ResourceResult[] | Observable<ResourceResult[]> | Promise<ResourceResult[]> {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): ResourceSearchResults | Observable<ResourceSearchResults> | Promise<ResourceSearchResults> {
         const request = this.mapToRequestModel(route.params);
         return this.service.post(request);
     }

@@ -13,6 +13,16 @@ export const mockUser = {
     tenantName: 'California'
 };
 
+export const mockSearchFilters = {
+	resourceTypes: [
+		{ title: 'Instructional Resource', code: 'ir' },
+		{ title: 'Professional Learning', code: 'pl' },
+		{ title: 'Connections Playlist', code: 'cp' },
+		{ title: 'Formative Assessment Strategies', code: 'fas' },
+		{ title: 'Accessibility Strategies', code: 'as' }
+	]
+};
+
 export const mockResourceModel = <ResourceModel> {
 	resourceType: ResourceType.Instructional,
 	details: <ResourceDetailsModel> { 

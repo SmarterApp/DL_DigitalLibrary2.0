@@ -1,5 +1,58 @@
 @import "colors";
+@import "spacing";
 @import "@material/textfield/mdc-text-field";
+@import "@material/chips/mdc-chips";
+
 
 :host{
+    .advanced-search {
+        background-color: $neutral-50;
+                    
+        margin-top: 34px;
+        margin-left: -100%;
+        margin-right: -100%;
+        padding-left: 100%;
+        padding-right: 100%;
+        padding-bottom: 44px;
+
+        .advanced-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            padding-top: 45px;
+
+            a.emphasis-medium.caption {
+                opacity: 0.65;
+                color: $neutral-900;
+                font-size: 13.2px;
+            }
+
+            sbdl-icon {
+                font-size: 1rem;
+                padding-left: 21px;
+                padding-right: 1rem;
+            }
+        }
+        .filter-container {
+            background-color: $white;
+            padding: $spacer;
+            margin-bottom: $spacer;
+        }
+        .mdc-chip{
+            @include mdc-chip-ink-color($action-900);
+            @include mdc-chip-fill-color($action-100);
+            @include mdc-chip-trailing-icon-color($action-300);
+            font-size: 13.2px;
+        }
+
+        .mdc-chip--selected {
+            @include mdc-chip-ink-color($white);
+            @include mdc-chip-fill-color($action-700);
+            @include mdc-chip-trailing-icon-color($action-300);
+        }
+
+        .mdc-chip__icon--trailing {
+            vertical-align: text-bottom;
+        }
+    }
 }

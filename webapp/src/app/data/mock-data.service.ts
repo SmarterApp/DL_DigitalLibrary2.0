@@ -4,7 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { LoggingService } from '../common/logging/logging.service';
 import { DataService } from './data.service';
-import { mockAccessibilityStrategy, mockApiResource, mockApiResource2, mockApiResourceWithNulls, mockDocument52, mockDocument53, mockDocument54, mockDocument55, mockFormativeStrategy, mockPlaylistResource, mockProfessionalResource, mockUser } from './mock-data';
+import { mockAccessibilityStrategy, mockApiResource, mockApiResource2, mockApiResourceWithNulls, mockDocument52, mockDocument53, mockDocument54, mockDocument55, mockFormativeStrategy, mockPlaylistResource, mockProfessionalResource, mockUser, mockSearchFilters } from './mock-data';
 
 // Work around for: 
 // https://stackoverflow.com/questions/48953587/typescript-class-implements-class-with-private-functions
@@ -25,7 +25,8 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /\/file_documents\/52/, result: mockDocument52 },
     { pattern: /\/file_documents\/53/, result: mockDocument53 },
     { pattern: /\/file_documents\/54/, result: mockDocument54 },
-    { pattern: /\/file_documents\/55/, result: mockDocument55 }
+    { pattern: /\/file_documents\/55/, result: mockDocument55 },
+    { pattern: /\/search\/filters/, result: mockSearchFilters }
   ];
 
   readonly mockPostDataEndpoints = [
@@ -85,15 +86,18 @@ export class MockDataService implements PublicPart<DataService> {
   }
 
   private postSearch(object: any): any {
-    return this.shuffleArray([
-      mockApiResource,
-      mockApiResource2,
-      mockProfessionalResource,
-      mockPlaylistResource,
-      mockFormativeStrategy,
-      mockAccessibilityStrategy
-    ])// Randomize the results to simulate different searches on subsequent calls
-    .splice(0, Math.floor(Math.random() * 5) + 1);
+    return { 
+      filters: mockSearchFilters,
+      results: this.shuffleArray([
+          mockApiResource,
+          mockApiResource2,
+          mockProfessionalResource,
+          mockPlaylistResource,
+          mockFormativeStrategy,
+          mockAccessibilityStrategy
+        ])// Randomize the results to simulate different searches on subsequent calls
+        .splice(0, Math.floor(Math.random() * 5) + 1)
+    };
   }
 
   private setFavorite(object: any): any{

@@ -1,0 +1,11 @@
+<div #filterChip class="mdc-chip-set mdc-chip-set--filter">
+  <button [id]="filter.code" *ngFor="let filter of filters" (click) = "toggleFilter(filter)" class="mdc-chip" [ngClass]="{'mdc-chip--selected': filter.selected }">
+    <span class="mdc-chip__text">{{ filter.title }}</span>
+    <div *ngIf="filter.selected" >
+      <i class="far fa-minus mdc-chip__icon mdc-chip__icon--trailing"></i>
+    </div>
+    <div *ngIf="!filter.selected" >
+      <i class="far fa-plus mdc-chip__icon mdc-chip__icon--trailing"></i>
+    </div>
+  </button>
+</div>

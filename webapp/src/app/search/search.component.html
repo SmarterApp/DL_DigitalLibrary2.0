@@ -1,6 +1,22 @@
 <sbdl-text-field 
   label="Search the library" 
   (submit)="submit($event)" 
-  [model]="model"
+  [model]="filters.freeText"
   fontAwesomeIcon="fa-search">
 </sbdl-text-field>
+<div class="emphasis-medium caption">
+  Start typing a topic, claim, target,  or use our <a href="javascript:void(0)" (click)="showAdvanced = true">advanced search</a>.
+</div>
+<div [hidden]="!showAdvanced" class="advanced-search">
+  <div class="advanced-header">
+      <h6>Advanced Search</h6>
+      <div>
+        <a href="javascript:void(0)" class="emphasis-medium caption"><i class="fa fa-undo"></i> Clear Filters</a>
+        <a href="javascript:void(0)" class="emphasis-medium caption" (click)="showAdvanced = false"><sbdl-icon icon="close"></sbdl-icon></a>
+      </div>
+  </div>
+  <div class="filter-container">
+    <div class="emphasis-medium caption">Type</div>
+    <sbdl-filter-chipset [filters]="filters.resourceTypes" (onChanged)="setResourceTypes($event)"></sbdl-filter-chipset>
+  </div>
+</div>
