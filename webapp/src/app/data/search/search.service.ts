@@ -43,28 +43,30 @@ export class SearchService {
   }
 
   private mapToResourceResultModels(apiModel: any): ResourceSearchResults {
-    return {
-      filters: this.mapSearchFilters(apiModel.filters),
-      results: coalesce(apiModel.results, []).map(apiModel => <ResourceResult>{
-        id: apiModel.id,
-        title: apiModel.title,
-        resourceType: ResourceService.ApiResourceTypeMap.get(apiModel.resourceType),
-        image: apiModel.resourceThumbnail,
-        description: apiModel.altBody,
-        
-        subjects: coalesce(apiModel.subject, []),
-        grades: coalesce(apiModel.grades, []),
+    return apiModel 
+      ? {
+        filters: this.mapSearchFilters(apiModel.filters),
+        results: coalesce(apiModel.results, []).map(apiModel => <ResourceResult>{
+          id: apiModel.id,
+          title: apiModel.title,
+          resourceType: ResourceService.ApiResourceTypeMap.get(apiModel.resourceType),
+          image: apiModel.resourceThumbnail,
+          description: apiModel.altBody,
+          
+          subjects: coalesce(apiModel.subject, []),
+          grades: coalesce(apiModel.grades, []),
 
-        claims: coalesce(apiModel.educationalAlignments, []).map(ea => <Alignment>{
-          title: `${ea.shortName}: ${ea.title}`,
-          shortName: ea.shortName
-        }),
+          claims: coalesce(apiModel.educationalAlignments, []).map(ea => <Alignment>{
+            title: `${ea.shortName}: ${ea.title}`,
+            shortName: ea.shortName
+          }),
 
-        targets: coalesce(apiModel.targetAlignments, []).map(ta => <Alignment>{
-          title: `${ta.shortName}: ${ta.title}`,
-          shortName: ta.shortName
-        }),
-      })
-    };
+          targets: coalesce(apiModel.targetAlignments, []).map(ta => <Alignment>{
+            title: `${ta.shortName}: ${ta.title}`,
+            shortName: ta.shortName
+          }),
+        })
+      }
+      : <ResourceSearchResults>{};
   }
 }

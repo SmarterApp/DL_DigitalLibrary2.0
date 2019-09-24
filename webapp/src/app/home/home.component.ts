@@ -12,7 +12,11 @@ export class HomeComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.filters = this.route.snapshot.data.results.filters;
+    const searchResults = this.route.snapshot.data;
+
+    if(searchResults) {
+      this.filters = this.route.snapshot.data.results.filters;
+    }
   }
 
   throwError(){
