@@ -60,10 +60,11 @@ export class ResultsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private setSelectedFilters(params: any) {
-    this.setSelectedParams(params.resourceTypes, this.filters.resourceTypes)
-    this.setSelectedParams(params.grades, this.filters.grades)
-    this.setSelectedParams(params.subjects, this.filters.subjects)
-    this.setSelectedParams(params.claims, this.filters.claims)
+    this.setSelectedParams(params.resourceTypes, this.filters.resourceTypes);
+    this.setSelectedParams(params.grades, this.filters.grades);
+    this.setSelectedParams(params.subjects, this.filters.subjects);
+    this.setSelectedParams(params.claims, this.filters.claims);
+    this.setSelectedParams(params.targets, this.filters.targets);
   }
 
   private setSelectedParams(params: string, filters: FilterChip[]) {

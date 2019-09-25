@@ -3,6 +3,7 @@ export interface SearchRequestModel {
     
     // filters
     // TODO: What data type is each of these formats?
+    types: string[];
     grades: string[];
     subjects: string[];
     claims: string[];

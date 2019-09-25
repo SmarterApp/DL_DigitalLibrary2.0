@@ -34,13 +34,29 @@ export const mockSearchFilters = {
 		{ title: 'Mathematics', code: 'math' },
 		{ title: 'English Language Arts', code: 'ela' }
 	],
-	claims: [
-		{ title: 'Claim 1: Reading', code: 'c1'},
-		{ title: 'Claim 2: Writing', code: 'c2'},
-		{ title: 'Claim 3: Speaking & Listening', code: 'c3'},
-		{ title: 'Claim 4: Research/Inquiry', code: 'c4'}
+	claims: [],
+	targets: [
+		{ title: 'Apply mathematics to solve well­posed problems in pure mathematics and those arising in everyday life, society, and the workplace. (DOK 2, 3)', code: 'ta' },
+		{ title: 'Select and use appropriate tools strategically (DOK 1, 2)', code: 'tb' },
+		{ title: 'Interpret results in the context of a situation. (DOK 2)', code: 'tc' },
+		{ title: 'Identify important quantities in a practical situation and map their relationships (e.g., using diagrams, two­way tables, graphs, flowcharts, or formulas). (DOK 1, 2, 3)', code: 'td' }
 	]
 };
+
+export const mockElaClaims = [
+	{ title: 'Claim 1: Reading', code: 'ela-c1'},
+	{ title: 'Claim 2: Writing', code: 'ela-c2'},
+	{ title: 'Claim 3: Speaking & Listening', code: 'ela-c3'},
+	{ title: 'Claim 4: Research/Inquiry', code: 'ela-c4'}
+];
+
+export const mockMathClaims = [
+	{ title: 'Claim 1: Concepts & Procedures', code: 'math-c1'},
+	{ title: 'Claim 2: Problem Solving', code: 'math-c2'},
+	{ title: 'Claim 3: Communicating Reason', code: 'math-c3'},
+	{ title: 'Claim 4: Modeling and Data Analysis', code: 'math-c4'}
+];
+
 
 export const mockResourceModel = <ResourceModel> {
 	resourceType: ResourceType.Instructional,

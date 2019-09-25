@@ -4,7 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { LoggingService } from '../common/logging/logging.service';
 import { DataService } from './data.service';
-import { mockAccessibilityStrategy, mockApiResource, mockApiResource2, mockApiResourceWithNulls, mockDocument52, mockDocument53, mockDocument54, mockDocument55, mockFormativeStrategy, mockPlaylistResource, mockProfessionalResource, mockUser, mockSearchFilters } from './mock-data';
+import { mockAccessibilityStrategy, mockApiResource, mockApiResource2, mockApiResourceWithNulls, mockDocument52, mockDocument53, mockDocument54, mockDocument55, mockFormativeStrategy, mockPlaylistResource, mockProfessionalResource, mockUser, mockSearchFilters, mockMathClaims, mockElaClaims } from './mock-data';
 
 // Work around for: 
 // https://stackoverflow.com/questions/48953587/typescript-class-implements-class-with-private-functions
@@ -86,8 +86,15 @@ export class MockDataService implements PublicPart<DataService> {
   }
 
   private postSearch(object: any): any {
+    const claims = object.subjects && object.subjects.indexOf('math') !== -1
+      ? [ ...mockMathClaims ]
+      : [ ];
+
+    if(object.subjects.indexOf('ela') !== -1 )
+    claims.push(...mockElaClaims);
+
     return { 
-      filters: mockSearchFilters,
+      filters: { ... mockSearchFilters, claims: claims },
       results: this.shuffleArray([
           mockApiResource,
           mockApiResource2,

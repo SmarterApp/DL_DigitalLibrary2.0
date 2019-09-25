@@ -4,6 +4,7 @@ export interface SearchFilters {
     grades: Filter[];
     subjects: Filter[];
     claims: Filter[];
+    targets: Filter[];
 }
 
 export interface Filter {

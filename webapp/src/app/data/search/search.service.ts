@@ -30,16 +30,20 @@ export class SearchService {
   mapToApiRequest(model: SearchRequestModel):any {
     return {
       query: model.query,
-      // TODO: Map filters to api model
+      types: model.types,
+      grades: model.grades,
+      subjects: model.subjects,
+      claims: model.claims
     };
   }
 
   private mapSearchFilters(apiFilters) {
     return <SearchFilters>{
-      resourceTypes: apiFilters.resourceTypes.map(x => this.mapFilter(x)),
-      grades: apiFilters.grades.map(x => this.mapFilter(x)),
-      subjects: apiFilters.subjects.map(x => this.mapFilter(x)),
-      claims: apiFilters.claims.map(x => this.mapFilter(x))
+      resourceTypes: coalesce(apiFilters.resourceTypes, []).map(x => this.mapFilter(x)),
+      grades: coalesce(apiFilters.grades, []).map(x => this.mapFilter(x)),
+      subjects: coalesce(apiFilters.subjects, []).map(x => this.mapFilter(x)),
+      claims: coalesce(apiFilters.claims, []).map(x => this.mapFilter(x)),
+      targets: coalesce(apiFilters.targets, []).map(x => this.mapFilter(x))
     };
   }
 

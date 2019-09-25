@@ -12,7 +12,7 @@ describe('ResultsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ SearchModule, RouterTestingModule ],
-      providers: [ { provide: ActivatedRoute, useValue: { data: of({ data: { results: { results: [], filters: [] } }  }), params: of({ params: { q: 'text' }}) } }, ]
+      providers: [ { provide: ActivatedRoute, useValue: { snapshot: { params: {} }, data: of({ data: { results: { results: [], filters: [] } }  }), params: of({ params: { q: 'text' }}) } }, ]
     })
     .compileComponents();
   }));

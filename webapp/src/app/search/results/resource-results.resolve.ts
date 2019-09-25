@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ResourceSearchResults } from 'src/app/data/search/resource-result.model';
 import { SearchRequestModel } from 'src/app/data/search/search-request.model';
 import { SearchService } from 'src/app/data/search/search.service';
+import { coalesce } from 'src/app/common/utils';
 
 @Injectable({
     providedIn: 'root'
@@ -19,10 +20,15 @@ export class ResourceResultResolve implements Resolve<ResourceSearchResults> {
     private mapToRequestModel(params: any): SearchRequestModel {
         return {
             query: params.q,
-            grades: params.grades,
-            claims: params.claims,
-            subjects: params.subjects,
-            targets: params.targets
+            types: this.splitToArray(params.resourceTypes),
+            grades: this.splitToArray(params.grades),
+            claims: this.splitToArray(params.claims),
+            subjects: this.splitToArray(params.subjects),
+            targets: this.splitToArray(params.targets)
         };
+    }
+
+    private splitToArray(param: string) {
+        return param ? param.split(',') : [];
     }
 }

@@ -29,6 +29,20 @@
   </div>
   <div class="filter-container">
     <div class="emphasis-medium caption">Claims</div>
-    <sbdl-filter-chipset [filters]="filters.claims" (onChanged)="setClaims($event)"></sbdl-filter-chipset>
+    <sbdl-filter-chipset *ngIf="anySubjectSelected && anyGradeSelected; else displayClaimsMessage" [filters]="filters.claims" (onChanged)="setClaims($event)"></sbdl-filter-chipset>
+    <ng-template #displayClaimsMessage>
+      <p class="body-2 emphasis-medium">
+        Select a <b>Grade</b> and a <b>Subject</b> to view Claim options
+      </p>
+    </ng-template>
+  </div>
+  <div class="filter-container">
+    <div class="emphasis-medium caption">Targets</div>
+    <sbdl-filter-chipset *ngIf="anySubjectSelected && anyGradeSelected && anyClaimSelected; else displayTargetMessage" [filters]="filters.targets" (onChanged)="setTargets($event)"></sbdl-filter-chipset>
+    <ng-template #displayTargetMessage>
+      <p class="body-2 emphasis-medium">
+        Select a <b>Grade</b>, <b>Subject</b>, and a <b>Claim</b> to view Target options
+      </p>
+    </ng-template>
   </div>
 </div>
