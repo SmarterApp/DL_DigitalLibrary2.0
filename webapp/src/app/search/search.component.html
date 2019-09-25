@@ -50,7 +50,7 @@
     <sbdl-filter-chipset *ngIf="anySubjectSelected && anyGradeSelected && anyClaimSelected; else displayStandardsMessage" [filters]="filters.standards" (onChanged)="setStandards($event)"></sbdl-filter-chipset>
     <ng-template #displayStandardsMessage>
       <p class="body-2 emphasis-medium">
-        Select a <b>Grade</b>, <b>Subject</b>, and a <b>Claim</b> to view Standards options
+        Select a <b>Grade</b>, <b>Subject</b>, and a <b>Claim</b> to view Standard options
       </p>
     </ng-template>
   </div>
