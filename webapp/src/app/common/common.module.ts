@@ -12,6 +12,7 @@ import { DynamicHTMLRenderer } from './controls/dynamic/dynamic-html-render';
 import { DynamicHTMLOptions } from './controls/dynamic/options';
 import { TextFieldComponent } from './controls/text-field/text-field.component';
 import { FormsModule } from '@angular/forms';
+import { FilterChipsetComponent } from './controls/filter-chipset/filter-chipset.component';
 
 // This object contains the components which can be loaded dyanmically via
 // the dynamic-html component.
@@ -33,7 +34,8 @@ const dynamicOptions = {
         PopoverComponent,
         ReadMoreComponent,
         DynamicHTMLComponent,
-        TextFieldComponent
+        TextFieldComponent,
+        FilterChipsetComponent
     ],
     exports: [
         ButtonComponent,
@@ -43,7 +45,8 @@ const dynamicOptions = {
         SvgDefsComponent,
         TooltipComponent,
         DynamicHTMLComponent,
-        TextFieldComponent
+        TextFieldComponent,
+        FilterChipsetComponent
     ],
     providers: [
         DynamicHTMLRenderer,

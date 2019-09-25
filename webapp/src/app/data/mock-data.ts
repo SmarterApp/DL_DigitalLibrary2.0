@@ -13,6 +13,80 @@ export const mockUser = {
     tenantName: 'California'
 };
 
+export const mockSearchFilters = {
+	resourceTypes: [
+		{ title: 'Instructional Resource', code: 'ir' },
+		{ title: 'Professional Learning', code: 'pl' },
+		{ title: 'Connections Playlist', code: 'cp' },
+		{ title: 'Formative Assessment Strategies', code: 'fas' },
+		{ title: 'Accessibility Strategies', code: 'as' }
+	],
+	grades: [
+		{ title: '3', code: 'g3' },
+		{ title: '4', code: 'g4' },
+		{ title: '5', code: 'g5' },
+		{ title: '6', code: 'g6' },
+		{ title: '7', code: 'g7' },
+		{ title: '8', code: 'g8' },
+		{ title: 'High School', code: 'HS' }
+	],
+	subjects: [
+		{ title: 'Mathematics', code: 'math' },
+		{ title: 'English Language Arts', code: 'ela' }
+	],
+	claims: [],
+	targets: [
+		{ title: 'A. Apply mathematics to solve well­posed problems in pure mathematics and those arising in everyday life, society, and the workplace. (DOK 2, 3)', code: 'ta' },
+		{ title: 'B. Select and use appropriate tools strategically (DOK 1, 2)', code: 'tb' },
+		{ title: 'C. Interpret results in the context of a situation. (DOK 2)', code: 'tc' },
+		{ title: 'D. Identify important quantities in a practical situation and map their relationships (e.g., using diagrams, two­way tables, graphs, flowcharts, or formulas). (DOK 1, 2, 3)', code: 'td' }
+	],
+	standards: [
+		{ title: 'L-4', code: 'l4' },
+		{ title: 'L-4a', code: 'l4a' },
+		{ title: 'L-4b', code: 'l4b' },
+		{ title: 'L-4c', code: 'l4c' },
+		{ title: 'L-5', code: 'l5' },
+		{ title: 'L-5a', code: 'l5a' },
+		{ title: 'L-5b', code: 'l5b' },
+		{ title: 'L-5c', code: 'l5c' },
+		{ title: 'RI-1', code: 'ri1'},
+		{ title: 'RI-2', code: 'ri2'},
+		{ title: 'RI-3', code: 'ri3'},
+		{ title: 'RI-4', code: 'ri4'},
+		{ title: 'RI-5', code: 'ri5'},
+		{ title: 'RI-6', code: 'ri6'},
+		{ title: 'RI-7', code: 'ri7'},
+		{ title: 'RI-8', code: 'ri8'},
+		{ title: 'RI-9', code: 'ri9'},
+		{ title: 'RL-1', code: 'rl1'},
+		{ title: 'RL-2', code: 'rl2'},
+		{ title: 'RL-3', code: 'rl3'},
+		{ title: 'RL-4', code: 'rl4'},
+		{ title: 'RL-5', code: 'rl5'},
+		{ title: 'RK-6', code: 'rl6'},
+		{ title: 'RL-7', code: 'rl7'},
+		{ title: 'RL-8', code: 'rl8'},
+		{ title: 'RL-9', code: 'rl9'},
+
+	]
+};
+
+export const mockElaClaims = [
+	{ title: 'Claim 1: Reading', code: 'ela-c1'},
+	{ title: 'Claim 2: Writing', code: 'ela-c2'},
+	{ title: 'Claim 3: Speaking & Listening', code: 'ela-c3'},
+	{ title: 'Claim 4: Research/Inquiry', code: 'ela-c4'}
+];
+
+export const mockMathClaims = [
+	{ title: 'Claim 1: Concepts & Procedures', code: 'math-c1'},
+	{ title: 'Claim 2: Problem Solving', code: 'math-c2'},
+	{ title: 'Claim 3: Communicating Reason', code: 'math-c3'},
+	{ title: 'Claim 4: Modeling and Data Analysis', code: 'math-c4'}
+];
+
+
 export const mockResourceModel = <ResourceModel> {
 	resourceType: ResourceType.Instructional,
 	details: <ResourceDetailsModel> { 

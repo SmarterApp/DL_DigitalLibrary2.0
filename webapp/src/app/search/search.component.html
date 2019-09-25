@@ -1,6 +1,57 @@
 <sbdl-text-field 
   label="Search the library" 
   (submit)="submit($event)" 
-  [model]="model"
+  [model]="filters.freeText"
   fontAwesomeIcon="fa-search">
 </sbdl-text-field>
+<div class="emphasis-medium caption">
+  Start typing a topic, claim, target,  or <a href="javascript:void(0)" (click)="showAdvanced = true">browse for resources</a>.
+</div>
+<div [hidden]="!showAdvanced" class="advanced-search">
+  <div class="advanced-header">
+      <h6>Browse for Resources</h6>
+      <div>
+        <a href="javascript:void(0)" class="emphasis-medium caption"><i class="fa fa-undo"></i> Clear Filters</a>
+        <a href="javascript:void(0)" class="emphasis-medium caption" (click)="showAdvanced = false"><sbdl-icon icon="close"></sbdl-icon></a>
+      </div>
+  </div>
+  <div class="filter-container">
+    <div class="emphasis-medium caption">Type</div>
+    <sbdl-filter-chipset [filters]="filters.resourceTypes" (onChanged)="setResourceTypes($event)"></sbdl-filter-chipset>
+  </div>
+  <div class="filter-container">
+    <div class="emphasis-medium caption">Grades</div>
+    <sbdl-filter-chipset [filters]="filters.grades" (onChanged)="setGrades($event)"></sbdl-filter-chipset>
+  </div>
+  <div class="filter-container">
+    <div class="emphasis-medium caption">Subjects</div>
+    <sbdl-filter-chipset [filters]="filters.subjects" (onChanged)="setSubjects($event)"></sbdl-filter-chipset>
+  </div>
+  <div class="filter-container">
+    <div class="emphasis-medium caption">Claims</div>
+    <sbdl-filter-chipset *ngIf="anySubjectSelected && anyGradeSelected; else displayClaimsMessage" [filters]="filters.claims" (onChanged)="setClaims($event)"></sbdl-filter-chipset>
+    <ng-template #displayClaimsMessage>
+      <p class="body-2 emphasis-medium">
+        Select a <b>Grade</b> and a <b>Subject</b> to view Claim options
+      </p>
+    </ng-template>
+  </div>
+  <div class="filter-container">
+    <div class="emphasis-medium caption">Targets</div>
+    <sbdl-filter-chipset *ngIf="anySubjectSelected && anyGradeSelected && anyClaimSelected; else displayTargetMessage" [filters]="filters.targets" (onChanged)="setTargets($event)"></sbdl-filter-chipset>
+    <ng-template #displayTargetMessage>
+      <p class="body-2 emphasis-medium">
+        Select a <b>Grade</b>, <b>Subject</b>, and a <b>Claim</b> to view Target options
+      </p>
+    </ng-template>
+  </div>
+  <div class="filter-container">
+    <div class="emphasis-medium caption">Standards</div>
+    <sbdl-filter-chipset *ngIf="anySubjectSelected && anyGradeSelected && anyClaimSelected; else displayStandardsMessage" [filters]="filters.standards" (onChanged)="setStandards($event)"></sbdl-filter-chipset>
+    <ng-template #displayStandardsMessage>
+      <p class="body-2 emphasis-medium">
+        Select a <b>Grade</b>, <b>Subject</b>, and a <b>Claim</b> to view Standard options
+      </p>
+    </ng-template>
+  </div>
+</div>
