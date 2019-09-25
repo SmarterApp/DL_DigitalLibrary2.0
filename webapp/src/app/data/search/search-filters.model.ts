@@ -5,6 +5,7 @@ export interface SearchFilters {
     subjects: Filter[];
     claims: Filter[];
     targets: Filter[];
+    standards: Filter[];
 }
 
 export interface Filter {

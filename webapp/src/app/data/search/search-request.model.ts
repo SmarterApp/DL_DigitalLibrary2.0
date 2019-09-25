@@ -8,4 +8,5 @@ export interface SearchRequestModel {
     subjects: string[];
     claims: string[];
     targets: string[];
+    standards: string[];
 }

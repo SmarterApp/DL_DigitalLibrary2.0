@@ -2,9 +2,8 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChildren }
 import { ActivatedRoute } from '@angular/router';
 import { MDCRipple } from '@material/ripple';
 import { Subscription } from 'rxjs';
-import { ResourceResult } from 'src/app/data/search/resource-result.model';
-import { Filter } from 'src/app/data/search/search-filters.model';
 import { FilterChip } from 'src/app/common/controls/filter-chipset/filter-chipset.component';
+import { ResourceResult } from 'src/app/data/search/resource-result.model';
 
 @Component({
   selector: 'sbdl-results',
@@ -65,6 +64,7 @@ export class ResultsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.setSelectedParams(params.subjects, this.filters.subjects);
     this.setSelectedParams(params.claims, this.filters.claims);
     this.setSelectedParams(params.targets, this.filters.targets);
+    this.setSelectedParams(params.standards, this.filters.standards);
   }
 
   private setSelectedParams(params: string, filters: FilterChip[]) {

@@ -24,7 +24,8 @@ export class ResourceResultResolve implements Resolve<ResourceSearchResults> {
             grades: this.splitToArray(params.grades),
             claims: this.splitToArray(params.claims),
             subjects: this.splitToArray(params.subjects),
-            targets: this.splitToArray(params.targets)
+            targets: this.splitToArray(params.targets),
+            standards: this.splitToArray(params.standards)
         };
     }
 

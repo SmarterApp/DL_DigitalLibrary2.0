@@ -5,11 +5,11 @@
   fontAwesomeIcon="fa-search">
 </sbdl-text-field>
 <div class="emphasis-medium caption">
-  Start typing a topic, claim, target,  or use our <a href="javascript:void(0)" (click)="showAdvanced = true">advanced search</a>.
+  Start typing a topic, claim, target,  or <a href="javascript:void(0)" (click)="showAdvanced = true">browse for resources</a>.
 </div>
 <div [hidden]="!showAdvanced" class="advanced-search">
   <div class="advanced-header">
-      <h6>Advanced Search</h6>
+      <h6>Browse for Resources</h6>
       <div>
         <a href="javascript:void(0)" class="emphasis-medium caption"><i class="fa fa-undo"></i> Clear Filters</a>
         <a href="javascript:void(0)" class="emphasis-medium caption" (click)="showAdvanced = false"><sbdl-icon icon="close"></sbdl-icon></a>
@@ -42,6 +42,15 @@
     <ng-template #displayTargetMessage>
       <p class="body-2 emphasis-medium">
         Select a <b>Grade</b>, <b>Subject</b>, and a <b>Claim</b> to view Target options
+      </p>
+    </ng-template>
+  </div>
+  <div class="filter-container">
+    <div class="emphasis-medium caption">Standards</div>
+    <sbdl-filter-chipset *ngIf="anySubjectSelected && anyGradeSelected && anyClaimSelected; else displayStandardsMessage" [filters]="filters.standards" (onChanged)="setStandards($event)"></sbdl-filter-chipset>
+    <ng-template #displayStandardsMessage>
+      <p class="body-2 emphasis-medium">
+        Select a <b>Grade</b>, <b>Subject</b>, and a <b>Claim</b> to view Standards options
       </p>
     </ng-template>
   </div>

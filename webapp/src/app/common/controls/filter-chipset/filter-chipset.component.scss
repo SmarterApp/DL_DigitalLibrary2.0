@@ -6,6 +6,13 @@
     @include mdc-chip-fill-color($action-100);
     @include mdc-chip-trailing-icon-color($action-300);
     font-size: 13.2px;
+    padding: 0.2rem 1rem;
+
+    @include mdc-chip-height(fit-content);
+    
+    .mdc-chip__text {
+        white-space: initial;
+    }
 }
 
 .mdc-chip--selected {

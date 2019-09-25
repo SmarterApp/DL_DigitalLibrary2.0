@@ -33,7 +33,8 @@ export class SearchService {
       types: model.types,
       grades: model.grades,
       subjects: model.subjects,
-      claims: model.claims
+      claims: model.claims,
+      standards: model.standards
     };
   }
 
@@ -43,7 +44,8 @@ export class SearchService {
       grades: coalesce(apiFilters.grades, []).map(x => this.mapFilter(x)),
       subjects: coalesce(apiFilters.subjects, []).map(x => this.mapFilter(x)),
       claims: coalesce(apiFilters.claims, []).map(x => this.mapFilter(x)),
-      targets: coalesce(apiFilters.targets, []).map(x => this.mapFilter(x))
+      targets: coalesce(apiFilters.targets, []).map(x => this.mapFilter(x)),
+      standards: coalesce(apiFilters.standards, []).map(x => this.mapFilter(x))
     };
   }
 

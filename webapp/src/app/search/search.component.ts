@@ -17,8 +17,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   @ViewChildren('filterChip')
   filterChipRefs: ElementRef[];
 
-  // TODO: Initialize to false;
-  showAdvanced: boolean = true;
+  showAdvanced: boolean = false;
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
@@ -71,5 +70,9 @@ export class SearchComponent implements OnInit, AfterViewInit {
 
   setTargets(targetCodes: string[]) {
     this.router.navigate(['results', { ...this.params, targets: targetCodes.join(',') }]);
+  }
+
+  setStandards(targetStandardCodes: string[]) {
+    this.router.navigate(['results', { ...this.params, standards: targetStandardCodes.join(',') }]);
   }
 }
