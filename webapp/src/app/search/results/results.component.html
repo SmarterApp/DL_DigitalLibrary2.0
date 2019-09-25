@@ -5,7 +5,7 @@
       <ng-template ngPluralCase="other">Resources</ng-template>
     </span>
   </h6>
-  <sbdl-search [filters]="filters"></sbdl-search>
+  <sbdl-search [filters]="filters" [showAdvanced]="showAdvancedFiltersInitially"></sbdl-search>
   <section class="search-results" width="120px" height="120px">
     <a #searchResult [routerLink]="['/resource', result.id]" *ngFor="let result of results" class="search-result">
       <div>

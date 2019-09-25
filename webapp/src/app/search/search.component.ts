@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   @ViewChildren('filterChip')
   filterChipRefs: ElementRef[];
 
+  @Input()
   showAdvanced: boolean = false;
 
   constructor(private router: Router, private route: ActivatedRoute) { }

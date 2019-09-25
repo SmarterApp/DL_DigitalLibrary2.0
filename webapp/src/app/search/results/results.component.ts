@@ -19,6 +19,8 @@ export class ResultsComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren('searchResult')
   searchResultsRef: ElementRef[];
 
+  showAdvancedFiltersInitially: boolean;
+
   private dataSubscription: Subscription;
   private paramsSubscription: Subscription;
 
@@ -38,6 +40,9 @@ export class ResultsComponent implements OnInit, AfterViewInit, OnDestroy {
       this.filters = {... this.filters, freeText: params.q };
       this.setSelectedFilters(params);
     });
+
+    const initParams = this.route.snapshot.params;
+    this.showAdvancedFiltersInitially = Object.keys(initParams).filter(x => x != 'q').length > 0;
   }
 
   ngAfterViewInit() {

@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Scroll to the top on route changes
+    // Scroll to the top on route changes (except on search filter changes)
     this.router.events.subscribe((evt) => {
         if (evt instanceof NavigationEnd && evt.url.indexOf('results') === -1) {
           window.scrollTo(0, 0)
