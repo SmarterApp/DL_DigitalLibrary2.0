@@ -1,0 +1,33 @@
+@import "colors";
+@import "@material/textfield/mdc-text-field";
+@import "@material/textfield/icon/mdc-text-field-icon";
+@import "@material/button/mdc-button";
+
+.mdc-text-field {
+    width: 100%;
+}
+
+.mdc-text-field.mdc-text-field--focused {
+    @include mdc-text-field-label-color($action-900);
+    @include mdc-text-field-focused-outline-color($action-100);
+}
+
+.mdc-text-field__icon {
+    // background-color: $action-700;
+    color: $white !important;
+    position: relative !important;
+
+    margin-top: 1rem;
+}
+
+::ng-deep {
+    .mdc-text-field {
+        .primary > .mdc-button:not(:disabled) {
+            min-width: 34px;
+            height: 34px;
+            display: block;
+            margin-top: 11px;
+            margin-right: 11px
+        }
+    }
+}

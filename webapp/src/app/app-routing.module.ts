@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { AppContainerComponent } from './layout/app-container/app-container.component';
 import { ResourceTypeStrategyComponent } from './resource/resource-type-strategy.component';
 import { ResourceResolve } from './resource/resource.resolve';
+import { ResultsComponent } from './search/results/results.component';
+import { ResourceResultResolve } from './search/results/resource-results.resolve';
 
 const routes: Routes = [
   {
@@ -18,6 +20,10 @@ const routes: Routes = [
         path: 'resource/:resourceId',
         component: ResourceTypeStrategyComponent,
         resolve: { resource: ResourceResolve }
+      }, {
+        path: 'results',
+        component: ResultsComponent,
+        resolve: { results: ResourceResultResolve }
       }
     ]
   }

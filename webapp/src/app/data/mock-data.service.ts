@@ -30,6 +30,7 @@ export class MockDataService implements PublicPart<DataService> {
 
   readonly mockPostDataEndpoints = [
     { pattern: /^\/favorites\/resource$/, post: body => this.setFavorite(body) },
+    { pattern: /^\/search/, post: body => this.postSearch(body) }
   ];
 
   readonly mockDownloadEndpoints = [
@@ -83,6 +84,18 @@ export class MockDataService implements PublicPart<DataService> {
       .pipe(map(response => new Blob([ response ])));
   }
 
+  private postSearch(object: any): any {
+    return this.shuffleArray([
+      mockApiResource,
+      mockApiResource2,
+      mockProfessionalResource,
+      mockPlaylistResource,
+      mockFormativeStrategy,
+      mockAccessibilityStrategy
+    ])// Randomize the results to simulate different searches on subsequent calls
+    .splice(0, Math.floor(Math.random() * 5) + 1);
+  }
+
   private setFavorite(object: any): any{
     
     const resource = this.resources.find(x => x.id === object.resourceId);
@@ -95,6 +108,16 @@ export class MockDataService implements PublicPart<DataService> {
     }
 
     return throwError('who knows');
+  }
+
+  private shuffleArray(array: any[]) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
   }
 }
 
