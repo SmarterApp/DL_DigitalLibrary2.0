@@ -3,7 +3,7 @@ output "deploy_bucket_arn" {
   value = aws_s3_bucket.deploy.arn
 }
 
-data "aws_iam_policy_document" "deploy_bucket_policy" {
+data "aws_iam_policy_document" "deploy_bucket_access_policy" {
   statement {
     actions     = [ "s3:GetObject" ]
     effect      = "Allow"
@@ -45,9 +45,9 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
   comment = "OAI for ${var.environment} environment."
 }
 
-resource "aws_s3_bucket_policy" "deploy_bucket_policy" {
+resource "aws_s3_bucket_policy" "deploy_bucket_access_policy" {
   bucket = "${aws_s3_bucket.deploy.id}"
-  policy = "${data.aws_iam_policy_document.deploy_bucket_policy.json}"
+  policy = "${data.aws_iam_policy_document.deploy_bucket_access_policy.json}"
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
