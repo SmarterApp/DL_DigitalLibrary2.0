@@ -205,7 +205,7 @@ const polyfillMissingApiData = {
   connectionsPlaylist: [ {
     title: 'Grade 6 Fractions',
     numberOfResources: 6,
-    resourceId: 8,
+    resourceId: 99,
     assessmentType: 1 // how will this be defined?
   }],
   standards: ['6.NS.A.1', '6.NS.A.3', '5.NS.A.4'],
@@ -1265,7 +1265,7 @@ export const mockPlaylistResource = {
 /* Resources in dataset:
  
   ID  Type            Title
-  ------------------------------------------------------
+  -----------------------------------------------------------------------------
    0  Instructional   null
    1  Instructional   Connecting Fraction Division Equations to Visual Models
    2  Instructional   Finding and Citing Textual Evidence
@@ -1274,16 +1274,18 @@ export const mockPlaylistResource = {
    5  FAP Strat       K-W-L Strategy
    6  Conn. Playlist  Research: Analyze/Integrate Information
    7  Instructional   All Systems Go?
-   8
-   9
-  10
+   8  Instructional   A Grain of Sand or a Drop of Water
+   9  Instructional   Any Way You Slice It!
+  10  Instructional   Searching For Relevant Resources
+  11  Instructional   Intro to Quadratic Formula
+ 
+ Attachments in the dataset:
 
+  ID  Title
+  -----------------------------------------------------------------------------
+  101 All Systems Go! Student Handout
 */
 
-/* 7: IR All Systems Go (Math)
- * Missing:
- *   - resource image
-*/
 export const mockIrAllSystemsGo = {
   id: 7,
   resourceType: "Instructional and Professional Learning",
@@ -1445,6 +1447,10 @@ export const mockIrAllSystemsGo = {
           when they think they know:
         </p>
         <p>
+          4x + 2y = 8<br/>
+          2x + y = 5
+        </p>
+        <p>
           When you observe the majority of the class signals they have an answer, invite several students to explain their
           thinking (possibly under a document camera if available).
           There are multiple ways students might reason about the number of solutions this system has. Bring up the
@@ -1459,12 +1465,24 @@ export const mockIrAllSystemsGo = {
           Entire Lesson Synthesis (Take time to summarize BIG ideas.)
         </p>
         <p>
+        x = 2<br/>
+        y = 3x - 1
+        </p>
+        <p>
+        x = 2y + 4<br/>
+        x = 9 - 3y
+        </p>
+        <p>
+        x = 2y + 3<br/>
+        y = 2x - 9
+        </p>
+        <p>
           To emphasize the concepts from this lesson, consider displaying the three systems and asking the following
           discussion questions:
           <ul style='list-style-type: none'>
             <li>"What is the first step you would take to solve the first system?"<br/>(Possible explanation: We already know the x -value of the solution, we only need to find the y -value. Substituting 2 for x in the other equation should help us solve for the y -value that makes both equations true when x is 2.)</li>
-            <li>"What steps would you take to solve the second system?"<br/>(Possible explanation: We know two expressions that are equal to x , we can set those expressions as equal to each other. Therefore, we know that , which can be solved using the techniques to solve equations with a single variable. Once we know the value for y , we can find the value for x from either of the original equations from the system.)</li>
-            <li>"For the third system, a student begins the substitution method by writing. What has this student done wrong?"<br/> (Possible explanation: When substituting for x , the student did not multiply the entire expression by 2.)</li>
+            <li>"What steps would you take to solve the second system?"<br/>(Possible explanation: We know two expressions that are equal to x , we can set those expressions as equal to each other. Therefore, we know that 2y + 4 = 9 - 3y, which can be solved using the techniques to solve equations with a single variable. Once we know the value for y , we can find the value for x from either of the original equations from the system.)</li>
+            <li>"For the third system, a student begins the substitution method by writing <em>y = 2⋅2y + 3 - 9 then y = 4y - 6</em>. What has this student done wrong?"<br/> (Possible explanation: When substituting for <em>x</em>, the student did not multiply the entire expression by 2.)</li>
           </ul>
         <p>`
     },
@@ -1479,7 +1497,9 @@ export const mockIrAllSystemsGo = {
         </p>
         <p>
         <p>
-          Solve this system of equations:<br/>
+          Solve this system of equations:
+        </p>
+        <p>
           y = 2x<br/>
           x = -y + 6
         </p>
@@ -1507,21 +1527,16 @@ export const mockIrAllSystemsGo = {
     <p>
       Monitor students’ work/discussions/choices to inform next steps in instruction or next activity.
     </p>`,
-  connectionsPlaylist: [],
-  // TODO: not used by UI
-  attachments: [
-    {
-      name: 'Illustrative Mathematics Task: How Many Containers in One Cup / Cups in One Container?',
-      // Assumption: we will be able to glean filename and file extension from the url path.
-      url: '/assets/mock-downloads/instructional-resource-content.docx',
-      fileSize: 183000,
-      type: 'activity'
-    }, {
-      name: 'Student Handout (task statements)',
-      url: 'https://docs.google.com/document/d/1-hfX3yYpZOk1Fnu5qagLDks1UFTyUs2d08I7q27RfYQ/edit',
-      fileSize: 0,
-      type: 'activity'
-    }
+  connectionsPlaylist: [ {
+    title: 'Analyze and Solve Linear Equations',
+    numberOfResources: 8,
+    resourceId: 99,
+    assessmentType: 1 // how will this be defined?
+  }],
+  documents: [
+    "/api/file_documents/100/download",
+    "/api/file_documents/101/download",
+    "/api/file_documents/102/download"
   ],
   videoLinks: [],
   differentiation: undefined,
@@ -1636,6 +1651,36 @@ export const mockIrAllSystemsGo = {
         whether students are ready to move on to a new lesson."
       </p>`
   },
+};
+
+export const mockIrDocAllSystemsGoHandout = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/100",
+    "@type": "Handout",
+    "id": 100,
+    "name": "Student Handout (task statements).pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocAllSystemsGoPractice = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/101",
+    "@type": "Handout",
+    "id": 101,
+    "name": "Practice.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocAllSystemsGoPresentation = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/102",
+    "@type": "Presentation",
+    "id": 102,
+    "name": "Teacher Presentation.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
 };
 
 export const mockIrGrainOfSandDropOfWater = {
@@ -1813,14 +1858,27 @@ export const mockIrGrainOfSandDropOfWater = {
           for those that need additional help. This will be the “ YOU DO ” part of the lesson.
         </p>`
     },
- ],
-  connectionsPlaylist: [],
+  ],
+  connectionsPlaylist: [{
+    title: 'Research: Interpret and Integrate Information',
+    numberOfResources: 8,
+    resourceId: 99,
+    assessmentType: 3 // how will this be defined?
+  }],
   // overview
-  attachments: [],
+  documents: [
+    "/file_documents/200/download",
+    "/file_documents/201/download",
+    "/file_documents/202/download",
+    "/file_documents/203/download",
+    "/file_documents/204/download",
+    "/file_documents/205/download",
+    "/file_documents/206/download"
+  ],
   videoLinks: [],
   differentiation: undefined,
   accessibilityStrategies: [
-    { 
+    {
       title: 'Highlighter',
       link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
       description: `A digital tool for marking desired text, item questions, item answers, or parts of
@@ -1888,6 +1946,76 @@ export const mockIrGrainOfSandDropOfWater = {
       should not be taught with having a goal of determining the main idea. The main idea will be given to the
       students and the students will be determining the details that support their research or a research topic.
     </p>`
+};
+
+export const mockIrDocGrainEntranceTicket = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/200",
+    "@type": "Handout",
+    "id": 200,
+    "name": "Entrance Ticket.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocGrainEntranceTicketKey = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/201",
+    "@type": "Handout",
+    "id": 201,
+    "name": "Entrance Ticket Key.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocGrainVocabularyList = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/202",
+    "@type": "Handout",
+    "id": 202,
+    "name": "Vocabulary List.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocGrainIDoSource = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/203",
+    "@type": "Handout",
+    "id": 203,
+    "name": "I DO.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocGrainYouDoSource = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/204",
+    "@type": "Handout",
+    "id": 204,
+    "name": "YOU DO.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocGrainWeDoSource = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/205",
+    "@type": "Handout",
+    "id": 205,
+    "name": "WE DO.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocGrainPractice = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/206",
+    "@type": "Handout",
+    "id": 206,
+    "name": "Additional Practice source.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
 };
 
 export const mockIrAnyWayYouSliceIt = {
@@ -2023,7 +2151,12 @@ shape given on the List of Polygons and Sides resource.</li>
         </p>`
     },
   ],
-  connectionsPlaylist: [],
+  connectionsPlaylist: [{
+    title: 'Geometric Figures',
+    numberOfResources: 8,
+    resourceId: 99,
+    assessmentType: 1 // how will this be defined?
+  }],
   // overview
   attachments: [],
   videoLinks: [],
@@ -2231,7 +2364,12 @@ export const mockIrSearchingForRelevantResources = {
         </p>`
     }
   ],
-  connectionsPlaylist: [],
+  connectionsPlaylist: [{
+    title: 'Research: Analyze Information',
+    numberOfResources: 8,
+    resourceId: 99,
+    assessmentType: 3 // how will this be defined?
+  }],
   // overview
   attachments: [],
   videoLinks: [],
@@ -2506,7 +2644,12 @@ export const mockIrIntroToQuadFormula = {
         </p>`
     }
   ],
-  connectionsPlaylist: [],
+  connectionsPlaylist: [{
+    title: 'Solve Equations and Inequalities: Quadratic',
+    numberOfResources: 8,
+    resourceId: 99,
+    assessmentType: 1 // how will this be defined?
+  }],
   // overview
   attachments: [],
   videoLinks: [],

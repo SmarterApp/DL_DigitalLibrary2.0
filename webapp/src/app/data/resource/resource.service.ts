@@ -120,28 +120,28 @@ export class ResourceService {
       authorOrganization: apiResource.publisher,
       lastModified: new Date(apiResource.updated),
 
-      claims: coalesce(apiResource.educationalAlignments, []).map(ea => <Alignment>{
+      claims: coalesce(apiResource.educationalAlignments, []).map(ea => ({
         title: `${ea.shortName}: ${ea.title}`,
         shortName: ea.shortName
-      }),
+      } as Alignment)),
 
-      targets: coalesce(apiResource.targetAlignments, []).map(ta => <Alignment>{
+      targets: coalesce(apiResource.targetAlignments, []).map(ta => ({
         title: `${ta.shortName}: ${ta.title}`,
         shortName: ta.shortName
-      }),
+      } as Alignment)),
 
-      relatedPlaylists: coalesce(apiResource.connectionsPlaylist, []).map(p => <Playlist>{
+      relatedPlaylists: coalesce(apiResource.connectionsPlaylist, []).map(p => ({
         title: p.title,
         resourceId: p.resourceId,
         numberOfResources: p.numberOfResources,
         assessmentType: p.assessmentType,
         assessmentTypeIcon: this.assessmentTypeToIconMap.get(p.assessmentType)
-      }),
+      } as Playlist)),
 
-      relatedResources: coalesce(apiResource.resources, []).map(r => <ResourceLinkModel> {
+      relatedResources: coalesce(apiResource.resources, []).map(r => ({
         resourceId: r.id,
         title: r.title
-      }),
+      } as ResourceLinkModel)),
       // MAYBE, but this is NOT an array?
       // /api/v1/resource.connectionToCcss
       standards: coalesce(apiResource.standards, []),
@@ -171,21 +171,21 @@ export class ResourceService {
   }
 
   mapToSteps(apiSteps: any[]): ResourceStepModel[] {
-    return apiSteps.map(s => <ResourceStepModel>{
+    return apiSteps.map(s => ({
       stepNumber: s.number,
       title: s.title,
       content: s.content
-    }).sort((a, b) => a.stepNumber - b.stepNumber);
+    } as ResourceStepModel)).sort((a, b) => a.stepNumber - b.stepNumber);
   }
 
   mapToDifferentiation(apiModel): DifferentiationModel {
     return {
       performanceBasedDifferentiation: apiModel.differentiation,
-      accessibilityStrategies: coalesce(apiModel.accessibilityStrategies,[]).map(x => <ResourceStrategyModel> {
+      accessibilityStrategies: coalesce(apiModel.accessibilityStrategies, []).map(x => ({
         title: x.title,
         moreAboutUrl: x.link,
         description: x.description
-      })
+      } as ResourceStrategyModel))
     };
   }
 
@@ -202,27 +202,27 @@ export class ResourceService {
           actOnEvidence: process.actOnEvidence
         } as FormativeAssessmentProcess
         : undefined,
-      strategies: coalesce(apiModel.formativeStrategies,[]).map(x => <ResourceStrategyModel> {
+      strategies: coalesce(apiModel.formativeStrategies, []).map(x => ({
         title: x.title,
         moreAboutUrl: x.link,
         description: x.description
-      })
+      } as ResourceStrategyModel))
     };
   }
 
   mapToTopicSection(apiModel: any, resourceType: ResourceType): TopicSectionModel {
     return resourceType === ResourceType.ConnectionsPlaylist
       ? {
-        topics: coalesce(apiModel.topics, []).map(t => <TopicModel>{
+        topics: coalesce(apiModel.topics, []).map(t => ({
             title: t.title,
             above: t.above,
             near: t.near,
             below: t.below,
-            resourceLinks: coalesce(t.resources, []).map(r => <ResourceLinkModel> {
+            resourceLinks: coalesce(t.resources, []).map(r => ({
               resourceId: r.id,
               title: r.title
-            })
-          }),
+            } as ResourceLinkModel))
+          } as TopicModel)),
         suggestionsForIntervention: apiModel.suggestionsForIntervention
       }
     : undefined;

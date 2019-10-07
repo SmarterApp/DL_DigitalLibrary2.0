@@ -12,8 +12,17 @@ import {
   mockPlaylistResource,
   mockProfessionalResource,
   mockUser, mockSearchFilters, mockMathClaims, mockElaClaims,
-  // demo content
-  mockIrAllSystemsGo, mockIrGrainOfSandDropOfWater, mockIrAnyWayYouSliceIt,
+
+  // demo resource content
+  mockIrAllSystemsGo, mockIrDocAllSystemsGoHandout,
+  mockIrDocAllSystemsGoPractice, mockIrDocAllSystemsGoPresentation,
+
+  mockIrGrainOfSandDropOfWater, mockIrDocGrainEntranceTicket,
+  mockIrDocGrainEntranceTicketKey, mockIrDocGrainVocabularyList,
+  mockIrDocGrainIDoSource, mockIrDocGrainWeDoSource, mockIrDocGrainYouDoSource,
+  mockIrDocGrainPractice,
+
+  mockIrAnyWayYouSliceIt,
   mockIrSearchingForRelevantResources, mockIrIntroToQuadFormula
 } from './mock-data';
 
@@ -42,6 +51,21 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /\/file_documents\/53/, result: mockDocument53 },
     { pattern: /\/file_documents\/54/, result: mockDocument54 },
     { pattern: /\/file_documents\/55/, result: mockDocument55 },
+
+    // All Systems Go! documents
+    { pattern: /\/file_documents\/100/, result: mockIrDocAllSystemsGoHandout },
+    { pattern: /\/file_documents\/101/, result: mockIrDocAllSystemsGoPractice },
+    { pattern: /\/file_documents\/102/, result: mockIrDocAllSystemsGoPresentation },
+
+    // A Grain Of And documents
+    { pattern: /\/file_documents\/200/, result: mockIrDocGrainEntranceTicket },
+    { pattern: /\/file_documents\/201/, result: mockIrDocGrainEntranceTicketKey },
+    { pattern: /\/file_documents\/202/, result: mockIrDocGrainVocabularyList },
+    { pattern: /\/file_documents\/203/, result: mockIrDocGrainIDoSource },
+    { pattern: /\/file_documents\/204/, result: mockIrDocGrainYouDoSource },
+    { pattern: /\/file_documents\/205/, result: mockIrDocGrainWeDoSource },
+    { pattern: /\/file_documents\/206/, result: mockIrDocGrainPractice },
+
     { pattern: /\/search\/filters/, result: mockSearchFilters }
   ];
 
@@ -53,6 +77,21 @@ export class MockDataService implements PublicPart<DataService> {
   readonly mockDownloadEndpoints = [
     { pattern: /\/file_documents\/52/, result: '/assets/mock-downloads/SBAC Running Record Analysis.pdf' },
     { pattern: /\/file_documents\/53/, result: '/assets/mock-downloads/note_taking.docx' },
+
+    // All Systems Go! attachments
+    { pattern: /\/file_documents\/100/, result: '/assets/mock-downloads/all-systems-go/student_handout.pdf' },
+    { pattern: /\/file_documents\/101/, result: '/assets/mock-downloads/all-systems-go/practice.pdf' },
+    { pattern: /\/file_documents\/102/, result: '/assets/mock-downloads/all-systems-go/teacher_presentation.pdf' },
+
+    // A Grain of Sand attachments
+    { pattern: /\/file_documents\/200/, result: '/assets/mock-downloads/a-grain-of-sand/entrance_ticket.pdf' },
+    { pattern: /\/file_documents\/201/, result: '/assets/mock-downloads/a-grain-of-sand/entrance_ticket_key.pdf' },
+    { pattern: /\/file_documents\/202/, result: '/assets/mock-downloads/a-grain-of-sand/vocabulary_list.pdf' },
+    { pattern: /\/file_documents\/203/, result: '/assets/mock-downloads/a-grain-of-sand/i_do_source.pdf' },
+    { pattern: /\/file_documents\/204/, result: '/assets/mock-downloads/a-grain-of-sand/you_do_source.pdf' },
+    { pattern: /\/file_documents\/205/, result: '/assets/mock-downloads/a-grain-of-sand/we_do_source.pdf' },
+    { pattern: /\/file_documents\/206/, result: '/assets/mock-downloads/a-grain-of-sand/practice.pdf' },
+
     { pattern: /\/file_documents\/[0-9]*/, result: '/assets/mock-downloads/video-game-credits.pdf' }
   ];
 
