@@ -175,7 +175,7 @@ export class ResourceService {
       stepNumber: s.number,
       title: s.title,
       content: s.content
-    }).sort(x => x.stepNumber);
+    }).sort((a, b) => a.stepNumber - b.stepNumber);
   }
 
   mapToDifferentiation(apiModel): DifferentiationModel {
