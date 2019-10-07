@@ -12,15 +12,16 @@ export class AppConfig {
         const jsonFile = 'assets/config/config.json';
         return new Promise<void>((resolve, reject) => {
           this.http.get(jsonFile).subscribe(response => {
-              AppConfig.settings = <IAppConfig>response;
+              AppConfig.settings = response as IAppConfig;
               resolve();
           }, error =>  {
-            let message = error.error.message
+            const message = error.error.message
                 ? error.error.message
                 : error.error;
 
-              reject(`Unable to load configurations from file '${jsonFile}': ${message}`);
+            reject(`Unable to load configurations from file '${jsonFile}': ${message}`);
           });
         });
     }
+
 }

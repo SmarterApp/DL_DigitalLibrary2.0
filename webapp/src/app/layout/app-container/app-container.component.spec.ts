@@ -6,6 +6,14 @@ import { HeaderComponent } from '../header/header.component';
 import { AppContainerComponent } from './app-container.component';
 import { mockRootActivatedRouteSnapshot } from 'src/app/app.module.spec';
 import { SbdlCommonModule } from 'src/app/common/common.module';
+import { OktaAuthService } from '@okta/okta-angular';
+
+class MockOktaAuthService {
+  $authenticationState: object;
+  constructor() {
+    this.$authenticationState = { subscribe() {} };
+  }
+}
 
 describe('AppContainerComponent', () => {
   let component: AppContainerComponent;
@@ -17,7 +25,8 @@ describe('AppContainerComponent', () => {
       imports: [ RouterTestingModule, SbdlCommonModule ],
       providers: [ 
         { provide: ActivatedRoute, useValue: mockRootActivatedRouteSnapshot },
-        { provide: APP_BASE_HREF, useValue: '/' }
+        { provide: APP_BASE_HREF, useValue: '/' },
+        { provide: OktaAuthService, useClass: MockOktaAuthService }
       ]
     })
     .compileComponents();

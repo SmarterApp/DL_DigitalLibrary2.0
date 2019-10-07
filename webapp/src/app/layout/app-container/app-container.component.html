@@ -9,6 +9,9 @@
         <p><sbdl-button class ="primary" [routerLink]="['/resource/4']">ACC</sbdl-button></p>
         <p><sbdl-button class ="primary" [routerLink]="['/resource/5']">FRM</sbdl-button></p>
         <p><sbdl-button class ="primary" [routerLink]="['/resource/6']">PLY</sbdl-button></p>
+        <p><sbdl-button class ="primary" *ngIf="!isAuthenticated" [routerLink]="['/auth/login']">Lgin</sbdl-button></p>
+        <p><sbdl-button class ="primary" *ngIf="isAuthenticated" (click)="logout()">Lgout</sbdl-button></p>
+        <p *ngIf="isAuthenticated">{{userInitials}}</p>
     </div>
     <div class="router-outlet">
         <router-outlet></router-outlet>
