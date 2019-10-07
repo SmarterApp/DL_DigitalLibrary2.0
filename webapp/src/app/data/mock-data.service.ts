@@ -4,9 +4,20 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { LoggingService } from '../common/logging/logging.service';
 import { DataService } from './data.service';
-import { mockAccessibilityStrategy, mockApiResource, mockApiResource2, mockApiResourceWithNulls, mockDocument52, mockDocument53, mockDocument54, mockDocument55, mockFormativeStrategy, mockPlaylistResource, mockProfessionalResource, mockUser, mockSearchFilters, mockMathClaims, mockElaClaims } from './mock-data';
+import {
+  mockAccessibilityStrategy, mockApiResource, mockApiResource2,
+  mockApiResourceWithNulls,
+  mockDocument52, mockDocument53, mockDocument54, mockDocument55,
+  mockFormativeStrategy,
+  mockPlaylistResource,
+  mockProfessionalResource,
+  mockUser, mockSearchFilters, mockMathClaims, mockElaClaims,
+  // demo content
+  mockIrAllSystemsGo, mockIrGrainOfSandDropOfWater, mockIrAnyWayYouSliceIt,
+  mockIrSearchingForRelevantResources, mockIrIntroToQuadFormula
+} from './mock-data';
 
-// Work around for: 
+// Work around for:
 // https://stackoverflow.com/questions/48953587/typescript-class-implements-class-with-private-functions
 // tldr; We can't implement a class with privates, so we need a wrapper type to pull out the publics.
 type PublicPart<T> = {[K in keyof T]: T[K]};
@@ -21,6 +32,11 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /\/resources\/4$/, result: mockAccessibilityStrategy },
     { pattern: /\/resources\/5$/, result: mockFormativeStrategy },
     { pattern: /\/resources\/6$/, result: mockPlaylistResource },
+    { pattern: /\/resources\/7$/, result: mockIrAllSystemsGo },
+    { pattern: /\/resources\/8$/, result: mockIrGrainOfSandDropOfWater },
+    { pattern: /\/resources\/9$/, result: mockIrAnyWayYouSliceIt },
+    { pattern: /\/resources\/10$/, result: mockIrSearchingForRelevantResources },
+    { pattern: /\/resources\/11$/, result: mockIrIntroToQuadFormula },
     { pattern: /\/resources\/[0-9]/, result: mockApiResource },
     { pattern: /\/file_documents\/52/, result: mockDocument52 },
     { pattern: /\/file_documents\/53/, result: mockDocument53 },

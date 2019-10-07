@@ -111,7 +111,7 @@ export const mockResourceModel = {
   topicSection: { topics: [] } as TopicSectionModel
 } as ResourceModel;
 
-//Example
+// ## Instructional Resource Examples
 export const mockApiResourceExample = {
   id: 1,
   nid: 1234,
@@ -150,7 +150,6 @@ export const mockApiResourceExample = {
   pii: "None",
   subject: ["Math"],
   grade: ["Grade 6", "Grade 8", "Grade 9"],
-  
   alignmentTags: "",
   educationAlignments: [
     { title: "", shortName: "" },
@@ -479,7 +478,6 @@ export const mockApiResourceWithNulls = {
   documents: undefined
 }
 
-
 export const mockApiResourceExample2 = {
   id: 2,
   nid: 1234,
@@ -685,9 +683,9 @@ export const mockDocument53 = {
   "name": "note_taking.docx",
   "path": "15d4a90dba2441666f775be72bdbd1e39816d684.docx",
   "mimeType": null
-}
+};
 
-//Example
+// ## Professional Resource Examples
 export const mockApiProfResourceExample = {
   id: 3,
   nid: 1234,
@@ -857,7 +855,9 @@ export const mockDocument55 = {
   "name": "Formative Assessment Quotes.pdf",
   "path": "15d4a90dba2441666f775be72bdbd1e39816d684.docx",
   "mimeType": null
-}
+};
+
+// ## Strategy Resource Examples
 
 export const mockApiAccessStrategyResource = {
   id: 4,
@@ -1104,7 +1104,9 @@ const polyfillMissingFormativeApiData = {
 export const mockFormativeStrategy = {
   ...mockApiFormativeStrategyResource,
   ...polyfillMissingFormativeApiData
-}
+};
+
+// ## Connections Playlist Examples
 
 export const mockApiPlaylistResource = {
   id: 6,
@@ -1246,10 +1248,1356 @@ const polyfillMissingPlaylistApiData = {
       <li>Use a multiplication strategy to find a product.</li>
     </ul>
     <p>Search for resources to support students in mastering these skills.</p>
-  ` 
+  `
 };
 
 export const mockPlaylistResource = {
   ...mockApiPlaylistResource,
   ...polyfillMissingPlaylistApiData
-}
+};
+
+// ## Demo Dataset
+
+/* Resources in dataset:
+ 
+  ID  Type            Title
+  ------------------------------------------------------
+   0  Instructional   null
+   1  Instructional   Connecting Fraction Division Equations to Visual Models
+   2  Instructional   Finding and Citing Textual Evidence
+   3  Prof. Learning  Quotes for Understanding the Formative Assessment Process
+   4  Access Strat    Highlighter
+   5  FAP Strat       K-W-L Strategy
+   6  Conn. Playlist  Research: Analyze/Integrate Information
+   7  Instructional   All Systems Go?
+   8
+   9
+  10
+
+*/
+
+/* 7: IR All Systems Go (Math)
+ * Missing:
+ *   - resource image
+*/
+export const mockIrAllSystemsGo = {
+  id: 7,
+  resourceType: "Instructional and Professional Learning",
+  title: "All Systems Go?",
+  author: "Nell Jean",
+  publisher: undefined,
+  subject: ["Math"],
+  grades: [8],
+  educationalAlignments: [ // claims
+    { title: 'Concepts & Procedures', shortName: '1' }
+  ],
+  standards: ['CCSS.MATH.CONTENT.8.EE.C.8.B'],
+  targetAlignments: [ // targets
+    { title: 'Analyze and solve linear equations and pairs of simultaneous linear equations', shortName: 'D' }
+  ],
+  updated: "2019-08-05T13:43:23-0500",
+  resourceThumbnail: 'https://smarterbalancedlibrary.org/sites/default/files/styles/resource_image_grid/public/resource_thumbnails/resource_cover_photos/all_systems_go.jpg',
+  // overview
+  altBody: 'This lesson uses students prior experience with graphical representations of systems to facilitate their understanding of solving systems algebraically. In this lesson, students will continue to engage with systems of equations where both equations are in the form y = mx + b . Students will graduate to other types of system structures. They will learn that examining structures is a good first step since it is sometimes possible to recognize an efficient method for solving the system through observation. Students see that if at least one of the equations has a single variable isolated, then that expression can be substituted into the other equation in place of y or x to get a single equation in one variable. Finally, students use the structure of a system of equations to reason about its lack of solutions.',
+  learningGoals: `
+    <ul>
+      <li>Students will understand that a system of equations can have no solution, one solution, or infinitely many solutions.</li>
+      <li>Students will solve systems algebraically.</li>
+      <li>Students will solve systems of equations where two equations have different structures.</li>
+      <li>Students will see and describe structure in systems of equations.</li>
+    </ul>`,
+  successCriteria: `
+		<ul>
+			<li>I can use the structure of equations to help me figure out how many solutions a system of equations has.
+			<li>I can solve systems algebraically.
+			<li>I can solve systems of equations where two equations have different structures.
+		</ul>`,
+  steps: [
+    {
+      number: 1,
+      title: 'Materials',
+      content: `
+        <ul>
+          <li>Scissors</li>
+          <li>Straight edges</li>
+          <li>Copy of backline master activity</li>
+        </ul>`
+    },
+    {
+      number: 2,
+      title: 'Preparation',
+      content: `
+        <ul>
+          <li>Print the blackline masters of the different types.
+          <li>Prepare one set for every 2–3 students.
+          <li>Provide access to straight edges for drawing accurate graphs and scissors for groups that wish to cut apart the graphs on the blackline masters.
+        </ul>`
+    },
+    {
+      number: 3,
+      title: 'Entrance Ticket (5 minutes) - [Number Talk]',
+      content: `
+        <p>
+          Step 1: Display each problem one at a time.<br/>
+          Step 2: Give students 1 minute of individual think time. Ask students to give a signal when they have an answer and a strategy.<br/>
+          Step 3: After the appropriate think time is provided, select students to share different strategies for each problem.<br/>
+        </p>
+        <p>
+          Leave each problem displayed through the group discussion and display students’ thinking for all to see.
+        </p>`
+    },
+    {
+      number: 4,
+      title: 'Activity 1 (Challenge Yourself)',
+      content: `
+        <p>
+          In this activity, students solve systems of linear equations that lend themselves to substitution. There are 4 kinds of
+          systems presented: one kind has both equations given with the y-value isolated on one side of the equation,
+          another kind has one of the variables given as a constant, a third kind has one variable given as a multiple of the
+          other, and the last kind has one equation given as a linear combination. This progression of systems nudges
+          students toward the idea of substituting an expression in place of the variable it is equal to.
+          Notice which kinds of systems students think are the least difficult to solve and which are the most difficult to
+          solve.
+        </p>
+        <ul type=square>
+          <li>Arrange students in groups of 2 or 3. (Give students appropriate minutes of individual think time.)
+          <li>Encourage students to check in with their partner(s) between questions Think-Pair-Share. Tell students that if they disagree, they should work to reach agreement on an answer. The teacher may choose to support students with an appropriate sentence frame to guide discussions.
+          <li>It is crucial that the teacher takes the time to monitor student’s individual processes and group discussions to create a list of understandings and misconceptions to highlight during Step 3.
+          <li>Follow with a whole-class discussion.
+          <li>Synthesize student understanding and misconceptions.
+        </ul>
+        <br/>
+        Activity 1 (Synthesis)
+        <p>
+          There are two main take-aways to synthesize with students. The first is to formalize the idea of substitution in a
+          system of equations. The second is to recognize systems where both equations are written with one variable
+          isolated are actually special cases of substitution.
+        </p>
+        <p>
+          Invite students to share which systems they thought would be easiest to solve and which would be hardest.
+          To involve more students in the conversation, consider asking:
+        </p>
+
+        <ul type=square>
+          <li>“Did you change your mind about any of the systems being more or less difficult after you solved them?”
+          <li>“What was similar in these problems?”
+          <li>“What was different?” (The systems vary slightly in how they are presented, but all of the problems can be solved by replacing a variable with an expression equal to it.)
+          <li>“Will your strategy work for the other systems in this list?” (Yes, substitution works in all the given problems.)
+        </ul>
+
+        <p>
+          Tell students that the underlying key concept for all of these problems is that it is helpful to replace a variable with
+          the expression it is equal to, and that this “replacing” is called “substitution.” Point out that setting the expressions
+          for y in the first two problems equal to each other is really substituting y in one equation with the expression it is
+          equal to (as given by the other equation). It may be helpful for students to hear language like, “Since y is equal to
+          -2x, that means wherever I see y, I can substitute in -2x .
+        </p>
+        <p>
+          Some students may have trouble transitioning from systems where both equations are given with one variable
+          isolated to other kinds of systems.
+        </p>`
+    },
+    {
+      number: 5,
+      title: 'Activity 2 (Tyler\'s Justification)',
+      content: `
+        <p>
+          In this activity, students are asked to make sense of Tyler’s justification for the number of solutions to the system of
+          equations (MP3). This activity continues the emphasis on reasoning about the structure of an equation (MP7) and
+          the focus should be on what, specifically, in the equations students think Tyler sees that makes him believe the
+          system has no solutions.
+        </p>
+        <p>
+          Step 1: To launch the activity tell students:
+          <ul>
+            <li>First, we’ll look at what Tyler says about the solution to a system of equations.
+            <li>Next, we’ll decide whether we agree or disagree with him.
+            <li>After that, we’ll have a class discussion.
+          </ul>
+        </p>
+        <p>
+          Step 2: Give students appropriate individual quiet think time to read the problem and decide whether they agree or
+          disagree with Tyler. Critique, Connect, and Clarify with their partner and finish with a Quick Write activity.
+        </p>
+        <p>
+          Step 3: After appropriate think time was provided, dedicate the remaining time to whole-class discussion.
+        </p>
+        <p>
+          Step 4: Synthesize student learning.
+          <ul>
+            <li>Start with a Class Poll : Who agrees with Tyler? Who disagrees? Why?  The goal of the discussion is to look at one way to reason about the structure of a system of equations in order to determine the solution and then have students make their own reasoning about a different but similar system of equations.
+            <li>If possible invite students from each side of the poll to explain their reasoning. Students’ previous Quick Write activity should help with this process.  As students explain, it should come out that Tyler is correct and if no students bring up the idea, make sure to point out that we can visualize this by graphing the equations in the system and noting that the lines look parallel and will never cross (project visualization of Tyler’s graph).
+            <li>In the previous activity, students should have noticed that if they knew what one of the variables was equal to, they could substitute that value or expression into another equation in the same problem.
+            <li>Point out that in this problem ( x + y ) can be replaced with 5, the resulting equation is 5 = 7, which cannot be true regardless of the choice of x and y.
+          </ul>
+        </p>`
+    },
+    {
+      number: 6,
+      title: 'Activity 3 (Whole Class)',
+      content: `
+        <p>
+          Display the following equations and ask students how many solutions they think the system has and to give a signal
+          when they think they know:
+        </p>
+        <p>
+          When you observe the majority of the class signals they have an answer, invite several students to explain their
+          thinking (possibly under a document camera if available).
+          There are multiple ways students might reason about the number of solutions this system has. Bring up the
+          following possibilities if no students do so in their explanations:
+          <ul>
+            <li>“Rewrite the second equation to isolate the y- variable and substitute the new expression into the first equation in order to find that the system of equations has no solutions.”
+            <li>“Notice that both equations are lines with the same slope but different y -intercepts, which means the system of equations has no solutions.”
+            <li>“Notice that 4 x + 2 y is double 2 x + y , but 8 is not 5 doubled, so the system of equations must have no solutions.”
+          </ul>
+        </p>
+        <p>
+          Entire Lesson Synthesis (Take time to summarize BIG ideas.)
+        </p>
+        <p>
+          To emphasize the concepts from this lesson, consider displaying the three systems and asking the following
+          discussion questions:
+          <ul style='list-style-type: none'>
+            <li>"What is the first step you would take to solve the first system?"<br/>(Possible explanation: We already know the x -value of the solution, we only need to find the y -value. Substituting 2 for x in the other equation should help us solve for the y -value that makes both equations true when x is 2.)</li>
+            <li>"What steps would you take to solve the second system?"<br/>(Possible explanation: We know two expressions that are equal to x , we can set those expressions as equal to each other. Therefore, we know that , which can be solved using the techniques to solve equations with a single variable. Once we know the value for y , we can find the value for x from either of the original equations from the system.)</li>
+            <li>"For the third system, a student begins the substitution method by writing. What has this student done wrong?"<br/> (Possible explanation: When substituting for x , the student did not multiply the entire expression by 2.)</li>
+          </ul>
+        <p>`
+    },
+    {
+      number: 7,
+      title: 'Exit Ticket',
+      content: `
+        <p>
+          This exit ticket asks students to solve a system of equations presented in an algebraic form. (A coordinate plane
+          purposefully is not provided. The main idea of this lesson is for students to use the substitution method, which is
+          efficient and effective.)
+        </p>
+        <p>
+        <p>
+          Solve this system of equations:<br/>
+          y = 2x<br/>
+          x = -y + 6
+        </p>
+        <p>
+          Student Response<br/>
+          (2, 4)
+        </p>
+        <p>
+          Sample response: Students may use the substitution method to rewrite the system as the one variable equation,
+          x = (2x) + 6, and then solve.
+        </p>
+        <p>
+          Self-Assessment: Self-assessment questions are provided at the end of the Google Slides for teacher use at the end
+          of class alongside the exit ticket or as a homework assignment.
+        </p>`
+    }
+  ],
+  comments: `
+    <p>
+      The lesson assumes that students have experience solving systems by graphing and solving single variable equations on both sides.
+    </p>
+    <p>
+      Review lesson to anticipate student misconceptions and clarification needs.
+    </p>
+    <p>
+      Monitor students’ work/discussions/choices to inform next steps in instruction or next activity.
+    </p>`,
+  connectionsPlaylist: [],
+  // TODO: not used by UI
+  attachments: [
+    {
+      name: 'Illustrative Mathematics Task: How Many Containers in One Cup / Cups in One Container?',
+      // Assumption: we will be able to glean filename and file extension from the url path.
+      url: '/assets/mock-downloads/instructional-resource-content.docx',
+      fileSize: 183000,
+      type: 'activity'
+    }, {
+      name: 'Student Handout (task statements)',
+      url: 'https://docs.google.com/document/d/1-hfX3yYpZOk1Fnu5qagLDks1UFTyUs2d08I7q27RfYQ/edit',
+      fileSize: 0,
+      type: 'activity'
+    }
+  ],
+  videoLinks: [],
+  differentiation: undefined,
+  accessibilityStrategies: [],
+  formativeStrategies: [
+    {
+      title: 'Think-Pair-Share',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+    {
+      title: 'Strategic Questioning',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+    {
+      title: 'Red, Yellow, Green Cup/Tile',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+    {
+      title: 'Exit Ticket',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+    {
+      title: 'Number Talk',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+    {
+      title: 'Entrance Ticket',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+    {
+      title: 'Critique, Connect, and Clarify',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+    {
+      title: 'Quick Write',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+    {
+      title: 'Class Poll',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+  ],
+  formativeAssessmentProcess: {
+    clarifyIntendedLearning: `
+      <p>
+        Prior to this lesson: The teacher should use previous classroom data, such as formative assessments, to determine
+        student readiness. It is highly recommended for the teacher to anticipate student misconceptions based on prior
+        formative assessment results, previous lessons, and feedback shared with students.
+      </p>
+      <p>
+        During the lesson: Think Pair Share opportunities are provided throughout each activity.
+      </p>
+      <p>
+        Throughout the entire lesson, Strategic Questioning is used to guide students’ thinking toward using structures of
+        equations to solve systems.
+      </p>
+      <p>
+        In Activity 1: The teacher leads students through a “Challenge Yourself” activity as students self-assess by selecting
+        a Red, Yellow, Green Cup/Tile to provide a visual cue for their level of understanding.
+      </p>
+      <p>
+        The evidence of learning is an Exit Ticket: This exit ticket asks students to solve a system of equations presented
+        in an algebraic form. (A coordinate plane purposefully is not provided. The main idea of this lesson is for students
+        to use the substitution method, which is efficient and effective.)
+      </p>`,
+    elicitEvidence: `
+      <p>
+      Prior to the lesson, teachers should complete every problem and anticipate misconceptions.
+      </p>
+      <p>
+      The teacher will carefully monitor and assess students' responses to facilitate learning. During the lesson, the
+      teacher will monitor answers provided from the students to evaluate any misconceptions in relationship to using
+      structures to solve systems of equations. Teachers should monitor students’ thinking throughout each activity.
+      </p>
+      <p>
+      Monitor both students’ independent work and group discussions to highlight student products that demonstrate
+      the learning goals using different strategies.
+      </p>`,
+    interpretEvidence: `
+      <p>
+        The teacher can use the visual cues from the self-assessment with the Red, Yellow, Green
+        Cups/Tiles to arrange peer tutors or rearrange groups during activities. While monitoring student
+        work/discussion, highlight student thinking that may help increase other students’ understanding. At the end of
+        each activity, the teacher should take time to synthesize students’ thinking around the activity. The teacher will
+        provide immediate Feedback to students during activity synthesis and use Strategic Questioning in order to
+        clarify misconceptions and build on prior knowledge. The teacher will also use evidence from the Exit Ticket to
+        plan next steps.
+      </p>`,
+    actOnEvidence: `
+      Feedback
+      <p>
+        The teacher should circulate throughout the room and monitor students’ work/discussions and give
+      prescriptive feedback on any misconceptions and understandings students have.
+      </p>
+      Instructional Moves
+      <p>
+        Many of the slides in the presentation include Teacher Notes. These notes detail which
+        activities to use, which questions to ask, and how to respond to those questions or clarify the intended learning for
+        that slide/word problem.
+      </p>
+      <p>
+        The teacher should use the formal evidence from the Exit Ticket to decide whether additional practice is needed or
+        whether students are ready to move on to a new lesson."
+      </p>`
+  },
+};
+
+export const mockIrGrainOfSandDropOfWater = {
+  id: 7,
+  resourceType: "Instructional and Professional Learning",
+  title: "A Grain of Sand or a Drop of Water: Using details to help understand the main idea/research topic.",
+  author: "Leon Jabs",
+  publisher: "",
+  subject: ["ELA"],
+  grades: [4],
+  educationalAlignments: [ // claims
+    { title: 'Research / Inquiry', shortName: '4' }
+  ],
+  standards: ["CCSS.ELA-LITERACY.RI.4.7"],
+  targetAlignments: [ // targets
+    { title: 'Interpret & Integrate Information', shortName: '2' }
+  ],
+  updated: "2019-07-26T11:29:37-0500",
+  resourceThumbnail: "https://smarterbalancedlibrary.org/sites/default/files/styles/resource_image_grid/public/resource_thumbnails/resource_cover_photos/a_grain_of_sand._a_drop_of_water.jpg",
+  altBody: `
+    <p>
+      This lesson will help the student understand how selecting details from a text will help them understand the
+      main idea. Students will be reading an informative text about erosion. Throughout this lesson, they will practice
+      choosing the details that support the topic and further explaining how those details help them understand the
+      main idea more clearly. This will be done in an “I DO,” “WE DO,” and “YOU DO” format, with the text on wind
+      erosion being the last part (YOU DO) of the lesson.
+    </p>`,
+  learningGoals: `
+    <p>
+      Students will be able to select details from a source and explain how those details help
+      them understand the main idea/central idea or a research topic. When students can correctly select the
+      details that support the main idea/central idea or research topic, they should be able to understand the
+      learning goal.
+    </p>`,
+  successCriteria: `
+    <p>
+      "Students will demonstrate success when they can:
+      <ul>
+        <li>determine key details that support the research.</li>
+        <li>explain how key details support the research."</li>
+      </ul>
+    </p>`,
+  steps: [
+    {
+      number: 1,
+      title: 'No Heading',
+      content: `
+        <p>
+          When students enter the classroom, give them the entrance ticket and have them work on it
+          individually. This should take no more than 5 minutes. Assist the special needs students as needed. You may
+          want to have a copy of the entrance ticket key for reference.
+        </p>`
+    },
+    {
+      number: 2,
+      title: 'No Heading',
+      content: `
+        <p>
+          Walk around the classroom to observe and determine which students have a clear understanding of
+          choosing important details and those that will need additional help. If too many of the students were not able to
+          identify at least 2 correct details, you may want to consider doing a lesson or mini-lesson on key details that
+          support the main idea. If it is determined that most of the students are ready, proceed with the lesson.
+        </p>
+        <p>
+          For those students who are struggling with finding the details, try doing a small group with them. If many or
+          most of your students seem to be struggling, a mini-lesson on finding key details may be needed. To assist
+          with access to reading the information on erosion, have speech-to-text available for a particular passage, use
+          Strikethrough to eliminate irrelevant details, and use a Highlighter to identify specific details.
+        </p>
+        <p>
+          NOTE: This is written up for students to work in pairs (or triads). It is the teacher’s discretion to do the
+          final portion (“YOU DO”) as pairs or individually.
+        </p>`
+    },
+    {
+      number: 3,
+      title: 'No Heading',
+      content: `
+        <p>
+        “Today we are going to look at some paragraphs that have been broken down into individual
+        sentences. I will do one first and you will follow along with me. Next, we will do one together and finally
+        you will be given a passage to do with a partner (or individually if you decide to do this lesson that way) .
+        </p>
+        <p>
+        You will be given an envelope that has a set of sentences in it. You will read over the sentences. After
+        reading the sentences, you will decide which are the key details.” More advanced students/upper grade
+        students can do this with chunks of passages (chunks can be grouped paragraphs or logical connections the
+        teacher has predetermined prior to assigning the passage.). “Once you have decided which sentences are
+        the supporting details, you will turn to your partner and begin discussing which are the key details.
+        </p>
+        <p>
+        Partner A will go first, then partner B. You need to tell your partner why you chose the sentences you
+        did. The next step will be to explain to your partner what you know or understand about your main
+        idea/research topic.”
+        </p>
+        <p>
+        NOTE: Each source of the “I, WE, and YOU DO” consists of 2 pages. The first page has active links to
+        vocabulary words. It is at the teacher's discretion whether to use the links and which links to use. The second
+        page is a duplicate of the first page but without the links.
+        </p>`
+    },
+    {
+      number: 4,
+      title: 'No Heading',
+      content: `
+        <p>
+          “Let’s start by looking at our first source.” You can either give the students the specific
+          paragraph on the source they will be looking at or you can do this as a whole group by projecting the
+          paragraph/passage on the board and giving students a hard copy of the paragraph/passage to annotate as you
+          work together. The “I DO” source could be used here, or a source of your own choosing. Students will follow
+          along with you as you model the process via a “think aloud.” If you use the supplied source, the lesson may go
+          as follows: “Our first source is on erosion. This source is the “ I Do ” portion of our lesson. First, I am
+          going to read through the whole source and then I will read it again and annotate. Read the source out
+          loud one time and then read a second time and annotate.
+        </p>
+        <p>
+          Today, we will be selecting key details from a text that support the main idea of a research topic.
+        </p>
+        <p>
+          After we select the key details, we will explain how they help us understand the research topic. When
+          we have determined our key details, we will ask ourselves the question “What does this tell me about
+          my research topic?” or “What do I know about the main idea or research topic?”
+        </p>
+        <p>
+          NOTE: The next two steps can be done as a class or in pairs/groups, with the teacher still leading.
+          This will be the “ WE DO ” portion of the lesson.
+        </p>`
+    },
+    {
+      number: 5,
+      title: 'No Heading',
+      content: `
+        <p>
+        Repeat the expectations for this activity and then hand out the envelopes to each pair after
+        partnering each pair of students. If you have an uneven number of students, you can either have the extra
+        student work with you or in a triad of your choosing. More advanced students can work independently and
+        share their results with the class rather than working in a pair. The main idea should be given to the students
+        since the focus is on finding the details that support it. You may differentiate here for your advanced students
+        by having them determine the main idea.
+        </p>`
+    },
+    {
+      number: 6,
+      title: 'No Heading',
+      content: `
+        <p>
+          After sharing with their partner, student pairs will come to the teacher and place their sentences in
+          the order of main idea first (given) and supporting details second using whichever technology you have.
+        </p>
+        <p>
+          Partner B will go first. The student needs to read each sentence and identify which is the main idea and why.
+        </p>
+        <p>
+          Partner A will do the same. The teacher uses guiding questions to help guide students to determine which
+          sentences are the key details and why each particular sentence was chosen. Do this for each set of students.
+        </p>`
+    },
+    {
+      number: 7,
+      title: 'No Heading',
+      content: `
+        <p>
+          To address the “act on evidence” part of formative assessment, the teacher can review all of the
+          responses from the students either as they are sharing with the class by using a checklist of expectations. The
+          teacher can then either go on to add in more expectations in the next lesson or reteach the concepts and
+          assess again.
+        </p>`
+    },
+    {
+      number: 8,
+      title: 'No Heading',
+      content: `
+        <p>
+          The final source can be given to the students as a single paragraph or broken down into sentences
+          for those that need additional help. This will be the “ YOU DO ” part of the lesson.
+        </p>`
+    },
+ ],
+  connectionsPlaylist: [],
+  // overview
+  attachments: [],
+  videoLinks: [],
+  differentiation: undefined,
+  accessibilityStrategies: [
+    { 
+      title: 'Highlighter',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `A digital tool for marking desired text, item questions, item answers, or parts of
+        these with a color. Highlighted text remains available throughout each test segment. `
+    },
+    {
+      title: 'Speech-to-Text',
+      link: '#',
+      description: ''
+    },
+    {
+      title: 'Strikethrough',
+      link: '#',
+      description: ''
+    },
+  ],
+  formativeAssessmentProcess: {
+    clarifyIntendedLearning: `
+      <p>
+        Start the lesson by giving students an entrance ticket. The entrance ticket will allow the
+        teacher to quickly see which students have a grasp on selecting key details as they pertain to the main
+        idea/central idea or research topic. Refer to the entrance ticket key for a detailed example of what to
+        look for in the final product.
+      </p>`,
+    elicitEvidence: `
+      <p>
+        The teacher can do a quick check of where students are on their understanding of
+        details that support the main idea. From this point, the teacher may want to strategically pair up students to
+        work together.
+      </p>`,
+    interpretEvidence: `
+      <p>
+        After the teacher has an understanding of where the students are in their understanding,
+        he/she can begin the lesson of explaining how details help a reader understand the main idea. The lesson will
+        be done in an “I DO,” “YOU DO,” and “WE DO” format.
+      </p>`,
+    actOnEvidence: `
+      Feedback
+      <p>
+        Feedback will be given to students directly. It may be written or oral, depending on the teacher’s
+        preference. Feedback at this point needs to be constructive. “Nice job,” or “I like that,” or complementary
+        words or phrases are allowed, but need to be in addition to constructive feedback.
+      </p>
+      Instructional Moves
+      <p>
+        During this lesson, some students may struggle with choosing details as opposed to
+        important or “key” details. This may not always be an easy fix or something that can be done on the spot. It
+        would be helpful for those students if you had some practice paragraphs that had details and key details. You
+        can adjust the difficulty by inserting or removing sentences as well as telling them how many details there are
+        and how many key details there are. The point to remember is that a key detail tells the reader something
+        specific or important about the topic/main idea.
+      </p>
+`
+  },
+  formativeStrategies: [
+    {
+      title: 'Entrance Ticket',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    }
+  ],
+  comments: `
+    <p>
+      Because this lesson is about selecting details that pertain to the main idea/research topic, it
+      should not be taught with having a goal of determining the main idea. The main idea will be given to the
+      students and the students will be determining the details that support their research or a research topic.
+    </p>`
+};
+
+export const mockIrAnyWayYouSliceIt = {
+  id: 9,
+  resourceType: "Instructional and Professional Learning",
+  title: "Any Way You Slice It!",
+  author: "Michael Regan",
+  publisher: "",
+  subject: ["Math"],
+  grades: [7],
+  educationalAlignments: [ // claims
+    { title: 'Concepts & Procedures', shortName: '1' }
+  ],
+  standards: ["CCSS.MATH.CONTENT.7.G.A.3"],
+  targetAlignments: [ // targets
+    { title: 'Draw, construct, and describe geometrical figures and describe the relationship between them', shortName: 'E' }
+  ],
+  updated: "2019-07-26T11:29:37-0500",
+  resourceThumbnail: "https://smarterbalancedlibrary.org/sites/default/files/styles/resource_image_grid/public/resource_thumbnails/resource_cover_photos/image001.png",
+  altBody: `
+    <p>
+      Students will work with a partner to slice geometric solids and find two-dimensional shapes. Once students have
+      worked with a partner, the teacher will bring the class together to go over the problems. The teacher can show a
+      visual model of how each problem was solved. At the end of the slide show is an Exit Ticket to be used to check for
+      understanding and also formally assess the intended learning goal. This lesson is accessed through a Google Slide
+      presentation (technology required).
+    </p>`,
+  learningGoals: `
+    <p>
+      Students will describe two-dimensional figures that result from slicing prisms and pyramids by
+      planes.
+    </p>`,
+  successCriteria: `
+    <p>
+      <ul>
+        <li>I can identify two-dimensional shapes from slicing rectangular prisms and pyramids.</li>
+        <li>I can explain how I arrived at those shapes.</li>
+      </ul>
+    </p>`,
+  steps: [
+    {
+      number: 1,
+      title: 'Materials Used',
+      content: `
+        <p>
+          <ul>
+            <li>Whiteboard or a projector for the slide show</li>
+            <li>Three-dimensional geometric solids</li>
+            <li>clay/playdough for the class</li>
+            <li>wire/dental floss to slice the clay</li>
+            <li>apple</li>
+            <li>paint (optional)</li>
+          </ul>
+        </p>`
+    },
+    {
+      number: 2,
+      title: 'Introduction',
+      content: `
+        <p>
+          <ul>
+            <li>Before beginning the lesson, open the Google Slide Presentation for “Any Way You Slice It!”</li>
+            <li>Introduce the lesson by telling students that today they will be identifying two-dimensional shapes by slicing three-dimensional geometric clay solids using a piece of wire/dental floss.</li>
+            <li>The teacher can then display the Learning Goal (slide 3) for the students.  Identify different types of two-dimensional shapes from slicing a three-dimensional solid (i.e., rectangle, trapezoid, hexagon).</li>
+            <li>Continue by showing the students the Success Criteria (slide 4), and explain that they will know they have understood this lesson when they can:</li>
+            <li>Identify two-dimensional shapes from slicing a rectangular prism and explain how they arrived at those shapes.</li>
+            <li>Identify two-dimensional shapes from slicing a rectangular pyramid and explain how they arrived at those shapes (allow students to use scratch paper).</li>
+          </ul>
+        </p>`
+    },
+    {
+      number: 3,
+      title: 'Warm-up Activity',
+      content: `
+        <p>
+          <ul>
+            <li>As part of the lesson, the teacher will slice an apple to show a cross section (slide 5). If there is time, paint can also be used to make a stamp of the cross section of the apple.</li>
+            <li>As the teacher is slicing the apple, the teacher could also be asking questions and checking for understanding.</li>
+          </ul>
+        </p>`
+    },
+    {
+      number: 4,
+      title: 'Pairing Students Up',
+      content: `
+        <p>
+          <ul>
+            <li>Have students pair up by two-dimensional geometric names and number of sides each geometric
+shape given on the List of Polygons and Sides resource.</li>
+          </ul>
+        </p>`
+    },
+    {
+      number: 5,
+      title: 'Introduce the Lesson',
+      content: `
+        <p>
+          <ul>
+            <li>In this activity (slide 8), students are given clay and a piece of wire for cutting prisms and pyramids.
+                Students are asked to draw cross sections freehand onto their worksheet, but this is not a skill that
+                is required in order for students to be able to describe two-dimensional
+                shapes.
+                <p>
+                  ■ Depending on the level of the student, use the At Level Worksheet , Below Level Worksheet
+                  (Use List of Polygons and Sides as a reference), or the Above Level Worksheet .
+                </p>
+            </li>
+            <li>Students will describe how the cross section changes as the plane moves.</li>
+            <li>Arrange students in pairs. Give students 3–5 minutes of quiet work time followed by time to discuss shapes of cross sections with a partner. Follow with a whole-class discussion.</li>
+            <li>Throughout the lesson, the teacher is checking for understanding and misconceptions.</li>
+          </ul>
+        </p>`
+    },
+    {
+      number: 6,
+      title: 'Exit Ticket',
+      content: `
+        <p>
+          <ul>
+            <li>Exit Ticket (slide 10) can be used at the end of the lesson for understanding and misconceptions.</li>
+          </ul>
+        </p>`
+    },
+    {
+      number: 7,
+      title: 'Teacher Next Step',
+      content: `
+        <p>
+          <ul>
+            <li>Additional resources are provided below for students who need additional support or for extensions.</li>
+            <li>Within the slide presentation, teacher notes are added for additional support for the educator.</li>
+          </ul>
+        </p>`
+    },
+  ],
+  connectionsPlaylist: [],
+  // overview
+  attachments: [],
+  videoLinks: [],
+  differentiation: undefined,
+  accessibilityStrategies: [],
+  formativeAssessmentProcess: {
+    clarifyIntendedLearning: `
+      <p>
+        <ul>
+          <li>Introduce the lesson by telling students that today they will be identifying two-dimensional shapes by slicing three-dimensional geometric clay solids using a piece of wire/dental floss.</li>
+          <li>The teacher can then display the Learning Goal (slide 3) for the students. Identify different types of two-dimensional shapes from slicing a three-dimensional solid (i.e., rectangle, trapezoid, hexagon).</li>
+          <li>Continue by showing the students the Success Criteria (slide 4), and explain that they will know they have understood this lesson when they can:
+              <ul>
+                <li>Identify two-dimensional shapes from slicing a rectangular prism and explain how they arrived at those shapes.</li>
+                <li>Identify two-dimensional shapes from slicing a rectangular pyramid and explain how they arrived at those shapes (allow students to use scratch paper).</li>
+              </ul>
+          </li>
+        </ul>
+      </p>`,
+    elicitEvidence: `
+      <p>
+        Evidence is elicited through a series of independent work, classroom discussion, and Think-Pair-Share . The
+        teacher will monitor student progress. Students will share their thinking and their mathematical process through
+        partner work and whole-class activities.
+      </p>`,
+    interpretEvidence: `
+      <p>
+        The teacher will continuously interpret evidence of student thinking throughout the lesson by circulating, checking
+        students’ work, guiding students through problems, guiding class discussions around the questions posed, and
+        engaging with students as they work in pairs. The teacher will also formally interpret evidence of student thinking
+        by examining students’ completed Exit Tickets , checking for understanding at the end of the lesson. The teacher
+        could find misconceptions and share with the entire class.
+      </p>`,
+    actOnEvidence: `
+      <p>
+        The teacher can adjust instruction, revisit problems, and address misconceptions after collecting real-time
+        evidence from the learning activities listed above. Using evidence from the Exit Ticket , the teacher will either
+        assign additional practice and review or move on to the next lesson.
+      </p>
+      Feedback
+      <p>
+      The teacher can provide feedback throughout the lesson as students think and work in pairs. The teacher can also
+      provide feedback through questions posed to students and as the teacher and students work together through each
+      problem. Students can do Peer-to-Peer Feedback when working in partners. Finally, the teacher has an
+      opportunity to provide verbal or written feedback using the evidence from the Exit Ticket.
+      </p>
+      Instructional Moves
+      <p>
+        <ul>
+          <li>Many of the slides in the presentation include Teacher Notes. These notes detail which activities to use, which questions to ask, and how to respond to those questions or clarify the intended learning for that slide/word problem.</li>
+          <li>The teacher should use the formal evidence from the Exit Ticket to decide whether additional practice is needed or whether students are ready to move on to a new lesson.</li>
+        </ul>
+      </p>
+      <p>
+        Struggling students:
+        <ul>
+          <li>A common struggle that students have is slicing a geometric shape at an angle.</li>
+          <li>Review previous understanding of two-dimensional shapes.</li>
+          <li>Provide access to geometric solids that have already been sliced.</li>
+          <li>Intentionally pair student with another student to support student learning.</li>
+          <li>Allow struggling students to slice a geometric shape parallel to the base.</li>
+        </ul>
+      </p>
+      <p>
+        Extending the Learning:
+        <ul>
+          <li>Allow students to slice other three-dimensional geometric solids and find other two-dimensional shapes.</li>
+        </ul>
+      </p>`
+  },
+  formativeStrategies: [
+    {
+      title: 'Exit Ticket',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    }, {
+      title: 'Peer-to-Peer Feedback',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    }, {
+      title: 'Think-Pair-Share',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    }
+  ],
+  comments: `
+    <p>
+      If additional formative assessments and quizzes are desired, please visit Edulastic . On Edulastic, teachers have the
+      option to create their own formative assessment/quizzes. Teachers will need to create a free Edulastic account to
+      access by clicking “Join for Free” in the top right corner of the screen.
+    </p>`
+};
+
+export const mockIrSearchingForRelevantResources = {
+  id: 10,
+  resourceType: "Instructional and Professional Learning",
+  title: "Searching for Relevant Resources",
+  author: "Michael Collins",
+  publisher: "",
+  subject: ["ELA"],
+  grades: [8, 9, 'HS'],
+  educationalAlignments: [ // claims
+    { title: 'Concepts & Procedures', shortName: '1' }
+  ],
+  standards: ['CCSS.ELA-LITERACY.W.9-10.8'],
+  targetAlignments: [ // targets
+    { title: 'Evaluate Information / Sources', shortName: '3' }
+  ],
+  updated: "2019-07-10T11:29:37-0500",
+  resourceThumbnail: "https://smarterbalancedlibrary.org/sites/default/files/styles/resource_image_grid/public/resource_thumbnails/resource_cover_photos/search.jpg",
+  altBody: `<p>Students will understand the importance of relevant sources as they conduct research.</p>`,
+  learningGoals: `
+    <p>
+      <ol>
+        <li>Students-Students will understand that not all reliable sources are necessarily relevant to their research goal/task.</li>
+        <li>Students will be able to distinguish between relevant and irrelevant sources to best support their research goal.</li>
+      </ol>
+    </p>`,
+  successCriteria: `
+    <p>
+      <ul>
+        <li>I can determine the relevance of a reliable source by using the Relevant Rules handout.</li>
+        <li>I can write a short response where I explain the differences between reliable and relevant resources.</li>
+      </ul>
+    </p>`,
+  steps: [
+    {
+      number: 1,
+      title: 'No Heading',
+      content: `
+        <p>
+          The teacher defines the word “relevant” for students and explains that not all reliable resources are
+          necessarily useful or relevant for a research paper. The teacher will point out the learning goals and success
+          criteria to help students know what is asked of them.
+        </p>`
+    },
+    {
+      number: 2,
+      title: 'No Heading',
+      content: `
+        <p>
+          Students answer the Entrance Ticket quick write question, “List and explain the different features of a
+          reliable resource.” They need to review this topic before they delve deeper into understanding what a
+          reliable and relevant source is. The teacher asks for volunteers to read responses for a quick review. Have
+          students use a highlighter to mark the key ideas from their quick write that are mentioned during the
+          review. The teacher will choose a student to write the responses on the board to have as further reminders.
+        </p>`
+    },
+    {
+      number: 3,
+      title: 'No Heading',
+      content: `
+        <p>
+          The teacher will introduce the Relevant Rules handout and explain how it summarizes the different
+          characteristics of how to identify relevant resources when conducting research. Students are given 15–20
+          minutes to annotate the handout. Before they begin the teacher can use a quick red, yellow, and green tile
+          strategy or think pair share strategy to ensure students are clear on how to annotate a text.
+        </p>`
+    },
+    {
+      number: 4,
+      title: 'No Heading',
+      content: `
+        <p>
+          Review/Reinforce the Relevant Rules handout by creating a gallery walk activity. The teacher explain the
+          following activity to the students. First, students will be paired into groups of 3–4. Each group will be an
+          expert in one of the Relevant Rules. They will summarize their understandings on a posterboard and
+          display it on a section of the wall. Each student makes contributions to the poster using their annotated
+          handouts. With all posters displayed on the classroom walls students walk clockwise throughout the room
+          to view each poster. Each group will briefly explain how their rule helps to identify a relevant resource.
+        </p>`
+    },
+    {
+      number: 5,
+      title: 'No Heading',
+      content: `
+        <p>
+          Together, the teacher leads a think-aloud to complete the first examples of the Internet Search Activity
+          handout. As the teacher demonstrates how they will complete the first example, the students gain a better
+          understanding on how to identify a relevant resource. Then, each student completes the other examples
+          independently.
+        </p>`
+    },
+    {
+      number: 6,
+      title: 'No Heading',
+      content: `
+        <p>
+          Students will fill in a Relevant Sources Chart for a topic of their
+          choice and rank the sources from most to least relevant. The teacher
+          calls on students to see how they ranked their resources. The teacher
+          can use a muddiest point strategy to help fill any gaps in students’
+          understanding. Here, students write down any clarifying questions they
+          have after they hear other responses from their peers.
+        </p>`
+    },
+    {
+      number: 7,
+      title: 'No Heading',
+      content: `
+        <p>
+          Students will reflect on their learning by completing an exit ticket question, which is at the bottom of the
+          Relevant Sources Chart handout. The short response should answer the question, “In 3–4 sentences explain
+          how a source can be reliable (accurate and credible) but not relevant to your research?”
+        </p>`
+    }
+  ],
+  connectionsPlaylist: [],
+  // overview
+  attachments: [],
+  videoLinks: [],
+  differentiation: ``,
+  accessibilityStrategies: [
+    { 
+      title: 'Highlighter',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `A digital tool for marking desired text, item questions, item answers, or parts of
+        these with a color. Highlighted text remains available throughout each test segment. `
+    }
+  ],
+  formativeAssessmentProcess: {
+    clarifyIntendedLearning: `
+      <p>
+        The teacher will explain the importance of the learning goal by explaining how not all reliable resources are
+        necessarily useful or relevant for a research paper. It is essential that students understand that they will find plenty
+        of reliable sources in their Internet searches, but the information in those sources might not speak to the purpose
+        of a research paper. The teacher will start the lesson by reviewing students’ answers to the entrance ticket quick
+        write question, which asks students to list and explain the different features of a reliable source before they delve
+        deeper into understanding what a reliable and relevant source is. Students should use a highlighter to focus on
+        any new learning from what they wrote or add more notes from what other students mention.
+      </p>`,
+    elicitEvidence: `
+      <p>
+        Students will complete a text annotation activity to understand the different rules regarding what makes a reliable
+        source. Teachers can do a brief red, yellow, and green tile strategy or think pair share strategy to ensure
+        students are clear on how to annotate a text. Then, give the students the rules for a reliable source handout.
+      </p>`,
+    interpretEvidence: `
+      <p>
+        Students will be split into groups to complete a gallery walk activity where each group displays their
+        understandings regarding the three rules of a relevant source.
+      </p>`,
+    actOnEvidence: `
+      <p>
+        Teachers might use a muddiest point strategy and have students respond with any lingering questions or
+        concerns before they break into their independent research activity. This activity can also help teachers respond to
+        students who haven't yet been able to demonstrate their understanding that a credible and accurate source isn’t
+        always relevant to a research paper. Here are three basic criteria: (Again the purpose of this assignment is to
+        determine whether the reliable source is relevant.)
+        <ol>
+        <li>The source must be credible. It is verifiable. Other sources corroborate the information from this
+        source. Other texts include similar information. If the source is a person, then other authors
+        reference that person as an authority, validating his or her expertise.</li>
+        <li>The source must also be accurate. More than just making sure the information is not false, it must be
+        completely true. It's not misleading or does not omit anything. Part of accuracy is also assessing
+        whether the information is timely. The source has to be current, not outdated.</li>
+        <li>The third criterion is that the source is relevant. The information addresses the thesis statement
+        and/or answers the research question. Keep in mind, a source might be credible and accurate in its
+        information, but if the information isn't about the topic, then it isn’t relevant.</li>
+        </ol>
+      </p>
+      Feedback
+      <p>
+        Students will be given opportunities to be given feedback during and after they complete their quick write, Internet
+        Search Activity, and Relevant Sources Chart.
+      </p>
+      Instructional Moves
+      <p>
+        The teacher may need to group students who are at or above standard with lower students for the gallery walk activity.
+      </p>
+    `
+  },
+  formativeStrategies: [
+    {
+      title: 'Exit Ticket',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    }, {
+      title: 'Entrance Ticket',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    }
+  ],
+  comments: `
+    <p>
+      Students should already have a good understanding of how to find the main point of an article and understand an
+      author’s claims and evidence before starting this lesson. Also students might need some guided assistance in
+      annotative reading. Finally, the Internet Search Activity might not be comfortable for some teachers; however,
+      teens use of vaping drugs is becoming an epidemic. The author inserted this example for an opportunity to discuss
+      a real-life example of how students can use research to make informed decisions.
+      <ul>
+        <li>Resource equity —This resource addresses an ELA writing standard regarding the research process. The strategies incorporated in this resource are all designed to support students with all learning levels.</li>
+      </ul>
+    </p>`
+};
+
+export const mockIrIntroToQuadFormula = {
+  id: 11,
+  resourceType: "Instructional and Professional Learning",
+  title: "Intro to Quadratic Formula",
+  author: "Chelsey Shade",
+  publisher: "Smarter Balanced",
+  subject: ["Math"],
+  grades: ['HS'],
+  educationalAlignments: [ // claims
+    { title: 'Concepts & Procedures', shortName: '1' }
+  ],
+  standards: ['CCSS.MATH.CONTENT.A.REI.B.4'],
+  targetAlignments: [ // targets
+    { title: 'Solve equations and inequalities in one variable', shortName: 'I' }
+  ],
+  updated: "2019-07-31T11:29:37-0500",
+  resourceThumbnail: "https://smarterbalancedlibrary.org/sites/default/files/styles/resource_image_grid/public/resource_thumbnails/resource_cover_photos/intro_to_quadratic_formula_resource_card.jpg",
+  altBody: `
+    <p>
+      This resource is designed for a block day lesson or two 45-minute
+      lessons. This is an introductory lesson on using the quadratic formula to
+      solve quadratic equations. The lesson contains an Entrance Ticket,
+      exploration activity, guided notes, question-question-swap activity,  group
+      activity, and Exit Ticket.
+    </p>`,
+  learningGoals: `
+    <p>
+      Students will solve quadratic equations in one variable with real roots by using the quadratic formula.
+    </p>`,
+  successCriteria: `
+    <p>
+      Students can write the quadratic formula.
+    </p>
+    <p>
+      Students can identify the values for a, b, and c.
+    </p>
+    <p>
+      Students can use the quadratic formula to solve for real roots.
+    </p>`,
+  steps: [
+    {
+      number: 1,
+      title: 'Entrace Ticket',
+      content: `
+        <p>
+          Project the Entrance Ticket (slide 2) using an overhead projector. If one is unavailable, then make copies for the students or write it on the board (Print On Demand). Everything is located on the Using the Quadratic Formula Intro Lesson presentation.
+        </p>
+        <p>
+          Complete a Think-Pair-Share where students solve the problem individually, discuss with their partner, and then share out with the whole class. You can use Popsicle Sticks or an alternate method to call on a few students to share.
+        </p>`
+    },
+    {
+      number: 2,
+      title: 'Learning Goal and Agenda',
+      content: `
+        <p>
+          Post or share the learning goal and success criteria and the agenda with the class (slides 3 and 4, respectively).
+        </p>
+        <p>
+          Read the learning goal and success criteria aloud to the class. Ask students whether they have any clarifying questions, or ask students clarifying questions by having them identify words they are unsure about. It is also helpful to have students write the learning goal and success criteria in a journal or on Scratch Paper and discuss them with a partner.
+        </p>
+        <p>
+          Read the agenda aloud to the class.
+        </p>`
+    },
+    {
+      number: 3,
+      title: 'Exploration',
+      content: `
+        <p>
+          Project the exploration problems (slides 5–7) and give students 3–5 minutes to answer the questions on each slide individually.
+        </p>
+        <p>
+          Have students do a Think-Pair-Share activity using the prompt on slide 8. Give students enough time to write down their individual thoughts to both questions on Scratch Paper, and then have them find a partner and share their answers with each other.
+        </p>
+        <p>
+          Use a method to call on students to share what they talked about with their partner (e.g., Popsicle Sticks, random number generator, volunteers).
+        </p>
+        <p>
+          Summarize the conversation for the entire class, ensuring that misconceptions are corrected and highlighting why they might want to use the quadratic formula instead of using other methods.
+        </p>`
+    },
+    {
+      number: 4,
+      title: 'Notes',
+      content: `
+        <p>
+          Project the notes on slides 9 and 10. It is recommended that you print the notes (Print On Demand) for students with visual impairments and visual perceptual difficulties or English learners with limited proficiency (e.g., NEPs). Additionally, you might want to create skeleton notes for students with higher levels of English proficiency (e.g., LEPs or FEPs) by removing some words on the slides so that they have to listen and fill in the empty spaces and highlight a, b, and c in the equation and formula. All other students should be able to write their own notes in a journal or notebook.
+        </p>`
+    },
+    {
+      number: 5,
+      title: 'Question-Question-Swap',
+      content: `
+        <p>
+          Print the Question-Question-Swap Cards back to back. Cut the cards out.
+        </p>
+        <p>
+          Project slide 11 for the students to read the directions.
+        </p>
+        <p>
+          Each student will receive a card with a quadratic equation on one side and the values for a, b, and c on the other. (If possible, print using colored ink, so the equations are in black font and the values are in red font.)
+        </p>
+        <p>
+          Have students stand up, put their hands up, find another person with his/her hand up, and give each other a high five, to find their partners.
+        </p>
+        <p>
+          Partner A shows the equation side to their partner.
+        </p>
+        <p>
+          Partner B looks at the quadratic equation and identifies the values for a, b, and c.
+        </p>
+        <p>
+          Partner A tells their partner whether he/she got the answer correct.
+        </p>
+        <p>
+          Have students switch roles.
+        </p>
+        <p>
+          Have students TRADE their cards and use the same method to find a new partner.
+        </p>
+        <p>
+          Repeat as many times as needed. It is recommended to complete at least 3 cycles.
+        </p>`
+    },
+    {
+      number: 6,
+      title: 'Notes',
+      content: `
+        <p>
+          Project the notes on slides 12–14. It is recommended that you print the notes for students with IEPs or English learners with limited proficiency (e.g., NEPs). Additionally, you might want to create skeleton notes for students with higher levels of English proficiency (e.g., LEPs or FEPs) by removing some words on the slides so that they have to listen and fill in the empty spaces. All other students should be able to write their own notes in a journal or notebook.
+        </p>`
+    },
+    {
+      number: 7,
+      title: 'Quadratic Formula Intro Activity',
+      content: `
+        <p>
+          Print the quadratic formula scaffold (slide 16 or 17) (one per person) and place each in a sheet pocket/protector. Alternatively, you can have students place them in the pockets to save time. Slide 16 is meant to be used if you have access to a color printer. Slide 17 is meant to be used if you do not have access to a color printer.
+        </p>
+        <p>
+          Print the first page of the Quadratic Formula Activity. Print enough copies to have one per group. Cut the cards out and create one deck per group. You can print the answer key for yourself and/or the students.
+        </p>
+        <p>
+          Project slide 15 for the students to read the directions.
+        </p>
+        <p>
+          Place students into groups of four.  It is recommended that you create purposeful, heterogeneous groups.  You can also create homogeneous groups and change the roots to non-real numbers for advanced students and perfect squares for students below target level. A calculator may be used for students whose basic math arithmetic skill is limited to help them to focus on the current instruction.
+        </p>
+        <p>
+          Have each group identify a group leader.
+        </p>
+        <p>
+          Group leaders get their card deck from you, place it in the center of the group, and turn the top card face up.
+        </p>
+        <p>
+          All students write the equation on the first line; identify a, b, and c; place a, b, and c into the correct highlighted areas in the quadratic formula; use order of operations to finish solving the equation. Some students may need a Scribe, where a peer or an adult records what the student dictates on the worksheet.
+        </p>
+        <p>
+          When everybody is done solving, they share their answers with the group. If everybody gets the same solution, the group leader turns the next card over and the group repeats the process. If somebody gets a different answer, the students should check their work, find the error, and correct it until everybody has the same solution(s).
+        </p>
+        <p>
+          Repeat the process until the deck is finished or it is time for the Exit Ticket.
+        </p>`
+    }
+  ],
+  connectionsPlaylist: [],
+  // overview
+  attachments: [],
+  videoLinks: [],
+  differentiation: undefined,
+  accessibilityStrategies: [
+    {
+      title: 'Highlighter',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `A digital tool for marking desired text, item questions, item answers, or parts of
+        these with a color. Highlighted text remains available throughout each test segment. `
+    },
+    {
+      title: 'Print on Demand',
+      link: '',
+      description: ``
+    },
+    {
+      title: 'Popsicle Sticks',
+      link: '',
+      description: ``
+    },
+    {
+      title: 'Scratch Paper',
+      link: '',
+      description: ``
+    },
+    {
+      title: 'Calculator',
+      link: '',
+      description: ``
+    },
+    {
+      title: 'Scribe',
+      link: '',
+      description: ``
+    },
+    {
+      title: 'Print on Demand',
+      link: '',
+      description: ``
+    }
+  ],
+  formativeAssessmentProcess: {
+    clarifyIntendedLearning: `
+      <p>
+        The learning goal and success criteria are presented to the students after the Entrance Ticket. Read the learning goal and success criteria aloud to the class. Explain why the learning goal is important to learn. Ask the students whether they have any clarifying questions, or ask students clarifying questions by having them identify words they are unsure about. It is also helpful to have students write the learning goal and success criteria in a journal or on a piece of paper. Students can also discuss the learning goal and success criteria with a partner.
+      </p>`,
+    elicitEvidence: `
+      <p>
+        There are various methods for the teacher and students to elicit evidence during this lesson.
+      </p>
+      <p>
+        The Entrance Ticket allows the teacher and students to see what students remember about factoring, which is a scaffold to the quadratic formula. Evidence is elicited during the Exploration Think-Pair-Share about how one might find the roots, without graphing, for a quadratic equation that cannot be factored (over the integers).
+      </p>
+      <p>
+        The Question-Question-Swap activity allows students to elicit evidence from their partners about identifying the coefficients for a, b, and c. The Quadratic Formula Activity allows students to elicit evidence from their group members about their ability to use the quadratic formula to solve equations.
+      </p>
+      <p>
+        Finally, the Exit Ticket allows the teacher to elicit evidence from each student about his/her ability to use the quadratic formula to solve an equation, whether they met the success criteria, and what questions they still have about the learning goal.
+      </p>`,
+    interpretEvidence: `
+      <p>
+        Rely on the learning goal and success criteria to evaluate students’ work. Make sure students are writing the quadratic formula correctly. Some look-fors are the inclusion of the plus-minus sign, making the b negative, and squaring the b value.
+      </p>
+      <p>
+        When identifying the values for a, b, and c, many students do not realize that a subtraction sign means that the coefficient is negative. Additionally, many students often forget that the coefficient equals 1 if there is not a value written in front of the variable.
+      </p>
+      <p>
+        Lastly, when using the quadratic formula to solve the equation, many students do not know how the negative sign in front of the b value affects the value of b. Many students also struggle with following order of operations when a square root is involved. The Quadratic Formula Activity is scaffolded to help students with these common struggles.
+      </p>
+      <p>
+        The teacher and the students will be interpreting the evidence during the lesson. The teacher will be interpreting indirectly, through observations, while the students partake in the Exploration Think-Pair-Share, the Question-Question-Swap, and the Quadratic Formula Activity. Students will be interpreting their peers’ thinking directly during these activities. The teacher will be interpreting the students’ thinking directly on the Entrance and Exit Tickets.  Students will also be interpreting their own abilities on the Exit Ticket.
+      </p>`,
+    actOnEvidence: `
+      <p>
+        There are many ways and opportunities for the teacher and students to act on evidence during this lesson. The Exploration Activity is designed knowing that students will struggle with the solution. Graphing the equation acts as a scaffold to help push students’ thinking. During this time, you should provide descriptive and prescriptive information to the students to help them decide what to do next.
+      </p>
+      <p>
+        Students will be acting on evidence provided by their peers during several activities (partner and group). During the Question-Question-Swap, students have the answers in front of them, so they are able to tell their partners whether they are correct. The Quadratic Formula Activity is designed as a scaffold, using colors and chunking to facilitate the process. Students will be providing each other with descriptive and prescriptive information when they share their solutions with each other and work to find any errors.
+      </p>
+      <p>
+        Teachers should be acting on evidence as they monitor and observe the students as they partake in the different activities. Teachers will act on evidence directly by reading Exit Tickets and using the information to modify instruction for the following lesson.
+      </p>
+      Feedback
+      <p>
+        Students will be providing verbal feedback to partners during the Exploration Think-Pair-Share and Question-Question-Swap activities. Students will be providing verbal feedback to their group members during the Quadratic Formula Activity.
+      </p>
+      <p>
+        Teachers will be providing verbal feedback (and written, if necessary) as they monitor and observe the classroom as students partake in the activities. Teachers should provide written feedback on students’ Exit Tickets and return them during the following lesson.
+      </p>
+      Instructional Moves
+      <p>
+        There are a few look-fors in this activity. When identifying the values for a, b, and c, many students do not realize that a subtraction sign means that the coefficient is negative. Additionally, many students often forget that the coefficient equals 1 if there is not a value written in front of the variable. Lastly, when using the quadratic formula to solve the equation, many students do not know how the negative sign in front of the b value affects the value of b. Many students also struggle with following order of operations when a square root is involved. The Quadratic Formula Activity is scaffolded to help students with these common struggles.
+      </p>
+      <p>
+        Many of the instructional moves will be made on-the-fly, such as modeling solving problems with negative coefficients or having groups check in with you after completing key problems. The activities are designed to provide scaffolding and differentiation within; however, if more differentiation is needed, change the problems on the Quadratic Formula Activity so that there are complex roots and integer roots for students above and below the target performance, respectively.
+      </p>
+      `
+  },
+  formativeStrategies: [
+    {
+      title: 'Think-Pair-Share',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+    {
+      title: 'Entrance Ticket',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+    {
+      title: 'Exit Ticket',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    }
+  ],
+  comments: ``
+};
