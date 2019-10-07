@@ -31,7 +31,7 @@ export class AppContainerComponent implements OnInit {
   async fetchUserInitials() {
     if (!this.isAuthenticated) { return ''; }
     const userClaims = await this.oktaAuth.getUser();
-    return userClaims.email.slice(0,2);
     console.log(userClaims);
+    return userClaims.email.slice(0, 2);
   }
 }

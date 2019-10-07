@@ -1,3 +1,4 @@
+/* tslint:disable:max-line-length quotemark object-literal-key-quotes*/
 import { mockEvidenceImage, mockResourceImage, mockProfImage, mockFormativeImage, mockAccessImage, mockPlaylistImg } from 'src/app/data/mock-images';
 import { DifferentiationModel } from './resource/model/differentiation.model';
 import { FormativeModel } from './resource/model/formative.model';
@@ -86,10 +87,9 @@ export const mockMathClaims = [
   { title: 'Claim 4: Modeling and Data Analysis', code: 'math-c4'}
 ];
 
-
-export const mockResourceModel = <ResourceModel> {
+export const mockResourceModel = {
   resourceType: ResourceType.Instructional,
-  details: <ResourceDetailsModel> { 
+  details: {
     title: 'Resource Title ',
     subjects: [ 'ELA' ],
     grades: [],
@@ -98,24 +98,18 @@ export const mockResourceModel = <ResourceModel> {
     standards: [],
     relatedResources: [],
     relatedPlaylists: []
-  },
-  overview: <OverviewModel> {
+  } as ResourceDetailsModel,
+  overview: {
     description: 'Test Description',
     successCriteria: 'Test Success Criteria',
-  },
+  } as OverviewModel,
   attachments: [],
   steps: [],
   comments: 'test comment',
-  differentiation: <DifferentiationModel>{ 
-    accessibilityStrategies: []
-  },
-  formative: <FormativeModel> {
-    strategies: []
-  },
-  topicSection: <TopicSectionModel> {
-    topics: []
-  }
-};
+  differentiation: { accessibilityStrategies: [] } as DifferentiationModel,
+  formative: { strategies: [] } as FormativeModel,
+  topicSection: { topics: [] } as TopicSectionModel
+} as ResourceModel;
 
 //Example
 export const mockApiResourceExample = {
@@ -200,7 +194,7 @@ const polyfillMissingApiData = {
   grades: [6, 8, 9],
   educationalAlignments: [
     { title: 'Problem Solving', shortName: '2'}
-  ], 
+  ],
   targetAlignments: [
     { title: 'The Number System', shortName: 'B' }
   ],
@@ -213,9 +207,9 @@ const polyfillMissingApiData = {
   }],
   standards: ['6.NS.A.1', '6.NS.A.3', '5.NS.A.4'],
 
-  //overview
+  // overview
   altBody: `
-    In this task, students will engage with division of fraction tasks that use the same context but require students to divide the fractions 
+    In this task, students will engage with division of fraction tasks that use the same context but require students to divide the fractions
     in the opposite order.  Students solve the tasks by creating visual models, selecting the equations that appropriately represents the situation,
     and confirming their solutions by solving said equations and comparing back to the visual models.  Students will work to answer the questions,
     "How do these numbers and operations work together?"
@@ -226,7 +220,7 @@ const polyfillMissingApiData = {
     url: '/assets/mock-downloads/instructional-resource-content.docx',
     fileSize: 183000,
     type: 'activity'
-  }, { 
+  }, {
     name: 'Illustrative Mathematics Task: Video Game Credits',
     url: '/assets/mock-downloads/video-game-credits.pdf',
     fileSize: 82060,
@@ -239,7 +233,7 @@ const polyfillMissingApiData = {
   differentiation: `
     <h6>Support</h6>
     <p>
-      Modify the numbers in the problems to include a whole number divided by a fraction. This may provide access to students who are still making 
+      Modify the numbers in the problems to include a whole number divided by a fraction. This may provide access to students who are still making
       sense of fraction division.
     </p>
     <h6>Challenge</h6>
@@ -262,15 +256,15 @@ const polyfillMissingApiData = {
     title: 'Sentence Frames',
     link: 'https://portal.smarterbalanced.org/library/en/ela-construct-relevant-vocabulary.pdf',
     description: `
-      Sentence frames or stems provide language support for students' writing and participation in academic discussions. As a scaffold for 
-      students to start and structure an explanation, sentence frames help all students develop more fluent Foundational Writing Skills and, 
+      Sentence frames or stems provide language support for students' writing and participation in academic discussions. As a scaffold for
+      students to start and structure an explanation, sentence frames help all students develop more fluent Foundational Writing Skills and,
       in particular, allow students with varying English proficiency to use more complex Syntax and academic Vocabulary.
     `
   }],
   formativeAssessmentProcess: {
-    clarifyIntendedLearning: `    
+    clarifyIntendedLearning: `
     <p>
-      Students will participate in a Collaborative Discussion to describe the success criteria in their own words. Students may use words or pictures to 
+      Students will participate in a Collaborative Discussion to describe the success criteria in their own words. Students may use words or pictures to
       express their understanding of how they will know they have been successful with this task.
     </p>`,
     elicitEvidence: `
@@ -280,7 +274,7 @@ const polyfillMissingApiData = {
       <li>Students will discuss their solutions – discussions will elicit evidence of student thinking.</li>
     </ul>`,
     interpretEvidence: `<p>Review the visual models for accuracy: labeling, scale, operation, and application.</p>`,
-    actOnEvidence: `    
+    actOnEvidence: `
     <p>
       Feedback
       <ul>
@@ -293,7 +287,7 @@ const polyfillMissingApiData = {
         <li>Select an equation that matches student skill</li>
         <li>Perform error analysis of student calculations to address misconception</li>
       </ul>
-    </p>`   
+    </p>`
   },
   formativeStrategies: [{
     title: 'Verbal Feedback',
@@ -335,10 +329,10 @@ const polyfillMissingApiData = {
         Initiate the task by engaging students in the topic and clarifying intended learning. This task utilizes an approach called a Conceptual Bridge.
       </p>
       <p>
-        Ask students a simple division problem that you know they’ll be successful at – what is four divided by two? Ask a few students to share how they 
-        did the problem. They will likely say that they tried to figure out how many times three goes into six. Next ask them – what is two divided by ½? 
-        They will likely grapple through the task of figuring out how many times ½ goes into four. Ask them to explain why four makes sense. Then ask them – 
-        what is ½ divided by two – and ask a few students to share how they solved the problem and why. Then ask them – what is 2/3 divided by 1/2? Explain 
+        Ask students a simple division problem that you know they’ll be successful at – what is four divided by two? Ask a few students to share how they
+        did the problem. They will likely say that they tried to figure out how many times three goes into six. Next ask them – what is two divided by ½?
+        They will likely grapple through the task of figuring out how many times ½ goes into four. Ask them to explain why four makes sense. Then ask them –
+        what is ½ divided by two – and ask a few students to share how they solved the problem and why. Then ask them – what is 2/3 divided by 1/2? Explain
         that is the type of problem they will be working to solve.
       </p>`
   }, {
@@ -346,20 +340,20 @@ const polyfillMissingApiData = {
     title: 'Introduce Visual Representations',
     content: `
       <p>
-        Ask students to create a visual representation of the following scenario: ½ cup of water fills 2/3 of a container. 
+        Ask students to create a visual representation of the following scenario: ½ cup of water fills 2/3 of a container.
       </p>
       <p>
-        Whiteboard or scratch paper may be useful for this task. 
+        Whiteboard or scratch paper may be useful for this task.
       </p>
       <p>
-        As students are working, Circulate the Room to observe students working. As you circulate the room, pay attention to the following look-fors and 
+        As students are working, Circulate the Room to observe students working. As you circulate the room, pay attention to the following look-fors and
         take action to help move students forward as needed.
       </p>
       <ul>
         <li>Confused about the terminology – cup vs. container. Clarify that a “cup” is a fixed amount, whereas a container can be a variety of sizes.</li>
         <li>Struggling to understand what is meant by the word “fills”. Clarify that in this problem the ½ cup equals 2/3 of a container.</li>
         <li>Not considering the scale of their drawings. Help them by explaining that it will help them to solve the problem if they consider the size of their representations.</li>
-        <li>Having trouble getting started. Help them start with the ½ cup since it is a simpler fraction. Depending on how they represent the ½ (e.g. area model, tape diagram, number 
+        <li>Having trouble getting started. Help them start with the ½ cup since it is a simpler fraction. Depending on how they represent the ½ (e.g. area model, tape diagram, number
           line), help them then represent 2/3.</li>
         <li>Labeling their representation appropriately. Work with students to add this element and explain the importance of labels.</li>
       </ul>
@@ -372,14 +366,14 @@ const polyfillMissingApiData = {
       <p>
         Change one of the numbers to a mixed number to extend student understanding about division of fractions with fractions greater than one.
       </p>
-      <p>   
-        Students will create a visual model independently. You can pair them together to share their visual representations and explain their reasoning. 
-        Facilitate students providing Peer-to-Peer feedback. Consider providing Sentence Frames to support actionable student feedback. The students may 
+      <p>
+        Students will create a visual model independently. You can pair them together to share their visual representations and explain their reasoning.
+        Facilitate students providing Peer-to-Peer Feedback. Consider providing Sentence Frames to support actionable student feedback. The students may
         adjust their models as their thinking and reasoning changes through discussion.
       </p>
       <p>
-        Strategically select student samples to be shared under a document camera for example, so that various types of visual fraction models will be 
-        explored by the whole class (e.g. area model, tape diagram, number line). Select student samples that represent variety amongst student work. Prime 
+        Strategically select student samples to be shared under a document camera for example, so that various types of visual fraction models will be
+        explored by the whole class (e.g. area model, tape diagram, number line). Select student samples that represent variety amongst student work. Prime
         students prior to share their answers to these questions, so they will be confident in the moment.
       </p>
       <p>
@@ -399,29 +393,29 @@ const polyfillMissingApiData = {
     title: 'Numerical Representation',
     content: `
       <p>
-        When students are ready, ask them (i.e., display the first problem in the student handout from Illustrative Mathematics): If 1/2 cup of water fills 2/3 of 
+        When students are ready, ask them (i.e., display the first problem in the student handout from Illustrative Mathematics): If 1/2 cup of water fills 2/3 of
         a plastic container, how many containers will 1 cup fill? Have them grapple independently before moving to a partner, and then whole class discussion.
       </p>
       <p>
-        Display the possible numerical representations. Students will independently select the equations that appropriately match their representations and solve 
+        Display the possible numerical representations. Students will independently select the equations that appropriately match their representations and solve
         the equations.
       </p>
-      <p>   
+      <p>
         With their partner, students will discuss their ideas. Again the teacher will Circulate the Room to elicit evidence of student thinking. Look for:
       </p>
       <ul>
         <li>Did the student choose an equation with the wrong operation?</li>
         <li>Did the student choose an equation that reversed the dividend and divisor?</li>
         <li>
-          When solving the problem, did the student make an error in application of the division algorithm? Is the error in a basic arithmetic fact? (e.g.  
-          if the error is a basic math fact issue it could be supported through use of work in the area of computational fluency, arithmetic fact charts or 
-          a calculator, or if the error is a misapplication of the division algorithm it could be supported through reteach, or use of an alternate division 
+          When solving the problem, did the student make an error in application of the division algorithm? Is the error in a basic arithmetic fact? (e.g.
+          if the error is a basic math fact issue it could be supported through use of work in the area of computational fluency, arithmetic fact charts or
+          a calculator, or if the error is a misapplication of the division algorithm it could be supported through reteach, or use of an alternate division
           algorithm)
         </li>
       </ul>
       <p>Teacher will select a few students to share their discoveries with the class.</p>
       <p>
-        Select students that represent a variety of ideas and approaches. Prime students prior to share their answers to these questions, so they will be 
+        Select students that represent a variety of ideas and approaches. Prime students prior to share their answers to these questions, so they will be
         confident in the moment.
       </p>
       <p>Possible probing questions:</p>
@@ -435,11 +429,11 @@ const polyfillMissingApiData = {
     title: 'Check-In',
     content: `
       <p>
-        Ask students to Self-Assess their understanding of the first problem. Ask them to decide whether they are ready to try what they’ve learned to a new 
-        problem, or more practice (training wheels). Depending on the votes, decide whether to have the whole class move on to a practice problem, reteach, 
-        or some combination where some of the class gets additional instruction while the rest of the class attempts the next problem. Additionally, you can 
-        ask students to line up according to how confident they are in creating visual representations of division fraction problems. Use the Fold the Line 
-        approach and have students partner with a students who is on the opposite end of the confidence spectrum. Have them solve the problem together. 
+        Ask students to Self-Assess their understanding of the first problem. Ask them to decide whether they are ready to try what they’ve learned to a new
+        problem, or more practice (training wheels). Depending on the votes, decide whether to have the whole class move on to a practice problem, reteach,
+        or some combination where some of the class gets additional instruction while the rest of the class attempts the next problem. Additionally, you can
+        ask students to line up according to how confident they are in creating visual representations of division fraction problems. Use the Fold the Line
+        approach and have students partner with a students who is on the opposite end of the confidence spectrum. Have them solve the problem together.
       </p>
     `
   }, {
@@ -458,15 +452,15 @@ const polyfillMissingApiData = {
   }],
   comments: `
     <p>
-      Depending on the time in the meeting, training, etc., this activity can be adapted by eliminating the gallery walk and 
-      assigning quotes to partners or tables. If time is limited, the quotes could be displayed prior to the meeting, training, 
+      Depending on the time in the meeting, training, etc., this activity can be adapted by eliminating the gallery walk and
+      assigning quotes to partners or tables. If time is limited, the quotes could be displayed prior to the meeting, training,
       etc., in the staff room or on tables during the week prior to the training.
     </p>
     <p>It is important to provide adequate time for participants to discuss and reflect on their quote and to share their findings with their peers.</p>
   `
 };
 
-export const mockApiResource= {
+export const mockApiResource = {
   ...mockApiResourceExample,
   ...polyfillMissingApiData
 };
@@ -563,7 +557,7 @@ const polyfillMissingApiData2 = {
   educationalAlignments: [
     { title: 'Informational Texts Long text long test longer than this.', shortName: '1'},
     { title: 'R&I', shortName: '4'}
-  ], 
+  ],
   targetAlignments: [
     { title: 'Key Texts', shortName: '8' },
     { title: 'Central Ideas', shortName: '9' },
@@ -584,9 +578,9 @@ const polyfillMissingApiData2 = {
   }],
   standards: ['CCSS.ELA-Literacy.RST.6-8.1', 'CCSS.ELA-Literacy.RST.6-8.2'],
 
-  //overview
+  // overview
   altBody: `
-    In this task, students will engage with division of fraction tasks that use the same context but require sutdents to divide the fractions 
+    In this task, students will engage with division of fraction tasks that use the same context but require sutdents to divide the fractions
     in the opposite order.  Sutdents solve the tasks by creating visual models, selecting the equations that appropriately represents the situation,
     and confirming their solutions by solving said equations and comparing back to the visual models.  Students will work to answer the questions,
     "How do these numbers and operations work together?"
@@ -597,7 +591,7 @@ const polyfillMissingApiData2 = {
     url: '/assets/mock-downloads/note_taking.docx',
     fileSize: 11664,
     type: 'informational'
-  }, { 
+  }, {
     name: 'Textual Evidence',
     url: '/assets/mock-downloads/textual_evidence_revised.docx',
     fileSize: 24928,
@@ -626,23 +620,23 @@ const polyfillMissingApiData2 = {
       lowering the tool for each line of text on the screen.`
   }],
   connectionToFap: `
-    Socratic Circles offer a controlled, pedagogical strategy that can bring democratic dialogue into our classrooms, 
-    a type of real-world, student-centered learning where the teacher acts as facilitator. As students construct their 
-    dialogue and their meaning of the piece of text, they are activating prior knowledge, making connections, and 
-    synthesizing new schemata in their quest for understanding. It is the students—not the teacher—who guide and direct 
+    Socratic Circles offer a controlled, pedagogical strategy that can bring democratic dialogue into our classrooms,
+    a type of real-world, student-centered learning where the teacher acts as facilitator. As students construct their
+    dialogue and their meaning of the piece of text, they are activating prior knowledge, making connections, and
+    synthesizing new schemata in their quest for understanding. It is the students—not the teacher—who guide and direct
     the focus of the conversation in a search for meaning, understanding and knowledge.
   `,
   formativeStrategies: [{
     title: 'Verbal Feedback',
     link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
-    description: `Learning performance feedback learning reproduce Henry Pluckrose certificate. Arrange Kirkpatrick recall learning recall, 
-      relate mentoring authoring tool andragogy mentos record describe writing technical writing. Facilitating list asynchronous, 
+    description: `Learning performance feedback learning reproduce Henry Pluckrose certificate. Arrange Kirkpatrick recall learning recall,
+      relate mentoring authoring tool andragogy mentos record describe writing technical writing. Facilitating list asynchronous,
       adaptive ADDIE draft Storyline instructional design. `
   }, {
     title: 'Fold the Line',
     link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
-    description: `Learning performance feedback learning reproduce Henry Pluckrose certificate. Arrange Kirkpatrick recall learning recall, 
-      relate mentoring authoring tool andragogy mentos record describe writing technical writing. Facilitating list asynchronous, 
+    description: `Learning performance feedback learning reproduce Henry Pluckrose certificate. Arrange Kirkpatrick recall learning recall,
+      relate mentoring authoring tool andragogy mentos record describe writing technical writing. Facilitating list asynchronous,
       adaptive ADDIE draft Storyline instructional design.`
   }],
   successCriteria: `
@@ -681,7 +675,7 @@ export const mockDocument52 = {
     "name": "SBAC Running Record Analysis.pdf",
     "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
     "mimeType": null
-}
+};
 
 export const mockDocument53 = {
   "@context": "/api/contexts/FileDocument",
@@ -764,9 +758,9 @@ const polyfillMissingProfApiData = {
   resourceThumbnail: mockProfImage,
   category: 'Formative Assessment Process',
   learningGoals: 'Participants will deepen their understanding of the formative assessment process.',
-  //overview
+  // overview
   altBody: `
-    What makes the formative assessment process such a powerful process within the teaching-learning cycle? In this activity, 
+    What makes the formative assessment process such a powerful process within the teaching-learning cycle? In this activity,
     educators will review the components of the formative assessment process and then evaluate its impact on learning.
   `,
   formativeStrategies: [{
@@ -785,7 +779,7 @@ const polyfillMissingProfApiData = {
     title: 'Setting Up',
     content: `
       <p>
-        Print the provided quotes (preferably on poster size paper) and display for participants to preview as they come into 
+        Print the provided quotes (preferably on poster size paper) and display for participants to preview as they come into
         the training and during the gallery walk.
       </p>`
   }, {
@@ -793,8 +787,8 @@ const polyfillMissingProfApiData = {
     title: 'Gallery Walk',
     content: `
       <p>
-        Have participants preview all of the posters and quotes by circulating the room using the Gallery Walk strategy. As an option, 
-        you may play music. Allot enough time, if possible, provide up to 15-minutes , for everyone to circulate the entire room to 
+        Have participants preview all of the posters and quotes by circulating the room using the Gallery Walk strategy. As an option,
+        you may play music. Allot enough time, if possible, provide up to 15-minutes , for everyone to circulate the entire room to
         read and think about each of the quotes.
       </p>
     `
@@ -803,9 +797,9 @@ const polyfillMissingProfApiData = {
     title: 'Take a Stand',
     content: `
       <p>
-        Upon completing the Gallery Walk, ask participants to stand next to the quote that they resonate the most with. 
-        Provide up to 15-minutes to allow educators to discuss and share their thoughts about the quote they chose. Prompt 
-        participants to share why they selected the quote and then to dig deeper into the meaning of the quote and connect 
+        Upon completing the Gallery Walk, ask participants to stand next to the quote that they resonate the most with.
+        Provide up to 15-minutes to allow educators to discuss and share their thoughts about the quote they chose. Prompt
+        participants to share why they selected the quote and then to dig deeper into the meaning of the quote and connect
         their thoughts and wonderings about the formative assessment process to the quote.
       </p>
     `
@@ -814,9 +808,9 @@ const polyfillMissingProfApiData = {
     title: 'In Your Own Words',
     content: `
       <p>
-        Have each group synthesize their discussion into a summary, bullet points, and/or a visual representation on 
-        poster paper to share out. In some cases, this could look like a rewording of the quote that connects with the 
-        conversation, or it could end up being something that builds on the quote and extends understanding to make it 
+        Have each group synthesize their discussion into a summary, bullet points, and/or a visual representation on
+        poster paper to share out. In some cases, this could look like a rewording of the quote that connects with the
+        conversation, or it could end up being something that builds on the quote and extends understanding to make it
         more concrete. Provide up to 15-minutes.
       </p>
     `
@@ -825,15 +819,15 @@ const polyfillMissingProfApiData = {
     title: 'Whole Group Share Out',
     content: `
       <p>
-        Each group will share out their statements and insights based on their discussions and poster. Provide up to 
+        Each group will share out their statements and insights based on their discussions and poster. Provide up to
         15-minutes for this step.
       </p>
     `
   }],
   comments: `
     <p>
-      Depending on the time in the meeting, training, etc., this activity can be adapted by eliminating the gallery walk and 
-      assigning quotes to partners or tables. If time is limited, the quotes could be displayed prior to the meeting, training, 
+      Depending on the time in the meeting, training, etc., this activity can be adapted by eliminating the gallery walk and
+      assigning quotes to partners or tables. If time is limited, the quotes could be displayed prior to the meeting, training,
       etc., in the staff room or on tables during the week prior to the training.
     </p>
     <p>It is important to provide adequate time for participants to discuss and reflect on their quote and to share their findings with their peers.</p>
@@ -843,7 +837,7 @@ const polyfillMissingProfApiData = {
 export const mockProfessionalResource = {
   ...mockApiProfResourceExample,
   ...polyfillMissingProfApiData
-}
+};
 
 export const mockDocument54 = {
     "@context": "/api/contexts/FileDocument",
@@ -853,7 +847,7 @@ export const mockDocument54 = {
     "name": "Formative Assessment Quotes for Charts.pdf",
     "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
     "mimeType": null
-}
+};
 
 export const mockDocument55 = {
   "@context": "/api/contexts/FileDocument",
@@ -931,7 +925,7 @@ const polyfillMissingAccessApiData = {
   // metadata
   resourceThumbnail: mockAccessImage,
   category: 'Universal Tool',
-  //overview
+  // overview
   altBody: `
     A digital tool for marking desired text, item questions, item answers, or parts of these with a color.
   `,
@@ -969,8 +963,8 @@ const polyfillMissingAccessApiData = {
   strategyInAction: `
     <a href="https://sampleitems.smarterbalanced.org/BrowseItems" target="_blank">Try out the Highlighter on the Sample Items Website</a>
     <p>
-      To access the tool, first navigate to any sample item. Select text with your mouse. With your mouse on the selected text, select the right 
-      mouse button and then Highlight Selection, or select the highlight option from the context menu. 
+      To access the tool, first navigate to any sample item. Select text with your mouse. With your mouse on the selected text, select the right
+      mouse button and then Highlight Selection, or select the highlight option from the context menu.
     </p>
   `
 };
@@ -978,7 +972,7 @@ const polyfillMissingAccessApiData = {
 export const mockAccessibilityStrategy = {
   ...mockApiAccessStrategyResource,
   ...polyfillMissingAccessApiData
-}
+};
 
 export const mockApiFormativeStrategyResource = {
   id: 5,
@@ -1049,9 +1043,9 @@ const polyfillMissingFormativeApiData = {
   favorite: false,
   // metadata
   resourceThumbnail: mockFormativeImage,
-  //overview
+  // overview
   altBody: `
-    At the beginning of a unit, have students draw three columns on a piece of paper, labeled “K,” “W,” and “L.” 
+    At the beginning of a unit, have students draw three columns on a piece of paper, labeled “K,” “W,” and “L.”
     Ask students what they already know.
   `,
   studentBenefits: `
@@ -1095,13 +1089,13 @@ const polyfillMissingFormativeApiData = {
     <p>“What students write down for KW and L.  What did they learn, what questions do they have.</p>
     <h6>Interpret</h6>
     <p>
-      Matching the “L” to the lesson objectives or success criteria will allow a teacher to know how to 
-      act. Students area also interpreting to see if they have answered their own questions (W). Students 
+      Matching the “L” to the lesson objectives or success criteria will allow a teacher to know how to
+      act. Students area also interpreting to see if they have answered their own questions (W). Students
       are interpreting the growth of their learning.
     </p>
     <h6>Act</h6>
     <p>
-      Teacher decides on next steps for reteaching or extension activities based on the student reflection. 
+      Teacher decides on next steps for reteaching or extension activities based on the student reflection.
       Students will pursue unanswered questions.
     </p>
   `
@@ -1188,7 +1182,7 @@ const polyfillMissingPlaylistApiData = {
   assessmentType: 3,
   educationalAlignments: [
     { title: 'Research / Inquiry', shortName: '4'}
-  ], 
+  ],
   targetAlignments: [
     { title: 'Analyze / Integrate System', shortName: '2' }
   ],
@@ -1197,7 +1191,7 @@ const polyfillMissingPlaylistApiData = {
     { id: 4, title: 'Claim It!' },
     { id: 2, title: 'Making Sense of the Source: Paraphrasing Evidence' }
   ],
-  //overview
+  // overview
   altBody: `
     Students can engage in research/inquiry to investigate topics, and to analyze, integrate, and present information. This target focuses on analyzing.
   `,

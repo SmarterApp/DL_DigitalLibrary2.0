@@ -12,7 +12,7 @@ const jsonContentType = {
 
 const jsonHeaders = {
   'Content-Type':  'application/json'
-}
+};
 
 /**
  * Wrapper service for Angular's HttpClient.  As a best practice, we shouldn't ever use
@@ -33,7 +33,7 @@ export class DataService {
         ... jsonHeaders,
         'Authorization': 'Bearer ' + AppConfig.settings.apiServer.authToken
       }),
-      params: params
+      params
     };
 
     return this.httpService.get(fullUrl, options)
@@ -44,14 +44,14 @@ export class DataService {
 
   downloadBlob(url: string, params?: any): Observable<Blob> {
     const fullUrl = AppConfig.settings.apiServer.cdl + url;
-    const options = <any>{
+    const options = {
       headers: new HttpHeaders({
         'Content-Type':  'application/octet-stream',
         'Authorization': 'Bearer ' + AppConfig.settings.apiServer.authToken
       }),
-      params: params,
+      params,
       responseType : 'arraybuffer',
-    };
+    } as any;
 
     return this.httpService.get(fullUrl, options)
       .pipe(map(response => new Blob([ response ])))

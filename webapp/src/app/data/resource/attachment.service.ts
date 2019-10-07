@@ -28,19 +28,19 @@ export class AttachmentService {
     return this.dataService.downloadBlob(`/file_documents/${id}/download`);
   }
 
-  private mapToAttachment(apiAttachment: any):AttachmentModel {
+  private mapToAttachment(apiAttachment: any): AttachmentModel {
     const filename = apiAttachment.name;
     const fileExtension = filename.toLowerCase().substring(filename.lastIndexOf('.'));
 
-    return <AttachmentModel>{
+    return {
       title: apiAttachment.name,
       id: apiAttachment.id,
-      downloadUrl: "/api/file_documents/" + apiAttachment.id + "/download",
+      downloadUrl: '/api/file_documents/' + apiAttachment.id + '/download',
       fileType: coalesce(this.fileExtensionToFileTypeMap.get(fileExtension), FileType.Unknown),
-      filename: filename,
-      fileExtension: fileExtension,
-      fileSizeInKB: apiAttachment.fileSize ? Math.round(apiAttachment.fileSize / 1000): undefined,
+      filename,
+      fileExtension,
+      fileSizeInKB: apiAttachment.fileSize ? Math.round(apiAttachment.fileSize / 1000) : undefined,
       type: apiAttachment['@type']
-    };
+    } as AttachmentModel;
   }
 }

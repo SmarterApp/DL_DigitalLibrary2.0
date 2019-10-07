@@ -13,7 +13,7 @@ export class StepByStepComponent implements OnInit, AfterViewInit {
   models: ResourceStepModel[];
 
   @Output()
-  sectionElementLoaded= new EventEmitter<any>();
+  sectionElementLoaded = new EventEmitter<any>();
 
   @ViewChildren('steps')
   stepElementRefs: ElementRef[];
@@ -25,7 +25,7 @@ export class StepByStepComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     let i = 0;
-    if(this.stepElementRefs) {
+    if (this.stepElementRefs) {
       const stepRefs = this.stepElementRefs.map(x => <ScrollableSection>{ title: this.models[i++].title, elementRef: x.nativeElement });
       this.sectionElementLoaded.emit(stepRefs);
     }
