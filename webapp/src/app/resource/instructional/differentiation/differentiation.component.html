@@ -1,10 +1,10 @@
-<article #header class="differentiation-container">
+<article *ngIf="model.performanceBasedDifferentiation || model.accessibilityStrategies.length > 0"  #header class="differentiation-container">
   <h4 class="leading-icon"><i class="far fa-universal-access"></i>Differentiation</h4>
-  <section>
+  <section *ngIf="model.performanceBasedDifferentiation">
     <h5>Performance-based Differentiation</h5>
     <div [innerHtml]="model.performanceBasedDifferentiation"></div>
   </section>
-  <section>
+  <section *ngIf="model.accessibilityStrategies.length > 0">
     <h5>Accessibility Strategies Used</h5>
     <div *ngFor="let strategy of model.accessibilityStrategies" class="strategy-link">
       <h6><a [href]="strategy.moreAboutUrl" target="_blank">{{ strategy.title }} <i class="far fa-arrow-right"></i></a></h6>

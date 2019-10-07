@@ -11,10 +11,10 @@
 <hr *ngIf="model.attachments.length > 0"/>
 
 <sbdl-attachments [models]="model.attachments" [videoLinks]="model.videoLinks" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
-<hr/>
+<hr *ngIf="model.attachments.length > 0"/>
 
 <sbdl-differentiation [model]="model.differentiation" (sectionElementLoaded)="setDifferentiation($event)"></sbdl-differentiation>
-<hr/>
+<hr *ngIf="model.differentiation && (model.differentiation.performanceBasedDifferentiation || model.differentiation.accessibilityStrategies.length > 0)"/>
 
 <sbdl-section [contentHtml]="model.comments" [options]="commentsOptions" (sectionElementLoaded)="setComments($event)"></sbdl-section>
 <hr *ngIf="model.comments"/>
