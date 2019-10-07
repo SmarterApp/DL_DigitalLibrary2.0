@@ -1,5 +1,9 @@
 /* tslint:disable:max-line-length quotemark object-literal-key-quotes*/
-import { mockEvidenceImage, mockResourceImage, mockProfImage, mockFormativeImage, mockAccessImage, mockPlaylistImg } from 'src/app/data/mock-images';
+import {
+  mockEvidenceImage, mockResourceImage, mockProfImage, mockFormativeImage,
+  mockAccessImage, mockPlaylistImg, mockPlImageDeepeningUnderstandingOfFAP,
+  mockIrImageAnyWayYouSliceIt
+} from 'src/app/data/mock-images';
 import { DifferentiationModel } from './resource/model/differentiation.model';
 import { FormativeModel } from './resource/model/formative.model';
 import { OverviewModel, ResourceMaterial } from './resource/model/overview.model';
@@ -451,7 +455,7 @@ const polyfillMissingApiData = {
   }],
   comments: `
     <p>
-      Depending on the time in the meeting, training, etc., this activity can be adapted by eliminating the gallery walk and
+      Depending on the time in the meeting, training, etc., this activity can be adapted by eliminating the Gallery Walk and
       assigning quotes to partners or tables. If time is limited, the quotes could be displayed prior to the meeting, training,
       etc., in the staff room or on tables during the week prior to the training.
     </p>
@@ -778,7 +782,7 @@ const polyfillMissingProfApiData = {
     content: `
       <p>
         Print the provided quotes (preferably on poster size paper) and display for participants to preview as they come into
-        the training and during the gallery walk.
+        the training and during the Gallery Walk.
       </p>`
   }, {
     number: 2,
@@ -824,7 +828,7 @@ const polyfillMissingProfApiData = {
   }],
   comments: `
     <p>
-      Depending on the time in the meeting, training, etc., this activity can be adapted by eliminating the gallery walk and
+      Depending on the time in the meeting, training, etc., this activity can be adapted by eliminating the Gallery Walk and
       assigning quotes to partners or tables. If time is limited, the quotes could be displayed prior to the meeting, training,
       etc., in the staff room or on tables during the week prior to the training.
     </p>
@@ -1469,7 +1473,7 @@ export const mockIrAllSystemsGo = {
       title: 'Exit Ticket',
       content: `
         <p>
-          This exit ticket asks students to solve a system of equations presented in an algebraic form. (A coordinate plane
+          This Exit Ticket asks students to solve a system of equations presented in an algebraic form. (A coordinate plane
           purposefully is not provided. The main idea of this lesson is for students to use the substitution method, which is
           efficient and effective.)
         </p>
@@ -1489,7 +1493,7 @@ export const mockIrAllSystemsGo = {
         </p>
         <p>
           Self-Assessment: Self-assessment questions are provided at the end of the Google Slides for teacher use at the end
-          of class alongside the exit ticket or as a homework assignment.
+          of class alongside the Exit Ticket or as a homework assignment.
         </p>`
     }
   ],
@@ -1534,7 +1538,7 @@ export const mockIrAllSystemsGo = {
       description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
     },
     {
-      title: 'Red, Yellow, Green Cup/Tile',
+      title: 'Red, Yellow, and Green Cup/Tile',
       link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
       description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
     },
@@ -1585,7 +1589,7 @@ export const mockIrAllSystemsGo = {
       </p>
       <p>
         In Activity 1: The teacher leads students through a “Challenge Yourself” activity as students self-assess by selecting
-        a Red, Yellow, Green Cup/Tile to provide a visual cue for their level of understanding.
+        a Red, Yellow, and Green Cup/Tile to provide a visual cue for their level of understanding.
       </p>
       <p>
         The evidence of learning is an Exit Ticket: This exit ticket asks students to solve a system of equations presented
@@ -1608,7 +1612,7 @@ export const mockIrAllSystemsGo = {
     interpretEvidence: `
       <p>
         The teacher can use the visual cues from the self-assessment with the Red, Yellow, Green
-        Cups/Tiles to arrange peer tutors or rearrange groups during activities. While monitoring student
+        and Cups/Tiles to arrange peer tutors or rearrange groups during activities. While monitoring student
         work/discussion, highlight student thinking that may help increase other students’ understanding. At the end of
         each activity, the teacher should take time to synthesize students’ thinking around the activity. The teacher will
         provide immediate Feedback to students during activity synthesis and use Strategic Questioning in order to
@@ -1668,7 +1672,7 @@ export const mockIrGrainOfSandDropOfWater = {
     </p>`,
   successCriteria: `
     <p>
-      "Students will demonstrate success when they can:
+      Students will demonstrate success when they can:
       <ul>
         <li>determine key details that support the research.</li>
         <li>explain how key details support the research."</li>
@@ -1677,17 +1681,17 @@ export const mockIrGrainOfSandDropOfWater = {
   steps: [
     {
       number: 1,
-      title: 'No Heading',
+      title: 'Entrance Ticket',
       content: `
         <p>
-          When students enter the classroom, give them the entrance ticket and have them work on it
+          When students enter the classroom, give them the Entrance Ticket and have them work on it
           individually. This should take no more than 5 minutes. Assist the special needs students as needed. You may
-          want to have a copy of the entrance ticket key for reference.
+          want to have a copy of the Entrance Ticket key for reference.
         </p>`
     },
     {
       number: 2,
-      title: 'No Heading',
+      title: 'Entrance Ticket Observations',
       content: `
         <p>
           Walk around the classroom to observe and determine which students have a clear understanding of
@@ -1708,7 +1712,7 @@ export const mockIrGrainOfSandDropOfWater = {
     },
     {
       number: 3,
-      title: 'No Heading',
+      title: 'Directions',
       content: `
         <p>
         “Today we are going to look at some paragraphs that have been broken down into individual
@@ -1735,14 +1739,14 @@ export const mockIrGrainOfSandDropOfWater = {
     },
     {
       number: 4,
-      title: 'No Heading',
+      title: 'Source One — I Do',
       content: `
         <p>
           “Let’s start by looking at our first source.” You can either give the students the specific
           paragraph on the source they will be looking at or you can do this as a whole group by projecting the
           paragraph/passage on the board and giving students a hard copy of the paragraph/passage to annotate as you
           work together. The “I DO” source could be used here, or a source of your own choosing. Students will follow
-          along with you as you model the process via a “think aloud.” If you use the supplied source, the lesson may go
+          along with you as you model the process via a “Think-Aloud.” If you use the supplied source, the lesson may go
           as follows: “Our first source is on erosion. This source is the “ I Do ” portion of our lesson. First, I am
           going to read through the whole source and then I will read it again and annotate. Read the source out
           loud one time and then read a second time and annotate.
@@ -1762,7 +1766,7 @@ export const mockIrGrainOfSandDropOfWater = {
     },
     {
       number: 5,
-      title: 'No Heading',
+      title: 'Source Two — We Do',
       content: `
         <p>
         Repeat the expectations for this activity and then hand out the envelopes to each pair after
@@ -1775,7 +1779,7 @@ export const mockIrGrainOfSandDropOfWater = {
     },
     {
       number: 6,
-      title: 'No Heading',
+      title: 'Source Two — Check',
       content: `
         <p>
           After sharing with their partner, student pairs will come to the teacher and place their sentences in
@@ -1791,7 +1795,7 @@ export const mockIrGrainOfSandDropOfWater = {
     },
     {
       number: 7,
-      title: 'No Heading',
+      title: 'Feedback',
       content: `
         <p>
           To address the “act on evidence” part of formative assessment, the teacher can review all of the
@@ -1802,7 +1806,7 @@ export const mockIrGrainOfSandDropOfWater = {
     },
     {
       number: 8,
-      title: 'No Heading',
+      title: 'Source Three — You Do',
       content: `
         <p>
           The final source can be given to the students as a single paragraph or broken down into sentences
@@ -1902,7 +1906,7 @@ export const mockIrAnyWayYouSliceIt = {
     { title: 'Draw, construct, and describe geometrical figures and describe the relationship between them', shortName: 'E' }
   ],
   updated: "2019-07-26T11:29:37-0500",
-  resourceThumbnail: "https://smarterbalancedlibrary.org/sites/default/files/styles/resource_image_grid/public/resource_thumbnails/resource_cover_photos/image001.png",
+  resourceThumbnail: mockIrImageAnyWayYouSliceIt,
   altBody: `
     <p>
       Students will work with a partner to slice geometric solids and find two-dimensional shapes. Once students have
@@ -2120,9 +2124,9 @@ export const mockIrSearchingForRelevantResources = {
   author: "Michael Collins",
   publisher: "",
   subject: ["ELA"],
-  grades: [8, 9, 'HS'],
+  grades: [10],
   educationalAlignments: [ // claims
-    { title: 'Concepts & Procedures', shortName: '1' }
+    { title: 'Research / Inquiry', shortName: '4' }
   ],
   standards: ['CCSS.ELA-LITERACY.W.9-10.8'],
   targetAlignments: [ // targets
@@ -2148,7 +2152,7 @@ export const mockIrSearchingForRelevantResources = {
   steps: [
     {
       number: 1,
-      title: 'No Heading',
+      title: 'Clarify Intended Learning',
       content: `
         <p>
           The teacher defines the word “relevant” for students and explains that not all reliable resources are
@@ -2158,7 +2162,7 @@ export const mockIrSearchingForRelevantResources = {
     },
     {
       number: 2,
-      title: 'No Heading',
+      title: 'Entrance Ticket',
       content: `
         <p>
           Students answer the Entrance Ticket quick write question, “List and explain the different features of a
@@ -2170,21 +2174,21 @@ export const mockIrSearchingForRelevantResources = {
     },
     {
       number: 3,
-      title: 'No Heading',
+      title: 'Introduce Relevant Rules Handout',
       content: `
         <p>
           The teacher will introduce the Relevant Rules handout and explain how it summarizes the different
           characteristics of how to identify relevant resources when conducting research. Students are given 15–20
-          minutes to annotate the handout. Before they begin the teacher can use a quick red, yellow, and green tile
-          strategy or think pair share strategy to ensure students are clear on how to annotate a text.
+          minutes to annotate the handout. Before they begin the teacher can use a quick Red, Yellow, and Green Cup/Tile
+          strategy or Think-Pair-Share strategy to ensure students are clear on how to annotate a text.
         </p>`
     },
     {
       number: 4,
-      title: 'No Heading',
+      title: 'Gallery Walk',
       content: `
         <p>
-          Review/Reinforce the Relevant Rules handout by creating a gallery walk activity. The teacher explain the
+          Review/Reinforce the Relevant Rules handout by creating a Gallery Walk activity. The teacher explain the
           following activity to the students. First, students will be paired into groups of 3–4. Each group will be an
           expert in one of the Relevant Rules. They will summarize their understandings on a posterboard and
           display it on a section of the wall. Each student makes contributions to the poster using their annotated
@@ -2194,10 +2198,10 @@ export const mockIrSearchingForRelevantResources = {
     },
     {
       number: 5,
-      title: 'No Heading',
+      title: 'Internet Search Activity',
       content: `
         <p>
-          Together, the teacher leads a think-aloud to complete the first examples of the Internet Search Activity
+          Together, the teacher leads a Think-Aloud to complete the first examples of the Internet Search Activity
           handout. As the teacher demonstrates how they will complete the first example, the students gain a better
           understanding on how to identify a relevant resource. Then, each student completes the other examples
           independently.
@@ -2205,23 +2209,23 @@ export const mockIrSearchingForRelevantResources = {
     },
     {
       number: 6,
-      title: 'No Heading',
+      title: 'Relevant Sources Chart',
       content: `
         <p>
           Students will fill in a Relevant Sources Chart for a topic of their
           choice and rank the sources from most to least relevant. The teacher
           calls on students to see how they ranked their resources. The teacher
-          can use a muddiest point strategy to help fill any gaps in students’
+          can use a Muddiest Point strategy to help fill any gaps in students’
           understanding. Here, students write down any clarifying questions they
           have after they hear other responses from their peers.
         </p>`
     },
     {
       number: 7,
-      title: 'No Heading',
+      title: 'Exit Ticket',
       content: `
         <p>
-          Students will reflect on their learning by completing an exit ticket question, which is at the bottom of the
+          Students will reflect on their learning by completing an Exit Ticket question, which is at the bottom of the
           Relevant Sources Chart handout. The short response should answer the question, “In 3–4 sentences explain
           how a source can be reliable (accurate and credible) but not relevant to your research?”
         </p>`
@@ -2254,17 +2258,17 @@ export const mockIrSearchingForRelevantResources = {
     elicitEvidence: `
       <p>
         Students will complete a text annotation activity to understand the different rules regarding what makes a reliable
-        source. Teachers can do a brief red, yellow, and green tile strategy or think pair share strategy to ensure
+        source. Teachers can do a brief Red, Yellow, and Green Cup/Tile strategy or Think-Pair-Share strategy to ensure
         students are clear on how to annotate a text. Then, give the students the rules for a reliable source handout.
       </p>`,
     interpretEvidence: `
       <p>
-        Students will be split into groups to complete a gallery walk activity where each group displays their
+        Students will be split into groups to complete a Gallery Walk activity where each group displays their
         understandings regarding the three rules of a relevant source.
       </p>`,
     actOnEvidence: `
       <p>
-        Teachers might use a muddiest point strategy and have students respond with any lingering questions or
+        Teachers might use a Muddiest Point strategy and have students respond with any lingering questions or
         concerns before they break into their independent research activity. This activity can also help teachers respond to
         students who haven't yet been able to demonstrate their understanding that a credible and accurate source isn’t
         always relevant to a research paper. Here are three basic criteria: (Again the purpose of this assignment is to
@@ -2288,7 +2292,7 @@ export const mockIrSearchingForRelevantResources = {
       </p>
       Instructional Moves
       <p>
-        The teacher may need to group students who are at or above standard with lower students for the gallery walk activity.
+        The teacher may need to group students who are at or above standard with lower students for the Gallery Walk activity.
       </p>
     `
   },
@@ -2299,6 +2303,26 @@ export const mockIrSearchingForRelevantResources = {
       description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
     }, {
       title: 'Entrance Ticket',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    }, {
+      title: 'Red, Yellow, and Green Cup/Tile',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    }, {
+      title: 'Think-Pair-Share',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    }, {
+      title: 'Gallery Walk',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    }, {
+      title: 'Think-Aloud',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    }, {
+      title: 'Muddiest Point',
       link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
       description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
     }
@@ -2518,11 +2542,6 @@ export const mockIrIntroToQuadFormula = {
       title: 'Scribe',
       link: '',
       description: ``
-    },
-    {
-      title: 'Print on Demand',
-      link: '',
-      description: ``
     }
   ],
   formativeAssessmentProcess: {
@@ -2600,4 +2619,12 @@ export const mockIrIntroToQuadFormula = {
     }
   ],
   comments: ``
+};
+
+export const mockPlDeepeningUnderstandingOfFAP = {
+  id: 12,
+  title: 'Deepening Understanding of the Formative Assessment Process',
+  resourceType: "Professional Learning",
+
+
 };
