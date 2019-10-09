@@ -22,7 +22,11 @@ import {
   mockIrDocGrainIDoSource, mockIrDocGrainWeDoSource, mockIrDocGrainYouDoSource,
   mockIrDocGrainPractice,
 
-  mockIrAnyWayYouSliceIt,
+  mockIrAnyWayYouSliceIt, mockIrDocAnySlicePresentation,
+  mockIrDocAnySlicePolygonList, mockIrDocAnySliceAtLevel,
+  mockIrDocAnySliceBelowLevel, mockIrDocAnySliceAboveLevel,
+  mockIrDocAnySliceCrossSections,
+
   mockIrSearchingForRelevantResources, mockIrIntroToQuadFormula
 } from './mock-data';
 
@@ -66,6 +70,13 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /\/file_documents\/205/, result: mockIrDocGrainWeDoSource },
     { pattern: /\/file_documents\/206/, result: mockIrDocGrainPractice },
 
+    { pattern: /\/file_documents\/300/, result: mockIrDocAnySlicePresentation },
+    { pattern: /\/file_documents\/301/, result: mockIrDocAnySlicePolygonList },
+    { pattern: /\/file_documents\/302/, result: mockIrDocAnySliceAtLevel },
+    { pattern: /\/file_documents\/303/, result: mockIrDocAnySliceBelowLevel },
+    { pattern: /\/file_documents\/304/, result: mockIrDocAnySliceAboveLevel },
+    { pattern: /\/file_documents\/305/, result: mockIrDocAnySliceCrossSections },
+
     { pattern: /\/search\/filters/, result: mockSearchFilters }
   ];
 
@@ -91,6 +102,21 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /\/file_documents\/204/, result: '/assets/mock-downloads/a-grain-of-sand/you_do_source.pdf' },
     { pattern: /\/file_documents\/205/, result: '/assets/mock-downloads/a-grain-of-sand/we_do_source.pdf' },
     { pattern: /\/file_documents\/206/, result: '/assets/mock-downloads/a-grain-of-sand/practice.pdf' },
+
+    // Any Way You Slice It attachments
+    { pattern: /\/file_documents\/300/, result: '/assets/mock-downloads/any-way-you-slice-it/presentation.ppt' },
+    { pattern: /\/file_documents\/301/, result: '/assets/mock-downloads/any-way-you-slice-it/polygons-and-sides.pdf' },
+    { pattern: /\/file_documents\/302/, result: '/assets/mock-downloads/any-way-you-slice-it/worksheet-below-level.pdf' },
+    { pattern: /\/file_documents\/303/, result: '/assets/mock-downloads/any-way-you-slice-it/worksheet-at-level.pdf' },
+    { pattern: /\/file_documents\/304/, result: '/assets/mock-downloads/any-way-you-slice-it/worksheet-above-level.pdf' },
+    { pattern: /\/file_documents\/305/, result: '/assets/mock-downloads/any-way-you-slice-it/worksheet-cross-sections.pdf' },
+
+
+    /*
+    { pattern: /\/file_documents\/301/, result: '/assets/mock-downloads/any-way-you-slice-it/polygons-and-sides.pdf' },
+    { pattern: /\/file_documents\/301/, result: '/assets/mock-downloads/any-way-you-slice-it/polygons-and-sides.pdf' },
+    { pattern: /\/file_documents\/301/, result: '/assets/mock-downloads/any-way-you-slice-it/polygons-and-sides.pdf' },
+    */
 
     { pattern: /\/file_documents\/[0-9]*/, result: '/assets/mock-downloads/video-game-credits.pdf' }
   ];

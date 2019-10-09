@@ -1666,7 +1666,7 @@ export const mockIrDocAllSystemsGoHandout = {
 export const mockIrDocAllSystemsGoPractice = {
     "@context": "/api/contexts/FileDocument",
     "@id": "/api/file_documents/101",
-    "@type": "Handout",
+    "@type": "Worksheet",
     "id": 101,
     "name": "Practice.pdf",
     "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
@@ -1981,7 +1981,7 @@ export const mockIrDocGrainVocabularyList = {
 export const mockIrDocGrainIDoSource = {
     "@context": "/api/contexts/FileDocument",
     "@id": "/api/file_documents/203",
-    "@type": "Handout",
+    "@type": "Worksheet",
     "id": 203,
     "name": "I DO.pdf",
     "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
@@ -1991,7 +1991,7 @@ export const mockIrDocGrainIDoSource = {
 export const mockIrDocGrainYouDoSource = {
     "@context": "/api/contexts/FileDocument",
     "@id": "/api/file_documents/204",
-    "@type": "Handout",
+    "@type": "Worksheet",
     "id": 204,
     "name": "YOU DO.pdf",
     "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
@@ -2001,7 +2001,7 @@ export const mockIrDocGrainYouDoSource = {
 export const mockIrDocGrainWeDoSource = {
     "@context": "/api/contexts/FileDocument",
     "@id": "/api/file_documents/205",
-    "@type": "Handout",
+    "@type": "Worksheet",
     "id": 205,
     "name": "WE DO.pdf",
     "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
@@ -2011,7 +2011,7 @@ export const mockIrDocGrainWeDoSource = {
 export const mockIrDocGrainPractice = {
     "@context": "/api/contexts/FileDocument",
     "@id": "/api/file_documents/206",
-    "@type": "Handout",
+    "@type": "Worksheet",
     "id": 206,
     "name": "Additional Practice source.pdf",
     "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
@@ -2158,7 +2158,14 @@ shape given on the List of Polygons and Sides resource.</li>
     assessmentType: 1 // how will this be defined?
   }],
   // overview
-  attachments: [],
+  documents: [
+    "/file_documents/300/download",
+    "/file_documents/301/download",
+    "/file_documents/302/download",
+    "/file_documents/303/download",
+    "/file_documents/304/download",
+    "/file_documents/305/download"
+  ],
   videoLinks: [],
   differentiation: undefined,
   accessibilityStrategies: [],
@@ -2248,6 +2255,66 @@ shape given on the List of Polygons and Sides resource.</li>
       option to create their own formative assessment/quizzes. Teachers will need to create a free Edulastic account to
       access by clicking “Join for Free” in the top right corner of the screen.
     </p>`
+};
+
+export const mockIrDocAnySlicePresentation = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/300",
+    "@type": "Presentation",
+    "id": 300,
+    "name": "Any Way You Slice It! Presentation.pptx",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pptx"
+};
+
+export const mockIrDocAnySlicePolygonList = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/301",
+    "@type": "Handout",
+    "id": 301,
+    "name": "List of Polygons and Sides.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocAnySliceAtLevel = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/302",
+    "@type": "Worksheet",
+    "id": 302,
+    "name": "Worksheet (below level).pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocAnySliceBelowLevel = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/303",
+    "@type": "Worksheet",
+    "id": 303,
+    "name": "Worksheet (at level).pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocAnySliceAboveLevel = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/304",
+    "@type": "Worksheet",
+    "id": 304,
+    "name": "Worksheet (above level).pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocAnySliceCrossSections = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/305",
+    "@type": "Worksheet",
+    "id": 305,
+    "name": "Worksheet - Cross Sections.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
 };
 
 export const mockIrSearchingForRelevantResources = {
