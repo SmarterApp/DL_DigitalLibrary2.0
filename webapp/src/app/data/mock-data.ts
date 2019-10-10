@@ -2438,11 +2438,15 @@ export const mockIrSearchingForRelevantResources = {
     assessmentType: 3 // how will this be defined?
   }],
   // overview
-  attachments: [],
+  documents: [
+    '/file_documents/400/download',
+    '/file_documents/401/download',
+    '/file_documents/402/download'
+  ],
   videoLinks: [],
   differentiation: ``,
   accessibilityStrategies: [
-    { 
+    {
       title: 'Highlighter',
       link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
       description: `A digital tool for marking desired text, item questions, item answers, or parts of
@@ -2543,6 +2547,36 @@ export const mockIrSearchingForRelevantResources = {
         <li>Resource equity —This resource addresses an ELA writing standard regarding the research process. The strategies incorporated in this resource are all designed to support students with all learning levels.</li>
       </ul>
     </p>`
+};
+
+export const mockIrDocSearchingRelevantRules = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/400",
+    "@type": "Handout",
+    "id": 400,
+    "name": "Relevant Rules.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocSearchingRelevantSourcesChart = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/401",
+    "@type": "Handout",
+    "id": 401,
+    "name": "Relevant Sources Chart.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocSearchingInternetSearch = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/402",
+    "@type": "Handout",
+    "id": 402,
+    "name": "Internet Search Activity.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
 };
 
 export const mockIrIntroToQuadFormula = {
@@ -2718,7 +2752,11 @@ export const mockIrIntroToQuadFormula = {
     assessmentType: 1 // how will this be defined?
   }],
   // overview
-  attachments: [],
+  documents: [
+    '/file_documents/500/download',
+    '/file_documents/501/download',
+    '/file_documents/502/download'
+  ],
   videoLinks: [],
   differentiation: undefined,
   accessibilityStrategies: [
@@ -2829,6 +2867,36 @@ export const mockIrIntroToQuadFormula = {
     }
   ],
   comments: ``
+};
+
+export const mockIrDocQuadPresentation = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/500",
+    "@type": "Presentation",
+    "id": 500,
+    "name": "Using the Quadratic Formula Intro Lesson.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocQuadQQS = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/401",
+    "@type": "Handout",
+    "id": 501,
+    "name": "Question-Question-Swap Quadratics.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockIrDocQuadActivity = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/402",
+    "@type": "Activity",
+    "id": 502,
+    "name": "Quadratic Formula Activity.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
 };
 
 export const mockPlDeepeningUnderstandingOfFAP = {
