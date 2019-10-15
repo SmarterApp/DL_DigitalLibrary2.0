@@ -1,17 +1,15 @@
 <div class="app-container">
     <div class="navigation">
         <!-- TODO: Add navigation -->
-        (nav)
-        <p><sbdl-button class ="primary" [routerLink]="['']">Home</sbdl-button></p>
-        <p><sbdl-button class ="primary" [routerLink]="['/resource/1']">One</sbdl-button></p>
-        <p><sbdl-button class ="primary" [routerLink]="['/resource/2']">Two</sbdl-button></p>
-        <p><sbdl-button class ="primary" [routerLink]="['/resource/3']">Pro</sbdl-button></p>
-        <p><sbdl-button class ="primary" [routerLink]="['/resource/4']">ACC</sbdl-button></p>
-        <p><sbdl-button class ="primary" [routerLink]="['/resource/5']">FRM</sbdl-button></p>
-        <p><sbdl-button class ="primary" [routerLink]="['/resource/6']">PLY</sbdl-button></p>
-        <p><sbdl-button class ="primary" *ngIf="!isAuthenticated" [routerLink]="['/auth/login']">Lgin</sbdl-button></p>
-        <p><sbdl-button class ="primary" *ngIf="isAuthenticated" (click)="logout()">Lgout</sbdl-button></p>
-        <p *ngIf="isAuthenticated">{{userInitials}}</p>
+        <p><sbdl-button class ="primary" [routerLink]="['/resource/7']">IR1</sbdl-button></p>
+        <p><sbdl-button class ="primary" [routerLink]="['/resource/8']">IR2</sbdl-button></p>
+        <p><sbdl-button class ="primary" [routerLink]="['/resource/9']">IR3</sbdl-button></p>
+        <p><sbdl-button class ="primary" [routerLink]="['/resource/10']">IR4</sbdl-button></p>
+        <p><sbdl-button class ="primary" [routerLink]="['/resource/11']">IR5</sbdl-button></p>
+        <p><sbdl-button class ="primary" [routerLink]="['/resource/12']">PL1</sbdl-button></p>
+        <p><sbdl-button class ="primary" [routerLink]="['/resource/13']">PL2</sbdl-button></p>
+        <p><sbdl-button class ="primary" [routerLink]="['/resource/14']">FAS1</sbdl-button></p>
+        <p><sbdl-button class ="primary" [routerLink]="['/resource/15']">FAS2</sbdl-button></p>
     </div>
     <div class="router-outlet">
         <router-outlet></router-outlet>

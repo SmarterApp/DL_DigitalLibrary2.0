@@ -18,22 +18,16 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent,
-        resolve: { filters: SearchFiltersResolve }
+        pathMatch: 'full',
+        redirectTo: '/resource/7'
       }, {
         path: 'resource/:resourceId',
         component: ResourceTypeStrategyComponent,
         resolve: { resource: ResourceResolve }
       }, {
-        path: 'results',
-        component: ResultsComponent,
-        resolve: { results: ResourceResultResolve }
-      }, {
-        path: 'auth/login',
-        component: OktaLoginRedirectComponent
-      }, {
-        path: OKTA_CALLBACK_PATH,
-        component: OktaCallbackComponent
+        path: '**',
+        pathMatch: 'full',
+        redirectTo: '/resource/7'
       }
     ]
   }
