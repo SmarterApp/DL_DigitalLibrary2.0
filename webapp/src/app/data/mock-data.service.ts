@@ -4,24 +4,30 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { LoggingService } from '../common/logging/logging.service';
 import { DataService } from './data.service';
-import { mockAccessibilityStrategy, mockApiResource, mockApiResource2, mockApiResourceWithNulls, mockDocument52, mockDocument53, mockDocument54, mockDocument55, mockFormativeStrategy, mockPlaylistResource, mockProfessionalResource, mockUser, mockSearchFilters, mockMathClaims, mockElaClaims } from './mock-data';
+import {
+  mockAccessibilityStrategy, mockApiResource, mockApiResource2,
+  mockApiResourceWithNulls, mockDocument52, mockDocument53, mockDocument54,
+  mockDocument55, mockFormativeStrategy, mockPlaylistResource,
+  mockProfessionalResource, mockUser, mockSearchFilters, mockMathClaims,
+  mockElaClaims
+} from './mock-data';
 
-// Work around for: 
+// Work around for:
 // https://stackoverflow.com/questions/48953587/typescript-class-implements-class-with-private-functions
 // tldr; We can't implement a class with privates, so we need a wrapper type to pull out the publics.
-type PublicPart<T> = {[K in keyof T]: T[K]}
+type PublicPart<T> = {[K in keyof T]: T[K]};
 
 @Injectable()
 export class MockDataService implements PublicPart<DataService> {
   readonly mockGetDataEndpoints = [
     { pattern: /^\/userinfo$/, result: mockUser },
-    { pattern: /\/resources\/0$/, result: mockApiResourceWithNulls },
-    { pattern: /\/resources\/2$/, result: mockApiResource2 },
-    { pattern: /\/resources\/3$/, result: mockProfessionalResource },
-    { pattern: /\/resources\/4$/, result: mockAccessibilityStrategy },
-    { pattern: /\/resources\/5$/, result: mockFormativeStrategy },
-    { pattern: /\/resources\/6$/, result: mockPlaylistResource },
-    { pattern: /\/resources\/[0-9]/, result: mockApiResource },
+    { pattern: /\/resource\/0$/, result: mockApiResourceWithNulls },
+    { pattern: /\/resource\/2$/, result: mockApiResource2 },
+    { pattern: /\/resource\/3$/, result: mockProfessionalResource },
+    { pattern: /\/resource\/4$/, result: mockAccessibilityStrategy },
+    { pattern: /\/resource\/5$/, result: mockFormativeStrategy },
+    { pattern: /\/resource\/6$/, result: mockPlaylistResource },
+    { pattern: /\/resource\/[0-9]/, result: mockApiResource },
     { pattern: /\/file_documents\/52/, result: mockDocument52 },
     { pattern: /\/file_documents\/53/, result: mockDocument53 },
     { pattern: /\/file_documents\/54/, result: mockDocument54 },

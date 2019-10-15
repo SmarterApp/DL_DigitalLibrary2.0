@@ -46,7 +46,7 @@ export class ResourceService {
   get(id: number): Observable<ResourceModel> {
     let resourceModel: any;
     return this.dataService
-      .get(`/resources/${id}`)
+      .get(`/resource/${id}`)
       .pipe(mergeMap(apiModel => {
         resourceModel = apiModel;
         return apiModel.documents && apiModel.documents.length > 0
