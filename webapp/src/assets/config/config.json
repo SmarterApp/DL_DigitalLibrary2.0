@@ -8,7 +8,7 @@
         "level": 0
     },
     "apiServer": {
-        "cdl": "https://dev.cdl.sbac.org/api/v1.0/"
+        "cdl": "https://api-dev.dl.smarterbalanced.org/api"
     },
     "enableAnalytics": false,
     "okta": {
