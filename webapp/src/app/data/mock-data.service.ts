@@ -31,7 +31,18 @@ import {
   mockIrDocSearchingRelevantSourcesChart, mockIrDocSearchingInternetSearch,
 
   mockIrIntroToQuadFormula, mockIrDocQuadPresentation, mockIrDocQuadQQS,
-  mockIrDocQuadActivity
+  mockIrDocQuadActivity,
+
+  mockPlDeepeningUnderstandingOfFAP, mockPlDocDeepeningChatStations,
+  mockPlDocGalleryWalk, mockPlDocDeepeningTeamNorms, mockPlDocDeepeningGraphicOrganizer,
+  mockPlDocDeepeningFAPExcerpt,
+
+  mockPlFocusOnFeedback, mockPlDocFocusOnFeedbackPresentation,
+  mockPlDocFocusOnFeedbackVideoNotes,
+
+  mockFas3ActTasks, mockFasDoc3ActTasksSample,
+
+  mockFas5MathProcesses, mockFasDoc5MathProcessesSample
 
 } from './mock-data';
 
@@ -44,22 +55,30 @@ type PublicPart<T> = {[K in keyof T]: T[K]};
 export class MockDataService implements PublicPart<DataService> {
   readonly mockGetDataEndpoints = [
     { pattern: /^\/userinfo$/, result: mockUser },
+    /*
     { pattern: /\/resources\/0$/, result: mockApiResourceWithNulls },
     { pattern: /\/resources\/2$/, result: mockApiResource2 },
     { pattern: /\/resources\/3$/, result: mockProfessionalResource },
     { pattern: /\/resources\/4$/, result: mockAccessibilityStrategy },
     { pattern: /\/resources\/5$/, result: mockFormativeStrategy },
     { pattern: /\/resources\/6$/, result: mockPlaylistResource },
+    */
     { pattern: /\/resources\/7$/, result: mockIrAllSystemsGo },
     { pattern: /\/resources\/8$/, result: mockIrGrainOfSandDropOfWater },
     { pattern: /\/resources\/9$/, result: mockIrAnyWayYouSliceIt },
     { pattern: /\/resources\/10$/, result: mockIrSearchingForRelevantResources },
     { pattern: /\/resources\/11$/, result: mockIrIntroToQuadFormula },
-    { pattern: /\/resources\/[0-9]/, result: mockApiResource },
+    { pattern: /\/resources\/12$/, result: mockPlDeepeningUnderstandingOfFAP },
+    { pattern: /\/resources\/13$/, result: mockPlFocusOnFeedback },
+    { pattern: /\/resources\/14$/, result: mockFas3ActTasks },
+    { pattern: /\/resources\/15$/, result: mockFas5MathProcesses },
+    { pattern: /\/resources\/[0-9]/, result: mockIrAllSystemsGo },
+    /*
     { pattern: /\/file_documents\/52/, result: mockDocument52 },
     { pattern: /\/file_documents\/53/, result: mockDocument53 },
     { pattern: /\/file_documents\/54/, result: mockDocument54 },
     { pattern: /\/file_documents\/55/, result: mockDocument55 },
+    */
 
     // All Systems Go! documents
     { pattern: /\/file_documents\/100/, result: mockIrDocAllSystemsGoHandout },
@@ -92,6 +111,23 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /\/file_documents\/500/, result: mockIrDocQuadPresentation },
     { pattern: /\/file_documents\/501/, result: mockIrDocQuadQQS },
     { pattern: /\/file_documents\/502/, result: mockIrDocQuadActivity },
+
+    // Deepening Understanding of FAP documents
+    { pattern: /\/file_documents\/600/, result: mockPlDocDeepeningChatStations },
+    { pattern: /\/file_documents\/601/, result: mockPlDocGalleryWalk },
+    { pattern: /\/file_documents\/602/, result: mockPlDocDeepeningTeamNorms },
+    { pattern: /\/file_documents\/603/, result: mockPlDocDeepeningGraphicOrganizer },
+    { pattern: /\/file_documents\/604/, result: mockPlDocDeepeningFAPExcerpt  },
+
+    // Focus on Feedback documents
+    { pattern: /\/file_documents\/700/, result: mockPlDocFocusOnFeedbackPresentation },
+    { pattern: /\/file_documents\/701/, result: mockPlDocFocusOnFeedbackVideoNotes },
+
+    // 3 Act Tasks documents
+    { pattern: /\/file_documents\/800/, result: mockFasDoc3ActTasksSample },
+
+    // 5 Math Processes documents
+    { pattern: /\/file_documents\/900/, result: mockFasDoc5MathProcessesSample },
 
     { pattern: /\/search\/filters/, result: mockSearchFilters }
   ];
@@ -136,6 +172,23 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /\/file_documents\/500/, result: '/assets/mock-downloads/quadratic-formula/presentation.pdf' },
     { pattern: /\/file_documents\/501/, result: '/assets/mock-downloads/quadratic-formula/qqs.pdf' },
     { pattern: /\/file_documents\/502/, result: '/assets/mock-downloads/quadratic-formula/activity.pdf' },
+
+    // Deepening Understanding of FAP attachments
+    { pattern: /\/file_documents\/600/, result: '/assets/mock-downloads/deepening-understanding-of-fap/chat_stations.pptx' },
+    { pattern: /\/file_documents\/601/, result: '/assets/mock-downloads/deepening-understanding-of-fap/gallery_walk.docx' },
+    { pattern: /\/file_documents\/602/, result: '/assets/mock-downloads/deepening-understanding-of-fap/team_norms_winter_2019.pdf' },
+    { pattern: /\/file_documents\/603/, result: '/assets/mock-downloads/deepening-understanding-of-fap/graphic_organizer_for_gallery_walk.docx' },
+    { pattern: /\/file_documents\/604/, result: '/assets/mock-downloads/deepening-understanding-of-fap/fap_excerpts_for_gallery_walk.docx' },
+
+    // Focus On Feedback attachments
+    { pattern: /\/file_documents\/700/, result: '/assets/mock-downloads/focus-on-feedback/presentation.pptx' },
+    { pattern: /\/file_documents\/701/, result: '/assets/mock-downloads/focus-on-feedback/video-notes.pdf' },
+
+    // 3 Act Tasks attachments
+    { pattern: /\/file_documents\/800/, result: '/assets/mock-downloads/3-act-tasks/sample1.xlsx' },
+
+    // 5 Math Processes attachments
+    { pattern: /\/file_documents\/900/, result: '/assets/mock-downloads/5-math-processes/sample.png' },
 
     { pattern: /\/file_documents\/[0-9]*/, result: '/assets/mock-downloads/video-game-credits.pdf' }
   ];

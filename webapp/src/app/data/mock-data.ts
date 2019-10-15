@@ -2,7 +2,9 @@
 import {
   mockEvidenceImage, mockResourceImage, mockProfImage, mockFormativeImage,
   mockAccessImage, mockPlaylistImg, mockPlImageDeepeningUnderstandingOfFAP,
-  mockIrImageAnyWayYouSliceIt
+  mockIrImageAllSystemsGo, mockIrImageGrainOfSand, mockIrImageAnyWayYouSliceIt,
+  mockIrImageSearching, mockIrImageQuad, mockPlImageFocusOnFeedback,
+  mockFasImage3ActTasks, mockFasImage5MathProcesses
 } from 'src/app/data/mock-images';
 import { DifferentiationModel } from './resource/model/differentiation.model';
 import { FormativeModel } from './resource/model/formative.model';
@@ -213,8 +215,8 @@ const polyfillMissingApiData = {
   // overview
   altBody: `
     In this task, students will engage with division of fraction tasks that use the same context but require students to divide the fractions
-    in the opposite order.  Students solve the tasks by creating visual models, selecting the equations that appropriately represents the situation,
-    and confirming their solutions by solving said equations and comparing back to the visual models.  Students will work to answer the questions,
+    in the opposite order. Students solve the tasks by creating visual models, selecting the equations that appropriately represents the situation,
+    and confirming their solutions by solving said equations and comparing back to the visual models. Students will work to answer the questions,
     "How do these numbers and operations work together?"
   `,
   attachments: [ {
@@ -566,7 +568,7 @@ const polyfillMissingApiData2 = {
     { title: 'Use Evidence', shortName: '4' }
   ],
   grades: [6],
-  learningGoals: 'The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.  The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.',
+  learningGoals: 'The student can solve real-world and mathematical one-step problems involving division of fractions by fractions. The student can solve real-world and mathematical one-step problems involving division of fractions by fractions.',
   connectionsPlaylist: [ {
     title: 'Grade 6 Science',
     numberOfResources: 24,
@@ -583,8 +585,8 @@ const polyfillMissingApiData2 = {
   // overview
   altBody: `
     In this task, students will engage with division of fraction tasks that use the same context but require sutdents to divide the fractions
-    in the opposite order.  Sutdents solve the tasks by creating visual models, selecting the equations that appropriately represents the situation,
-    and confirming their solutions by solving said equations and comparing back to the visual models.  Students will work to answer the questions,
+    in the opposite order. Sutdents solve the tasks by creating visual models, selecting the equations that appropriately represents the situation,
+    and confirming their solutions by solving said equations and comparing back to the visual models. Students will work to answer the questions,
     "How do these numbers and operations work together?"
   `,
   attachments: [ {
@@ -601,7 +603,7 @@ const polyfillMissingApiData2 = {
   }],
   differentiation: `
     <p>
-      If your students are <b>below</b>: Modify the number of problems to include a whole number divided by a fraction.  This may provide
+      If your students are <b>below</b>: Modify the number of problems to include a whole number divided by a fraction. This may provide
       access to students who are still making sense of fraction division.
     </p>
     <p>
@@ -1090,7 +1092,7 @@ const polyfillMissingFormativeApiData = {
     <h6>Clairfy</h6>
     <p>“K” and “W” shows previous understanding and what students want to learn, explore or research.</p>
     <h6>Elicit</h6>
-    <p>“What students write down for KW and L.  What did they learn, what questions do they have.</p>
+    <p>“What students write down for KW and L. What did they learn, what questions do they have.</p>
     <h6>Interpret</h6>
     <p>
       Matching the “L” to the lesson objectives or success criteria will allow a teacher to know how to
@@ -1263,7 +1265,7 @@ export const mockPlaylistResource = {
 // ## Demo Dataset
 
 /* Resources in dataset:
- 
+
   ID  Type            Title
   -----------------------------------------------------------------------------
    0  Instructional   null
@@ -1278,12 +1280,26 @@ export const mockPlaylistResource = {
    9  Instructional   Any Way You Slice It!
   10  Instructional   Searching For Relevant Resources
   11  Instructional   Intro to Quadratic Formula
- 
+  12  Prof. Learning  Deepening Understanding of the FAP
+  13  Prof. Learning  Focus on Feedback
+  14  FAP Strat       3 Act Tasks
+  15  FAP Strat       5 Math Processes
+
  Attachments in the dataset:
 
   ID  Title
   -----------------------------------------------------------------------------
-  101 All Systems Go! Student Handout
+  100 All Systems Go! Student Handout
+  101 All Systems Go! Practice
+  102 All Systems Go! Presentation
+  200 A Grain of Sand Entrance Ticket
+  201 A Grain of Sand Entrance Ticket Key
+  202 A Grain of Sand Vocabulary List
+  203 A Grain of Sand "I Do" Source
+  204 A Grain of Sand "You Do" Source
+  205 A Grain of Sand "We Do" Source
+  206 A Grain of Sand Additional Practice
+
 */
 
 export const mockIrAllSystemsGo = {
@@ -1302,139 +1318,113 @@ export const mockIrAllSystemsGo = {
     { title: 'Analyze and solve linear equations and pairs of simultaneous linear equations', shortName: 'D' }
   ],
   updated: "2019-08-05T13:43:23-0500",
-  resourceThumbnail: 'https://smarterbalancedlibrary.org/sites/default/files/styles/resource_image_grid/public/resource_thumbnails/resource_cover_photos/all_systems_go.jpg',
+  resourceThumbnail: mockIrImageAllSystemsGo,
   // overview
-  altBody: 'This lesson uses students prior experience with graphical representations of systems to facilitate their understanding of solving systems algebraically. In this lesson, students will continue to engage with systems of equations where both equations are in the form y = mx + b . Students will graduate to other types of system structures. They will learn that examining structures is a good first step since it is sometimes possible to recognize an efficient method for solving the system through observation. Students see that if at least one of the equations has a single variable isolated, then that expression can be substituted into the other equation in place of y or x to get a single equation in one variable. Finally, students use the structure of a system of equations to reason about its lack of solutions.',
+  altBody: 'This lesson uses students’ prior experiences with graphical representations of systems to facilitate their understanding of solving systems algebraically. In this lesson, students will continue to engage with systems of equations where both equations are in the form y = mx + b. Students will graduate to other types of system structures. They will learn that examining structures is a good first step since it is sometimes possible to recognize an efficient method for solving the system through observation. Students realize that if at least one of the equations has a single variable isolated, then that expression can be substituted into the other equation to get a single equation in one variable. Finally, students use the structure of a system of equations to reason about its lack of solutions.',
   learningGoals: `
     <ul>
-      <li>Students will understand that a system of equations can have no solution, one solution, or infinitely many solutions.</li>
-      <li>Students will solve systems algebraically.</li>
-      <li>Students will solve systems of equations where two equations have different structures.</li>
-      <li>Students will see and describe structure in systems of equations.</li>
+      <li>Students will solve systems of equations.</li>
     </ul>`,
   successCriteria: `
 		<ul>
-			<li>I can use the structure of equations to help me figure out how many solutions a system of equations has.
-			<li>I can solve systems algebraically.
-			<li>I can solve systems of equations where two equations have different structures.
+      <li>I can use the structure of equations to figure out the number of solutions.</li>
+      <li>I can solve systems of equations algebraically.</li>
+      <li>I can solve systems of equations where two equations have different structures.</li>
 		</ul>`,
   steps: [
     {
       number: 1,
-      title: 'Materials',
+      title: 'Lesson Preparation',
       content: `
         <ul>
-          <li>Scissors</li>
-          <li>Straight edges</li>
-          <li>Copy of backline master activity</li>
+          <li>Gather the materials for the lesson: scissors, straight edges, and the copy of the blackline master activity.</li>
+          <li>Print the blackline masters of the different types. Prepare one set for every 2–3 students.</li>
         </ul>`
     },
     {
       number: 2,
-      title: 'Preparation',
+      title: 'Entrance Ticket',
       content: `
-        <ul>
-          <li>Print the blackline masters of the different types.
-          <li>Prepare one set for every 2–3 students.
-          <li>Provide access to straight edges for drawing accurate graphs and scissors for groups that wish to cut apart the graphs on the blackline masters.
-        </ul>`
+        <p>
+          The format for this Entrance Ticket is commonly referred to as a Number Talk. The Entrance Ticket should take no more than 5 minutes to complete.
+        </p>
+        <p>
+          <ul>
+            <li>Display each problem one at a time.</li>
+            <li>Give students 1 minute of individual think time. Allow students to write on Scratch Paper. Ask students to give a signal when they have an answer and a strategy.</li>
+            <li>After the appropriate think time is provided, select students to share different strategies for each problem.</li>
+            <li>Leave each problem displayed through the group discussion and display students’ thinking for all to see.</li>
+          </ul>
+        </p>`
     },
     {
       number: 3,
-      title: 'Entrance Ticket (5 minutes) - [Number Talk]',
+      title: 'Activity 1 (Challenge Yourself)',
       content: `
         <p>
-          Step 1: Display each problem one at a time.<br/>
-          Step 2: Give students 1 minute of individual think time. Ask students to give a signal when they have an answer and a strategy.<br/>
-          Step 3: After the appropriate think time is provided, select students to share different strategies for each problem.<br/>
+          In Activity 1 (Challenge Yourself), students solve systems of linear equations that lend themselves to substitution. There are 4 kinds of systems presented: the first has both equations given with the y -value isolated on one side of the equation, the second has one of the variables given as a constant, the third kind has one variable given as a multiple of the other, and the last has one equation given as a linear combination.  This progression of systems nudges students toward the idea of substituting an expression in place of the variable it is equal to.  Notice which kinds of systems students think are the least difficult to solve and which are the most difficult to solve.  A calculator may be used for students whose basic arithmetic skills are limited and/or to allow students to focus on the current concept.
         </p>
         <p>
-          Leave each problem displayed through the group discussion and display students’ thinking for all to see.
+          <ul>
+            <li>Arrange students in groups of 2 or 3. Give students appropriate minutes of individual think time.</li>
+            <li>Encourage students to check in with their partner(s) between questions (Think-Pair-Share). Tell students that if they disagree, they should work to reach agreement on an answer. The teacher may choose to support students with an appropriate sentence frame to guide discussions.</li>
+            <li>It is crucial that the teacher takes the time to monitor student’s individual processes and group discussions to create a list of understandings and misconceptions to highlight.</li>
+            <li>Follow up with a whole-class discussion.</li>
+          </ul>
         </p>`
     },
     {
       number: 4,
-      title: 'Activity 1 (Challenge Yourself)',
+      title: 'Activity 1 Synthesis',
       content: `
         <p>
-          In this activity, students solve systems of linear equations that lend themselves to substitution. There are 4 kinds of
-          systems presented: one kind has both equations given with the y-value isolated on one side of the equation,
-          another kind has one of the variables given as a constant, a third kind has one variable given as a multiple of the
-          other, and the last kind has one equation given as a linear combination. This progression of systems nudges
-          students toward the idea of substituting an expression in place of the variable it is equal to.
-          Notice which kinds of systems students think are the least difficult to solve and which are the most difficult to
-          solve.
-        </p>
-        <ul type=square>
-          <li>Arrange students in groups of 2 or 3. (Give students appropriate minutes of individual think time.)
-          <li>Encourage students to check in with their partner(s) between questions Think-Pair-Share. Tell students that if they disagree, they should work to reach agreement on an answer. The teacher may choose to support students with an appropriate sentence frame to guide discussions.
-          <li>It is crucial that the teacher takes the time to monitor student’s individual processes and group discussions to create a list of understandings and misconceptions to highlight during Step 3.
-          <li>Follow with a whole-class discussion.
-          <li>Synthesize student understanding and misconceptions.
-        </ul>
-        <br/>
-        Activity 1 (Synthesis)
-        <p>
-          There are two main take-aways to synthesize with students. The first is to formalize the idea of substitution in a
-          system of equations. The second is to recognize systems where both equations are written with one variable
-          isolated are actually special cases of substitution.
+          There are two main take-aways to synthesize with students. The first is to formalize the idea of substitution in a system of equations. The second is to recognize that systems that have both equations written with one isolated variable are actually special cases of substitution.
         </p>
         <p>
-          Invite students to share which systems they thought would be easiest to solve and which would be hardest.
-          To involve more students in the conversation, consider asking:
-        </p>
-
-        <ul type=square>
-          <li>“Did you change your mind about any of the systems being more or less difficult after you solved them?”
-          <li>“What was similar in these problems?”
-          <li>“What was different?” (The systems vary slightly in how they are presented, but all of the problems can be solved by replacing a variable with an expression equal to it.)
-          <li>“Will your strategy work for the other systems in this list?” (Yes, substitution works in all the given problems.)
-        </ul>
-
-        <p>
-          Tell students that the underlying key concept for all of these problems is that it is helpful to replace a variable with
-          the expression it is equal to, and that this “replacing” is called “substitution.” Point out that setting the expressions
-          for y in the first two problems equal to each other is really substituting y in one equation with the expression it is
-          equal to (as given by the other equation). It may be helpful for students to hear language like, “Since y is equal to
-          -2x, that means wherever I see y, I can substitute in -2x .
+          Invite students to share which systems they thought would be easiest and which would be hardest to sole. To involve more students in the conversation, consider asking:
+          <ul>
+            <li>“Did you change your mind about any of the systems being more or less difficult after you solved them?”</li>
+            <li>“What was similar in these problems?”</li>
+            <li>“What was different?” </li>
+            <li>“Will your strategy work for the other systems in this list?”</li>
+          </ul>
         </p>
         <p>
-          Some students may have trouble transitioning from systems where both equations are given with one variable
-          isolated to other kinds of systems.
-        </p>`
+          Tell students that the underlying key concept for all of these problems is that it is helpful to replace a variable with the expression it is equal to, and that this “replacing” is called “substitution.” Point out that setting the expressions for y in the first two problems equal to each other is really substituting y in one equation with the expression it is equal to (as given by the other equation). It may be helpful for students to hear language like, “Since y is equal to 2x, that means wherever I see y, I can substitute 2x”.
+        </p>
+        <p>
+          Some students may have trouble transitioning from systems where both equations are given with one variable isolated to other kinds of systems.
+        </p>`,
     },
     {
       number: 5,
       title: 'Activity 2 (Tyler\'s Justification)',
       content: `
         <p>
-          In this activity, students are asked to make sense of Tyler’s justification for the number of solutions to the system of
-          equations (MP3). This activity continues the emphasis on reasoning about the structure of an equation (MP7) and
-          the focus should be on what, specifically, in the equations students think Tyler sees that makes him believe the
-          system has no solutions.
+          In this activity, students are asked to make sense of Tyler’s justification for the number of solutions to the system of equations (MP3). This activity continues the emphasis on reasoning about the structure of an equation (MP7) and the focus should be on what, specifically, in the equations students think Tyler sees that makes him believe the system has no solutions.
         </p>
         <p>
-          Step 1: To launch the activity tell students:
+          To launch the activity, tell students:
           <ul>
-            <li>First, we’ll look at what Tyler says about the solution to a system of equations.
-            <li>Next, we’ll decide whether we agree or disagree with him.
-            <li>After that, we’ll have a class discussion.
+            <li>First, we’ll look at what Tyler says about the solution to a system of equations.</li>
+            <li>Next, we’ll decide whether we agree or disagree with him.</li>
+            <li>After that, we’ll have a class discussion.</li>
           </ul>
         </p>
         <p>
-          Step 2: Give students appropriate individual quiet think time to read the problem and decide whether they agree or
-          disagree with Tyler. Critique, Connect, and Clarify with their partner and finish with a Quick Write activity.
+          Give students appropriate individual quiet think time to read the problem and decide whether they agree or disagree with Tyler. Critique, Connect, and Clarify with their partner and finish with a Quick Write activity.
         </p>
         <p>
-          Step 3: After appropriate think time was provided, dedicate the remaining time to whole-class discussion.
-        </p>
-        <p>
-          Step 4: Synthesize student learning.
+          After appropriate think time was provided, dedicate the remaining time to whole-class discussion.
           <ul>
-            <li>Start with a Class Poll : Who agrees with Tyler? Who disagrees? Why?  The goal of the discussion is to look at one way to reason about the structure of a system of equations in order to determine the solution and then have students make their own reasoning about a different but similar system of equations.
-            <li>If possible invite students from each side of the poll to explain their reasoning. Students’ previous Quick Write activity should help with this process.  As students explain, it should come out that Tyler is correct and if no students bring up the idea, make sure to point out that we can visualize this by graphing the equations in the system and noting that the lines look parallel and will never cross (project visualization of Tyler’s graph).
-            <li>In the previous activity, students should have noticed that if they knew what one of the variables was equal to, they could substitute that value or expression into another equation in the same problem.
-            <li>Point out that in this problem ( x + y ) can be replaced with 5, the resulting equation is 5 = 7, which cannot be true regardless of the choice of x and y.
+            <li>Start with a Four Corners (Class Vote): Who agrees with Tyler? Who disagrees? Why?
+              <p>The goal of the discussion is to look at one way to reason about the structure of a system of equations in order to determine the solution, and then have students make their own reasoning about a different, but similar, system of equations.</p>
+            </li>
+            <li>If possible, invite students from each side of the poll to explain their reasoning. Students’ previous Quick Write activity should help with this process.
+              <p>As students explain, it should come out that Tyler is correct.  If none of the students bring up the idea, make sure to point out that we can visualize this by graphing the equations in the system and noting that the lines look parallel and will never cross (project visualization of Tyler’s graph).</p>
+            </li>
+            <li>In the previous activity, students should have noticed that if they knew what one of the variables was equal to, they could substitute that value or expression into another equation in the same problem.</li>
+            <li>Point out that in this problem (x + y) can be replaced with 5.  The resulting equation is 5 = 7, which cannot be true regardless of the choices of x and y.</li>
           </ul>
         </p>`
     },
@@ -1443,77 +1433,63 @@ export const mockIrAllSystemsGo = {
       title: 'Activity 3 (Whole Class)',
       content: `
         <p>
-          Display the following equations and ask students how many solutions they think the system has and to give a signal
-          when they think they know:
-        </p>
-        <p>
-          4x + 2y = 8<br/>
-          2x + y = 5
-        </p>
-        <p>
-          When you observe the majority of the class signals they have an answer, invite several students to explain their
-          thinking (possibly under a document camera if available).
-          There are multiple ways students might reason about the number of solutions this system has. Bring up the
-          following possibilities if no students do so in their explanations:
+          Display the following equations and ask students how many solutions they think the system has and to give a signal when they think they know:
           <ul>
-            <li>“Rewrite the second equation to isolate the y- variable and substitute the new expression into the first equation in order to find that the system of equations has no solutions.”
-            <li>“Notice that both equations are lines with the same slope but different y -intercepts, which means the system of equations has no solutions.”
-            <li>“Notice that 4 x + 2 y is double 2 x + y , but 8 is not 5 doubled, so the system of equations must have no solutions.”
+            <li>4x+2y=8</li>
+            <li>x+y=5</li>
           </ul>
         </p>
         <p>
-          Entire Lesson Synthesis (Take time to summarize BIG ideas.)
+          When the majority of the class signals that they have an answer, invite several students to explain their thinking (possibly under a document camera, if available).
         </p>
         <p>
-        x = 2<br/>
-        y = 3x - 1
-        </p>
-        <p>
-        x = 2y + 4<br/>
-        x = 9 - 3y
-        </p>
-        <p>
-        x = 2y + 3<br/>
-        y = 2x - 9
-        </p>
-        <p>
-          To emphasize the concepts from this lesson, consider displaying the three systems and asking the following
-          discussion questions:
-          <ul style='list-style-type: none'>
-            <li>"What is the first step you would take to solve the first system?"<br/>(Possible explanation: We already know the x -value of the solution, we only need to find the y -value. Substituting 2 for x in the other equation should help us solve for the y -value that makes both equations true when x is 2.)</li>
-            <li>"What steps would you take to solve the second system?"<br/>(Possible explanation: We know two expressions that are equal to x , we can set those expressions as equal to each other. Therefore, we know that 2y + 4 = 9 - 3y, which can be solved using the techniques to solve equations with a single variable. Once we know the value for y , we can find the value for x from either of the original equations from the system.)</li>
-            <li>"For the third system, a student begins the substitution method by writing <em>y = 2⋅2y + 3 - 9 then y = 4y - 6</em>. What has this student done wrong?"<br/> (Possible explanation: When substituting for <em>x</em>, the student did not multiply the entire expression by 2.)</li>
+          There are multiple ways students might reason about the number of solutions this system has. Bring up the following possibilities if no students do so in their explanations:
+          <ul>
+            <li>“Rewrite the second equation to isolate the y- variable and substitute the new expression into the first equation in order to find that the system of equations has no solutions.”</li>
+            <li>Notice that both equations are lines with the same slope but different y -intercepts, which means the system of equations has no solutions.”</li>
+            <li>Notice that 4 x + 2 y is double 2 x + y , but 8 is not 5 doubled, so the system of equations must have no solutions.”</li>
           </ul>
         <p>`
     },
     {
       number: 7,
+      title: 'Entire Lesson Synthesis',
+      content: `
+        <p>
+          To emphasize the concepts from this lesson, consider displaying the three systems and asking the following discussion questions:
+          <ul>
+            <li>x=2 AND y=3x-1</li>
+            <li>x=2y+4 AND x=9-3y</li>
+            <li>x=2y+3 AND y=2x-9</li>
+          </ul>
+        </p>
+        <p>
+          <ul>
+            <li>“What is the first step you would take to solve the first system?”
+              <p>Possible explanation: We already know the x -value of the solution, we only need to find the y -value. Substituting 2 for x in the other equation should help us solve for the y -value that makes both equations true when x is 2.</p>
+            </li>
+            <li>“What steps would you take to solve the second system?”
+              <p>Possible explanation: We know two expressions that are equal to x, so we can set those expressions equal to each other.  Therefore, we know that 2y+4=9-3y, which can be solved using the techniques to solve equations with a single variable.  Once we know the value for y, we can find the value for x from either of the original equations from the system.</p>
+            </li>
+            <li>“For the third system, a student begins the substitution method by writing y=2∙2y+3-9 then y=4y-6. What has this student done wrong?”
+              <p>Possible explanation: When substituting for x, the student did not multiply the entire expression by 2.</p>
+            </li>
+          </ul>
+        </p>`,
+    },
+    {
+      number: 8,
       title: 'Exit Ticket',
       content: `
         <p>
-          This Exit Ticket asks students to solve a system of equations presented in an algebraic form. (A coordinate plane
-          purposefully is not provided. The main idea of this lesson is for students to use the substitution method, which is
-          efficient and effective.)
-        </p>
-        <p>
-        <p>
-          Solve this system of equations:
-        </p>
-        <p>
-          y = 2x<br/>
-          x = -y + 6
-        </p>
-        <p>
-          Student Response<br/>
-          (2, 4)
-        </p>
-        <p>
-          Sample response: Students may use the substitution method to rewrite the system as the one variable equation,
-          x = (2x) + 6, and then solve.
-        </p>
-        <p>
-          Self-Assessment: Self-assessment questions are provided at the end of the Google Slides for teacher use at the end
-          of class alongside the Exit Ticket or as a homework assignment.
+          This Exit Ticket asks students to solve a system of equations presented in an algebraic form. A coordinate plane purposefully is not provided. The main idea of this lesson is for students to use the substitution method, which is efficient and effective.
+          <ul>
+            <li>Solve this system of equations:  y=2x          AND          x=-y+6</li>
+            <li>Answer (2, 4)
+              <p>Sample response: Students may use the substitution method to rewrite the system as the one variable equation, x= − (2x) + 6 , and then solve.</p>
+            </li>
+            <li>Self-Assessment: Self-assessment questions are provided at the end of the Google Slides for teacher use at the end of class alongside the exit ticket or as a homework assignment.</li>
+          </ul>
         </p>`
     }
   ],
@@ -1583,72 +1559,47 @@ export const mockIrAllSystemsGo = {
       description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
     },
     {
-      title: 'Class Poll',
+      title: 'Four Corners (Class Vote)',
       link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
       description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
     },
   ],
   formativeAssessmentProcess: {
-    clarifyIntendedLearning: `
-      <p>
-        Prior to this lesson: The teacher should use previous classroom data, such as formative assessments, to determine
-        student readiness. It is highly recommended for the teacher to anticipate student misconceptions based on prior
-        formative assessment results, previous lessons, and feedback shared with students.
-      </p>
-      <p>
-        During the lesson: Think Pair Share opportunities are provided throughout each activity.
-      </p>
-      <p>
-        Throughout the entire lesson, Strategic Questioning is used to guide students’ thinking toward using structures of
-        equations to solve systems.
-      </p>
-      <p>
-        In Activity 1: The teacher leads students through a “Challenge Yourself” activity as students self-assess by selecting
-        a Red, Yellow, and Green Cup/Tile to provide a visual cue for their level of understanding.
-      </p>
-      <p>
-        The evidence of learning is an Exit Ticket: This exit ticket asks students to solve a system of equations presented
-        in an algebraic form. (A coordinate plane purposefully is not provided. The main idea of this lesson is for students
-        to use the substitution method, which is efficient and effective.)
-      </p>`,
+    clarifyIntendedLearning: '<p>Read the learning goal and success criteria aloud to the class. Explain why the learning goal is important to learn. Ask the students whether they have any clarifying questions, or ask students clarifying questions by having them identify words they are unsure about. It is also helpful to have students write the learning goal and success criteria in a journal or on a piece of paper. Students can also discuss the learning goal and success criteria with a partner.</p>',
     elicitEvidence: `
       <p>
-      Prior to the lesson, teachers should complete every problem and anticipate misconceptions.
+        Prior to this lesson, the teacher should use previous classroom data, such as formative assessments, to determine student readiness. It is highly recommended for the teacher to anticipate student misconceptions based on prior formative assessment results, previous lessons, and feedback shared with students.
       </p>
       <p>
-      The teacher will carefully monitor and assess students' responses to facilitate learning. During the lesson, the
-      teacher will monitor answers provided from the students to evaluate any misconceptions in relationship to using
-      structures to solve systems of equations. Teachers should monitor students’ thinking throughout each activity.
+        Throughout the entire lesson, Strategic Questioning is used to guide students’ thinking toward using structures of equations to solve systems. Think Pair Share opportunities are provided throughout each activity, as well.
       </p>
       <p>
-      Monitor both students’ independent work and group discussions to highlight student products that demonstrate
-      the learning goals using different strategies.
+        In Activity 1. The teacher leads students through a “Challenge Yourself” activity as they self-assess by selecting a Red, Yellow, Green Cup/Tile to provide a visual cue for their level of understanding.
+      </p>
+      <p>
+        The evidence of learning is an Exit Ticket. The exit ticket asks students to solve a system of equations presented in an algebraic form.  A coordinate plane purposefully is not provided. The main idea of this lesson is for students to use the substitution method, which is efficient and effective.
       </p>`,
     interpretEvidence: `
       <p>
-        The teacher can use the visual cues from the self-assessment with the Red, Yellow, Green
-        and Cups/Tiles to arrange peer tutors or rearrange groups during activities. While monitoring student
-        work/discussion, highlight student thinking that may help increase other students’ understanding. At the end of
-        each activity, the teacher should take time to synthesize students’ thinking around the activity. The teacher will
-        provide immediate Feedback to students during activity synthesis and use Strategic Questioning in order to
-        clarify misconceptions and build on prior knowledge. The teacher will also use evidence from the Exit Ticket to
-        plan next steps.
+        Prior to the lesson, teachers should complete every problem and anticipate misconceptions.
+      </p>
+      <p>
+        The teacher will carefully monitor and assess students' responses to facilitate learning. During the lesson, the teacher will monitor answers provided from the students to evaluate any misconceptions regarding using structures to solve systems of equations. Teachers should monitor students’ thinking throughout each activity. Monitor both students’ independent work and group discussions to highlight student products that demonstrate the learning goals using different strategies.
       </p>`,
     actOnEvidence: `
+      <p>
+        The teacher can use the visual cues from the self-assessment with the Red, Yellow, and Green Cups/Tiles to arrange peer tutors or rearrange groups during activities. While monitoring student work/discussion, highlight student thinking that may help increase other students’ understanding. At the end of each activity, the teacher should take time to synthesize students’ thinking around the activity. The teacher will provide immediate feedback to students during activity synthesis and use Strategic Questioning in order to clarify misconceptions and build on prior knowledge. The teacher will also use evidence from the Exit Ticket to plan next steps.
+      </p>
       Feedback
       <p>
-        The teacher should circulate throughout the room and monitor students’ work/discussions and give
-      prescriptive feedback on any misconceptions and understandings students have.
+        The teacher should circulate throughout the room and monitor students’ work/discussions and give prescriptive feedback on any misconceptions and understandings students have.
       </p>
       Instructional Moves
       <p>
-        Many of the slides in the presentation include Teacher Notes. These notes detail which
-        activities to use, which questions to ask, and how to respond to those questions or clarify the intended learning for
-        that slide/word problem.
+        Many of the slides in the presentation include Teacher Notes. These notes detail which activities to use, which questions to ask, and how to respond to those questions or clarify the intended learning for that slide/word problem.
       </p>
       <p>
-        The teacher should use the formal evidence from the Exit Ticket to decide whether additional practice is needed or
-        whether students are ready to move on to a new lesson."
+        The teacher should use the formal evidence from the Exit Ticket to decide whether additional practice is needed or whether students are ready to move on to a new lesson."
       </p>`
   },
 };
@@ -1699,7 +1650,7 @@ export const mockIrGrainOfSandDropOfWater = {
     { title: 'Interpret & Integrate Information', shortName: '2' }
   ],
   updated: "2019-07-26T11:29:37-0500",
-  resourceThumbnail: "https://smarterbalancedlibrary.org/sites/default/files/styles/resource_image_grid/public/resource_thumbnails/resource_cover_photos/a_grain_of_sand._a_drop_of_water.jpg",
+  resourceThumbnail: mockIrImageGrainOfSand,
   altBody: `
     <p>
       This lesson will help the student understand how selecting details from a text will help them understand the
@@ -2079,7 +2030,7 @@ export const mockIrAnyWayYouSliceIt = {
           <ul>
             <li>Before beginning the lesson, open the Google Slide Presentation for “Any Way You Slice It!”</li>
             <li>Introduce the lesson by telling students that today they will be identifying two-dimensional shapes by slicing three-dimensional geometric clay solids using a piece of wire/dental floss.</li>
-            <li>The teacher can then display the Learning Goal (slide 3) for the students.  Identify different types of two-dimensional shapes from slicing a three-dimensional solid (i.e., rectangle, trapezoid, hexagon).</li>
+            <li>The teacher can then display the Learning Goal (slide 3) for the students. Identify different types of two-dimensional shapes from slicing a three-dimensional solid (i.e., rectangle, trapezoid, hexagon).</li>
             <li>Continue by showing the students the Success Criteria (slide 4), and explain that they will know they have understood this lesson when they can:</li>
             <li>Identify two-dimensional shapes from slicing a rectangular prism and explain how they arrived at those shapes.</li>
             <li>Identify two-dimensional shapes from slicing a rectangular pyramid and explain how they arrived at those shapes (allow students to use scratch paper).</li>
@@ -2264,7 +2215,7 @@ export const mockIrDocAnySlicePresentation = {
     "id": 300,
     "name": "Any Way You Slice It! Presentation.pptx",
     "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
-    "mimeType": "application/pptx"
+    "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
 };
 
 export const mockIrDocAnySlicePolygonList = {
@@ -2333,7 +2284,7 @@ export const mockIrSearchingForRelevantResources = {
     { title: 'Evaluate Information / Sources', shortName: '3' }
   ],
   updated: "2019-07-10T11:29:37-0500",
-  resourceThumbnail: "https://smarterbalancedlibrary.org/sites/default/files/styles/resource_image_grid/public/resource_thumbnails/resource_cover_photos/search.jpg",
+  resourceThumbnail: mockIrImageSearching,
   altBody: `<p>Students will understand the importance of relevant sources as they conduct research.</p>`,
   learningGoals: `
     <p>
@@ -2595,7 +2546,7 @@ export const mockIrIntroToQuadFormula = {
     { title: 'Solve equations and inequalities in one variable', shortName: 'I' }
   ],
   updated: "2019-07-31T11:29:37-0500",
-  resourceThumbnail: "https://smarterbalancedlibrary.org/sites/default/files/styles/resource_image_grid/public/resource_thumbnails/resource_cover_photos/intro_to_quadratic_formula_resource_card.jpg",
+  resourceThumbnail: mockIrImageQuad,
   altBody: `
     <p>
       This resource is designed for a block day lesson or two 45-minute
@@ -2726,7 +2677,7 @@ export const mockIrIntroToQuadFormula = {
           Project slide 15 for the students to read the directions.
         </p>
         <p>
-          Place students into groups of four.  It is recommended that you create purposeful, heterogeneous groups.  You can also create homogeneous groups and change the roots to non-real numbers for advanced students and perfect squares for students below target level. A calculator may be used for students whose basic math arithmetic skill is limited to help them to focus on the current instruction.
+          Place students into groups of four. It is recommended that you create purposeful, heterogeneous groups. You can also create homogeneous groups and change the roots to non-real numbers for advanced students and perfect squares for students below target level. A calculator may be used for students whose basic math arithmetic skill is limited to help them to focus on the current instruction.
         </p>
         <p>
           Have each group identify a group leader.
@@ -2821,7 +2772,7 @@ export const mockIrIntroToQuadFormula = {
         Lastly, when using the quadratic formula to solve the equation, many students do not know how the negative sign in front of the b value affects the value of b. Many students also struggle with following order of operations when a square root is involved. The Quadratic Formula Activity is scaffolded to help students with these common struggles.
       </p>
       <p>
-        The teacher and the students will be interpreting the evidence during the lesson. The teacher will be interpreting indirectly, through observations, while the students partake in the Exploration Think-Pair-Share, the Question-Question-Swap, and the Quadratic Formula Activity. Students will be interpreting their peers’ thinking directly during these activities. The teacher will be interpreting the students’ thinking directly on the Entrance and Exit Tickets.  Students will also be interpreting their own abilities on the Exit Ticket.
+        The teacher and the students will be interpreting the evidence during the lesson. The teacher will be interpreting indirectly, through observations, while the students partake in the Exploration Think-Pair-Share, the Question-Question-Swap, and the Quadratic Formula Activity. Students will be interpreting their peers’ thinking directly during these activities. The teacher will be interpreting the students’ thinking directly on the Entrance and Exit Tickets. Students will also be interpreting their own abilities on the Exit Ticket.
       </p>`,
     actOnEvidence: `
       <p>
@@ -2901,8 +2852,531 @@ export const mockIrDocQuadActivity = {
 
 export const mockPlDeepeningUnderstandingOfFAP = {
   id: 12,
-  title: 'Deepening Understanding of the Formative Assessment Process',
+  title: 'Deepening Understanding and Use of the Formative Assessment Process',
   resourceType: "Professional Learning",
+  author: 'Heidi Kroog & Amy Thierry',
+  publisher: 'Smarter Balanced',
+  updated: "2018-02-08T11:29:37-0500",
+  resourceThumbnail: mockPlImageDeepeningUnderstandingOfFAP,
+  altBody: `
+    <p>
+      This professional learning activity was created for the State Network of Educators 2018 Winter Workshop to calibrate a shared understanding of the formative assessment process. By using five different chat stations with multiple entry points into the formative assessment process, educators energetically reviewed data, watched and discussed videos, shared technology strategies, prepared an elevator speech, and reviewed expert text. The engagement and focus in this timed activity produced multiple shifts in thinking and provided educators with a renewed energy to embed student success criteria and opportunities for authentic feedback into instructional lesson planning.
+    </p>`,
+  learningGoals: `
+    <p>
+      Educators will gain an understanding of the learning benefits of embedding the formative assessment process with students during instruction.
+    </p>`,
+  successCriteria: `
+    <p>
+      Educators will use this professional learning activity to discuss how the formative process is embedded in instruction (e.g., establish success criteria with students prior to eliciting evidence, establish how they will provide actionable feedback to students, provide opportunities for students to self-evaluate their learning progress, etc.).
+    </p>`,
+  steps: [
+    {
+      number: 1,
+      title: 'Slide 1',
+      content: `
+        <p>
+          Facilitator will introduce the professional learning topic with learners. Use the PowerPoint slides to share overview of learning activity and to access the content.
+        </p>`
+    },
+    {
+      number: 2,
+      title: 'Slide 2',
+      content: `
+        <p>
+          Reminder: All professional learning is personal. The individual learner is at the center of the experience and will get of this opportunity what he or she puts into it. We all come to the table with different experiences, past learning, etc. Thus, it is important to remember and be attentive to what is “new learning,” what is “re-learning,” and what is something that we may need to “un-learn” (possibly a past misconception or a new shift in thinking).
+        </p>`
+    },
+    {
+      number: 3,
+      title: 'Slide 3',
+      content: `
+        <p>
+          Clarify intended learning with learners. Establish the success criteria together.
+        </p>`
+    },
+    {
+      number: 4,
+      title: 'Slide 4-8',
+      content: `
+        <p>
+          Give participants 2 minutes to review the data charts, 5 minutes to discuss, and 1 minute to reflect/jot notes.
+        </p>`
+    },
+    {
+      number: 5,
+      title: 'Slide 9',
+      content: `
+        <p>
+          Give the participants 2 minutes to review the Formative Assessment Process Flier, 5 minutes to complete the practice task(s), and 1 minute to share with a partner.
+        </p>`
+    },
+    {
+      number: 6,
+      title: 'Slide 10-12',
+      content: `
+        <p>
+          Give participants 30 seconds to review the purpose, 6 minutes to watch the videos and take notes, and 1.5 minutes to discuss.
+        </p>`
+    },
+    {
+      number: 7,
+      title: 'Slide 13',
+      content: `
+        <p>
+          Give participants 2 minutes to silently share/review, 5 minutes to discuss technology options, and 1 minute to jot a resource to try.
+        </p>`
+    },
+    {
+      number: 8,
+      title: 'Slide 14',
+      content: `
+        <p>
+          Give participants 8 minutes to complete the Quote Jigsaw.
+        </p>`
+    }
+  ],
+  documents: [
+    '/file_documents/600/download',
+    '/file_documents/601/download',
+    '/file_documents/602/download',
+    '/file_documents/603/download',
+    '/file_documents/604/download'
+  ],
+  videoLinks: [],
+  formativeStrategies: [
+    {
+      title: 'Think-Pair-Share',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+    {
+      title: 'Gallery Walk',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+    {
+      title: 'Jigsaw',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    }
+  ],
+  comments: `
+    <p>
+      These five stations can be used together or used individually as a learning series. Professional learning should be ongoing, job-embedded, and continuous. After the initial participation in the Gallery Walk, educators can use this resource to establish SMART goals to embed the formative assessment process in instructional practices.
+    </p>`
+};
 
+export const mockPlDocDeepeningChatStations = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/600",
+    "@type": "Presentation",
+    "id": 600,
+    "name": "Chat Stations.pptx",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pptx",
+    "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+};
 
+export const mockPlDocGalleryWalk = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/601",
+    "@type": "Document",
+    "id": 601,
+    "name": "Gallery Walk.docx",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.docx",
+    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+};
+
+export const mockPlDocDeepeningTeamNorms = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/602",
+    "@type": "Document",
+    "id": 602,
+    "name": "Team Norms Winter 2019.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockPlDocDeepeningGraphicOrganizer = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/603",
+    "@type": "Document",
+    "id": 603,
+    "name": "Graphic Organizer for Gallery Walk.docx",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.docx",
+    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+};
+
+export const mockPlDocDeepeningFAPExcerpt = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/604",
+    "@type": "Document",
+    "id": 604,
+    "name": "FAP Excerpts for Gallery Walk.docx",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.docx",
+    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+};
+
+export const mockPlFocusOnFeedback = {
+  id: 13,
+  title: 'Focus on Feedback',
+  resourceType: "Professional Learning",
+  author: 'Joe Moran & Amy Thierry',
+  publisher: 'Smarter Balanced',
+  updated: "2018-08-03T11:29:37-0500",
+  resourceThumbnail: mockPlImageFocusOnFeedback,
+  altBody: `
+    <p>
+      This professional learning activity is for individuals or teams who want to deepen their understanding of the power of feedback. Feedback is a foundational attribute of the formative assessment process. Giving, receiving, and using feedback can significantly impact both learning and teaching. Learners will watch and discuss four short videos focused on giving and receiving feedback. These videos focus on the different types of feedback and when they are effectively used to support learning.
+    </p>`,
+  learningGoals: `
+    <p>
+      Learners will develop or deepen their understanding of the different types of feedback we give and receive as educators.
+    </p>`,
+  successCriteria: `
+    <p>
+      <ol>
+        <li>Learners will be able to explain different types of feedback (e.g. evaluative, task-based, ego-based, self-regulation, process, and descriptive feedback).</li>
+        <li>Learners will be able to apply different types of feedback into their instructional practices with students and collaboratively with colleagues.</li>
+      </ol>
+    </p>`,
+  steps: [
+    {
+      number: 1,
+      title: 'Slide 1',
+      content: `
+        <p>
+          Facilitator will introduce the professional learning topic with learners. Use the PowerPoint slides to share overview of learning activity and to access the videos and add personable content.
+        </p>`
+    },
+    {
+      number: 2,
+      title: 'Slide 1',
+      content: `
+        <p>
+          Reminder: All professional learning is personal. The individual learner is at the center of the experience and will get of this opportunity what he or she puts into it. We all come to the table with different experiences, past learning, etc. Thus, it is important to remember and be attentive to what is “new learning,” what is “re-learning,” and what is something that we may need to “un-learn” (possibly a past misconception or a new shift in thinking).
+        </p>`
+    },
+    {
+      number: 3,
+      title: 'Slide 2',
+      content: `
+        <p>
+          Clarify intended learning with learners. Review the learning goals and the success criteria.
+        </p>`
+    },
+    {
+      number: 4,
+      title: 'Slide 3',
+      content: `
+        <p>
+          Activate prior knowledge. Think about a time when feedback impacted you. It could be feedback that helped you attain a goal. Or, a non-example when feedback was given, but it wasn’t helpful, meaning that it did not impact future performance/practice.
+        </p>`
+    },
+    {
+      number: 5,
+      title: 'Slide 4',
+      content: `
+        <p>
+          Provide an overview of the learning activity. We will view 4 videos with a purpose using guiding questions and we will have a brief opportunity to discuss and reflect on the content in the video after each one with a partner.
+        </p>`
+    },
+    {
+      number: 6,
+      title: 'Slide 5',
+      content: `
+        <p>
+          Provide viewing options as needed for learners and the environment for viewing.
+        </p>
+        <p>
+          • See Implementation Considerations on viewing options."
+        </p>`
+    },
+    {
+      number: 7,
+      title: 'Slides 6-8',
+      content: `
+        <p>
+          Set up each video with a brief look at the viewing questions. These are look-fors while viewing. Learners may want to jot down some notes during viewing. View the short clip, then provide 3 minutes of discussion time with a partner.
+        </p>`
+    },
+    {
+      number: 8,
+      title: 'Slide 9',
+      content: `
+        <p>
+          This is a longer video. Learners may want to view the clip in its entirety on their own later. This video is a bit longer than the other three. Review the questions, view, and provide 3 minutes to discuss.
+        </p>`
+    },
+    {
+      number: 9,
+      title: 'Slide 10',
+      content: `
+        <p>
+          Review success criteria. Ask learners to self-identify where they are on success criteria.
+        </p>
+        <p>
+          <ul>
+            <li>Question 1 (Explain)
+              <ul>
+                <li>Option 1: Thumbs up, down, sideways—can they explain at least two different types of feedback?</li>
+                <li>Option 2: Fist to Five—ask learners to identify how many different types of feedback they can now explain. Fist is zero. Five is five different types. Use this information to determine next steps in professional learning on feedback.</li>
+              </ul>
+            </li>
+            <li>Question 2 (Application)
+              <ul>
+                <li>Option 1: Ask how likely learners are to use one of the different types of feedback with students or colleagues today/tomorrow.</li>
+                <li>Option 2: Observe over the next few days and collect examples of educators using the different types of feedback. This could be done in peer observations, self-identification, etc.</li>
+              </ul>
+            </li>
+          </ul>
+        </p>
+        <p>
+          Give participants 8 minutes to complete the Quote Jigsaw.
+        </p>`
+    },
+    {
+      number: 10,
+      title: 'Slide 11',
+      content: `
+        <p>
+          Wrap up learning by reflection on the professional learning experience. As individuals, learners should reflect on the following: What did the learner learn, un-learn, and/or relearn?
+        </p>`
+    }
+  ],
+  documents: [
+    '/file_documents/700/download',
+    '/file_documents/701/download'
+  ],
+  videoLinks: [],
+  formativeStrategies: [
+    {
+      title: 'Think-Pair-Share',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+    {
+      title: 'Thumbs Up/Thumbs Down',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    },
+    {
+      title: 'Fist to Five',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+    }
+  ],
+  comments: `
+    <p>
+      This learning activity was first presented to over 100 experienced educators in July 2018. Educators reported that this was a great use of their learning time, and a great activity to support student-centric learning and instruction, and it helped educators provide each other feedback as they worked collaboratively together.
+    </p>
+    <p>
+      This was originally presented in a large banquet room, but it could be a walking activity. One idea is to set up a video opportunity (with laptops/projectors) in 4 different classrooms and have educators rotate in small groups from room to room to watch and discuss each video. Then, they could come back together at the end of the activity to debrief.
+    </p>
+    <p>
+      Using the viewing guide, participants can view each video individually using the QR code. This can be used during the initial viewing activity or post viewing as educators review the videos to deepen their learning. Each viewing will prompt new layers for understanding and use.
+    </p>`
+};
+
+export const mockPlDocFocusOnFeedbackPresentation = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/700",
+    "@type": "Presentation",
+    "id": 700,
+    "name": "Focus On Feedback.pptx",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pptx",
+    "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+};
+
+export const mockPlDocFocusOnFeedbackVideoNotes = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/602",
+    "@type": "Document",
+    "id": 602,
+    "name": "Video ViewingNotes for Feedback.pdf",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.pdf",
+    "mimeType": "application/pdf"
+};
+
+export const mockFas3ActTasks = {
+  id: 14,
+  resourceType: 'Formative Strategy',
+  title: '3 Act Tasks',
+  author: '',
+  publisher: 'Smarter Balanced',
+  updated: "2019-09-11T13:43:23-0500",
+  resourceThumbnail: mockFasImage3ActTasks,
+  // overview
+  altBody: `
+    <p>
+      3 Act Task is a whole-group mathematics task consisting of three distinct parts: (1) Act One—an engaging and perplexing situation, (2) Act Two—an information and solution seeking session, and (3) Act Three—a solution discussion and reveal.
+    <p>`,
+  studentBenefits: `
+    <p>
+      Using this tool can help students:
+      <ul>
+        <li>to become engaged.</li>
+        <li>by creating a need/urgency to know the solution and a desire to understand math.</li>
+        <li>to persevere and take charge of their learning.</li>
+        <li>by generating content discussion.</li>
+        <li>to use estimation to determine reasonableness.</li>
+      </ul>
+    </p>`,
+  suggestedMaterials: `
+		<ul>
+      <li>Image, video, or situation to be used for Act One. May require print outs for accessibility for some students.</li>
+      <li>Pen/Pencil</li>
+      <li>Paper to write responses/brainstorm</li>
+		</ul>`,
+  instructionalUse: `
+    <ul>
+      <li>Introduce new topics</li>
+      <li>Create connections among topics</li>
+      <li>Provide hands-on exploration of a problem</li>
+    </ul>
+    `,
+  stepByStep: `
+    <p>
+      Discuss the learning goal and success criteria with the class and explain how this activity aligns with them.
+    </p>
+    <p>
+      In <em>Act 1</em>, share with students an image, video, or other situation that is engaging and perplexing. Students discuss what they notice and wonder. They generate questions to ask about the situation. Students decide on a question to answer and make estimates about the likely solution.
+    </p>
+    <p>
+      In <em>Act 2</em>, students work on finding solutions to their problems. They use information they have and ask for more information, as needed.
+    </p>
+    <p>
+      In <em>Act 3</em>, students share their work, their thinking, and their solutions. The teacher reveals solution and facilitates the following discussion.
+    </p>`,
+  comments: `
+    <p>
+      <ul>
+      <li>Allow students to talk to peers about what they notice and wonder in Act 1 to increase the sharing with the whole group.</li>
+      <li>“Plant” a question by stating, “Last period my students asked this . . . What do you think about that?”</li>
+      <li>Allow students to solve other questions that have been generated by the tasks.</li>
+      <li>Break the 3-Act lessons into smaller parts, if needed.</li>
+      </ul>
+    </p>`,
+  strategyInAction: `
+    <h6>Clairfy</h6>
+    <p>
+      The teacher discusses the learning goal and success criteria with the class and explains how this activity aligns with them.
+    </p>
+    <h6>Elicit</h6>
+    <p>
+      The teacher elicits information from the students about the problem and/or each act.
+    </p>
+    <h6>Interpret</h6>
+    <p>
+      Students interpret the information using the learning goal and success criteria as guides and revise when given more information.
+    </p>
+    <h6>Act</h6>
+    <p>
+      The teacher acts after observing/listening to students during each “act.”  For example, a teacher could ask a guiding question to help students come to the correct solution.
+    </p>`,
+  documents: [
+    "/api/file_documents/800/download"
+  ]
+};
+
+export const mockFasDoc3ActTasksSample = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/800",
+    "@type": "Sample",
+    "id": 800,
+    "name": "Dan Meyer's Three-Act Math Tasks.xlsx",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.xlsx",
+    "mimeType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+};
+
+export const mockFas5MathProcesses = {
+  id: 15,
+  resourceType: 'Formative Strategy',
+  title: '5 Math Processes',
+  author: '',
+  publisher: 'Smarter Balanced',
+  updated: "2019-09-03T13:43:23-0500",
+  resourceThumbnail: mockFasImage5MathProcesses,
+  // overview
+  altBody: `
+    <p>
+      5 Math Processes is a routine that uses student thinking to purposefully guide classroom discussions and make connections between solution strategies. The five practices are Predict, Observe, Elect, Order, and Connect.
+    <p>`,
+  studentBenefits: `
+    <p>
+      Using this tool can help students:
+      <ul>
+        <li>see other strategies for solving a problem.</li>
+        <li>make connections between different strategies.</li>
+        <li>deepen their understanding of content.</li>
+      </ul>
+    </p>`,
+  suggestedMaterials: `
+		<ul>
+      <li>Document camera to display student work</li>
+      <li>Poster paper for student work to be hung side by side to facilitate making connections</li>
+		</ul>`,
+  instructionalUse: `
+    <ul>
+      <li>Identify different strategies students are using </li>
+      <li>Purposefully select which student work will be shared with class</li>
+      <li>Purposefully order sharing of selected student work based on the goal of the discussion</li>
+      <li>Make connections between different strategies</li>
+    </ul>
+    `,
+  stepByStep: `
+    <p>
+      <strong>Predict</strong>—Once the learning goal has been decided and the task selected, identify the possible ways students might work through the task.
+    </p>
+    <p>
+      <strong>Observe</strong>—Monitor students while working. Record which students are using which anticipated strategies, and which strategies are being used that were not anticipated.
+    </p>
+    <p>
+      <strong>Elect</strong>—Determine which student work (or what parts of a student’s work) will be shared during the whole-group share out/discussion.
+    </p>
+    <p>
+      <strong>Order</strong>—Determine the order in which the selected student work will be shared.
+    </p>
+    <p>
+      <strong>Connect</strong>—Ask questions to guide students in connecting the selected work to deepen students’ understanding.
+    </p>`,
+  comments: `
+    <p>
+      <ul>
+        <li>Select tasks that have multiple entry points and/or solution paths.</li>
+        <li>Make a monitoring table that includes each of the anticipated strategies and space for additional strategies that were not anticipated with cells in which the names of students using each strategy can be recorded during the monitoring phase.</li>
+        <li>When first using the 5 Math Processes, consider launching the task and providing work time during which the monitoring table is used to record students’ strategies. Collect student work and review it to plan for the share out. In planning for the sharing out the next day, Elect the work to be shared, the Order in which to share it, and the Connections that would be important to make. As the teacher becomes more fluent with the 5 Math Processes, the share out can happen during the same class period as the task launch and work time.</li>
+        <li>Set/confirm norms for discussion etiquette.</li>
+      </ul>
+    </p>`,
+  strategyInAction: `
+    <h6>Clairfy</h6>
+    <p>
+      The teacher can clarify intended learning by purposefully selecting tasks aligned to learning goals. Students might ask questions during the launch to ensure they understand the purpose of the task and how it relates to the learning goal and success criteria.
+    </p>
+    <h6>Elicit</h6>
+    <p>
+      The teacher observes students as they work through the task identifying which strategies they are using, any misconceptions, or common errors, etc.
+    </p>
+    <h6>Interpret</h6>
+    <p>
+      The teacher will interpret the students’ work and solution strategies chosen using the learning goal and success criteria.
+    </p>
+    <h6>Act</h6>
+    <p>
+      The teacher will select which student work to use during the share-out based on the goals of the lesson. The teacher will determine the order in which that work will be shared to tell the “story” of the expected learning. The teacher will invite students to make connections between the different strategies students have used to deepen student understanding.
+    </p>`,
+  documents: [
+    "/api/file_documents/900/download"
+  ]
+};
+
+export const mockFasDoc5MathProcessesSample = {
+    "@context": "/api/contexts/FileDocument",
+    "@id": "/api/file_documents/900",
+    "@type": "Sample",
+    "id": 900,
+    "name": "Monitoring Sheet for Task.png",
+    "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.png",
+    "mimeType": "image/png"
 };
