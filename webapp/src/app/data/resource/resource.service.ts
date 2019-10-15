@@ -20,8 +20,7 @@ import { TopicSectionModel, TopicModel } from './model/topic-section.model';
   providedIn: 'root'
 })
 export class ResourceService {
-  // It's unclear what the potential values 
-  // the API will return here.
+  // It's unclear what the potential values the API will return here.
   static readonly ApiResourceTypeMap: Map<string, ResourceType> = new Map([
     ['Instructional and Professional Learning', ResourceType.Instructional ],
     ['Instructional', ResourceType.Instructional ],
@@ -40,9 +39,9 @@ export class ResourceService {
     [ 4, 'asmt-ela-read-informational-texts' ],
   ]);
 
-  constructor(private dataService: DataService, 
-    private embedStrategyLinkService: EmbedStrategyLinksService,
-    private attachmentService: AttachmentService) { }
+  constructor(private dataService: DataService,
+              private embedStrategyLinkService: EmbedStrategyLinksService,
+              private attachmentService: AttachmentService) { }
 
   get(id: number): Observable<ResourceModel> {
     let resourceModel: any;
@@ -59,17 +58,17 @@ export class ResourceService {
         model.attachments = coalesce(attachments, []);
         return model;
       }))
-      .pipe(map(resource => this.embedStrategyLinks(resource)))
+      .pipe(map(resource => this.embedStrategyLinks(resource)));
   }
 
   getAttachments(documents: string[]): Observable<any>[] {
-    let observables = [];
-    
-    for(let doc of documents) {
+    const observables = [];
+
+    for (const doc of documents) {
       const regexGroups = doc.match(/\/file_documents\/([0-9]*)\/download/);
-      if(regexGroups && regexGroups.length > 1){
+      if (regexGroups && regexGroups.length > 1) {
         const id = +regexGroups[1];
-        if(!isNaN(id)) {
+        if (!isNaN(id)) {
           observables.push(this.attachmentService.get(id));
         }
       }
@@ -82,16 +81,16 @@ export class ResourceService {
     const apiResourceType = Array.isArray(apiResource.resourceType)
       ? apiResource.resourceType[0]
       : apiResource.resourceType;
-    
+
     const resourceType = ResourceService.ApiResourceTypeMap.get(apiResourceType);
 
-    if(resourceType == null) {
+    if (resourceType == null) {
       throw Error('Unexpected resourceType for: ' + apiResource.resourceType);
     }
 
-    return <ResourceModel> {
+    return {
       resourceId: apiResource.id,
-      resourceType: resourceType,
+      resourceType,
       details: this.mapToResourceDetailsModel(apiResource),
       overview: this.mapToOverview(apiResource),
       steps: this.mapToSteps(coalesce(apiResource.steps, [])),
@@ -106,11 +105,11 @@ export class ResourceService {
       videoLinks: apiResource.videoLinks,
 
       topicSection: this.mapToTopicSection(apiResource, resourceType)
-    };
+    } as ResourceModel;
   }
 
   private mapToResourceDetailsModel(apiResource: any): ResourceDetailsModel {
-    return <ResourceDetailsModel> {
+    return {
       title: apiResource.title,
       favorite: apiResource.favorite,
       subjects: coalesce(apiResource.subject, []),
@@ -119,41 +118,41 @@ export class ResourceService {
       author: apiResource.author,
       authorOrganization: apiResource.publisher,
       lastModified: new Date(apiResource.updated),
-      
-      claims: coalesce(apiResource.educationalAlignments, []).map(ea => <Alignment>{
+
+      claims: coalesce(apiResource.educationalAlignments, []).map(ea => ({
         title: `${ea.shortName}: ${ea.title}`,
         shortName: ea.shortName
-      }),
+      } as Alignment)),
 
-      targets: coalesce(apiResource.targetAlignments, []).map(ta => <Alignment>{
+      targets: coalesce(apiResource.targetAlignments, []).map(ta => ({
         title: `${ta.shortName}: ${ta.title}`,
         shortName: ta.shortName
-      }),
+      } as Alignment)),
 
-      relatedPlaylists: coalesce(apiResource.connectionsPlaylist, []).map(p => <Playlist>{
+      relatedPlaylists: coalesce(apiResource.connectionsPlaylist, []).map(p => ({
         title: p.title,
         resourceId: p.resourceId,
         numberOfResources: p.numberOfResources,
         assessmentType: p.assessmentType,
         assessmentTypeIcon: this.assessmentTypeToIconMap.get(p.assessmentType)
-      }),
+      } as Playlist)),
 
-      relatedResources: coalesce(apiResource.resources, []).map(r => <ResourceLinkModel> {
+      relatedResources: coalesce(apiResource.resources, []).map(r => ({
         resourceId: r.id,
         title: r.title
-      }),
+      } as ResourceLinkModel)),
       // MAYBE, but this is NOT an array?
       // /api/v1/resource.connectionToCcss
       standards: coalesce(apiResource.standards, []),
       category: apiResource.category,
       assessmentTypeIcon: this.assessmentTypeToIconMap.get(apiResource.assessmentType)
-    };
+    } as ResourceDetailsModel;
   }
 
   mapToOverview(apiModel: any): OverviewModel {
     return {
       // MAYBE
-      // /api/v1/resource.altBody 
+      // /api/v1/resource.altBody
       description: apiModel.altBody,
 
       // /api/v1/resource.learningGoals
@@ -170,22 +169,22 @@ export class ResourceService {
     };
   }
 
-  mapToSteps(apiSteps: any[]):ResourceStepModel[] {
-    return apiSteps.map(s => <ResourceStepModel>{
+  mapToSteps(apiSteps: any[]): ResourceStepModel[] {
+    return apiSteps.map(s => ({
       stepNumber: s.number,
       title: s.title,
       content: s.content
-    }).sort(x => x.stepNumber);
+    } as ResourceStepModel)).sort(x => x.stepNumber);
   }
 
   mapToDifferentiation(apiModel): DifferentiationModel {
     return {
       performanceBasedDifferentiation: apiModel.differentiation,
-      accessibilityStrategies: coalesce(apiModel.accessibilityStrategies,[]).map(x => <ResourceStrategyModel>{
+      accessibilityStrategies: coalesce(apiModel.accessibilityStrategies, []).map(x => ({
         title: x.title,
         moreAboutUrl: x.link,
         description: x.description
-      })
+      } as ResourceStrategyModel))
     };
   }
 
@@ -195,44 +194,44 @@ export class ResourceService {
     return {
       howItsUsed: apiModel.connectionToFap,
       formativeAssessmentProcess: process
-        ? <FormativeAssessmentProcess> {
+        ? {
           clarifyIntendedLearning: process.clarifyIntendedLearning,
           elicitEvidence: process.elicitEvidence,
           interpretEvidence: process.interpretEvidence,
           actOnEvidence: process.actOnEvidence
-        } 
-        : undefined, 
-      strategies: coalesce(apiModel.formativeStrategies,[]).map(x => <ResourceStrategyModel>{
+        } as FormativeAssessmentProcess
+        : undefined,
+      strategies: coalesce(apiModel.formativeStrategies, []).map(x => ({
         title: x.title,
         moreAboutUrl: x.link,
         description: x.description
-      })
+      } as ResourceStrategyModel))
     };
   }
 
   mapToTopicSection(apiModel: any, resourceType: ResourceType): TopicSectionModel {
     return resourceType === ResourceType.ConnectionsPlaylist
       ? {
-        topics: coalesce(apiModel.topics, []).map(t => <TopicModel>{
+        topics: coalesce(apiModel.topics, []).map(t => ({
             title: t.title,
             above: t.above,
             near: t.near,
             below: t.below,
-            resourceLinks: coalesce(t.resources, []).map(r => <ResourceLinkModel> {
+            resourceLinks: coalesce(t.resources, []).map(r => ({
               resourceId: r.id,
               title: r.title
-            })
-          }),
+            } as ResourceLinkModel))
+          } as TopicModel)),
         suggestionsForIntervention: apiModel.suggestionsForIntervention
       }
     : undefined;
   }
 
   private embedStrategyLinks(resource: ResourceModel) {
-    for(let step of resource.steps) {
+    for (const step of resource.steps) {
       step.content = this.embedStrategyLinkService.embedStrategyLinks(step.content, resource);
     }
-    
+
     return resource;
   }
 }

@@ -36,7 +36,7 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
 }
 
 @NgModule({
-  declarations: [ 
+  declarations: [
     InstructionalContentComponent,
     GetStartedComponent,
     InstructionalResourceComponent,
@@ -70,11 +70,11 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     RouterModule
   ],
   entryComponents: [
-    // Resource components are loaded dynamically so they need to be explicitly set here 
+    // Resource components are loaded dynamically so they need to be explicitly set here
     // in order to be used.
-    InstructionalResourceComponent, 
+    InstructionalResourceComponent,
     PlaylistComponent,
-    ProfessionalResourceComponent, 
+    ProfessionalResourceComponent,
     ResourceTypeStrategyComponent,
     StrategyComponent
   ]
