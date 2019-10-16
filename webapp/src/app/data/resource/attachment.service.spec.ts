@@ -22,27 +22,27 @@ describe('AttachmentService', () => {
   it('should map word attachments', () => {
     const service: AttachmentService = TestBed.get(AttachmentService);
     service.get(53).subscribe(actual => {
-      expect(actual.title).toBe('note_taking.docx')
+      expect(actual.title).toBe('note_taking.docx');
       expect(actual.filename).toBe('note_taking.docx');
       expect(actual.fileExtension).toBe('.docx');
       expect(actual.fileType).toBe(FileType.Word);
       expect(actual.type).toBe('FileDocument');
     }, err => {
       fail(err);
-    })
+    });
   });
 
   it('should map pdf attachments', () => {
     const service: AttachmentService = TestBed.get(AttachmentService);
     service.get(52).subscribe(actual => {
-      expect(actual.title).toBe('SBAC Running Record Analysis.pdf')
+      expect(actual.title).toBe('SBAC Running Record Analysis.pdf');
       expect(actual.filename).toBe('SBAC Running Record Analysis.pdf');
       expect(actual.fileExtension).toBe('.pdf');
       expect(actual.fileType).toBe(FileType.Pdf);
       expect(actual.type).toBe('FileDocument');
     }, err => {
       fail(err);
-    })
+    });
   });
 
   it('should map unknown extension to unknown file type', () => {
@@ -68,16 +68,16 @@ describe('AttachmentService', () => {
   function seedTestBedFileName(filename: string) {
     // Change the testing module to return a resource with an attachment that has a file extension not in the file type map.
     TestBed.configureTestingModule({
-      providers: [ 
-          { provide: DataService, 
-            useValue: { 
+      providers: [
+          { provide: DataService,
+            useValue: {
               get: (id) => {
-                return of({ ... mockDocument52, name: filename  })
+                return of({ ... mockDocument52, name: filename  });
               }
             }
-          }, 
-          LoggingService, 
-          initializeSettingsProvider 
+          },
+          LoggingService,
+          initializeSettingsProvider
       ]
     });
   }

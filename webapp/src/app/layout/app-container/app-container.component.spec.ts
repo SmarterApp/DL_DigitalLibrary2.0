@@ -10,6 +10,7 @@ import { OktaAuthService } from '@okta/okta-angular';
 
 class MockOktaAuthService {
   $authenticationState: object;
+  public isAuthenticated() { return false; }
   constructor() {
     this.$authenticationState = { subscribe() {} };
   }
@@ -23,7 +24,7 @@ describe('AppContainerComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ AppContainerComponent, HeaderComponent ],
       imports: [ RouterTestingModule, SbdlCommonModule ],
-      providers: [ 
+      providers: [
         { provide: ActivatedRoute, useValue: mockRootActivatedRouteSnapshot },
         { provide: APP_BASE_HREF, useValue: '/' },
         { provide: OktaAuthService, useClass: MockOktaAuthService }

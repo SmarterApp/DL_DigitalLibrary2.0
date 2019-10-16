@@ -55,14 +55,13 @@ type PublicPart<T> = {[K in keyof T]: T[K]};
 export class MockDataService implements PublicPart<DataService> {
   readonly mockGetDataEndpoints = [
     { pattern: /^\/userinfo$/, result: mockUser },
-    /*
     { pattern: /\/resources\/0$/, result: mockApiResourceWithNulls },
+    { pattern: /\/resources\/1$/, result: mockApiResource },
     { pattern: /\/resources\/2$/, result: mockApiResource2 },
     { pattern: /\/resources\/3$/, result: mockProfessionalResource },
     { pattern: /\/resources\/4$/, result: mockAccessibilityStrategy },
     { pattern: /\/resources\/5$/, result: mockFormativeStrategy },
     { pattern: /\/resources\/6$/, result: mockPlaylistResource },
-    */
     { pattern: /\/resources\/7$/, result: mockIrAllSystemsGo },
     { pattern: /\/resources\/8$/, result: mockIrGrainOfSandDropOfWater },
     { pattern: /\/resources\/9$/, result: mockIrAnyWayYouSliceIt },
@@ -73,12 +72,10 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /\/resources\/14$/, result: mockFas3ActTasks },
     { pattern: /\/resources\/15$/, result: mockFas5MathProcesses },
     { pattern: /\/resources\/[0-9]/, result: mockIrAllSystemsGo },
-    /*
     { pattern: /\/file_documents\/52/, result: mockDocument52 },
     { pattern: /\/file_documents\/53/, result: mockDocument53 },
     { pattern: /\/file_documents\/54/, result: mockDocument54 },
     { pattern: /\/file_documents\/55/, result: mockDocument55 },
-    */
 
     // All Systems Go! documents
     { pattern: /\/file_documents\/100/, result: mockIrDocAllSystemsGoHandout },
