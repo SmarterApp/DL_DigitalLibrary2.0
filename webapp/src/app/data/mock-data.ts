@@ -4,7 +4,8 @@ import {
   mockAccessImage, mockPlaylistImg, mockPlImageDeepeningUnderstandingOfFAP,
   mockIrImageAllSystemsGo, mockIrImageGrainOfSand, mockIrImageAnyWayYouSliceIt,
   mockIrImageSearching, mockIrImageQuad, mockPlImageFocusOnFeedback,
-  mockFasImage3ActTasks, mockFasImage5MathProcesses
+  mockFasImage3ActTasks, mockFasImage5MathProcesses, mockAcsImageBreaks,
+  mockAcsImageAmplification
 } from 'src/app/data/mock-images';
 import { DifferentiationModel } from './resource/model/differentiation.model';
 import { FormativeModel } from './resource/model/formative.model';
@@ -3124,4 +3125,119 @@ export const mockFasDoc5MathProcessesSample = {
     "name": "Monitoring Sheet for Task.png",
     "path": "35da9ccc78345eee8e31e4342ab1dd4ed8229c6f.png",
     "mimeType": "image/png"
+};
+
+export const mockAcsBreaks = {
+  id: 16,
+  resourceType: 'Accessibility Strategy',
+  title: 'Breaks',
+  author: '',
+  publisher: 'Smarter Balanced',
+  updated: "2019-08-30T13:43:23-0500",
+  resourceThumbnail: mockAcsImageBreaks,
+  // overview
+  altBody: `
+    <p>
+      Students may decide to pause during classwork or during a test session based on their needs.
+    <p>`,
+  studentBenefits: `
+    <p>
+      Using this tool can help students:
+      <ul>
+        <li>Improve attentiveness</li>
+        <li>Reduce stress</li>
+        <li>Restore emotional state</li>
+        <li>Redirect behavior</li>
+        <li>Boost learning productivity</li>
+        <li>Stimulate memory</li>
+        <li>Foster social skills</li>
+      </ul>
+    </p>`,
+  suggestedMaterials: `
+		<ul>
+      <li>Timer for short breaks every hour</li>
+      <li>Brain break apps</li>
+      <li>Exercise breaks</li>
+      <li>Fidget device</li>
+      <li>Physical activity calendar</li>
+      <li>Music</li>
+      <li>A separate room or area of the room for students to take an individual break in</li>
+		</ul>`,
+  instructionalUse: `
+    <ul>
+      <li>Students pace themselves while completing work.</li>
+      <li>Students may move about the classroom or take a short break outside to refocus.</li>
+      <li>Use brain breaks—short activities that stimulate curiosity—to boost students’ motivation and improve their mood.</li>
+      <li>If students are getting restless or unfocused, a few moments of exercise in the classroom can restore their attention.</li>
+    </ul>
+    `,
+  stepByStep: `
+    <ul>
+      <li>Model breaks in your daily instruction so students can learn self-regulation.</li>
+      <li>Allow students to practice using a fidget device (as needed) to support their accessibility needs and preferences.</li>
+      <li>Breaks in the Smarter Balanced system of more than 20 minutes will prevent a student from returning to questions already attempted by the student.</li>
+      <li>There is no limit on the number of breaks that a student might be given.</li>
+      <li>The use of this universal tool may result in a student needing additional overall time to complete an assessment.</li>
+      <li>Consider break options that will not be a distraction to others.</li>
+      <li>Consider testing guidelines about test security and unallowable materials when providing breaks during test administration.</li>
+      <li>The number of items per testing session can be flexibly defined based on a student’s need.</li>
+    </ul>`,
+  strategyInAction: `
+    <p>
+      This is a non-emedded tool.  Thus, there is no demonstration on the Sample Items Website.
+    </p>`
+};
+
+export const mockAcsAmplification = {
+  id: 16,
+  resourceType: 'Accessibility Strategy',
+  title: 'Amplification',
+  author: '',
+  publisher: 'Smarter Balanced',
+  updated: "2019-08-30T13:43:23-0500",
+  resourceThumbnail: mockAcsImageBreaks,
+  // overview
+  altBody: `
+    <p>
+      The student adjusts the volume control beyond the computer’s built-in settings using headphones or other non-embedded devices.
+    <p>`,
+  studentBenefits: `
+    <p>
+      Using this tool can help students:
+      <ul>
+        <li>Increase volume of instruction</li>
+        <li>Reduce auditory distractions</li>
+        <li>Distinguish speech from background noise</li>
+        <li>Improve focus</li>
+        <li>Increase comprehension</li>
+        <li>Reduce frustration and improve behavior</li>
+      </ul>
+    </p>`,
+  suggestedMaterials: `
+		<ul>
+      <li>Headphones</li>
+      <li>FM System</li>
+      <li>Noise buffers</li>
+      <li>White noise machines</li>
+      <li>Assistive technology devices</li>
+      <li>Microphones</li>
+      <li>Speakers</li>
+		</ul>`,
+  instructionalUse: `
+    <ul>
+      <li>Students may use amplification and/or assistive technology in the classroom to increase the volume provided in the instructional content.</li>
+      <li>Amplification will allow a teacher's lesson to be amplified to a higher audio level than that of background ambient noise.</li>
+      <li>Classroom amplification systems help students access auditory materials and instruction, and improve understanding of content.</li>
+    </ul>
+    `,
+  stepByStep: `
+    <ul>
+      <li>Students may use headphones, assistive technology, noise buffers, or white noise machines to adjust the volume provided in the test delivery system.</li>
+      <li>Use of this resource may require a separate setting, such as a different room.</li>
+      <li>Allow extra time for processing information.</li>
+    </ul>`,
+  strategyInAction: `
+    <p>
+      This is a non-emedded tool.  Thus, there is no demonstration on the Sample Items Website.
+    </p>`
 };
