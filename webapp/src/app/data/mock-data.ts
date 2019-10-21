@@ -1182,7 +1182,7 @@ const polyfillMissingFormativeApiData = {
     </ul>
   `,
   strategyInAction: `
-    <h6>Clairfy</h6>
+    <h6>Clarify</h6>
     <p>“K” and “W” shows previous understanding and what students want to learn, explore or research.</p>
     <h6>Elicit</h6>
     <p>“What students write down for KW and L. What did they learn, what questions do they have.</p>
@@ -1747,7 +1747,7 @@ them understand the main idea or a research topic.</li>
     },
     {
       number: 3,
-      title: 'Source On — I Do',
+      title: 'Source One — I Do',
       content: `
         <p>
           “Let’s start by looking at our first source.” You can either give the students the specific paragraph on the source they will be looking at, or you can do this as a whole group by projecting the paragraph/passage on the board and giving students a hard copy of the paragraph/passage to annotate as you work together. The “I Do” source could be used here, or a source of your own choosing. Students will follow along with you as you model the process via a “think aloud.” 
@@ -2582,7 +2582,14 @@ export const mockIrIntroToQuadFormula = {
       </p>
       `
   },
-  formativeStrategies: [ fasThinkPairShare, fasEntranceTicket, fasExitTicket ],
+  formativeStrategies: [
+    fasThinkPairShare, fasEntranceTicket, fasExitTicket,
+     {
+      title: 'Popsicle Sticks',
+      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
+      description: ``
+    }
+ ],
   comments: ``
 };
 
@@ -3004,7 +3011,7 @@ export const mockFas3ActTasks = {
       </ul>
     </p>`,
   strategyInAction: `
-    <h6>Clairfy</h6>
+    <h6>Clarify</h6>
     <p>
       The teacher discusses the learning goal and success criteria with the class and explains how this activity aligns with them.
     </p>
@@ -3096,7 +3103,7 @@ export const mockFas5MathProcesses = {
       </ul>
     </p>`,
   strategyInAction: `
-    <h6>Clairfy</h6>
+    <h6>Clarify</h6>
     <p>
       The teacher can clarify intended learning by purposefully selecting tasks aligned to learning goals. Students might ask questions during the launch to ensure they understand the purpose of the task and how it relates to the learning goal and success criteria.
     </p>

@@ -69,8 +69,10 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /\/resources\/9$/, result: mockIrAnyWayYouSliceIt },
     { pattern: /\/resources\/10$/, result: mockIrSearchingForRelevantResources },
     { pattern: /\/resources\/11$/, result: mockIrIntroToQuadFormula },
+    /*
     { pattern: /\/resources\/12$/, result: mockPlDeepeningUnderstandingOfFAP },
     { pattern: /\/resources\/13$/, result: mockPlFocusOnFeedback },
+    */
     { pattern: /\/resources\/14$/, result: mockFas3ActTasks },
     { pattern: /\/resources\/15$/, result: mockFas5MathProcesses },
     { pattern: /\/resources\/16$/, result: mockAcsBreaks },
