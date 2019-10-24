@@ -42,9 +42,9 @@ import {
 
   mockFas3ActTasks, mockFasDoc3ActTasksSample,
 
-  mockFas5MathProcesses, mockFasDoc5MathProcessesSample,
+  mockFas5MathProcesses, mockFasDoc5MathProcessesSample, mockFasEntranceTicket,
 
-  mockAcsBreaks, mockAcsAmplification
+  mockAcsBreaks, mockAcsAmplification, mockAcsHighlighter
 
 } from './mock-data';
 
@@ -77,6 +77,8 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /\/resources\/15$/, result: mockFas5MathProcesses },
     { pattern: /\/resources\/16$/, result: mockAcsBreaks },
     { pattern: /\/resources\/17$/, result: mockAcsAmplification },
+    { pattern: /\/resources\/18$/, result: mockAcsHighlighter },
+    { pattern: /\/resources\/19$/, result: mockFasEntranceTicket },
     { pattern: /\/resources\/[0-9]/, result: mockIrAllSystemsGo },
     { pattern: /\/file_documents\/52/, result: mockDocument52 },
     { pattern: /\/file_documents\/53/, result: mockDocument53 },

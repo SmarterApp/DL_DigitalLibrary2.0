@@ -4,8 +4,8 @@ import {
   mockAccessImage, mockPlaylistImg, mockPlImageDeepeningUnderstandingOfFAP,
   mockIrImageAllSystemsGo, mockIrImageGrainOfSand, mockIrImageAnyWayYouSliceIt,
   mockIrImageSearching, mockIrImageQuad, mockPlImageFocusOnFeedback,
-  mockFasImage3ActTasks, mockFasImage5MathProcesses, mockAcsImageBreaks,
-  mockAcsImageAmplification
+  mockFasImage3ActTasks, mockFasImage5MathProcesses, mockFasImageEntranceTicket,
+  mockAcsImageBreaks, mockAcsImageAmplification, mockAcsImageHighlighter
 } from 'src/app/data/mock-images';
 import { DifferentiationModel } from './resource/model/differentiation.model';
 import { FormativeModel } from './resource/model/formative.model';
@@ -96,7 +96,7 @@ export const mockMathClaims = [
 
 const fasEntranceTicket = {
   title: 'Entrance Ticket',
-  link: '#',
+  link: '/resource/19',
   description: `This strategy is used to start the class with a short activity that gets students thinking about content. Entrance tickets should be within your students’ skill range and are often just a few short questions that can be completed in fewer than 5 minutes.`
 };
 
@@ -169,13 +169,19 @@ const fasThinkAloud = {
 const fasMuddiestPoint = {
   title: 'Muddiest Point',
   link: '#',
-  description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
+  description: `This is a strategy in which students are asked to reflect on lingering questions or area(s) of confusion—their muddiest point(s). `
 };
 
 const fasJigsaw = {
   title: 'Jigsaw',
   link: '#',
   description: ``
+};
+
+const fasPopsicleSticks = {
+  title: 'Popsicle Sticks',
+  link: '#',
+  description: 'This strategy is a way for teachers to randomly select a student or group of students to elicit responses in a fair manner. The teacher poses a question and draws a popsicle stick (or another item) that has a student name or group name written on it. The selected student(s) then answer the question.'
 };
 
 const accSpeechToText = {
@@ -188,32 +194,32 @@ const accStrikethrough = {
   title: 'Strikethrough',
   link: '#',
   description: `This tool allows students to cross out answer options.`
-}
+};
 
 const accHighlighter = {
   title: 'Highlighter',
-  link: '#',
+  link: '/resource/18',
   description: `A digital tool for marking desired text, item questions, item answers, or parts of these with a color.`
-}
+};
 
 const accScratchPaper = {
   title: 'Scratch Paper',
   link: '#',
   description: `Scratch paper to make notes, write computations, or record responses may be made available to students.`
-}
+};
 
 const accCalculator = {
   title: 'Calculator',
   link: '#',
   description: `An embedded, fully accessible on-screen digital calculator can be accessed for calculator-allowed items when students select the calculator button.`
-}
+};
 
 const accLineReader = {
   title: 'Line reader',
   link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
   description: `The student uses an onscreen universal tool to assist in reading by raising and
     lowering the tool for each line of text on the screen.`
-}
+};
 
 const accSentenceFrames = {
   title: 'Sentence Frames',
@@ -222,7 +228,19 @@ const accSentenceFrames = {
     Sentence frames or stems provide language support for students' writing and participation in academic discussions. As a scaffold for
     students to start and structure an explanation, sentence frames help all students develop more fluent Foundational Writing Skills and,
     in particular, allow students with varying English proficiency to use more complex Syntax and academic Vocabulary.`
-}
+};
+
+const accScribe = {
+  title: 'Scribe',
+  link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+  description: `Students dictate (e.g., via voice, braille, American Sign Language) their responses to a human who records verbatim what they dictate.`
+};
+
+const accPrintOnDemand = {
+  title: 'Print On Demand',
+  link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf',
+  description: 'Paper copies of passages/stimuli and/or items are printed for students.'
+};
 
 export const mockResourceModel = {
   resourceType: ResourceType.Instructional,
@@ -688,7 +706,7 @@ const polyfillMissingApiData2 = {
     resourceId: 29,
     assessmentType: 4 // how will this be defined?
   }],
-  standards: ['CCSS.ELA-Literacy.RST.6-8.1', 'CCSS.ELA-Literacy.RST.6-8.2'],
+  standards: ['RST.6-8.1', 'RST.6-8.2'],
 
   // overview
   altBody: `
@@ -1406,7 +1424,7 @@ export const mockIrAllSystemsGo = {
   educationalAlignments: [ // claims
     { title: 'Concepts & Procedures', shortName: '1' }
   ],
-  standards: ['CCSS.MATH.CONTENT.8.EE.C.8.B'],
+  standards: ['EE.C.8.B'],
   targetAlignments: [ // targets
     { title: 'Analyze and solve linear equations and pairs of simultaneous linear equations', shortName: 'D' }
   ],
@@ -1688,7 +1706,7 @@ export const mockIrDocAllSystemsGoPresentation = {
 export const mockIrGrainOfSandDropOfWater = {
   id: 7,
   resourceType: "Instructional and Professional Learning",
-  title: "A Grain of Sand or a Drop of Water: Using Details to Help Understand the Main Idea/Research Topic",
+  title: "A Grain of Sand or a Drop of Water",
   author: "Leon Jabs",
   publisher: "",
   subject: ["ELA"],
@@ -1696,7 +1714,7 @@ export const mockIrGrainOfSandDropOfWater = {
   educationalAlignments: [ // claims
     { title: 'Research / Inquiry', shortName: '4' }
   ],
-  standards: ["CCSS.ELA-LITERACY.RI.4.7"],
+  standards: ["RI.4.7"],
   targetAlignments: [ // targets
     { title: 'Interpret & Integrate Information', shortName: '2' }
   ],
@@ -1722,7 +1740,7 @@ them understand the main idea or a research topic.</li>
       title: 'Entrance Ticket',
       content: `
         <p>
-          When students enter the classroom, give them the entrance ticket and have them work on it individually. This should take no more than 5 minutes. Assist students as needed. You may want to have a copy of the entrance ticket key for reference.
+          When students enter the classroom, give them the Entrance Ticket and have them work on it individually. This should take no more than 5 minutes. Assist students as needed. You may want to have a copy of the entrance ticket key for reference.
         </p>
         <p>
           Walk around the classroom to observe and determine which students have a clear understanding of choosing important details and those that will need additional help. If too many students are not able to identify at least 2 correct details, you may want to consider doing a lesson or mini-lesson. Proceed with the lesson if most of the students are ready. For those students who are struggling with finding the details, try doing small group instruction. To assist with access to reading the information on erosion, have speech-to-text available for a particular passage, use strikethrough to eliminate irrelevant details, and use a highlighter to identify specific details."
@@ -1915,7 +1933,7 @@ export const mockIrAnyWayYouSliceIt = {
   educationalAlignments: [ // claims
     { title: 'Concepts & Procedures', shortName: '1' }
   ],
-  standards: ["CCSS.MATH.CONTENT.7.G.A.3"],
+  standards: ["7.G.A.3"],
   targetAlignments: [ // targets
     { title: 'Draw, construct, and describe geometrical figures and describe the relationship between them', shortName: 'E' }
   ],
@@ -2148,7 +2166,7 @@ export const mockIrSearchingForRelevantResources = {
   educationalAlignments: [ // claims
     { title: 'Research / Inquiry', shortName: '4' }
   ],
-  standards: ['CCSS.ELA-LITERACY.W.9-10.8'],
+  standards: ['W.9-10.8'],
   targetAlignments: [ // targets
     { title: 'Evaluate Information / Sources', shortName: '3' }
   ],
@@ -2365,7 +2383,7 @@ export const mockIrIntroToQuadFormula = {
   educationalAlignments: [ // claims
     { title: 'Concepts & Procedures', shortName: '1' }
   ],
-  standards: ['CCSS.MATH.CONTENT.A.REI.B.4'],
+  standards: ['A.REI.B.4'],
   targetAlignments: [ // targets
     { title: 'Solve equations and inequalities in one variable', shortName: 'I' }
   ],
@@ -2508,22 +2526,8 @@ export const mockIrIntroToQuadFormula = {
   ],
   videoLinks: [],
   differentiation: undefined,
-  accessibilityStrategies: [ accHighlighter, accScratchPaper, accCalculator,
-    {
-      title: 'Print on Demand',
-      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
-      description: ``
-    },
-    {
-      title: 'Popsicle Sticks',
-      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
-      description: ``
-    },
-    {
-      title: 'Scribe',
-      link: '#https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
-      description: ``
-    }
+  accessibilityStrategies: [
+    accHighlighter, accScratchPaper, accCalculator, accPrintOnDemand, accScribe
   ],
   formativeAssessmentProcess: {
     clarifyIntendedLearning: `
@@ -2583,12 +2587,7 @@ export const mockIrIntroToQuadFormula = {
       `
   },
   formativeStrategies: [
-    fasThinkPairShare, fasEntranceTicket, fasExitTicket,
-     {
-      title: 'Popsicle Sticks',
-      link: 'https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf#page=9',
-      description: ``
-    }
+    fasThinkPairShare, fasEntranceTicket, fasExitTicket, fasPopsicleSticks
  ],
   comments: ``
 };
@@ -2962,7 +2961,7 @@ export const mockFas3ActTasks = {
   // overview
   altBody: `
     <p>
-      3 Act Task is a whole-group mathematics task consisting of three distinct parts: (1) Act One—an engaging and perplexing situation, (2) Act Two—an information and solution seeking session, and (3) Act Three—a solution discussion and reveal.
+      This is a whole-group mathematics task consisting of three distinct parts: (1) Act One—an engaging and perplexing situation, (2) Act Two—an information and solution seeking session, and (3) Act Three—a solution discussion and reveal.
     <p>`,
   studentBenefits: `
     <p>
@@ -2978,7 +2977,7 @@ export const mockFas3ActTasks = {
   suggestedMaterials: `
 		<ul>
       <li>Image, video, or situation to be used for Act One. May require print outs for accessibility for some students.</li>
-      <li>Pen/Pencil</li>
+      <li>Writing utensil</li>
       <li>Paper to write responses/brainstorm</li>
 		</ul>`,
   instructionalUse: `
@@ -2990,16 +2989,35 @@ export const mockFas3ActTasks = {
     `,
   stepByStep: `
     <p>
-      Discuss the learning goal and success criteria with the class and explain how this activity aligns with them.
-    </p>
-    <p>
-      In <em>Act 1</em>, share with students an image, video, or other situation that is engaging and perplexing. Students discuss what they notice and wonder. They generate questions to ask about the situation. Students decide on a question to answer and make estimates about the likely solution.
-    </p>
-    <p>
-      In <em>Act 2</em>, students work on finding solutions to their problems. They use information they have and ask for more information, as needed.
-    </p>
-    <p>
-      In <em>Act 3</em>, students share their work, their thinking, and their solutions. The teacher reveals solution and facilitates the following discussion.
+      <ol>
+        <li>
+          <strong>Clarify Intended Learning</strong>
+          <p>Discuss the learning goal and success criteria with the class and explain how this activity aligns with them.</p>
+        </li>
+        <li>
+          <strong>Act 1</strong>
+          <ul>
+            <li>Share with students an image, video, or other situation that is engaging and perplexing.</li>
+            <li>Students discuss what they notice and wonder. </li>
+            <li>They generate questions to ask about the situation. </li>
+            <li>Students decide on a question to answer and make estimates about the likely solution.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Act 2</strong>
+          <ul>
+            <li>Students work on finding solutions to their problems.</li>
+            <li>They use information they have and ask for more information, as needed.</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Act 3</strong>
+          <ul>
+            <li>Students share their work, their thinking, and their solutions. </li>
+            <li>The teacher reveals solution and facilitates the following discussion.</li>
+          </ul>
+        </li>
+      </ol>
     </p>`,
   comments: `
     <p>
@@ -3053,7 +3071,7 @@ export const mockFas5MathProcesses = {
   // overview
   altBody: `
     <p>
-      5 Math Processes is a routine that uses student thinking to purposefully guide classroom discussions and make connections between solution strategies. The five practices are Predict, Observe, Elect, Order, and Connect.
+      A routine that uses student thinking to purposefully guide classroom discussions and make connections between solution strategies. The five practices are Predict, Observe, Elect, Order, and Connect.
     <p>`,
   studentBenefits: `
     <p>
@@ -3079,19 +3097,28 @@ export const mockFas5MathProcesses = {
     `,
   stepByStep: `
     <p>
-      <strong>Predict</strong>—Once the learning goal has been decided and the task selected, identify the possible ways students might work through the task.
-    </p>
-    <p>
-      <strong>Observe</strong>—Monitor students while working. Record which students are using which anticipated strategies, and which strategies are being used that were not anticipated.
-    </p>
-    <p>
-      <strong>Elect</strong>—Determine which student work (or what parts of a student’s work) will be shared during the whole-group share out/discussion.
-    </p>
-    <p>
-      <strong>Order</strong>—Determine the order in which the selected student work will be shared.
-    </p>
-    <p>
-      <strong>Connect</strong>—Ask questions to guide students in connecting the selected work to deepen students’ understanding.
+      <ol>
+        <li>
+          <strong>Predict</strong>
+          <p>Once the learning goal has been decided and the task selected, identify the possible ways students might work through the task.</p>
+        </li>
+        <li>
+          <strong>Observe</strong>
+          <p>Monitor students while working. Record which students are using which anticipated strategies, and which strategies are being used that were not anticipated.</p>
+        </li>
+        <li>
+          <strong>Elect</strong>
+          <p>Determine which student work (or what parts of a student’s work) will be shared during the whole-group share out/discussion.</p>
+        </li>
+        <li>
+          <strong>Order</strong>
+          <p>Determine the order in which the selected student work will be shared.</p>
+        </li>
+        <li>
+          <strong>Connect</strong>
+          <p>Ask questions to guide students in connecting the selected work to deepen students’ understanding.</p>
+        </li>
+      </ol>
     </p>`,
   comments: `
     <p>
@@ -3138,6 +3165,7 @@ export const mockAcsBreaks = {
   id: 16,
   resourceType: 'Accessibility Strategy',
   title: 'Breaks',
+  category: 'Universal Tool',
   author: '',
   publisher: 'Smarter Balanced',
   updated: "2019-08-30T13:43:23-0500",
@@ -3178,7 +3206,7 @@ export const mockAcsBreaks = {
       <li>If students are getting restless or unfocused, a few moments of exercise in the classroom can restore their attention.</li>
     </ul>
     `,
-  stepByStep: `
+  comments: `
     <ul>
       <li>Model breaks in your daily instruction so students can learn self-regulation.</li>
       <li>Allow students to practice using a fidget device (as needed) to support their accessibility needs and preferences.</li>
@@ -3196,10 +3224,11 @@ export const mockAcsBreaks = {
 };
 
 export const mockAcsAmplification = {
-  id: 16,
+  id: 17,
   resourceType: 'Accessibility Strategy',
   title: 'Amplification',
   author: '',
+  category: 'Designated Supports',
   publisher: 'Smarter Balanced',
   updated: "2019-08-30T13:43:23-0500",
   resourceThumbnail: mockAcsImageBreaks,
@@ -3237,7 +3266,7 @@ export const mockAcsAmplification = {
       <li>Classroom amplification systems help students access auditory materials and instruction, and improve understanding of content.</li>
     </ul>
     `,
-  stepByStep: `
+  comments: `
     <ul>
       <li>Students may use headphones, assistive technology, noise buffers, or white noise machines to adjust the volume provided in the test delivery system.</li>
       <li>Use of this resource may require a separate setting, such as a different room.</li>
@@ -3247,4 +3276,164 @@ export const mockAcsAmplification = {
     <p>
       This is a non-emedded tool.  Thus, there is no demonstration on the Sample Items Website.
     </p>`
+};
+
+export const mockAcsHighlighter = {
+  id: 18,
+  resourceType: 'Accessibility Strategy',
+  title: 'Highlighter',
+  category: 'Universal Tool',
+  author: '',
+  publisher: 'Smarter Balanced',
+  updated: "2019-08-30T13:43:23-0500",
+  resourceThumbnail: mockAcsImageHighlighter,
+  // overview
+  altBody: `
+    <p>
+      A digital tool for marking desired text, item questions, item answers, or parts of these with a color.
+    <p>`,
+  studentBenefits: `
+    <p>
+      Using this tool can help students:
+      <ul>
+        <li>Annotate</li>
+        <li>Ask and answer questions</li>
+        <li>Summarize</li>
+        <li>Find key details and vocabulary</li>
+        <li>Identify supporting ideas and other text elements</li>
+        <li>Draw attention to important text</li>
+        <li>Draw attention to steps to complete in a performance task</li>
+      </ul>
+    </p>`,
+  suggestedMaterials: `
+		<ul>
+      <li>Manual highlighter</li>
+      <li>Digital highlighter</li>
+        <ul>
+          <li>word processing programs and apps</li>
+          <li>ebooks</li>
+          <li>optical character recognition (OCR) pens</li>
+          <li>assistive technology</li>
+        </ul>
+      <li>Removable highlighter tape</li>
+		</ul>`,
+  instructionalUse: `
+    <ul>
+      <li>Students use highlighters to distinguish useful/meaningful text when completing an assignment.</li>
+      <li>Students can denote main ideas, supporting details, introductions, and conclusions.</li>
+      <li>Students use highlighters to connect important ideas.</li>
+    </ul>
+    `,
+  comments: `
+    <ul>
+      <li>Consider color-coding: choose one color for definitions and key points and another color for examples.
+      <ul>
+        <li>Consider the needs of students with color-related disabilities.
+      </ul>
+      <li>Model and practice using digital and manual highlighters to understand the purpose of how to use selective highlighting/underlining.
+      <li>Allow students to choose which type (digital and/or standard) of highlighter best supports their accessibility needs and preferences.
+      <li>Students need practice with purposeful highlighting so they don’t highlight too much text.
+    </ul>`,
+  strategyInAction: `
+    <a href="https://sampleitems.smarterbalanced.org/BrowseItems" target="_blank">Try out the Highlighter on the Sample Items Website</a>
+    <p>
+      To access the tool, first navigate to any sample item. Select text with your mouse. With your mouse on the selected text, select the right
+      mouse button and then Highlight Selection, or select the highlight option from the context menu.
+    </p>`
+};
+
+export const mockFasEntranceTicket = {
+  id: 19,
+  resourceType: 'Formative Strategy',
+  title: 'Entrance Ticket',
+  author: '',
+  publisher: 'Smarter Balanced',
+  updated: "2019-10-15T13:43:23-0500",
+  resourceThumbnail: mockFasImageEntranceTicket,
+  // overview
+  altBody: `
+    <p>
+      This strategy is used to start the class with a short activity that gets students thinking about content. Entrance tickets should be within your students’ skill range and are often just a few short questions that can be completed in fewer than 5 minutes.
+    <p>`,
+  studentBenefits: `
+    <p>
+      Using this tool can help students:
+      <ul>
+        <li>engage in the learning activity. </li>
+        <li>assess prior knowledge and prerequisite skills.</li>
+        <li>prepare for that day’s lesson.</li>
+      </ul>
+    </p>`,
+  suggestedMaterials: `
+		<ul>
+      <li>Pre-cut slips of paper with Name and Date at the top </li>
+      <li>Entrance Ticket notebooks </li>
+      <li>Weekly Entrance Ticket sheets</li>
+		</ul>`,
+  instructionalUse: `
+    <ul>
+      <li>Engage students in the content from the previous day.</li>
+      <li>Engage students in prerequisite concepts.</li>
+      <li>Engage students in activities focused on the success criteria.</li>
+      <li>Create excitement for the class period.</li>
+      <li>Give individual reflection time before engaging in whole group work.</li>
+      <li>See where the class is in relation to the learning goal.</li>
+      <li>Decide if reteaching or intervention is needed.</li>
+    </ul>
+    `,
+  stepByStep: `
+    <p>
+      <ol>
+        <li>
+          <strong>Pass Out Entrance Ticket</strong>
+          <p>Pass out entrance tickets or slips as students walk in the door or post a question to the whole class to complete in a routine location, such as journals.</p>
+        </li>
+        <li>
+          <strong>Independent Work Time</strong>
+          <p>Provide students with independent work time on the entrance ticket, typically no more than 5 minutes.</p>
+        </li>
+        <li>
+          <strong>Monitor</strong>
+          <p>Walk around the room to monitor for common misconceptions and areas that may need to be addressed with the whole group."
+        </li>
+        <li>
+          <strong>Evaluate Responses</strong>
+          <p>Choose to collect the entrance tickets, review the responses together, or do a think-pair-share to review responses.</p>
+        </li>
+        <li>
+          <strong>Instructional Next Steps</strong>
+          <p>Use responses to make decisions regarding instructional next steps based on student needs.</p>
+        </li>
+      </ol>
+    </p>`,
+  comments: `
+    <p>
+      <ul>
+        <li>Be very clear with the questions you ask. Ideally, they should not be too difficult if you want all students to engage in the problem for a set amount of time. </li>
+        <li>Be sure to have “what to do if you finish early” expectations clearly posted (e.g., read or move on to a challenge problem).</li>
+        <li>Entrance tickets do not need to be a substitute for an exit ticket from the previous day. Have entrance tickets spark excitement for the day or use them as free write time on that day’s topic.</li>
+        <li>It is a great time to collect homework, take attendance, etc., but be sure to circulate the room to gauge student understanding. </li>
+        <li>Set clear expectations regarding how the entrance ticket is meant to be completed (e.g., individually or in pairs). </li>
+        <li>Many teachers allow students to respond in journals and then have group or partner discussions.  </li>
+        <li>Try weekly “Entrance Ticket” sheets where students put their responses for the week on a response sheet and turn it in on Friday.</li>
+      </ul>
+    </p>`,
+  strategyInAction: `
+    <h6>Clarify</h6>
+    <p>
+      The teacher clarifies the intention of the entrance ticket using the learning goal and success criteria, such as to engage prior knowledge, to have students reflect on a topic, or to assess mastery of previous concepts.
+    </p>
+    <h6>Elicit</h6>
+    <p>
+      The entrance ticket elicits students’ knowledge of the topic. The teacher can elicit more information from the students by asking questions as they work on the entrance ticket response.
+    </p>
+    <h6>Interpret</h6>
+    <p>
+      As the teacher walks around the room, understanding can be interpreted by viewing written responses and listening to the students’ discussion. By collecting entrance ticket responses and performing a quick scan of student answers, the teacher can interpret where the class is in relation to the learning goal and the success criteria.
+    </p>
+    <h6>Act</h6>
+    <p>
+      Based on the interpretation of the entrance ticket responses, the teacher makes decisions on the instructional act that would best fit the students’ needs. The teacher may choose to create small groups, reteach the whole group, or provide enrichment activities.
+    </p>`,
+  documents: [ ]
 };
