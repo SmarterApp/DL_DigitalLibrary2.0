@@ -1,4 +1,4 @@
-import { ResourceStrategyModel } from './resource-strategy.model'
+import { ResourceStrategyModel } from './resource-strategy.model';
 
 export interface DifferentiationModel {
     performanceBasedDifferentiation: string;

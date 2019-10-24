@@ -18,17 +18,17 @@ export class OutlineComponent implements OnInit {
   readingMode: boolean;
 
   @Input()
-  scrollableElements: ScrollableElements = <ScrollableElements>{};
+  scrollableElements: ScrollableElements = {} as ScrollableElements;
 
   @HostListener('window:resize', ['$event'])
-  onResize(event?) {    
+  onResize(event?) {
     this.mobile = window.innerWidth <= this.breakpointSmall;
   }
 
   get isProfessional() {
     return this.model.resourceType === ResourceType.Professional;
   }
-   
+
   mobile = false;
   commentsSection = commentsSectionOptions;
   private breakpointSmall = 500;

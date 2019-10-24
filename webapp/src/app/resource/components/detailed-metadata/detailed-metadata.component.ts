@@ -16,26 +16,26 @@ export class DetailedMetadataComponent implements OnInit, AfterViewInit {
 
   @ViewChildren('playlistRef')
   playlists: ElementRef[];
-  
+
   @ViewChildren('resourceRef')
   resources: ElementRef[];
 
   claimImagePath: string;
-  
+
   constructor(private service: DetailedMetadataComponentService) { }
 
   ngOnInit() {
-    if(this.model.subjects.length > 0 && this.model.claims.length > 0) {
+    if (this.model.subjects.length > 0 && this.model.claims.length > 0) {
       this.claimImagePath = this.service.getClaimImagePath(this.model.subjects[0], this.model.claims[0].shortName);
     }
   }
 
   ngAfterViewInit(): void {
     // Add ripples
-    for(let playlist of this.playlists) {
+    for (let playlist of this.playlists) {
       MDCRipple.attachTo(playlist.nativeElement);
     }
-    for(let resource of this.resources) {
+    for (let resource of this.resources) {
       MDCRipple.attachTo(resource.nativeElement);
     }
   }

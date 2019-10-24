@@ -11,7 +11,7 @@ export class DifferentiationComponent implements OnInit, AfterViewInit {
   model: DifferentiationModel;
 
   @Output()
-  sectionElementLoaded= new EventEmitter<any>();
+  sectionElementLoaded = new EventEmitter<any>();
 
   @ViewChild('header', { static: false })
   headerElement: ElementRef;
@@ -22,7 +22,7 @@ export class DifferentiationComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if(this.headerElement) {
+    if (this.headerElement) {
       this.sectionElementLoaded.emit(this.headerElement.nativeElement);
     }
   }
