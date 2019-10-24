@@ -107,6 +107,7 @@ h5,h6 {
 
         .assessment-type-icon {
             color: $white;
+            flex-shrink: 0;
             font-size: 3rem;
             margin-top: -0.125rem;
             margin-bottom: 1rem;
@@ -125,12 +126,15 @@ h5,h6 {
         }
         .playlist-title {
             margin-left: 30px;
+            margin-right: 24px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             .title {
                 font-family: $font-family-title;
                 font-weight: 300;
+                max-height: 2.5em;
+                overflow: hidden;
             }
             .resources {
                 color: rgba($neutral-900, 0.65);
