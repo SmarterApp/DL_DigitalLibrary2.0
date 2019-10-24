@@ -10,7 +10,8 @@
   </div>
 </ng-template>
 <section class="byline">
-  {{ details.author }}&nbsp;&nbsp;&bull;&nbsp;&nbsp;
+  {{ details.author }}
+  <span *ngIf="details.author && details.authorOrganization">&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
   <span class="font-light">{{ details.authorOrganization }}</span>
 </section>
 <span *ngIf="details.lastModified" class="caption">
