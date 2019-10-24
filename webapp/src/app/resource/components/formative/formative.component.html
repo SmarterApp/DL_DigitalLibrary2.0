@@ -3,7 +3,7 @@
     {{ showProfLearningContent ? 'Formative Assessment Strategies' : 'Formative Assesment Process' }}
   </h4>
   <section *ngIf="showHowItsUsed">
-    <h5>How its used</h5>
+    <h5>How it's used</h5>
     <div *ngIf="model.formativeAssessmentProcess; else howItsUsed">
       <h6>Clarify Intended Learning</h6>
       <div [innerHtml]="model.formativeAssessmentProcess.clarifyIntendedLearning"></div>
@@ -19,7 +19,7 @@
     </ng-template>
   </section>
   <p *ngIf="showProfLearningContent" class="prof-learning-content ">
-    These strategies were developed to be used with students. Adapt/modify as needed for adult use.
+    These strategies were developed to be used with students. Modify as needed for adult use.
   </p>
   <section>
     <h5 *ngIf="!showProfLearningContent">Strategies Used</h5>
