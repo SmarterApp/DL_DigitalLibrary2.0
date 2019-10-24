@@ -46,3 +46,13 @@ module "staging_env" {
   route53_zone_id = var.route53_zone_id
   webapp_url_base = var.webapp_url_base
 }
+
+module "demo_env" {
+  source = "./deployed_env"
+
+  cloudfront_ssl_certificate_arn = "arn:aws:acm:us-east-1:021548413574:certificate/0c35ca4a-0a1e-4212-9aa9-e9d991dea166"
+  environment = "demo"
+  log_bucket_id = aws_s3_bucket.logs.id
+  route53_zone_id = var.route53_zone_id
+  webapp_url_base = var.webapp_url_base
+}
