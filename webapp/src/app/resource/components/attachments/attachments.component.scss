@@ -16,6 +16,19 @@
     margin-bottom: $spacer-lg;
     position: relative;
 
+    .leading-icon{
+        margin-left: -16px;
+
+        svg {
+            color: $warning-900;
+            background: url('/assets/images/yellow-spot-3.png') no-repeat;
+            background-size: contain;
+            padding: 7px;
+            margin-bottom: -7px;
+            font-size: 1.75rem;
+        }
+    }
+
     .attachment-card  {
         @include mdc-ripple-surface;
         @include mdc-ripple-radius-bounded;
