@@ -55,7 +55,7 @@
   <li *ngIf="scrollableElements.differentiation">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.differentiation)" (blur)="removeClass(scrollableElements.differentiation)">
       <i class="far fa-universal-access"></i>
-      Differentiation
+      {{ model.differentiation.performanceBasedDifferentiation ? "Differentiation" : "Accessibility Strategies Used" }}
     </sbdl-button>
   </li>
   <li *ngIf="scrollableElements.comments">

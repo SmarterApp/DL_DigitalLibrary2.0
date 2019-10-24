@@ -5,7 +5,7 @@ export class ScrollableElements {
     customStrategySection: ScrollableSection;
     attachments: any;
     comments: any;
-    differentiation: any;
+    differentiation: ScrollableSection;
     formativeAssessmentProcess: any;
     topics: ScrollableSection[];
     sections: ScrollableSection[];
