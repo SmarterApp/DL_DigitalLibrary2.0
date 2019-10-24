@@ -36,10 +36,12 @@ export class MetadataComponentService {
           url: 'https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf',
           faIcon: 'fa-file-pdf'
         }, <MoreInfoLink>{
-          title: 'Quotes for Understanding the Formative Assessment Process',
-          url: 'https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf',
-          faIcon: 'fa-file-pdf'
+          title: 'Understanding the Formative Assessment Process',
+          url: 'https://www.youtube.com/watch?time_continue=8&v=wpwZCqvt70U',
+          faIcon: 'fa-file-video'
         }]
+
+
       }
     ]
   ]);
