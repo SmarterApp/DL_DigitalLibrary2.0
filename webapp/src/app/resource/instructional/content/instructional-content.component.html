@@ -10,7 +10,7 @@
 <sbdl-step-by-step [steps]="resource.stepByStep" (sectionElementLoaded)="setSteps($event)"></sbdl-step-by-step>
 <hr *ngIf="resource.attachments.length > 0"/>
 
-<sbdl-attachments [attachments]="resource.attachments" [videoLinks]="resource.videoLinks" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
+<sbdl-attachments [attachments]="resource.attachments" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
 <hr/>
 
 <sbdl-differentiation [resource]="resource" (sectionElementLoaded)="setDifferentiation($event)"></sbdl-differentiation>
