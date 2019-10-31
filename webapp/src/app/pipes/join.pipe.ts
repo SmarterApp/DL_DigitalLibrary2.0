@@ -6,13 +6,9 @@ import { isArray } from 'util';
  */
 @Pipe({ name: 'join' })
 export class JoinPipe implements PipeTransform {
-  /**
-   * 
-   * @param value 
-   * @param args 
-   */
+
   transform(value: any, args?: JoinPipeArgs): string {
-    if(!isArray(value)) {
+    if (!isArray(value)) {
       return value;
     }
 
@@ -23,11 +19,12 @@ export class JoinPipe implements PipeTransform {
 
     const joinedString = array.map(x => prepend + x).join(separator);
 
-    if(!conjunction)
+    if (!conjunction) {
       return joinedString;
+    }
 
     const lastIndex = joinedString.lastIndexOf(separator);
-    return joinedString.slice(0, lastIndex) 
+    return joinedString.slice(0, lastIndex)
       + joinedString
         .slice(lastIndex)
         .replace(separator, (array.length > 2 ? separator : ' ') + conjunction + ' ');
@@ -41,20 +38,20 @@ export interface JoinPipeArgs {
   /**
    * Custom separator between each value.  Defaults to ", "
    */
-  separator: string;
+  separator?: string;
 
   /**
    * If the array is of complex type, the field on the complex type to join on.
    */
-  field: string;
+  field?: string;
 
   /**
    * A conjuction to be placed at the end before the last item of a joined string.  Example: 1, 2, AND 3
    */
-  conjunction: string;
+  conjunction?: string;
 
   /**
    * What to place at the beginning of each string, if anything at all.
    */
-  prepend: string;
+  prepend?: string;
 }

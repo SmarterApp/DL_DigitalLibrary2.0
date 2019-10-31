@@ -15,7 +15,7 @@ export class EducationalDetailsComponent {
 
   readonly baseClaimsImagePath = '/assets/images/claims/';
 
-  private get gradeShortNames(): string[] {
+  get gradeShortNames(): string[] {
     return this.properties.grades.map(g => g.shortName);
   }
 
