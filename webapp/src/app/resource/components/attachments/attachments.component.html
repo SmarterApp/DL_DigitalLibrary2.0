@@ -1,16 +1,16 @@
-<article *ngIf="models.length > 0" #header class="attachments-container">
+<article *ngIf="attachments.length > 0" #header class="attachments-container">
   <h4 class="leading-icon">
       <i class="far fa-paperclip"></i>Attachments
   </h4>
   <p>This resource relies on the following materials. Download them to use.</p>
-  <a href="javascript:void(0);" *ngFor="let attachment of models" (click)="download(attachment)"  class="attachment-card"  #attachments>
+  <a href="{{ attachment.uri }}" target="_blank" *ngFor="let attachment of attachments" class="attachment-card"  #attachments>
     <div class="type-info">
-      <span class="attachment-type">{{ attachment.type }}</span>
+      <span class="attachment-category">{{ attachment.category }}</span>
       <i class="far {{attachment.fileType | fileTypeIcon }}"></i>
     </div>
     <p>{{ attachment.title }}</p>
     <div class="download-text">
-        Download ({{attachment.fileExtension}} {{ attachment.fileSizeInKB ? attachment.fileSizeInKB + ' KB' : '' }})
+        Download ({{attachment.fileType}} {{ attachment.fileSize ?  (attachment.fileSize / 1000) + ' KB' : '' }})
     </div>
   </a>
   <h6 *ngIf="videoLinks">Videos</h6>

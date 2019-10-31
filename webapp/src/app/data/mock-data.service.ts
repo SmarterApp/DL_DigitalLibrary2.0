@@ -4,13 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { LoggingService } from '../common/logging/logging.service';
 import { DataService } from './data.service';
-import {
-  mockAccessibilityStrategy, mockApiResource, mockApiResource2,
-  mockApiResourceWithNulls, mockDocument52, mockDocument53, mockDocument54,
-  mockDocument55, mockFormativeStrategy, mockPlaylistResource,
-  mockProfessionalResource, mockUser, mockSearchFilters, mockMathClaims,
-  mockElaClaims
-} from './mock-data';
+import { mockUser } from './mock-data';
 
 // Work around for:
 // https://stackoverflow.com/questions/48953587/typescript-class-implements-class-with-private-functions
@@ -21,23 +15,6 @@ type PublicPart<T> = {[K in keyof T]: T[K]};
 export class MockDataService implements PublicPart<DataService> {
   readonly mockGetDataEndpoints = [
     { pattern: /^\/userinfo$/, result: mockUser },
-    { pattern: /\/resource\/0$/, result: mockApiResourceWithNulls },
-    { pattern: /\/resource\/2$/, result: mockApiResource2 },
-    { pattern: /\/resource\/3$/, result: mockProfessionalResource },
-    { pattern: /\/resource\/4$/, result: mockAccessibilityStrategy },
-    { pattern: /\/resource\/5$/, result: mockFormativeStrategy },
-    { pattern: /\/resource\/6$/, result: mockPlaylistResource },
-    { pattern: /\/resource\/[0-9]/, result: mockApiResource },
-    { pattern: /\/file_documents\/52/, result: mockDocument52 },
-    { pattern: /\/file_documents\/53/, result: mockDocument53 },
-    { pattern: /\/file_documents\/54/, result: mockDocument54 },
-    { pattern: /\/file_documents\/55/, result: mockDocument55 },
-    { pattern: /\/search\/filters/, result: mockSearchFilters }
-  ];
-
-  readonly mockPostDataEndpoints = [
-    { pattern: /^\/favorites\/resource$/, post: body => this.setFavorite(body) },
-    { pattern: /^\/search/, post: body => this.postSearch(body) }
   ];
 
   readonly mockDownloadEndpoints = [
@@ -45,8 +22,6 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /\/file_documents\/53/, result: '/assets/mock-downloads/note_taking.docx' },
     { pattern: /\/file_documents\/[0-9]*/, result: '/assets/mock-downloads/video-game-credits.pdf' }
   ];
-
-  readonly resources = [ mockApiResource, mockApiResource2 ];
 
   constructor(private logger: LoggingService) {
     this.logger.warn('Mock data service loaded.');
@@ -64,13 +39,6 @@ export class MockDataService implements PublicPart<DataService> {
   }
 
   post(url: string, obj: any): Observable<any> {
-    const mockedEndpoint = this.mockPostDataEndpoints.find(x => url.match(x.pattern) && url.match(x.pattern).length !== 0);
-
-    if (mockedEndpoint && mockedEndpoint.post) {
-      this.logger.debug(`Mocking API POST for ${url}`, obj);
-      return of(mockedEndpoint.post(obj)).pipe(delay(500));
-    }
-
     return of(undefined);
   }
 
@@ -89,43 +57,6 @@ export class MockDataService implements PublicPart<DataService> {
     return httpClient
       .get(mockedEndpoint.result, options)
       .pipe(map(response => new Blob([ response ])));
-  }
-
-  private postSearch(object: any): any {
-    const claims = object.subjects && object.subjects.indexOf('math') !== -1
-      ? [ ...mockMathClaims ]
-      : [ ];
-
-    if (object.subjects.indexOf('ela') !== -1) {
-      claims.push(...mockElaClaims);
-    }
-
-    return {
-      filters: { ... mockSearchFilters, claims },
-      results: this.shuffleArray([
-          mockApiResource,
-          mockApiResource2,
-          mockProfessionalResource,
-          mockPlaylistResource,
-          mockFormativeStrategy,
-          mockAccessibilityStrategy
-        ])// Randomize the results to simulate different searches on subsequent calls
-        .splice(0, Math.floor(Math.random() * 5) + 1)
-    };
-  }
-
-  private setFavorite(object: any): any {
-
-    const resource = this.resources.find(x => x.id === object.resourceId);
-    if (resource) {
-      resource.favorite = object.favorite;
-      return {
-        resourceId: resource.id,
-        favorite: resource.favorite
-      };
-    }
-
-    return throwError('who knows');
   }
 
   private shuffleArray(array: any[]) {

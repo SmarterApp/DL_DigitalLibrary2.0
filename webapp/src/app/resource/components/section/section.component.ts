@@ -14,7 +14,7 @@ export class SectionComponent implements OnInit, AfterViewInit {
   options: SectionOptions;
 
   @Output()
-  sectionElementLoaded= new EventEmitter<any>();
+  sectionElementLoaded = new EventEmitter<any>();
 
   @ViewChild('header', { static: false })
   headerElement: ElementRef;
@@ -25,7 +25,7 @@ export class SectionComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if(this.headerElement) {
+    if (this.headerElement) {
       this.sectionElementLoaded.emit(this.headerElement.nativeElement);
     }
   }

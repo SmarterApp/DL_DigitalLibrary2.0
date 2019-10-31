@@ -46,8 +46,8 @@
     .leading-icon{
         margin-left: -16px;
         svg {
-            color: $warning-900;
-            background: url('/assets/images/yellow-spot-3.png') no-repeat;
+            color: darken($brand-green, 25%);
+            background: url('/assets/images/green-spot-3.png') no-repeat;
             background-size: contain;
             padding: 7px;
             margin-bottom: -7px;

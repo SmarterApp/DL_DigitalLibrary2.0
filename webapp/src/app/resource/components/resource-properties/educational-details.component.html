@@ -1,0 +1,52 @@
+<div class="subject-grades">
+  <!-- TODO: better mapping strategy fo claim images; accessibility -->
+  <img *ngIf="properties.claims.length > 0" [src]="getClaimImagePath(properties.subject, properties.claims[0])" alt="">
+  <div>
+    <h5 class="subject">{{ properties.subject.shortName }}</h5>
+    <h6 class="grades">
+      <span [ngPlural]="properties.grades.length" >
+        <ng-template ngPluralCase="=1">Grade</ng-template>
+        <ng-template ngPluralCase="other">Grades</ng-template>
+      </span>
+      {{ gradeShortNames | join:  { conjunction: 'and'} }}
+    </h6>
+  </div>
+</div>
+
+<div class="details">
+  <!-- Claims -->
+  <label *ngIf="properties.claims && properties.claims.length > 0"
+         [ngPlural]="properties.claims.length">
+    <ng-template ngPluralCase="=1">Claim</ng-template>
+    <ng-template ngPluralCase="other">Claims</ng-template>
+  </label>
+  <div *ngIf="properties.claims && properties.claims.length > 0" class="value">
+    <div *ngFor="let claim of properties.claims" title="{{ claim.title }}">
+      {{claim.number}}: {{ claim.title }}
+    </div>
+  </div>
+
+  <!-- Targets -->
+  <label *ngIf="properties.targets && properties.targets.length > 0"
+         [ngPlural]="properties.targets.length">
+    <ng-template ngPluralCase="=1">Target</ng-template>
+    <ng-template ngPluralCase="other">Targets</ng-template>
+  </label>
+  <div *ngIf="properties.targets && properties.targets.length > 0" class="value">
+    <div *ngFor="let target of properties.targets" title="{{ target.description }}">
+      {{ target.number }}: {{ target.description }}
+    </div>
+  </div>
+
+  <!-- Standards -->
+  <label *ngIf="properties.standards && properties.standards.length > 0"
+         [ngPlural]="properties.standards.length">
+    <ng-template ngPluralCase="=1">Standard</ng-template>
+    <ng-template ngPluralCase="other">Standards</ng-template>
+  </label>
+  <div *ngIf="properties.standards && properties.standards.length > 0" class="value">
+    <div *ngFor="let standard of properties.standards"
+      title="{{ standard.title | shortenStandardTitle}}">{{ standard.title | shortenStandardTitle }}</div>
+  </div>
+
+</div>

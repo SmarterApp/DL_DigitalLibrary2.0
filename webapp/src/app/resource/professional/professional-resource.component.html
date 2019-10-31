@@ -1,17 +1,19 @@
 <nav class="outline">
   <sbdl-outline
-    [model]="model"
+    [resource]="resource"
     [scrollableElements]="scrollableElements"
     [readingMode]="readingMode"
   ></sbdl-outline>
 </nav>
 <section class="resource-content">
   <sbdl-professional-content
-    [model]="model"
+    [resource]="resource"
     (loadScrollableElements)="setScrollableElements($event)"
     (readingModeChanged)="readingModeChanged($event)"
   ></sbdl-professional-content>
 </section>
-<aside class="metadata">
-  <sbdl-metadata [model]="model.details" [resourceType]="model.resourceType"></sbdl-metadata>
+<aside class="resource-properties">
+  <sbdl-resource-properties [properties]="resource.properties">
+    <h5>Professional Learning</h5>
+  </sbdl-resource-properties>
 </aside>

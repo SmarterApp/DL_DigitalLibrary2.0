@@ -1,22 +1,23 @@
-<div class="resource-type">{{ model.resourceType | resourceType }}</div>
-<h1 *ngIf="!showIconsCol; else titleWithIcons">{{ details.title }}</h1>
+<div class="resource-type">{{ resource.type | resourceType }}</div>
+<h1 *ngIf="!showIconsCol; else titleWithIcons">{{ properties.title }}</h1>
 <ng-template #titleWithIcons>
   <div class="title-with-icons">
     <div class="icon-col">
-      <div *ngIf="grade" class="circle">G{{ grade }}</div>
-      <sbdl-icon [icon]="details.assessmentTypeIcon"></sbdl-icon>
+      <div *ngIf="grade" class="circle">G{{ grade.shortName }}</div>
+      <sbdl-icon [icon]="properties.assessmentTypeIcon"></sbdl-icon>
     </div>
-    <h1>{{ details.title }}</h1>
+    <h1>{{ properties.title }}</h1>
   </div>
 </ng-template>
 <section class="byline">
-  {{ details.author }}&nbsp;&nbsp;&bull;&nbsp;&nbsp;
-  <span class="font-light">{{ details.authorOrganization }}</span>
+  {{ properties.authors | join: { conjunction: 'and' } }}
+  <span *ngIf="properties.authors.length > 0 && properties.authorOrg">&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
+  <span class="font-light">{{ properties.authorOrg }}</span>
 </section>
-<span *ngIf="details.lastModified" class="caption">
+<span *ngIf="properties.lastUpdatedDate" class="caption">
   <span class="emphasis-medium">Updated</span>
-  {{ details.lastModified | date: 'mediumDate' }}
+  {{ properties.lastUpdatedDate | date: 'mediumDate' }}
 </span>
-<sbdl-button *ngIf="model.attachments.length > 0" class="primary" (click)="emitAttachmentsClicked()">
+<sbdl-button *ngIf="resource.attachments.length > 0" class="primary" (click)="emitAttachmentsClicked()">
   <i class="far fa-paperclip"></i> Attachments
 </sbdl-button>

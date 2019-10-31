@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, HostBinding, OnInit } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import { ResourceModel } from '../data/resource/model/resource.model';
+import { Resource } from '../data/resource/model/resource.model';
 import { ScrollableElements } from './components/outline/scrollable-elements.model';
 
 /**
@@ -9,13 +9,13 @@ import { ScrollableElements } from './components/outline/scrollable-elements.mod
  */
 export class ResourceComponent implements OnInit {
 
-  model: ResourceModel;
+  resource: Resource;
   scrollableElements: ScrollableElements;
   readingMode: boolean = window.innerWidth < 1200;
   navWidth = 331;
   cssVarStyle: SafeStyle;
 
-  @HostBinding("style")
+  @HostBinding('style')
   public get valueAsStyle(): any {
     return this.cssVarStyle;
   }
@@ -40,7 +40,7 @@ export class ResourceComponent implements OnInit {
 
   private setCssVarStyle() {
 
-    const styles = this.readingMode 
+    const styles = this.readingMode
       ? `--nav-width:40px; --outline-margin-right:-291px`
       : `--nav-width: 331px; --outline-margin-right: 0`;
 

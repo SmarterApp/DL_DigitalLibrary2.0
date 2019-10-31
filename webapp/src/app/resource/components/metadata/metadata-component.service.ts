@@ -11,11 +11,11 @@ import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
 })
 export class MetadataComponentService {
   readonly strategyMetadataMap: Map<ResourceType, StaticMetadata> = new Map([
-    [ 
+    [
       ResourceType.Professional, <StaticMetadata>{
         // TODO: Add links if provided from team.
       }
-    ], [ 
+    ], [
       ResourceType.AccessibilityStrategy, {
       linkTitle: 'Learn more about accessibility',
       links: [ <MoreInfoLink>{

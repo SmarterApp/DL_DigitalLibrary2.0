@@ -2,11 +2,11 @@ import { Component, ComponentFactoryResolver, OnInit, Type, ViewChild } from '@a
 import { ActivatedRoute } from '@angular/router';
 import { ResourceType } from '../data/resource/model/resource-type.enum';
 import { InstructionalResourceComponent } from './instructional/instructional-resource.component';
-import { PlaylistComponent } from './playlist/playlist.component';
+// import { PlaylistComponent } from './playlist/playlist.component';
 import { ProfessionalResourceComponent } from './professional/professional-resource.component';
 import { ResourceHostDirective } from './resource-host.directive';
 import { ResourceComponent } from './resource.component';
-import { StrategyComponent } from './strategy/strategy.component';
+// import { StrategyComponent } from './strategy/strategy.component';
 
 /***
  * This component will render the correct resource component based on the determined resource type.
@@ -20,9 +20,9 @@ export class ResourceTypeStrategyComponent implements OnInit {
   readonly componentMap: Map<ResourceType, Type<ResourceComponent>> = new Map<ResourceType, Type<ResourceComponent>>([
     [ ResourceType.Instructional, InstructionalResourceComponent ],
     [ ResourceType.Professional, ProfessionalResourceComponent ],
-    [ ResourceType.AccessibilityStrategy, StrategyComponent ],
-    [ ResourceType.FormativeStrategy, StrategyComponent ],
-    [ ResourceType.ConnectionsPlaylist, PlaylistComponent ]
+    // [ ResourceType.AccessibilityStrategy, StrategyComponent ],
+    // [ ResourceType.FormativeStrategy, StrategyComponent ],
+    // [ ResourceType.ConnectionsPlaylist, PlaylistComponent ]
   ]);
 
   @ViewChild(ResourceHostDirective, {static: true}) hostDirective: ResourceHostDirective;
@@ -34,14 +34,14 @@ export class ResourceTypeStrategyComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      const component = this.componentMap.get(data.resource.resourceType);
+      const component = this.componentMap.get(data.resource.type);
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
-  
+
       const viewContainerRef = this.hostDirective.viewContainerRef;
       viewContainerRef.clear();
       const componentRef = viewContainerRef.createComponent(componentFactory);
-  
-      componentRef.instance.model = data.resource;
+
+      componentRef.instance.resource = data.resource;
     });
   }
 }

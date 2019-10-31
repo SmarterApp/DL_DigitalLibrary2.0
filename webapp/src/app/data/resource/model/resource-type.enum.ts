@@ -1,7 +1,7 @@
 export enum ResourceType {
-    Instructional = 1,
-    Professional = 2,
-    AccessibilityStrategy = 3,
-    FormativeStrategy = 4,
-    ConnectionsPlaylist = 5
+    Instructional = 'Instructional',
+    Professional = 'Professional Learning',
+    AccessibilityStrategy = 'Accessibility Strategy',
+    FormativeStrategy = 'Formative Assessment Strategy',
+    ConnectionsPlaylist = 'Connections Playlist'
 }

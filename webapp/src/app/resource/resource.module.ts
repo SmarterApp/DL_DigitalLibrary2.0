@@ -4,32 +4,26 @@ import { SbdlCommonModule } from '../common/common.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { ActionsComponent } from './components/actions/actions.component';
 import { AttachmentsComponent } from './components/attachments/attachments.component';
-import { FormativeComponent } from './components/formative/formative.component';
-import { HeaderComponent } from './components/header/header.component';
-import { StepByStepComponent } from './components/step-by-step/step-by-step.component';
-import { InstructionalContentComponent } from './instructional/content/instructional-content.component';
 import { DifferentiationComponent } from './instructional/differentiation/differentiation.component';
+import { EducationalDetailsComponent } from './components/resource-properties/educational-details.component';
+import { FormativeComponent as InstructionalFormativeComponent } from './instructional/formative/formative.component';
 import { GetStartedComponent } from './instructional/get-started/get-started.component';
+import { HeaderComponent } from './components/header/header.component';
+import { InstructionalContentComponent } from './instructional/content/instructional-content.component';
 import { InstructionalResourceComponent } from './instructional/instructional-resource.component';
-import { DetailedMetadataComponent } from './components/detailed-metadata/detailed-metadata.component';
-import { OutlineComponent } from './components/outline/outline.component';
-import { ProfessionalResourceComponent } from './professional/professional-resource.component';
-import { ResourceHostDirective } from './resource-host.directive';
-import { ResourceTypeStrategyComponent } from './resource-type-strategy.component';
-import { ResourceComponent } from './resource.component';
 import { ProfessionalContentComponent } from './professional/content/professional-content.component';
-import { OverviewComponent } from './professional/overview/overview.component';
+import { ProfessionalResourceComponent } from './professional/professional-resource.component';
+import { FormativeListComponent as ProfessionalFormativeListComponent } from './professional/formative-list/formative-list.component';
+import { OverviewComponent as ProfessionalLearningOverviewComponent } from './professional/overview/overview.component';
+import { OutlineComponent } from './components/outline/outline.component';
+import { ResourceComponent } from './resource.component';
+import { ResourceHostDirective } from './resource-host.directive';
+import { ResourcePropertiesComponent } from './components/resource-properties/resource-properties.component';
+import { ResourceTypeStrategyComponent } from './resource-type-strategy.component';
 import { SectionComponent } from './components/section/section.component';
-import { StrategyComponent } from './strategy/strategy.component';
-import { StrategyContentComponent } from './strategy/content/strategy-content.component';
-import { StrategyOverviewComponent } from './strategy/overview/strategy-overview.component';
-import { MetadataComponent } from './components/metadata/metadata.component';
+import { StepByStepComponent } from './components/step-by-step/step-by-step.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { RouterModule } from '@angular/router';
-import { PlaylistComponent } from './playlist/playlist.component';
-import { PlaylistContentComponent } from './playlist/content/playlist-content.component';
-import { PlaylistOverviewComponent } from './playlist/overview/playlist-overview.component';
-import { TopicsComponent } from './playlist/topics/topics.component';
 
 export function getResourceComponents(resourceComponent: ResourceComponent) {
   return resourceComponent;
@@ -37,31 +31,26 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
 
 @NgModule({
   declarations: [
-    InstructionalContentComponent,
-    GetStartedComponent,
-    InstructionalResourceComponent,
-    ResourceTypeStrategyComponent,
-    ResourceHostDirective,
-    OutlineComponent,
-    DetailedMetadataComponent,
-    DifferentiationComponent,
-    FormativeComponent,
-    StepByStepComponent,
-    AttachmentsComponent,
-    ProfessionalResourceComponent,
     ActionsComponent,
+    AttachmentsComponent,
+    DifferentiationComponent,
+    EducationalDetailsComponent,
+    GetStartedComponent,
     HeaderComponent,
+    InstructionalContentComponent,
+    InstructionalFormativeComponent,
+    InstructionalResourceComponent,
+    OutlineComponent,
     ProfessionalContentComponent,
-    OverviewComponent,
+    ProfessionalLearningOverviewComponent,
+    ProfessionalResourceComponent,
+    ProfessionalFormativeListComponent,
+    InstructionalResourceComponent,
+    ResourceHostDirective,
+    ResourcePropertiesComponent,
+    ResourceTypeStrategyComponent,
     SectionComponent,
-    StrategyComponent,
-    StrategyContentComponent,
-    StrategyOverviewComponent,
-    MetadataComponent,
-    PlaylistComponent,
-    PlaylistContentComponent,
-    PlaylistOverviewComponent,
-    TopicsComponent
+    StepByStepComponent
   ],
   imports: [
     CommonModule,
@@ -73,10 +62,8 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     // Resource components are loaded dynamically so they need to be explicitly set here
     // in order to be used.
     InstructionalResourceComponent,
-    PlaylistComponent,
     ProfessionalResourceComponent,
     ResourceTypeStrategyComponent,
-    StrategyComponent
   ]
 })
 export class ResourceModule { }
