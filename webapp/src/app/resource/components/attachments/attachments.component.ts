@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter, ViewChildren, SecurityContext } from '@angular/core';
+import {
+  AfterViewInit, Component, OnInit, Input, ViewChild, ElementRef,
+  Output, EventEmitter, ViewChildren, SecurityContext } from '@angular/core';
 import { MDCRipple } from '@material/ripple/component';
-import { AttachmentModel } from 'src/app/data/resource/model/attachment.model';
-import { AttachmentService } from 'src/app/data/resource/attachment.service';
+import { ResourceAttachment } from 'src/app/data/resource/model/attachment.model';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
@@ -9,16 +10,16 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
   templateUrl: './attachments.component.html',
   styleUrls: ['./attachments.component.scss']
 })
-export class AttachmentsComponent implements OnInit {
+export class AttachmentsComponent implements AfterViewInit, OnInit {
 
   @Input()
-  models: AttachmentModel[];
+  attachments: ResourceAttachment[];
 
   @Input()
   videoLinks: string[];
 
   @Output()
-  sectionElementLoaded= new EventEmitter<any>();
+  sectionElementLoaded = new EventEmitter<any>();
 
   @ViewChild('header', { static: false })
   headerElement: ElementRef;
@@ -26,35 +27,17 @@ export class AttachmentsComponent implements OnInit {
   @ViewChildren('attachments')
   attachmentElementRefs: ElementRef[];
 
-  constructor(private service: AttachmentService) { }
+  constructor() { }
 
-  ngOnInit() {
-  }
-  
+  ngOnInit() { }
+
   ngAfterViewInit(): void {
-    if(this.headerElement) {
+    if (this.headerElement) {
       this.sectionElementLoaded.emit(this.headerElement.nativeElement);
     }
     // Add ripples
-    for(let attachmentRef of this.attachmentElementRefs) {
+    for (const attachmentRef of this.attachmentElementRefs) {
       MDCRipple.attachTo(attachmentRef.nativeElement);
     }
-  }
-
-  download(attachment: AttachmentModel) {
-    this.service
-      .download(attachment.id)
-      .subscribe(blob => {
-        const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
-        link.download = attachment.filename;
-        link.hidden = true;
-        document.body.appendChild(link);
-        link.click();
-        setTimeout(function() {
-          window.URL.revokeObjectURL(link.href);
-          document.body.removeChild(link);
-        }, 100);
-      })
   }
 }

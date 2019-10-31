@@ -16,6 +16,19 @@
     margin-bottom: $spacer-lg;
     position: relative;
 
+    .leading-icon {
+      margin-left: -16px;
+
+      svg {
+        color: darken($warning-900, 25%);
+        background: url('/assets/images/yellow-spot-3.png') no-repeat;
+        background-size: contain;
+        padding: 7px;
+        margin-bottom: -7px;
+        font-size: 1.75rem;
+      }
+    }
+
     .attachment-card  {
         @include mdc-ripple-surface;
         @include mdc-ripple-radius-bounded;
@@ -24,7 +37,7 @@
         background-image: url('/assets/images/attachment-card-bg.png');
         background-repeat: no-repeat;
         background-size: auto 100%;
-    
+
         border-radius: 2px;
         margin-bottom: $spacer;
         cursor: pointer;
@@ -42,7 +55,7 @@
             display: flex;
             justify-content: space-between;
 
-            .attachment-type {
+            .attachment-category {
                 text-transform: uppercase;
                 font-family: $font-family-title;
                 font-size: $font-size-body-2;

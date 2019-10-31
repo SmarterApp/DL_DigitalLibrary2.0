@@ -12,3 +12,13 @@ export interface Filter {
     title: string;
     code: string;
 }
+
+export const emptyFilters: SearchFilters = {
+  freeText: '',
+  resourceTypes: [],
+  grades: [],
+  subjects: [],
+  claims: [],
+  targets: [],
+  standards: []
+};

@@ -1,13 +1,13 @@
 <h6 class="outline-header">
   <span *ngIf="readingMode && !mobile">
     <i class="fas fa-bars"></i>
-  </span> 
+  </span>
   Outline
 </h6>
 <ul *ngIf="scrollableElements">
   <li *ngIf="scrollableElements.getStarted">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.getStarted)" (blur)="removeClass(scrollableElements.getStarted)">
-      <sbdl-icon icon="goal"></sbdl-icon>
+      <i class="far fa-hand-point-right"></i>
       Get Started
     </sbdl-button>
   </li>
@@ -28,6 +28,7 @@
       </li>
     </ol>
   </li>
+<!--
   <li *ngIf="scrollableElements.topics">
       <div class="steps-header">
         <i class="far fa-chart-network"></i>
@@ -44,8 +45,9 @@
       <sbdl-icon *ngIf="scrollableElements.customStrategySection.sbdlIcon" [icon]="scrollableElements.customStrategySection.sbdlIcon"></sbdl-icon>
       <i *ngIf="scrollableElements.customStrategySection.fontAwesomeIcon" class="far {{scrollableElements.customStrategySection.fontAwesomeIcon}}"></i>
       {{ scrollableElements.customStrategySection.title }}
-    </sbdl-button>  
+    </sbdl-button>
   </li>
+-->
   <li *ngIf="scrollableElements.attachments">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.attachments)" (blur)="removeClass(scrollableElements.attachments)">
       <i class="far fa-paperclip"></i>
@@ -68,19 +70,19 @@
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.formativeAssessmentProcess)" (blur)="removeClass(scrollableElements.formativeAssessmentProcess)">
       <sbdl-icon icon="strategies"></sbdl-icon>
       {{ isProfessional ? 'Formative Assessment Strategies' : 'Formative Assessment Process' }}
-    </sbdl-button>  
+    </sbdl-button>
   </li>
   <li *ngFor="let section of scrollableElements.sections" >
     <sbdl-button class="outline" (click)="scrollToElement(section.elementRef)" (blur)="removeClass(section.elementRef)">
       <sbdl-icon *ngIf="section.sbdlIcon" [icon]="section.sbdlIcon"></sbdl-icon>
       <i *ngIf="section.fontAwesomeIcon" class="far {{section.fontAwesomeIcon}}"></i>
       {{ section.title }}
-    </sbdl-button>  
+    </sbdl-button>
   </li>
   <li *ngIf="scrollableElements.assessmentInfo">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.assessmentInfo)" (blur)="removeClass(scrollableElements.assessmentInfo)">
       <i class="far fa-question-circle"></i>
       What are Interim Assessments?
-    </sbdl-button>  
+    </sbdl-button>
   </li>
 </ul>

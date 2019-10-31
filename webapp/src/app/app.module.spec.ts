@@ -8,27 +8,26 @@ import { MockDataService } from './data/mock-data.service';
 
 // Common AppModule mocks here.
 export const mockRootActivatedRouteSnapshot = {
-    snapshot: { data: { currentUser: mockUser } } 
+    snapshot: { data: { currentUser: mockUser } }
 };
 
 export function mockAppConfig() {
     return () => {
-        AppConfig.settings = <IAppConfig>{ 
-            env: { name: 'Unit Tests' }, 
+        AppConfig.settings = {
+            env: { name: 'Unit Tests' },
             logging: { level: 7 }  // Set to level 0 to see debug logs
-        };
-    }
+        } as IAppConfig;
+    };
   }
 
-export const initializeSettingsProvider = { 
+export const initializeSettingsProvider = {
     provide: APP_INITIALIZER,
     useFactory: (mockAppConfig),
-    deps: [ ], multi: true 
+    deps: [ ], multi: true
 };
 
-export const mockDataServiceProviders = [ 
-    { provide: DataService, useClass: MockDataService }, 
-    LoggingService, 
-    initializeSettingsProvider 
+export const mockDataServiceProviders = [
+    { provide: DataService, useClass: MockDataService },
+    LoggingService,
+    initializeSettingsProvider
 ];
-  

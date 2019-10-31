@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ResourceModel } from 'src/app/data/resource/model/resource.model';
+import { Resource } from 'src/app/data/resource/model/resource.model';
+import { Grade } from 'src/app/data/resource/model/grade.model';
 
 @Component({
   selector: 'sbdl-header',
@@ -9,7 +10,7 @@ import { ResourceModel } from 'src/app/data/resource/model/resource.model';
 export class HeaderComponent implements OnInit {
 
   @Input()
-  model: ResourceModel;
+  resource: Resource;
 
   @Input()
   showIconsCol = false;
@@ -17,22 +18,22 @@ export class HeaderComponent implements OnInit {
   @Output()
   attachmentsClicked = new EventEmitter();
 
-  grade: number;
+  grade: Grade;
 
-  get details() {
-    return this.model.details;
+  get properties() {
+    return this.resource.properties;
   }
 
   constructor() { }
 
   ngOnInit() {
-    if(this.showIconsCol && this.model.details.grades.length > 0) {
-      this.grade = this.model.details.grades[0];
+    if (this.showIconsCol && this.resource.properties.grades.length > 0) {
+      this.grade = this.resource.properties.grades[0];
     }
   }
 
   emitAttachmentsClicked() {
     this.attachmentsClicked.emit();
   }
-  
+
 }

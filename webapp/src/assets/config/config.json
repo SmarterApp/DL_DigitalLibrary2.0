@@ -8,7 +8,8 @@
         "level": 0
     },
     "apiServer": {
-        "cdl": "https://dev.cdl.sbac.org/api/v1.0/"
+        "cdl": "https://api-dev.dl.smarterbalanced.org/api",
+        "authToken": "MWU4ZmNhMDZkZTRlNWYyYzQ1Zjk2OTljN2ZkNGQwNjQ1OGE0NjUxMjJhNzFkYjU5MWE2ZjNkMDA0NmQxODVkMg"
     },
     "enableAnalytics": false,
     "okta": {

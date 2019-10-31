@@ -1,22 +1,22 @@
 <div class="top-header">
   <img src="/assets/images/yellow-spot.png" alt="" />
-  <sbdl-actions [model]= "model" (readingModeChanged)="emitReadingModeChanged($event)"></sbdl-actions>
+  <sbdl-actions [resource]= "resource" (readingModeChanged)="emitReadingModeChanged($event)"></sbdl-actions>
 </div>
-<sbdl-header [model]="model" (attachmentsClicked)="scrollToAttachments()"></sbdl-header>
+<sbdl-header [resource]="resource" (attachmentsClicked)="scrollToAttachments()"></sbdl-header>
 
-<sbdl-get-started [model]="model.overview"  (sectionElementLoaded)="setGetStarted($event)"></sbdl-get-started>
-<hr *ngIf="model.steps.length > 0"/>
+<sbdl-get-started [resource]="resource"  (sectionElementLoaded)="setGetStarted($event)"></sbdl-get-started>
+<hr *ngIf="resource.stepByStep.length > 0"/>
 
-<sbdl-step-by-step [models]="model.steps" (sectionElementLoaded)="setSteps($event)"></sbdl-step-by-step>
-<hr *ngIf="model.attachments.length > 0"/>
+<sbdl-step-by-step [steps]="resource.stepByStep" (sectionElementLoaded)="setSteps($event)"></sbdl-step-by-step>
+<hr *ngIf="resource.attachments.length > 0"/>
 
-<sbdl-attachments [models]="model.attachments" [videoLinks]="model.videoLinks" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
+<sbdl-attachments [attachments]="resource.attachments" [videoLinks]="resource.videoLinks" (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
 <hr/>
 
-<sbdl-differentiation [model]="model.differentiation" (sectionElementLoaded)="setDifferentiation($event)"></sbdl-differentiation>
+<sbdl-differentiation [resource]="resource" (sectionElementLoaded)="setDifferentiation($event)"></sbdl-differentiation>
 <hr/>
 
-<sbdl-section [contentHtml]="model.comments" [options]="commentsOptions" (sectionElementLoaded)="setComments($event)"></sbdl-section>
-<hr *ngIf="model.comments"/>
+<sbdl-section [contentHtml]="resource.thingsToConsider" [options]="commentsOptions" (sectionElementLoaded)="setComments($event)"></sbdl-section>
+<hr *ngIf="resource.thingsToConsider"/>
 
-<sbdl-formative [model]="model.formative" (sectionElementLoaded)="setFormative($event)"></sbdl-formative>
+<sbdl-formative [resource]="resource" (sectionElementLoaded)="setFormative($event)"></sbdl-formative>

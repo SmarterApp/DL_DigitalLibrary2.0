@@ -1,0 +1,21 @@
+<article #header class="formative-container">
+  <h4 class="leading-icon">
+    <sbdl-icon icon="strategies"></sbdl-icon>
+    Formative Assessment Strategies
+  </h4>
+  <p class="prof-learning-content">
+    These strategies were developed to be used with students. Modify as needed for adult use.
+  </p>
+  <section>
+    <h5>Strategies Used</h5>
+    <div *ngFor="let strategy of strategies" class="strategy-link">
+      <h6>
+        <a href="/resource/{{strategy.id}}" target="_blank">
+          {{ strategy.title }}
+          <i class="far fa-arrow-right"></i>
+        </a>
+      </h6>
+      <p>{{ strategy.description }}</p>
+    </div>
+  </section>
+</article>

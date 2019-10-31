@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChildren, ElementRef, Output, EventEmitter, AfterViewInit } from '@angular/core';
-import { ResourceStepModel } from 'src/app/data/resource/model/resource-step.model';
+import { ResourceStep } from 'src/app/data/resource/model/step.model';
 import { ScrollableSection } from '../outline/scrollable-elements.model';
 
 @Component({
@@ -10,10 +10,10 @@ import { ScrollableSection } from '../outline/scrollable-elements.model';
 export class StepByStepComponent implements OnInit, AfterViewInit {
 
   @Input()
-  models: ResourceStepModel[];
+  steps: ResourceStep[];
 
   @Output()
-  sectionElementLoaded= new EventEmitter<any>();
+  sectionElementLoaded = new EventEmitter<any>();
 
   @ViewChildren('steps')
   stepElementRefs: ElementRef[];
@@ -25,8 +25,8 @@ export class StepByStepComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     let i = 0;
-    if(this.stepElementRefs) {
-      const stepRefs = this.stepElementRefs.map(x => <ScrollableSection>{ title: this.models[i++].title, elementRef: x.nativeElement });
+    if (this.stepElementRefs) {
+      const stepRefs = this.stepElementRefs.map(x => ({ title: this.steps[i++].title, elementRef: x.nativeElement } as ScrollableSection));
       this.sectionElementLoaded.emit(stepRefs);
     }
   }

@@ -1,6 +1,6 @@
 <article #header class="overview-container">
   <h4 class="leading-icon">
-    <sbdl-icon icon="goal"></sbdl-icon>Get Started
+    <i class="far fa-hand-point-right"></i>Get Started
   </h4>
   <div>
     <h5>
@@ -10,17 +10,17 @@
       ><sbdl-icon icon="info"></sbdl-icon></sbdl-tooltip>
     </h5>
     <p>
-      <sbdl-read-more [text] = "model.description"></sbdl-read-more>
+      <sbdl-read-more [text] = "resource.getStarted.overview"></sbdl-read-more>
     </p>
   </div>
   <div>
     <h5>Learning Goal</h5>
     <p>
-      <sbdl-read-more [text] = "model.learningGoal"></sbdl-read-more>
+      <sbdl-read-more [text] = "resource.getStarted.learningGoal"></sbdl-read-more>
     </p>
   </div>
   <div>
     <h5>Success Criteria</h5>
-    <div [innerHtml]="model.successCriteria"></div>
+    <div [innerHtml]="resource.getStarted.successCriteria"></div>
   </div>
 </article>

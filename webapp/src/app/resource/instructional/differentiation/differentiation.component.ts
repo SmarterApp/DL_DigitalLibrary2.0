@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { DifferentiationModel } from 'src/app/data/resource/model/differentiation.model';
+import { InstructionalResource } from 'src/app/data/resource/model/instructional.model';
 
 @Component({
   selector: 'sbdl-differentiation',
@@ -8,10 +8,10 @@ import { DifferentiationModel } from 'src/app/data/resource/model/differentiatio
 })
 export class DifferentiationComponent implements OnInit, AfterViewInit {
   @Input()
-  model: DifferentiationModel;
+  resource: InstructionalResource;
 
   @Output()
-  sectionElementLoaded= new EventEmitter<any>();
+  sectionElementLoaded = new EventEmitter<any>();
 
   @ViewChild('header', { static: false })
   headerElement: ElementRef;
@@ -22,7 +22,7 @@ export class DifferentiationComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if(this.headerElement) {
+    if (this.headerElement) {
       this.sectionElementLoaded.emit(this.headerElement.nativeElement);
     }
   }

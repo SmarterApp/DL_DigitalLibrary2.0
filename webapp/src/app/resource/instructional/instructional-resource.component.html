@@ -1,17 +1,19 @@
 <nav class="outline">
   <sbdl-outline
-    [model]="model"
+    [resource]="resource"
     [scrollableElements]="scrollableElements"
     [readingMode]="readingMode"
   ></sbdl-outline>
 </nav>
 <section class="resource-content">
   <sbdl-instructional-content
-    [model]="model"
+    [resource]="resource"
     (loadScrollableElements)="setScrollableElements($event)"
     (readingModeChanged)="readingModeChanged($event)"
   ></sbdl-instructional-content>
 </section>
-<aside class="metadata">
-  <sbdl-detailed-metadata [model]="model.details"></sbdl-detailed-metadata>
+<aside class="resource-properties">
+  <sbdl-resource-properties [properties]="resource.properties">
+    <sbdl-educational-details [properties]="resource.properties"></sbdl-educational-details>
+  </sbdl-resource-properties>
 </aside>

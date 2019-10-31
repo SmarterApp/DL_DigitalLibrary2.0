@@ -1,9 +1,7 @@
 import { Component, OnInit, Input, HostListener, ViewChild, ViewContainerRef, ElementRef, Output, EventEmitter } from '@angular/core';
-import { ResourceModel } from 'src/app/data/resource/model/resource.model';
-import { FavoriteResource } from 'src/app/data/favorite/model/favorite-resource.model';
+import { Resource } from 'src/app/data/resource/model/resource.model';
 import { getCssVar } from 'src/app/common/utils';
 import { PopoverService } from 'src/app/common/controls/popover/popover.service';
-import { FavoriteService } from 'src/app/data/favorite/favorite.service';
 
 @Component({
   selector: 'sbdl-actions',
@@ -13,7 +11,7 @@ import { FavoriteService } from 'src/app/data/favorite/favorite.service';
 export class ActionsComponent implements OnInit {
 
   @Input()
-  model: ResourceModel;
+  resource: Resource;
 
   @Output()
   readingModeChanged = new EventEmitter<boolean>();
@@ -24,7 +22,7 @@ export class ActionsComponent implements OnInit {
   @ViewChild('sharePopover', { static: false })
   sharePopover: ElementRef;
 
-  togglingFavorite = false;
+  togglingBookmarked = false;
   readingMode = false;
   hideReadingModeToggle = false;
   currentUrl: string;
@@ -34,16 +32,16 @@ export class ActionsComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event?) {
-    if(window.innerWidth < this.readingModeDefaultWidth && !this.readingMode) {
+    if (window.innerWidth < this.readingModeDefaultWidth && !this.readingMode) {
       this.toggleReadingMode();
       this.hideReadingModeToggle = true;
-    } else if((window.innerWidth >= this.readingModeDefaultWidth) && this.readingMode){
+    } else if ((window.innerWidth >= this.readingModeDefaultWidth) && this.readingMode) {
       this.toggleReadingMode();
       this.hideReadingModeToggle = false;
     }
   }
 
-  constructor(private popoverService: PopoverService, private favoriteService: FavoriteService) { }
+  constructor(private popoverService: PopoverService) { }
 
   ngOnInit() {
     this.onResize();
@@ -64,17 +62,12 @@ export class ActionsComponent implements OnInit {
     setTimeout(() => this.showCopied = false, 5000);
   }
 
-  toggleFavorite() {
-    if(this.togglingFavorite)
-      return;
+  toggleBookmarked() {
+    if (this.togglingBookmarked) { return; }
 
     // prevent multiple clicks
-    this.togglingFavorite = true;
-    const favoriteResource: FavoriteResource = {
-      resourceId: this.model.resourceId,
-      favorite: !this.model.details.favorite
-    };
-
+    this.togglingBookmarked = true;
+    /* Something like
     this.favoriteService.postFavoriteResource(favoriteResource).subscribe(res => {
       this.model.details.favorite = res.favorite;
       this.togglingFavorite = false;
@@ -82,13 +75,14 @@ export class ActionsComponent implements OnInit {
       // TODO: Implement error notification system?
       this.togglingFavorite = false;
     });
+    */
+    // Until this API is real:
+    this.resource.properties.isBookmarked = !this.resource.properties.isBookmarked;
+    this.togglingBookmarked = false;
   }
 
   toggleReadingMode() {
     this.readingMode = !this.readingMode;
     this.readingModeChanged.emit(this.readingMode);
   }
-
-
-
 }

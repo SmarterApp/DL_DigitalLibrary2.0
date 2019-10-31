@@ -1,35 +1,19 @@
-import { Injectable } from '@angular/core';
-import { forkJoin, Observable, of } from 'rxjs';
+import { Injectable } from '@angular/core'; import { forkJoin, Observable, of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { coalesce } from 'src/app/common/utils';
 import { DataService } from '../data.service';
-import { AttachmentService } from './attachment.service';
-import { DifferentiationModel } from './model/differentiation.model';
-import { FormativeAssessmentProcess, FormativeModel } from './model/formative.model';
-import { OverviewModel } from './model/overview.model';
-import { Alignment, Playlist, ResourceDetailsModel } from './model/resource-details.model';
-import { ResourceStepModel } from './model/resource-step.model';
-import { ResourceStrategyModel } from './model/resource-strategy.model';
 import { ResourceType } from './model/resource-type.enum';
-import { ResourceModel } from './model/resource.model';
+import { Resource } from './model/resource.model';
+import { ResourceProperties } from './model/properties.model';
+import { ResourceAttachment, getFileTypeForMimeType } from './model/attachment.model';
+import { InstructionalResource } from './model/instructional.model';
+import { ProfessionalLearningResource } from './model/professional-learning.model';
 import { EmbedStrategyLinksService } from './embed-strategy-links.service';
-import { ResourceLinkModel } from './model/resource-link.model';
-import { TopicSectionModel, TopicModel } from './model/topic-section.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResourceService {
-  // It's unclear what the potential values 
-  // the API will return here.
-  static readonly ApiResourceTypeMap: Map<string, ResourceType> = new Map([
-    ['Instructional and Professional Learning', ResourceType.Instructional ],
-    ['Instructional', ResourceType.Instructional ],
-    ['Professional Learning', ResourceType.Professional ],
-    ['Accessibility Strategy', ResourceType.AccessibilityStrategy ],
-    ['Formative Strategy', ResourceType.FormativeStrategy ],
-    ['Connections Playlist', ResourceType.ConnectionsPlaylist ]
-  ]);
 
   // TODO: Define how assessment types are defined.  How will this be represented?
   // TODO: Define all assessment type icons.
@@ -40,199 +24,83 @@ export class ResourceService {
     [ 4, 'asmt-ela-read-informational-texts' ],
   ]);
 
-  constructor(private dataService: DataService, 
-    private embedStrategyLinkService: EmbedStrategyLinksService,
-    private attachmentService: AttachmentService) { }
+  constructor(private dataService: DataService,
+              private embedStrategyLinkService: EmbedStrategyLinksService) { }
 
-  get(id: number): Observable<ResourceModel> {
-    let resourceModel: any;
+  get = (id: number): Observable<Resource> => {
     return this.dataService
-      .get(`/resources/${id}`)
-      .pipe(mergeMap(apiModel => {
-        resourceModel = apiModel;
-        return apiModel.documents && apiModel.documents.length > 0
-          ? forkJoin(this.getAttachments(apiModel.documents))
-          : of([]);
-      }))
-      .pipe(map(attachments => {
-        const model = this.mapToResourceModel(resourceModel);
-        model.attachments = coalesce(attachments, []);
-        return model;
-      }))
-      .pipe(map(resource => this.embedStrategyLinks(resource)))
+      .get(`/resource/${id}`)
+      .pipe(
+        map(this.resourceFromJson),
+        map(this.embedStrategyLinks));
   }
 
-  getAttachments(documents: string[]): Observable<any>[] {
-    let observables = [];
-    
-    for(let doc of documents) {
-      const regexGroups = doc.match(/\/file_documents\/([0-9]*)\/download/);
-      if(regexGroups && regexGroups.length > 1){
-        const id = +regexGroups[1];
-        if(!isNaN(id)) {
-          observables.push(this.attachmentService.get(id));
-        }
-      }
+  private resourceFromJson = (resourceJson: any): Resource => {
+    const resourceType = resourceJson.type as ResourceType;
+    if (!Object.values(ResourceType).includes(resourceType)) {
+      throw Error('Unrecognized resource type: ' + resourceJson.type);
     }
 
-    return observables;
+    // Our model objects should match the data models being returned from the
+    // API, so all we really need to do is map types that are not representable
+    // in JSON alone (Dates, enums, etc).
+    return {
+      ...resourceJson,
+      attachments: this.attachmentsFromJson(resourceJson.attachments),
+      properties: this.resourcePropertiesFromJson(resourceJson.properties),
+      type: resourceType
+    } as Resource;  // TODO: would be good to have some actual validation of this
+
   }
 
-  private mapToResourceModel(apiResource: any): ResourceModel {
-    const apiResourceType = Array.isArray(apiResource.resourceType)
-      ? apiResource.resourceType[0]
-      : apiResource.resourceType;
-    
-    const resourceType = ResourceService.ApiResourceTypeMap.get(apiResourceType);
+  private attachmentsFromJson(attachmentsJson): ResourceAttachment[] {
+    return attachmentsJson.map(a => ({
+      ...a,
+      fileType: getFileTypeForMimeType(a.fileType)
+    }));
+  }
 
-    if(resourceType == null) {
-      throw Error('Unexpected resourceType for: ' + apiResource.resourceType);
+  private resourcePropertiesFromJson(propertiesJson: any): ResourceProperties {
+    return {
+      ...propertiesJson,
+      lastUpdatedDate: new Date(propertiesJson.lastUpdatedDate)
+    };
+  }
+
+  private embedStrategyLinks = (res: Resource) => {
+
+    // We're going to call this a lot, so let's shorthand it
+    const embed = this.embedStrategyLinkService.embedStrategyLinks;
+
+    // Fields common to both
+
+    if (res.type === ResourceType.Instructional) {
+
+      const ir = res as InstructionalResource;
+      ir.thingsToConsider = embed(ir.thingsToConsider, ir);
+      ir.stepByStep.forEach(step => step.content = embed(step.content, ir));
+      ir.getStarted.overview = embed(ir.getStarted.overview, ir);
+      ir.getStarted.learningGoal = embed(ir.getStarted.learningGoal, ir);
+      ir.getStarted.successCriteria = embed(ir.getStarted.learningGoal, ir);
+
+      ir.differentiation = embed(ir.differentiation, ir);
+
+      ir.formativeAssessHowTo.clarify = embed(ir.formativeAssessHowTo.clarify, ir);
+      ir.formativeAssessHowTo.elicit = embed(ir.formativeAssessHowTo.elicit, ir);
+      ir.formativeAssessHowTo.interpret = embed(ir.formativeAssessHowTo.interpret, ir);
+      ir.formativeAssessHowTo.act = embed(ir.formativeAssessHowTo.act, ir);
+
+    } else if (res.type === ResourceType.Professional) {
+
+      const pl = res as ProfessionalLearningResource;
+      pl.thingsToConsider = embed(pl.thingsToConsider, pl);
+      pl.stepByStep.forEach(step => step.content = embed(step.content, pl));
+      pl.overview.overview = embed(pl.overview.overview, pl);
+      pl.overview.learningGoal = embed(pl.overview.learningGoal, pl);
+      pl.overview.successCriteria = embed(pl.overview.successCriteria, pl);
+
     }
 
-    return <ResourceModel> {
-      resourceId: apiResource.id,
-      resourceType: resourceType,
-      details: this.mapToResourceDetailsModel(apiResource),
-      overview: this.mapToOverview(apiResource),
-      steps: this.mapToSteps(coalesce(apiResource.steps, [])),
-      comments: apiResource.comments,
-      differentiation: this.mapToDifferentiation(apiResource),
-      formative: this.mapToFormative(apiResource),
-
-      strategyInAction: apiResource.strategyInAction,
-      instructionalUse: apiResource.instructionalUse,
-      stepByStep: apiResource.stepByStep,
-
-      videoLinks: apiResource.videoLinks,
-
-      topicSection: this.mapToTopicSection(apiResource, resourceType)
-    };
-  }
-
-  private mapToResourceDetailsModel(apiResource: any): ResourceDetailsModel {
-    return <ResourceDetailsModel> {
-      title: apiResource.title,
-      favorite: apiResource.favorite,
-      subjects: coalesce(apiResource.subject, []),
-      grades: coalesce(apiResource.grades, []),
-      image: apiResource.resourceThumbnail,
-      author: apiResource.author,
-      authorOrganization: apiResource.publisher,
-      lastModified: new Date(apiResource.updated),
-      
-      claims: coalesce(apiResource.educationalAlignments, []).map(ea => <Alignment>{
-        title: `${ea.shortName}: ${ea.title}`,
-        shortName: ea.shortName
-      }),
-
-      targets: coalesce(apiResource.targetAlignments, []).map(ta => <Alignment>{
-        title: `${ta.shortName}: ${ta.title}`,
-        shortName: ta.shortName
-      }),
-
-      relatedPlaylists: coalesce(apiResource.connectionsPlaylist, []).map(p => <Playlist>{
-        title: p.title,
-        resourceId: p.resourceId,
-        numberOfResources: p.numberOfResources,
-        assessmentType: p.assessmentType,
-        assessmentTypeIcon: this.assessmentTypeToIconMap.get(p.assessmentType)
-      }),
-
-      relatedResources: coalesce(apiResource.resources, []).map(r => <ResourceLinkModel> {
-        resourceId: r.id,
-        title: r.title
-      }),
-      // MAYBE, but this is NOT an array?
-      // /api/v1/resource.connectionToCcss
-      standards: coalesce(apiResource.standards, []),
-      category: apiResource.category,
-      assessmentTypeIcon: this.assessmentTypeToIconMap.get(apiResource.assessmentType)
-    };
-  }
-
-  mapToOverview(apiModel: any): OverviewModel {
-    return {
-      // MAYBE
-      // /api/v1/resource.altBody 
-      description: apiModel.altBody,
-
-      // /api/v1/resource.learningGoals
-      learningGoal: apiModel.learningGoals,
-
-      // /api/v1/resource.successCriteria
-      successCriteria: apiModel.successCriteria,
-
-      studentBenefits: apiModel.studentBenefits,
-
-      suggestedMaterials: apiModel.suggestedMaterials,
-
-      academicVocabulary: apiModel.academicVocabulary
-    };
-  }
-
-  mapToSteps(apiSteps: any[]):ResourceStepModel[] {
-    return apiSteps.map(s => <ResourceStepModel>{
-      stepNumber: s.number,
-      title: s.title,
-      content: s.content
-    }).sort(x => x.stepNumber);
-  }
-
-  mapToDifferentiation(apiModel): DifferentiationModel {
-    return {
-      performanceBasedDifferentiation: apiModel.differentiation,
-      accessibilityStrategies: coalesce(apiModel.accessibilityStrategies,[]).map(x => <ResourceStrategyModel>{
-        title: x.title,
-        moreAboutUrl: x.link,
-        description: x.description
-      })
-    };
-  }
-
-  mapToFormative(apiModel): FormativeModel {
-    const process = apiModel.formativeAssessmentProcess;
-
-    return {
-      howItsUsed: apiModel.connectionToFap,
-      formativeAssessmentProcess: process
-        ? <FormativeAssessmentProcess> {
-          clarifyIntendedLearning: process.clarifyIntendedLearning,
-          elicitEvidence: process.elicitEvidence,
-          interpretEvidence: process.interpretEvidence,
-          actOnEvidence: process.actOnEvidence
-        } 
-        : undefined, 
-      strategies: coalesce(apiModel.formativeStrategies,[]).map(x => <ResourceStrategyModel>{
-        title: x.title,
-        moreAboutUrl: x.link,
-        description: x.description
-      })
-    };
-  }
-
-  mapToTopicSection(apiModel: any, resourceType: ResourceType): TopicSectionModel {
-    return resourceType === ResourceType.ConnectionsPlaylist
-      ? {
-        topics: coalesce(apiModel.topics, []).map(t => <TopicModel>{
-            title: t.title,
-            above: t.above,
-            near: t.near,
-            below: t.below,
-            resourceLinks: coalesce(t.resources, []).map(r => <ResourceLinkModel> {
-              resourceId: r.id,
-              title: r.title
-            })
-          }),
-        suggestionsForIntervention: apiModel.suggestionsForIntervention
-      }
-    : undefined;
-  }
-
-  private embedStrategyLinks(resource: ResourceModel) {
-    for(let step of resource.steps) {
-      step.content = this.embedStrategyLinkService.embedStrategyLinks(step.content, resource);
-    }
-    
-    return resource;
+    return res;
   }
 }

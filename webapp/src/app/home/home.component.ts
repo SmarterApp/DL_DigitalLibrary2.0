@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SearchFilters } from '../data/search/search-filters.model';
+import { SearchFilters, emptyFilters } from '../data/search/search-filters.model';
 
 @Component({
   selector: 'sbdl-home',
@@ -8,7 +8,7 @@ import { SearchFilters } from '../data/search/search-filters.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  filters: SearchFilters = <SearchFilters>{};
+  filters: SearchFilters = emptyFilters;
 
   constructor(private route: ActivatedRoute) { }
 

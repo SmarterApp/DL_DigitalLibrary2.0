@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
-import { ResourceModel } from 'src/app/data/resource/model/resource.model';
+import { Resource } from 'src/app/data/resource/model/resource.model';
 import { ScrollableElements } from './scrollable-elements.model';
 import { getCssVar } from 'src/app/common/utils';
 import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
@@ -12,28 +12,28 @@ import { commentsSectionOptions } from '../section/section.definitions';
 })
 export class OutlineComponent implements OnInit {
   @Input()
-  model: ResourceModel;
+  resource: Resource;
 
   @Input()
   readingMode: boolean;
 
   @Input()
-  scrollableElements: ScrollableElements = <ScrollableElements>{};
+  scrollableElements: ScrollableElements = {} as ScrollableElements;
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event?) {    
-    this.mobile = window.innerWidth <= this.breakpointSmall;
-  }
-
-  get isProfessional() {
-    return this.model.resourceType === ResourceType.Professional;
-  }
-   
   mobile = false;
   commentsSection = commentsSectionOptions;
   private breakpointSmall = 500;
 
   constructor() { }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event?) {
+    this.mobile = window.innerWidth <= this.breakpointSmall;
+  }
+
+  get isProfessional() {
+    return this.resource.type === ResourceType.Professional;
+  }
 
   ngOnInit() {
     this.breakpointSmall = getCssVar('--breakpoint-sm');

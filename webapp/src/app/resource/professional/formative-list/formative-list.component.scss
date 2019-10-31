@@ -1,0 +1,63 @@
+@import 'colors';
+@import 'spacing';
+
+:host {
+    display: block;
+    max-width: none;
+}
+
+.formative-container {
+    padding-top: $spacer;
+    max-width: var(--measure);
+    margin-right: $spacer-xl;
+    margin-left: $spacer-lg;
+    margin-bottom: $spacer-lg;
+    position: relative;
+
+    .leading-icon {
+        margin-left:-16px;
+        sbdl-icon {
+            color: darken($warning-900, 25%);
+            background: url('/assets/images/yellow-spot-3.png') no-repeat;
+            background-size: contain;
+            padding: 7px;
+            font-size: 1.5rem;
+        }
+    }
+
+    section {
+        margin-bottom: $spacer;
+    }
+
+    .strategy-link {
+        h6 {
+            a,
+            a:link,
+            a:visited,
+            a:active {
+                color: $neutral-900;
+                font-weight: normal;
+            }
+
+            a:hover {
+                text-decoration: underline;
+                color: $info-500;
+            }
+
+            .fa-arrow-right {
+                color: $info-500;
+                padding-left: $spacer-sm;
+            }
+
+            margin-bottom: 3px;
+        }
+
+        p {
+            margin-top: 0;
+        }
+    }
+
+    .prof-learning-content {
+        margin-bottom: $spacer-lg;
+    }
+}
