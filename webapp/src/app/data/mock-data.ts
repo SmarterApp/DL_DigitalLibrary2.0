@@ -1454,10 +1454,10 @@ export const mockIrAllSystemsGo = {
     },
     {
       number: 2,
-      title: 'Entrance Ticket',
+      title: 'Number Talk',
       content: `
         <p>
-          The format for this Entrance Ticket is commonly referred to as a Number Talk. The Entrance Ticket should take no more than 5 minutes to complete.
+          This warm-up activity will be a Number Talk. The activity should take no more than 5 minutes to complete.
         </p>
         <p>
           <ul>
@@ -2198,11 +2198,11 @@ export const mockIrSearchingForRelevantResources = {
     },
     {
       number: 2,
-      title: 'Entrance Ticket',
+      title: 'Quick Write',
       content: `
         <p>
           <ul>
-            <li>Students answer the following Entrance Ticket Quick Write question, “List and explain the different features of a reliable resource.” They need to review this topic before they delve deeper into understanding what a reliable and relevant source is. </li>
+            <li>Students answer the following Quick Write question, “List and explain the different features of a reliable resource,” as a warm-up activity. They need to review this topic before they delve deeper into understanding what a reliable and relevant source is.</li>
             <li>The teacher asks for volunteers to read responses for a quick review. Have students use a Highlighter to mark the key ideas from their Quick Write that are mentioned during the review. </li>
             <li>The teacher will choose a student to write the responses on the board to have as further reminders.</li>
           </ul>
@@ -3231,7 +3231,7 @@ export const mockAcsAmplification = {
   category: 'Designated Supports',
   publisher: 'Smarter Balanced',
   updated: "2019-08-30T13:43:23-0500",
-  resourceThumbnail: mockAcsImageBreaks,
+  resourceThumbnail: mockAcsImageAmplification,
   // overview
   altBody: `
     <p>
