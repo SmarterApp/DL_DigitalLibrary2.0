@@ -27,7 +27,16 @@
     }
 
     section {
-        margin-bottom: $spacer;
+        margin-bottom: $spacer-xl;
+
+        h6 {
+          margin-top: 1em;
+          margin-bottom: 0;
+        }
+
+        h6 + div {
+          margin-top: -0.5em;
+        }
     }
 
     .strategy-link {
@@ -61,6 +70,4 @@
     .prof-learning-content {
         margin-bottom: $spacer-lg;
     }
-
-
 }
