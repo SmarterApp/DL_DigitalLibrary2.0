@@ -7,13 +7,13 @@
 <ul *ngIf="scrollableElements">
   <li *ngIf="scrollableElements.getStarted">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.getStarted)" (blur)="removeClass(scrollableElements.getStarted)">
-      <sbdl-icon icon="goal"></sbdl-icon>
+      <i class="far fa-hand-point-right"></i>
       Get Started
     </sbdl-button>
   </li>
   <li *ngIf="scrollableElements.overview">
     <sbdl-button class="outline" (click)="scrollToElement(scrollableElements.overview)" (blur)="removeClass(scrollableElements.overview)">
-      <sbdl-icon icon="goal"></sbdl-icon>
+      <i class="far fa-hand-point-right"></i>
       Overview
     </sbdl-button>
   </li>
