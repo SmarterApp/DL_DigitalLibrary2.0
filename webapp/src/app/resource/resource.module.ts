@@ -13,6 +13,7 @@ import { InstructionalContentComponent } from './instructional/content/instructi
 import { InstructionalResourceComponent } from './instructional/instructional-resource.component';
 import { ProfessionalContentComponent } from './professional/content/professional-content.component';
 import { ProfessionalResourceComponent } from './professional/professional-resource.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { FormativeListComponent as ProfessionalFormativeListComponent } from './professional/formative-list/formative-list.component';
 import { OverviewComponent as ProfessionalLearningOverviewComponent } from './professional/overview/overview.component';
 import { OutlineComponent } from './components/outline/outline.component';
@@ -35,6 +36,7 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
     AttachmentsComponent,
     DifferentiationComponent,
     EducationalDetailsComponent,
+    FooterComponent,
     GetStartedComponent,
     HeaderComponent,
     InstructionalContentComponent,
