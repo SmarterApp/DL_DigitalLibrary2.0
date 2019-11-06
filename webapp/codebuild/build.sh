@@ -37,7 +37,7 @@ if [[ -n $CODEBUILD_WEBHOOK_EVENT && \
   if [[ $CODEBUILD_WEBHOOK_BASE_REF == '*develop' ]]; then
     echo "Merging into develop, build targeting DEV"
     npm run pre-build-ci
-    npx ng build --aot --vendor-chunck --c dev
+    npx ng build --aot --vendor-chunk --c dev
 
   elif [[ $CODEBUILD_WEBHOOK_BASE_REF == '*master' ]]; then
     echo "Merging into master, build targeting PROD"
@@ -46,7 +46,7 @@ if [[ -n $CODEBUILD_WEBHOOK_EVENT && \
   else
     echo "Merging into neither develop or master, building for DEV"
     npm run pre-build-ci
-    npx ng build --aot --vendor-chunck --c dev
+    npx ng build --aot --vendor-chunk --c dev
   fi
 
 # 2. A pull request has been created, updated, or re-opened.
