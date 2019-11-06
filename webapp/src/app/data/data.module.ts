@@ -10,6 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     HttpClientModule
   ],
-  providers: [{ provide: DataService, useClass: environment.dataService }]
+  providers: [ DataService ]
 })
 export class DataModule { }
