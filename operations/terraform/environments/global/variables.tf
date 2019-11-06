@@ -16,11 +16,3 @@ variable "route53_zone_id" {
   description = "Route 53 hosted zone id for the DL environments. See https://console.aws.amazon.com/route53/home?region=us-west-2#resource-record-sets:Z2ZK4QKRG6BNF0"
   default = "Z2ZK4QKRG6BNF0"
 }
-
-#### Provider Configuration
-
-provider "aws" {
-  region = var.aws_region
-}
-
-
