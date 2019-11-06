@@ -1,6 +1,6 @@
 {
     "env": {
-        "name": "STAGE"
+        "name": "QA"
      },
     "logging": {
         "console": true,
@@ -8,8 +8,7 @@
         "level": 0
     },
     "apiServer": {
-        "cdl": "https://api-stage.dl.smarterbalanced.org/api",
-        "authToken": "--omit--"
+        "cdl": "https://api-dev.dl.smarterbalanced.org/api"
     },
     "enableAnalytics": false
 }

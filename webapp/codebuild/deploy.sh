@@ -1,28 +1,42 @@
 #!/bin/bash
 #
-# Deploy Script for Digital Library WebApp 2.0
+# Deploy Script for Tools for Teachers Webapp
 #
-# This script is called during the poast_build phase of CodeBuild projects
+# This script is called during the post_build phase of CodeBuild projects
 # using the build-and-deploy.yaml configuration. It's job is to inspect the
 # build environment to determine whether this build should be deployed to one
 # of the DL environments, and to perform that deploy if so.
 target_env=""
 
-echo "Inspecting the build environment for deploy target:"
-echo "  CODEBUILD_WEBHOOK_EVENT = ${CODEBUILD_WEBHOOK_EVENT}"
-echo "  CODEBUILD_WEBHOOK_BASE_REF = ${CODEBUILD_WEBHOOK_BASE_REF}"
-echo "  DL_TARGET_ENV = ${DL_TARGET_ENV}"
+cat << BANNER
+Deploy script for Tools for Teachers webapp
+-------------------------------------------
+
+Inspecting the build environment for deploy target:
+  CODEBUILD_WEBHOOK_EVENT = ${CODEBUILD_WEBHOOK_EVENT}
+  CODEBUILD_WEBHOOK_BASE_REF = ${CODEBUILD_WEBHOOK_BASE_REF}
+  DL_TARGET_ENV = ${DL_TARGET_ENV}
+BANNER
 
 # There are 3 scenarios:
 #
-# 1. A pull-request is merged into develop. In this case CodeBuild is triggered
-#    by the GitHub webhook. If it is a PR merge into develop, we know we're
-#    deploying to dev.
+# 1. A pull-request is merged. In this case CodeBuild is triggered by the
+#    GitHub webhook. We need to inspect the base ref to find the target
+#    environment.
 if [[ -n $CODEBUILD_WEBHOOK_EVENT && \
       -n $CODEBUILD_WEBHOOK_BASE_REF && \
-      $CODEBUILD_WEBHOOK_EVENT == 'PULL_REQUEST_MERGED' && \
-      $CODEBUILD_WEBHOOK_BASE_REF == 'develop' ]]; then
-  target_env="dev"
+      $CODEBUILD_WEBHOOK_EVENT == 'PULL_REQUEST_MERGED' ]]; then
+
+  # Currently there are only two "main" branches that represent target
+  # environments: develop (-> DEV) and master (-> PROD)
+  if [[ $CODEBUILD_WEBHOOK_BASE_REF == '*develop' ]]; then
+    echo "Merging to dev, deploy to dev."
+    target_env="dev"
+
+  else
+    echo "Merging to $CODEBUILD_WEBHOOK_BASE_REF, no deployment."
+    exit 0
+  fi
 
 # 2. A pull request is create, updated, or re-opened. In this case we only want
 #    CodeBuild to build the project based on the PR. We don't want to deploy.
@@ -45,8 +59,8 @@ elif [[ -z $CODEBUILD_WEBHOOK_EVENT && \
 else
 
   >&2 cat << ERRMSG
-"Unrecognized build invocation. This script expects either the
-CODEBUILD_WEBHOOK_EVENT or DL_TARGET_ENV environment variable to be set."
+Unrecognized deploy invocation. This script expects either the
+CODEBUILD_WEBHOOK_EVENT or DL_TARGET_ENV environment variable to be set.
 ERRMSG
 
   exit 1

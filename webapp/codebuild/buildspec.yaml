@@ -14,7 +14,7 @@ phases:
     commands:
       # CWD is $repo/webapp
       - echo "Build started by $CODEBUILD_INITIATOR"
-      - npm run build-ci
+      - codebuild/build.sh
   post_build:
     commands:
       # CWD is $repo/webapp
