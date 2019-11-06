@@ -47,32 +47,29 @@
             ]
           },
           "configurations": {
-            "production": {
+            "dev" : {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "with": "src/environments/environment.dev.ts"
                 }, {
                   "replace": "src/assets/config/config.json",
-                  "with": "src/assets/config/config.prod.json"
+                  "with": "src/assets/config/config.dev.json"
                 }
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
+              "outputHashing": "all"
+            },
+            "qa" : {
+              "fileReplacements": [
                 {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }, {
+                  "replace": "src/assets/config/config.json",
+                  "with": "src/assets/config/config.qa.json"
                 }
-              ]
+              ],
+              "outputHashing": "all"
             },
             "stage": {
               "fileReplacements": [
@@ -101,26 +98,30 @@
                 }
               ]
             },
-            "standalone" : {
-              "outputHashing": "all",
+            "production": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.standalone.ts"
+                  "with": "src/environments/environment.prod.ts"
                 }, {
                   "replace": "src/assets/config/config.json",
-                  "with": "src/assets/config/config.dev.json"
+                  "with": "src/assets/config/config.prod.json"
                 }
-              ]
-            },
-            "dev" : {
-              "fileReplacements": [
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.dev.ts"
-                }, {
-                  "replace": "src/assets/config/config.json",
-                  "with": "src/assets/config/config.dev.json"
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 }
               ]
             }
