@@ -10,8 +10,8 @@ data "aws_iam_policy_document" "deploy_bucket_access_policy" {
     resources   = [ "${aws_s3_bucket.deploy.arn}/*" ]
 
     principals {
-      type        = "AWS"
-      identifiers = [ "${replace(aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn, " ", "_")}" ]
+      type        = "CanonicalUser"
+      identifiers = [ aws_cloudfront_origin_access_identity.origin_access_identity.s3_canonical_user_id ]
     }
   }
 
@@ -21,8 +21,8 @@ data "aws_iam_policy_document" "deploy_bucket_access_policy" {
     resources   = [ "${aws_s3_bucket.deploy.arn}" ]
 
     principals {
-      type        = "AWS"
-      identifiers = [ "${replace(aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn, " ", "_")}" ]
+      type        = "CanonicalUser"
+      identifiers = [ aws_cloudfront_origin_access_identity.origin_access_identity.s3_canonical_user_id ]
     }
   }
 }
