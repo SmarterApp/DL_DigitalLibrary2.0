@@ -1,0 +1,11 @@
+<div class=watercolor></div>
+<div class=logo>
+  <img class="small" src="/assets/svg/tft-logo-small.svg">
+  <img class="full" src="/assets/svg/tft-logo-full.svg">
+</div>
+<a [routerLink]="['/']"><i class="far fa-search"></i><label>Find Resources</label></a>
+<a [routerLink]="['/']"><sbdl-icon icon="strategies"></sbdl-icon><label>Formative Assessment Strategies</label></a>
+<a [routerLink]="['/']"><i class="far fa-universal-access"></i><label>Accessibility Strategies</label></a>
+<a [routerLink]="['/']"><i class="far fa-bookmark"></i><label>Bookmarks &amp; Notes</label></a>
+<a *ngIf="!isAuthenticated" [routerLink]="['/auth/login']"><i class="far fa-sign-in-alt"></i><label>Login</label></a>
+<button *ngIf="isAuthenticated" (click)="logout()"><i class="far fa-sign-out-alt"></i><label>Logout</label></button>

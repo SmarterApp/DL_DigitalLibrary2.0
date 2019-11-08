@@ -1,0 +1,163 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+
+:host {
+
+  display: flex;
+  flex-direction: column;
+
+  transition-duration: 0.2s;
+  transition-property: width, z-index;
+  transition-timing-function: ease-in;
+  
+  width: 72px;
+
+  padding: $spacer 0 $spacer-lg 0;
+  position: fixed;
+  bottom: 0%;
+  top: 0%;
+
+  overflow: hidden;
+
+  z-index: 3;
+
+  .logo {
+    background: white;
+    width: 56px;
+    height: 56px;
+
+    /* 16dp — Elevation */
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2), 0px 6px 30px rgba(0, 0, 0, 0.12), 0px 16px 24px rgba(0, 0, 0, 0.14);
+    border-radius: 0px 4px 4px 0px;
+
+    position: relative;
+
+    transition-duration: 0.2s;
+    transition-property: height, width;
+    transition-timing-function: ease-in;
+    
+    img {
+      position: absolute;
+      top: $spacer-sm;
+      left: $spacer;
+
+      transition-duration: 0.2s;
+      transition-property: opacity;
+      transition-timing-function: ease-in;
+      
+      &.full {
+        width: 118px;
+        height: 52px;
+        opacity: 0;
+      }
+
+      &.small {
+        height: 32px;
+        width: 32px;
+        opacity: 1;
+      }
+    }
+  }
+
+  button, a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background-color: rgba($neutral-900, 0.2);
+    border: none;
+    border-radius: $spacer-xs;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    font-family: $font-family-title;
+    font-size: $font-size-body-2;
+    font-weight: 300;
+    letter-spacing: -0.021em;
+    margin: $spacer $spacer 0 $spacer;
+    padding: $spacer-sm;
+    text-align: left;
+    height: 40px;
+    min-width: 40px;
+
+    sbdl-icon, svg {
+      font-size: 24px;
+      margin-right: $spacer-sm;
+      min-width: 24px;
+    }
+
+    sbdl-icon {
+      margin-top: -4px;
+    }
+
+    label {
+      display: inline-block;
+      cursor: pointer;
+      max-width: 0;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      width: 230px;
+
+      transition-duration: 0.2s;
+      transition-property: max-height, opacity;
+      transition-timing-function: linear;
+    }
+
+    &:nth-of-type(4) {
+      margin-top: auto;
+    }
+  }
+
+  .watercolor {
+    position: absolute;
+    overflow: hidden;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: -1;
+
+    &:before {
+      background: linear-gradient(180deg, rgba(127, 132, 140, 0.72) 0%, rgba(65, 72, 83, 0.72) 53.65%, rgba(48, 54, 64, 0.72) 100%), url("/assets/images/tx11-grey.png");
+      background-blend-mode: multiply, normal;
+      background-position-x: -600px;
+
+      content: "";
+
+      position: absolute;
+
+      width: 3000px;
+      height: 2000px;
+
+      top: -200px;
+      left: -1154px;
+
+      transform: rotate(90deg) scale(0.6);
+    }
+  }
+
+  &:hover {
+    width: 311px;
+
+    .logo {
+      width: 150px;
+      height: 75px;
+
+      img.full { opacity: 1; }
+
+      img.small { opacity: 0; }
+    }
+
+    button, a {
+      label {
+        max-width: 311px;
+        max-height: 18px;
+        opacity: 1;
+      }
+    }
+  }
+}
