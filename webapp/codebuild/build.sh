@@ -56,7 +56,7 @@ elif [[ -n $CODEBUILD_WEBHOOK_EVENT && \
           $CODEBUILD_WEBHOOK_EVENT == 'PULL_REQUEST_REOPENED' ) ]]; then
 
   echo "This is a PR build, running full PROD build."
-  npx npm run build-ci
+  npm run build-ci
 
 # 3. A build has been manually triggered (deploy to qa, uat, stage, or prod).
 elif [[ -n $DL_TARGET_ENV ]]; then
