@@ -29,7 +29,7 @@ if [[ -n $CODEBUILD_WEBHOOK_EVENT && \
 
   # Currently there are only two "main" branches that represent target
   # environments: develop (-> DEV) and master (-> PROD)
-  if [[ $CODEBUILD_WEBHOOK_BASE_REF == '*develop' ]]; then
+  if [[ $CODEBUILD_WEBHOOK_BASE_REF == *'develop' ]]; then
     echo "Merging to dev, deploy to dev."
     target_env="dev"
 
