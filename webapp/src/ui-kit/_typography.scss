@@ -2,10 +2,11 @@
 
 $font-family-body: 'Open Sans', sans-serif;
 $font-family-title: 'Montserrat', sans-serif;
+$font-size-body: 16px;
 $font-size-body-2: 14.41px;
 
 body {
-    font-size: 16px;
+    font-size: $font-size-body;
     font-family: $font-family-body;
     font-weight: 400;
     font-style: normal;

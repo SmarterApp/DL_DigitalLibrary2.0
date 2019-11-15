@@ -1,0 +1,48 @@
+<div class=footer>
+  <div [ngClass]="{'footer-links': true, 'no-tenant': !isAuthenticated}">
+    <div *ngIf="isAuthenticated" class="member-resources">
+      <h6>California Resources</h6>
+      <ul>
+        <li><a href="#" target="_blank">Reporting System</a></li>
+        <li><a href="#" target="_blank">Practice Test</a></li>
+        <li><a href="#" target="_blank">Assessment Portal</a></li>
+        <li><a href="#" target="_blank">Starting Smarter</a></li>
+        <li><a href="#" target="_blank">Need help?</a></li>
+      </ul>
+    </div>
+    <div class="more-tools-for-teachers">
+      <h6>More Tools for Teachers</h6>
+      <ul>
+        <li><a target="_blank" href="https://csetool.thesnug.dev/">Content Explorer</a></li>
+        <li><a target="_blank" href="https://sampleitems.smarterbalanced.org">Sample Items Website</a></li>
+        <li><a target="_blank" href="https://www.smarterbalanced.org/educators/smarter-balanced-ready/">Big Ideas for Implementation</a></li>
+        <li><a target="_blank" href="https://www.smarterbalanced.org/educators/classroom/">Smarter Balanced in the Classroom</a></li>
+        <li><a target="_blank" href="https://www.smarterbalanced.org/about">Get Involved!</a></li>
+      </ul>
+    </div>
+    <div class="connect">
+      <h6>Connect</h6>
+      <ul>
+        <li><a target="_blank" href="https://twitter.com/SmarterBalanced"><i class="fab fa-twitter"></i> Twitter</a></li>
+        <li><a target="_blank" href="https://www.youtube.com/user/smarterbalanced"><i class="fab fa-facebook"></i> Facebook</a></li>
+        <li><a target="_blank" href="https://www.youtube.com/user/smarterbalanced"><i class="fab fa-instagram"></i> Instagram</a></li>
+        <li><a target="_blank" href="https://www.youtube.com/user/smarterbalanced"><i class="fab fa-youtube"></i> YouTube</a></li>
+        <li><a target="_blank" href="https://www.youtube.com/user/smarterbalanced"><i class="fab fa-pinterest"></i> Pinterest</a></li>
+      </ul>
+    </div>
+    <div class="policy">
+      <h6>Policy</h6>
+      <ul>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr/>
+  <div class=copyright>
+    <img src="/assets/svg/smarter-balanced-footer-logo.svg">
+    <img *ngIf="isAuthenticated" src="/assets/images/caaspp-footer-logo.png">
+    <span>© 2019 The Regents of the University of California</span>
+  </div>
+</div>

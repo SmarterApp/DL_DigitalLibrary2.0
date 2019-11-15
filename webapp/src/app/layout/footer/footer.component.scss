@@ -1,0 +1,71 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+
+:host {
+  background: $neutral-50;
+  color: $neutral-500;
+
+  .footer {
+
+    box-sizing: border;
+    margin: 0 auto;
+    padding: $spacer $spacer-lg;
+    max-width: calc(var(--measure) + #{$spacer-xl});
+
+    .footer-links {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $spacer-lg;
+
+      h6 { font-size: 1rem; }
+
+      ul {
+        line-height: 200%;
+        list-style: none;
+        font-size: 80%;
+        padding: 0;
+
+        a {
+          color: $neutral-500;
+
+          &:hover {
+            color: $action-700;
+          }
+        }
+      }
+
+      &.no-tenant .connect {
+        margin-left: -56px;
+      }
+
+    }
+
+    hr {
+      background-color: $neutral-100;
+      border: none;
+      height: 1px;
+      max-width: unset;
+      width: 100%;
+    }
+
+    .copyright {
+
+      display: flex;
+      justify-content: space-between;
+      font-size: 80%;
+      margin: $spacer-lg 0;
+
+      span {
+        color: $neutral-300;
+        margin-left: auto;
+      }
+
+      img {
+        margin-right: $spacer;
+        height: auto;
+        width: auto;
+      }
+    }
+  }
+}
