@@ -52,14 +52,24 @@ rootDir=`git rev-parse --show-toplevel`
 exitIfErr "Unable to find the path to the repository."
 cd "$rootDir"
 
+printf "\n>> Checking out requested version $sourceRev\n"
+printf "git checkout -b \"$sourceRev\""
+git checkout "$sourceRev"
+exitIfErr "Unable to checkout desirev version: $sourceRev."
+
+printf "\n>> Fetching latest changes from GitHub."
+printf "git pull origin \"$sourceRev\" --ff-only"
+git pull origin "$sourceRev" --ff-only
+exitIfErr "Unable to get latest version from GitHub."
+
 printf "\n>> Creating a temporary deploy branch from version $sourceRev\n"
 branchName="deploy-token/${sourceRev}-to-${targetEnv}-${runTime}"
-printf "git checkout -b \"$branchName\" \"$sourceRev\"\n"
-git checkout -b "$branchName" "$sourceRev"
+printf "git checkout -b \"$branchName\""
+git checkout -b "$branchName"
 exitIfErr "Unable to create a new branch."
 
 
-printf "\n>> Requesting a new ticket.\n"
+printf "\n>> Requesting a new token.\n"
 printf "curl 'https://api-dev.dl.smarterbalanced.org/oauth/v2/token?client_id=1_sdm598elk2sw4soosgoc44sc8gsc8swkg88o0840gcs0cwk4o&client_secret=1wa315evz5wksok8wscg848kckcwsogocc4k8wc08g8k8w4k84&grant_type=client_credentials' | jq -r .access_token\n"
 newToken=`curl 'https://api-dev.dl.smarterbalanced.org/oauth/v2/token?client_id=1_sdm598elk2sw4soosgoc44sc8gsc8swkg88o0840gcs0cwk4o&client_secret=1wa315evz5wksok8wscg848kckcwsogocc4k8wc08g8k8w4k84&grant_type=client_credentials' | jq -r .access_token`
 exitIfErr "Unable to retrieve a new token from the CDL API."
