@@ -8,7 +8,7 @@
     <h5>Accessibility Strategies Used</h5>
     <div *ngFor="let strategy of resource.accessibilityStrategies" class="strategy-link">
       <h6><a href="/resource/{{strategy.id}}" target="_blank">{{ strategy.title }} <i class="far fa-arrow-right"></i></a></h6>
-      <p>{{ strategy.description }}</p>
+      <dynamic-html [content]="strategy.description"></dynamic-html>
     </div>
   </section>
 </article>
