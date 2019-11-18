@@ -3,12 +3,12 @@
       <i class="far fa-paperclip"></i>Attachments
   </h4>
   <p>This resource relies on the following materials. Download them to use.</p>
-  <a href="{{ attachment.uri }}" target="_blank" *ngFor="let attachment of attachments" class="attachment-card"  #attachments>
+  <a href="{{ attachment.uri }}" target="_blank" *ngFor="let attachment of attachments" class="attachment-card"  #attachments download>
     <div class="type-info">
       <span class="attachment-category">{{ attachment.category }}</span>
       <i class="far {{attachment.fileType | fileTypeIcon }}"></i>
     </div>
-    <p>{{ attachment.title }}</p>
+    <p>{{ attachment.name }}</p>
     <div class="download-text">
         Download ({{attachment.fileType}} {{ attachment.fileSize ?  (attachment.fileSize / 1000) + ' KB' : '' }})
     </div>
