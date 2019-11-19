@@ -46,7 +46,7 @@
   </label>
   <div *ngIf="properties.standards && properties.standards.length > 0" class="value">
     <div *ngFor="let standard of properties.standards"
-      title="{{ standard.title | shortenStandardTitle}}">{{ standard.title | shortenStandardTitle }}</div>
+      title="{{ standard.title }}">{{ standard.title }}</div>
   </div>
 
 </div>
