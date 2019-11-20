@@ -90,6 +90,9 @@ export class ResourceService {
       ir.formativeAssessHowTo.interpret = embed(ir.formativeAssessHowTo.interpret, ir);
       ir.formativeAssessHowTo.act = embed(ir.formativeAssessHowTo.act, ir);
 
+      ir.accessibilityStrategies.forEach(s => s.description = embed(s.description, ir));
+      ir.formativeAssessmentStrategies.forEach(s => s.description = embed(s.description, ir));
+
     } else if (res.type === ResourceType.Professional) {
 
       const pl = res as ProfessionalLearningResource;
@@ -98,6 +101,9 @@ export class ResourceService {
       pl.overview.overview = embed(pl.overview.overview, pl);
       pl.overview.learningGoal = embed(pl.overview.learningGoal, pl);
       pl.overview.successCriteria = embed(pl.overview.successCriteria, pl);
+
+      pl.accessibilityStrategies.forEach(s => s.description = embed(s.description, pl));
+      pl.formativeAssessmentStrategies.forEach(s => s.description = embed(s.description, pl));
 
     }
 
