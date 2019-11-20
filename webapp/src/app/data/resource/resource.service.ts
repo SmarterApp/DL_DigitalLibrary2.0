@@ -81,7 +81,7 @@ export class ResourceService {
       ir.stepByStep.forEach(step => step.content = embed(step.content, ir));
       ir.getStarted.overview = embed(ir.getStarted.overview, ir);
       ir.getStarted.learningGoal = embed(ir.getStarted.learningGoal, ir);
-      ir.getStarted.successCriteria = embed(ir.getStarted.learningGoal, ir);
+      ir.getStarted.successCriteria = embed(ir.getStarted.successCriteria, ir);
 
       ir.differentiation = embed(ir.differentiation, ir);
 
@@ -89,6 +89,9 @@ export class ResourceService {
       ir.formativeAssessHowTo.elicit = embed(ir.formativeAssessHowTo.elicit, ir);
       ir.formativeAssessHowTo.interpret = embed(ir.formativeAssessHowTo.interpret, ir);
       ir.formativeAssessHowTo.act = embed(ir.formativeAssessHowTo.act, ir);
+
+      ir.accessibilityStrategies.forEach(s => s.description = embed(s.description, ir));
+      ir.formativeAssessmentStrategies.forEach(s => s.description = embed(s.description, ir));
 
     } else if (res.type === ResourceType.Professional) {
 
@@ -98,6 +101,9 @@ export class ResourceService {
       pl.overview.overview = embed(pl.overview.overview, pl);
       pl.overview.learningGoal = embed(pl.overview.learningGoal, pl);
       pl.overview.successCriteria = embed(pl.overview.successCriteria, pl);
+
+      pl.accessibilityStrategies.forEach(s => s.description = embed(s.description, pl));
+      pl.formativeAssessmentStrategies.forEach(s => s.description = embed(s.description, pl));
 
     }
 
