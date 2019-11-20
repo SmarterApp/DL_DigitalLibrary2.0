@@ -81,7 +81,7 @@ export class ResourceService {
       ir.stepByStep.forEach(step => step.content = embed(step.content, ir));
       ir.getStarted.overview = embed(ir.getStarted.overview, ir);
       ir.getStarted.learningGoal = embed(ir.getStarted.learningGoal, ir);
-      ir.getStarted.successCriteria = embed(ir.getStarted.learningGoal, ir);
+      ir.getStarted.successCriteria = embed(ir.getStarted.successCriteria, ir);
 
       ir.differentiation = embed(ir.differentiation, ir);
 
