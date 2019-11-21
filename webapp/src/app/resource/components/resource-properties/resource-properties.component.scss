@@ -26,4 +26,6 @@
     }
 }
 
-
+@media only print {
+  .image-thumbnail { display: none; }
+}

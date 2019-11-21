@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Map } from 'immutable';
 import { Resource } from 'src/app/data/resource/model/resource.model';
-import { ScrollableElements } from './scrollable-elements.model';
 import { getCssVar } from 'src/app/common/utils';
 import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
 import { commentsSectionOptions } from '../section/section.definitions';
+import { DocumentOutline, DocumentSection, DocumentSectionType } from './document-outline.model';
 
 @Component({
   selector: 'sbdl-outline',
@@ -18,11 +19,20 @@ export class OutlineComponent implements OnInit {
   readingMode: boolean;
 
   @Input()
-  scrollableElements: ScrollableElements = {} as ScrollableElements;
+  outline: DocumentOutline = Map<DocumentSectionType, DocumentSection>();
 
   mobile = false;
-  commentsSection = commentsSectionOptions;
   private breakpointSmall = 500;
+
+  private SECTION_ORDER = [
+    DocumentSectionType.Overview,
+    DocumentSectionType.StepByStep,
+    DocumentSectionType.Attachments,
+    DocumentSectionType.Differentiation,
+    DocumentSectionType.ThingsToConsider,
+    DocumentSectionType.Formative,
+    DocumentSectionType.AssessmentInfo
+  ];
 
   constructor() { }
 
@@ -31,8 +41,10 @@ export class OutlineComponent implements OnInit {
     this.mobile = window.innerWidth <= this.breakpointSmall;
   }
 
-  get isProfessional() {
-    return this.resource.type === ResourceType.Professional;
+  get sectionsInOrder(): DocumentSection[] {
+    return this.SECTION_ORDER
+      .filter(sectionType => this.outline.has(sectionType))
+      .map(sectionType => this.outline.get(sectionType));
   }
 
   ngOnInit() {
@@ -40,13 +52,13 @@ export class OutlineComponent implements OnInit {
     this.mobile = window.innerWidth <= this.breakpointSmall;
   }
 
-  scrollToElement(element: Element): void {
-    element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
-    element.classList.add('highlighted');
+  scrollTo(section: DocumentSection): void {
+    section.elementRef.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+    section.elementRef.classList.add('highlighted');
   }
 
-  removeClass(element: Element): void {
-    element.classList.remove('highlighted');
+  removeHighlight(section: DocumentSection): void {
+    section.elementRef.classList.remove('highlighted');
   }
 }
 

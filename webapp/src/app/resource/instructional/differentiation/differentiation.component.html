@@ -1,14 +1,17 @@
-<article #header class="differentiation-container">
-  <h4 class="leading-icon"><i class="far fa-universal-access"></i>Differentiation</h4>
-  <section>
-    <h5>Performance-based Differentiation</h5>
-    <div [innerHtml]="resource.differentiation"></div>
-  </section>
-  <section>
-    <h5>Accessibility Strategies Used</h5>
-    <div *ngFor="let strategy of resource.accessibilityStrategies" class="strategy-link">
-      <h6><a href="/resource/{{strategy.id}}" target="_blank">{{ strategy.title }} <i class="far fa-arrow-right"></i></a></h6>
-      <dynamic-html [content]="strategy.description"></dynamic-html>
-    </div>
-  </section>
+<article #sectionHeader class="differentiation-container">
+  <h4 class="leading-icon"><i class="far fa-universal-access"></i>
+    <span *ngIf="hasDifferentiationContent()">Differentiation</span>
+    <span *ngIf="!hasDifferentiationContent()">Accessibility Strategies Used</span>
+  </h4>
+  <sbdl-differentiation-content
+    *ngIf="hasDifferentiationContent()"
+    [content]="resource.differentiation"
+    (sectionLoaded)="addSubsection($event)">
+  </sbdl-differentiation-content>
+  <sbdl-strategy-reference-list
+    [title]="hasDifferentiationContent() ? 'Accessibility Strategies Used' : ''"
+    (sectionLoaded)="addSubsection($event)"
+    [strategies]="resource.accessibilityStrategies">
+  </sbdl-strategy-reference-list>
 </article>
+<hr/>

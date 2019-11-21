@@ -17,6 +17,6 @@
   <span class="emphasis-medium">Updated</span>
   {{ properties.lastUpdatedDate | date: 'mediumDate' }}
 </span>
-<sbdl-button *ngIf="resource.attachments.length > 0" class="primary" (click)="emitAttachmentsClicked()">
+<sbdl-button *ngIf="resource.attachments.length > 0" class="primary attachments-btn" (click)="emitAttachmentsClicked()">
   <i class="far fa-paperclip"></i> Attachments
 </sbdl-button>

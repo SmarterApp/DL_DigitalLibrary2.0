@@ -93,7 +93,7 @@ export class ResourceService {
       ir.accessibilityStrategies.forEach(s => s.description = embed(s.description, ir));
       ir.formativeAssessmentStrategies.forEach(s => s.description = embed(s.description, ir));
 
-    } else if (res.type === ResourceType.Professional) {
+    } else if (res.type === ResourceType.ProfessionalLearning) {
 
       const pl = res as ProfessionalLearningResource;
       pl.thingsToConsider = embed(pl.thingsToConsider, pl);

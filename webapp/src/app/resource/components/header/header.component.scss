@@ -74,3 +74,7 @@
 
     }
 }
+
+@media only print {
+  :host .attachments-btn { display: none; }
+}

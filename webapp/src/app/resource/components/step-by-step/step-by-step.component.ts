@@ -1,33 +1,46 @@
-import { Component, OnInit, Input, ViewChildren, ElementRef, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ResourceStep } from 'src/app/data/resource/model/step.model';
-import { ScrollableSection } from '../outline/scrollable-elements.model';
+import { PrintableSectionComponent } from '../../printable-section.component';
+import { DocumentSection, DocumentSectionType } from '../outline/document-outline.model';
 
 @Component({
   selector: 'sbdl-step-by-step',
   templateUrl: './step-by-step.component.html',
-  styleUrls: ['./step-by-step.component.scss']
+  styleUrls: ['./step-by-step.component.scss', '../../printable-section.component.scss']
 })
-export class StepByStepComponent implements OnInit, AfterViewInit {
+export class StepByStepComponent extends PrintableSectionComponent implements AfterViewInit {
 
   @Input()
   steps: ResourceStep[];
 
-  @Output()
-  sectionElementLoaded = new EventEmitter<any>();
+  private subsections: DocumentSection[] = [];
 
-  @ViewChildren('steps')
-  stepElementRefs: ElementRef[];
-
-  constructor() { }
-
-  ngOnInit() {
+  constructor(sanitizer: DomSanitizer) {
+    super(sanitizer);
   }
 
   ngAfterViewInit(): void {
-    let i = 0;
-    if (this.stepElementRefs) {
-      const stepRefs = this.stepElementRefs.map(x => ({ title: this.steps[i++].title, elementRef: x.nativeElement } as ScrollableSection));
-      this.sectionElementLoaded.emit(stepRefs);
+      this.emitSectionLoaded();
+  }
+
+  addSubsection(subsection: DocumentSection) {
+    this.subsections.push(subsection);
+    this.emitSectionLoaded();
+  }
+
+  private emitSectionLoaded() {
+    if (this.headerElement) {
+      this.sectionLoaded.emit({
+        canPrint: true,
+        component: this,
+        elementRef: this.headerElement.nativeElement,
+        sbdlIcon: 'steps',
+        selectedForPrint: true,
+        subsections: this.subsections,
+        title: 'Step-by-Step',
+        type: DocumentSectionType.StepByStep
+      });
     }
   }
 }

@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, HostBinding, OnInit } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { Resource } from '../data/resource/model/resource.model';
-import { ScrollableElements } from './components/outline/scrollable-elements.model';
+import { DocumentOutline } from './components/outline/document-outline.model';
 
 /**
  * Parent class that other resource component classes extend.
@@ -10,8 +10,9 @@ import { ScrollableElements } from './components/outline/scrollable-elements.mod
 export class ResourceComponent implements OnInit {
 
   resource: Resource;
-  scrollableElements: ScrollableElements;
+  outline: DocumentOutline;
   readingMode: boolean = window.innerWidth < 1200;
+  printingMode = false;
   navWidth = 331;
   cssVarStyle: SafeStyle;
 
@@ -26,8 +27,10 @@ export class ResourceComponent implements OnInit {
     this.setCssVarStyle();
   }
 
-  setScrollableElements($event) {
-    this.scrollableElements = $event;
+  setOutline($event) {
+    this.outline = $event;
+
+    this.updatePrintStyles();
 
     // effectively notifies the outline component.
     this.cdRef.detectChanges();
@@ -36,6 +39,27 @@ export class ResourceComponent implements OnInit {
   readingModeChanged(readingMode: boolean) {
     this.readingMode = readingMode;
     this.setCssVarStyle();
+  }
+
+  printingModeChanged(printingMode: boolean) {
+    this.printingMode = printingMode;
+  }
+
+  private updatePrintStyles() {
+    this.outline.forEach(section => {
+      if (section.component) {
+        section.component.setPrintStyle(section.canPrint && section.selectedForPrint);
+      }
+
+      if (section.subsections) {
+        section.subsections.forEach(subsection => {
+          if (subsection.component) {
+            subsection.component.setPrintStyle (subsection.canPrint && subsection.selectedForPrint);
+          }
+        });
+      }
+    });
+
   }
 
   private setCssVarStyle() {

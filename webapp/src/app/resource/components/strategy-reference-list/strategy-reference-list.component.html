@@ -1,0 +1,12 @@
+<section #sectionHeader>
+  <h5 *ngIf="title && !!(title.trim)">{{ title }}</h5>
+  <div *ngFor="let strategy of strategies" class="strategy-link">
+    <h6>
+      <a href="/resource/{{strategy.id}}" target="_blank">
+        {{ strategy.title }}
+        <i class="far fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </h6>
+    <dynamic-html [content]="strategy.description"></dynamic-html>
+  </div>
+</section>

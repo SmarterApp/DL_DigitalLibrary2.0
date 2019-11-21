@@ -1,14 +1,14 @@
 <nav class="outline">
   <sbdl-outline
     [resource]="resource"
-    [scrollableElements]="scrollableElements"
+    [outline]="outline"
     [readingMode]="readingMode"
   ></sbdl-outline>
 </nav>
 <section class="resource-content">
   <sbdl-professional-content
     [resource]="resource"
-    (loadScrollableElements)="setScrollableElements($event)"
+    (outlineLoaded)="setOutline($event)"
     (readingModeChanged)="readingModeChanged($event)"
   ></sbdl-professional-content>
 </section>

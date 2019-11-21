@@ -19,7 +19,7 @@ import { ResourceComponent } from './resource.component';
 export class ResourceTypeStrategyComponent implements OnInit {
   readonly componentMap: Map<ResourceType, Type<ResourceComponent>> = new Map<ResourceType, Type<ResourceComponent>>([
     [ ResourceType.Instructional, InstructionalResourceComponent ],
-    [ ResourceType.Professional, ProfessionalResourceComponent ],
+    [ ResourceType.ProfessionalLearning, ProfessionalResourceComponent ],
     // [ ResourceType.AccessibilityStrategy, StrategyComponent ],
     // [ ResourceType.FormativeStrategy, StrategyComponent ],
     // [ ResourceType.ConnectionsPlaylist, PlaylistComponent ]

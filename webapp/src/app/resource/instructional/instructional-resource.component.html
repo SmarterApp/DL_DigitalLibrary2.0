@@ -1,15 +1,24 @@
 <nav class="outline">
   <sbdl-outline
     [resource]="resource"
-    [scrollableElements]="scrollableElements"
+    [outline]="outline"
     [readingMode]="readingMode"
+    [hidden]="printingMode"
   ></sbdl-outline>
+  <sbdl-enhanced-printing
+    [resource]="resource"
+    [outline]="outline"
+    [hidden]="!printingMode"
+    (printingModeChanged)="printingModeChanged($event)"
+    (documentOutlineChanged)="setOutline($event)"
+  ></sbdl-enhanced-printing>
 </nav>
 <section class="resource-content">
   <sbdl-instructional-content
     [resource]="resource"
-    (loadScrollableElements)="setScrollableElements($event)"
+    (outlineLoaded)="setOutline($event)"
     (readingModeChanged)="readingModeChanged($event)"
+    (printingModeChanged)="printingModeChanged($event)"
   ></sbdl-instructional-content>
 </section>
 <aside class="resource-properties">

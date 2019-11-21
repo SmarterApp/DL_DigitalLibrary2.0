@@ -1,7 +1,8 @@
 import { EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Map } from 'immutable';
 import { commentsSectionOptions } from './components/section/section.definitions';
 import { Resource } from '../data/resource/model/resource.model';
-import { ScrollableElements } from './components/outline/scrollable-elements.model';
+import { DocumentOutline, DocumentSection, DocumentSectionType } from './components/outline/document-outline.model';
 
 /**
  * A parent class to other resource conent components.
@@ -14,66 +15,30 @@ export class ResourceContentComponent implements OnInit {
     resource: Resource;
 
     @Output()
-    loadScrollableElements = new EventEmitter<ScrollableElements>();
+    outlineLoaded = new EventEmitter<DocumentOutline>();
 
     @Output()
     readingModeChanged = new EventEmitter<boolean>();
 
-    protected scrollableElements: ScrollableElements;
+    @Output()
+    printingModeChanged = new EventEmitter<boolean>();
+
+    protected outline: DocumentOutline = Map<DocumentSectionType, DocumentSection>();
 
     constructor() { }
 
     ngOnInit() {
     }
 
-    setComments($event) {
-      this.scrollableElements = {...this.scrollableElements, comments: $event };
-      this.emitScrollableElementsEvent();
-    }
-
-    setGetStarted($event) {
-      this.scrollableElements = {...this.scrollableElements, getStarted: $event };
-      this.emitScrollableElementsEvent();
-    }
-
-    setOverview($event) {
-      this.scrollableElements = {...this.scrollableElements, overview: $event };
-      this.emitScrollableElementsEvent();
-    }
-
-    setDifferentiation($event) {
-      this.scrollableElements = {...this.scrollableElements, differentiation: $event };
-      this.emitScrollableElementsEvent();
-    }
-
-    setFormative($event) {
-      this.scrollableElements = {...this.scrollableElements, formativeAssessmentProcess: $event };
-      this.emitScrollableElementsEvent();
-    }
-
-    setSteps($event) {
-      this.scrollableElements = {...this.scrollableElements, steps: $event };
-      this.emitScrollableElementsEvent();
-    }
-
-    setAttachments($event) {
-      this.scrollableElements = {...this.scrollableElements, attachments: $event };
-      this.emitScrollableElementsEvent();
-    }
-
-    setTopics($event) {
-      this.scrollableElements = {...this.scrollableElements, topics: $event };
-      this.emitScrollableElementsEvent();
-    }
-
-    setAssessmentInfo($event) {
-      this.scrollableElements = {...this.scrollableElements, assessmentInfo: $event };
-      this.emitScrollableElementsEvent();
+    addDocumentSection(section: DocumentSection) {
+      this.outline = this.outline.set(section.type, section);
+      this.emitOutlineLoadedEvent();
     }
 
     scrollToAttachments() {
-      if (this.scrollableElements && this.scrollableElements.attachments) {
-        this.scrollableElements.attachments.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+      if (this.outline && this.outline.has(DocumentSectionType.Attachments)) {
+        this.outline.get(DocumentSectionType.Attachments).elementRef
+          .scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
       }
     }
 
@@ -81,7 +46,11 @@ export class ResourceContentComponent implements OnInit {
       this.readingModeChanged.emit(event);
     }
 
-    protected emitScrollableElementsEvent() {
-      this.loadScrollableElements.emit(this.scrollableElements);
+    emitPrintingModeChanged(event) {
+      this.printingModeChanged.emit(event);
+    }
+
+    protected emitOutlineLoadedEvent() {
+      this.outlineLoaded.emit(this.outline);
     }
 }

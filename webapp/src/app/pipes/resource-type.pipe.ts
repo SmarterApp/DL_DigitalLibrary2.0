@@ -7,7 +7,7 @@ import { ResourceType } from '../data/resource/model/resource-type.enum';
 export class ResourceTypePipe implements PipeTransform {
   readonly resourceTypeMap: Map<ResourceType, string> = new Map([
     [ ResourceType.Instructional, 'Instructional Resource' ],
-    [ ResourceType.Professional, 'Professional Learning Resource' ],
+    [ ResourceType.ProfessionalLearning, 'Professional Learning Resource' ],
     [ ResourceType.FormativeStrategy, 'Formative Strategy' ],
     [ ResourceType.AccessibilityStrategy, 'Accessibility Strategy' ],
     [ ResourceType.ConnectionsPlaylist, 'Connections Playlist' ]

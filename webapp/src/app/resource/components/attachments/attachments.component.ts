@@ -1,40 +1,40 @@
-import {
-  AfterViewInit, Component, OnInit, Input, ViewChild, ElementRef,
-  Output, EventEmitter, ViewChildren, SecurityContext } from '@angular/core';
+import { AfterViewInit, ElementRef, Component, Input, SecurityContext, ViewChildren } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { MDCRipple } from '@material/ripple/component';
 import { ResourceAttachment } from 'src/app/data/resource/model/attachment.model';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DocumentSection, DocumentSectionType } from 'src/app/resource/components/outline/document-outline.model';
+import { PrintableSectionComponent } from 'src/app/resource/printable-section.component';
 
 @Component({
   selector: 'sbdl-attachments',
   templateUrl: './attachments.component.html',
-  styleUrls: ['./attachments.component.scss']
+  styleUrls: ['./attachments.component.scss', '../../printable-section.component.scss']
 })
-export class AttachmentsComponent implements AfterViewInit, OnInit {
+export class AttachmentsComponent extends PrintableSectionComponent implements AfterViewInit {
 
   @Input()
   attachments: ResourceAttachment[];
 
-  @Input()
-  videoLinks: string[];
-
-  @Output()
-  sectionElementLoaded = new EventEmitter<any>();
-
-  @ViewChild('header', { static: false })
-  headerElement: ElementRef;
-
   @ViewChildren('attachments')
   attachmentElementRefs: ElementRef[];
 
-  constructor() { }
-
-  ngOnInit() { }
+  constructor(sanitizer: DomSanitizer) {
+    super(sanitizer);
+  }
 
   ngAfterViewInit(): void {
     if (this.headerElement) {
-      this.sectionElementLoaded.emit(this.headerElement.nativeElement);
+      this.sectionLoaded.emit({
+        canPrint: false,
+        component: this,
+        elementRef: this.headerElement.nativeElement,
+        fontAwesomeIcon: 'fa-paperclip',
+        selectedForPrint: false,
+        title: 'Attachments',
+        type: DocumentSectionType.Attachments
+      });
     }
+
     // Add ripples
     for (const attachmentRef of this.attachmentElementRefs) {
       MDCRipple.attachTo(attachmentRef.nativeElement);

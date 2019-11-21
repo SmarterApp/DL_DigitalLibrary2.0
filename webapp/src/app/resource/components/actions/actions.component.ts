@@ -16,6 +16,9 @@ export class ActionsComponent implements OnInit {
   @Output()
   readingModeChanged = new EventEmitter<boolean>();
 
+  @Output()
+  printingModeChanged = new EventEmitter<boolean>();
+
   @ViewChild('shareButton', { static: false, read: ViewContainerRef })
   shareContainer: ViewContainerRef;
 
@@ -47,6 +50,10 @@ export class ActionsComponent implements OnInit {
     this.onResize();
     this.currentUrl = location.href;
     this.readingModeDefaultWidth = getCssVar('--breakpoint-lg');
+  }
+
+  print() {
+    this.printingModeChanged.emit(true);
   }
 
   share() {
@@ -85,4 +92,5 @@ export class ActionsComponent implements OnInit {
     this.readingMode = !this.readingMode;
     this.readingModeChanged.emit(this.readingMode);
   }
+
 }

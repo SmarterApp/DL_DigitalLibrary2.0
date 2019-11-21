@@ -1,29 +1,50 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, Input, AfterViewInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { InstructionalResource } from 'src/app/data/resource/model/instructional.model';
+import { PrintableSectionComponent } from 'src/app/resource/printable-section.component';
+import { DocumentSection, DocumentSectionType } from 'src/app/resource/components/outline/document-outline.model';
 
 @Component({
   selector: 'sbdl-differentiation',
   templateUrl: './differentiation.component.html',
-  styleUrls: ['./differentiation.component.scss']
+  styleUrls: ['./differentiation.component.scss', '../../printable-section.component.scss']
 })
-export class DifferentiationComponent implements OnInit, AfterViewInit {
+export class DifferentiationComponent extends PrintableSectionComponent implements AfterViewInit {
+
   @Input()
   resource: InstructionalResource;
 
-  @Output()
-  sectionElementLoaded = new EventEmitter<any>();
+  private subsections: DocumentSection[] = [];
 
-  @ViewChild('header', { static: false })
-  headerElement: ElementRef;
+  constructor(sanitizer: DomSanitizer) {
+    super(sanitizer);
+  }
 
-  constructor() { }
-
-  ngOnInit() {
+  hasDifferentiationContent(): boolean {
+    return !!this.resource.differentiation.trim();
   }
 
   ngAfterViewInit(): void {
+    this.emitSectionLoaded();
+  }
+
+  addSubsection(subsection: DocumentSection): void {
+    this.subsections.push(subsection);
+    this.emitSectionLoaded();
+  }
+
+  emitSectionLoaded(): void {
     if (this.headerElement) {
-      this.sectionElementLoaded.emit(this.headerElement.nativeElement);
+      this.sectionLoaded.emit({
+        title: this.hasDifferentiationContent() ? 'Differentiation' : 'Accessibility Strategies Used',
+        component: this,
+        canPrint: true,
+        selectedForPrint: true,
+        subsections: this.subsections.length > 1 ? this.subsections : undefined,
+        elementRef: this.headerElement.nativeElement,
+        fontAwesomeIcon: 'fa-universal-access',
+        type: DocumentSectionType.Differentiation
+      });
     }
   }
 }

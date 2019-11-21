@@ -28,4 +28,21 @@
         transform: translateX(-1.5rem);
         margin-bottom: 51px;
     }
+
+}
+
+@media only print {
+  :host {
+    display: block;
+
+    .top-header {
+      margin-top: $spacer-lg;
+
+      img { display: none; }
+    }
+
+    .get-started, .overview {
+      margin-top: 14rem;
+    }
+  }
 }

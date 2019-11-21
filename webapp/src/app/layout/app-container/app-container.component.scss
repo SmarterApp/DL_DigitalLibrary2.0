@@ -30,3 +30,18 @@
     }
   }
 }
+
+@media only print {
+  .app-container {
+    display: block;
+    margin-bottom: 2rem;
+
+    sbdl-navigation {
+      display: none;
+    }
+  }
+}
+
+@page {
+  margin-bottom: 5cm;
+}

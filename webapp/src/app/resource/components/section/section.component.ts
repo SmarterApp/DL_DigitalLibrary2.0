@@ -1,11 +1,14 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { DocumentSection, DocumentSectionType } from '../outline/document-outline.model';
+import { PrintableSectionComponent } from '../../printable-section.component';
 
 @Component({
   selector: 'sbdl-section',
   templateUrl: './section.component.html',
-  styleUrls: ['./section.component.scss']
+  styleUrls: ['./section.component.scss', '../../printable-section.component.scss']
 })
-export class SectionComponent implements OnInit, AfterViewInit {
+export class SectionComponent extends PrintableSectionComponent implements AfterViewInit {
 
   @Input()
   contentHtml: string;
@@ -13,20 +16,22 @@ export class SectionComponent implements OnInit, AfterViewInit {
   @Input()
   options: SectionOptions;
 
-  @Output()
-  sectionElementLoaded = new EventEmitter<any>();
-
-  @ViewChild('header', { static: false })
-  headerElement: ElementRef;
-
-  constructor() { }
-
-  ngOnInit() {
+  constructor(sanitizer: DomSanitizer) {
+    super(sanitizer);
   }
 
   ngAfterViewInit() {
     if (this.headerElement) {
-      this.sectionElementLoaded.emit(this.headerElement.nativeElement);
+      this.sectionLoaded.emit({
+        elementRef: this.headerElement.nativeElement,
+        canPrint: true,
+        component: this,
+        selectedForPrint: true,
+        title: this.options.title,
+        fontAwesomeIcon: this.options.fontAwesomeIcon,
+        sbdlIcon: this.options.sbdlIcon,
+        type: this.options.sectionType
+      });
     }
   }
 }
@@ -36,4 +41,5 @@ export interface SectionOptions {
   fontAwesomeIcon?: string;
   sbdlIcon?: string;
   iconBackground: 'yellow'|'blue'|'green'|'none';
+  sectionType: DocumentSectionType;
 }

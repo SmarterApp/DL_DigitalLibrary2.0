@@ -34,3 +34,6 @@ Thumbs.db
 
 # Terraform Local files
 .terraform/
+
+# Other git worktrees
+/.worktrees/

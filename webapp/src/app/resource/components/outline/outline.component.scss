@@ -31,7 +31,7 @@
         color: $neutral-900;
     }
 
-    ul > li {
+    & > ul > li {
         border-top: 1px solid $neutral-100;
         white-space: pre;
         & > sbdl-button {
@@ -81,5 +81,9 @@
         counter-increment: customlistcounter;
         display:block;
         font-size: 0.9rem;
+    }
+
+    .section-formative ol, .section-differentiation ol {
+      display: none;
     }
 }

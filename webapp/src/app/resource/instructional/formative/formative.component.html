@@ -1,26 +1,16 @@
-<article #header class="formative-container">
+<article #sectionHeader class="formative-container">
   <h4  class="leading-icon">
     <sbdl-icon icon="strategies"></sbdl-icon>
-    Formative Assessment Process
+    <span *ngIf="!isProfessional()">Formative Assessment Process</span>
+    <span *ngIf="isProfessional()">Formative Assessment Strategies</span>
   </h4>
-  <section>
-    <h5>How its used</h5>
-    <div>
-      <h6>Clarify Intended Learning</h6>
-      <div [innerHtml]="resource.formativeAssessHowTo.clarify"></div>
-      <h6>Elicit Evidence</h6>
-      <div [innerHtml]="resource.formativeAssessHowTo.elicit"></div>
-      <h6>Interpret Evidence</h6>
-      <div [innerHtml]="resource.formativeAssessHowTo.interpret"></div>
-      <h6>Act on Evidence</h6>
-      <div [innerHtml]="resource.formativeAssessHowTo.act"></div>
-    </div>
-  </section>
-  <section>
-    <h5>Strategies Used</h5>
-    <div *ngFor="let strategy of resource.formativeAssessmentStrategies" class="strategy-link">
-      <h6><a href="/resource/{{strategy.id}}" target="_blank">{{ strategy.title }} <i class="far fa-arrow-right"></i></a></h6>
-      <dynamic-html [content]="strategy.description"></dynamic-html>
-    </div>
-  </section>
+  <sbdl-formative-content
+    [content]="resource.formativeAssessHowTo"
+    (sectionLoaded)="addSubsection($event)">
+  </sbdl-formative-content>
+  <sbdl-strategy-reference-list
+    title="Strategies Used"
+    [strategies]="resource.formativeAssessmentStrategies"
+    (sectionLoaded)="addSubsection($event)">
+  </sbdl-strategy-reference-list>
 </article>
