@@ -90,7 +90,7 @@ export class ResourceService {
       ir.formativeAssessHowTo.interpret = embed(ir.formativeAssessHowTo.interpret, ir);
       ir.formativeAssessHowTo.act = embed(ir.formativeAssessHowTo.act, ir);
 
-    } else if (res.type === ResourceType.Professional) {
+    } else if (res.type === ResourceType.ProfessionalLearning) {
 
       const pl = res as ProfessionalLearningResource;
       pl.thingsToConsider = embed(pl.thingsToConsider, pl);
