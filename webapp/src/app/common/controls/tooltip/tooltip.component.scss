@@ -42,3 +42,9 @@ h6 {
 p {
     margin-top: 0;
 }
+
+@media only print {
+  :host {
+    display: none;
+  }
+}

@@ -21,3 +21,5 @@
         margin-left: -6px;
     }
 }
+
+@media only print { :host { display: none } }

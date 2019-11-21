@@ -69,3 +69,24 @@
     }
   }
 }
+
+@media only print {
+  :host {
+
+    .footer  {
+      .footer-links {
+        display: none;
+      }
+
+      hr { display: none; }
+
+      .copyright {
+        position: fixed;
+        bottom: -2rem;
+        right: $spacer-xl;
+
+        img { display: none; }
+      }
+    }
+  }
+}

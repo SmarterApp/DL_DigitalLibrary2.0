@@ -61,3 +61,14 @@ h5,h6 {
         }
     }
 }
+
+@media only print {
+  .details {
+    > .value > div {
+      text-overflow: initial;
+      white-space: initial;
+      overflow: initial;
+      max-width: 14cm;
+    }
+  }
+}

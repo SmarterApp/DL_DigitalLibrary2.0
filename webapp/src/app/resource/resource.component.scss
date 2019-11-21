@@ -156,3 +156,30 @@
         }
     }
 }
+
+@media only print {
+  :host {
+    display: block;
+
+    .outline, nav, sbdl-outline {
+      display: none;
+    }
+
+    .resource-properties {
+      background-image: none;
+      min-width: none;
+      min-height: unset;
+      width: unset;
+
+      position: absolute;
+      top: 11rem;
+      left: 2.5rem;
+    }
+
+    &::ng-deep {
+      p {
+        page-break-inside: avoid;
+      }
+    }
+  }
+}
