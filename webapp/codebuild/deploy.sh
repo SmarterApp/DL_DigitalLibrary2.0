@@ -29,7 +29,7 @@ if [[ -n $CODEBUILD_WEBHOOK_EVENT && \
 
   # Currently there are only two "main" branches that represent target
   # environments: develop (-> DEV) and master (-> PROD)
-  if [[ $CODEBUILD_WEBHOOK_BASE_REF == '*develop' ]]; then
+  if [[ $CODEBUILD_WEBHOOK_BASE_REF == *'develop' ]]; then
     echo "Merging to dev, deploy to dev."
     target_env="dev"
 
@@ -126,7 +126,7 @@ echo "Invalidating the CloudFront cache for ${target_env}."
 invalidation_id=$(aws cloudfront create-invalidation \
   --query 'Invalidation.Id' \
   --distribution-id "${cloudfront_distribution_id}" \
-  --paths '/index.html')
+  --paths '/index.html' '/assets/config/config.json')
 
 if [[ $? -ne 0 || -z "${invalidation_id}" ]]; then
   >&2 echo "Unable to create the CloudFront invalidation."

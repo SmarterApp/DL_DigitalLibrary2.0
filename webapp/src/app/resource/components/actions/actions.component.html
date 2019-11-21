@@ -26,8 +26,8 @@
       <h6>Share this resource</h6>
       <div class="copy-clipboard">
           <input #url readonly type="text" [value]="currentUrl">
-          <sbdl-button-icon (click)="copyToClipboard(url)">
-            <i class="fas fa-copy" title="Copy to clipboard"></i>
+          <sbdl-button-icon buttonTitle="Copy to clipboad" (click)="copyToClipboard(url)">
+            <i class="fas fa-copy"></i>
             <div class="copy-success" [hidden]="!showCopied">Copied!</div>
           </sbdl-button-icon>
       </div>

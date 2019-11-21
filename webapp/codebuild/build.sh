@@ -34,12 +34,12 @@ if [[ -n $CODEBUILD_WEBHOOK_EVENT && \
 
   # Currently there are only two "main" branches that represent target
   # environments: develop (-> DEV) and master (-> PROD)
-  if [[ $CODEBUILD_WEBHOOK_BASE_REF == '*develop' ]]; then
+  if [[ $CODEBUILD_WEBHOOK_BASE_REF == *'develop' ]]; then
     echo "Merging into develop, build targeting DEV"
     npm run pre-build-ci
     npx ng build --aot --vendor-chunk --c dev
 
-  elif [[ $CODEBUILD_WEBHOOK_BASE_REF == '*master' ]]; then
+  elif [[ $CODEBUILD_WEBHOOK_BASE_REF == *'master' ]]; then
     echo "Merging into master, build targeting PROD"
     npm run build-ci
 
@@ -56,7 +56,7 @@ elif [[ -n $CODEBUILD_WEBHOOK_EVENT && \
           $CODEBUILD_WEBHOOK_EVENT == 'PULL_REQUEST_REOPENED' ) ]]; then
 
   echo "This is a PR build, running full PROD build."
-  npx npm run build-ci
+  npm run build-ci
 
 # 3. A build has been manually triggered (deploy to qa, uat, stage, or prod).
 elif [[ -n $DL_TARGET_ENV ]]; then

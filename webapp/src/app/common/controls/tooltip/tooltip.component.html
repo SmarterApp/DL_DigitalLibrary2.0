@@ -8,6 +8,6 @@
         <sbdl-icon icon="circle-close" (click)="close()"></sbdl-icon>
     </div>
     <h6>{{ title }}</h6>
-    <p>{{ text }}</p>
+    <dynamic-html [content]="text"></dynamic-html>
     <a class="read-more" *ngIf="readMoreUrl" [href]="readMoreUrl" target="_blank">Keep Reading <i class="far fa-arrow-right"></i></a>
 </ng-template>
