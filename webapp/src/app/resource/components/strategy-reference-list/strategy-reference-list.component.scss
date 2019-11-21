@@ -1,0 +1,41 @@
+@import "colors";
+@import "spacing";
+
+:host {
+
+  .strategy-link {
+    page-break-inside: avoid;
+
+    h6 {
+      a,
+      a:link,
+      a:visited,
+      a:active {
+        color: $neutral-900;
+        font-weight: normal;
+      }
+
+      a:hover {
+        text-decoration: underline;
+        color: $info-500;
+      }
+
+      .fa-arrow-right {
+        color: $info-500;
+        padding-left: $spacer-sm;
+      }
+
+      margin-bottom: 3px;
+    }
+
+    p {
+      margin-top: 0;
+    }
+  }
+}
+
+@media only print {
+  .strategy-link {
+    page-break-inside: avoid;
+  }
+}

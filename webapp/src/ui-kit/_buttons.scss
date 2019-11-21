@@ -34,7 +34,7 @@
     margin-left: -6px;
 }
 
-.step > .mdc-button:not(:disabled) {
+.subsection > .mdc-button:not(:disabled) {
     color: $neutral-900;
     width: calc(100% + 15px);
     margin-left: -15px;
@@ -59,13 +59,13 @@
     justify-content: initial;
 }
 
-.step > .mdc-button:not(:disabled):focus {
+.subsection > .mdc-button:not(:disabled):focus {
     border-left: $action-500 solid 4px;
     margin-left: -19px;
 }
 
-.step > .mdc-button:before,
-.step > .mdc-button:after,
+.subsection > .mdc-button:before,
+.subsection > .mdc-button:after,
 .outline >.mdc-button:before,
 .outline > .mdc-button:after {
   background-color: $action-500;

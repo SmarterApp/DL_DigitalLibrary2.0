@@ -1,0 +1,20 @@
+<div #formField class="mdc-form-field" [ngClass]="{ 'disabled': !documentSection.canPrint }">
+  <div #checkbox class="mdc-checkbox">
+    <input type="checkbox"
+           class="mdc-checkbox__native-control"
+           [disabled]="!documentSection.canPrint"
+           (change)="change($event.target.checked)"
+           [id]="id">
+    <div class="sbdl-print-checkbox-icon unchecked">
+      <i class="far fa-circle" aria-hidden="true"></i>
+    </div>
+    <div class="sbdl-print-checkbox-icon checked">
+      <i class="fas fa-check-circle" aria-hidden="true"></i>
+    </div>
+    <div class="sbdl-print-checkbox-icon disabled">
+      <i class="far fa-ban" aria-hidden="true"></i>
+    </div>
+    <div class="mdc-checkbox__ripple"></div>
+  </div>
+  <label [for]="id">{{ documentSection.title }}</label>
+</div>

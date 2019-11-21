@@ -22,10 +22,6 @@
         margin-block-start: 0;
         padding-inline-start: 0;
 
-        li {
-            position: relative; // required to keep the highlighted class only around this li.
-            padding-top: $spacer;
-        }
     }
 
     .leading-icon {
@@ -44,11 +40,4 @@
             list-style-type: disc !important;
         }
     }
-}
-
-a:hover {
-    text-decoration: underline;
-}
-a { 
-    color: $info-500;
 }

@@ -1,4 +1,4 @@
-<article *ngIf="attachments.length > 0" #header class="attachments-container">
+<article *ngIf="attachments.length > 0" #sectionHeader class="attachments-container">
   <h4 class="leading-icon">
       <i class="far fa-paperclip"></i>Attachments
   </h4>
@@ -18,3 +18,4 @@
     <iframe width="560" title="Youtube Video" height="315" [src]="link | safeUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 </article>
+<hr *ngIf="attachments.length > 0"/>
