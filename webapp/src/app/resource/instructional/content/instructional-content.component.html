@@ -34,9 +34,10 @@
 
 <sbdl-section
   [contentHtml]="resource.thingsToConsider"
-  [options]="commentsOptions" (sectionLoaded)="addDocumentSection($event)"></sbdl-section>
+  [options]="commentsOptions" (sectionLoaded)="addDocumentSection($event)">
+</sbdl-section>
 
 <sbdl-formative
-      [resource]="resource"
-      (sectionLoaded)="addDocumentSection($event)"
-      (subsectionElementsLoaded)="setFormativeSubsections($event)"></sbdl-formative>
+  [resource]="resource"
+  (sectionLoaded)="addDocumentSection($event)">
+</sbdl-formative>

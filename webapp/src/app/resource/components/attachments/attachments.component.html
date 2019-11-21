@@ -13,9 +13,5 @@
         Download ({{attachment.fileType}} {{ attachment.fileSize ?  (attachment.fileSize / 1000) + ' KB' : '' }})
     </div>
   </a>
-  <h6 *ngIf="videoLinks">Videos</h6>
-  <div *ngFor="let link of videoLinks" class="video-embed">
-    <iframe width="560" title="Youtube Video" height="315" [src]="link | safeUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
 </article>
 <hr *ngIf="attachments.length > 0"/>

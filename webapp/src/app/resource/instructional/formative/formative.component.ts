@@ -13,7 +13,7 @@ import { DocumentSection, DocumentSectionType } from 'src/app/resource/component
 })
 export class FormativeComponent extends PrintableSectionComponent implements AfterViewInit {
   @Input()
-  resource: InstructionalResource | ProfessionalLearningResource;
+  resource: InstructionalResource;
 
   subsections: DocumentSection[] = [];
 

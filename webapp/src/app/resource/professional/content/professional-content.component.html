@@ -2,34 +2,38 @@
   <img src="/assets/images/yellow-spot.png" alt="" />
   <sbdl-actions
     [resource]="resource"
-    (readingModeChanged)="emitReadingModeChanged($event)"></sbdl-actions>
+    (readingModeChanged)="emitReadingModeChanged($event)"
+    (printingModeChanged)="emitPrintingModeChanged($event)">
+  </sbdl-actions>
 </div>
 
 <sbdl-header
   [resource]="resource"
-  (attachmentsClicked)="scrollToAttachments()"></sbdl-header>
+  (attachmentsClicked)="scrollToAttachments()">
+</sbdl-header>
 
 <sbdl-overview
   [resource]="resource"
-  (sectionElementLoaded)="setOverview($event)"></sbdl-overview>
-<hr/>
+  (sectionLoaded)="addDocumentSection($event)">
+</sbdl-overview>
 
 <sbdl-step-by-step
   [steps]="resource.stepByStep"
-  (sectionElementLoaded)="setSteps($event)"></sbdl-step-by-step>
-<hr *ngIf="resource.attachments.length > 0"/>
+  (sectionLoaded)="addDocumentSection($event)">
+</sbdl-step-by-step>
 
 <sbdl-attachments
   [attachments]="resource.attachments"
-  (sectionElementLoaded)="setAttachments($event)"></sbdl-attachments>
-<hr/>
+  (sectionLoaded)="addDocumentSection($event)">
+</sbdl-attachments>
 
 <sbdl-section
   [contentHtml]="resource.thingsToConsider"
   [options]="commentsOptions"
-  (sectionElementLoaded)="setComments($event)"></sbdl-section>
-<hr *ngIf="resource.thingsToConsider"/>
+  (sectionLoaded)="addDocumentSection($event)">
+</sbdl-section>
 
-<sbdl-formative-list [strategies]="resource.formativeAssessmentStrategies"
-                     showProfLearningContent="true"
-                     (sectionElementLoaded)="setFormative($event)"></sbdl-formative-list>
+<sbdl-formative-list
+  [strategies]="resource.formativeAssessmentStrategies"
+  (sectionLoaded)="addDocumentSection($event)">
+</sbdl-formative-list>
