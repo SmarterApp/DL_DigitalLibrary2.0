@@ -1,0 +1,14 @@
+{
+    "env": {
+        "name": "UAT"
+     },
+    "logging": {
+        "console": true,
+        "aws": false,
+        "level": 0
+    },
+    "apiServer": {
+        "cdl": "https://api-dev.dl.smarterbalanced.org/api"
+    },
+    "enableAnalytics": false
+}
