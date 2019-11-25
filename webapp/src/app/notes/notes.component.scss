@@ -1,0 +1,22 @@
+@import "spacing";
+
+:host {
+  display: block;
+  margin: $spacer-xl $spacer;
+
+  &[hidden] {
+    display: none;
+  }
+
+  h2 {
+    font-style: normal;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  h3 {
+    font-style: normal;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+}

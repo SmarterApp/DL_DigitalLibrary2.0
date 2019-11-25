@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { AppContainerComponent } from './layout/app-container/app-container.component';
 import { ResourceTypeStrategyComponent } from './resource/resource-type-strategy.component';
 import { ResourceResolve } from './resource/resource.resolve';
+import { NotesResolve } from './notes/notes.resolve';
 import { BookmarkListComponent } from './bookmarks/bookmark-list/bookmark-list.component';
 import { BookmarksResolve } from './bookmarks/bookmarks.resolve';
 import { ResultsComponent } from './search/results/results.component';
@@ -29,7 +30,10 @@ const routes: Routes = [
       }, {
         path: 'resource/:resourceId',
         component: ResourceTypeStrategyComponent,
-        resolve: { resource: ResourceResolve }
+        resolve: {
+          resource: ResourceResolve,
+          notes: NotesResolve
+        }
       }, {
         path: 'results',
         component: ResultsComponent,

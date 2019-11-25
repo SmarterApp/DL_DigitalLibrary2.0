@@ -21,7 +21,9 @@
   ></sbdl-professional-content>
 </section>
 <aside class="resource-properties">
-  <sbdl-resource-properties [properties]="resource.properties">
+  <sbdl-resource-properties
+    [properties]="resource.properties"
+    [hidden]="!notesVisible">
     <h5>Professional Learning</h5>
   </sbdl-resource-properties>
 </aside>

@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, HostBinding, OnInit } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { Resource } from '../data/resource/model/resource.model';
+import { Note } from '../data/notes/model/note.model';
 import { DocumentOutline } from './components/outline/document-outline.model';
 
 /**
@@ -10,6 +11,7 @@ import { DocumentOutline } from './components/outline/document-outline.model';
 export class ResourceComponent implements OnInit {
 
   resource: Resource;
+  notes: Note[];
   outline: DocumentOutline;
   readingMode: boolean = window.innerWidth < 1200;
   printingMode = false;

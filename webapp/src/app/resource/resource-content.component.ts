@@ -23,6 +23,9 @@ export class ResourceContentComponent implements OnInit {
     @Output()
     printingModeChanged = new EventEmitter<boolean>();
 
+    @Output()
+    notesVisibilityChanged = new EventEmitter<boolean>();
+
     protected outline: DocumentOutline = Map<DocumentSectionType, DocumentSection>();
 
     constructor() { }
@@ -48,6 +51,10 @@ export class ResourceContentComponent implements OnInit {
 
     emitPrintingModeChanged(event) {
       this.printingModeChanged.emit(event);
+    }
+
+    emitNotesVisibilityChanged(event) {
+      this.notesVisibilityChanged.emit(event);
     }
 
     protected emitOutlineLoadedEvent() {

@@ -19,12 +19,16 @@ export class ActionsComponent implements OnInit {
   @Output()
   printingModeChanged = new EventEmitter<boolean>();
 
+  @Output()
+  notesVisibilityChanged = new EventEmitter<boolean>();
+
   @ViewChild('shareButton', { static: false, read: ViewContainerRef })
   shareContainer: ViewContainerRef;
 
   @ViewChild('sharePopover', { static: false })
   sharePopover: ElementRef;
 
+  notesVisible = false;
   togglingBookmarked = false;
   readingMode = false;
   hideReadingModeToggle = false;
@@ -93,4 +97,8 @@ export class ActionsComponent implements OnInit {
     this.readingModeChanged.emit(this.readingMode);
   }
 
+  toggleNotes() {
+    this.notesVisible = !this.notesVisible;
+    this.notesVisibilityChanged.emit(this.notesVisible);
+  }
 }
