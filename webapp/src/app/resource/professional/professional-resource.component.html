@@ -3,7 +3,15 @@
     [resource]="resource"
     [outline]="outline"
     [readingMode]="readingMode"
+    [hidden]="printingMode"
   ></sbdl-outline>
+  <sbdl-enhanced-printing
+    [resource]="resource"
+    [outline]="outline"
+    [hidden]="!printingMode"
+    (printingModeChanged)="printingModeChanged($event)"
+    (documentOutlineChanged)="setOutline($event)"
+  ></sbdl-enhanced-printing>
 </nav>
 <section class="resource-content">
   <sbdl-professional-content

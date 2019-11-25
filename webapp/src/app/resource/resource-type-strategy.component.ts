@@ -27,6 +27,8 @@ export class ResourceTypeStrategyComponent implements OnInit {
 
   @ViewChild(ResourceHostDirective, {static: true}) hostDirective: ResourceHostDirective;
 
+  private componentInst: ResourceComponent;
+
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private route: ActivatedRoute
@@ -42,6 +44,17 @@ export class ResourceTypeStrategyComponent implements OnInit {
       const componentRef = viewContainerRef.createComponent(componentFactory);
 
       componentRef.instance.resource = data.resource;
+      this.componentInst = componentRef.instance;
+    });
+
+    this.route.queryParams.subscribe(queryParams => {
+      if (queryParams.print !== undefined) {
+        this.componentInst.printingModeChanged(queryParams.print);
+      }
+
+      if (queryParams.viewNotes !== undefined) {
+        this.componentInst.notesVisibilityChanged(queryParams.viewNotes);
+      }
     });
   }
 }

@@ -13,6 +13,7 @@ export class ResourceComponent implements OnInit {
   outline: DocumentOutline;
   readingMode: boolean = window.innerWidth < 1200;
   printingMode = false;
+  notesVisible = false;
   navWidth = 331;
   cssVarStyle: SafeStyle;
 
@@ -43,6 +44,10 @@ export class ResourceComponent implements OnInit {
 
   printingModeChanged(printingMode: boolean) {
     this.printingMode = printingMode;
+  }
+
+  notesVisibilityChanged(notesVisible: boolean) {
+    this.notesVisible = notesVisible;
   }
 
   private updatePrintStyles() {

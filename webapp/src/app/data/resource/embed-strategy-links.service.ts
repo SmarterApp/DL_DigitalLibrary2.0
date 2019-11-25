@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ResourceType } from './model/resource-type.enum';
 import { InstructionalResource } from './model/instructional.model';
 import { ProfessionalLearningResource } from './model/professional-learning.model';
 import { ResourceStrategyReference } from './model/strategy-reference.model';
@@ -19,7 +20,10 @@ export class EmbedStrategyLinksService {
       return content;
     }
 
-    content = this.embedAccessibilityStrategies(content, resource.accessibilityStrategies);
+    if (resource.type === ResourceType.Instructional) {
+      content = this.embedAccessibilityStrategies(content, (resource as InstructionalResource).accessibilityStrategies);
+    }
+
     content = this.embedFormativeStrategies(content, resource.formativeAssessmentStrategies);
     return content;
   }

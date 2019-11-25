@@ -1,1 +1,19 @@
-
+<nav class="outline">
+  <!-- TODO: Future enhancement: categorize bookmarked resource by resource
+    type. -->
+</nav>
+<section class="bookmark-list">
+  <div class="top-header">
+    <img src="/assets/images/yellow-spot.png" aria-hidden="true" alt="" />
+  </div>
+  <header>
+    <h1>My Bookmarks</h1>
+  </header>
+  <ul class="bookmarks">
+    <li sbdl-bookmark-card
+      *ngFor="let bookmark of bookmarks"
+      [bookmark]="bookmark">
+    </li>
+  </ul>
+</section>
+<aside class="right-margin"></aside>

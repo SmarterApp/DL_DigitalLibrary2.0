@@ -1,0 +1,116 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+
+:host {
+  border-radius: 3px;
+  border-left: 4px solid rgba($white, 0);
+  box-sizing: border-box;
+  max-width: none;
+  padding: $spacer-md $spacer-md $spacer-md $spacer-xl;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  .inner-card {
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow:
+      0px 1px 3px rgba(0, 0, 0, 0.2),
+      0px 2px 2px rgba(0, 0, 0, 0.12),
+      0px 0px 2px rgba(0, 0, 0, 0.14);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-grow: 1;
+
+    overflow: hidden;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      align-items: stretch;
+      min-width: 0;
+    }
+
+    img {
+      object-fit: cover;
+
+      width: 80px;
+      height: 80px;
+      min-width: 80px;
+    }
+
+    .title, .details {
+      text-overflow: ellipsis;
+    }
+
+    .title {
+      margin: $spacer-sm $spacer 0 $spacer;
+      color: $neutral-900;
+      font-family: $font-family-title;
+      font-size: $font-size-body;
+    }
+
+    .details {
+      margin: $spacer-sm $spacer;
+      color: $neutral-900;
+
+      &.professional-learning {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .bookmark-actions {
+    color: $brand-blue;
+    margin-left: $spacer;
+    width: 60px;
+    height: 60px;
+
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    font-size: 24px;
+    grid-template:
+      "bookmark notes" 30px
+      "share print" 30px / 30px 30px;
+
+    sbdl-button-icon { display: none; }
+
+    .bookmark { grid-area: bookmark; }
+    .print { grid-area: print; }
+    .share { grid-area: share; }
+
+    .notes {
+      grid-area: notes;
+      sbdl-icon.has-notes {
+        background: $brand-blue;
+        color: $white;
+        padding: 2px;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  &:focus,
+  &:focus-within {
+    border-left: solid 4px rgba($brand-accent-blue, 0.5);
+    outline: none;
+  }
+
+  &:focus,
+  &:focus-within,
+  &:hover {
+    background-color: rgba($brand-accent-blue, 0.05);
+
+    .bookmark-actions sbdl-button-icon { display: initial; }
+  }
+
+}
