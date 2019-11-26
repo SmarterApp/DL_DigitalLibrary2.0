@@ -102,9 +102,7 @@ export class ResourceService {
       pl.overview.learningGoal = embed(pl.overview.learningGoal, pl);
       pl.overview.successCriteria = embed(pl.overview.successCriteria, pl);
 
-      pl.accessibilityStrategies.forEach(s => s.description = embed(s.description, pl));
       pl.formativeAssessmentStrategies.forEach(s => s.description = embed(s.description, pl));
-
     }
 
     return res;

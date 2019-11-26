@@ -41,8 +41,8 @@
   <!-- Standards -->
   <label *ngIf="properties.standards && properties.standards.length > 0"
          [ngPlural]="properties.standards.length">
-    <ng-template ngPluralCase="=1">Standard</ng-template>
-    <ng-template ngPluralCase="other">Standards</ng-template>
+    <ng-template ngPluralCase="=1">Content Standard</ng-template>
+    <ng-template ngPluralCase="other">Content Standards</ng-template>
   </label>
   <div *ngIf="properties.standards && properties.standards.length > 0" class="value">
     <div *ngFor="let standard of properties.standards"

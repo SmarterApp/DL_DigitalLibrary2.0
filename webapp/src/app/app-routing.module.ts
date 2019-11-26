@@ -5,6 +5,8 @@ import { HomeComponent } from './home/home.component';
 import { AppContainerComponent } from './layout/app-container/app-container.component';
 import { ResourceTypeStrategyComponent } from './resource/resource-type-strategy.component';
 import { ResourceResolve } from './resource/resource.resolve';
+import { BookmarkListComponent } from './bookmarks/bookmark-list/bookmark-list.component';
+import { BookmarksResolve } from './bookmarks/bookmarks.resolve';
 import { ResultsComponent } from './search/results/results.component';
 import { ResourceResultResolve } from './search/results/resource-results.resolve';
 import { SearchFiltersResolve } from './search/search-filters.resolve';
@@ -20,6 +22,10 @@ const routes: Routes = [
         path: '',
         component: HomeComponent,
         resolve: { filters: SearchFiltersResolve }
+      }, {
+        path: 'bookmarks',
+        component: BookmarkListComponent,
+        resolve: { bookmarks: BookmarksResolve }
       }, {
         path: 'resource/:resourceId',
         component: ResourceTypeStrategyComponent,

@@ -9,6 +9,5 @@ export interface ProfessionalLearningResource extends Resource {
     successCriteria: string;
   };
   stepByStep: ResourceStep[];
-  accessibilityStrategies: ResourceStrategyReference[];
   formativeAssessmentStrategies: ResourceStrategyReference[];
 }

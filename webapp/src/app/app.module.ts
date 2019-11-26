@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppConfig } from './common/config/app.config';
 import { GlobalErrorHandler } from './common/global-error-handler';
+import { BookmarksModule } from './bookmarks/bookmarks.module';
 import { DataModule } from './data/data.module';
 import { HomeModule } from './home/home.module';
 import { LayoutModule } from './layout/layout.module';
@@ -37,6 +38,7 @@ const oktaConfig = {
     BrowserModule,
     AppRoutingModule,
 
+    BookmarksModule,
     DataModule,
     LayoutModule,
     HomeModule,
