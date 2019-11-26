@@ -2,13 +2,14 @@ import { Component, ElementRef, Input, OnInit, ViewChild, ViewContainerRef } fro
 import { ResourceType } from '../../data/resource/model/resource-type.enum';
 import { ResourceBookmark } from '../../data/bookmarks/model/bookmark.model';
 import { PopoverService } from 'src/app/common/controls/popover/popover.service';
+import { JoinPipe } from '../../pipes/join.pipe';
 
 @Component({
   selector: '[sbdl-bookmark-card]',
   templateUrl: './bookmark-card.component.html',
   styleUrls: ['./bookmark-card.component.scss']
 })
-export class BookmarkCardComponent {
+export class BookmarkCardComponent implements OnInit {
 
   @Input()
   bookmark: ResourceBookmark;
@@ -20,10 +21,16 @@ export class BookmarkCardComponent {
   sharePopover: ElementRef;
 
   togglingBookmarked = false;
+  details: string[];
+  joinPipe: JoinPipe = new JoinPipe();
 
   constructor(private popoverService: PopoverService) { }
 
-  get details(): string[] {
+  ngOnInit() {
+    this.setDetails();
+  }
+
+  setDetails(): string[] {
     if (!this.bookmark) { return; }
 
     const result: string[] = [];
@@ -31,7 +38,11 @@ export class BookmarkCardComponent {
     if (this.bookmark.properties.grades.length === 1)  {
       result.push('Grade ' + this.bookmark.properties.grades[0].shortName);
     } else if (this.bookmark.properties.grades.length > 1) {
-      result.push('Grades ' + this.bookmark.properties.grades.map(g => g.shortName).join(', '));
+      result.push(
+        'Grades ' +
+        this.joinPipe.transform(
+          this.bookmark.properties.grades.map(g => g.shortName),
+          { conjunction: 'and' }));
     }
 
     if (this.bookmark.properties.subject && this.bookmark.properties.subject.code) {
@@ -41,16 +52,23 @@ export class BookmarkCardComponent {
     if (this.bookmark.properties.claims.length === 1) {
       result.push('Claim ' + this.bookmark.properties.claims[0].number);
     } else if (this.bookmark.properties.claims.length > 1) {
-      result.push('Claims ' + this.bookmark.properties.claims.map(c => c.number).join(', '));
+      result.push('Claims ' +
+        this.joinPipe.transform(
+          this.bookmark.properties.claims.map(c => c.number),
+          { conjunction: 'and' }));
+
     }
 
     if (this.bookmark.properties.targets.length === 1) {
       result.push('Target ' + this.bookmark.properties.targets[0].number);
     } else if (this.bookmark.properties.targets.length > 1) {
-      result.push('Targets ' + this.bookmark.properties.targets.map(t => t.number).join(', '));
+      result.push('Targets ' +
+        this.joinPipe.transform(
+          this.bookmark.properties.targets.map(t => t.number),
+          { conjunction: 'and' }));
     }
 
-    return result;
+    this.details = result;
   }
 
   isProfessionalLearning(): boolean {

@@ -113,6 +113,18 @@ export class BookmarksResolve implements Resolve<ResourceBookmark[]> {
                 number: 'I',
                 description: 'Solve equations and inequalities in one variable.',
                 group: ''
+              },
+              {
+                code: 'ti',
+                number: 'J',
+                description: 'Solve equations and inequalities in one variable.',
+                group: ''
+              },
+              {
+                code: 'ti',
+                number: 'K',
+                description: 'Solve equations and inequalities in one variable.',
+                group: ''
               }
             ],
             title: 'Intro to Quadratic Formula'
