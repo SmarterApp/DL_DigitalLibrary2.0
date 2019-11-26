@@ -8,7 +8,12 @@
   <img [src]="bookmark.properties.image">
   <div>
     <div class="title">{{ bookmark.properties.title }}</div>
-    <div *ngIf="!isProfessionalLearning()" class="details caption emphasis-medium">{{ details | join: { separator: '&nbsp;&nbsp;•&nbsp;&nbsp;' } }}</div>
+    <div *ngIf="!isProfessionalLearning()" class="details caption emphasis-medium">
+      <span class="detail-item" *ngFor="let detail of details; last as isLast">
+        {{ detail }}
+        <span *ngIf="!isLast">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+      </span>
+    </div>
     <div *ngIf="isProfessionalLearning()" class="details professional-learning caption emphasis-medium">{{ bookmark.summary }}</div>
   </div>
 </a>
@@ -38,6 +43,7 @@
   </sbdl-button-icon>
 </div>
 <ng-template #sharePopover>
+  <!--
   <div class="share-popover">
       <h6>Share this resource</h6>
       <div class="copy-clipboard">
@@ -48,4 +54,5 @@
           </sbdl-button-icon>
       </div>
   </div>
+-->
 </ng-template>

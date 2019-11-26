@@ -68,6 +68,15 @@ export class BookmarkCardComponent implements OnInit {
           { conjunction: 'and' }));
     }
 
+    if (this.bookmark.properties.standards.length === 1) {
+      result.push('Content Standard ' + this.bookmark.properties.standards[0].title);
+    } else if (this.bookmark.properties.standards.length > 1) {
+      result.push('Content Standards ' +
+        this.joinPipe.transform(
+          this.bookmark.properties.standards.map(t => t.title),
+          { conjunction: 'and' }));
+    }
+
     this.details = result;
   }
 
