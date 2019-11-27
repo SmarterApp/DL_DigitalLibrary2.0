@@ -8,7 +8,8 @@
         "level": 0
     },
     "apiServer": {
-        "cdl": "https://api-dev.dl.smarterbalanced.org/api"
+        "cdl": "https://api-dev.dl.smarterbalanced.org/api",
+        "authToken": "OTNkZmNkYzNjODk3YTI0ZjdjOWVmMjVjZjYyNjkyMTJkYzg3NDgyNzk5MDUwZjRhYzNhYzFlMzlkMWUwMTQwNA"
     },
     "enableAnalytics": false
 }

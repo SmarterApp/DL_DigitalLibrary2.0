@@ -19,7 +19,7 @@ cd "$rootDir"
 
 currentBranch=`git rev-parse --abbrev-ref HEAD`
 if [ $currentBranch != "develop" ]; then
-  printf "You are currently on the '${currentBranch}' branch. Is this intended (yes/no)?"
+  printf "You are currently on the '${currentBranch}' branch. Is this intended (yes/no)? "
   read confirmation
 
   if [ $confirmation != "yes" ]; then exit 1; fi
