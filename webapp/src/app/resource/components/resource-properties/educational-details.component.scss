@@ -63,7 +63,11 @@ h5,h6 {
 }
 
 @media only print {
+  .subject-grades { margin-top: 0; }
+  .details { margin-bottom: 0; }
+
   .details {
+
     > .value > div {
       text-overflow: initial;
       white-space: initial;

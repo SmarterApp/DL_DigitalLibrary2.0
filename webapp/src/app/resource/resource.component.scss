@@ -163,15 +163,20 @@
       display: none;
     }
 
+    aside sbdl-resource-properties {
+      position: initial;
+    }
+
     .resource-properties {
       background-image: none;
+      box-shadow: none;
       min-width: none;
       min-height: unset;
       width: unset;
 
       position: absolute;
-      top: 11rem;
-      left: 2.5rem;
+      top: 14rem;
+      left: 4rem;
     }
 
     &::ng-deep {
