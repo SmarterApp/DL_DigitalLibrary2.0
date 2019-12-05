@@ -52,6 +52,10 @@ export class ResourceComponent implements OnInit {
     this.notesVisible = notesVisible;
   }
 
+  notesChanged(notes: Note[]) {
+    this.notes = notes;
+  }
+
   private updatePrintStyles() {
     this.outline.forEach(section => {
       if (section.component) {

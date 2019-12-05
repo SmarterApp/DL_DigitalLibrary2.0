@@ -28,5 +28,10 @@
     [hidden]="notesVisible">
     <sbdl-educational-details [properties]="resource.properties"></sbdl-educational-details>
   </sbdl-resource-properties>
-  <sbdl-notes [hidden]="!notesVisible" [notes]="notes"></sbdl-notes>
+  <sbdl-notes
+    [hidden]="!notesVisible"
+    [notes]="notes"
+    [resource]="resource"
+    (notesChanged)="notesChanged($event)">
+  </sbdl-notes>
 </aside>
