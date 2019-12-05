@@ -2,6 +2,7 @@
 <sbdl-resource-summary-card [bookmark]="bookmark">
 </sbdl-resource-summary-card>
 -->
+<div class="resource-type">{{ bookmark.type | resourceType }}</div>
 <a
   href="/resource/{{ bookmark.id }}"
   class="inner-card">
