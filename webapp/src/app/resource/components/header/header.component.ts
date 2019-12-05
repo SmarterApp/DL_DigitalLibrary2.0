@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   attachmentsClicked = new EventEmitter();
 
   grade: Grade;
+  fullUrl: string;
 
   get properties() {
     return this.resource.properties;
@@ -30,6 +31,8 @@ export class HeaderComponent implements OnInit {
     if (this.showIconsCol && this.resource.properties.grades.length > 0) {
       this.grade = this.resource.properties.grades[0];
     }
+
+    this.fullUrl = window.location.href;
   }
 
   emitAttachmentsClicked() {
