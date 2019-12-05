@@ -22,7 +22,7 @@ export class NotesComponent {
   authoringNote = false;
   newNoteContent = '';
 
-  private editorConfig: AngularEditorConfig = {
+  editorConfig: AngularEditorConfig = {
     editable: true,
     enableToolbar: true,
     placeholder: 'Start typing something...',
