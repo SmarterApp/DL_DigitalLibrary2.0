@@ -75,10 +75,12 @@
       margin: $spacer-sm $spacer;
       color: $neutral-900;
 
+      .detail-item { white-space: nowrap; }
+
       &.professional-learning {
         text-overflow: ellipsis;
-        white-space: nowrap;
         overflow: hidden;
+        white-space: nowrap;
       }
     }
   }
