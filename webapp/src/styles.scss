@@ -35,3 +35,9 @@ body {
     background-color: $white;
     margin: 0;
 }
+
+@media only print {
+  :root {
+    --measure: 100ch;
+  }
+}
