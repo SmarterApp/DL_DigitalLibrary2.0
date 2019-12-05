@@ -24,6 +24,26 @@ export class EnhancedPrintingComponent extends OutlineComponent implements OnIni
   @Output()
   documentOutlineChanged = new EventEmitter<DocumentOutline>();
 
+  allSelected: boolean;
+
+  static calculateAllSelected(outline: DocumentOutline): boolean {
+    if (!outline) { return true; }
+
+    const result = Array.from(outline.values()).filter(s => s.canPrint).every((section) => {
+      return section.selectedForPrint &&
+        (section.subsections ?
+          section.subsections.every(ss => ss.selectedForPrint) :
+          true);
+    });
+
+    return result;
+  }
+
+  ngOnInit() {
+    super.ngOnInit();
+    this.allSelected = EnhancedPrintingComponent.calculateAllSelected(this.outline);
+  }
+
   cancel() {
     this.printingModeChanged.emit(false);
   }
@@ -41,6 +61,7 @@ export class EnhancedPrintingComponent extends OutlineComponent implements OnIni
     }
 
     this.outline = this.outline.set(section.type, section);
+    this.allSelected = EnhancedPrintingComponent.calculateAllSelected(this.outline);
     this.documentOutlineChanged.emit(this.outline);
   }
 
@@ -51,6 +72,23 @@ export class EnhancedPrintingComponent extends OutlineComponent implements OnIni
     };
 
     this.outline = this.outline.set(updatedSection.type, updatedSection);
+    this.allSelected = EnhancedPrintingComponent.calculateAllSelected(this.outline);
+    this.documentOutlineChanged.emit(this.outline);
+  }
+
+  toggleFullSelection() {
+    const shouldBeSelected = !this.allSelected;
+    this.outline = this.outline.map((section, sectionType) => {
+      if (!section.canPrint) { return section; }
+      return {
+        ...section,
+        selectedForPrint: shouldBeSelected,
+        subsections: !section.subsections ? [] :
+        section.subsections.map(ss => ({ ...ss, selectedForPrint: shouldBeSelected }))
+      };
+    });
+
+    this.allSelected = EnhancedPrintingComponent.calculateAllSelected(this.outline);
     this.documentOutlineChanged.emit(this.outline);
   }
 }
