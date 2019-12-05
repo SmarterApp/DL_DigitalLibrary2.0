@@ -46,5 +46,7 @@ p {
 @media only print {
   :host {
     display: none;
+
+    &.strategy-link { display: inline; }
   }
 }
