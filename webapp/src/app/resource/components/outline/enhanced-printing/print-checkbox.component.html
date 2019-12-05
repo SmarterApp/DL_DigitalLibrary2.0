@@ -18,3 +18,5 @@
   </div>
   <label [for]="id">{{ documentSection.title }}</label>
 </div>
+<div class="caption emphasis-medium"
+     *ngIf="!documentSection.canPrint">This section cannot be printed</div>
