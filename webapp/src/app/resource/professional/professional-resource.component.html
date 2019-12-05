@@ -20,12 +20,19 @@
     [resource]="resource"
     (outlineLoaded)="setOutline($event)"
     (readingModeChanged)="readingModeChanged($event)"
+    (notesVisibilityChanged)="notesVisibilityChanged($event)"
   ></sbdl-professional-content>
 </section>
 <aside class="resource-properties">
   <sbdl-resource-properties
     [properties]="resource.properties"
-    [hidden]="!notesVisible">
+    [hidden]="notesVisible">
     <h5>Professional Learning</h5>
   </sbdl-resource-properties>
+  <sbdl-notes
+    [hidden]="!notesVisible"
+    [notes]="notes"
+    [resource]="resource"
+    (notesChanged)="notesChanged($event)">
+  </sbdl-notes>
 </aside>
