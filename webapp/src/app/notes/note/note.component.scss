@@ -1,23 +1,12 @@
 @import "colors";
+@import "spacing";
 
 :host {
 
   display: block;
   margin: 2rem 0;
 
-  hr {
-      width:100%;
-      box-sizing: border-box;
-      height: 1px;
-      color: $neutral-900;
-      background-color: $neutral-900;
-      border:none;
-
-      opacity: 0.2;
-      margin-bottom: 1rem;
-  }
-
   .last-modified {
-    font-size: 0.5rem;
+    margin-top: $spacer-sm;
   }
 }
