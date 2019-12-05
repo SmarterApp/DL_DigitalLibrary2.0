@@ -36,8 +36,12 @@ body {
     margin: 0;
 }
 
+.print-only { display: none; }
+
 @media only print {
   :root {
     --measure: 100ch;
   }
+
+  .print-only { display: block; }
 }
