@@ -10,6 +10,10 @@
 </div>
 <h6 class="outline-header">
   Outline
+  <sbdl-button (click)="toggleFullSelection()" class="plain">
+    <span *ngIf="allSelected">Clear selection</span>
+    <span *ngIf="!allSelected">Select all</span>
+  </sbdl-button>
 </h6>
 <ul *ngIf="outline">
   <li *ngFor="let section of sectionsInOrder">

@@ -5,4 +5,4 @@
     [innerHtml]="text"
     >
 </div>
-<a *ngIf="collapsible" href="javascript:void(0)" (click)="toggleCollapsed()">{{ collapsed ? '... more' : 'less' }}</a>
+<a *ngIf="collapsible" class="more-less" href="javascript:void(0)" (click)="toggleCollapsed()">{{ collapsed ? '... more' : 'less' }}</a>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, ElementRef, OnInit, OnChanges, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, ElementRef, OnChanges, OnDestroy, AfterViewInit } from '@angular/core';
 import { MDCCheckbox } from '@material/checkbox';
 import { MDCFormField } from '@material/form-field';
 import { IdGeneratorService } from 'src/app/common/id-generator.service';
@@ -9,7 +9,7 @@ import { DocumentSection } from 'src/app/resource/components/outline/document-ou
   templateUrl: './print-checkbox.component.html',
   styleUrls: ['./print-checkbox.component.scss']
 })
-export class PrintCheckboxComponent implements AfterViewInit, OnChanges, OnDestroy {
+export class PrintCheckboxComponent implements AfterViewInit, OnDestroy {
 
   @Input()
   documentSection: DocumentSection;
@@ -44,12 +44,6 @@ export class PrintCheckboxComponent implements AfterViewInit, OnChanges, OnDestr
   ngOnDestroy() {
     this.formField.destroy();
     this.checkbox.destroy();
-  }
-
-  ngOnChanges() {
-    if (this.checkbox) {
-      this.checkbox.checked = this.documentSection.selectedForPrint;
-    }
   }
 
   change(checked: boolean) {

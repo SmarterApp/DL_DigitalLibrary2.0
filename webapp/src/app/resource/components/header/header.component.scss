@@ -6,6 +6,7 @@
     display: grid;
     grid-template-areas:"type type" 
                         "title title"
+                        "url url"
                         "byline button"
                         "updated button";
     grid-template-rows: repeat (3, auto);
@@ -27,9 +28,20 @@
     }
     h1 {
         grid-area: title;
-        color: $brand-green;
-        word-break: break-word;
+
+        a {
+          color: $brand-green;
+          word-break: break-word;
+        }
     }
+
+    .print-url {
+      color: $neutral-500;
+      display: block;
+      grid-area: url;
+      margin-bottom: $spacer-sm;
+    }
+
     .byline {
         font-family: $font-family-title;
         grid-area: byline;

@@ -31,4 +31,11 @@
     font-family: $font-family-body;
     font-size: 0.9rem;
   }
+
+  .outline-header sbdl-button {
+    display: inline-block;
+    margin-left: $spacer-md;
+    position: relative;
+    top: -2px;
+  }
 }

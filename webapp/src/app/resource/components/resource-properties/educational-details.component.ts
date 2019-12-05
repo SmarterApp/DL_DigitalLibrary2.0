@@ -1,22 +1,30 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ResourceProperties } from 'src/app/data/resource/model/properties.model';
 import { Claim } from 'src/app/data/resource/model/claim.model';
 import { Subject } from 'src/app/data/resource/model/subject.model';
+import { Standard } from 'src/app/data/resource/model/standard.model';
+import { Target } from 'src/app/data/resource/model/target.model';
 
 @Component({
   selector: 'sbdl-educational-details',
   templateUrl: './educational-details.component.html',
   styleUrls: ['./educational-details.component.scss']
 })
-export class EducationalDetailsComponent {
+export class EducationalDetailsComponent implements OnInit {
 
   @Input()
   properties: ResourceProperties;
 
   readonly baseClaimsImagePath = '/assets/images/claims/';
 
-  get gradeShortNames(): string[] {
-    return this.properties.grades.map(g => g.shortName);
+  gradeShortNames: string[];
+  orderedStandards: Standard[];
+  orderedTargets: Target[];
+
+  public ngOnInit() {
+    this.gradeShortNames = this.properties.grades.map(g => g.shortName);
+    this.orderedStandards = this.properties.standards.sort((a, b) => a.title.localeCompare(b.title));
+    this.orderedTargets = this.properties.targets.sort((a, b) => a.number.localeCompare(b.number));
   }
 
   getClaimImagePath = (subject: Subject, claim: Claim) => {
