@@ -4,8 +4,8 @@
   <sbdl-note *ngFor="let note of notes" [note]="note">
   </sbdl-note>
   <sbdl-button class="plain" (click)="addNote()">
-    <span *ngIf="notes.length === 0">+ Add a note</span>
-    <span *ngIf="notes.length > 0">+ Add another</span>
+    <span *ngIf="notes.length === 0">+ Add your first note</span>
+    <span *ngIf="notes.length > 0">+ Add another note</span>
   </sbdl-button>
 </div>
 <div *ngIf="authoringNote">
