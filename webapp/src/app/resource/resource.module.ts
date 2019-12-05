@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SbdlCommonModule } from '../common/common.module';
 import { PipesModule } from '../pipes/pipes.module';
+import { NotesModule } from '../notes/notes.module';
 import { ActionsComponent } from './components/actions/actions.component';
 import { AttachmentsComponent } from './components/attachments/attachments.component';
 import { DifferentiationComponent } from './instructional/differentiation/differentiation.component';
@@ -67,6 +68,7 @@ export function getResourceComponents(resourceComponent: ResourceComponent) {
   imports: [
     CommonModule,
     PipesModule,
+    NotesModule,
     SbdlCommonModule,
     RouterModule
   ],

@@ -15,14 +15,25 @@
 </nav>
 <section class="resource-content">
   <sbdl-professional-content
+    [notes]="notes"
+    [notesVisible]="notesVisible"
     [resource]="resource"
     (outlineLoaded)="setOutline($event)"
     (printingModeChanged)="printingModeChanged($event)"
     (readingModeChanged)="readingModeChanged($event)"
+    (notesVisibilityChanged)="notesVisibilityChanged($event)"
   ></sbdl-professional-content>
 </section>
 <aside class="resource-properties">
-  <sbdl-resource-properties [properties]="resource.properties">
+  <sbdl-resource-properties
+    [properties]="resource.properties"
+    [hidden]="notesVisible">
     <h5>Professional Learning</h5>
   </sbdl-resource-properties>
+  <sbdl-notes
+    [hidden]="!notesVisible"
+    [notes]="notes"
+    [resource]="resource"
+    (notesChanged)="notesChanged($event)">
+  </sbdl-notes>
 </aside>

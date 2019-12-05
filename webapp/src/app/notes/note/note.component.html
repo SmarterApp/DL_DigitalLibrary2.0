@@ -1,0 +1,10 @@
+<dynamic-html [content]="note.content"></dynamic-html>
+<div class="body-2">
+  <div class="font-light emphasis-medium last-modified">
+    {{ note.lastModified | date: 'LLL. d, yyyy @ h:mmaa' }}
+  </div>
+  <!--
+  <a href="#">Edit</a>
+  <a href="#">Delete</a>
+  -->
+</div>

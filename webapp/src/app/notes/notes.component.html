@@ -1,0 +1,23 @@
+<div *ngIf="!authoringNote">
+  <h2>Notes</h2>
+  <!--<h3>Resource Notes</h3>-->
+  <sbdl-note *ngFor="let note of notes" [note]="note">
+  </sbdl-note>
+  <sbdl-button class="plain" (click)="addNote()">
+    <span *ngIf="notes.length === 0">+ Add your first note</span>
+    <span *ngIf="notes.length > 0">+ Add another note</span>
+  </sbdl-button>
+</div>
+<div *ngIf="authoringNote">
+  <h2>Add a Note</h2>
+  <angular-editor
+    [config]="editorConfig"
+    [(ngModel)]="newNoteContent">
+  </angular-editor>
+  <div class=dialog-buttons>
+    <sbdl-button (click)="cancelNote()">Cancel</sbdl-button>
+    <sbdl-button class="primary" (click)="saveNote()">
+      <i class="fas fa-check-circle"></i> Save
+    </sbdl-button>
+  </div>
+</div>

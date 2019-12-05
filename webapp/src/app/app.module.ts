@@ -15,6 +15,7 @@ import { JoinPipe } from './pipes/join.pipe';
 import { IconComponent } from './common/icon/icon.component';
 import { SvgDefsComponent } from './common/icon/svg-defs.component';
 import { SbdlCommonModule } from './common/common.module';
+import { NotesModule } from './notes/notes.module';
 
 import { OKTA_CALLBACK_PATH } from './common/constants';
 export function initializeApp(appConfig: AppConfig) {
@@ -43,6 +44,7 @@ const oktaConfig = {
     LayoutModule,
     HomeModule,
     ResourceModule,
+    NotesModule,
     SbdlCommonModule
   ],
   providers: [{

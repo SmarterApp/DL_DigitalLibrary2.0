@@ -11,6 +11,12 @@ import { PopoverService } from 'src/app/common/controls/popover/popover.service'
 export class ActionsComponent implements OnInit {
 
   @Input()
+  hasNotes: boolean;
+
+  @Input()
+  notesVisible: boolean;
+
+  @Input()
   resource: Resource;
 
   @Output()
@@ -18,6 +24,9 @@ export class ActionsComponent implements OnInit {
 
   @Output()
   printingModeChanged = new EventEmitter<boolean>();
+
+  @Output()
+  notesVisibilityChanged = new EventEmitter<boolean>();
 
   @ViewChild('shareButton', { static: false, read: ViewContainerRef })
   shareContainer: ViewContainerRef;
@@ -93,4 +102,8 @@ export class ActionsComponent implements OnInit {
     this.readingModeChanged.emit(this.readingMode);
   }
 
+  toggleNotes() {
+    this.notesVisible = !this.notesVisible;
+    this.notesVisibilityChanged.emit(this.notesVisible);
+  }
 }

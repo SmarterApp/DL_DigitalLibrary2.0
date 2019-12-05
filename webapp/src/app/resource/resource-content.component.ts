@@ -2,6 +2,7 @@ import { EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Map } from 'immutable';
 import { commentsSectionOptions } from './components/section/section.definitions';
 import { Resource } from '../data/resource/model/resource.model';
+import { Note } from '../data/notes/model/note.model';
 import { DocumentOutline, DocumentSection, DocumentSectionType } from './components/outline/document-outline.model';
 
 /**
@@ -9,10 +10,17 @@ import { DocumentOutline, DocumentSection, DocumentSectionType } from './compone
  * No @Component attribute here because it is never used directly.
  */
 export class ResourceContentComponent implements OnInit {
+
     commentsOptions = commentsSectionOptions;
 
     @Input()
     resource: Resource;
+
+    @Input()
+    notes: Note[];
+
+    @Input()
+    notesVisible: boolean;
 
     @Output()
     outlineLoaded = new EventEmitter<DocumentOutline>();
@@ -22,6 +30,9 @@ export class ResourceContentComponent implements OnInit {
 
     @Output()
     printingModeChanged = new EventEmitter<boolean>();
+
+    @Output()
+    notesVisibilityChanged = new EventEmitter<boolean>();
 
     protected outline: DocumentOutline = Map<DocumentSectionType, DocumentSection>();
 
@@ -48,6 +59,10 @@ export class ResourceContentComponent implements OnInit {
 
     emitPrintingModeChanged(event) {
       this.printingModeChanged.emit(event);
+    }
+
+    emitNotesVisibilityChanged(event) {
+      this.notesVisibilityChanged.emit(event);
     }
 
     protected emitOutlineLoadedEvent() {

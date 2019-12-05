@@ -10,6 +10,12 @@
     background-color: $action-700;
 }
 
+.plain > .mdc-button {
+  color: $action-700;
+  text-transform: none;
+    font-family: $font-family-body;
+}
+
 .mdc-icon-button {
     color: $action-700;
     font-size: 1.2rem;

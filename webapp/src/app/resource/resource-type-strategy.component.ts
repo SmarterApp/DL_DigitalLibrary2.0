@@ -44,6 +44,7 @@ export class ResourceTypeStrategyComponent implements OnInit {
       const componentRef = viewContainerRef.createComponent(componentFactory);
 
       componentRef.instance.resource = data.resource;
+      componentRef.instance.notes = data.notes;
       this.componentInst = componentRef.instance;
     });
 
