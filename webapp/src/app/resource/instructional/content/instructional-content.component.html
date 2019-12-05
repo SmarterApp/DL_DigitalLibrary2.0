@@ -1,6 +1,8 @@
 <div class="top-header">
   <img src="/assets/images/yellow-spot.png" alt="" />
   <sbdl-actions
+    [notesVisible]="notesVisible"
+    [hasNotes]="notes.length > 0"
     [resource]= "resource"
     (readingModeChanged)="emitReadingModeChanged($event)"
     (printingModeChanged)="emitPrintingModeChanged($event)"

@@ -1,6 +1,6 @@
 
 <sbdl-button-icon buttonTitle="Notes" (click)="toggleNotes()">
-  <sbdl-icon [ngClass]="{'has-notes': notesVisible}" icon="take-note"></sbdl-icon>
+  <sbdl-icon [ngClass]="{'has-notes': hasNotes}" icon="take-note"></sbdl-icon>
 </sbdl-button-icon>
 <sbdl-button-icon buttonTitle="Share" (click)="share()"><i class="far fa-share"></i></sbdl-button-icon>
 <ng-container #shareButton></ng-container>

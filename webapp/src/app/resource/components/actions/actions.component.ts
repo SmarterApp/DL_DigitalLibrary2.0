@@ -11,6 +11,12 @@ import { PopoverService } from 'src/app/common/controls/popover/popover.service'
 export class ActionsComponent implements OnInit {
 
   @Input()
+  hasNotes: boolean;
+
+  @Input()
+  notesVisible: boolean;
+
+  @Input()
   resource: Resource;
 
   @Output()
@@ -28,7 +34,6 @@ export class ActionsComponent implements OnInit {
   @ViewChild('sharePopover', { static: false })
   sharePopover: ElementRef;
 
-  notesVisible = false;
   togglingBookmarked = false;
   readingMode = false;
   hideReadingModeToggle = false;
