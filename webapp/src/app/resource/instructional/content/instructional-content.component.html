@@ -6,41 +6,41 @@
     [resource]= "resource"
     (readingModeChanged)="emitReadingModeChanged($event)"
     (printingModeChanged)="emitPrintingModeChanged($event)"
-    (notesVisibilityChanged)="emitNotesVisibilityChanged($event)">
-  </sbdl-actions>
+    (notesVisibilityChanged)="emitNotesVisibilityChanged($event)"
+  ></sbdl-actions>
 </div>
 
 <sbdl-header
   [resource]="resource"
-  (attachmentsClicked)="scrollToAttachments()">
-</sbdl-header>
+  (attachmentsClicked)="scrollToAttachments()"
+></sbdl-header>
 
 <sbdl-get-started
   [resource]="resource"
-  (sectionLoaded)="addDocumentSection($event)">
-</sbdl-get-started>
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-get-started>
 
 <sbdl-step-by-step
   [steps]="resource.stepByStep"
-  (sectionLoaded)="addDocumentSection($event)">
-</sbdl-step-by-step>
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-step-by-step>
 
 <sbdl-attachments
   [attachments]="resource.attachments"
-  (sectionLoaded)="addDocumentSection($event)">
-</sbdl-attachments>
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-attachments>
 
 <sbdl-differentiation
   [resource]="resource"
-  (sectionLoaded)="addDocumentSection($event)">
-</sbdl-differentiation>
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-differentiation>
 
 <sbdl-section
   [contentHtml]="resource.thingsToConsider"
-  [options]="commentsOptions" (sectionLoaded)="addDocumentSection($event)">
-</sbdl-section>
+  [options]="commentsOptions" (sectionLoaded)="addDocumentSection($event)"
+></sbdl-section>
 
 <sbdl-formative
   [resource]="resource"
-  (sectionLoaded)="addDocumentSection($event)">
-</sbdl-formative>
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-formative>
