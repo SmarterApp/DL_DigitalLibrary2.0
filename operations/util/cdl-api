@@ -1,0 +1,55 @@
+#!/bin/bash
+
+## Simple CLI wrapper for the CDL API
+
+api_base_url="${CDL_API_BASE_URL:-https://api-dev.dl.smarterbalanced.org}"
+if [ $# -eq 1 ]; then
+  method="GET"
+  url="$1"
+  data=""
+elif [ $# -eq 2 ]; then
+  method="$1"
+  url="$2"
+  data=""
+elif [ $# -eq 3 ]; then
+  method="$1"
+  url="$2"
+  data="$3"
+else
+  1>&2 cat << USAGE
+Simple CLI wrapper for Tools For Teachers Common Data Layer API
+
+Usage:
+
+  ./cdl-api <url-fragment>
+  ./cdl-api <http-method> <url-fragment>
+  ./cdl-api <http-method> <url-fragment> <data>
+
+Configuration:
+
+  The URL base can be changed by setting the CDL_API_BASE_URL environment
+  variable.
+
+  This script expects a naked API bearer token to be present in a file named
+  "credential" in the current working directory. The "refresh-credential.sh"
+  script can be used to fetch and save a new credential from the API. 
+
+Examples:
+
+  ./cdl-api /resource/1
+
+  ./cdl-api GET /resource/1
+
+  ./cdl-api POST /bookmark/1 '{"isBookmarked": true}'
+USAGE
+  exit 1
+
+fi
+
+curl -sf -X "$method" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $(cat credential)" \
+  -H "Origin: https://dev.webapp.dl.smarterbalanced.org" \
+  "${api_base_url}/api$url" \
+  -d "$data" \
+  -v
