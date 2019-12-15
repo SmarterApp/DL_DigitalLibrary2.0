@@ -1,0 +1,16 @@
+<article *ngIf="resource.sampleItemContent" #sectionHeader class="section-container">
+  <h4 class="leading-icon">
+    <i class="far fa-universal-access"></i>Strategy In Action
+  </h4>
+  <div *ngIf="resource.sampleItemContent.link; else elseBlock">
+    <a [href]="resource.sampleItemContent.link" target="_blank">
+      Try out the {{ resource.properties.title }} on the Sample Items Website
+    </a>
+    <p>{{ resource.sampleItemsContent.description }}</p>
+  </div>
+  <ng-template #elseBlock>
+    <p>This is a non-embedded tool. Thus, there is no demonstration on the
+    Sample Items Website</p>
+  </ng-template>
+</article>
+<hr *ngIf="sampleItemContent"/>

@@ -1,0 +1,14 @@
+<article *ngIf="content" #sectionHeader class="section-container">
+  <h4 class="leading-icon">
+    <sbdl-icon icon="strategies"></sbdl-icon>Strategy In Action
+  </h4>
+  <h6>Clarify</h6>
+  <dynamic-html [content]="content.clarify"></dynamic-html>
+  <h6>Elicit</h6>
+  <dynamic-html [content]="content.elicit"></dynamic-html>
+  <h6>Interpret</h6>
+  <dynamic-html [content]="content.interpret"></dynamic-html>
+  <h6>Act</h6>
+  <dynamic-html [content]="content.act"></dynamic-html>
+</article>
+<hr *ngIf="content"/>

@@ -36,6 +36,9 @@ import { ProfessionalOverviewComponent } from './professional/overview/professio
 import { ProfessionalResourceComponent } from './professional/professional-resource.component';
 
 import { StrategyContentComponent } from './strategy/content/strategy-content.component';
+import { StrategyInActionAccessibilityComponent } from './strategy/strategy-in-action/strategy-in-action-accessibility.component';
+import { StrategyInActionFormativeComponent } from './strategy/strategy-in-action/strategy-in-action-formative.component';
+import { StrategyOverviewComponent } from './strategy/overview/strategy-overview.component';
 import { StrategyPropertiesComponent } from './strategy/properties/strategy-properties.component';
 import { StrategyResourceComponent } from './strategy/strategy-resource.component';
 
@@ -72,6 +75,9 @@ import { StrategyResourceComponent } from './strategy/strategy-resource.componen
     ProfessionalResourceComponent,
 
     StrategyContentComponent,
+    StrategyInActionAccessibilityComponent,
+    StrategyInActionFormativeComponent,
+    StrategyOverviewComponent,
     StrategyPropertiesComponent,
     StrategyResourceComponent
   ],

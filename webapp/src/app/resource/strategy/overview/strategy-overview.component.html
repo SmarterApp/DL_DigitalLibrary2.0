@@ -1,0 +1,24 @@
+<article #sectionHeader class="overview-container">
+  <h4 class="leading-icon">
+    <i class="far fa-hand-point-right"></i>Overview
+  </h4>
+  <div>
+    <h5>
+      Description
+    </h5>
+    <p>
+      <sbdl-read-more [text] = "resource.stratOverviewContent.overview"></sbdl-read-more>
+    </p>
+  </div>
+  <div>
+    <h5>Student Benefits</h5>
+    <p>
+      <sbdl-read-more [text] = "resource.stratOverviewContent.studentBenefits"></sbdl-read-more>
+    </p>
+  </div>
+  <div>
+    <h5>Suggested Materials</h5>
+    <div [innerHtml]="resource.stratOverviewContent.suggestedMaterial"></div>
+  </div>
+</article>
+<hr/>

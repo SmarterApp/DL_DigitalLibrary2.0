@@ -5,6 +5,8 @@
     [hasNotes]="notes.length > 0"
     [resource]="resource"
     (readingModeChanged)="emitReadingModeChanged($event)"
+    (printingModeChanged)="emitPrintingModeChanged($event)"
+    (notesVisibilityChanged)="emitNotesVisibilityChanged($event)"
   ></sbdl-actions>
 </div>
 
@@ -13,28 +15,36 @@
   (attachmentsClicked)="scrollToAttachments()"
 ></sbdl-header>
 
-<!--
 <sbdl-strategy-overview
-  [resource]="resource.stratOverviewContent"
+  [resource]="resource"
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-strategy-overview>
 
 <sbdl-simple-section
-  [contentHtml]="customSection.contentHtml"
-  [options]="customSection"
-  (sectionElementLoaded)="setCustomSection($event, customSection)"
+  [contentHtml]="resource.stepByStep"
+  [options]="stepByStepSectionOptions"
+  (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-simple-section>
--->
+
 <sbdl-attachments
   [attachments]="resource.attachments"
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-attachments>
-<!--
-<div *ngFor="let section of sections">
-  <sbdl-simple-section
-    [contentHtml]="section.contentHtml"
-    [options]="section"
-    (sectionElementLoaded)="setSection($event, section)"
-  ></sbdl-simple-section>
-</div>
--->
+
+<sbdl-simple-section
+  [contentHtml]="resource.thingsToConsider"
+  [options]="commentsSectionOptions"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-simple-section>
+
+<sbdl-strategy-in-action-formative
+  *ngIf="isFormative()"
+  [content]="resource.strategyAction"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-strategy-in-action-formative>
+
+<sbdl-strategy-in-action-accessibility
+  *ngIf="!isFormative()"
+  [resource]="resource"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-strategy-in-action-accessibility>
