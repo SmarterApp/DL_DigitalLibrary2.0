@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PrintableSectionComponent } from 'src/app/resource/printable-section.component';
 import { DocumentSection, DocumentSectionType } from 'src/app/resource/components/outline/document-outline.model';
-import { FormativeAssessmentContent } from 'src/app/data/resource/model/formative-assessment-content.model';
+import { FormativeStrategyResource } from 'src/app/data/resource/model/formative-strategy.model';
 
 @Component({
   selector: 'sbdl-strategy-in-action-formative',
@@ -12,7 +12,7 @@ import { FormativeAssessmentContent } from 'src/app/data/resource/model/formativ
 export class StrategyInActionFormativeComponent extends PrintableSectionComponent implements AfterViewInit {
 
   @Input()
-  content: FormativeAssessmentContent;
+  resource: FormativeStrategyResource;
 
   constructor(sanitizer: DomSanitizer) {
     super(sanitizer);

@@ -39,7 +39,7 @@
 
 <sbdl-strategy-in-action-formative
   *ngIf="isFormative()"
-  [content]="resource.strategyAction"
+  [resource]="resource"
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-strategy-in-action-formative>
 
