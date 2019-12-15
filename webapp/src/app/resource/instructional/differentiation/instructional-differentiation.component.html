@@ -3,11 +3,11 @@
     <span *ngIf="hasDifferentiationContent()">Differentiation</span>
     <span *ngIf="!hasDifferentiationContent()">Accessibility Strategies Used</span>
   </h4>
-  <sbdl-differentiation-content
+  <sbdl-instructional-differentiation-content
     *ngIf="hasDifferentiationContent()"
     [content]="resource.differentiation"
     (sectionLoaded)="addSubsection($event)">
-  </sbdl-differentiation-content>
+  </sbdl-instructional-differentiation-content>
   <sbdl-strategy-reference-list
     [title]="hasDifferentiationContent() ? 'Accessibility Strategies Used' : ''"
     (sectionLoaded)="addSubsection($event)"

@@ -4,17 +4,17 @@ import { DocumentSection, DocumentSectionType } from '../outline/document-outlin
 import { PrintableSectionComponent } from '../../printable-section.component';
 
 @Component({
-  selector: 'sbdl-section',
-  templateUrl: './section.component.html',
-  styleUrls: ['./section.component.scss', '../../printable-section.component.scss']
+  selector: 'sbdl-simple-section',
+  templateUrl: './simple-section.component.html',
+  styleUrls: ['./simple-section.component.scss', '../../printable-section.component.scss']
 })
-export class SectionComponent extends PrintableSectionComponent implements AfterViewInit {
+export class SimpleSectionComponent extends PrintableSectionComponent implements AfterViewInit {
 
   @Input()
   contentHtml: string;
 
   @Input()
-  options: SectionOptions;
+  options: SimpleSectionOptions;
 
   constructor(sanitizer: DomSanitizer) {
     super(sanitizer);
@@ -36,7 +36,7 @@ export class SectionComponent extends PrintableSectionComponent implements After
   }
 }
 
-export interface SectionOptions {
+export interface SimpleSectionOptions {
   title: string;
   fontAwesomeIcon?: string;
   sbdlIcon?: string;

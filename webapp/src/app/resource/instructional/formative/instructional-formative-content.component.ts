@@ -5,11 +5,11 @@ import { PrintableSectionComponent } from 'src/app/resource/printable-section.co
 import { DocumentSection, DocumentSectionType } from 'src/app/resource/components/outline/document-outline.model';
 
 @Component({
-  selector: 'sbdl-formative-content',
-  templateUrl: './formative-content.component.html',
+  selector: 'sbdl-instructional-formative-content',
+  templateUrl: './instructional-formative-content.component.html',
   styleUrls: ['../../printable-section.component.scss']
 })
-export class FormativeContentComponent extends PrintableSectionComponent implements AfterViewInit {
+export class InstructionalFormativeContentComponent extends PrintableSectionComponent implements AfterViewInit {
 
   @Input()
   content: FormativeAssessmentContent;
