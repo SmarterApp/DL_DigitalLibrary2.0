@@ -35,10 +35,11 @@
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-differentiation>
 
-<sbdl-section
+<sbdl-simple-section
   [contentHtml]="resource.thingsToConsider"
-  [options]="commentsOptions" (sectionLoaded)="addDocumentSection($event)"
-></sbdl-section>
+  [options]="commentsSectionOptions"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-simple-section>
 
 <sbdl-formative
   [resource]="resource"

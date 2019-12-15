@@ -3,7 +3,7 @@ import { Map } from 'immutable';
 import { Resource } from 'src/app/data/resource/model/resource.model';
 import { getCssVar } from 'src/app/common/utils';
 import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
-import { commentsSectionOptions } from '../section/section.definitions';
+import { commentsSectionOptions } from '../simple-section/section.definitions';
 import { DocumentOutline, DocumentSection, DocumentSectionType } from './document-outline.model';
 
 @Component({
