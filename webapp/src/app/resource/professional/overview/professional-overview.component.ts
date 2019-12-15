@@ -21,9 +21,10 @@ export class ProfessionalOverviewComponent extends PrintableSectionComponent imp
   ngAfterViewInit(): void {
     if (this.headerElement) {
       this.sectionLoaded.emit({
-        elementRef: this.headerElement.nativeElement,
-        component: this,
         canPrint: true,
+        component: this,
+        elementRef: this.headerElement.nativeElement,
+        fontAwesomeIcon: 'fa-hand-point-right',
         selectedForPrint: true,
         title: 'Overview',
         type: DocumentSectionType.Overview

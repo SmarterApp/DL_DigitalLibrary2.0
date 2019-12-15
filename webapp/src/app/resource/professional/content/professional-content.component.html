@@ -6,37 +6,37 @@
     [resource]="resource"
     (readingModeChanged)="emitReadingModeChanged($event)"
     (printingModeChanged)="emitPrintingModeChanged($event)"
-    (notesVisibilityChanged)="emitNotesVisibilityChanged($event)">
-  </sbdl-actions>
+    (notesVisibilityChanged)="emitNotesVisibilityChanged($event)"
+  ></sbdl-actions>
 </div>
 
 <sbdl-header
   [resource]="resource"
-  (attachmentsClicked)="scrollToAttachments()">
-</sbdl-header>
+  (attachmentsClicked)="scrollToAttachments()"
+></sbdl-header>
 
 <sbdl-professional-overview
   [resource]="resource"
-  (sectionLoaded)="addDocumentSection($event)">
-</sbdl-professional-overview>
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-professional-overview>
 
 <sbdl-step-by-step
   [steps]="resource.stepByStep"
-  (sectionLoaded)="addDocumentSection($event)">
-</sbdl-step-by-step>
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-step-by-step>
 
 <sbdl-attachments
   [attachments]="resource.attachments"
-  (sectionLoaded)="addDocumentSection($event)">
-</sbdl-attachments>
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-attachments>
 
 <sbdl-simple-section
   [contentHtml]="resource.thingsToConsider"
   [options]="commentsSectionOptions"
-  (sectionLoaded)="addDocumentSection($event)">
-</sbdl-simple-section>
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-simple-section>
 
 <sbdl-professional-formative-list
   [strategies]="resource.formativeAssessmentStrategies"
-  (sectionLoaded)="addDocumentSection($event)">
-</sbdl-professional-formative-list>
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-professional-formative-list>
