@@ -23,6 +23,7 @@ export class BookmarkCardComponent implements OnInit {
   togglingBookmarked = false;
   details: string[];
   joinPipe: JoinPipe = new JoinPipe();
+  resourceTypes = ResourceType;
 
   constructor(private popoverService: PopoverService) { }
 
@@ -78,10 +79,6 @@ export class BookmarkCardComponent implements OnInit {
     }
 
     this.details = result;
-  }
-
-  isProfessionalLearning(): boolean {
-    return this.bookmark.type === ResourceType.ProfessionalLearning;
   }
 
   toggleBookmarked() {

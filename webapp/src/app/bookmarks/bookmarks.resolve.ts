@@ -167,6 +167,25 @@ export class BookmarksResolve implements Resolve<ResourceBookmark[]> {
             targets: [],
             title: '3 Act Tasks'
           }
+        },
+        {
+          id: 52,
+          type: ResourceType.AccessibilityStrategy,
+          hasNotes: false,
+          summary: 'Students may decide to pause during classwork or during a test session based on their needs.',
+          properties: {
+            authorOrg: 'Smarter Balanced',
+            authors: [],
+            claims: [],
+            grades: [],
+            image: null,
+            isBookmarked: true,
+            lastUpdatedDate: new Date('2020-01-01T12:00:01+00:00'),
+            standards: [],
+            subject: { code: null, shortName: null, fullName: null },
+            targets: [],
+            title: 'Breaks'
+          }
         }
       ];
 

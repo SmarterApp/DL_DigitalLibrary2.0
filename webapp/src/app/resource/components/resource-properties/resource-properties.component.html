@@ -1,4 +1,4 @@
 <div class="image-thumbnail">
-  <img [src]="properties.image">
+  <img [src]="properties.image | replaceNullImage">
 </div>
 <ng-content></ng-content>
