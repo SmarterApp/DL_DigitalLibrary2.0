@@ -5,7 +5,7 @@ export interface FormativeStrategyResource extends Resource {
   stratOverviewContent: {
     overview: string;
     studentBenefits: string;
-    suggestedMaterials: string;
+    suggestedMaterial: string;
   };
   stepByStep: string;
   strategyAction: FormativeAssessmentContent;
