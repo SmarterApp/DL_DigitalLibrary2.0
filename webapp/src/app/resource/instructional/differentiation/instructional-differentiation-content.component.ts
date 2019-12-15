@@ -4,11 +4,11 @@ import { PrintableSectionComponent } from 'src/app/resource/printable-section.co
 import { DocumentSection, DocumentSectionType } from 'src/app/resource/components/outline/document-outline.model';
 
 @Component({
-  selector: 'sbdl-differentiation-content',
-  templateUrl: './differentiation-content.component.html',
+  selector: 'sbdl-instructional-differentiation-content',
+  templateUrl: './instructional-differentiation-content.component.html',
   styleUrls: ['../../printable-section.component.scss']
 })
-export class DifferentiationContentComponent extends PrintableSectionComponent implements AfterViewInit {
+export class InstructionalDifferentiationContentComponent extends PrintableSectionComponent implements AfterViewInit {
 
   @Input()
   content: string;

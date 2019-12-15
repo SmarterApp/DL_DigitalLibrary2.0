@@ -15,10 +15,10 @@
   (attachmentsClicked)="scrollToAttachments()">
 </sbdl-header>
 
-<sbdl-overview
+<sbdl-professional-overview
   [resource]="resource"
   (sectionLoaded)="addDocumentSection($event)">
-</sbdl-overview>
+</sbdl-professional-overview>
 
 <sbdl-step-by-step
   [steps]="resource.stepByStep"
@@ -36,7 +36,7 @@
   (sectionLoaded)="addDocumentSection($event)">
 </sbdl-simple-section>
 
-<sbdl-formative-list
+<sbdl-professional-formative-list
   [strategies]="resource.formativeAssessmentStrategies"
   (sectionLoaded)="addDocumentSection($event)">
-</sbdl-formative-list>
+</sbdl-professional-formative-list>

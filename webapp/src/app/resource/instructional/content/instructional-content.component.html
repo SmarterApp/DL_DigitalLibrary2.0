@@ -15,10 +15,10 @@
   (attachmentsClicked)="scrollToAttachments()"
 ></sbdl-header>
 
-<sbdl-get-started
+<sbdl-instructional-get-started
   [resource]="resource"
   (sectionLoaded)="addDocumentSection($event)"
-></sbdl-get-started>
+></sbdl-instructional-get-started>
 
 <sbdl-step-by-step
   [steps]="resource.stepByStep"
@@ -30,10 +30,10 @@
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-attachments>
 
-<sbdl-differentiation
+<sbdl-instructional-differentiation
   [resource]="resource"
   (sectionLoaded)="addDocumentSection($event)"
-></sbdl-differentiation>
+></sbdl-instructional-differentiation>
 
 <sbdl-simple-section
   [contentHtml]="resource.thingsToConsider"
@@ -41,7 +41,7 @@
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-simple-section>
 
-<sbdl-formative
+<sbdl-instructional-formative
   [resource]="resource"
   (sectionLoaded)="addDocumentSection($event)"
-></sbdl-formative>
+></sbdl-instructional-formative>

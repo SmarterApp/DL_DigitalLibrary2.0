@@ -5,11 +5,11 @@ import { PrintableSectionComponent } from 'src/app/resource/printable-section.co
 import { DocumentSection, DocumentSectionType } from 'src/app/resource/components/outline/document-outline.model';
 
 @Component({
-  selector: 'sbdl-get-started',
-  templateUrl: './get-started.component.html',
-  styleUrls: ['./get-started.component.scss', '../../printable-section.component.scss']
+  selector: 'sbdl-instructional-get-started',
+  templateUrl: './instructional-get-started.component.html',
+  styleUrls: ['./instructional-get-started.component.scss', '../../printable-section.component.scss']
 })
-export class GetStartedComponent extends PrintableSectionComponent implements AfterViewInit {
+export class InstructionalGetStartedComponent extends PrintableSectionComponent implements AfterViewInit {
 
   @Input()
   resource: InstructionalResource;

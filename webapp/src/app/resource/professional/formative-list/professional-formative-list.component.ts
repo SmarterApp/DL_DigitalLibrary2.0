@@ -5,11 +5,11 @@ import { PrintableSectionComponent } from 'src/app/resource/printable-section.co
 import { DocumentSection, DocumentSectionType } from 'src/app/resource/components/outline/document-outline.model';
 
 @Component({
-  selector: 'sbdl-formative-list',
-  templateUrl: './formative-list.component.html',
-  styleUrls: ['./formative-list.component.scss', '../../printable-section.component.scss']
+  selector: 'sbdl-professional-formative-list',
+  templateUrl: './professional-formative-list.component.html',
+  styleUrls: ['./professional-formative-list.component.scss', '../../printable-section.component.scss']
 })
-export class FormativeListComponent extends PrintableSectionComponent implements AfterViewInit {
+export class ProfessionalFormativeListComponent extends PrintableSectionComponent implements AfterViewInit {
 
   @Input()
   strategies: ResourceStrategyReference;

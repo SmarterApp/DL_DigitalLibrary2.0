@@ -1,13 +1,12 @@
 <article #sectionHeader class="formative-container">
   <h4  class="leading-icon">
     <sbdl-icon icon="strategies"></sbdl-icon>
-    <span *ngIf="!isProfessional()">Formative Assessment Process</span>
-    <span *ngIf="isProfessional()">Formative Assessment Strategies</span>
+    Formative Assessment Process
   </h4>
-  <sbdl-formative-content
+  <sbdl-instructional-formative-content
     [content]="resource.formativeAssessHowTo"
     (sectionLoaded)="addSubsection($event)">
-  </sbdl-formative-content>
+  </sbdl-instructional-formative-content>
   <sbdl-strategy-reference-list
     title="Strategies Used"
     [strategies]="resource.formativeAssessmentStrategies"
