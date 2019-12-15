@@ -37,7 +37,7 @@
 
     .print-url {
       color: $neutral-500;
-      display: block;
+      display: none;
       grid-area: url;
       margin-bottom: $spacer-sm;
     }
@@ -88,5 +88,8 @@
 }
 
 @media only print {
-  :host .attachments-btn { display: none; }
+  :host {
+    .attachments-btn { display: none; }
+    .print-url { display: block; }
+  }
 }
