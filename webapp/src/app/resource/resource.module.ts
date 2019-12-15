@@ -35,6 +35,10 @@ import { ProfessionalFormativeListComponent } from './professional/formative-lis
 import { ProfessionalOverviewComponent } from './professional/overview/professional-overview.component';
 import { ProfessionalResourceComponent } from './professional/professional-resource.component';
 
+import { StrategyContentComponent } from './strategy/content/strategy-content.component';
+import { StrategyPropertiesComponent } from './strategy/properties/strategy-properties.component';
+import { StrategyResourceComponent } from './strategy/strategy-resource.component';
+
 @NgModule({
   declarations: [
 
@@ -65,7 +69,11 @@ import { ProfessionalResourceComponent } from './professional/professional-resou
     ProfessionalContentComponent,
     ProfessionalFormativeListComponent,
     ProfessionalOverviewComponent,
-    ProfessionalResourceComponent
+    ProfessionalResourceComponent,
+
+    StrategyContentComponent,
+    StrategyPropertiesComponent,
+    StrategyResourceComponent
   ],
   imports: [
     CommonModule,
@@ -80,6 +88,7 @@ import { ProfessionalResourceComponent } from './professional/professional-resou
     // in order to be used.
     InstructionalResourceComponent,
     ProfessionalResourceComponent,
+    StrategyResourceComponent,
     ResourceTypeStrategyComponent,
   ]
 })

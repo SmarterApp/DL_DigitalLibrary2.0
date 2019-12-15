@@ -1,0 +1,40 @@
+<div *ngIf="isFormative()">
+  <h6 class="link-title">Learn how this strategy relates to the Formative Assessment Process.</h6>
+
+  <a href="https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf"
+     class="link-card" target="_blank" #link>
+    <div class="type-info">
+      <span>Formative Assessment Process Flier</span>
+      <i class="far fa-file-pdf"></i>
+    </div>
+  </a>
+
+  <a href="https://www.youtube.com/watch?v=wpwZCqvt70U"
+     class="link-card" target="_blank" #link>
+    <div class="type-info">
+      <span>Understanding the Formative Assessment Process</span>
+      <i class="far fa-youtube"></i>
+    </div>
+  </a>
+</div>
+
+<div *ngIf="!isFormative()">
+  <h5 *ngIf="properties.category">{{ properties.category }}</h5>
+  <h6 class="link-title">Learn more about accessibility.</h6>
+
+  <a href="https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf"
+     class="link-card" target="_blank" #link>
+    <div class="type-info">
+      <span>Usability, Accessibility, and Accommodations Guidelines</span>
+      <i class="far fa-file-pdf"></i>
+    </div>
+  </a>
+
+  <a href="https://portal.smarterbalanced.org/library/en/about-the-individual-student-assessment-accessibility-profile-isaap-process-and-the-isaap-tool.pdf"
+     class="link-card" target="_blank" #link>
+    <div class="type-info">
+      <span>Individual Student Assessment Accessibility Profile (ISAAP) Tool</span>
+      <i class="far fa-file-pdf"></i>
+    </div>
+  </a>
+</div>

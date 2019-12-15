@@ -1,0 +1,40 @@
+<div class="top-header">
+  <img src="/assets/images/yellow-spot.png" alt="" />
+  <sbdl-actions
+    [notesVisible]="notesVisible"
+    [hasNotes]="notes.length > 0"
+    [resource]="resource"
+    (readingModeChanged)="emitReadingModeChanged($event)"
+  ></sbdl-actions>
+</div>
+
+<sbdl-header
+  [resource]="resource"
+  (attachmentsClicked)="scrollToAttachments()"
+></sbdl-header>
+
+<!--
+<sbdl-strategy-overview
+  [resource]="resource.stratOverviewContent"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-strategy-overview>
+
+<sbdl-simple-section
+  [contentHtml]="customSection.contentHtml"
+  [options]="customSection"
+  (sectionElementLoaded)="setCustomSection($event, customSection)"
+></sbdl-simple-section>
+-->
+<sbdl-attachments
+  [attachments]="resource.attachments"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-attachments>
+<!--
+<div *ngFor="let section of sections">
+  <sbdl-simple-section
+    [contentHtml]="section.contentHtml"
+    [options]="section"
+    (sectionElementLoaded)="setSection($event, section)"
+  ></sbdl-simple-section>
+</div>
+-->

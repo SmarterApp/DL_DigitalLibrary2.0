@@ -1,0 +1,42 @@
+<nav class="outline">
+  <sbdl-outline
+    [resource]="resource"
+    [outline]="outline"
+    [readingMode]="readingMode"
+    [hidden]="printingMode"
+  ></sbdl-outline>
+  <sbdl-enhanced-printing
+    [resource]="resource"
+    [outline]="outline"
+    [hidden]="!printingMode"
+    (printingModeChanged)="printingModeChanged($event)"
+    (documentOutlineChanged)="setOutline($event)"
+  ></sbdl-enhanced-printing>
+</nav>
+<section class="resource-content">
+  <sbdl-strategy-content
+    [notes]="notes"
+    [notesVisible]="notesVisible"
+    [resource]="resource"
+    (outlineLoaded)="setOutline($event)"
+    (readingModeChanged)="readingModeChanged($event)"
+    (printingModeChanged)="printingModeChanged($event)"
+    (notesVisibilityChanged)="notesVisibilityChanged($event)"
+  ></sbdl-strategy-content>
+</section>
+<aside class="resource-properties">
+  <sbdl-resource-properties
+    [properties]="resource.properties"
+    [hidden]="notesVisible" >
+    <sbdl-strategy-properties
+      [properties]="resource.properties"
+      [resourceType]="resource.type"
+    ></sbdl-strategy-properties>
+  </sbdl-resource-properties>
+  <sbdl-notes
+    [hidden]="!notesVisible"
+    [notes]="notes"
+    [resource]="resource"
+    (notesChanged)="notesChanged($event)"
+  ></sbdl-notes>
+</aside>
