@@ -11,6 +11,7 @@ export enum DocumentSectionType {
   StepByStep = 'step-by-step',
   Attachments = 'attachments',
   AssessmentInfo = 'assessment-info',
+  StrategyInAction = 'strategy-in-action',
 
   Subsection = 'subsection'
 }
