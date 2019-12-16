@@ -3,8 +3,9 @@ import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
 import { ResourceContentComponent } from '../../resource-content.component';
 import { FormativeStrategyResource } from '../../../data/resource/model/formative-strategy.model';
 import { AccessibilityStrategyResource } from '../../../data/resource/model/accessibility-strategy.model';
-import { commentsSectionOptions, stepByStepSectionOptions,
-         strategyInActionSectionOptions } from '../../components/simple-section/section.definitions';
+import { commentsSectionOptions, instructionalUseSectionOptions,
+         stepByStepSectionOptions, strategyInActionSectionOptions
+} from '../../components/simple-section/section.definitions';
 
 @Component({
   selector: 'sbdl-strategy-content',
@@ -17,6 +18,7 @@ export class StrategyContentComponent extends ResourceContentComponent {
   resource: FormativeStrategyResource | AccessibilityStrategyResource;
 
   commentsSectionOptions = commentsSectionOptions;
+  instructionalUseSectionOptions = instructionalUseSectionOptions;
   stepByStepSectionOptions = stepByStepSectionOptions;
   strategyInActionSectionOptions = strategyInActionSectionOptions;
 
@@ -24,7 +26,14 @@ export class StrategyContentComponent extends ResourceContentComponent {
     return this.resource.type === ResourceType.FormativeStrategy;
   }
 
-  constructor() {
+  formativeContent(): string {
+    return (this.resource as FormativeStrategyResource).stepByStep;
+  }
+
+  accessibilityContent(): string {
+    return (this.resource as AccessibilityStrategyResource).instructionalUse;
+  }
+constructor() {
     super();
   }
 }

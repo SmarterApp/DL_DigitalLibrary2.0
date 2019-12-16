@@ -8,11 +8,13 @@ export const commentsSectionOptions: SimpleSectionOptions = {
   sectionType: DocumentSectionType.ThingsToConsider
 };
 
+// Instructional Use is specific to Accessibility Strategies and takes the
+// place of Step By Step.
 export const instructionalUseSectionOptions: SimpleSectionOptions = {
   title: 'Instructional Use',
   sbdlIcon: 'steps',
   iconBackground: 'yellow',
-  sectionType: DocumentSectionType.Subsection
+  sectionType: DocumentSectionType.StepByStep
 };
 
 export const strategyInActionSectionOptions: SimpleSectionOptions = {
