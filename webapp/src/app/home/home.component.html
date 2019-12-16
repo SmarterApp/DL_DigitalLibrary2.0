@@ -1,13 +1,46 @@
-<article>
+<div class="watermarks">
+  <img class="green" src="/assets/images/green-spot-2.png" aria-hidden="true">
+  <img class="yellow" src="/assets/images/yellow-spot-6.png" aria-hidden="true">
+  <img class="blue" src="/assets/images/blue-spot-3.png" aria-hidden="true">
+</div>
+<main>
+  <img class="logo-full"
+       src="/assets/svg/tft-logo-full.svg"
+       alt="Tools for Teachers from Smarter Balanced">
+  <img class="dashed-line"
+       src="/assets/svg/dashed-line.svg"
+       aria-hidden="true">
   <h1>
-    <div class="line-one">Discover</div>
-    Resources.
+    Discover <span class="strong-green">classroom </span>
+    <span class="strong-blue">resources</span> you can use today.
   </h1>
-  <section>
-    <div>
-      <b>Explore classroom resources teachers can use today.</b> 
-      <p class="caption">Community created and professionally curated resources to help you and your students excel.</p>
-    </div>
-    <sbdl-search [filters]="filters"></sbdl-search>
-  </section>
-</article>
+  <p>
+  Educator-created lessons, activities, strategies, and professional
+  development to help tailor instruction and boost learning.
+  </p>
+  <sbdl-search [filters]="filters"></sbdl-search>
+</main>
+
+<hr/>
+
+<section class="promoted-previews">
+  <div class="watermarks">
+    <img class="yellow" src="/assets/images/yellow-spot-7.png">
+    <img class="blue" src="/assets/images/blue-spot-4.png">
+    <img class="green" src="/assets/images/green-spot-4.png">
+  </div>
+  <h1>Expand Your Toolkit</h1>
+  <div class="caption emphasis-medium">
+    Check out the following samples of teacher-approved resources for a preview
+    of time-saving tools you can use. Or
+    <a [routerLink]="['/search']">search for your own resources.</a>
+  </div>
+</section>
+
+<hr/>
+
+<section class="promoted-videos">
+
+</section>
+
+<hr/>
