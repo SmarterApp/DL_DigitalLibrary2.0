@@ -21,8 +21,16 @@
 ></sbdl-strategy-overview>
 
 <sbdl-simple-section
-  [contentHtml]="resource.stepByStep"
+  *ngIf="isFormative()"
+  [contentHtml]="formativeContent"
   [options]="stepByStepSectionOptions"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-simple-section>
+
+<sbdl-simple-section
+  *ngIf="!isFormative()"
+  [contentHtml]="accessibilityContent"
+  [options]="instructionalUseSectionOptions"
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-simple-section>
 

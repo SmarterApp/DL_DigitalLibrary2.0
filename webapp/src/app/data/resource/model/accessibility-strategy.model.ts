@@ -6,7 +6,7 @@ export interface AccessibilityStrategyResource extends Resource {
     studentBenefits: string;
     suggestedMaterial: string;
   };
-  stepByStep: string;
+  instructionalUse: string;
   sampleItemContent: {
     linkToSample: string;
     description: string;
