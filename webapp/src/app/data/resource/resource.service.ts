@@ -37,6 +37,7 @@ export class ResourceService {
 
   private resourceFromJson = (resourceJson: any): Resource => {
     const resourceType = resourceJson.type as ResourceType;
+
     if (!Object.values(ResourceType).includes(resourceType)) {
       throw Error('Unrecognized resource type: ' + resourceJson.type);
     }
@@ -44,6 +45,7 @@ export class ResourceService {
     // Our model objects should match the data models being returned from the
     // API, so all we really need to do is map types that are not representable
     // in JSON alone (Dates, enums, etc).
+
     return {
       ...resourceJson,
       attachments: this.attachmentsFromJson(resourceJson.attachments),

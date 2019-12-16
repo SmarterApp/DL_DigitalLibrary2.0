@@ -1,0 +1,50 @@
+<div class="top-header">
+  <img src="/assets/images/yellow-spot.png" alt="" />
+  <sbdl-actions
+    [notesVisible]="notesVisible"
+    [hasNotes]="notes.length > 0"
+    [resource]="resource"
+    (readingModeChanged)="emitReadingModeChanged($event)"
+    (printingModeChanged)="emitPrintingModeChanged($event)"
+    (notesVisibilityChanged)="emitNotesVisibilityChanged($event)"
+  ></sbdl-actions>
+</div>
+
+<sbdl-header
+  [resource]="resource"
+  (attachmentsClicked)="scrollToAttachments()"
+></sbdl-header>
+
+<sbdl-strategy-overview
+  [resource]="resource"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-strategy-overview>
+
+<sbdl-simple-section
+  [contentHtml]="resource.stepByStep"
+  [options]="stepByStepSectionOptions"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-simple-section>
+
+<sbdl-attachments
+  [attachments]="resource.attachments"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-attachments>
+
+<sbdl-simple-section
+  [contentHtml]="resource.thingsToConsider"
+  [options]="commentsSectionOptions"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-simple-section>
+
+<sbdl-strategy-in-action-formative
+  *ngIf="isFormative()"
+  [resource]="resource"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-strategy-in-action-formative>
+
+<sbdl-strategy-in-action-accessibility
+  *ngIf="!isFormative()"
+  [resource]="resource"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-strategy-in-action-accessibility>

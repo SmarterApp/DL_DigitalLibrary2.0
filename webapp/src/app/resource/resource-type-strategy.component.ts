@@ -6,7 +6,7 @@ import { InstructionalResourceComponent } from './instructional/instructional-re
 import { ProfessionalResourceComponent } from './professional/professional-resource.component';
 import { ResourceHostDirective } from './resource-host.directive';
 import { ResourceComponent } from './resource.component';
-// import { StrategyComponent } from './strategy/strategy.component';
+import { StrategyResourceComponent } from './strategy/strategy-resource.component';
 
 /***
  * This component will render the correct resource component based on the determined resource type.
@@ -20,8 +20,8 @@ export class ResourceTypeStrategyComponent implements OnInit {
   readonly componentMap: Map<ResourceType, Type<ResourceComponent>> = new Map<ResourceType, Type<ResourceComponent>>([
     [ ResourceType.Instructional, InstructionalResourceComponent ],
     [ ResourceType.ProfessionalLearning, ProfessionalResourceComponent ],
-    // [ ResourceType.AccessibilityStrategy, StrategyComponent ],
-    // [ ResourceType.FormativeStrategy, StrategyComponent ],
+    [ ResourceType.AccessibilityStrategy, StrategyResourceComponent ],
+    [ ResourceType.FormativeStrategy, StrategyResourceComponent ],
     // [ ResourceType.ConnectionsPlaylist, PlaylistComponent ]
   ]);
 

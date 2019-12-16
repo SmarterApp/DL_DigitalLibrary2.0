@@ -1,13 +1,13 @@
 import { Resource } from './resource.model';
 
 export interface AccessibilityStrategyResource extends Resource {
-  overview: {
+  stratOverviewContent: {
     overview: string;
     studentBenefits: string;
-    suggestedMaterials: string;
+    suggestedMaterial: string;
   };
   stepByStep: string;
-  strategyInAction: {
+  sampleItemContent: {
     linkToSample: string;
     description: string;
   };

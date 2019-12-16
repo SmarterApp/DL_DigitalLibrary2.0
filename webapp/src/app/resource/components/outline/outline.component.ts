@@ -31,7 +31,8 @@ export class OutlineComponent implements OnInit {
     DocumentSectionType.Differentiation,
     DocumentSectionType.ThingsToConsider,
     DocumentSectionType.Formative,
-    DocumentSectionType.AssessmentInfo
+    DocumentSectionType.AssessmentInfo,
+    DocumentSectionType.StrategyInAction
   ];
 
   constructor() { }

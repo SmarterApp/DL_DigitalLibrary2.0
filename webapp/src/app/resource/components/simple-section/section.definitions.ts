@@ -8,21 +8,21 @@ export const commentsSectionOptions: SimpleSectionOptions = {
   sectionType: DocumentSectionType.ThingsToConsider
 };
 
-export const instructionalUseOptions: SimpleSectionOptions = {
+export const instructionalUseSectionOptions: SimpleSectionOptions = {
   title: 'Instructional Use',
   sbdlIcon: 'steps',
   iconBackground: 'yellow',
   sectionType: DocumentSectionType.Subsection
 };
 
-export const strategyInActionOptions: SimpleSectionOptions = {
+export const strategyInActionSectionOptions: SimpleSectionOptions = {
   title: 'Strategy In Action',
   fontAwesomeIcon: 'fa-universal-access',
   iconBackground: 'green',
   sectionType: DocumentSectionType.Subsection
 };
 
-export const stepByStepOptions: SimpleSectionOptions = {
+export const stepByStepSectionOptions: SimpleSectionOptions = {
   title: 'Step-by-Step',
   sbdlIcon: 'steps',
   iconBackground: 'blue',
