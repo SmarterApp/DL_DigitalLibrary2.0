@@ -12,26 +12,26 @@ import { coalesce } from '../common/utils';
 export class SearchComponent implements OnInit, AfterViewInit {
 
   @Input()
-  filters: SearchFilters = <SearchFilters>{};
+  filters: SearchFilters = {} as SearchFilters;
 
   @ViewChildren('filterChip')
   filterChipRefs: ElementRef[];
 
   @Input()
-  showAdvanced: boolean = false;
+  showAdvanced = false;
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   get anySubjectSelected() {
-    return this.params && coalesce(this.params.subjects, []).length > 0
+    return this.params && coalesce(this.params.subjects, []).length > 0;
   }
 
   get anyGradeSelected() {
-    return this.params && coalesce(this.params.grades, []).length > 0
+    return this.params && coalesce(this.params.grades, []).length > 0;
   }
 
   get anyClaimSelected() {
-    return this.params && coalesce(this.params.claims, []).length > 0
+    return this.params && coalesce(this.params.claims, []).length > 0;
   }
 
   get params() {
@@ -42,15 +42,15 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if(this.filterChipRefs) {
-      for(let chip of this.filterChipRefs) {
+    if (this.filterChipRefs) {
+      for (const chip of this.filterChipRefs) {
         const chipSet = new MDCChipSet(chip.nativeElement);
       }
     }
   }
 
-  submit(event){
-    this.router.navigate(['results', event === undefined ? this.route.snapshot.params : {...this.route.snapshot.params, q: event }]); 
+  submit(event) {
+    this.router.navigate(['results', event === undefined ? this.route.snapshot.params : {...this.route.snapshot.params, q: event }]);
   }
 
   setResourceTypes(resourceTypeCodes: string[]) {
