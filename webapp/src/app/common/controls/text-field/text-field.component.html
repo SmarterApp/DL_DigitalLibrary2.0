@@ -1,12 +1,20 @@
 <div #textField class="mdc-text-field mdc-text-field--outlined  mdc-text-field--with-trailing-icon">
-  <input autocomplete="off" type="text" (keydown.enter)="onIconClick($event)" [(ngModel)]="model" id="tf-outlined" class="mdc-text-field__input" [value]="model || ''">
+  <input
+    id="tf-outlined"
+    class="mdc-text-field__input"
+    autocomplete="off"
+    type="text"
+    (keydown.enter)="onIconClick($event)"
+    [(ngModel)]="model"
+    [value]="model || ''"
+    [placeholder]="placeholder || ''" >
   <sbdl-button class="primary" (click)="onIconClick($event)">
     <i *ngIf="fontAwesomeIcon" class="far {{fontAwesomeIcon}}" tabindex="0" role="button"></i>
   </sbdl-button>
   <div class="mdc-notched-outline">
     <div class="mdc-notched-outline__leading"></div>
     <div class="mdc-notched-outline__notch">
-      <label for="tf-outlined" class="mdc-floating-label" [ngClass]="{'mdc-floating-label--float-above': model != undefined }">{{ label }}</label>
+      <label *ngIf="label"for="tf-outlined" class="mdc-floating-label" [ngClass]="{'mdc-floating-label--float-above': model != undefined }">{{ label }}</label>
     </div>
     <div class="mdc-notched-outline__trailing" [ngClass]="{'mdc-notched-outline--notched': model}"></div>
   </div>
