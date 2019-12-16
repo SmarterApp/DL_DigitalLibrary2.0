@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { SearchFilters, emptyFilters } from '../data/search/search-filters.model';
 
 @Component({
@@ -10,9 +11,10 @@ import { SearchFilters, emptyFilters } from '../data/search/search-filters.model
 export class HomeComponent implements OnInit {
   filters: SearchFilters = emptyFilters;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private titleService: Title) { }
 
   ngOnInit() {
     this.filters = this.route.snapshot.data.filters;
+    this.titleService.setTitle('Tools for Teachers - Smarter Balanced');
   }
 }

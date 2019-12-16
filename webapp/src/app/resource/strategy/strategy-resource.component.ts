@@ -1,6 +1,6 @@
 import { Component, ChangeDetectorRef, Input, OnInit } from '@angular/core';
 import { ResourceComponent } from '../resource.component';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
 import { FormativeStrategyResource } from '../../data/resource/model/formative-strategy.model';
 import { AccessibilityStrategyResource } from '../../data/resource/model/accessibility-strategy.model';
 
@@ -14,7 +14,7 @@ export class StrategyResourceComponent extends ResourceComponent {
   @Input()
   resource: FormativeStrategyResource | AccessibilityStrategyResource ;
 
-  constructor(cdRef: ChangeDetectorRef, sanitizer: DomSanitizer) {
-    super(cdRef, sanitizer);
+  constructor(cdRef: ChangeDetectorRef, sanitizer: DomSanitizer, titleService: Title) {
+    super(cdRef, sanitizer, titleService);
    }
 }

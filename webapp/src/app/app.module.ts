@@ -1,5 +1,5 @@
 import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { Angulartics2Module } from 'angulartics2';
 import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
 import { AppRoutingModule } from './app-routing.module';
@@ -47,18 +47,21 @@ const oktaConfig = {
     NotesModule,
     SbdlCommonModule
   ],
-  providers: [{
-    provide: APP_INITIALIZER,
-    useFactory: initializeApp,
-    deps: [ AppConfig ], multi: true
-  }, {
-    provide: ErrorHandler,
-    useClass: GlobalErrorHandler
-  }, {
-    provide: OKTA_CONFIG,
-    useValue: oktaConfig,
-    deps: [ AppConfig ]
-  }],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [ AppConfig ], multi: true
+    }, {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandler
+    }, {
+      provide: OKTA_CONFIG,
+      useValue: oktaConfig,
+      deps: [ AppConfig ]
+    },
+    Title
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -1,14 +1,15 @@
-import { ChangeDetectorRef, HostBinding, OnInit } from '@angular/core';
-import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { AfterViewInit, ChangeDetectorRef, HostBinding, OnInit } from '@angular/core';
+import { DomSanitizer, SafeStyle, Title } from '@angular/platform-browser';
 import { Resource } from '../data/resource/model/resource.model';
 import { Note } from '../data/notes/model/note.model';
 import { DocumentOutline } from './components/outline/document-outline.model';
+import { ResourceTypePipe } from '../pipes/resource-type.pipe';
 
 /**
  * Parent class that other resource component classes extend.
  * No @Component attribute here because it is never used directly.
  */
-export class ResourceComponent implements OnInit {
+export class ResourceComponent implements AfterViewInit, OnInit {
 
   resource: Resource;
   notes: Note[];
@@ -19,12 +20,18 @@ export class ResourceComponent implements OnInit {
   navWidth = 331;
   cssVarStyle: SafeStyle;
 
+  private resourceTypePipe = new ResourceTypePipe();
+
   @HostBinding('style')
   public get valueAsStyle(): any {
     return this.cssVarStyle;
   }
 
-  constructor(private cdRef: ChangeDetectorRef, private sanitizer: DomSanitizer) { }
+  constructor(private cdRef: ChangeDetectorRef, private sanitizer: DomSanitizer, private titleService: Title) { }
+
+  ngAfterViewInit(): void {
+    this.titleService.setTitle(`${this.resource.properties.title} - ${this.resourceTypePipe.transform(this.resource.type)}`);
+  }
 
   ngOnInit(): void {
     this.setCssVarStyle();

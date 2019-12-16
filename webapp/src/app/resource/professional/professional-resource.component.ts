@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, Title } from '@angular/platform-browser';
 import { ResourceComponent } from '../resource.component';
 import { ProfessionalLearningResource } from '../../data/resource/model/professional-learning.model';
 
@@ -13,7 +13,7 @@ export class ProfessionalResourceComponent extends ResourceComponent {
   @Input()
   resource: ProfessionalLearningResource;
 
-  constructor(cdRef: ChangeDetectorRef, sanitizer: DomSanitizer) {
-    super(cdRef, sanitizer);
+  constructor(cdRef: ChangeDetectorRef, sanitizer: DomSanitizer, titleService: Title) {
+    super(cdRef, sanitizer, titleService);
    }
 }

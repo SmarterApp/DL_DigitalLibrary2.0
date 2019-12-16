@@ -4,7 +4,7 @@
 -->
 <div class="resource-type">{{ bookmark.type | resourceType }}</div>
 <a
-  href="/resource/{{ bookmark.id }}"
+  [routerLink]="['/resource', bookmark.id]"
   class="inner-card">
   <img [src]="bookmark.properties.image | replaceNullImage">
   <div [ngSwitch]="bookmark.type">
