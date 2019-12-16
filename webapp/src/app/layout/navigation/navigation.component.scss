@@ -60,7 +60,7 @@
     }
   }
 
-  button, a {
+  & > button, & > a {
     display: flex;
     flex-direction: row;
     align-items: center;
