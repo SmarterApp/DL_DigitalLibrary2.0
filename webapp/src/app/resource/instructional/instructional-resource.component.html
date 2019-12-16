@@ -13,7 +13,7 @@
     (documentOutlineChanged)="setOutline($event)"
   ></sbdl-enhanced-printing>
 </nav>
-<section class="resource-content">
+<main class="resource-content">
   <sbdl-instructional-content
     [notes]="notes"
     [notesVisible]="notesVisible"
@@ -23,7 +23,7 @@
     (printingModeChanged)="printingModeChanged($event)"
     (notesVisibilityChanged)="notesVisibilityChanged($event)"
   ></sbdl-instructional-content>
-</section>
+</main>
 <aside class="resource-properties">
   <sbdl-resource-properties
     [properties]="resource.properties"
