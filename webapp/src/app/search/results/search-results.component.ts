@@ -6,11 +6,11 @@ import { FilterChip } from 'src/app/common/controls/filter-chipset/filter-chipse
 import { ResourceResult } from 'src/app/data/search/resource-result.model';
 
 @Component({
-  selector: 'sbdl-results',
-  templateUrl: './results.component.html',
-  styleUrls: ['./results.component.scss']
+  selector: 'sbdl-search-results',
+  templateUrl: './search-results.component.html',
+  styleUrls: ['./search-results.component.scss']
 })
-export class ResultsComponent implements OnInit, AfterViewInit, OnDestroy {
+export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private route: ActivatedRoute) { }
 
   results: ResourceResult[];

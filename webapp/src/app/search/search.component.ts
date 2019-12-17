@@ -50,30 +50,30 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   submit(event) {
-    this.router.navigate(['results', event === undefined ? this.route.snapshot.params : {...this.route.snapshot.params, q: event }]);
+    this.router.navigate(['search', event === undefined ? this.route.snapshot.params : {...this.route.snapshot.params, q: event }]);
   }
 
   setResourceTypes(resourceTypeCodes: string[]) {
-    this.router.navigate(['results', { ...this.params, resourceTypes: resourceTypeCodes.join(',') }]);
+    this.router.navigate(['search', { ...this.params, resourceTypes: resourceTypeCodes.join(',') }]);
   }
 
   setGrades(gradeCodes: string[]) {
-    this.router.navigate(['results', { ...this.params, grades: gradeCodes.join(',') }]);
+    this.router.navigate(['search', { ...this.params, grades: gradeCodes.join(',') }]);
   }
 
   setSubjects(subjectCodes: string[]) {
-    this.router.navigate(['results', { ...this.params, subjects: subjectCodes.join(',') }]);
+    this.router.navigate(['search', { ...this.params, subjects: subjectCodes.join(',') }]);
   }
 
   setClaims(claimCodes: string[]) {
-    this.router.navigate(['results', { ...this.params, claims: claimCodes.join(',') }]);
+    this.router.navigate(['search', { ...this.params, claims: claimCodes.join(',') }]);
   }
 
   setTargets(targetCodes: string[]) {
-    this.router.navigate(['results', { ...this.params, targets: targetCodes.join(',') }]);
+    this.router.navigate(['search', { ...this.params, targets: targetCodes.join(',') }]);
   }
 
   setStandards(targetStandardCodes: string[]) {
-    this.router.navigate(['results', { ...this.params, standards: targetStandardCodes.join(',') }]);
+    this.router.navigate(['search', { ...this.params, standards: targetStandardCodes.join(',') }]);
   }
 }

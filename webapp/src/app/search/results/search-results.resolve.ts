@@ -9,10 +9,12 @@ import { coalesce } from 'src/app/common/utils';
 @Injectable({
     providedIn: 'root'
 })
-export class ResourceResultResolve implements Resolve<ResourceSearchResults> {
+export class SearchResultsResolve implements Resolve<ResourceSearchResults> {
     constructor(private service: SearchService) { }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): ResourceSearchResults | Observable<ResourceSearchResults> | Promise<ResourceSearchResults> {
+    resolve(route: ActivatedRouteSnapshot,
+            state: RouterStateSnapshot):
+            ResourceSearchResults | Observable<ResourceSearchResults> | Promise<ResourceSearchResults> {
         const request = this.mapToRequestModel(route.params);
         return this.service.post(request);
     }
