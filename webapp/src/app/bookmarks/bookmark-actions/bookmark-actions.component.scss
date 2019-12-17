@@ -1,0 +1,32 @@
+@import "colors";
+@import "spacing";
+
+:host {
+  color: $brand-blue;
+  width: 60px;
+  height: 60px;
+  margin: 2.3rem $spacer 0 $spacer;
+
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  font-size: 24px;
+  grid-template:
+    "bookmark notes" 30px
+    "share print" 30px / 30px 30px;
+
+  .bookmark { grid-area: bookmark; }
+  .print { grid-area: print; }
+  .share { grid-area: share; }
+
+  .notes {
+    grid-area: notes;
+    sbdl-icon.has-notes {
+      background: $brand-blue;
+      color: $white;
+      padding: 2px;
+      border-radius: 4px;
+    }
+  }
+
+}

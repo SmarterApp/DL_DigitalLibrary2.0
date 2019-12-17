@@ -63,8 +63,31 @@
       max-width: none;
 
       & > li {
-        display: block;
+        border-left: 4px solid rgba($white, 0);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         max-width: none;
+        padding: 0 0 $spacer-md $spacer-xl;
+
+        sbdl-resource-summary-card { flex-grow: 1; }
+        sbdl-bookmark-actions { visibility: hidden; }
+
+        &:focus,
+        &:focus-within {
+          border-left: solid 4px rgba($brand-accent-blue, 0.5);
+          outline: none;
+        }
+
+        &:focus,
+        &:focus-within,
+        &:hover {
+          background-color: rgba($brand-accent-blue, 0.05);
+
+          sbdl-bookmark-actions { visibility: visible; }
+        }
+
       }
     }
   }

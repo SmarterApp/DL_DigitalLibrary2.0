@@ -89,7 +89,7 @@
     width: 100%;
   }
 
-  .promoted-previews {
+  .promoted-resources {
 
     align-items: center;
     background: $neutral-50;
@@ -99,7 +99,7 @@
     width: 100%;
 
     & > * {
-      max-width: 800px;
+      max-width: 900px;
     }
 
     & > .watermarks {
@@ -134,6 +134,19 @@
       font-size: $font-size-body-2;
       max-width: 550px;
       text-align: center;
+    }
+
+    .resource-summary-cards {
+
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      sbdl-resource-summary-card {
+        display: inline-block;
+        max-width: 424px;
+      }
     }
   }
 

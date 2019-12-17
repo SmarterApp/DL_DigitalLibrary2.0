@@ -11,8 +11,8 @@
   </header>
   <ul class="bookmarks">
     <li *ngFor="let bookmark of bookmarks">
-      <sbdl-resource-summary-card [resourceSummary]="bookmark">
-      </sbdl-resource-summary-card>
+      <sbdl-resource-summary-card [resourceSummary]="bookmark" ></sbdl-resource-summary-card>
+      <sbdl-bookmark-actions [resourceSummary]="bookmark"></sbdl-bookmark-actions>
     </li>
   </ul>
 </section>

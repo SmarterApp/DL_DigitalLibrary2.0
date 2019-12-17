@@ -8,6 +8,7 @@ import { ResourceResolve } from './resource/resource.resolve';
 import { NotesResolve } from './notes/notes.resolve';
 import { BookmarkListComponent } from './bookmarks/bookmark-list/bookmark-list.component';
 import { BookmarksResolve } from './bookmarks/bookmarks.resolve';
+import { PromotedResourcesResolve } from './home/promoted-resources.resolve';
 import { ResultsComponent } from './search/results/results.component';
 import { ResourceResultResolve } from './search/results/resource-results.resolve';
 import { SearchFiltersResolve } from './search/search-filters.resolve';
@@ -22,7 +23,10 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
-        resolve: { filters: SearchFiltersResolve }
+        resolve: {
+          filters: SearchFiltersResolve,
+          promotedResources: PromotedResourcesResolve
+        }
       }, {
         path: 'bookmarks',
         component: BookmarkListComponent,
