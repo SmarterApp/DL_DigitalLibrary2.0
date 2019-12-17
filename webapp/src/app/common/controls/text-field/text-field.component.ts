@@ -11,6 +11,9 @@ export class TextFieldComponent implements OnInit, AfterViewInit {
   label: string;
 
   @Input()
+  placeholder: string;
+
+  @Input()
   fontAwesomeIcon: string;
 
   @Input()

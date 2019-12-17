@@ -3,17 +3,17 @@ import { ActivatedRoute } from '@angular/router';
 import { MDCRipple } from '@material/ripple';
 import { Subscription } from 'rxjs';
 import { FilterChip } from 'src/app/common/controls/filter-chipset/filter-chipset.component';
-import { ResourceResult } from 'src/app/data/search/resource-result.model';
+import { ResourceSummary } from 'src/app/data/resource/model/summary.model';
 
 @Component({
-  selector: 'sbdl-results',
-  templateUrl: './results.component.html',
-  styleUrls: ['./results.component.scss']
+  selector: 'sbdl-search-results',
+  templateUrl: './search-results.component.html',
+  styleUrls: ['./search-results.component.scss']
 })
-export class ResultsComponent implements OnInit, AfterViewInit, OnDestroy {
+export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private route: ActivatedRoute) { }
 
-  results: ResourceResult[];
+  results: ResourceSummary[];
   filters: any = {};
 
   @ViewChildren('searchResult')
@@ -26,7 +26,7 @@ export class ResultsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.dataSubscription = this.route.data.subscribe(data => {
-      if(data.results) {
+      if (data.results) {
         this.results = data.results.results;
         this.filters = data.results.filters;
 
@@ -42,23 +42,23 @@ export class ResultsComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     const initParams = this.route.snapshot.params;
-    this.showAdvancedFiltersInitially = Object.keys(initParams).filter(x => x != 'q').length > 0;
+    this.showAdvancedFiltersInitially = Object.keys(initParams).filter(x => x !== 'q').length > 0;
   }
 
   ngAfterViewInit() {
-    if(this.searchResultsRef) {
-      for(let result of this.searchResultsRef) {
+    if (this.searchResultsRef) {
+      for (const result of this.searchResultsRef) {
         MDCRipple.attachTo(result.nativeElement);
       }
     }
   }
 
   ngOnDestroy() {
-    if(this.paramsSubscription) {
+    if (this.paramsSubscription) {
       this.paramsSubscription.unsubscribe();
     }
 
-    if(this.dataSubscription) {
+    if (this.dataSubscription) {
       this.dataSubscription.unsubscribe();
     }
   }
@@ -73,7 +73,7 @@ export class ResultsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private setSelectedParams(params: string, filters: FilterChip[]) {
-    if(params) {
+    if (params) {
       const paramCodes = params.split(',');
       filters.forEach(x => x.selected = paramCodes.indexOf(x.code) !== -1);
     }

@@ -8,10 +8,12 @@ import { ResourceResolve } from './resource/resource.resolve';
 import { NotesResolve } from './notes/notes.resolve';
 import { BookmarkListComponent } from './bookmarks/bookmark-list/bookmark-list.component';
 import { BookmarksResolve } from './bookmarks/bookmarks.resolve';
-import { ResultsComponent } from './search/results/results.component';
-import { ResourceResultResolve } from './search/results/resource-results.resolve';
+import { PromotedResourcesResolve } from './home/promoted-resources.resolve';
+import { SearchResultsComponent } from './search/results/search-results.component';
+import { SearchResultsResolve } from './search/results/search-results.resolve';
 import { SearchFiltersResolve } from './search/search-filters.resolve';
-import { OKTA_CALLBACK_PATH } from './common/constants';
+import { ErrorComponent } from './layout/error/error.component';
+import { ERROR_PATH, OKTA_CALLBACK_PATH } from './common/constants';
 
 const routes: Routes = [
   {
@@ -22,7 +24,10 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
-        resolve: { filters: SearchFiltersResolve }
+        resolve: {
+          filters: SearchFiltersResolve,
+          promotedResources: PromotedResourcesResolve
+        }
       }, {
         path: 'bookmarks',
         component: BookmarkListComponent,
@@ -35,15 +40,18 @@ const routes: Routes = [
           notes: NotesResolve
         }
       }, {
-        path: 'results',
-        component: ResultsComponent,
-        resolve: { results: ResourceResultResolve }
+        path: 'search',
+        component: SearchResultsComponent,
+        resolve: { results: SearchResultsResolve }
       }, {
         path: 'auth/login',
         component: OktaLoginRedirectComponent
       }, {
         path: OKTA_CALLBACK_PATH,
         component: OktaCallbackComponent
+      }, {
+        path: ERROR_PATH,
+        component: ErrorComponent
       }
     ]
   }

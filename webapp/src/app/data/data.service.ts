@@ -61,8 +61,16 @@ export class DataService {
       );
   }
 
-  post(url: string, obj: any): Observable<any> {
-    return this.httpService.post(url, obj, { ... jsonContentType })
+  post(url: string, obj: any, params?: any): Observable<any> {
+    const fullUrl = AppConfig.settings.apiServer.cdl + url;
+    const options = {
+      headers: new HttpHeaders({
+        ...jsonHeaders,
+        'Authorization': 'Bearer ' + AppConfig.settings.apiServer.authToken
+      }),
+      params
+    };
+    return this.httpService.post(fullUrl, obj, options)
       .pipe(
           catchError(this.handleError)
       );

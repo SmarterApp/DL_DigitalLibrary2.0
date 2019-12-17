@@ -3,23 +3,12 @@
 @import "typography";
 
 :host {
-  border-radius: 3px;
-  border-left: 4px solid rgba($white, 0);
   box-sizing: border-box;
   max-width: none;
-  padding: $spacer-lg $spacer-md $spacer-md $spacer-xl;
 
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   position: relative;
 
   .resource-type {
-    position: absolute;
-    top: $spacer-sm;
-    left: $spacer-xl;
-
     font-family: $font-family-title;
     font-size: $font-size-body-2;
     line-height: 18px;
@@ -27,6 +16,9 @@
     text-transform: uppercase;
     color: rgba($neutral-900, 0.65);
 
+    sbdl-resource-type-icon {
+      font-size: $font-size-body;
+    }
   }
 
   .inner-card {
@@ -36,6 +28,8 @@
       0px 1px 3px rgba(0, 0, 0, 0.2),
       0px 2px 2px rgba(0, 0, 0, 0.12),
       0px 0px 2px rgba(0, 0, 0, 0.14);
+
+    margin-top: $spacer-sm;
 
     display: flex;
     flex-direction: row;
@@ -55,9 +49,9 @@
     img {
       object-fit: cover;
 
-      width: 80px;
-      height: 80px;
-      min-width: 80px;
+      width: 100px;
+      height: 100px;
+      min-width: 100px;
     }
 
     .title, .details {
@@ -83,51 +77,6 @@
         white-space: nowrap;
       }
     }
-  }
-
-  .bookmark-actions {
-    color: $brand-blue;
-    margin-left: $spacer;
-    width: 60px;
-    height: 60px;
-
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    font-size: 24px;
-    grid-template:
-      "bookmark notes" 30px
-      "share print" 30px / 30px 30px;
-
-    sbdl-button-icon { display: none; }
-
-    .bookmark { grid-area: bookmark; }
-    .print { grid-area: print; }
-    .share { grid-area: share; }
-
-    .notes {
-      grid-area: notes;
-      sbdl-icon.has-notes {
-        background: $brand-blue;
-        color: $white;
-        padding: 2px;
-        border-radius: 4px;
-      }
-    }
-  }
-
-  &:focus,
-  &:focus-within {
-    border-left: solid 4px rgba($brand-accent-blue, 0.5);
-    outline: none;
-  }
-
-  &:focus,
-  &:focus-within,
-  &:hover {
-    background-color: rgba($brand-accent-blue, 0.05);
-
-    .bookmark-actions sbdl-button-icon { display: initial; }
   }
 
 }

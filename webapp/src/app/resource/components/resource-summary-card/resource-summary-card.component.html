@@ -1,0 +1,32 @@
+<div class="resource-type">
+  <sbdl-resource-type-icon [type]="resourceSummary.type"></sbdl-resource-type-icon>
+  {{ resourceSummary.type | resourceType }}
+</div>
+<a
+  [routerLink]="['/resource', resourceSummary.id]"
+  class="inner-card">
+  <img [src]="resourceSummary.properties.image | replaceNullImage">
+  <div [ngSwitch]="resourceSummary.type">
+    <div class="title">{{ resourceSummary.properties.title }}</div>
+
+    <div *ngSwitchCase="resourceTypes.Instructional" class="details caption emphasis-medium">
+      <span class="detail-item" *ngFor="let detail of details; last as isLast">
+        {{ detail }}
+        <span *ngIf="!isLast">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+      </span>
+    </div>
+
+    <div *ngSwitchCase="resourceTypes.ProfessionalLearning" class="details professional-learning caption emphasis-medium">
+      {{ resourceSummary.summary }}
+    </div>
+
+    <div *ngSwitchCase="resourceTypes.AccessibilityStrategy" class="details professional-learning caption emphasis-medium">
+      {{ resourceSummary.summary }}
+    </div>
+
+    <div *ngSwitchCase="resourceTypes.FormativeStrategy" class="details professional-learning caption emphasis-medium">
+      {{ resourceSummary.summary }}
+    </div>
+
+  </div>
+</a>

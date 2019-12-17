@@ -1,3 +1,7 @@
-<button [title]="buttonTitle" #button class="mdc-icon-button material-icons" [disabled]="disabled">
+<button #button
+  class="mdc-icon-button material-icons"
+  [disabled]="disabled"
+  [tabindex]="tabindex"
+  [title]="buttonTitle" >
   <ng-content></ng-content>
 </button>

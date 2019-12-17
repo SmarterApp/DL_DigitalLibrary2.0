@@ -12,26 +12,29 @@ import { coalesce } from '../common/utils';
 export class SearchComponent implements OnInit, AfterViewInit {
 
   @Input()
-  filters: SearchFilters = <SearchFilters>{};
+  filters: SearchFilters = {} as SearchFilters;
 
   @ViewChildren('filterChip')
   filterChipRefs: ElementRef[];
 
   @Input()
-  showAdvanced: boolean = false;
+  showAdvanced = false;
+
+  @Input()
+  showingResults = false;
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   get anySubjectSelected() {
-    return this.params && coalesce(this.params.subjects, []).length > 0
+    return this.params && coalesce(this.params.subjects, []).length > 0;
   }
 
   get anyGradeSelected() {
-    return this.params && coalesce(this.params.grades, []).length > 0
+    return this.params && coalesce(this.params.grades, []).length > 0;
   }
 
   get anyClaimSelected() {
-    return this.params && coalesce(this.params.claims, []).length > 0
+    return this.params && coalesce(this.params.claims, []).length > 0;
   }
 
   get params() {
@@ -42,38 +45,38 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if(this.filterChipRefs) {
-      for(let chip of this.filterChipRefs) {
+    if (this.filterChipRefs) {
+      for (const chip of this.filterChipRefs) {
         const chipSet = new MDCChipSet(chip.nativeElement);
       }
     }
   }
 
-  submit(event){
-    this.router.navigate(['results', event === undefined ? this.route.snapshot.params : {...this.route.snapshot.params, q: event }]); 
+  submit(event) {
+    this.router.navigate(['search', event === undefined ? this.route.snapshot.params : {...this.route.snapshot.params, q: event }]);
   }
 
   setResourceTypes(resourceTypeCodes: string[]) {
-    this.router.navigate(['results', { ...this.params, resourceTypes: resourceTypeCodes.join(',') }]);
+    this.router.navigate(['search', { ...this.params, resourceTypes: resourceTypeCodes.join(',') }]);
   }
 
   setGrades(gradeCodes: string[]) {
-    this.router.navigate(['results', { ...this.params, grades: gradeCodes.join(',') }]);
+    this.router.navigate(['search', { ...this.params, grades: gradeCodes.join(',') }]);
   }
 
   setSubjects(subjectCodes: string[]) {
-    this.router.navigate(['results', { ...this.params, subjects: subjectCodes.join(',') }]);
+    this.router.navigate(['search', { ...this.params, subjects: subjectCodes.join(',') }]);
   }
 
   setClaims(claimCodes: string[]) {
-    this.router.navigate(['results', { ...this.params, claims: claimCodes.join(',') }]);
+    this.router.navigate(['search', { ...this.params, claims: claimCodes.join(',') }]);
   }
 
   setTargets(targetCodes: string[]) {
-    this.router.navigate(['results', { ...this.params, targets: targetCodes.join(',') }]);
+    this.router.navigate(['search', { ...this.params, targets: targetCodes.join(',') }]);
   }
 
   setStandards(targetStandardCodes: string[]) {
-    this.router.navigate(['results', { ...this.params, standards: targetStandardCodes.join(',') }]);
+    this.router.navigate(['search', { ...this.params, standards: targetStandardCodes.join(',') }]);
   }
 }

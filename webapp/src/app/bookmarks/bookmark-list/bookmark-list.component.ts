@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { ResourceBookmark } from '../../data/bookmarks/model/bookmark.model';
+import { ResourceSummary } from '../../data/resource/model/summary.model';
 
 @Component({
   selector: 'sbdl-bookmark-list',
@@ -10,7 +10,7 @@ import { ResourceBookmark } from '../../data/bookmarks/model/bookmark.model';
 })
 export class BookmarkListComponent implements OnInit {
 
-  bookmarks: ResourceBookmark[] = [];
+  bookmarks: ResourceSummary[] = [];
 
   constructor(private route: ActivatedRoute, private titleService: Title) {}
 
