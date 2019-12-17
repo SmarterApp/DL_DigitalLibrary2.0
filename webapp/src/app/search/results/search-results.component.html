@@ -1,34 +1,62 @@
 <article class="results-container">
-  <h6 *ngIf="results" class="results-header">Found {{ results.length }} 
+  <h6 *ngIf="results" class="results-header">Found {{ results.length }}
     <span [ngPlural]="results.length" >
       <ng-template ngPluralCase="=1">Resource</ng-template>
       <ng-template ngPluralCase="other">Resources</ng-template>
     </span>
   </h6>
-  <sbdl-search [filters]="filters" [showAdvanced]="showAdvancedFiltersInitially"></sbdl-search>
+  <sbdl-search
+    [filters]="filters"
+    [showAdvanced]="showAdvancedFiltersInitially"
+    showingResults="true"
+  ></sbdl-search>
   <section class="search-results" width="120px" height="120px">
     <a #searchResult [routerLink]="['/resource', result.id]" *ngFor="let result of results" class="search-result">
       <div>
-        <div class="resource-type">{{ result.resourceType | resourceType }}</div>
-        <h6>{{ result.title }}</h6>
-        <p> {{ result.description }}</p>
+        <div class="resource-type">
+          <sbdl-resource-type-icon [type]="result.type"></sbdl-resource-type-icon>
+          {{ result.type | resourceType }}
+        </div>
+        <h6>{{ result.properties.title }}</h6>
+        <p class="summary">{{ result.summary }}</p>
         <div class="metadata emphasis-medium">
           <div class="bullet-row">
-              <span *ngIf="result.grades.length > 0">
-                  <span [ngPlural]="result.grades.length" >
+              <span *ngIf="result.properties.grades.length > 0">
+                  <span [ngPlural]="result.properties.grades.length" >
                     <ng-template ngPluralCase="=1">Grade</ng-template>
                     <ng-template ngPluralCase="other">Grades</ng-template>
                   </span>
-                  {{ result.grades | join:{conjunction:'and'} }}
+                  {{ result.properties.grades | join:{field: 'shortName', conjunction:'and'} }}
               </span>
-              <span *ngIf="result.subjects.length > 0"><span *ngIf="result.grades">&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>{{ result.subjects | join }}</span>
-              <span *ngIf="result.claims.length > 0">&nbsp;&nbsp;&bull;&nbsp;&nbsp;{{ result.claims | join:{field:'title', prepend:'Claim '} }}</span>
+              <span *ngIf="result.properties.subject">
+                <span *ngIf="result.properties.grades.length > 0">&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
+                {{ result.properties.subject.fullName }}
+              </span>
+              <span *ngIf="result.properties.claims.length === 1">
+                &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+                Claim {{ result.properties.claims[0].number }}: {{ result.properties.claims[0].title }}
+              </span>
+              <span *ngIf="result.properties.claims.length > 1">
+                &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+                Claims {{ result.properties.claims | join:{field: 'number', conjunction: 'and' } }}
+              </span>
           </div>
-          <div>{{ result.targets | join:{field:'title', prepend: 'Target '} }}</div>
+          <div class="targets" *ngIf="result.properties.targets.length === 1">
+            Target {{result.properties.targets[0].number}}: {{result.properties.targets[0].description}}
+          </div>
+          <div class="targets" *ngIf="result.properties.targets.length > 1">
+            Targets {{ result.properties.targets | join:{field: 'number', conjunction: 'and'} }}
+          </div>
+          <div *ngIf="result.properties.standards.length === 1" class="standards">
+            Standard {{ result.properties.standards[0].title}}
+          </div>
+          <div *ngIf="result.properties.standards.length > 1" class="standards">
+            Standards {{ result.properties.standards | join:{field: 'title', conjunction: 'and '} }}
+          </div>
         </div>
       </div>
-      <img [src]="result.image">
+      <img [src]="result.properties.image | replaceNullImage">
     </a>
   </section>
 </article>
- 
+

@@ -4,6 +4,7 @@ import { SbdlCommonModule } from '../common/common.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { SearchResultsComponent } from './results/search-results.component';
 import { SearchComponent } from './search.component';
+import { ResourceModule } from '../resource/resource.module';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     SbdlCommonModule,
     PipesModule,
+    ResourceModule,
     RouterModule
   ],
   exports: [ SearchComponent ]

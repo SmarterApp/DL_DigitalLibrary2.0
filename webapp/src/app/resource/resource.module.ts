@@ -94,6 +94,7 @@ import { StrategyResourceComponent } from './strategy/strategy-resource.componen
     SbdlCommonModule
   ],
   exports: [
+    ResourceTypeIconComponent,
     ResourceSummaryCardComponent
   ],
   entryComponents: [
