@@ -1,0 +1,11 @@
+@import "spacing";
+
+:host {
+  display: block;
+  margin: 8rem auto;
+  width: var(--measure);
+
+  p {
+    font-size: 24px;
+  }
+}

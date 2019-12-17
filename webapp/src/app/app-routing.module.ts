@@ -12,7 +12,8 @@ import { PromotedResourcesResolve } from './home/promoted-resources.resolve';
 import { ResultsComponent } from './search/results/results.component';
 import { ResourceResultResolve } from './search/results/resource-results.resolve';
 import { SearchFiltersResolve } from './search/search-filters.resolve';
-import { OKTA_CALLBACK_PATH } from './common/constants';
+import { ErrorComponent } from './layout/error/error.component';
+import { ERROR_PATH, OKTA_CALLBACK_PATH } from './common/constants';
 
 const routes: Routes = [
   {
@@ -48,6 +49,9 @@ const routes: Routes = [
       }, {
         path: OKTA_CALLBACK_PATH,
         component: OktaCallbackComponent
+      }, {
+        path: ERROR_PATH,
+        component: ErrorComponent
       }
     ]
   }

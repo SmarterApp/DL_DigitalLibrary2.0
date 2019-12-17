@@ -5,6 +5,7 @@ import { AppContainerComponent } from './app-container/app-container.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { ErrorComponent } from './error/error.component';
 import { SbdlCommonModule } from '../common/common.module';
 
 @NgModule({
@@ -12,6 +13,7 @@ import { SbdlCommonModule } from '../common/common.module';
     AppContainerComponent,
     HeaderComponent,
     FooterComponent,
+    ErrorComponent,
     NavigationComponent
   ],
   imports: [
