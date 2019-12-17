@@ -141,16 +141,42 @@
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: space-around;
+      margin-top: $spacer-lg;
 
       sbdl-resource-summary-card {
         display: inline-block;
-        max-width: 424px;
+        max-width: 416px;
+        margin-top: $spacer-md;
+        flex-grow: 1;
+        padding: 0 0.25rem;
       }
     }
   }
 
   .promoted-videos {
     min-height: 200px;
+    max-width: 900px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: $spacer-xl;
+    width: 100%;
+
+    h2 {
+      font-size: 23.4px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 133%;
+      max-width: 20ch;
+    }
+
+    .promoted-video img {
+      max-width: 416px;
+      margin-top: $spacer-md;
+      padding: 0 0.25rem;
+    }
   }
 }
