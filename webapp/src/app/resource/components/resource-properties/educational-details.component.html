@@ -34,7 +34,7 @@
   </label>
   <div *ngIf="properties.targets && properties.targets.length > 0; last as isLast" class="value">
     <div *ngFor="let target of orderedTargets" title="{{ target.description }}">
-      {{ target.number }}: {{ target.description }}<span *ngIf="!isLast">,</span>
+      {{ target.number }}: {{ target.description }}
     </div>
   </div>
 
@@ -44,8 +44,8 @@
     <ng-template ngPluralCase="=1">Content Standard</ng-template>
     <ng-template ngPluralCase="other">Content Standards</ng-template>
   </label>
-  <div *ngIf="properties.standards && properties.standards.length > 0; last as isLast" class="value">
-    <div *ngFor="let standard of orderedStandards" title="{{ standard.title }}">
+  <div *ngIf="properties.standards && properties.standards.length > 0" class="value">
+    <div *ngFor="let standard of orderedStandards; last as isLast" title="{{ standard.title }}">
       {{ standard.title }}<span *ngIf="!isLast">,</span>
     </div>
   </div>
