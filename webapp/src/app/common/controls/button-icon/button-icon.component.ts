@@ -16,6 +16,9 @@ export class ButtonIconComponent implements OnInit {
   @Input()
   buttonTitle: string;
 
+  @Input()
+  tabindex = 0;
+
   constructor() { }
 
   ngOnInit() {
