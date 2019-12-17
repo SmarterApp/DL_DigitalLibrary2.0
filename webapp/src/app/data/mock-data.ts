@@ -1,6 +1,7 @@
 import { InstructionalResource } from './resource/model/instructional.model';
 import { ResourceType } from './resource/model/resource-type.enum';
 import { ResourceSummary } from './resource/model/summary.model';
+import { SearchFilters } from './search/search-filters.model';
 
 export const mockUser = {
     firstName: 'Mary',
@@ -52,6 +53,7 @@ export const mockResourceSummaries: ResourceSummary[] = [
     id: 110,
     type: ResourceType.Instructional,
     hasNotes: true,
+    summary: 'This lesson uses students\' prior experiences with graphical representations of systems to facilitate their understanding of solving systems algebraically. In this lesson, students will continue to engage with systems of equations where both equations are in the form y = mx + b. Students will graduate to other types of system structures. They will learn that examining structures is a good first step since it is sometimes possible to recognize an efficient method for solving the system through observation. Students realize that if at least one of the equations has a single variable isolated, then that expression can be substituted into the other equation to get a single equation in one variable. Finally, students use the structure of a system of equations to reason about its lack of solutions.',
     properties: {
       authorOrg: '',
       authors: [ 'Nell Jean' ],
@@ -95,6 +97,7 @@ export const mockResourceSummaries: ResourceSummary[] = [
     id: 112,
     type: ResourceType.Instructional,
     hasNotes: false,
+    summary: 'Students will work with a partner to slice geometric solids and find two-dimensional shapes. Once students have worked with a partner, the teacher will bring the class together to go over the problems. The teacher can show a visual model of how each problem was solved. At the end of the slide show is an Exit Ticket to be used to check for understanding and also formally assess the intended learning goal. This lesson is accessed through a Google Slide presentation (technology required).',
     properties: {
       authorOrg: '',
       authors: [ 'Michael Regan' ],
@@ -126,6 +129,7 @@ export const mockResourceSummaries: ResourceSummary[] = [
     id: 114,
     type: ResourceType.Instructional,
     hasNotes: false,
+    summary: 'This resource is designed for a block day lesson or two 45-minute lessons. This is an introductory lesson on using the quadratic formula to solve quadratic equations. The lesson contains an Entrance Ticket, exploration activity, guided notes, question-question-swap activity, group activity, and Exit Ticket.',
     properties: {
       authorOrg: 'Smarter Balanced',
       authors: [ 'Chelsey Shade' ],
@@ -223,3 +227,43 @@ export const mockResourceSummaries: ResourceSummary[] = [
     }
   }
 ];
+
+export const mockSearchFilters: SearchFilters = {
+  freeText: '',
+  resourceTypes: [
+    { title: 'Instructional', code: 'ir' },
+    { title: 'Professional Learning', code: 'pl' },
+    { title: 'Connections Playlist', code: 'cp' },
+    { title: 'Formative Assessment Strategy', code: 'fas' },
+    { title: 'Accessibility Strategy', code: 'ac' }
+  ],
+  grades: [
+    { title: 'Kindergarten', code: 'k' },
+    { title: '2', code: '2' },
+    { title: '3', code: '3' },
+    { title: '4', code: '4' },
+    { title: '5', code: '5' },
+    { title: '6', code: '6' },
+    { title: '7', code: '7' },
+    { title: '8', code: '8' },
+    { title: 'High School', code: 'hs' }
+  ],
+  subjects: [
+    { title: 'Mathematics', code: 'math' },
+    { title: 'English Language Arts', code: 'ela' }
+  ],
+  claims: [
+    { title: 'Reading', code: 'ela-c1' },
+    { title: 'Writing', code: 'ela-c2' },
+    { title: 'Speaking & Listening', code: 'ela-c3' },
+    { title: 'Research / Inquiry', code: 'ela-c4' },
+  ],
+  targets: [
+    { title: 'Sample Target A', code: 'sample-target-a' },
+    { title: 'Sample Target B', code: 'sample-target-b' }
+  ],
+  standards: [
+    { title: 'Sample Standard A', code: 'sample-standard-a' },
+    { title: 'Sample Standard B', code: 'sample-standard-b' }
+  ],
+};

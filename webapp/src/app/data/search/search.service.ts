@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/internal/operators/map';
 import { DataService } from '../data.service';
-import { ResourceResult, ResourceSearchResults } from './resource-result.model';
+import { SearchResults } from './search-results.model';
 import { SearchRequestModel } from './search-request.model';
 import { coalesce } from 'src/app/common/utils';
 import { ResourceService } from '../resource/resource.service';
@@ -21,7 +21,7 @@ export class SearchService {
     return this.dataService.get('/search/filters');
   }
 
-  post(request: SearchRequestModel): Observable<ResourceSearchResults> {
+  post(request: SearchRequestModel): Observable<SearchResults> {
     return this.dataService.post('/search', request);
   }
 }

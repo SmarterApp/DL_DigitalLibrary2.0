@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ResourceSearchResults } from 'src/app/data/search/resource-result.model';
+import { SearchResults } from 'src/app/data/search/search-results.model';
 import { SearchRequestModel } from 'src/app/data/search/search-request.model';
 import { SearchService } from 'src/app/data/search/search.service';
 import { coalesce } from 'src/app/common/utils';
+import { mockSearchFilters, mockResourceSummaries } from 'src/app/data/mock-data';
 
 @Injectable({
     providedIn: 'root'
 })
-export class SearchResultsResolve implements Resolve<ResourceSearchResults> {
+export class SearchResultsResolve implements Resolve<SearchResults> {
     constructor(private service: SearchService) { }
 
     resolve(route: ActivatedRouteSnapshot,
             state: RouterStateSnapshot):
-            ResourceSearchResults | Observable<ResourceSearchResults> | Promise<ResourceSearchResults> {
+            SearchResults | Observable<SearchResults> | Promise<SearchResults> {
+
         const request = this.mapToRequestModel(route.params);
-        return this.service.post(request);
+        return {
+          filters: mockSearchFilters,
+          results: mockResourceSummaries
+        };
+        // return this.service.post(request);
     }
 
     private mapToRequestModel(params: any): SearchRequestModel {

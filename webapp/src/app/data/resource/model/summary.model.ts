@@ -5,6 +5,6 @@ export interface ResourceSummary {
   id: number;
   type: ResourceType;
   properties: ResourceProperties;
-  summary?: string;
+  summary: string;
   hasNotes: boolean;
 }

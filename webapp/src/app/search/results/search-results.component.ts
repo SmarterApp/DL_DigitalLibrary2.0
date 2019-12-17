@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MDCRipple } from '@material/ripple';
 import { Subscription } from 'rxjs';
 import { FilterChip } from 'src/app/common/controls/filter-chipset/filter-chipset.component';
-import { ResourceResult } from 'src/app/data/search/resource-result.model';
+import { ResourceSummary } from 'src/app/data/resource/model/summary.model';
 
 @Component({
   selector: 'sbdl-search-results',
@@ -13,7 +13,7 @@ import { ResourceResult } from 'src/app/data/search/resource-result.model';
 export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private route: ActivatedRoute) { }
 
-  results: ResourceResult[];
+  results: ResourceSummary[];
   filters: any = {};
 
   @ViewChildren('searchResult')
