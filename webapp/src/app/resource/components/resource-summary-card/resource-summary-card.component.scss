@@ -85,7 +85,7 @@
     }
   }
 
-  .bookmark-actions {
+  .resource-summary-actions {
     color: $brand-blue;
     margin-left: $spacer;
     width: 60px;
@@ -127,7 +127,7 @@
   &:hover {
     background-color: rgba($brand-accent-blue, 0.05);
 
-    .bookmark-actions sbdl-button-icon { display: initial; }
+    .resource-summary-actions sbdl-button-icon { display: initial; }
   }
 
 }

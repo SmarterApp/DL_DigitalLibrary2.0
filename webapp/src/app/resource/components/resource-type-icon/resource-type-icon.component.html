@@ -1,0 +1,7 @@
+<ng-container [ngSwitch]="type">
+  <sbdl-icon *ngSwitchCase="resourceTypes.Instructional" icon="steps"></sbdl-icon>
+  <sbdl-icon *ngSwitchCase="resourceTypes.FormativeStrategy" icon="strategies"></sbdl-icon>
+  <i *ngSwitchCase="resourceTypes.AccessibilityStrategy" class="far fa-universal-access"></i>
+  <sbdl-icon *ngSwitchCase="resourceTypes.ProfessionalLearning" icon="goal"></sbdl-icon>
+  <i *ngSwitchCase="resourceTypes.ConnectionsPlaylist" class="far fa-chart-network"></i>
+</ng-container>

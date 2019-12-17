@@ -10,9 +10,9 @@
     <h1>My Bookmarks</h1>
   </header>
   <ul class="bookmarks">
-    <li sbdl-bookmark-card
-      *ngFor="let bookmark of bookmarks"
-      [bookmark]="bookmark">
+    <li *ngFor="let bookmark of bookmarks">
+      <sbdl-resource-summary-card [resourceSummary]="bookmark">
+      </sbdl-resource-summary-card>
     </li>
   </ul>
 </section>

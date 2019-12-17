@@ -1,14 +1,13 @@
-<!--
-<sbdl-resource-summary-card [bookmark]="bookmark">
-</sbdl-resource-summary-card>
--->
-<div class="resource-type">{{ bookmark.type | resourceType }}</div>
+<div class="resource-type">
+  <sbdl-resource-type-icon [type]="resourceSummary.type"></sbdl-resource-type-icon>
+  {{ resourceSummary.type | resourceType }}
+</div>
 <a
-  [routerLink]="['/resource', bookmark.id]"
+  [routerLink]="['/resource', resourceSummary.id]"
   class="inner-card">
-  <img [src]="bookmark.properties.image | replaceNullImage">
-  <div [ngSwitch]="bookmark.type">
-    <div class="title">{{ bookmark.properties.title }}</div>
+  <img [src]="resourceSummary.properties.image | replaceNullImage">
+  <div [ngSwitch]="resourceSummary.type">
+    <div class="title">{{ resourceSummary.properties.title }}</div>
 
     <div *ngSwitchCase="resourceTypes.Instructional" class="details caption emphasis-medium">
       <span class="detail-item" *ngFor="let detail of details; last as isLast">
@@ -18,25 +17,25 @@
     </div>
 
     <div *ngSwitchCase="resourceTypes.ProfessionalLearning" class="details professional-learning caption emphasis-medium">
-      {{ bookmark.summary }}
+      {{ resourceSummary.summary }}
     </div>
 
     <div *ngSwitchCase="resourceTypes.AccessibilityStrategy" class="details professional-learning caption emphasis-medium">
-      {{ bookmark.summary }}
+      {{ resourceSummary.summary }}
     </div>
 
     <div *ngSwitchCase="resourceTypes.FormativeStrategy" class="details professional-learning caption emphasis-medium">
-      {{ bookmark.summary }}
+      {{ resourceSummary.summary }}
     </div>
 
   </div>
 </a>
-<div class="bookmark-actions">
+<div class="resource-summary-actions">
   <sbdl-button-icon class="bookmark" buttonTitle="Toggle Bookmark" (click)="toggleBookmarked()">
-  <div *ngIf="!togglingBookmarked && bookmark.properties.isBookmarked">
+  <div *ngIf="!togglingBookmarked && resourceSummary.properties.isBookmarked">
     <i class="fas fa-bookmark"></i>
   </div>
-  <div *ngIf="!togglingBookmarked && !bookmark.properties.isBookmarked">
+  <div *ngIf="!togglingBookmarked && !resourceSummary.properties.isBookmarked">
     <i class="far fa-bookmark"></i>
   </div>
   <div *ngIf="togglingBookmarked">
@@ -46,13 +45,13 @@
   <sbdl-button-icon class="share" buttonTitle="Share"><i class="far fa-share"></i></sbdl-button-icon>
   <ng-container #shareButton></ng-container>
   <sbdl-button-icon class="print" buttonTitle="Print">
-    <a [routerLink]="['/resource', bookmark.id]" [queryParams]="{print: true}">
+    <a [routerLink]="['/resource', resourceSummary.id]" [queryParams]="{print: true}">
       <i class="far fa-print"></i>
     </a>
   </sbdl-button-icon>
   <sbdl-button-icon class="notes" buttonTitle="Notes">
-    <a [routerLink]="['/resource', bookmark.id]" [queryParams]="{viewNotes: true}">
-      <sbdl-icon [ngClass]="{'has-notes': bookmark.hasNotes}" icon="take-note"></sbdl-icon>
+    <a [routerLink]="['/resource', resourceSummary.id]" [queryParams]="{viewNotes: true}">
+      <sbdl-icon [ngClass]="{'has-notes': resourceSummary.hasNotes}" icon="take-note"></sbdl-icon>
     </a>
   </sbdl-button-icon>
 </div>

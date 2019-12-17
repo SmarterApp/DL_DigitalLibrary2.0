@@ -17,6 +17,8 @@ import { OutlineComponent } from './components/outline/outline.component';
 import { EnhancedPrintingComponent } from './components/outline/enhanced-printing/enhanced-printing.component';
 import { PrintCheckboxComponent } from './components/outline/enhanced-printing/print-checkbox.component';
 import { ResourcePropertiesComponent } from './components/resource-properties/resource-properties.component';
+import { ResourceSummaryCardComponent } from './components/resource-summary-card/resource-summary-card.component';
+import { ResourceTypeIconComponent } from './components/resource-type-icon/resource-type-icon.component';
 import { SimpleSectionComponent } from './components/simple-section/simple-section.component';
 import { StepByStepComponent } from './components/step-by-step/step-by-step.component';
 import { StepComponent } from './components/step-by-step/step.component';
@@ -55,6 +57,8 @@ import { StrategyResourceComponent } from './strategy/strategy-resource.componen
     PrintCheckboxComponent,
     ResourceHostDirective,
     ResourcePropertiesComponent,
+    ResourceSummaryCardComponent,
+    ResourceTypeIconComponent,
     ResourceTypeStrategyComponent,
     SimpleSectionComponent,
     StepByStepComponent,
@@ -88,6 +92,9 @@ import { StrategyResourceComponent } from './strategy/strategy-resource.componen
     PipesModule,
     NotesModule,
     SbdlCommonModule
+  ],
+  exports: [
+    ResourceSummaryCardComponent
   ],
   entryComponents: [
     // Resource components are loaded dynamically so they need to be explicitly set here
