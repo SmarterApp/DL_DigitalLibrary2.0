@@ -22,14 +22,14 @@
 
 <sbdl-simple-section
   *ngIf="isFormative()"
-  [contentHtml]="formativeContent"
+  [contentHtml]="formativeContent()"
   [options]="stepByStepSectionOptions"
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-simple-section>
 
 <sbdl-simple-section
   *ngIf="!isFormative()"
-  [contentHtml]="accessibilityContent"
+  [contentHtml]="accessibilityContent()"
   [options]="instructionalUseSectionOptions"
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-simple-section>
