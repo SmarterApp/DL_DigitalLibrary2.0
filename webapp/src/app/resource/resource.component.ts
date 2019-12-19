@@ -13,11 +13,12 @@ import { ResourceTypePipe } from '../pipes/resource-type.pipe';
 export class ResourceComponent implements AfterViewInit, OnInit {
 
   resource: Resource;
+  notesVisible = false;
   notes: Note[];
   outline: DocumentOutline = Map<DocumentSectionType, DocumentSection>();
-  readingMode: boolean = window.innerWidth < 1200;
   printingMode = false;
-  notesVisible = false;
+  readingMode = false; // will get set properly by ActionsComponent when it loads.
+
   navWidth = 331;
   cssVarStyle: SafeStyle;
 
@@ -49,6 +50,7 @@ export class ResourceComponent implements AfterViewInit, OnInit {
 
   readingModeChanged(readingMode: boolean) {
     this.readingMode = readingMode;
+
     this.setCssVarStyle();
   }
 

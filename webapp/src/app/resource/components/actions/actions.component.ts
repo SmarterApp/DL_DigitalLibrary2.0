@@ -11,22 +11,28 @@ import { PopoverService } from 'src/app/common/controls/popover/popover.service'
 export class ActionsComponent implements OnInit {
 
   @Input()
+  resource: Resource;
+
+  @Input()
   hasNotes: boolean;
 
   @Input()
   notesVisible: boolean;
 
   @Input()
-  resource: Resource;
+  printingMode: boolean;
+
+  @Input()
+  readingMode: boolean;
 
   @Output()
-  readingModeChanged = new EventEmitter<boolean>();
+  notesVisibilityChanged = new EventEmitter<boolean>();
 
   @Output()
   printingModeChanged = new EventEmitter<boolean>();
 
   @Output()
-  notesVisibilityChanged = new EventEmitter<boolean>();
+  readingModeChanged = new EventEmitter<boolean>();
 
   @ViewChild('shareButton', { static: false, read: ViewContainerRef })
   shareContainer: ViewContainerRef;
@@ -35,22 +41,37 @@ export class ActionsComponent implements OnInit {
   sharePopover: ElementRef;
 
   togglingBookmarked = false;
-  readingMode = false;
   hideReadingModeToggle = false;
   currentUrl: string;
   showCopied = false;
 
   private readingModeDefaultWidth = 1200;
+  private resizeTimeout;
+  private oldReadingMode: boolean;
+  private wasSmall: boolean;
 
   @HostListener('window:resize', ['$event'])
   onResize(event?) {
-    if (window.innerWidth < this.readingModeDefaultWidth && !this.readingMode) {
-      this.toggleReadingMode();
+    clearTimeout(this.resizeTimeout);
+    this.resizeTimeout = setTimeout(this.doResize, 200);
+  }
+
+  doResize = () =>  {
+    const isSmall = window.innerWidth < this.readingModeDefaultWidth;
+
+    // Transition from large to small, set readingMode = true
+    if (isSmall && (!this.wasSmall || this.wasSmall === undefined)) {
       this.hideReadingModeToggle = true;
-    } else if ((window.innerWidth >= this.readingModeDefaultWidth) && this.readingMode) {
-      this.toggleReadingMode();
+      this.oldReadingMode = this.readingMode;
+      this.readingModeChanged.emit(true);
+
+    // Transition from small to large, restore the previous mode.
+    } else if (!isSmall && (this.wasSmall || this.wasSmall === undefined)) {
       this.hideReadingModeToggle = false;
+      this.readingModeChanged.emit(this.oldReadingMode);
     }
+
+    this.wasSmall = isSmall;
   }
 
   constructor(private popoverService: PopoverService) { }
@@ -59,10 +80,6 @@ export class ActionsComponent implements OnInit {
     this.onResize();
     this.currentUrl = location.href;
     this.readingModeDefaultWidth = getCssVar('--breakpoint-lg');
-  }
-
-  print() {
-    this.printingModeChanged.emit(true);
   }
 
   share() {
@@ -98,12 +115,15 @@ export class ActionsComponent implements OnInit {
   }
 
   toggleReadingMode() {
-    this.readingMode = !this.readingMode;
-    this.readingModeChanged.emit(this.readingMode);
+    this.readingModeChanged.emit(!this.readingMode);
   }
 
   toggleNotes() {
-    this.notesVisible = !this.notesVisible;
-    this.notesVisibilityChanged.emit(this.notesVisible);
+    this.notesVisibilityChanged.emit(!this.notesVisible);
   }
+
+  togglePrintingMode() {
+    this.printingModeChanged.emit(!this.printingMode);
+  }
+
 }

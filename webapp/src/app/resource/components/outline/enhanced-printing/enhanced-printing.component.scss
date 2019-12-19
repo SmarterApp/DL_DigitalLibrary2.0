@@ -10,8 +10,9 @@
     background-color: rgba($warning-100, 0.4);
     border-radius: $spacer-sm;
     color: $neutral-500;
-    margin: $spacer-xl $spacer $spacer $spacer;
+    margin: $spacer $spacer $spacer $spacer;
     padding: $spacer;
+    width: 16.5em;
 
     .dialog-buttons {
       display: flex;

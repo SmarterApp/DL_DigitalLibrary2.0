@@ -23,6 +23,12 @@ export class ResourceContentComponent implements OnInit {
     notesVisible: boolean;
 
     @Input()
+    printingMode: boolean;
+
+    @Input()
+    readingMode: boolean;
+
+    @Input()
     outline: DocumentOutline;
 
     @Output()
