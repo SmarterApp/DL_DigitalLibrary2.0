@@ -2,11 +2,11 @@ import { FormativeAssessmentContent } from './formative-assessment-content.model
 import { Resource } from './resource.model';
 
 export interface FormativeStrategyResource extends Resource {
-  stratOverviewContent: {
+  overview: {
     overview: string;
     studentBenefits: string;
-    suggestedMaterial: string;
+    suggestedMaterials: string;
   };
   stepByStep: string;
-  strategyAction: FormativeAssessmentContent;
+  strategyInAction: FormativeAssessmentContent;
 }

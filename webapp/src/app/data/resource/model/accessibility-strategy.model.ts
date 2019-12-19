@@ -1,10 +1,10 @@
 import { Resource } from './resource.model';
 
 export interface AccessibilityStrategyResource extends Resource {
-  stratOverviewContent: {
+  overview: {
     overview: string;
     studentBenefits: string;
-    suggestedMaterial: string;
+    suggestedMaterials: string;
   };
   instructionalUse: string;
   sampleItemContent: {
