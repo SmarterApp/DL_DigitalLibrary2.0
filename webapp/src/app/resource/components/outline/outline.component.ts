@@ -19,7 +19,7 @@ export class OutlineComponent implements OnInit {
   readingMode: boolean;
 
   @Input()
-  outline: DocumentOutline = Map<DocumentSectionType, DocumentSection>();
+  outline: DocumentOutline;
 
   mobile = false;
   private breakpointSmall = 500;

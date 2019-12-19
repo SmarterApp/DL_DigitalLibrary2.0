@@ -1,8 +1,9 @@
 import { AfterViewInit, ChangeDetectorRef, HostBinding, OnInit } from '@angular/core';
 import { DomSanitizer, SafeStyle, Title } from '@angular/platform-browser';
+import { Map } from 'immutable';
 import { Resource } from '../data/resource/model/resource.model';
 import { Note } from '../data/notes/model/note.model';
-import { DocumentOutline } from './components/outline/document-outline.model';
+import { DocumentOutline, DocumentSection, DocumentSectionType } from './components/outline/document-outline.model';
 import { ResourceTypePipe } from '../pipes/resource-type.pipe';
 
 /**
@@ -13,7 +14,7 @@ export class ResourceComponent implements AfterViewInit, OnInit {
 
   resource: Resource;
   notes: Note[];
-  outline: DocumentOutline;
+  outline: DocumentOutline = Map<DocumentSectionType, DocumentSection>();
   readingMode: boolean = window.innerWidth < 1200;
   printingMode = false;
   notesVisible = false;

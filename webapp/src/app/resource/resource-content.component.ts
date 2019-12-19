@@ -22,6 +22,9 @@ export class ResourceContentComponent implements OnInit {
     @Input()
     notesVisible: boolean;
 
+    @Input()
+    outline: DocumentOutline;
+
     @Output()
     outlineLoaded = new EventEmitter<DocumentOutline>();
 
@@ -33,8 +36,6 @@ export class ResourceContentComponent implements OnInit {
 
     @Output()
     notesVisibilityChanged = new EventEmitter<boolean>();
-
-    protected outline: DocumentOutline = Map<DocumentSectionType, DocumentSection>();
 
     constructor() { }
 
