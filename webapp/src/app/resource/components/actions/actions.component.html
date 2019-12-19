@@ -15,7 +15,14 @@
     <i class="fas fa-spinner fa-spin"></i>
   </div>
 </sbdl-button-icon>
-<sbdl-button-icon buttonTitle="Print" (click)="print()"><i class="far fa-print"></i></sbdl-button-icon>
+<sbdl-button-icon buttonTitle="Print" (click)="togglePrintingMode()">
+  <div *ngIf="printingMode">
+    <i class="fas fa-print"></i>
+  </div>
+  <div *ngIf="!printingMode">
+    <i class="far fa-print"></i>
+  </div>
+</sbdl-button-icon>
 <sbdl-button-icon buttonTitle="Toggle Reading Mode" [hidden]="hideReadingModeToggle" (click)="toggleReadingMode()">
   <div *ngIf="readingMode">
     <i class="far fa-compress-alt"></i>

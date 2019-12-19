@@ -64,6 +64,7 @@
     }
 
     nav sbdl-outline,
+    nav sbdl-enhanced-printing,
     aside sbdl-resource-properties {
       position: fixed;
       max-height: 100%;
@@ -79,11 +80,13 @@
       }
     }
 
-    nav sbdl-outline {
+    nav sbdl-outline,
+    nav sbdl-enhanced-printing {
         width: var(--nav-width);
     }
 
-    nav sbdl-outline:hover {
+    nav sbdl-outline:hover,
+    nav sbdl-enhanced-printing:hover {
         width: 331px;
     }
 
@@ -126,6 +129,7 @@
         }
 
         nav sbdl-outline,
+        nav sbdl-enhanced-printing,
         aside sbdl-detailed-metadata,
         aside sbdl-resource-properties {
           position: relative;
@@ -159,7 +163,7 @@
   :host {
     display: block;
 
-    .outline, nav, sbdl-outline {
+    .outline, nav, sbdl-outline, sbdl-enhanced-printing {
       display: none;
     }
 

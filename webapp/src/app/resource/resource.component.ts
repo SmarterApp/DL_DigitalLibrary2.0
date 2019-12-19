@@ -1,8 +1,9 @@
 import { AfterViewInit, ChangeDetectorRef, HostBinding, OnInit } from '@angular/core';
 import { DomSanitizer, SafeStyle, Title } from '@angular/platform-browser';
+import { Map } from 'immutable';
 import { Resource } from '../data/resource/model/resource.model';
 import { Note } from '../data/notes/model/note.model';
-import { DocumentOutline } from './components/outline/document-outline.model';
+import { DocumentOutline, DocumentSection, DocumentSectionType } from './components/outline/document-outline.model';
 import { ResourceTypePipe } from '../pipes/resource-type.pipe';
 
 /**
@@ -12,11 +13,12 @@ import { ResourceTypePipe } from '../pipes/resource-type.pipe';
 export class ResourceComponent implements AfterViewInit, OnInit {
 
   resource: Resource;
-  notes: Note[];
-  outline: DocumentOutline;
-  readingMode: boolean = window.innerWidth < 1200;
-  printingMode = false;
   notesVisible = false;
+  notes: Note[];
+  outline: DocumentOutline = Map<DocumentSectionType, DocumentSection>();
+  printingMode = false;
+  readingMode = false; // will get set properly by ActionsComponent when it loads.
+
   navWidth = 331;
   cssVarStyle: SafeStyle;
 
@@ -48,6 +50,7 @@ export class ResourceComponent implements AfterViewInit, OnInit {
 
   readingModeChanged(readingMode: boolean) {
     this.readingMode = readingMode;
+
     this.setCssVarStyle();
   }
 
