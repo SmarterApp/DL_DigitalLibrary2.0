@@ -56,6 +56,8 @@ export class ResourceService {
   }
 
   private attachmentsFromJson(attachmentsJson): ResourceAttachment[] {
+    if (!attachmentsJson) { return []; }
+
     return attachmentsJson.map(a => ({
       ...a,
       fileType: getFileTypeForMimeType(a.fileType)
