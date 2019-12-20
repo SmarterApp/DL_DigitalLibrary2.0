@@ -44,11 +44,14 @@ import { StrategyOverviewComponent } from './strategy/overview/strategy-overview
 import { StrategyPropertiesComponent } from './strategy/properties/strategy-properties.component';
 import { StrategyResourceComponent } from './strategy/strategy-resource.component';
 
+import { PlaylistBackgroundComponent } from './playlist/background/playlist-background.component';
 import { PlaylistContentComponent } from './playlist/content/playlist-content.component';
 import { PlaylistInterventionComponent } from './playlist/intervention/playlist-intervention.component';
 import { PlaylistResourceComponent } from './playlist/playlist-resource.component';
 import { PlaylistResourcesComponent } from './playlist/resources/playlist-resources.component';
+import { PlaylistTopicComponent } from './playlist/topics/playlist-topic.component';
 import { PlaylistTopicsComponent } from './playlist/topics/playlist-topics.component';
+import { ProgressionScaleButtonComponent } from './playlist/topics/progression-scale-button.component';
 
 @NgModule({
   declarations: [
@@ -91,11 +94,14 @@ import { PlaylistTopicsComponent } from './playlist/topics/playlist-topics.compo
     StrategyPropertiesComponent,
     StrategyResourceComponent,
 
+    PlaylistBackgroundComponent,
     PlaylistContentComponent,
     PlaylistInterventionComponent,
     PlaylistResourceComponent,
     PlaylistResourcesComponent,
-    PlaylistTopicsComponent
+    PlaylistTopicComponent,
+    PlaylistTopicsComponent,
+    ProgressionScaleButtonComponent
   ],
   imports: [
     CommonModule,

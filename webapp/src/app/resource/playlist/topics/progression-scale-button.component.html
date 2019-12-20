@@ -1,0 +1,4 @@
+<div [ngClass]="scale" class="scale-icon"></div>
+<span *ngIf="!collapsed">{{ scaleTitle }}</span>
+<div class="collapse-btn" *ngIf="!collapsed"><i class="fas fa-compress-alt" aria-label="Collapse"></i></div>
+<div class="collapse-btn" *ngIf="collapsed"><i class="fas fa-expand-alt" aria-label="Expand"></i></div>

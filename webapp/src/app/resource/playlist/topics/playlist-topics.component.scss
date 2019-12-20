@@ -1,0 +1,139 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+
+:host {
+  .topics-container {
+
+    padding-top: $spacer;
+    margin-bottom: $spacer-lg;
+    position: relative;
+    overflow: visible;
+    // because we allow the table to overflow the .topics-container the content
+    // column in the middle will not shrink enough on it's own to allow the
+    // right panel to come into frame at ~1201-1400px. So we need to explicitly
+    // tell it how wide the main column should be (and the table will still
+    // overflow) The calculation is:
+    //
+    //     100vw                    // Start with the full width of our viewport
+    //     - (var(--nav-width) * 2) // take out the two side panels
+    //     - 4rem                   // take out the main navigation panel
+    //     - 4rem                   // take out the resource content padding
+    width: calc(100vw - (var(--nav-width) * 2) - 8rem);
+
+    h2 {
+      font-size: 1.76875rem;
+      font-weight: 500;
+      line-height: 117%;
+    }
+
+    .leading-icon {
+
+      i, svg {
+        color: $brand-blue;
+        background: url('/assets/images/blue-spot.png') no-repeat;
+        background-size: contain;
+        padding: 7px;
+        margin-bottom: -7px;
+        margin-left: -16px;
+        font-size: 1.75rem;
+      }
+
+      sbdl-tooltip sbdl-icon {
+        color: $info-500;
+      }
+    }
+
+    .progressions-table {
+      --width: calc(80vw - (var(--nav-width) * 2) + 8rem);
+      margin-bottom: $spacer-xl;
+      // margin-left: calc((80vw - var(--measure)) / -2);
+      // max-width: none;
+      // width: 80vw;
+      margin-left: calc(((var(--width) - var(--measure)) / -2) + 2rem);
+      max-width: none;
+      width: var(--width);
+    }
+
+    .progressions-info {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      white-space: nowrap;
+
+      h3 {
+        font-size: $font-size-0;
+        font-weight: normal;
+        letter-spacing: 0.08em;
+        text-align: center;
+        text-transform: uppercase;
+        width: 81%;
+      }
+    }
+
+    .table-header,
+    sbdl-playlist-topic {
+      border-bottom: solid 1px $neutral-100;
+    }
+
+    .table-header {
+
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+
+      & > * {
+        box-sizing: border-box;
+        padding: $spacer-sm;
+      }
+
+      .topic-title {
+        background-color: $neutral-50;
+        border-radius: 4px 4px 0 0;
+        min-width: 8rem;
+        text-align: right;
+        width: 19%;
+
+        h3 {
+          font-size: $font-size-body;
+          line-height: 130%;
+        }
+
+      }
+
+      .scale {
+        border-top: solid 1px $neutral-100;
+        padding: $spacer-sm 0;
+
+        sbdl-progression-scale-button {
+          border-radius: 4px;
+          margin-right: $spacer-sm;
+        }
+
+      }
+
+      .scale.below {
+        padding-left: 0;
+        margin-left: $spacer;
+      }
+
+      .scale.below { width: var(--below-width); }
+      .scale.near { width: var(--near-width); }
+      .scale.above { width: var(--above-width); }
+    }
+
+  }
+
+  ::ng-deep {
+    --below-width: 27%;
+    --near-width: 27%;
+    --above-width: 27%;
+  }
+}
+
+@media (max-width: $breakpoint-lg) {
+  :host .topics-container .progressions-table {
+    max-width: var(--measure);
+    margin-left: 0;
+  }
+}
