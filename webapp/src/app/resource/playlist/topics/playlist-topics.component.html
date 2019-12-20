@@ -1,4 +1,7 @@
-<article #sectionHeader *ngIf="resource.topics.length > 0" class="topics-container">
+<article #sectionHeader
+  *ngIf="resource.topics.length > 0"
+  class="topics-container"
+  [ngClass]="{'reading-mode': readingMode, 'full-mode': !readingMode}">
   <h2 class="leading-icon">
     <i class="far fa-chart-network"></i>Connect Student Performance to
     Instructional Resources

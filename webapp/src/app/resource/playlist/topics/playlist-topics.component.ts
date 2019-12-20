@@ -15,6 +15,9 @@ export class PlaylistTopicsComponent extends PrintableSectionComponent implement
   @Input()
   resource: PlaylistResource;
 
+  @Input()
+  readingMode: boolean;
+
   belowCollapsed = false;
   nearCollapsed = false;
   aboveCollapsed = false;
