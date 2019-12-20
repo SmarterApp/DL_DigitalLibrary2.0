@@ -1,0 +1,40 @@
+<div class="top-header">
+  <img src="/assets/images/yellow-spot.png" alt="" />
+  <sbdl-actions
+    [hasNotes]="notes.length > 0"
+    [notesVisible]="notesVisible"
+    [readingMode]="readingMode"
+    [printingMode]="printingMode"
+    [resource]= "resource"
+    (readingModeChanged)="emitReadingModeChanged($event)"
+    (printingModeChanged)="emitPrintingModeChanged($event)"
+    (notesVisibilityChanged)="emitNotesVisibilityChanged($event)"
+  ></sbdl-actions>
+</div>
+
+<sbdl-header [resource]="resource"></sbdl-header>
+
+<!--
+<sbdl-playlist-topics
+  [resource]="resource"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-playlist-topics>
+
+<sbdl-playlist-intervention
+  [content]="resource.overview.interventionSuggestions"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-playlist-intervention>
+
+-->
+<sbdl-simple-section
+  [contentHtml]="resource.thingsToConsider"
+  [options]="commentsSectionOptions"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-simple-section>
+<!--
+
+<sbdl-playlist-overview
+  [overview]="resource.overview"
+  (sectionLoaded="addDocumentSection($event)"
+></sbdl-playlist-overview>
+-->

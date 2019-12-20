@@ -1,0 +1,43 @@
+<nav class="outline">
+  <sbdl-outline
+    [resource]="resource"
+    [outline]="outline"
+    [readingMode]="readingMode"
+    [hidden]="printingMode"
+  ></sbdl-outline>
+  <sbdl-enhanced-printing
+    [resource]="resource"
+    [outline]="outline"
+    [hidden]="!printingMode"
+    (printingModeChanged)="printingModeChanged($event)"
+    (documentOutlineChanged)="setOutline($event)"
+  ></sbdl-enhanced-printing>
+</nav>
+<main class="resource-content">
+  <sbdl-playlist-content
+    [notes]="notes"
+    [notesVisible]="notesVisible"
+    [printingMode]="printingMode"
+    [readingMode]="readingMode"
+    [outline]="outline"
+    [resource]="resource"
+    (outlineLoaded)="setOutline($event)"
+    (readingModeChanged)="readingModeChanged($event)"
+    (printingModeChanged)="printingModeChanged($event)"
+    (notesVisibilityChanged)="notesVisibilityChanged($event)"
+  ></sbdl-playlist-content>
+</main>
+<aside class="resource-properties">
+  <sbdl-resource-properties
+    [properties]="resource.properties"
+    [hidden]="notesVisible">
+    <sbdl-educational-details [properties]="resource.properties"></sbdl-educational-details>
+    <sbdl-playlist-resources [topics]="resource.topics"></sbdl-playlist-resources>
+  </sbdl-resource-properties>
+  <sbdl-notes
+    [hidden]="!notesVisible"
+    [notes]="notes"
+    [resource]="resource"
+    (notesChanged)="notesChanged($event)">
+  </sbdl-notes>
+</aside>
