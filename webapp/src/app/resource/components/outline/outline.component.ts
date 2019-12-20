@@ -42,7 +42,7 @@ export class OutlineComponent implements OnInit {
       [ DST.Overview ])
     .set(
       ResourceType.ConnectionsPlaylist,
-      [ DST.PlaylistTopics, DST.ThingsToConsider, DST.Overview ]);
+      [ DST.PlaylistTopics, DST.ThingsToConsider, DST.Overview, DST.PlaylistInterim ]);
 
   constructor() { }
 

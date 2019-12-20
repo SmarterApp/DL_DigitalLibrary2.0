@@ -1,0 +1,25 @@
+@import "spacing";
+@import "typography";
+
+:host {
+  h3 {
+    // TODO: this should become a main style once we refactor our heading
+    // styling across the entire app.
+    font-size: $font-size-3;
+    font-weight: 500;
+    line-height: 133%;
+  }
+
+  h4 {
+    font-size: $font-size-2;
+    font-weight: normal;
+    line-height: 160%;
+  }
+
+  img { margin-bottom: $spacer; } // TODO: replace with video
+
+  background: $neutral-50;
+  border: solid thin $neutral-100;
+  border-radius: 4px;
+  padding: $spacer-lg;
+}
