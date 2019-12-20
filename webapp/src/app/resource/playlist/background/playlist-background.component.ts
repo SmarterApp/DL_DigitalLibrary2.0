@@ -27,8 +27,8 @@ export class PlaylistBackgroundComponent extends PrintableSectionComponent imple
         elementRef: this.headerElement.nativeElement,
         selectedForPrint: true,
         title: 'Background',
-        fontAwesomeIcon: 'fa-circle-check',
-        type: DocumentSectionType.Subsection
+        fontAwesomeIcon: 'fa-check-circle',
+        type: DocumentSectionType.Overview
       });
     }
   }

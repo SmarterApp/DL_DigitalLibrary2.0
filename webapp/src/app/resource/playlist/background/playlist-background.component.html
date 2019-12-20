@@ -1,9 +1,32 @@
-<section #sectionHeader>
-  <h3>
+<section #sectionHeader *ngIf="overview">
+  <h2 class="leading-icon">
+    <i class="fas fa-check-circle"></i>
     IAB Background
-  </h3>
-  <h4>Description</h4>
-  <h4>Why is this important for students to learn?</h4>
-  <h4>Academic Vocabulary</h4>
-  <h4>Dive Deeper</h4>
+    <sbdl-tooltip text="A description of the interim assessment connected with this playlist, including a brief summary of what students should know or be able to do.">
+      <sbdl-icon icon="info"></sbdl-icon>
+    </sbdl-tooltip>
+  </h2>
+
+  <h3>Description</h3>
+  <dynamic-html [content]="overview.description"></dynamic-html>
+
+  <h3>Why is this important for students to learn?</h3>
+  <dynamic-html [content]="overview.importance"></dynamic-html>
+
+  <h3>Academic Vocabulary</h3>
+  <dynamic-html [content]="overview.academicVocabulary"></dynamic-html>
+
+  <h3>Dive Deeper</h3>
+  <div>
+    <a href="https://sampleitems.smarterbalanced.org/BrowseItems/"
+       class="primary">
+      Sample Items
+      <i class="far fa-arrow-right" aria-label="(opens in a new window)"></i>
+    </a>
+    <a href="https://cse.thesnug.dev"
+       class="primary">
+      Content Explorer
+      <i class="far fa-arrow-right" aria-label="(opens in a new window)"></i>
+    </a>
+  </div>
 </section>
