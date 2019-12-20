@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { DocumentSection, DocumentSectionType } from '../outline/document-outline.model';
+import { DocumentSectionType } from '../outline/document-outline.model';
 import { PrintableSectionComponent } from '../../printable-section.component';
 
 @Component({

@@ -15,13 +15,13 @@
     <span *ngIf="!allSelected">Select all</span>
   </sbdl-button>
 </h6>
-<ul *ngIf="outline">
+<ul class="section-list" *ngIf="outline">
   <li *ngFor="let section of sectionsInOrder">
     <sbdl-print-checkbox
       [documentSection]="section"
       (changed)="sectionChanged($event)">
     </sbdl-print-checkbox>
-    <ul *ngIf="section.subsections">
+    <ul class="subsection-list" *ngIf="section.subsections">
       <li *ngFor="let subsection of section.subsections">
         <sbdl-print-checkbox class="subsection font-light"
           [documentSection]="subsection"

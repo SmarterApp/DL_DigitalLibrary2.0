@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PrintableSectionComponent } from '../../printable-section.component';
 import { ResourceStep } from '../../../data/resource/model/step.model';
-import { DocumentSection, DocumentSectionType } from '../outline/document-outline.model';
+import { DocumentSectionType } from '../outline/document-outline.model';
 
 @Component({
   selector: 'sbdl-step',

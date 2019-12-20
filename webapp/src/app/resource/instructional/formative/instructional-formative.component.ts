@@ -30,7 +30,7 @@ export class InstructionalFormativeComponent extends PrintableSectionComponent i
   emitSectionLoaded(): void {
     if (this.headerElement) {
       this.sectionLoaded.emit({
-        title: 'Formative Assessment Strategies',
+        title: 'Formative Assessment Process',
         elementRef: this.headerElement.nativeElement,
         canPrint: true,
         component: this,

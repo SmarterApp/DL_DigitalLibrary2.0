@@ -4,7 +4,7 @@
   </span>
   Outline
 </h6>
-<ul *ngIf="outline">
+<ul class=section-list *ngIf="outline">
   <li *ngFor="let section of sectionsInOrder"
       [ngClass]="'section-' + section.type">
     <div class="section-header">
@@ -16,7 +16,8 @@
         {{ section.title }}
       </sbdl-button>
     </div>
-    <ol *ngIf="section.subsections">
+    <ol class="subsection-list"
+        *ngIf="section.subsections && section.subsectionsNumbered">
       <li *ngFor="let subsection of section.subsections">
         <sbdl-button class="subsection"
                      (click)="scrollTo(subsection)"
@@ -25,5 +26,15 @@
         </sbdl-button>
       </li>
     </ol>
+    <ul class="subsection-list"
+        *ngIf="section.subsections && !section.subsectionsNumbered">
+      <li *ngFor="let subsection of section.subsections">
+        <sbdl-button class="subsection"
+                     (click)="scrollTo(subsection)"
+                     (blur)="removeHighlight(subsection)">
+          {{ subsection.title }}
+        </sbdl-button>
+      </li>
+    </ul>
   </li>
 </ul>

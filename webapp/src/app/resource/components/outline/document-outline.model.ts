@@ -12,13 +12,14 @@ export enum DocumentSectionType {
   Attachments = 'attachments',
   AssessmentInfo = 'assessment-info',
   StrategyInAction = 'strategy-in-action',
+  PlaylistTopics = 'playlist-topics',
 
   Subsection = 'subsection'
 }
 
 export type DocumentOutline = Map<DocumentSectionType, DocumentSection>;
 
-export class DocumentSection {
+export interface DocumentSection {
   canPrint: boolean;
   component: PrintableSectionComponent;
   elementRef: any;
@@ -26,6 +27,7 @@ export class DocumentSection {
   sbdlIcon?: string;
   selectedForPrint: boolean;
   subsections?: DocumentSection[];
+  subsectionsNumbered?: boolean;
   title: string;
   type: DocumentSectionType;
 }

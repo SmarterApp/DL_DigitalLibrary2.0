@@ -4,7 +4,7 @@ import { Resource } from 'src/app/data/resource/model/resource.model';
 import { getCssVar } from 'src/app/common/utils';
 import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
 import { commentsSectionOptions } from '../simple-section/section.definitions';
-import { DocumentOutline, DocumentSection, DocumentSectionType } from './document-outline.model';
+import { DocumentOutline, DocumentSection, DocumentSectionType as DST} from './document-outline.model';
 
 @Component({
   selector: 'sbdl-outline',
@@ -24,16 +24,25 @@ export class OutlineComponent implements OnInit {
   mobile = false;
   private breakpointSmall = 500;
 
-  private SECTION_ORDER = [
-    DocumentSectionType.Overview,
-    DocumentSectionType.StepByStep,
-    DocumentSectionType.Attachments,
-    DocumentSectionType.Differentiation,
-    DocumentSectionType.ThingsToConsider,
-    DocumentSectionType.Formative,
-    DocumentSectionType.AssessmentInfo,
-    DocumentSectionType.StrategyInAction
-  ];
+  // The orders defined here control how the items in the outline are ordered.
+  // To alter the order of the sections actually laid out in the main content
+  // see the content components (InstructionContentComponent, etc.).
+  private SECTION_ORDER = Map<ResourceType, DST[]>()
+    .set(
+      ResourceType.Instructional,
+      [ DST.Overview, DST.StepByStep, DST.Attachments, DST.Differentiation, DST.ThingsToConsider, DST.Formative ])
+    .set(
+      ResourceType.ProfessionalLearning,
+      [ DST.Overview, DST.StepByStep, DST.Attachments, DST.ThingsToConsider, DST.Formative ])
+    .set(
+      ResourceType.FormativeStrategy,
+      [ DST.Overview, DST.StepByStep, DST.Attachments, DST.ThingsToConsider, DST.StrategyInAction ])
+    .set(
+      ResourceType.AccessibilityStrategy,
+      [ DST.Overview ])
+    .set(
+      ResourceType.ConnectionsPlaylist,
+      [ DST.PlaylistTopics, DST.ThingsToConsider, DST.Overview ]);
 
   constructor() { }
 
@@ -43,7 +52,7 @@ export class OutlineComponent implements OnInit {
   }
 
   get sectionsInOrder(): DocumentSection[] {
-    return this.SECTION_ORDER
+    return this.SECTION_ORDER.get(this.resource.type)
       .filter(sectionType => this.outline.has(sectionType))
       .map(sectionType => this.outline.get(sectionType));
   }
