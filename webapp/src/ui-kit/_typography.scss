@@ -5,6 +5,15 @@ $font-family-title: 'Montserrat', sans-serif;
 $font-size-body: 16px;
 $font-size-body-2: 14.41px;
 
+$font-size-0: 0.900625rem;
+$font-size-1: 1rem;
+$font-size-2: 1.2125rem;
+$font-size-3: 1.4625rem;
+$font-size-4: 1.76875rem;
+$font-size-5: 2.14375rem;
+$font-size-6: 2.59375rem;
+$font-size-7: 3.1375rem;
+
 body {
     font-size: $font-size-body;
     font-family: $font-family-body;
@@ -23,50 +32,50 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     font-weight: 700;
-    font-size: 3.1375rem;
+    font-size: $font-size-7;
     letter-spacing: -0.005em;
 }
 
 h2 {
     font-weight: 700;
-    font-size: 2.59375rem;
+    font-size: $font-size-6;
 }
 
 h3 {
     font-weight: 600;
-    font-size: 2.14375rem;
+    font-size: $font-size-5;
     line-height: 104%;
 }
 
 h4 {
     font-weight: 600;
-    font-size: 1.76875rem;
+    font-size: $font-size-4;
     line-height: 117%;
 }
 
 h5 {
     font-weight: 500;
-    font-size: 1.4625rem;
+    font-size: $font-size-3;
     line-height: 133%;
 }
 
 h6 {
     font-weight: 400;
-    font-size: 1.2125rem;
+    font-size: $font-size-2;
     line-height: 160%;
 }
 
 .subtitle-1 {
     font-family: $font-family-title;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: $font-size-1;
     line-height: 160%;
 }
 
 .subtitle-2 {
     font-family: $font-family-title;
     font-weight: 400;
-    font-size: 0.900625rem;
+    font-size: $font-size-0;
     line-height: 175%;
 }
 
