@@ -6,14 +6,21 @@ export class PrintableSectionComponent {
 
   private currentCssStyle: SafeStyle;
 
-  private cssShownStyle: SafeStyle;
-  private cssHiddenStyle: SafeStyle;
+  private cssPrintStyle: string;
+  private cssHiddenStyle: string;
+  private cssBaseStyle: string;
+  private selectedForPrint = true;
 
   constructor(private sanitizer: DomSanitizer,
-              cssShownStyle = '--print-display: block;',
-              cssHiddenStyle = '--print-display: none;') {
-    this.cssShownStyle = this.sanitizer.bypassSecurityTrustStyle(cssShownStyle);
-    this.cssHiddenStyle = this.sanitizer.bypassSecurityTrustStyle(cssHiddenStyle);
+              cssCustomStyles: {
+                printSelected?: string,
+                printHidden?: string,
+                baseStyle?: string
+              } = {}) {
+
+    this.cssPrintStyle = cssCustomStyles.printSelected || '--print-display: block;';
+    this.cssHiddenStyle = cssCustomStyles.printHidden || '--print-display: none;';
+    this.cssBaseStyle = cssCustomStyles.baseStyle || '';
   }
 
   @Output()
@@ -28,6 +35,14 @@ export class PrintableSectionComponent {
   }
 
   setPrintStyle(selectedForPrint: boolean) {
-    this.currentCssStyle = selectedForPrint ? this.cssShownStyle : this.cssHiddenStyle;
+    this.selectedForPrint = selectedForPrint;
+    this.currentCssStyle = this.sanitizer.bypassSecurityTrustStyle(
+      this.cssBaseStyle +
+      (selectedForPrint ? this.cssPrintStyle : this.cssHiddenStyle));
+  }
+
+  setBaseStyle(baseStyle: string): void {
+    this.cssBaseStyle = baseStyle;
+    this.setPrintStyle(this.selectedForPrint);
   }
 }

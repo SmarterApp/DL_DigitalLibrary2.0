@@ -15,9 +15,10 @@ export class StepComponent extends PrintableSectionComponent implements AfterVie
   stepModel: ResourceStep;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer,
-      '--print-position: relative; --print-visibility: visible;',
-      '--print-position: fixed; --print-visibility: hidden;');
+    super(sanitizer, {
+      printSelected: '--print-position: relative; --print-visibility: visible;',
+      printHidden: '--print-position: fixed; --print-visibility: hidden;'
+    });
   }
 
   ngAfterViewInit() {
