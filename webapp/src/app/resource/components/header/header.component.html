@@ -13,6 +13,9 @@
 <section class="byline">
   <div>{{ properties.authors | join: { conjunction: 'and' } }}</div>
   <div class="font-light">{{ properties.authorOrg }}</div>
+  <div *ngIf="properties.authors.length === 0 && !properties.authorOrg">
+    <em>Missing author data.</em>
+  </div>
 </section>
 <span *ngIf="properties.lastUpdatedDate" class="caption">
   <span class="emphasis-medium">Updated</span>
