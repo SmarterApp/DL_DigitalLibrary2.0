@@ -32,8 +32,8 @@ export class FilterChipsetComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if(this.filterChipRefs) {
-      for(let chip of this.filterChipRefs) {
+    if (this.filterChipRefs) {
+      for (const chip of this.filterChipRefs) {
         const chipSet = new MDCChipSet(chip.nativeElement);
       }
     }
