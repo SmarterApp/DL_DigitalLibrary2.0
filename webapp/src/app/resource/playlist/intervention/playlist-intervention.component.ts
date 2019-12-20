@@ -24,7 +24,7 @@ export class PlaylistInterventionComponent extends PrintableSectionComponent imp
         component: this,
         elementRef: this.headerElement.nativeElement,
         selectedForPrint: true,
-        title: 'Intervention Suggestions',
+        title: 'Suggestions for Intervention',
         type: DocumentSectionType.Subsection
       });
     }

@@ -1,0 +1,9 @@
+@import "typography";
+
+:host {
+  h3 {
+    // TODO: this should become a main style once we refactor our heading
+    // styling across the entire app.
+    font-size: $font-size-3;
+  }
+}

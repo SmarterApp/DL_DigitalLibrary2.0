@@ -20,21 +20,14 @@
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-playlist-topics>
 
-<sbdl-playlist-intervention
-  [content]="resource.overview.interventionSuggestions"
-  (sectionLoaded)="addDocumentSection($event)"
-></sbdl-playlist-intervention>
-
 -->
 <sbdl-simple-section
   [contentHtml]="resource.thingsToConsider"
   [options]="commentsSectionOptions"
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-simple-section>
-<!--
 
-<sbdl-playlist-overview
+<sbdl-playlist-background
   [overview]="resource.overview"
-  (sectionLoaded="addDocumentSection($event)"
-></sbdl-playlist-overview>
--->
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-playlist-background>
