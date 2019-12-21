@@ -21,15 +21,6 @@ export class StepByStepComponent extends PrintableSectionComponent implements Af
   }
 
   ngAfterViewInit(): void {
-      this.emitSectionLoaded();
-  }
-
-  addSubsection(subsection: DocumentSection) {
-    this.subsections.push(subsection);
-    this.emitSectionLoaded();
-  }
-
-  private emitSectionLoaded() {
     if (this.headerElement) {
       this.sectionLoaded.emit({
         canPrint: true,
@@ -38,9 +29,15 @@ export class StepByStepComponent extends PrintableSectionComponent implements Af
         sbdlIcon: 'steps',
         selectedForPrint: true,
         subsections: this.subsections,
+        subsectionsNumbered: true,
         title: 'Step-by-Step',
         type: DocumentSectionType.StepByStep
       });
     }
   }
+
+  addSubsection(subsection: DocumentSection) {
+    this.subsections.push(subsection);
+  }
+
 }

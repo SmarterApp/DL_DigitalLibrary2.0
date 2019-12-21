@@ -50,7 +50,7 @@ export class ResourceContentComponent implements OnInit {
 
     addDocumentSection(section: DocumentSection) {
       this.outline = this.outline.set(section.type, section);
-      this.emitOutlineLoadedEvent();
+      this.outlineLoaded.emit(this.outline);
     }
 
     scrollToAttachments() {
@@ -70,9 +70,5 @@ export class ResourceContentComponent implements OnInit {
 
     emitNotesVisibilityChanged(event) {
       this.notesVisibilityChanged.emit(event);
-    }
-
-    protected emitOutlineLoadedEvent() {
-      this.outlineLoaded.emit(this.outline);
     }
 }

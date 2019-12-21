@@ -1,0 +1,52 @@
+@import "typography";
+
+:host {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 6px;
+
+  font-family: $font-family-title;
+  font-size: $font-size-2;
+
+  .scale-icon {
+    display: inline-block;
+    line-height: normal;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 6px;
+
+    &.below {
+      height: 6px;
+      background: $error-900;
+    }
+
+    &.near {
+      height: 12px;
+      background: $warning-900;
+    }
+
+    &.above {
+      height: 18px;
+      background: $success-900;
+    }
+  }
+
+  .collapse-btn {
+    margin-left: auto;
+    visibility: hidden;
+
+    svg {
+      color: $neutral-500;
+      margin-left: auto;
+    }
+  }
+
+  &:hover {
+    background-color: $neutral-50;
+
+    .collapse-btn { visibility: visible; }
+  }
+}

@@ -1,0 +1,90 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+
+:host {
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  max-width: none;
+
+  & > * { box-sizing: border-box; }
+
+  .topic-title {
+
+    background-color: $neutral-50;
+    cursor: pointer;
+    min-width: 8rem;
+    padding: $spacer-sm;
+    position: relative;
+    text-align: right;
+    width: 19%;
+
+    h3 {
+      font-size: $font-size-body;
+      line-height: 130%;
+    }
+
+    a {
+      font-size: 13.2px;  // TODO: should be defined somewhere
+      white-space: break-spaces;
+    }
+
+    .collapse-btn {
+      position: absolute;
+      top: $spacer-sm;
+      left: $spacer-sm;
+      visibility: hidden;
+    }
+
+    &:hover .collapse-btn {
+      visibility: visible;
+    }
+
+  }
+
+  .below,
+  .near,
+  .above {
+    padding: $spacer-sm $spacer-sm $spacer-sm 0;
+
+    dynamic-html {
+      display: block;
+      font-size: 13.2px; // TODO: should be defined somewhere
+
+      ::ng-deep {
+        p:first-child { margin-top: 0; }
+        p:last-child { margin-bottom: 0; }
+      }
+    }
+
+    &.rowCollapsed {
+      color: $neutral-500;
+
+      ::ng-deep dynamic-html * {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    &.colCollapsed {
+      width: 4rem;
+
+      dynamic-html {
+        display: none;
+      }
+    }
+  }
+
+  .below { width: var(--below-width); }
+  .near { width: var(--near-width); }
+  .above { width: var(--above-width); }
+
+  .below {
+    padding-left: 0;
+    margin-left: $spacer;
+  }
+
+}

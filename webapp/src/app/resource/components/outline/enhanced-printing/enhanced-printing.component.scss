@@ -24,8 +24,19 @@
     }
   }
 
-  & > ul > li {
-    font-family: $font-family-title;
+  ul.section-list {
+    & > li {
+      font-family: $font-family-title;
+    }
+
+    ul.subsection-list {
+      list-style-type: none;
+      padding: 0;
+
+      & > li {
+        text-indent: 0;
+      }
+    }
   }
 
   .subsection {

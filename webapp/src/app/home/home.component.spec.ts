@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Title } from '@angular/platform-browser';
 import { SearchFilters } from '../data/search/search-filters.model';
 import { SearchModule } from '../search/search.module';
 import { ResourceModule } from '../resource/resource.module';
@@ -13,7 +14,10 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ RouterTestingModule, ResourceModule, SearchModule ],
-      providers: [{ provide: ActivatedRoute, useValue: { snapshot: { data: { filters: [] } } } } ],
+      providers: [
+        { provide: ActivatedRoute, useValue: { snapshot: { data: { filters: [] } } } },
+        { provide: Title, useValue: { setTitle: () => {} } }
+      ],
       declarations: [ HomeComponent ]
     })
     .compileComponents();

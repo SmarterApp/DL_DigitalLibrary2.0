@@ -1,0 +1,14 @@
+<section #sectionHeader>
+  <h3>
+    Suggestions for Intervention
+    <sbdl-tooltip text="A list of skills that teachers can work on with students who are significantly below.">
+      <sbdl-icon icon="info"></sbdl-icon>
+    </sbdl-tooltip>
+  </h3>
+  <p>
+    For students who are significantly below,
+    <a [routerLink]="['/search']">search for resources</a> related to the
+    following skills:
+  </p>
+  <dynamic-html [content]="content"></dynamic-html>
+</section>

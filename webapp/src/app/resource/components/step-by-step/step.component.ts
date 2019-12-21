@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PrintableSectionComponent } from '../../printable-section.component';
 import { ResourceStep } from '../../../data/resource/model/step.model';
-import { DocumentSection, DocumentSectionType } from '../outline/document-outline.model';
+import { DocumentSectionType } from '../outline/document-outline.model';
 
 @Component({
   selector: 'sbdl-step',
@@ -15,9 +15,10 @@ export class StepComponent extends PrintableSectionComponent implements AfterVie
   stepModel: ResourceStep;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer,
-      '--print-position: relative; --print-visibility: visible;',
-      '--print-position: fixed; --print-visibility: hidden;');
+    super(sanitizer, {
+      printSelected: '--print-position: relative; --print-visibility: visible;',
+      printHidden: '--print-position: fixed; --print-visibility: hidden;'
+    });
   }
 
   ngAfterViewInit() {

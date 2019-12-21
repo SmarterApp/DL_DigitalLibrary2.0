@@ -44,6 +44,16 @@ import { StrategyOverviewComponent } from './strategy/overview/strategy-overview
 import { StrategyPropertiesComponent } from './strategy/properties/strategy-properties.component';
 import { StrategyResourceComponent } from './strategy/strategy-resource.component';
 
+import { PlaylistBackgroundComponent } from './playlist/background/playlist-background.component';
+import { PlaylistContentComponent } from './playlist/content/playlist-content.component';
+import { PlaylistInterimComponent } from './playlist/interim/playlist-interim.component';
+import { PlaylistInterventionComponent } from './playlist/intervention/playlist-intervention.component';
+import { PlaylistResourceComponent } from './playlist/playlist-resource.component';
+import { PlaylistResourcesComponent } from './playlist/resources/playlist-resources.component';
+import { PlaylistTopicComponent } from './playlist/topics/playlist-topic.component';
+import { PlaylistTopicsComponent } from './playlist/topics/playlist-topics.component';
+import { ProgressionScaleButtonComponent } from './playlist/topics/progression-scale-button.component';
+
 @NgModule({
   declarations: [
 
@@ -83,7 +93,17 @@ import { StrategyResourceComponent } from './strategy/strategy-resource.componen
     StrategyInActionFormativeComponent,
     StrategyOverviewComponent,
     StrategyPropertiesComponent,
-    StrategyResourceComponent
+    StrategyResourceComponent,
+
+    PlaylistBackgroundComponent,
+    PlaylistContentComponent,
+    PlaylistInterimComponent,
+    PlaylistInterventionComponent,
+    PlaylistResourceComponent,
+    PlaylistResourcesComponent,
+    PlaylistTopicComponent,
+    PlaylistTopicsComponent,
+    ProgressionScaleButtonComponent
   ],
   imports: [
     CommonModule,
@@ -100,10 +120,12 @@ import { StrategyResourceComponent } from './strategy/strategy-resource.componen
   entryComponents: [
     // Resource components are loaded dynamically so they need to be explicitly set here
     // in order to be used.
+    ResourceTypeStrategyComponent,
+
     InstructionalResourceComponent,
     ProfessionalResourceComponent,
     StrategyResourceComponent,
-    ResourceTypeStrategyComponent,
+    PlaylistResourceComponent
   ]
 })
 export class ResourceModule { }
