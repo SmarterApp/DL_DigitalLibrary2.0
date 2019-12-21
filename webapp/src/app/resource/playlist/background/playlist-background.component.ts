@@ -13,7 +13,11 @@ import { PlaylistTopic } from '../../../data/resource/model/playlist-topic.model
 export class PlaylistBackgroundComponent extends PrintableSectionComponent implements AfterViewInit {
 
   @Input()
-  overview: object;
+  overview: {
+    description: string;
+    importance: string;
+    academicVocabulary: string;
+  };
 
   constructor(sanitizer: DomSanitizer) {
     super(sanitizer);
