@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Router, NavigationError, NavigationExtras } from '@angular/router';
 import { Location } from '@angular/common';
 import { ERROR_PATH } from './common/constants';
@@ -11,14 +11,19 @@ import { LoggingService } from './common/logging/logging.service';
 export class RouterService {
 
   private errorRoot: string;
+  private logger: LoggingService;
 
   constructor(
     private router: Router,
     private location: Location,
-    private logger: LoggingService
+    private injector: Injector
   ) { }
 
   public setRouteErrorHandler(errorRoot: string = 'error'): void {
+    if (!this.logger) {
+      this.logger = this.injector.get(LoggingService);
+    }
+
     let errorRoute = null;
     this.errorRoot = errorRoot;
     this.router.errorHandler = (error): void => {
