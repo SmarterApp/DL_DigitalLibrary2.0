@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { flatMap } from 'lodash.flatmap';
+import flatMap from 'lodash.flatmap';
 import { PlaylistTopic } from '../../../data/resource/model/playlist-topic.model';
 
 @Component({
