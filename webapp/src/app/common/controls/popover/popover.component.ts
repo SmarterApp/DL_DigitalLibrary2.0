@@ -42,7 +42,9 @@ export class PopoverComponent implements AfterViewInit {
       const top = this.options.placement === 'top' ? offset.top - height - 28 : offset.top;
 
       setTimeout( () => {
-        this.cssVarStyle = this.sanitizer.bypassSecurityTrustStyle(`position: absolute; top: ${top}px; left: ${offset.left}px`); }, 0);
+        this.cssVarStyle = this.sanitizer.bypassSecurityTrustStyle(`position: absolute; top: ${top}px; left: ${offset.left}px`);
+
+      }, 0);
     }
   }
 
