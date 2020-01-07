@@ -3,7 +3,7 @@ import { getCssVar } from '../../utils';
 import { SafeStyle, DomSanitizer } from '@angular/platform-browser';
 
 /**
- * This component shows a "more" link and truncates the given text if the length is more 
+ * This component shows a "more" link and truncates the given text if the length is more
  * than the MaxNumberOfCharacters.,  When expanded, "more" changes to "less".
  */
 @Component({
@@ -27,16 +27,16 @@ export class ReadMoreComponent implements OnInit, AfterViewInit {
 
   @ViewChild('textContainer', { static: true })
   textContainer: ElementRef;
-  
+
   private maxHeightInPx = 44;
 
   cssVarStyle: SafeStyle;
-  collapsed: boolean = true;
-  collapsible: boolean = false;
+  collapsed = true;
+  collapsible = false;
 
   private _text: string;
 
-  constructor() { 
+  constructor() {
   }
 
   ngOnInit() {
@@ -52,7 +52,7 @@ export class ReadMoreComponent implements OnInit, AfterViewInit {
   }
 
   private onTextChanges() {
-    if(this.textContainer && this.textContainer.nativeElement) {
+    if (this.textContainer && this.textContainer.nativeElement) {
       const contentHeight = this.textContainer.nativeElement.offsetHeight;
       this.collapsible = contentHeight > this.maxHeightInPx;
       this.collapsed = this.collapsible;
