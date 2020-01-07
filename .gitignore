@@ -37,3 +37,9 @@ Thumbs.db
 
 # Other git worktrees
 /.worktrees/
+
+# API Credentials and Cloned Resources
+operations/util/credential
+operations/util/clone-api/credential
+operations/util/clone-api/cloned-api-*
+
