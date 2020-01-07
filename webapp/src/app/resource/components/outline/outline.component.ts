@@ -39,7 +39,7 @@ export class OutlineComponent implements OnInit {
       [ DST.Overview, DST.StepByStep, DST.Attachments, DST.ThingsToConsider, DST.StrategyInAction ])
     .set(
       ResourceType.AccessibilityStrategy,
-      [ DST.Overview ])
+      [ DST.Overview, DST.StepByStep, DST.Attachments, DST.ThingsToConsider, DST.StrategyInAction ])
     .set(
       ResourceType.ConnectionsPlaylist,
       [ DST.PlaylistTopics, DST.ThingsToConsider, DST.Overview, DST.PlaylistInterim ]);
