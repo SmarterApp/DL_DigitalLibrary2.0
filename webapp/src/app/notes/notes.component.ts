@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, Type, ViewChild } from '@angular/core';
-import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { AngularEditorComponent, AngularEditorConfig } from '@kolkov/angular-editor';
 import { Resource } from '../data/resource/model/resource.model';
 import { Note } from '../data/notes/model/note.model';
 
@@ -18,6 +18,9 @@ export class NotesComponent {
 
   @Output()
   notesChanged = new EventEmitter<Note[]>();
+
+  @ViewChild(AngularEditorComponent, { static: false })
+  editor: AngularEditorComponent;
 
   authoringNote = false;
   newNoteContent = '';
@@ -42,6 +45,7 @@ export class NotesComponent {
 
   addNote() {
     this.authoringNote = true;
+    requestAnimationFrame(() => { this.editor.focus(); });
   }
 
   saveNote() {

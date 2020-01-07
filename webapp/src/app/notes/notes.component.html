@@ -8,7 +8,7 @@
     <span *ngIf="notes.length > 0">+ Add another note</span>
   </sbdl-button>
 </div>
-<div *ngIf="authoringNote">
+<div [hidden]="!authoringNote">
   <h2>Add a Note</h2>
   <angular-editor
     [config]="editorConfig"
