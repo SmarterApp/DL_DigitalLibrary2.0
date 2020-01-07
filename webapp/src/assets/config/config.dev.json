@@ -9,7 +9,7 @@
     },
     "apiServer": {
         "cdl": "https://api-dev.dl.smarterbalanced.org/api",
-        "authToken": "M2FiYTEzZDZkZjI2OGNjNmUzZDkxYjdkODkxMDgyYzBhZTViNmY5ZDFjMGJlNTI2MTVkZDJlYTYxNTlkZjFhMg"
+        "authToken": "YjRlMTdkYzUxZWFkZmU5ODM2MjFiNzc0NWNlYWU3NjdmNzdlMjQzOTA5NjU2NmE5NmU1ODBjODA0YzgwNDI4Yw"
     },
     "enableAnalytics": false
 }
