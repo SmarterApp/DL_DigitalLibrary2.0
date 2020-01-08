@@ -1,4 +1,5 @@
 @import "colors";
+@import "spacing";
 
 :host {
   --print-display: block;
@@ -25,5 +26,9 @@
     display: var(--print-display);
     position: var(--print-position);
     visibility: var(--print-visibility);
+
+    hr {
+      margin-bottom: $spacer;
+    }
   }
 }

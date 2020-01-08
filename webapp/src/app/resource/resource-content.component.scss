@@ -8,13 +8,6 @@
     flex-direction: column;
     max-width: none;
 
-    .top-header {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        align-items: baseline;
-    }
-
     hr {
         width:100%;
         box-sizing: border-box;
@@ -34,11 +27,5 @@
 @media only print {
   :host {
     display: block;
-
-    .top-header {
-      margin-top: $spacer-lg;
-
-      img { display: none; }
-    }
   }
 }

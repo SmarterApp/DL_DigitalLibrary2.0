@@ -2,12 +2,18 @@
 @import "spacing";
 
 :host {
-    display: flex;
-    align-items: stretch;
+    display: grid;
+    grid-template:
+      "outline header properties"
+      "outline content properties"
+      / auto auto auto;
+    justify-items: stretch;
     justify-content: space-between;
-    max-width: none;
+
+    max-width: unset;
 
     .outline {
+        grid-area: outline;
         box-sizing: border-box;
         width: var(--nav-width);
         min-width: var(--nav-width);
@@ -31,6 +37,20 @@
         overflow-x:initial;
     }
 
+    .resource-header {
+        grid-area: header;
+        box-sizing: border-box;
+        max-width: calc(var(--measure) + 8rem);
+        padding: 0 $spacer-lg;
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: baseline;
+        }
+    }
+
     .resource-properties:hover {
         width: 331px;
         min-width: 331px;
@@ -39,12 +59,15 @@
     }
 
     .resource-content {
+        grid-area: content;
         padding: 0 $spacer-lg;
         box-sizing: border-box;
-        max-width: none;
+        max-width: calc(var(--measure) + 8rem);
         z-index: 1;
     }
+
     .resource-properties {
+        grid-area: properties;
         width: var(--nav-width);
         min-width: var(--nav-width);
         transition-property: width, min-width, margin-left, z-index;
@@ -52,7 +75,7 @@
         transition-duration: 0.5s;
         transition-timing-function: ease-in;
 
-        box-shadow: inset 10px 0px 18px -10px rgba(182, 109, 109, 0.2);
+        box-shadow: inset 10px 0px 18px -10px rgba(0, 0, 0, 0.2);
 
         background-image: url('/assets/images/green-spot-2.png'), url('/assets/images/yellow-spot-2.png');
         background-repeat: no-repeat;
@@ -119,13 +142,14 @@
         }
     }
 }
+
 @media only screen and (max-width: $breakpoint-sm) {
     :host {
         --nav-width: 100vw;
         flex-direction: column;
         > * {
             width: 100%;
-            max-width: none;
+            max-width: unset;
         }
 
         nav sbdl-outline,
@@ -140,7 +164,7 @@
         .outline:hover, .resource-properties:hover {
             width: 100%;
             transition: none;
-            min-width: none;           
+            min-width: unset;
         }
 
         .resource-properties {
@@ -161,7 +185,7 @@
 
 @media only print {
   :host {
-    display: block;
+    grid-template: "header" "properties" "content" / auto;
 
     .outline, nav, sbdl-outline, sbdl-enhanced-printing {
       display: none;
@@ -171,16 +195,19 @@
       position: initial;
     }
 
+    .top-header {
+      img { display: none; }
+    }
+
     .resource-properties {
       background-image: none;
       box-shadow: none;
-      min-width: none;
+      padding: 0 $spacer-xl;
+      position: relative;
+      max-width: calc(var(--measure) + 8rem);
+      min-width: unset;
       min-height: unset;
       width: unset;
-
-      position: absolute;
-      top: 14rem;
-      left: 4rem;
     }
 
     &::ng-deep {

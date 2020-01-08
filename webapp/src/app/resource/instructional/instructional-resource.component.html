@@ -13,6 +13,26 @@
     (documentOutlineChanged)="setOutline($event)"
   ></sbdl-enhanced-printing>
 </nav>
+<header class="resource-header">
+  <div class="top-header">
+    <img src="/assets/images/yellow-spot.png" alt="" />
+    <sbdl-actions
+      [hasNotes]="notes.length > 0"
+      [notesVisible]="notesVisible"
+      [readingMode]="readingMode"
+      [printingMode]="printingMode"
+      [resource]="resource"
+      (readingModeChanged)="readingModeChanged($event)"
+      (printingModeChanged)="printingModeChanged($event)"
+      (notesVisibilityChanged)="notesVisibilityChanged($event)"
+    ></sbdl-actions>
+  </div>
+
+  <sbdl-header
+    [resource]="resource"
+    (attachmentsClicked)="scrollToAttachments()"
+  ></sbdl-header>
+</header>
 <main class="resource-content">
   <sbdl-instructional-content
     [notes]="notes"

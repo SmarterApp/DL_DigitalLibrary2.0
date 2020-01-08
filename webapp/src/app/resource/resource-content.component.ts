@@ -53,13 +53,6 @@ export class ResourceContentComponent implements OnInit {
       this.outlineLoaded.emit(this.outline);
     }
 
-    scrollToAttachments() {
-      if (this.outline && this.outline.has(DocumentSectionType.Attachments)) {
-        this.outline.get(DocumentSectionType.Attachments).elementRef
-          .scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
-      }
-    }
-
     emitReadingModeChanged(event) {
       this.readingModeChanged.emit(event);
     }
