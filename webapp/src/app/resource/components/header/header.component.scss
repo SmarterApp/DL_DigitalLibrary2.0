@@ -89,6 +89,8 @@
 
 @media only print {
   :host {
+    margin-bottom: 0;
+
     .attachments-btn { display: none; }
     .print-url { display: block; }
   }

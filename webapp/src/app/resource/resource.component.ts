@@ -66,6 +66,13 @@ export class ResourceComponent implements AfterViewInit, OnInit {
     this.notes = notes;
   }
 
+  scrollToAttachments() {
+    if (this.outline && this.outline.has(DocumentSectionType.Attachments)) {
+      this.outline.get(DocumentSectionType.Attachments).elementRef
+        .scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+    }
+  }
+
   private updatePrintStyles() {
     this.outline.forEach(section => {
       if (section.component) {
