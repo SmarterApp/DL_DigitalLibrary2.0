@@ -44,4 +44,18 @@ body {
   }
 
   .print-only { display: block; }
+
+  @page {
+    /* This is what we actually want to use for the printed footers. But CSS3
+     * page-margin boxes are part of the paged media draft document and not
+     * implemented yet (see https://www.w3.org/TR/css-page-3/).
+
+    @bottom-right {
+      color: $neutral-300;
+      content: "© 2019 The Regents of the University of California";
+      font-size: 80%;
+      margin: 0 $spacer;
+    }
+    */
+  }
 }
