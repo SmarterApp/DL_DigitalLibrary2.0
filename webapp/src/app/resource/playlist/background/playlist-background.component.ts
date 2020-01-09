@@ -30,7 +30,7 @@ export class PlaylistBackgroundComponent extends PrintableSectionComponent imple
         component: this,
         elementRef: this.headerElement.nativeElement,
         selectedForPrint: true,
-        title: 'Background',
+        title: 'IAB Background',
         fontAwesomeIcon: 'fa-check-circle',
         type: DocumentSectionType.Overview
       });

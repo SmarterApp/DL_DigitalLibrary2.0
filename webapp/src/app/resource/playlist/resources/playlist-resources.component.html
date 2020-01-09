@@ -3,7 +3,7 @@
 <a #resourceRef
    class="link-card"
    *ngFor="let resource of resources"
-   [routerLink]="['/resource', resource.id]">
+   [routerLink]="['/resource', resource.id]" target="_blank">
   <div class="type-info">
     <span class="link-title">{{ resource.title }}</span>
     <sbdl-resource-type-icon [type]="resource.type"></sbdl-resource-type-icon>
