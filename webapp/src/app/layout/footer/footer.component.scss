@@ -74,6 +74,9 @@
 @media only print {
   :host {
 
+    /* See the note in src/styles.scss. Ideally, once CSS Paged Media is
+     * implemented in browsers, we can replace all of the following with just
+     * 'display: none' on the :host element. */
     .footer  {
       .footer-links {
         display: none;
@@ -82,10 +85,14 @@
       hr { display: none; }
 
       .copyright {
+        margin: 0;
         position: fixed;
-        bottom: -2rem;
+        bottom: 0;
         right: $spacer-xl;
 
+        span {
+          padding: 0;
+        }
         img { display: none; }
       }
     }
