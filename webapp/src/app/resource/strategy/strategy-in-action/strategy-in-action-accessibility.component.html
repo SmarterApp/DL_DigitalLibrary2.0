@@ -5,12 +5,12 @@
   <div *ngIf="resource.sampleItemContent.linkToSample; else elseBlock">
     <a [href]="resource.sampleItemContent.linkToSample" target="_blank">
       Try out the {{ resource.properties.title }} on the Sample Items Website
+      or the Sample Tests Websites.
     </a>
-    <p>{{ resource.sampleItemContent.description }}</p>
+    <dynamic-html [content]=resource.sampleItemContent.description></dynamic-html>
   </div>
   <ng-template #elseBlock>
-    <p>This is a non-embedded tool. Thus, there is no demonstration on the
-    Sample Items Website</p>
+    <dynamic-html [content]=resource.sampleItemContent.description></dynamic-html>
   </ng-template>
 </article>
 <hr *ngIf="resource.sampleItemContent"/>
