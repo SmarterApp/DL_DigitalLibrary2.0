@@ -4,8 +4,7 @@
   </h4>
   <div *ngIf="resource.sampleItemContent.linkToSample; else elseBlock">
     <a [href]="resource.sampleItemContent.linkToSample" target="_blank">
-      Try out the {{ resource.properties.title }} on the Sample Items Website
-      or the Sample Tests Websites.
+      Try out the {{ resource.properties.title }} on the Sample Items or the Sample Tests Websites.
     </a>
     <dynamic-html [content]=resource.sampleItemContent.description></dynamic-html>
   </div>
