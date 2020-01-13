@@ -2,7 +2,28 @@
 
 .app-container {
   display: grid;
-  grid-template: "navigation router-outlet" "navigation footer" 1fr / 64px 1fr;
+  grid-template-areas:
+    "navigation skip-link"
+    "navigation router-outlet"
+    "navigation footer";
+  grid-template-rows: 0 auto 1fr;
+  grid-template-columns: 64px 1fr;
+
+  .skip-link {
+    grid-area: skip-link;
+    width: 1px;
+    height: 0px;
+    overflow: hidden;
+    z-index: -999;
+
+    &:focus, &:active {
+      overflow: visible;;
+      z-index: 999;
+      width: auto;
+      height: auto;
+      margin: 1rem;
+    }
+  }
 
   sbdl-navigation {
     grid-area: navigation;
@@ -20,7 +41,9 @@
 
 @media only screen and (max-width: $breakpoint-sm) {
   .app-container {
-    grid-template: "navigation" "router-outlet" "footer" 1fr / 1fr;
+    grid-template-areas: "skip-link" "navigation" "router-outlet" "footer";
+    grid-template-rows: 0 auto 1fr auto;
+    grid-template-columns: 1fr;
 
     sbdl-navigation {
       position: relative;

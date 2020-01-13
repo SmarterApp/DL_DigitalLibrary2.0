@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'sbdl-app-container',
@@ -6,4 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app-container.component.scss']
 })
 export class AppContainerComponent {
+  constructor(public location: Location) {}
 }
