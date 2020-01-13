@@ -19,7 +19,7 @@ export class AttachmentsComponent extends PrintableSectionComponent implements A
   attachmentElementRefs: ElementRef[];
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, DocumentSectionType.Attachments);
   }
 
   ngAfterViewInit(): void {
