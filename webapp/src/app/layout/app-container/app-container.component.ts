@@ -7,5 +7,5 @@ import { Location } from '@angular/common';
   styleUrls: ['./app-container.component.scss']
 })
 export class AppContainerComponent {
-  constructor(location: Location) {}
+  constructor(public location: Location) {}
 }

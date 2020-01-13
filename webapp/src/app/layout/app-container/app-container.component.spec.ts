@@ -1,4 +1,4 @@
-import { APP_BASE_HREF } from '@angular/common';
+import { APP_BASE_HREF, Location } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -29,6 +29,7 @@ describe('AppContainerComponent', () => {
       providers: [
         { provide: ActivatedRoute, useValue: mockRootActivatedRouteSnapshot },
         { provide: APP_BASE_HREF, useValue: '/' },
+        { provide: Location, useValue: { path: () => {} } },
         { provide: OktaAuthService, useClass: MockOktaAuthService }
       ]
     })
