@@ -1,5 +1,4 @@
 import { EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Map } from 'immutable';
 import { commentsSectionOptions } from './components/simple-section/section.definitions';
 import { Resource } from '../data/resource/model/resource.model';
 import { Note } from '../data/notes/model/note.model';
