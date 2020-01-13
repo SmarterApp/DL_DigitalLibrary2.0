@@ -14,7 +14,7 @@ export class PlaylistInterimComponent extends PrintableSectionComponent implemen
   content: string;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, DocumentSectionType.PlaylistInterim);
   }
 
   ngAfterViewInit() {

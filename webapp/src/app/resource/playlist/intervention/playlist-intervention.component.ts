@@ -14,7 +14,7 @@ export class PlaylistInterventionComponent extends PrintableSectionComponent imp
   content: string;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, 'suggestions-for-intervention');
   }
 
   ngAfterViewInit() {

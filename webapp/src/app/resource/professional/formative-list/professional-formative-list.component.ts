@@ -18,7 +18,7 @@ export class ProfessionalFormativeListComponent extends PrintableSectionComponen
   headerElement: ElementRef;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, DocumentSectionType.Formative);
   }
 
   ngAfterViewInit(): void {

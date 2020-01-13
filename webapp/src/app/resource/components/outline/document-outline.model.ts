@@ -2,7 +2,9 @@ import { Map } from 'immutable';
 import { PrintableSectionComponent } from '../../printable-section.component';
 
 /* This enum is internal. It's values are used to categorize and generate
- * identifiers for the relevant section types.*/
+ * identifiers for the relevant section types. Because of this it is generally
+ * expected that each section type exists only once in each document (with the
+ * exception of Subsection). */
 export enum DocumentSectionType {
   Overview = 'overview',
   ThingsToConsider = 'things-to-consider',

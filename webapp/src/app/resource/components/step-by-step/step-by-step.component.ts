@@ -17,7 +17,7 @@ export class StepByStepComponent extends PrintableSectionComponent implements Af
   private subsections: DocumentSection[] = [];
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, DocumentSectionType.StepByStep);
   }
 
   ngAfterViewInit(): void {

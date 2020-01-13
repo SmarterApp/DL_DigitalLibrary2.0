@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DocumentSectionType } from '../outline/document-outline.model';
 import { PrintableSectionComponent } from '../../printable-section.component';
@@ -8,7 +8,7 @@ import { PrintableSectionComponent } from '../../printable-section.component';
   templateUrl: './simple-section.component.html',
   styleUrls: ['./simple-section.component.scss', '../../printable-section.component.scss']
 })
-export class SimpleSectionComponent extends PrintableSectionComponent implements AfterViewInit {
+export class SimpleSectionComponent extends PrintableSectionComponent implements AfterViewInit, OnInit {
 
   @Input()
   contentHtml: string;
@@ -17,7 +17,15 @@ export class SimpleSectionComponent extends PrintableSectionComponent implements
   options: SimpleSectionOptions;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, '');
+  }
+
+  ngOnInit() {
+    if (this.options.sectionType === DocumentSectionType.Subsection) {
+      this.sectionId = this.options.title;
+    } else {
+      this.sectionId = this.options.sectionType;
+    }
   }
 
   ngAfterViewInit() {

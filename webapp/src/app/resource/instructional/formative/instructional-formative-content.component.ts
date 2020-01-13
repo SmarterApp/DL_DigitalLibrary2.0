@@ -15,7 +15,7 @@ export class InstructionalFormativeContentComponent extends PrintableSectionComp
   content: FormativeAssessmentContent;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, 'how-its-used');
   }
 
   ngAfterViewInit(): void {

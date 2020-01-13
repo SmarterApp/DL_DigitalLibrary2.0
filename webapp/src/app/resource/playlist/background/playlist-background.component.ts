@@ -20,7 +20,7 @@ export class PlaylistBackgroundComponent extends PrintableSectionComponent imple
   };
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, DocumentSectionType.Overview);
   }
 
   ngAfterViewInit() {

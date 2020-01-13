@@ -1,9 +1,8 @@
-<div 
-    class="text-container" 
-    #textContainer 
+<div
+    class="text-container"
+    #textContainer
     [ngClass]="{'collapsed': collapsed }"
-    [innerHtml]="text"
-    >
+    [innerHtml]="text">
 </div>
 <a *ngIf="collapsible"
    class="more-less"

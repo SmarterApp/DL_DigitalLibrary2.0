@@ -16,7 +16,7 @@ export class InstructionalFormativeComponent extends PrintableSectionComponent i
   subsections: DocumentSection[] = [];
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, DocumentSectionType.Formative);
   }
 
   ngAfterViewInit(): void {

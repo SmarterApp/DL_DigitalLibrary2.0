@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DocumentSectionType } from '../../components/outline/document-outline.model';
 import { PrintableSectionComponent } from '../../printable-section.component';
@@ -9,7 +9,7 @@ import { PlaylistTopic } from '../../../data/resource/model/playlist-topic.model
   templateUrl: './playlist-topic.component.html',
   styleUrls: ['./playlist-topic.component.scss']
 })
-export class PlaylistTopicComponent extends PrintableSectionComponent implements AfterViewInit {
+export class PlaylistTopicComponent extends PrintableSectionComponent implements AfterViewInit, OnInit {
 
   @Input()
   topic: PlaylistTopic;
@@ -26,10 +26,14 @@ export class PlaylistTopicComponent extends PrintableSectionComponent implements
   rowCollapsed = false;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, '');
   }
 
-  ngAfterViewInit() {
+  ngOnInit(): void {
+    this.sectionId = this.topic.title;
+  }
+
+  ngAfterViewInit(): void {
     if (this.headerElement) {
       this.sectionLoaded.emit({
         elementRef: this.headerElement.nativeElement,

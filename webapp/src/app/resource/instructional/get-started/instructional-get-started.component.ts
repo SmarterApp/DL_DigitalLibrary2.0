@@ -21,7 +21,7 @@ export class InstructionalGetStartedComponent extends PrintableSectionComponent 
   headerElement: ElementRef;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, DocumentSectionType.Overview);
   }
 
   ngAfterViewInit(): void {

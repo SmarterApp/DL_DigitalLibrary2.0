@@ -15,7 +15,7 @@ export class StrategyInActionAccessibilityComponent extends PrintableSectionComp
   resource: AccessibilityStrategyResource;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, DocumentSectionType.StrategyInAction);
   }
 
   ngAfterViewInit(): void {

@@ -34,8 +34,8 @@ export class ButtonComponent implements OnInit {
   }
 
   click() {
-    // We have to explicitly call focus on the button because macos firefox & safari 
-    // does not focus buttons on click.  
+    // We have to explicitly call focus on the button because macos firefox & safari
+    // does not focus buttons on click.
     this.button.nativeElement.focus();
   }
 }

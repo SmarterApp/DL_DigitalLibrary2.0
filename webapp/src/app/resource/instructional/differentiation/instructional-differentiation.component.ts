@@ -17,7 +17,7 @@ export class InstructionalDifferentiationComponent extends PrintableSectionCompo
   private subsections: DocumentSection[] = [];
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, DocumentSectionType.Differentiation);
   }
 
   hasDifferentiationContent(): boolean {

@@ -25,7 +25,7 @@ export class PlaylistTopicsComponent extends PrintableSectionComponent implement
   private subsections: DocumentSection[] = [];
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, DocumentSectionType.PlaylistTopics);
    }
 
   addSubsection(subsection: DocumentSection) {
