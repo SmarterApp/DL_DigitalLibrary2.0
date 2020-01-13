@@ -1,18 +1,3 @@
-<nav class="outline">
-  <sbdl-outline
-    [resource]="resource"
-    [outline]="outline"
-    [readingMode]="readingMode"
-    [hidden]="printingMode"
-  ></sbdl-outline>
-  <sbdl-enhanced-printing
-    [resource]="resource"
-    [outline]="outline"
-    [hidden]="!printingMode"
-    (printingModeChanged)="printingModeChanged($event)"
-    (documentOutlineChanged)="setOutline($event)"
-  ></sbdl-enhanced-printing>
-</nav>
 <header class="resource-header">
   <div class="top-header">
     <img src="/assets/images/yellow-spot.png" alt="" />
@@ -33,7 +18,22 @@
     (attachmentsClicked)="scrollToAttachments()"
   ></sbdl-header>
 </header>
-<main class="resource-content">
+<nav class="outline">
+  <sbdl-outline
+    [resource]="resource"
+    [outline]="outline"
+    [readingMode]="readingMode"
+    [hidden]="printingMode"
+  ></sbdl-outline>
+  <sbdl-enhanced-printing
+    [resource]="resource"
+    [outline]="outline"
+    [hidden]="!printingMode"
+    (printingModeChanged)="printingModeChanged($event)"
+    (documentOutlineChanged)="setOutline($event)"
+  ></sbdl-enhanced-printing>
+</nav>
+<main id="main" class="resource-content">
   <sbdl-strategy-content
     [notes]="notes"
     [notesVisible]="notesVisible"
