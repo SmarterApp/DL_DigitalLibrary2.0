@@ -21,7 +21,7 @@ export class AttachmentCardComponent implements OnInit {
   @Input()
   attachmentCardType: CardType;
 
-  previewMedia: false;
+  previewMedia = false;
   embeddableUrl: SafeResourceUrl;
   fileTypes = FileType;
   CardType = CardType; // Alias so the template can see it
@@ -51,5 +51,13 @@ export class AttachmentCardComponent implements OnInit {
         return true;
       default: return false;
     }
+  }
+
+  download(attachment: ResourceAttachment): void {
+    this.attachmentsService.download(attachment);
+  }
+
+  preview(attachment: ResourceAttachment): void {
+    this.previewService.preview(attachment);
   }
 }

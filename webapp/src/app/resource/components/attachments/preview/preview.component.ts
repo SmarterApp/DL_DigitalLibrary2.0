@@ -55,4 +55,8 @@ export class PreviewComponent implements AfterViewInit, OnDestroy, OnInit {
   ngOnDestroy(): void {
     window.URL.revokeObjectURL(this.blobUrl);
   }
+
+  download(attachment: ResourceAttachment): void {
+    this.attachmentsService.download(attachment);
+  }
 }

@@ -10,8 +10,8 @@
         <span class="emphasis-medium">(.{{attachment.fileExtension}})</span>
       </span>
       <div class="actions">
-        <div *ngIf="canPreview(attachment.fileType)" (click)="previewService.preview(attachment)"><i class="far fa-eye"></i> Preview</div>
-        <div (click)="attachmentService.download(attachment)" aria-hidden="true"><i class="far fa-cloud-download"></i> Download</div>
+        <div *ngIf="canPreview(attachment.fileType)" (click)="preview(attachment)"><i class="far fa-eye"></i> Preview</div>
+        <div (click)="download(attachment)" aria-hidden="true"><i class="far fa-cloud-download"></i> Download</div>
       </div>
     </div>
   </div>
