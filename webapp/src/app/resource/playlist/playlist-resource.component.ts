@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { Location } from '@angular/common';
 import { DomSanitizer, Title } from '@angular/platform-browser';
 import { ResourceComponent } from '../resource.component';
 import { PlaylistResource } from '../../data/resource/model/playlist.model';
@@ -13,7 +14,7 @@ export class PlaylistResourceComponent extends ResourceComponent {
   @Input()
   resource: PlaylistResource;
 
-  constructor(cdRef: ChangeDetectorRef, sanitizer: DomSanitizer, titleService: Title) {
-    super(cdRef, sanitizer, titleService);
+  constructor(cdRef: ChangeDetectorRef, sanitizer: DomSanitizer, titleService: Title, location: Location) {
+    super(cdRef, sanitizer, titleService, location);
    }
 }

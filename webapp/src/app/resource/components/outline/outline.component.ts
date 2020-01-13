@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Location } from '@angular/common';
 import { Map } from 'immutable';
 import { Resource } from 'src/app/data/resource/model/resource.model';
 import { getCssVar } from 'src/app/common/utils';
@@ -44,7 +45,7 @@ export class OutlineComponent implements OnInit {
       ResourceType.ConnectionsPlaylist,
       [ DST.PlaylistTopics, DST.ThingsToConsider, DST.Overview, DST.PlaylistInterim ]);
 
-  constructor() { }
+  constructor(private location: Location) { }
 
   @HostListener('window:resize', ['$event'])
   onResize(event?) {
@@ -65,6 +66,7 @@ export class OutlineComponent implements OnInit {
   scrollTo(section: DocumentSection): void {
     section.elementRef.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
     section.elementRef.classList.add('highlighted');
+    this.location.go(this.location.path() + '#' + section.component.sectionId);
   }
 
   removeHighlight(section: DocumentSection): void {

@@ -1,4 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, HostBinding, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { DomSanitizer, SafeStyle, Title } from '@angular/platform-browser';
 import { Map } from 'immutable';
 import { Resource } from '../data/resource/model/resource.model';
@@ -29,7 +30,11 @@ export class ResourceComponent implements AfterViewInit, OnInit {
     return this.cssVarStyle;
   }
 
-  constructor(private cdRef: ChangeDetectorRef, private sanitizer: DomSanitizer, private titleService: Title) { }
+  constructor(
+    private cdRef: ChangeDetectorRef,
+    private sanitizer: DomSanitizer,
+    private titleService: Title,
+    private location: Location) { }
 
   ngAfterViewInit(): void {
     this.titleService.setTitle(`${this.resource.properties.title} - ${this.resourceTypePipe.transform(this.resource.type)}`);
@@ -70,6 +75,7 @@ export class ResourceComponent implements AfterViewInit, OnInit {
     if (this.outline && this.outline.has(DocumentSectionType.Attachments)) {
       this.outline.get(DocumentSectionType.Attachments).elementRef
         .scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+      this.location.go(this.location.path() + '#' + DocumentSectionType.Attachments);
     }
   }
 
