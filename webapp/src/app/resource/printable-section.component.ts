@@ -11,7 +11,7 @@ export class PrintableSectionComponent {
   private cssBaseStyle: string;
   private selectedForPrint = true;
 
-  constructor(private sanitizer: DomSanitizer,
+  constructor(protected sanitizer: DomSanitizer,
               public sectionId: string,
               cssCustomStyles: {
                 printSelected?: string,

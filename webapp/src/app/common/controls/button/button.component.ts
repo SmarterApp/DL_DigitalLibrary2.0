@@ -33,6 +33,10 @@ export class ButtonComponent implements OnInit {
     this.blur.emit(event);
   }
 
+  focus() {
+    this.button.nativeElement.focus();
+  }
+
   click() {
     // We have to explicitly call focus on the button because macos firefox & safari
     // does not focus buttons on click.

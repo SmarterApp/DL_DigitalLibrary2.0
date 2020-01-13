@@ -1,0 +1,64 @@
+<ng-container [ngSwitch]="attachmentCardType">
+  <div *ngSwitchCase="CardType.File" class="attachment-card file-attachment">
+    <div class="type-info">
+      <span class="attachment-category">{{ attachment.category }}</span>
+      <i class="{{attachment.fileType | fileTypeIcon }}"></i>
+    </div>
+    <div class="detail-info">
+      <span>
+        {{ attachment.name }}
+        <span class="emphasis-medium">(.{{attachment.fileExtension}})</span>
+      </span>
+      <div class="actions">
+        <div *ngIf="canPreview(attachment.fileType)" (click)="previewService.preview(attachment)"><i class="far fa-eye"></i> Preview</div>
+        <div (click)="attachmentService.download(attachment)" aria-hidden="true"><i class="far fa-cloud-download"></i> Download</div>
+      </div>
+    </div>
+  </div>
+  <div *ngSwitchCase="CardType.Media"  class="attachment-card media-attachment">
+    <div class="type-info">
+      <span class="attachment-category">{{ attachment.category }}</span>
+      <i class="{{attachment.fileType | fileTypeIcon }}"></i>
+    </div>
+    <div class="detail-info">
+      <span>
+        {{ attachment.name }}
+      </span>
+      <div class="actions">
+        <div (click)="previewMedia=true"><i class="far fa-eye"></i> Watch</div>
+      </div>
+    </div>
+    <div [ngSwitch]="attachment.fileType"
+         [ngClass]="{ preview: previewMedia }"
+         class="embedded-media-player">
+      <ng-template [ngSwitchCase]='FileType.YouTubeLink'>
+        <iframe *ngIf="previewMedia" [src]="embeddableUrl" class="youtube-player" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </ng-template>
+      <ng-template [ngSwitchCase]='FileType.Audio'>
+        <iframe *ngIf="previewMedia" [src]="embeddableUrl" class="audio-player"frameborder="0"></iframe>
+      </ng-template>
+      <ng-template ngSwitchCaseDefault>
+        <div class="unknown-media">
+        </div>
+      </ng-template>
+      <sbdl-button class="plain" (click)="previewMedia=false">
+        <i class="far fa-compress-alt"></i> Close
+      </sbdl-button>
+    </div>
+  </div>
+  <a *ngSwitchCase="CardType.Link" href="{{ attachment.uri }}" target="_blank" class="attachment-card link-attachment">
+    <div class="type-info">
+      <span class="attachment-category">{{ attachment.category }}</span>
+      <i class="far fa-link"></i>
+    </div>
+    <div class="detail-info">
+      <span>
+        {{ attachment.name }}
+      </span>
+      <div class="actions">
+        <div *ngIf="canPreview(attachment.fileType)"><i class="far fa-eye"></i> Preview</div>
+        <div><i class="far fa-external-link"></i> Visit</div>
+      </div>
+    </div>
+  </a>
+</ng-container>

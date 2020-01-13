@@ -3,6 +3,8 @@ export interface ResourceAttachment {
   category: string;
   uri: string;
   fileType: FileType;
+  mimeType: string;
+  fileExtension: string;
   fileSize: number;
 }
 
@@ -14,7 +16,13 @@ export enum FileType {
   Image,
   Pdf,
   PowerPoint,
-  Word
+  Word,
+
+  VideoLink,
+  VimeoLink,
+  YouTubeLink,
+
+  ExternalLink
 }
 
 const mimeTypeToFileTypeMap: Map<string, FileType> = new Map([
@@ -33,12 +41,18 @@ const mimeTypeToFileTypeMap: Map<string, FileType> = new Map([
   ['audio/mpeg3', FileType.Audio ],
   ['audio/mpeg', FileType.Audio ],
   ['audio/ogg', FileType.Audio ],
-  ['audio/flac', FileType.Audio ]
+  ['audio/flac', FileType.Audio ],
+
+  ['video/vnd.smarterbalanced.youtube', FileType.YouTubeLink],
+  ['video/vnd.smarterbalanced.vimeo', FileType.VimeoLink],
+  ['video/vnd.smarterbalanced.schooltube', FileType.VideoLink],
+
+  ['application/vnd.smarterbalanced.external-link', FileType.ExternalLink],
 ]);
 
 export function getFileTypeForMimeType(mimeType: string): FileType {
   if (mimeTypeToFileTypeMap.has(mimeType)) {
-    return mimeTypeToFileTypeMap[mimeType];
+    return mimeTypeToFileTypeMap.get(mimeType);
   } else {
     return FileType.Unknown;
   }

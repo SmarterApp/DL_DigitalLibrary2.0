@@ -1,0 +1,10 @@
+<div class="preview-container">
+  <sbdl-button class="plain close" #closeButton (click)="onClose.emit(true)">
+    Close <sbdl-icon icon="circle-close"></sbdl-icon>
+  </sbdl-button>
+  <div *ngIf="loading" class="loading-msg">Loading preview...</div>
+  <iframe [ngClass]="{loading: loading}" [src]="trustedUrl"></iframe>
+  <sbdl-button class="primary download" (click)="attachmentsService.download(attachment)">
+    <i class="far fa-cloud-download"></i> Download {{attachment.name}}.{{attachment.fileExtension}}
+  </sbdl-button>
+</div>

@@ -3,15 +3,22 @@
       <i class="far fa-paperclip"></i>Attachments
   </h4>
   <p>This resource relies on the following materials. Download them to use.</p>
-  <a href="{{ attachment.uri }}" target="_blank" *ngFor="let attachment of attachments" class="attachment-card"  #attachments download>
-    <div class="type-info">
-      <span class="attachment-category">{{ attachment.category }}</span>
-      <i class="far {{attachment.fileType | fileTypeIcon }}"></i>
-    </div>
-    <p>{{ attachment.name }}</p>
-    <div class="download-text">
-        Download ({{attachment.fileType}} {{ attachment.fileSize ?  (attachment.fileSize / 1000) + ' KB' : '' }})
-    </div>
-  </a>
+  <sbdl-attachment-card
+    *ngFor="let attachment of fileAttachments"
+    class="file-attachment"
+    [attachment]="attachment"
+    [attachmentCardType]="CardType.File"></sbdl-attachment-card>
+  <h5 *ngIf="mediaAttachments.length > 0">Videos</h5>
+  <sbdl-attachment-card
+    *ngFor="let attachment of mediaAttachments"
+    class="media-attachment"
+    [attachment]="attachment"
+    [attachmentCardType]="CardType.Media"></sbdl-attachment-card>
+  <h5 *ngIf="linkAttachments.length > 0">External Links</h5>
+  <sbdl-attachment-card
+    *ngFor="let attachment of linkAttachments"
+    class="link-attachment"
+    [attachment]="attachment"
+    [attachmentCardType]="CardType.Link"></sbdl-attachment-card>
 </article>
 <hr *ngIf="attachments.length > 0"/>
