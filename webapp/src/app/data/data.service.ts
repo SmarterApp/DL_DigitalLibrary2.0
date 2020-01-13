@@ -43,24 +43,6 @@ export class DataService {
       );
   }
 
-  downloadBlob(url: string, params?: any): Observable<Blob> {
-    const fullUrl = AppConfig.settings.apiServer.cdl + url;
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/octet-stream',
-        'Authorization': 'Bearer ' + AppConfig.settings.apiServer.authToken
-      }),
-      params,
-      responseType : 'arraybuffer',
-    } as any;
-
-    return this.httpService.get(fullUrl, options)
-      .pipe(map(response => new Blob([ response ])))
-      .pipe(
-          catchError(this.handleError)
-      );
-  }
-
   post(url: string, obj: any, params?: any): Observable<any> {
     const fullUrl = AppConfig.settings.apiServer.cdl + url;
     const options = {
@@ -71,6 +53,32 @@ export class DataService {
       params
     };
     return this.httpService.post(fullUrl, obj, options)
+      .pipe(
+          catchError(this.handleError)
+      );
+  }
+
+  /**
+   * Unlike the other method on DataService, this does not treat all URLs as
+   * being relative to the CDL API root. URLs given here are treated as they
+   * would be in the `href` attribute of an anchor tag. In cases where the URL
+   * does point at the API we do add the appropriate authentication header.
+   */
+  downloadBlob(url: string, params?: any): Observable<Blob> {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/octet-stream'
+      }),
+      params,
+      responseType : 'arraybuffer',
+    } as any;
+
+    if (url.includes(AppConfig.settings.apiServer.cdl)) {
+      options.headers.set('Authorization', 'Bearer ' + AppConfig.settings.apiServer.authToken);
+    }
+
+    return this.httpService.get(url, options)
+      .pipe(map(response => new Blob([ response ])))
       .pipe(
           catchError(this.handleError)
       );
