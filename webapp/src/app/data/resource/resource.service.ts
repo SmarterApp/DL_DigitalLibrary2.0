@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core'; import { forkJoin, Observable, of } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { forkJoin, Observable, of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { coalesce } from 'src/app/common/utils';
 import { DataService } from '../data.service';

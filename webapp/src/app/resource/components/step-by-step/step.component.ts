@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PrintableSectionComponent } from '../../printable-section.component';
 import { ResourceStep } from '../../../data/resource/model/step.model';
@@ -9,16 +9,20 @@ import { DocumentSectionType } from '../outline/document-outline.model';
   templateUrl: './step.component.html',
   styleUrls: ['./step.component.scss', '../../printable-section.component.scss']
 })
-export class StepComponent extends PrintableSectionComponent implements AfterViewInit {
+export class StepComponent extends PrintableSectionComponent implements AfterViewInit, OnInit {
 
   @Input()
   stepModel: ResourceStep;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer, {
+    super(sanitizer, '', {
       printSelected: '--print-position: relative; --print-visibility: visible;',
       printHidden: '--print-position: fixed; --print-visibility: hidden;'
     });
+  }
+
+  ngOnInit() {
+    this.sectionId = `step-${this.stepModel.orderingIndex}`;
   }
 
   ngAfterViewInit() {

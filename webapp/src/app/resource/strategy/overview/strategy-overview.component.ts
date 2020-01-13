@@ -16,7 +16,7 @@ export class StrategyOverviewComponent extends PrintableSectionComponent impleme
   resource: FormativeStrategyResource | AccessibilityStrategyResource;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, DocumentSectionType.Overview);
   }
 
   ngAfterViewInit(): void {

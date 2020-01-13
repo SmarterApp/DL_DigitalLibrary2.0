@@ -12,6 +12,7 @@ export class PrintableSectionComponent {
   private selectedForPrint = true;
 
   constructor(private sanitizer: DomSanitizer,
+              public sectionId: string,
               cssCustomStyles: {
                 printSelected?: string,
                 printHidden?: string,
@@ -32,6 +33,11 @@ export class PrintableSectionComponent {
   @HostBinding('style')
   public get valueAsStyle(): any {
     return this.currentCssStyle;
+  }
+
+  @HostBinding('id')
+  public get boundId(): string {
+    return this.sectionId;
   }
 
   setPrintStyle(selectedForPrint: boolean) {

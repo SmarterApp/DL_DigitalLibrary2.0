@@ -5,8 +5,7 @@
   Outline
 </h6>
 <ul class=section-list *ngIf="outline">
-  <li *ngFor="let section of sectionsInOrder"
-      [ngClass]="'section-' + section.type">
+  <li *ngFor="let section of sectionsInOrder">
     <div class="section-header">
       <sbdl-button  class="outline"
                     (click)="scrollTo(section)"

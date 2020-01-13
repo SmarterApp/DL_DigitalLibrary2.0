@@ -14,7 +14,7 @@ export class InstructionalDifferentiationContentComponent extends PrintableSecti
   content: string;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, 'performance-based-differentiation');
   }
 
   ngAfterViewInit(): void {

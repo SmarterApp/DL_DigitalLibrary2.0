@@ -15,7 +15,7 @@ export class StrategyInActionFormativeComponent extends PrintableSectionComponen
   resource: FormativeStrategyResource;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, DocumentSectionType.StrategyInAction);
   }
 
   ngAfterViewInit(): void {

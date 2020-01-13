@@ -15,7 +15,7 @@ export class ProfessionalOverviewComponent extends PrintableSectionComponent imp
   resource: ProfessionalLearningResource;
 
   constructor(sanitizer: DomSanitizer) {
-    super(sanitizer);
+    super(sanitizer, DocumentSectionType.Overview);
   }
 
   ngAfterViewInit(): void {
