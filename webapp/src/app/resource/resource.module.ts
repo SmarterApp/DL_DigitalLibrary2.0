@@ -11,6 +11,8 @@ import { ResourceTypeStrategyComponent } from './resource-type-strategy.componen
 
 import { ActionsComponent } from './components/actions/actions.component';
 import { AttachmentsComponent } from './components/attachments/attachments.component';
+import { AttachmentCardComponent } from './components/attachments/card/attachment-card.component';
+import { PreviewComponent } from './components/attachments/preview/preview.component';
 import { EducationalDetailsComponent } from './components/resource-properties/educational-details.component';
 import { HeaderComponent } from './components/header/header.component';
 import { OutlineComponent } from './components/outline/outline.component';
@@ -60,6 +62,8 @@ import { ProgressionScaleButtonComponent } from './playlist/topics/progression-s
     // Components
     ActionsComponent,
     AttachmentsComponent,
+    AttachmentCardComponent,
+    PreviewComponent,
     EducationalDetailsComponent,
     HeaderComponent,
     OutlineComponent,
@@ -125,7 +129,9 @@ import { ProgressionScaleButtonComponent } from './playlist/topics/progression-s
     InstructionalResourceComponent,
     ProfessionalResourceComponent,
     StrategyResourceComponent,
-    PlaylistResourceComponent
+    PlaylistResourceComponent,
+
+    PreviewComponent
   ]
 })
 export class ResourceModule { }

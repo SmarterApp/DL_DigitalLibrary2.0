@@ -61,7 +61,8 @@ export class ResourceService {
 
     return attachmentsJson.map(a => ({
       ...a,
-      fileType: getFileTypeForMimeType(a.fileType)
+      fileType: getFileTypeForMimeType(a.fileType),
+      mimeType: a.fileType
     }));
   }
 

@@ -1,25 +1,47 @@
-import { AfterViewInit, ElementRef, Component, Input, SecurityContext, ViewChildren } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { MDCRipple } from '@material/ripple/component';
-import { ResourceAttachment } from 'src/app/data/resource/model/attachment.model';
+import { AfterViewInit, ElementRef, Component, Input, OnInit, SecurityContext } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { FileType, ResourceAttachment } from 'src/app/data/resource/model/attachment.model';
 import { DocumentSection, DocumentSectionType } from 'src/app/resource/components/outline/document-outline.model';
 import { PrintableSectionComponent } from 'src/app/resource/printable-section.component';
+
+export enum CardType { File, Media, Link }
 
 @Component({
   selector: 'sbdl-attachments',
   templateUrl: './attachments.component.html',
   styleUrls: ['./attachments.component.scss', '../../printable-section.component.scss']
 })
-export class AttachmentsComponent extends PrintableSectionComponent implements AfterViewInit {
+export class AttachmentsComponent extends PrintableSectionComponent implements AfterViewInit, OnInit {
 
   @Input()
   attachments: ResourceAttachment[];
 
-  @ViewChildren('attachments')
-  attachmentElementRefs: ElementRef[];
+  fileAttachments: ResourceAttachment[] = [];
+  mediaAttachments: ResourceAttachment[] = [];
+  linkAttachments: ResourceAttachment[] = [];
+  CardType = CardType;
 
   constructor(sanitizer: DomSanitizer) {
     super(sanitizer, DocumentSectionType.Attachments);
+  }
+
+  ngOnInit(): void {
+    this.attachments.forEach(a => {
+      switch (a.fileType) {
+        case FileType.VideoLink:
+        case FileType.VimeoLink:
+        case FileType.YouTubeLink:
+        case FileType.Audio:
+          this.mediaAttachments.push(a);
+          break;
+        case FileType.ExternalLink:
+          this.linkAttachments.push(a);
+          break;
+        default:
+          this.fileAttachments.push(a);
+          break;
+      }
+    });
   }
 
   ngAfterViewInit(): void {
@@ -34,10 +56,6 @@ export class AttachmentsComponent extends PrintableSectionComponent implements A
         type: DocumentSectionType.Attachments
       });
     }
-
-    // Add ripples
-    for (const attachmentRef of this.attachmentElementRefs) {
-      MDCRipple.attachTo(attachmentRef.nativeElement);
-    }
   }
+
 }

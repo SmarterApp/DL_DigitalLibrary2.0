@@ -7,13 +7,16 @@ import { FileType } from '../data/resource/model/attachment.model';
 export class FileTypeIconPipe implements PipeTransform {
 
   readonly fileTypeIconMap: Map<FileType, string> = new Map([
-    [ FileType.Word, 'fa-file-word' ],
-    [ FileType.Pdf, 'fa-file-pdf' ],
-    [ FileType.Unknown, 'fa-file-alt' ],
-    [ FileType.Audio, 'fa-file-music' ],
-    [ FileType.Excel, 'fa-file-excel' ],
-    [ FileType.Image, 'fa-file-image' ],
-    [ FileType.PowerPoint, 'fa-file-powerpoint' ]
+    [ FileType.Word, 'far fa-file-word' ],
+    [ FileType.Pdf, 'far fa-file-pdf' ],
+    [ FileType.Unknown, 'far fa-file-alt' ],
+    [ FileType.Audio, 'far fa-file-music' ],
+    [ FileType.Excel, 'far fa-file-excel' ],
+    [ FileType.Image, 'far fa-file-image' ],
+    [ FileType.PowerPoint, 'far fa-file-powerpoint' ],
+    [ FileType.YouTubeLink, 'fab fa-youtube' ],
+    [ FileType.VideoLink, 'far fa-play-circle' ],
+    [ FileType.VimeoLink, 'fab fa-vimeo' ]
   ]);
 
   transform(value: FileType, args?: any): string {

@@ -83,7 +83,8 @@ svg #info, symbol #info {
   color: $info-500;
 }
 
-.fa-file-pdf {
+.fa-file-pdf, .fa-youtube {
+  // YouTube's brand color is just straight up red, #FF0000
   color: #ff0000;
 }
 
