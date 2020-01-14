@@ -3,47 +3,56 @@
 @import "typography";
 
 :host {
-  margin-bottom: $spacer;
-  margin-left: $spacer;
 
-  h2 {
-    // TODO: this should become a main style once we refactor our heading
-    // styling across the entire app.
-    font-size: $font-size-4;
-    font-weight: 500;
-    line-height: 117%;
-  }
+.background-container {
 
-  h3 {
-    font-size: $font-size-3;
-    font-weight: 500;
-    line-height: 133%;
-  }
+    padding-top: $spacer;
+    margin-bottom: $spacer-lg;
+    margin-left: $spacer-lg;
+    position: relative;
+    overflow: visible;
 
-  .leading-icon {
+    h2 {
+      font-size: $font-size-4;
+      font-weight: 500;
+      line-height: 117%;
+    }
 
-    i, svg {
-      color: $success-900;
-      background: url('/assets/images/green-spot-3.png') no-repeat;
-      background-size: contain;
-      padding: 7px;
-      margin-bottom: -7px;
+    h3 {
+      font-size: $font-size-3;
+      font-weight: 500;
+      line-height: 133%;
+    }
+
+    .leading-icon {
+
+      i, svg {
+        color: $success-900;
+        background: url('/assets/images/green-spot-3.png') no-repeat;
+        background-size: contain;
+        padding: 7px;
+        margin-bottom: -7px;
+        margin-left: -16px;
+        font-size: 1.75rem;
+      }
+
+      sbdl-tooltip sbdl-icon {
+        color: $info-500;
+      }
+    }
+
+    div.dive-links {
       margin-left: -16px;
-      font-size: 1.75rem;
     }
 
-    sbdl-tooltip sbdl-icon {
-      color: $info-500;
+    a.primary {
+      background-color: $brand-blue;
+      border-radius: 4px;
+      color: $white;
+      display: inline-block;
+      padding: $spacer-sm;
+      margin: $spacer;
+      text-transform: uppercase;
     }
-  }
-
-  a.primary {
-    background-color: $brand-blue;
-    border-radius: 4px;
-    color: $white;
-    display: inline-block;
-    padding: $spacer-sm;
-    margin: $spacer;
-    text-transform: uppercase;
   }
 }

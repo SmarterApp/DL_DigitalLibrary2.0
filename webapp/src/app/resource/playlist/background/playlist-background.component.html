@@ -1,4 +1,4 @@
-<section #sectionHeader *ngIf="overview">
+<article #sectionHeader class="background-container" *ngIf="overview">
   <h2 class="leading-icon">
     <i class="fas fa-check-circle"></i>
     IAB Background
@@ -6,6 +6,8 @@
       <sbdl-icon icon="info"></sbdl-icon>
     </sbdl-tooltip>
   </h2>
+<section class="background-table">
+
 
   <h3>Description</h3>
   <dynamic-html [content]="overview.description"></dynamic-html>
@@ -17,7 +19,7 @@
   <dynamic-html [content]="overview.academicVocabulary"></dynamic-html>
 
   <h3>Dive Deeper</h3>
-  <div>
+  <div class="dive-links">
     <a target="_blank" href="https://sampleitems.smarterbalanced.org/BrowseItems/"
        class="primary">
       Sample Items
@@ -30,3 +32,4 @@
     </a>
   </div>
 </section>
+</article>
