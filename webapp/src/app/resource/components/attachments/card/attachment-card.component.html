@@ -25,7 +25,7 @@
         {{ attachment.name }}
       </span>
       <div class="actions">
-        <div (click)="previewMedia=true"><i class="far fa-eye"></i> Watch</div>
+        <div (click)="previewMedia=true" [hidden]="previewMedia"><i class="far fa-eye"></i> Watch</div>
       </div>
     </div>
     <div [ngSwitch]="attachment.fileType"
