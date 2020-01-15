@@ -37,6 +37,8 @@
             margin-right: -2rem;
             padding: $spacer-lg;
 
+            .summary-content { flex-grow: 1; }
+
             .resource-type {
                 grid-area: type;
 
@@ -63,7 +65,12 @@
             .summary {
               display: block;
               overflow: hidden;
-              max-height: 4.5em;
+              max-height: 4.4em;
+
+              &::ng-deep p {
+                padding: 0;
+                margin: 0;
+              }
             }
 
             .targets, .standards {

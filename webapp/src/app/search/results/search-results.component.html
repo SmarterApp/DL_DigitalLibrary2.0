@@ -12,13 +12,13 @@
   ></sbdl-search>
   <section class="search-results" width="120px" height="120px">
     <a #searchResult [routerLink]="['/resource', result.id]" *ngFor="let result of results" class="search-result">
-      <div>
+      <div class="summary-content">
         <div class="resource-type">
           <sbdl-resource-type-icon [type]="result.type"></sbdl-resource-type-icon>
           {{ result.type | resourceType }}
         </div>
         <h6>{{ result.properties.title }}</h6>
-        <p class="summary">{{ result.summary }}</p>
+        <dynamic-html [content]="result.summary" class="summary"></dynamic-html>
         <div class="metadata emphasis-medium">
           <div class="bullet-row">
               <span *ngIf="result.properties.grades.length > 0">
