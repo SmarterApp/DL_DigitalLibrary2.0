@@ -82,6 +82,11 @@
       justify-content: space-between;
       padding-top: 45px;
 
+      h5 {
+        font-weight: 400;
+        font-size: $font-size-2;
+      }
+
       a.emphasis-medium.caption {
         opacity: 0.65;
         color: $neutral-900;
@@ -99,6 +104,19 @@
       background-color: $white;
       padding: $spacer;
       margin-bottom: $spacer;
+
+      h6 {
+        color: $neutral-500;
+        font-weight: bold;
+        font-size: $font-size-body;
+        font-family: $font-family-body;
+        padding: 0;
+      }
+
+      sbdl-filter-chipset div.mdc-chip-set,
+      .fallback-message {
+        margin-left: $spacer-lg;
+      }
     }
 
   }
