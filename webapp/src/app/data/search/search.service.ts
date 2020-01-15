@@ -180,13 +180,16 @@ export class SearchService {
   }
 
   private extractFilters(res: any): SearchFilters {
+    // TODO: drop this 'as' special case once the data layer has been updated.
+    const hasSubject = res.subject && res.dlResourceType.code !== 'as';
+
     return {
       freeText: '',
       resourceTypes: [{ code: res.dlResourceType.code, title: res.dlResourceType.description }],
       grades: res.grades.map(g => ({ code: g.code, title: g.description })),
-      subjects: res.subject ? [{ code: res.subject.code, title: res.subject.description }] : [],
-      claims: res.claims.map(c => ({ code: c.code, title: c.description })),
-      targets: res.targets.map(t => ({ code: t.code, title: t.description })),
+      subjects: hasSubject ? [{ code: res.subject.code, title: res.subject.description }] : [],
+      claims: res.claims.map(c => ({ code: c.code, title: `${c.sequenceNo}: ${c.description}` })),
+      targets: res.targets.map(t => ({ code: t.code, title: `${t.number}: ${t.description}` })),
       standards: res.standards.map(s => ({ code: s.code, title: s.standard }))
     };
   }
