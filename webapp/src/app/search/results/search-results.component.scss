@@ -11,6 +11,7 @@
     flex-direction: column;
 
     .results-container {
+        margin-bottom: $spacer-xl;
         width: 100%;
         h6.results-header {
             width: 100%;

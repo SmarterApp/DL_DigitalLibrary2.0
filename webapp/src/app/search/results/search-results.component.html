@@ -1,6 +1,6 @@
 <article id="main" class="results-container">
-  <h6 *ngIf="results" class="results-header">Found {{ results.length }}
-    <span [ngPlural]="results.length" >
+  <h6 *ngIf="allResults" class="results-header">Found {{ allResults.length }}
+    <span [ngPlural]="allResults.length" >
       <ng-template ngPluralCase="=1">Resource</ng-template>
       <ng-template ngPluralCase="other">Resources</ng-template>
     </span>
@@ -11,7 +11,7 @@
     showingResults="true"
   ></sbdl-search>
   <section class="search-results" width="120px" height="120px">
-    <a #searchResult [routerLink]="['/resource', result.id]" *ngFor="let result of results" class="search-result">
+    <a #searchResult [routerLink]="['/resource', result.id]" *ngFor="let result of renderedResults" class="search-result">
       <div class="summary-content">
         <div class="resource-type">
           <sbdl-resource-type-icon [type]="result.type"></sbdl-resource-type-icon>

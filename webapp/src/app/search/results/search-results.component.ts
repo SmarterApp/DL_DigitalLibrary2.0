@@ -13,7 +13,8 @@ import { ResourceSummary } from 'src/app/data/resource/model/summary.model';
 export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private route: ActivatedRoute) { }
 
-  results: ResourceSummary[];
+  allResults: ResourceSummary[];
+  renderedResults: ResourceSummary[];
   filters: any = {};
 
   @ViewChildren('searchResult')
@@ -27,12 +28,15 @@ export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy 
   ngOnInit() {
     this.dataSubscription = this.route.data.subscribe(data => {
       if (data.results) {
-        this.results = data.results.results;
+        this.allResults = data.results.results;
+        this.renderedResults = [];
         this.filters = data.results.filters;
 
         const params = this.route.snapshot.params;
         this.filters = {... this.filters, freeText: params.q };
         this.setSelectedFilters(params);
+
+        requestAnimationFrame(this.chunkedRender);
       }
     });
 
@@ -60,6 +64,17 @@ export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy 
 
     if (this.dataSubscription) {
       this.dataSubscription.unsubscribe();
+    }
+
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
+  }
+
+  chunkedRender = () => {
+    if (this.renderedResults.length < this.allResults.length) {
+      this.renderedResults.push(this.allResults[this.renderedResults.length]);
+      requestAnimationFrame(this.chunkedRender);
     }
   }
 
