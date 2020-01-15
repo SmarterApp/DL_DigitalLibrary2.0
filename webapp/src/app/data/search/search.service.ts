@@ -20,7 +20,7 @@ import { SearchFilters, Filter, emptyFilters } from './search-filters.model';
 import { ResourceType } from '../resource/model/resource-type.enum';
 import { ResourceSummary } from '../resource/model/summary.model';
 import { fastArrayMerge } from 'src/app/common/utils';
-import { mockSearchFilters } from '../mock-data';
+import { initialSearchFilters } from '../mock-data';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class SearchService {
   getDefaultFilters(): Observable<SearchFilters> {
     // return this.dataService.get('/api/search/filters');
     // TODO: Replace with an actual way to get default filters
-    return of(mockSearchFilters);
+    return of(initialSearchFilters);
   }
 
   fetchAllResults(req: SearchRequestModel): Observable<SearchResults> {
@@ -214,7 +214,7 @@ export class SearchService {
 
   public paramsToRequestModel(params: any): SearchRequestModel {
     return {
-      Search_Text: params.q,
+      Search_Text: params.q || '',
       Claim: this.splitToArray(params.claims),
       Grade: this.splitToArray(params.grades),
       Standard: this.splitToArray(params.standards),
