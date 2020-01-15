@@ -13,11 +13,14 @@
 </div>
 
 <div [hidden]="!showAdvanced" class="advanced-search">
+  <div class="loading-overlay" [ngClass]="{loading: loading}">
+    <div>Loading...</div>
+  </div>
   <div class="advanced-header">
       <h6 *ngIf="!showingResults">Browse for Resources</h6>
       <h6 *ngIf="showingResults">Advanced Search</h6>
       <div>
-        <a [routerLink]="['/search']" class="emphasis-medium caption"><i class="fa fa-undo"></i> Clear Filters</a>
+        <a [routerLink]="['/search', {q: filters.freeText}]" class="emphasis-medium caption"><i class="fa fa-undo"></i> Clear Filters</a>
         <a href="javascript:void(0)" class="emphasis-medium caption" (click)="showAdvanced = false"><sbdl-icon icon="close"></sbdl-icon></a>
       </div>
   </div>

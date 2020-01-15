@@ -47,6 +47,34 @@
     padding-left: 100%;
     padding-right: 100%;
     padding-bottom: 44px;
+    position: relative;
+
+    .loading-overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 35%;
+
+      text-align: center;
+      padding-top: 17%;
+      cursor: wait;
+      background-color: rgba(255, 255, 255, 0.7);
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.5s linear, z-index 1s linear;
+
+      &.loading {
+        opacity: 1;
+        z-index: 20;
+      }
+
+      div {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: $neutral-700;
+        font-size: $font-size-4;
+        font-family: $font-family-title;
+      }
+    }
 
     .advanced-header {
       display: flex;

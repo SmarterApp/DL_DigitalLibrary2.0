@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChildren } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { MDCRipple } from '@material/ripple';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/internal/operators/filter';
 import { FilterChip } from 'src/app/common/controls/filter-chipset/filter-chipset.component';
 import { ResourceSummary } from 'src/app/data/resource/model/summary.model';
 
@@ -11,7 +12,7 @@ import { ResourceSummary } from 'src/app/data/resource/model/summary.model';
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy {
-  constructor(private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   allResults: ResourceSummary[];
   renderedResults: ResourceSummary[];
@@ -24,8 +25,14 @@ export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy 
 
   private dataSubscription: Subscription;
   private paramsSubscription: Subscription;
+  private routerSubscription: Subscription;
+  private loading = true;
 
   ngOnInit() {
+    this.routerSubscription = this.router.events
+      .pipe(filter(e => e instanceof NavigationStart))
+      .subscribe(() => { this.loading = true; });
+
     this.dataSubscription = this.route.data.subscribe(data => {
       if (data.results) {
         this.allResults = data.results.results;
@@ -72,6 +79,7 @@ export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   chunkedRender = () => {
+    this.loading = false;
     if (this.renderedResults.length < this.allResults.length) {
       this.renderedResults.push(this.allResults[this.renderedResults.length]);
       requestAnimationFrame(this.chunkedRender);

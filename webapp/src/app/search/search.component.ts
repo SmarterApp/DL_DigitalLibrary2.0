@@ -23,6 +23,9 @@ export class SearchComponent implements OnInit, AfterViewInit {
   @Input()
   showingResults = false;
 
+  @Input()
+  loading = false;
+
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   get anySubjectSelected() {
