@@ -17,7 +17,7 @@
 
     .leading-icon {
         margin-left:-16px;
-        sbdl-icon {
+        sbdl-icon:not(.tooltip-icon) {
             color: darken($warning-900, 25%);
             background: url('/assets/images/yellow-spot-3.png') no-repeat;
             background-size: contain;

@@ -1,13 +1,33 @@
 <section #sectionHeader>
   <h5>How It's Used</h5>
   <div>
-    <h6>Clarify Intended Learning</h6>
+    <h6>
+      Clarify Intended Learning
+      <sbdl-tooltip
+        text="What students will know or be able to do."
+      ><sbdl-icon icon="info"></sbdl-icon></sbdl-tooltip>
+    </h6>
     <dynamic-html [content]="content.clarify"></dynamic-html>
-    <h6>Elicit Evidence</h6>
+    <h6>
+      Elicit Evidence
+      <sbdl-tooltip
+        text="What students currently know or can do."
+      ><sbdl-icon icon="info"></sbdl-icon></sbdl-tooltip>
+    </h6>
     <dynamic-html [content]="content.elicit"></dynamic-html>
-    <h6>Interpret Evidence</h6>
+    <h6>
+      Interpret Evidence
+      <sbdl-tooltip
+        text="Evaluation of what students currently know/can do in relation to learning goal."
+      ><sbdl-icon icon="info"></sbdl-icon></sbdl-tooltip>
+    </h6>
     <dynamic-html [content]="content.interpret"></dynamic-html>
-    <h6>Act on Evidence</h6>
+    <h6>
+      Act on Evidence
+      <sbdl-tooltip
+        text="How we are going to get students to where they need to be."
+      ><sbdl-icon icon="info"></sbdl-icon></sbdl-tooltip>
+    </h6>
     <dynamic-html [content]="content.act"></dynamic-html>
   </div>
 </section>
