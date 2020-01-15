@@ -11,12 +11,12 @@
   <label>Find Resources</label>
 </a>
 
-<a [routerLink]="['/']">
+<a [routerLink]="['/search', { resourceTypes: ['fs'] }]">
   <sbdl-icon icon="strategies" aria-hidden="true"></sbdl-icon>
   <label>Formative Assessment Strategies</label>
 </a>
 
-<a [routerLink]="['/']">
+<a [routerLink]="['/search', { resourceTypes: ['as'] }]">
   <i class="far fa-universal-access" aria-hidden="true"></i>
   <label>Accessibility Strategies</label>
 </a>

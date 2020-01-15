@@ -1,24 +1,25 @@
 <article id="main" class="results-container">
-  <h6 *ngIf="results" class="results-header">Found {{ results.length }}
-    <span [ngPlural]="results.length" >
+  <h6 *ngIf="allResults" class="results-header">Found {{ allResults.length }}
+    <span [ngPlural]="allResults.length" >
       <ng-template ngPluralCase="=1">Resource</ng-template>
       <ng-template ngPluralCase="other">Resources</ng-template>
     </span>
   </h6>
   <sbdl-search
     [filters]="filters"
+    [loading]="loading"
     [showAdvanced]="showAdvancedFiltersInitially"
     showingResults="true"
   ></sbdl-search>
   <section class="search-results" width="120px" height="120px">
-    <a #searchResult [routerLink]="['/resource', result.id]" *ngFor="let result of results" class="search-result">
-      <div>
+    <a #searchResult [routerLink]="['/resource', result.id]" *ngFor="let result of renderedResults" class="search-result">
+      <div class="summary-content">
         <div class="resource-type">
           <sbdl-resource-type-icon [type]="result.type"></sbdl-resource-type-icon>
           {{ result.type | resourceType }}
         </div>
         <h6>{{ result.properties.title }}</h6>
-        <p class="summary">{{ result.summary }}</p>
+        <dynamic-html [content]="result.summary" class="summary"></dynamic-html>
         <div class="metadata emphasis-medium">
           <div class="bullet-row">
               <span *ngIf="result.properties.grades.length > 0">

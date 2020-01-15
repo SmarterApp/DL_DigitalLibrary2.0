@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChildren } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { MDCRipple } from '@material/ripple';
 import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/internal/operators/filter';
 import { FilterChip } from 'src/app/common/controls/filter-chipset/filter-chipset.component';
 import { ResourceSummary } from 'src/app/data/resource/model/summary.model';
 
@@ -11,9 +12,10 @@ import { ResourceSummary } from 'src/app/data/resource/model/summary.model';
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy {
-  constructor(private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
-  results: ResourceSummary[];
+  allResults: ResourceSummary[];
+  renderedResults: ResourceSummary[];
   filters: any = {};
 
   @ViewChildren('searchResult')
@@ -21,18 +23,28 @@ export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy 
 
   showAdvancedFiltersInitially: boolean;
 
+  loading = true;
+
   private dataSubscription: Subscription;
   private paramsSubscription: Subscription;
+  private routerSubscription: Subscription;
 
   ngOnInit() {
+    this.routerSubscription = this.router.events
+      .pipe(filter(e => e instanceof NavigationStart))
+      .subscribe(() => { this.loading = true; });
+
     this.dataSubscription = this.route.data.subscribe(data => {
       if (data.results) {
-        this.results = data.results.results;
+        this.allResults = data.results.results;
+        this.renderedResults = [];
         this.filters = data.results.filters;
 
         const params = this.route.snapshot.params;
         this.filters = {... this.filters, freeText: params.q };
         this.setSelectedFilters(params);
+
+        requestAnimationFrame(this.chunkedRender);
       }
     });
 
@@ -60,6 +72,18 @@ export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy 
 
     if (this.dataSubscription) {
       this.dataSubscription.unsubscribe();
+    }
+
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
+  }
+
+  chunkedRender = () => {
+    this.loading = false;
+    if (this.renderedResults.length < this.allResults.length) {
+      this.renderedResults.push(this.allResults[this.renderedResults.length]);
+      requestAnimationFrame(this.chunkedRender);
     }
   }
 

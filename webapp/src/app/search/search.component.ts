@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MDCChipSet } from '@material/chips';
-import { SearchFilters } from '../data/search/search-filters.model';
+import { SearchFilters, emptyFilters } from '../data/search/search-filters.model';
 import { coalesce } from '../common/utils';
 
 @Component({
@@ -12,7 +12,7 @@ import { coalesce } from '../common/utils';
 export class SearchComponent implements OnInit, AfterViewInit {
 
   @Input()
-  filters: SearchFilters = {} as SearchFilters;
+  filters: SearchFilters = emptyFilters;
 
   @ViewChildren('filterChip')
   filterChipRefs: ElementRef[];
@@ -22,6 +22,9 @@ export class SearchComponent implements OnInit, AfterViewInit {
 
   @Input()
   showingResults = false;
+
+  @Input()
+  loading = false;
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 

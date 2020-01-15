@@ -24,7 +24,6 @@ const jsonHeaders = {
 @Injectable()
 export class DataService {
 
-  // TODO: Set and use CDL environment variable.
   constructor(private httpService: HttpClient) { }
 
   get(url: string, params?: any): Observable<any> {
@@ -59,7 +58,7 @@ export class DataService {
   }
 
   /**
-   * Unlike the other method on DataService, this does not treat all URLs as
+   * Unlike the other methods on DataService, this does not treat all URLs as
    * being relative to the CDL API root. URLs given here are treated as they
    * would be in the `href` attribute of an anchor tag. In cases where the URL
    * does point at the API we do add the appropriate authentication header.

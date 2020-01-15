@@ -8,8 +8,8 @@
         "level": 0
     },
     "apiServer": {
-        "cdl": "https://api-dev.dl.smarterbalanced.org/api",
-        "authToken": "M2FiYTEzZDZkZjI2OGNjNmUzZDkxYjdkODkxMDgyYzBhZTViNmY5ZDFjMGJlNTI2MTVkZDJlYTYxNTlkZjFhMg"
+        "cdl": "https://api-dev.dl.smarterbalanced.org",
+        "authToken": "OTgxMjQ3ZDIwMmJkODllNjBiNjI0NjEzNGIxNmYwYWMyOTZjZGRkNDY3ODRiNzVmYjYzYWRjM2QxOTk5OTMyNA"
     },
     "enableAnalytics": false,
     "okta": {

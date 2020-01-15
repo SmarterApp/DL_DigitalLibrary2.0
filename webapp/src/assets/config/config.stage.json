@@ -8,7 +8,7 @@
         "level": 0
     },
     "apiServer": {
-        "cdl": "https://api-stage.dl.smarterbalanced.org/api",
+        "cdl": "https://api-stage.dl.smarterbalanced.org",
         "authToken": "--omit--"
     },
     "enableAnalytics": false

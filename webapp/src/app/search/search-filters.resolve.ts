@@ -3,7 +3,6 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/r
 import { Observable } from 'rxjs';
 import { SearchService } from 'src/app/data/search/search.service';
 import { SearchFilters, emptyFilters } from '../data/search/search-filters.model';
-import { mockSearchFilters } from '../data/mock-data';
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +12,6 @@ export class SearchFiltersResolve implements Resolve<SearchFilters> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): SearchFilters | Observable<SearchFilters> | Promise<SearchFilters> {
 
-    return mockSearchFilters;
+    return this.service.getDefaultFilters();
   }
 }
