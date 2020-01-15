@@ -8,7 +8,7 @@
         "level": 0
     },
     "apiServer": {
-        "cdl": "https://api-dev.dl.smarterbalanced.org/api"
+        "cdl": "https://api-dev.dl.smarterbalanced.org"
     },
     "enableAnalytics": false
 }
