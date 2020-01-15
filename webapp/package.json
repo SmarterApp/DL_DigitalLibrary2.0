@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run pre-build && ng serve -o",
-    "build": "npm run pre-build && ng build --prod --aot --vendor-chunk",
+    "build": "npm run pre-build && ng build --prod --aot --vendor-chunk --stats-json",
     "build-ci": "npm run pre-build-ci && ng build --prod --aot --vendor-chunk",
     "build-debug": "npm run pre-build && ng build",
     "pre-build": "node stamp-version && npm run sprites && npm run test",
@@ -16,7 +16,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "node stamp-version",
-    "sprites": "svg-sprite --config sprite-config.json src/assets/svg/*.svg"
+    "sprites": "svg-sprite --config sprite-config.json src/assets/svg/*.svg",
+    "bundle-report": "webpack-bundle-analyzer dist/sb-digital-library/stats-es2015.json"
   },
   "private": true,
   "dependencies": {
@@ -38,7 +39,7 @@
     "@okta/okta-angular": "^1.2.2",
     "angulartics2": "^7.5.2",
     "immutable": "^4.0.0-rc.12",
-    "lodash.flatmap": "^4.5.0",
+    "lodash-es": "^4.17.15",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -51,6 +52,7 @@
     "@types/jasmine": "^3.4.6",
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "~8.9.4",
+    "analyzer": "^1.2.1",
     "codelyzer": "^5.2.0",
     "git-describe": "^4.0.4",
     "jasmine-core": "~3.4.0",
@@ -66,6 +68,8 @@
     "svg-sprite": "^1.5.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3"
+    "typescript": "~3.4.3",
+    "webpack-bundle": "^0.9.41",
+    "webpack-bundle-analyzer": "^3.6.0"
   }
 }
