@@ -30,7 +30,7 @@ export class ResourceService {
 
   get = (id: number): Observable<Resource> => {
     return this.dataService
-      .get(`/resource/${id}`)
+      .get(`/api/resource/${id}`)
       .pipe(
         map(this.resourceFromJson),
         map(this.embedStrategyLinks));
