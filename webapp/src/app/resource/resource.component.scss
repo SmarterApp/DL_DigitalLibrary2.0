@@ -114,7 +114,7 @@
     }
 
     &::ng-deep {
-        &.highlighted::before {
+        &.highlighted:not(.interim-container)::before {
             content: '';
             position: absolute;
             top: 0;
@@ -128,7 +128,7 @@
             border-width: 0 0 0 4px;
             border-style: solid;
         }
-        &article:not(.highlighted):not(.step-container):not(.topics-container):not(.info-card):not(.external-resources)::before {
+        &article:not(.interim-container):not(.highlighted):not(.step-container):not(.topics-container):not(.info-card):not(.external-resources)::before {
             content: '';
             position: absolute;
             top: 4rem;
