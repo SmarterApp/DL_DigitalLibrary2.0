@@ -19,6 +19,7 @@ import { Target } from '../resource/model/target.model';
 import { SearchFilters, Filter, emptyFilters } from './search-filters.model';
 import { ResourceType } from '../resource/model/resource-type.enum';
 import { ResourceSummary } from '../resource/model/summary.model';
+import { fastArrayMerge } from 'src/app/common/utils';
 import { mockSearchFilters } from '../mock-data';
 
 @Injectable({
@@ -72,8 +73,8 @@ export class SearchService {
       // non-flattened (Bumpy) version of our SearchResults object. We need to
       // flatten the results and de-dupe the filters.
       map((bumpy: BumpySearchResults): SearchResults => ({
-        results: this.fastArrayMerge(bumpy.results),
-        filters: this.dedupeFilters(this.fastArrayMerge(bumpy.filters), req.Search_Text)
+        results: fastArrayMerge(bumpy.results),
+        filters: this.dedupeFilters(fastArrayMerge(bumpy.filters), req.Search_Text)
       }))
     );
   }
@@ -185,22 +186,6 @@ export class SearchService {
       targets: res.targets.map(t => ({ code: t.code, title: t.description })),
       standards: res.standards.map(s => ({ code: s.code, title: s.standard }))
     };
-  }
-
-  /**
-   * See: https://jsperf.com/array-merge-performance
-   */
-  private fastArrayMerge<T>(arrays: T[][]): T[] {
-    const totalLength = arrays.reduce((sum, arr) => sum + arr.length, 0);
-    const result = Array(totalLength);
-    let resultIdx = 0;
-    for (let i = 0; i < arrays.length; i++) {
-      for (let j = 0; j < arrays[i].length; j++) {
-        result[resultIdx] = arrays[i][j];
-        resultIdx++;
-      }
-    }
-    return result;
   }
 
   private dedupeFilters(filtersList: SearchFilters[], origFreeText: string): SearchFilters {
