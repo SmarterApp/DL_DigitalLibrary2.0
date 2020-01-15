@@ -17,27 +17,8 @@ export class SearchResultsResolve implements Resolve<SearchResults> {
             state: RouterStateSnapshot):
             SearchResults | Observable<SearchResults> | Promise<SearchResults> {
 
-        const request = this.mapToRequestModel(route.params);
-        return {
-          filters: mockSearchFilters,
-          results: mockResourceSummaries
-        };
-        // return this.service.post(request);
+        return this.service.fetchAllResults(this.service.paramsToRequestModel(route.params));
+        // return this.service.post(this.service.paramsToRequestModel(route.params));
     }
 
-    private mapToRequestModel(params: any): SearchRequestModel {
-        return {
-            query: params.q,
-            types: this.splitToArray(params.resourceTypes),
-            grades: this.splitToArray(params.grades),
-            claims: this.splitToArray(params.claims),
-            subjects: this.splitToArray(params.subjects),
-            targets: this.splitToArray(params.targets),
-            standards: this.splitToArray(params.standards)
-        };
-    }
-
-    private splitToArray(param: string) {
-        return param ? param.split(',') : [];
-    }
 }
