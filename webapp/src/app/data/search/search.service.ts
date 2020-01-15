@@ -39,8 +39,9 @@ export class SearchService {
     return this.dataService.get('/api/search_dl_resources', req).pipe(
       // Fetch all pages of results. expand passes all outputs back into the
       // supplied function. So page 1 is fetched, goes through the expand
-      // function and returns an observable for the request for page 2. That's
-      // fed back into the function resulting in the request for page 3, etc.
+      // function and returns an observable for the request for page 2. That
+      // page 2 observable is fed back into the expand function resulting in
+      // the request for page 3, etc.
       expand(page => {
         // Only try to actually fetch the next page if we have a next link.
         return (this.hasNextPage(page) ?
@@ -51,12 +52,14 @@ export class SearchService {
                   // page has no next link.
                   takeWhile(this.hasNextPage)); }),
 
-      // At this point we have a stream of page results. This transforms the
-      // result items into our ResourceSummary model and collects the summaries
+      // At this point we have a stream of page results. Now we transform the
+      // result items into our ResourceSummary model and collect the summaries
       // and all the filter data into one intermediate object. Note that the
-      // form of this object is:
+      // form of this intermediate object is:
+      //
       //     { results: ResourceSummary[][],
-      //       filters: SearchFilters[] }
+      //       filters: SearchFilters[][] }
+      //
       // This is for performance. It will be faster to merge all the resource
       // summary collections together at once, and de-dupe the filter
       // collections once than to do it every time we map in another page of
@@ -69,9 +72,9 @@ export class SearchService {
         },
         { results: [], filters: [] }),
 
-      // The reduce above just lumped all the arrays together, giving us a
-      // non-flattened (Bumpy) version of our SearchResults object. We need to
-      // flatten the results and de-dupe the filters.
+      // Now we flatten our non-flattened (Bumpy) results lists and filter
+      // lists into our final SearchResults shape, de-duping the filter values
+      // along the way.
       map((bumpy: BumpySearchResults): SearchResults => ({
         results: fastArrayMerge(bumpy.results),
         filters: this.dedupeFilters(fastArrayMerge(bumpy.filters), req.Search_Text)
@@ -190,18 +193,22 @@ export class SearchService {
 
   private dedupeFilters(filtersList: SearchFilters[], origFreeText: string): SearchFilters {
     const result = { freeText: origFreeText } as SearchFilters;
-    const filterKeys = [ 'claims', 'grades', 'resourceTypes', 'standards', 'subjects', 'targets' ];
     const codeSets: Set<string>[] = [];
+
+    // because I don't want to write this all out exactly the same six times
+    const filterKeys = [ 'claims', 'grades', 'resourceTypes', 'standards', 'subjects', 'targets' ];
 
     for (const key of filterKeys) {
       result[key] = [];
       codeSets[key] = new Set<string>();  // we're going to use sets to speed up the deduping
     }
 
+    // This looks O(n^3) but it's actually O(n) with n = the total # number of
+    // filter values across returned resources.
     for (const filters of filtersList) {        // loop over our sets of filters
       for (const key of filterKeys) {           // for every type of filter (claims, grades, etc.)
         for (const value of filters[key]) {     // look at every filter value from the resource
-          if (!codeSets[key].has(value.code)) { // if we haven't seen it before
+          if (!codeSets[key].has(value.code)) { // if we haven't seen this value before
             result[key].push(value);            // add it to our final result set
             codeSets[key].add(value.code);      // and mark that we've seen it
           }
