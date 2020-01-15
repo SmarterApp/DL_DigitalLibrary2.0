@@ -44,6 +44,7 @@ export class NotesComponent {
   };
 
   addNote() {
+    this.newNoteContent = '';
     this.authoringNote = true;
     requestAnimationFrame(() => { this.editor.focus(); });
   }

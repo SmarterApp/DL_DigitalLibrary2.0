@@ -127,6 +127,7 @@
             border-radius: 0.25rem;
             border-width: 0 0 0 4px;
             border-style: solid;
+            z-index: -1;
         }
         &article:not(.interim-container):not(.highlighted):not(.step-container):not(.topics-container):not(.info-card):not(.external-resources)::before {
             content: '';
