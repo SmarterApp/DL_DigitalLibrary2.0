@@ -23,10 +23,11 @@ export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy 
 
   showAdvancedFiltersInitially: boolean;
 
+  loading = true;
+
   private dataSubscription: Subscription;
   private paramsSubscription: Subscription;
   private routerSubscription: Subscription;
-  private loading = true;
 
   ngOnInit() {
     this.routerSubscription = this.router.events

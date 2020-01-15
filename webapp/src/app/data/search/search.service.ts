@@ -116,7 +116,7 @@ export class SearchService {
       ['dlResourceContentCp', 'description'],
       ['dlResourceContentStrategy', 'overview']];
 
-    for (const [key, field]  of resourceContentKeys.values()) {
+    for (const [key, field] of resourceContentKeys.values()) {
       if (json[key]) {
         return json[key][field];
       }
