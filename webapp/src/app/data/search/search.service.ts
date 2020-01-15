@@ -77,7 +77,7 @@ export class SearchService {
       // along the way.
       map((bumpy: BumpySearchResults): SearchResults => ({
         results: fastArrayMerge(bumpy.results),
-        filters: this.dedupeFilters(fastArrayMerge(bumpy.filters), req.Search_Text)
+        filters: this.sortFilters(this.dedupeFilters(fastArrayMerge(bumpy.filters), req.Search_Text))
       }))
     );
   }
@@ -217,6 +217,33 @@ export class SearchService {
     }
 
     return result;
+  }
+
+  /**
+   * Note that this mutates the filters in place.
+   */
+  private sortFilters(filters: SearchFilters) {
+
+    // Sort the filters. Here we will need to have logic specific to each
+    // filter type.
+    const sortOnCode = (a, b) => {
+      return a.code > b.code ? 1 :
+             a.code < b.code ? -1 :
+             0;
+    };
+
+    const typesOrder = ['ir', 'cp', 'pl', 'fs', 'as'];
+
+    filters.grades.sort((a, b) => +a.code.substring(1) - +b.code.substring(1));
+    filters.subjects.sort(sortOnCode);
+    filters.claims.sort(sortOnCode);
+    filters.targets.sort(sortOnCode);
+    filters.standards.sort(sortOnCode);
+    filters.resourceTypes = typesOrder
+      .map(sortedCode => filters.resourceTypes.find(f => f.code === sortedCode))
+      .filter(f => f);
+
+    return filters;
   }
 
   public paramsToRequestModel(params: any): SearchRequestModel {
