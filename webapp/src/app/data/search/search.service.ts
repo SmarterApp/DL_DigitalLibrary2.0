@@ -104,7 +104,7 @@ export class SearchService {
         image:     json.imagePath,
         isBookmarked: false,
         lastUpdatedDate: new Date(json.updatedAt),
-        subject: this.subjectFromJson(json),
+        subject: this.subjectFromJson(json.subject),
       },
       type: json.dlResourceType.description,
       summary: this.summaryFromJson(json),
