@@ -22,7 +22,7 @@
   </span>
   <sbdl-button class="plain"
                (click)="goToResults.emit(true)"
-               *ngIf="numResults > 0">
+               *ngIf="showAdvanced && numResults > 0">
     scroll to results <i class="far fa-arrow-down"></i>
   </sbdl-button>
 </h4>
