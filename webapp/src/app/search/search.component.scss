@@ -42,21 +42,24 @@
     background-color: $neutral-50;
 
     margin-top: 34px;
-    margin-left: -100%;
-    margin-right: -100%;
-    padding-left: 100%;
-    padding-right: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
     padding-bottom: 44px;
     position: relative;
+    box-shadow:
+      0px 4px 5px rgba(0, 0, 0, 0.2),
+      0px 3px 14px rgba(0, 0, 0, 0.12),
+      0px 8px 10px rgba(0, 0, 0, 0.14);
 
     .loading-overlay {
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 35%;
+      left: 0;
+      right: 0;
 
       text-align: center;
-      padding-top: 17%;
+      padding-top: 45%;
       cursor: wait;
       background-color: rgba(255, 255, 255, 0.7);
       opacity: 0;
