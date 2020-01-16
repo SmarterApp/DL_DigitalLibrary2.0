@@ -26,7 +26,7 @@
 
     .leading-icon {
         text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin) + 9px));
-        sbdl-icon {
+        sbdl-icon:not(.tooltip-icon) {
             color: $brand-blue;
             background: url('/assets/images/blue-spot.png') no-repeat;
             background-size: contain;
