@@ -38,25 +38,38 @@
     margin-left: $spacer-md;
   }
 
+  h4.results-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: $brand-blue;
+    margin-top: $spacer-lg;
+  }
+
   .advanced-search {
     background-color: $neutral-50;
 
     margin-top: 34px;
-    margin-left: -100%;
-    margin-right: -100%;
-    padding-left: 100%;
-    padding-right: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
     padding-bottom: 44px;
     position: relative;
+    box-shadow:
+      0px 4px 5px rgba(0, 0, 0, 0.2),
+      0px 3px 14px rgba(0, 0, 0, 0.12),
+      0px 8px 10px rgba(0, 0, 0, 0.14);
 
     .loading-overlay {
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 35%;
+      left: 0;
+      right: 0;
 
       text-align: center;
-      padding-top: 17%;
+      padding-top: 45%;
       cursor: wait;
       background-color: rgba(255, 255, 255, 0.7);
       opacity: 0;
@@ -82,6 +95,11 @@
       justify-content: space-between;
       padding-top: 45px;
 
+      h5 {
+        font-weight: 400;
+        font-size: $font-size-2;
+      }
+
       a.emphasis-medium.caption {
         opacity: 0.65;
         color: $neutral-900;
@@ -99,6 +117,19 @@
       background-color: $white;
       padding: $spacer;
       margin-bottom: $spacer;
+
+      h6 {
+        color: $neutral-500;
+        font-weight: bold;
+        font-size: $font-size-body;
+        font-family: $font-family-body;
+        padding: 0;
+      }
+
+      sbdl-filter-chipset div.mdc-chip-set,
+      .fallback-message {
+        margin-left: $spacer-lg;
+      }
     }
 
   }

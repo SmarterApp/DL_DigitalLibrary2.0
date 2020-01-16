@@ -1,25 +1,26 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { MDCRipple } from '@material/ripple';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/internal/operators/filter';
-import { FilterChip } from 'src/app/common/controls/filter-chipset/filter-chipset.component';
 import { ResourceSummary } from 'src/app/data/resource/model/summary.model';
+import { SearchFilters, Filter, emptyFilters } from '../../data/search/search-filters.model';
+import { SearchResultCardComponent } from './card/search-result-card.component';
 
 @Component({
   selector: 'sbdl-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss']
 })
-export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy {
+export class SearchResultsComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private route: ActivatedRoute) { }
+
+  @ViewChild('results', {static: false})
+  resultsElem: ElementRef;
 
   allResults: ResourceSummary[];
   renderedResults: ResourceSummary[];
-  filters: any = {};
-
-  @ViewChildren('searchResult')
-  searchResultsRef: ElementRef[];
+  filters: SearchFilters = emptyFilters;
 
   showAdvancedFiltersInitially: boolean;
 
@@ -36,12 +37,12 @@ export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy 
 
     this.dataSubscription = this.route.data.subscribe(data => {
       if (data.results) {
-        this.allResults = data.results.results;
+        this.allResults = data.results.results || [];
         this.renderedResults = [];
         this.filters = data.results.filters;
 
         const params = this.route.snapshot.params;
-        this.filters = {... this.filters, freeText: params.q };
+        this.filters = {...this.filters, query: params.query };
         this.setSelectedFilters(params);
 
         requestAnimationFrame(this.chunkedRender);
@@ -49,20 +50,12 @@ export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy 
     });
 
     this.paramsSubscription = this.route.params.subscribe(params => {
-      this.filters = {... this.filters, freeText: params.q };
+      this.filters = {...this.filters, query: params.query };
       this.setSelectedFilters(params);
     });
 
     const initParams = this.route.snapshot.params;
-    this.showAdvancedFiltersInitially = Object.keys(initParams).filter(x => x !== 'q').length > 0;
-  }
-
-  ngAfterViewInit() {
-    if (this.searchResultsRef) {
-      for (const result of this.searchResultsRef) {
-        MDCRipple.attachTo(result.nativeElement);
-      }
-    }
+    this.showAdvancedFiltersInitially = Object.keys(initParams).filter(x => x !== 'query').length > 0;
   }
 
   ngOnDestroy() {
@@ -87,6 +80,11 @@ export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy 
     }
   }
 
+  scrollToResults() {
+    this.resultsElem.nativeElement.scrollIntoView(
+      { behavior: 'smooth', block: 'start', inline: 'nearest' });
+  }
+
   private setSelectedFilters(params: any) {
     this.setSelectedParams(params.resourceTypes, this.filters.resourceTypes);
     this.setSelectedParams(params.grades, this.filters.grades);
@@ -96,7 +94,7 @@ export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy 
     this.setSelectedParams(params.standards, this.filters.standards);
   }
 
-  private setSelectedParams(params: string, filters: FilterChip[]) {
+  private setSelectedParams(params: string, filters: Filter[]) {
     if (params) {
       const paramCodes = params.split(',');
       filters.forEach(x => x.selected = paramCodes.indexOf(x.code) !== -1);

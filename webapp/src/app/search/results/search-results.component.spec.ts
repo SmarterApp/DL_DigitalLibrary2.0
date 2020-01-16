@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SearchModule } from '../search.module';
 import { SearchResultsComponent } from './search-results.component';
+import { emptyFilters } from '../../data/search/search-filters.model';
 import { of } from 'rxjs/internal/observable/of';
 
 describe('SearchResultsComponent', () => {
@@ -16,8 +17,8 @@ describe('SearchResultsComponent', () => {
         provide: ActivatedRoute,
         useValue: {
           snapshot: { params: {} },
-          data: of({ data: { results: { results: [], filters: [] } }  }),
-          params: of({ params: { q: 'text' }})
+          data: of({ data: { results: { results: [], filters: emptyFilters } }  }),
+          params: of({ params: { query: 'text' }})
         }
       } ]
     })
