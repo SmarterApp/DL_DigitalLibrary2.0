@@ -21,7 +21,7 @@
   }
 }
 
-.close-button, .open-button {
+.open-button {
   background: none;
   border: none;
   color: inherit;
@@ -29,17 +29,6 @@
   font-family: inherit;
   font-size: inherit;
   padding: 0;
-}
-
-.close-button {
-
-  position: absolute;
-  top: 0.2rem;
-  right: 0.5rem;
-
-  sbdl-icon {
-    cursor: pointer;
-  }
 }
 
 a.read-more {
