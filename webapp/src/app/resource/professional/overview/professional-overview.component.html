@@ -1,6 +1,7 @@
 <article #sectionHeader class="overview-container">
   <h4 class="leading-icon">
-    <i class="far fa-hand-point-right"></i>Overview
+    <i class="far fa-hand-point-right"></i>
+      Overview
   </h4>
   <div>
     <h5>
@@ -14,13 +15,23 @@
     </p>
   </div>
   <div>
-    <h5>Learning Goal</h5>
+    <h5>
+      Learning Goal
+      <sbdl-tooltip
+        text="What learning students are to develop (e.g., Students know, apply, or understand)."
+      ><sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
+    </h5>
     <p>
       <sbdl-read-more [text] = "resource.overview.learningGoal"></sbdl-read-more>
     </p>
   </div>
   <div>
-    <h5>Success Criteria</h5>
+    <h5>
+      Success Criteria
+      <sbdl-tooltip
+        text="How students can demonstrate learning (e.g., Students explain, describe, or write)."
+      ><sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
+    </h5>
     <div [innerHtml]="resource.overview.successCriteria"></div>
   </div>
 </article>
