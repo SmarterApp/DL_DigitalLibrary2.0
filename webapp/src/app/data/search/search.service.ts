@@ -251,7 +251,7 @@ export class SearchService {
 
   public paramsToRequestModel(params: any): SearchRequestModel {
     return {
-      Search_Text: params.q || '',
+      Search_Text: params.query || '',
       Claim: this.splitToArray(params.claims),
       Grade: this.splitToArray(params.grades),
       Standard: this.splitToArray(params.standards),

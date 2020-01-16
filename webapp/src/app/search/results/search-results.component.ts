@@ -3,8 +3,8 @@ import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { MDCRipple } from '@material/ripple';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/internal/operators/filter';
-import { FilterChip } from 'src/app/common/controls/filter-chipset/filter-chipset.component';
 import { ResourceSummary } from 'src/app/data/resource/model/summary.model';
+import { SearchFilters, Filter, emptyFilters } from '../../data/search/search-filters.model';
 import { SearchResultCardComponent } from './card/search-result-card.component';
 
 @Component({
@@ -20,7 +20,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
 
   allResults: ResourceSummary[];
   renderedResults: ResourceSummary[];
-  filters: any = {};
+  filters: SearchFilters = emptyFilters;
 
   showAdvancedFiltersInitially: boolean;
 
@@ -37,12 +37,12 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
 
     this.dataSubscription = this.route.data.subscribe(data => {
       if (data.results) {
-        this.allResults = data.results.results;
+        this.allResults = data.results.results || [];
         this.renderedResults = [];
         this.filters = data.results.filters;
 
         const params = this.route.snapshot.params;
-        this.filters = {... this.filters, freeText: params.q };
+        this.filters = {...this.filters, query: params.query };
         this.setSelectedFilters(params);
 
         requestAnimationFrame(this.chunkedRender);
@@ -50,12 +50,12 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     });
 
     this.paramsSubscription = this.route.params.subscribe(params => {
-      this.filters = {... this.filters, freeText: params.q };
+      this.filters = {...this.filters, query: params.query };
       this.setSelectedFilters(params);
     });
 
     const initParams = this.route.snapshot.params;
-    this.showAdvancedFiltersInitially = Object.keys(initParams).filter(x => x !== 'q').length > 0;
+    this.showAdvancedFiltersInitially = Object.keys(initParams).filter(x => x !== 'query').length > 0;
   }
 
   ngOnDestroy() {
@@ -94,7 +94,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     this.setSelectedParams(params.standards, this.filters.standards);
   }
 
-  private setSelectedParams(params: string, filters: FilterChip[]) {
+  private setSelectedParams(params: string, filters: Filter[]) {
     if (params) {
       const paramCodes = params.split(',');
       filters.forEach(x => x.selected = paramCodes.indexOf(x.code) !== -1);

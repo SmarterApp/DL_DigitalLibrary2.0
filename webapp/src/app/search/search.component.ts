@@ -10,7 +10,7 @@ import { coalesce, whitelistKeys } from '../common/utils';
 // Only used by this class. Should move to search-query-params.model.ts is we
 // need to use elsewhere
 export interface SearchQueryParams {
-  q?: string;
+  query?: string;
   claims?: string;
   grades?: string;
   subjects?: string;
@@ -54,12 +54,12 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.params = this.rectifyParams(this.parseParams(this.route.snapshot.params));
+    this.params = this.rectifyParams(this.parseParams(this.route.snapshot.params || {}));
 
     this.routerSubscription = this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe(() => {
-        this.params = this.rectifyParams(this.parseParams(this.route.snapshot.params));
+        this.params = this.rectifyParams(this.parseParams(this.route.snapshot.params || {}));
       });
   }
 
@@ -72,7 +72,9 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.routerSubscription.unsubscribe();
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
   }
 
   /**
@@ -81,7 +83,7 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
    */
   private parseParams(params: object): SearchQueryParams {
     return whitelistKeys(params as SearchQueryParams,
-      [ 'q', 'claims', 'grades', 'subjects', 'targets', 'standards', 'resourceTypes' ]);
+      [ 'query', 'claims', 'grades', 'subjects', 'targets', 'standards', 'resourceTypes' ]);
   }
 
   /**

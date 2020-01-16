@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChildren, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { MDCChipSet } from '@material/chips';
+import { Filter } from 'src/app/data/search/search-filters.model';
 
 /**
  * Component to render filters which can be toggled on and off.
@@ -15,7 +16,7 @@ export class FilterChipsetComponent implements OnInit, AfterViewInit {
    * Filter Options
    */
   @Input()
-  filters: FilterChip[];
+  filters: Filter[];
 
   /**
    * Emits a string of filter codes when a filter has been changed.
@@ -39,14 +40,8 @@ export class FilterChipsetComponent implements OnInit, AfterViewInit {
     }
   }
 
-  toggleFilter(filter: FilterChip) {
+  toggleFilter(filter: Filter) {
     filter.selected = !filter.selected;
     this.onChanged.emit(this.filters.filter(x => x.selected).map(x => x.code));
   }
-}
-
-export interface FilterChip {
-  title: string;
-  code: string;
-  selected: boolean;
 }

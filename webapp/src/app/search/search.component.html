@@ -1,6 +1,6 @@
 <sbdl-text-field
-  (submit)="search({q: $event})"
-  [model]="filters.freeText"
+  (submit)="search({query: $event})"
+  [model]="filters.query"
   placeholder="What are you looking for? (e.g., fractions, Grade 6 playlist)"
   fontAwesomeIcon="fa-search">
 </sbdl-text-field>
@@ -20,10 +20,14 @@
       <ng-template ngPluralCase="other">Resources</ng-template>
     </ng-container>
   </span>
-  <sbdl-button class="plain" (click)="goToResults.emit(true)">scroll to results <i class="far fa-arrow-down"></i></sbdl-button>
+  <sbdl-button class="plain"
+               (click)="goToResults.emit(true)"
+               *ngIf="numResults > 0">
+    scroll to results <i class="far fa-arrow-down"></i>
+  </sbdl-button>
 </h4>
 
-<div [hidden]="!showAdvanced" class="advanced-search">
+<div [hidden]="!showAdvanced || numResults === 0" class="advanced-search">
   <div class="loading-overlay" [ngClass]="{loading: loading}">
     <div>Loading...</div>
   </div>
@@ -31,32 +35,36 @@
       <h5 *ngIf="!showingResults">Browse for Resources</h5>
       <h5 *ngIf="showingResults">Advanced Search</h5>
       <div>
-        <a [routerLink]="['/search', {q: filters.freeText || ''}]" class="emphasis-medium caption"><i class="fa fa-undo"></i> Clear Filters</a>
+        <a [routerLink]="['/search', {query: filters.query || ''}]" class="emphasis-medium caption"><i class="fa fa-undo"></i> Clear Filters</a>
         <a href="javascript:void(0)" class="emphasis-medium caption" (click)="showAdvanced = false"><sbdl-icon icon="close"></sbdl-icon></a>
       </div>
   </div>
-  <div class="filter-container">
+  <div class="filter-container"
+       *ngIf="filters.resourceTypes.length > 0">
     <h6>Select a type</h6>
     <sbdl-filter-chipset
       [filters]="filters.resourceTypes"
       (onChanged)="search({resourceTypes: $event.join(',')})"
     ></sbdl-filter-chipset>
   </div>
-  <div class="filter-container">
+  <div class="filter-container"
+       *ngIf="filters.grades.length > 0">
     <h6>Grades</h6>
     <sbdl-filter-chipset
       [filters]="filters.grades"
       (onChanged)="search({grades: $event.join(',')})"
       ></sbdl-filter-chipset>
   </div>
-  <div class="filter-container">
+  <div class="filter-container"
+       *ngIf="filters.subjects.length > 0">
     <h6>Subjects</h6>
     <sbdl-filter-chipset
       [filters]="filters.subjects"
       (onChanged)="search({subjects: $event.join(',')})"
     ></sbdl-filter-chipset>
   </div>
-  <div class="filter-container">
+  <div class="filter-container"
+       *ngIf="filters.claims.length > 0">
     <h6>Claims</h6>
     <sbdl-filter-chipset
       *ngIf="params.subjects && params.grades; else displayClaimsMessage"
@@ -69,7 +77,8 @@
       </p>
     </ng-template>
   </div>
-  <div class="filter-container">
+  <div class="filter-container"
+       *ngIf="filters.targets.length > 0">
     <h6>Targets</h6>
     <sbdl-filter-chipset
       *ngIf="params.subjects && params.grades && params.claims; else displayTargetMessage"
@@ -82,7 +91,8 @@
       </p>
     </ng-template>
   </div>
-  <div class="filter-container">
+  <div class="filter-container"
+       *ngIf="filters.standards.length > 0">
     <h6>Content Standards</h6>
     <sbdl-filter-chipset
       *ngIf="params.subjects && params.grades && params.claims; else displayStandardsMessage"
