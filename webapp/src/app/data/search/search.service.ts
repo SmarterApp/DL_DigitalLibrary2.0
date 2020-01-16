@@ -32,7 +32,8 @@ export class SearchService {
   getDefaultFilters(): Observable<SearchFilters> {
     // return this.dataService.get('/api/search/filters');
     // TODO: Replace with an actual way to get default filters
-    return of(initialSearchFilters);
+
+    return of(JSON.parse(JSON.stringify(initialSearchFilters)));
   }
 
   fetchAllResults(req: SearchRequestModel): Observable<SearchResults> {
