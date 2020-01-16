@@ -26,7 +26,10 @@
   <label>Bookmarks &amp; Notes</label>
 </a>
 
-<a *ngIf="!isAuthenticated" [routerLink]="['/auth/login']"><i class="far fa-sign-in-alt"></i><label>Login</label></a>
+<a *ngIf="!isAuthenticated"
+   [routerLink]="['/auth/login']">
+  <i class="far fa-sign-in-alt" aria-hidden="true"></i><label>Login</label>
+</a>
 <button *ngIf="isAuthenticated" (click)="logout()">
   <i class="far fa-sign-out-alt" aria-hidden="true"></i><label>Logout</label>
 </button>

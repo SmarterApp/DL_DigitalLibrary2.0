@@ -16,14 +16,15 @@
   <span>
     Found {{ numResults }}
     <ng-container [ngPlural]="numResults" >
-      <ng-template ngPluralCase="=1">Resource</ng-template>
-      <ng-template ngPluralCase="other">Resources</ng-template>
+      <ng-template ngPluralCase="=0">resources for "{{filters.query}}"</ng-template>
+      <ng-template ngPluralCase="=1">resource</ng-template>
+      <ng-template ngPluralCase="other">resources</ng-template>
     </ng-container>
   </span>
   <sbdl-button class="plain"
                (click)="goToResults.emit(true)"
                *ngIf="showAdvanced && numResults > 0">
-    scroll to results <i class="far fa-arrow-down"></i>
+    scroll to results <i class="far fa-arrow-down" aria-hidden="true"></i>
   </sbdl-button>
 </h4>
 
@@ -35,8 +36,13 @@
       <h5 *ngIf="!showingResults">Browse for Resources</h5>
       <h5 *ngIf="showingResults">Advanced Search</h5>
       <div>
-        <a [routerLink]="['/search', {query: filters.query || ''}]" class="emphasis-medium caption"><i class="fa fa-undo"></i> Clear Filters</a>
-        <a href="javascript:void(0)" class="emphasis-medium caption" (click)="showAdvanced = false"><sbdl-icon icon="close"></sbdl-icon></a>
+        <a [routerLink]="['/search', {query: filters.query || ''}]"
+           class="emphasis-medium caption">
+          <i class="fa fa-undo" aria-hidden="true"></i> Clear Filters
+        </a>
+        <a href="javascript:void(0)" class="emphasis-medium caption" (click)="showAdvanced = false">
+          <sbdl-icon icon="close" aria-label="Close advanced filters"></sbdl-icon>
+        </a>
       </div>
   </div>
   <div class="filter-container"

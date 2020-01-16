@@ -2,7 +2,7 @@
   <div *ngSwitchCase="CardType.File" class="attachment-card file-attachment">
     <div class="type-info">
       <span class="attachment-category">{{ attachment.category }}</span>
-      <i class="{{attachment.fileType | fileTypeIcon }}"></i>
+      <i class="{{attachment.fileType | fileTypeIcon }}" aria-hidden="true"></i>
     </div>
     <div class="detail-info">
       <span>
@@ -10,22 +10,22 @@
         <span class="emphasis-medium">(.{{attachment.fileExtension}})</span>
       </span>
       <div class="actions">
-        <div *ngIf="canPreview(attachment.fileType)" (click)="preview(attachment)"><i class="far fa-eye"></i> Preview</div>
-        <div (click)="download(attachment)" aria-hidden="true"><i class="far fa-cloud-download"></i> Download</div>
+        <div *ngIf="canPreview(attachment.fileType)" (click)="preview(attachment)"><i class="far fa-eye" aria-hidden="true"></i> Preview</div>
+        <div (click)="download(attachment)"><i class="far fa-cloud-download" aria-hidden="true"></i> Download</div>
       </div>
     </div>
   </div>
   <div *ngSwitchCase="CardType.Media"  class="attachment-card media-attachment">
     <div class="type-info">
       <span class="attachment-category">{{ attachment.category }}</span>
-      <i class="{{attachment.fileType | fileTypeIcon }}"></i>
+      <i class="{{attachment.fileType | fileTypeIcon }}" aria-hidden="true"></i>
     </div>
     <div class="detail-info">
       <span>
         {{ attachment.name }}
       </span>
       <div class="actions">
-        <div (click)="previewMedia=true" [hidden]="previewMedia"><i class="far fa-eye"></i> Watch</div>
+        <div (click)="previewMedia=true" [hidden]="previewMedia"><i class="far fa-eye" aria-hidden="true"></i> Watch</div>
       </div>
     </div>
     <div [ngSwitch]="attachment.fileType"
@@ -42,14 +42,18 @@
         </div>
       </ng-template>
       <sbdl-button class="plain" (click)="previewMedia=false">
-        <i class="far fa-compress-alt"></i> Close
+        <i class="far fa-compress-alt" aria-hidden="true"></i> Close
       </sbdl-button>
     </div>
   </div>
-  <a *ngSwitchCase="CardType.Link" href="{{ attachment.uri }}" target="_blank" class="attachment-card link-attachment">
+  <a *ngSwitchCase="CardType.Link"
+     href="{{ attachment.uri }}"
+     target="_blank"
+     attr.aria-label="{{ attachment.name }} (opens in a new window)"
+     class="attachment-card link-attachment">
     <div class="type-info">
       <span class="attachment-category">{{ attachment.category }}</span>
-      <i class="far fa-link"></i>
+      <i class="far fa-link" aria-hidden="true"></i>
     </div>
     <div class="detail-info">
       <span>
@@ -57,7 +61,7 @@
       </span>
       <div class="actions">
         <div *ngIf="canPreview(attachment.fileType)"><i class="far fa-eye"></i> Preview</div>
-        <div><i class="far fa-external-link"></i> Visit</div>
+        <div><i class="far fa-external-link" aria-hidden="true"></i> Visit</div>
       </div>
     </div>
   </a>
