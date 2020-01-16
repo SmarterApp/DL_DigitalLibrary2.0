@@ -287,7 +287,7 @@ export const mockResourceSummaries: ResourceSummary[] = [
 ];
 
 export const initialSearchFilters: SearchFilters = {
-  freeText: '',
+  query: '',
   claims: [
     { code: 'ela-c2',   title: 'Writing' },
     { code: 'ela-c3',   title: 'Speaking & Listening' },
@@ -458,7 +458,7 @@ export const initialSearchFilters: SearchFilters = {
 };
 
 export const mockSearchFilters: SearchFilters = {
-  freeText: '',
+  query: '',
   resourceTypes: [
     { title: 'Instructional', code: 'ir' },
     { title: 'Professional Learning', code: 'pl' },

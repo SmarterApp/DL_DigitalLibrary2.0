@@ -1,9 +1,16 @@
 export function coalesce<T>(value: T, defaultValue: T): T {
-    if(value == null) {
+    if (value == null) {
       return defaultValue;
     }
-
     return value;
+}
+
+export function whitelistKeys<T extends object>(obj: T, validKeys: string[]) {
+  const result: T = {} as T;
+  for (const key of validKeys) {
+    result[key] = obj[key];
+  }
+  return result;
 }
 
 // Note that this function expects to always find and return a numeric value.

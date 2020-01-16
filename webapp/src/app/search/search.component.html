@@ -1,5 +1,5 @@
-<sbdl-text-field 
-  (submit)="submit($event)" 
+<sbdl-text-field
+  (submit)="search({q: $event})"
   [model]="filters.freeText"
   placeholder="What are you looking for? (e.g., fractions, Grade 6 playlist)"
   fontAwesomeIcon="fa-search">
@@ -11,6 +11,17 @@
 <div *ngIf="showingResults" class="emphasis-medium caption filters-caption">
   Start typing a topic, claim, target, or <a href="javascript:void(0);" (click)="showAdvanced = true">advanced search</a>.
 </div>
+
+<h4 *ngIf="showingResults" class="results-header">
+  <span>
+    Found {{ numResults }}
+    <ng-container [ngPlural]="numResults" >
+      <ng-template ngPluralCase="=1">Resource</ng-template>
+      <ng-template ngPluralCase="other">Resources</ng-template>
+    </ng-container>
+  </span>
+  <sbdl-button class="plain" (click)="goToResults.emit(true)">scroll to results <i class="far fa-arrow-down"></i></sbdl-button>
+</h4>
 
 <div [hidden]="!showAdvanced" class="advanced-search">
   <div class="loading-overlay" [ngClass]="{loading: loading}">
@@ -26,19 +37,32 @@
   </div>
   <div class="filter-container">
     <h6>Select a type</h6>
-    <sbdl-filter-chipset [filters]="filters.resourceTypes" (onChanged)="setResourceTypes($event)"></sbdl-filter-chipset>
+    <sbdl-filter-chipset
+      [filters]="filters.resourceTypes"
+      (onChanged)="search({resourceTypes: $event.join(',')})"
+    ></sbdl-filter-chipset>
   </div>
   <div class="filter-container">
     <h6>Grades</h6>
-    <sbdl-filter-chipset [filters]="filters.grades" (onChanged)="setGrades($event)"></sbdl-filter-chipset>
+    <sbdl-filter-chipset
+      [filters]="filters.grades"
+      (onChanged)="search({grades: $event.join(',')})"
+      ></sbdl-filter-chipset>
   </div>
   <div class="filter-container">
     <h6>Subjects</h6>
-    <sbdl-filter-chipset [filters]="filters.subjects" (onChanged)="setSubjects($event)"></sbdl-filter-chipset>
+    <sbdl-filter-chipset
+      [filters]="filters.subjects"
+      (onChanged)="search({subjects: $event.join(',')})"
+    ></sbdl-filter-chipset>
   </div>
   <div class="filter-container">
     <h6>Claims</h6>
-    <sbdl-filter-chipset *ngIf="anySubjectSelected && anyGradeSelected; else displayClaimsMessage" [filters]="filters.claims" (onChanged)="setClaims($event)"></sbdl-filter-chipset>
+    <sbdl-filter-chipset
+      *ngIf="params.subjects && params.grades; else displayClaimsMessage"
+      [filters]="filters.claims"
+      (onChanged)="search({claims: $event.join(',')})"
+    ></sbdl-filter-chipset>
     <ng-template #displayClaimsMessage>
       <p class="body-2 emphasis-medium fallback-message">
         Select a <b>Grade</b> and a <b>Subject</b> to view Claim options
@@ -47,7 +71,11 @@
   </div>
   <div class="filter-container">
     <h6>Targets</h6>
-    <sbdl-filter-chipset *ngIf="anySubjectSelected && anyGradeSelected && anyClaimSelected; else displayTargetMessage" [filters]="filters.targets" (onChanged)="setTargets($event)"></sbdl-filter-chipset>
+    <sbdl-filter-chipset
+      *ngIf="params.subjects && params.grades && params.claims; else displayTargetMessage"
+      [filters]="filters.targets"
+      (onChanged)="search({targets: $event.join(',')})"
+    ></sbdl-filter-chipset>
     <ng-template #displayTargetMessage>
       <p class="body-2 emphasis-medium fallback-message">
         Select a <b>Grade</b>, <b>Subject</b>, and a <b>Claim</b> to view Target options
@@ -56,7 +84,11 @@
   </div>
   <div class="filter-container">
     <h6>Content Standards</h6>
-    <sbdl-filter-chipset *ngIf="anySubjectSelected && anyGradeSelected && anyClaimSelected; else displayStandardsMessage" [filters]="filters.standards" (onChanged)="setStandards($event)"></sbdl-filter-chipset>
+    <sbdl-filter-chipset
+      *ngIf="params.subjects && params.grades && params.claims; else displayStandardsMessage"
+      [filters]="filters.standards"
+      (onChanged)="search({standards: $event.join(',')})"
+    ></sbdl-filter-chipset>
     <ng-template #displayStandardsMessage>
       <p class="body-2 emphasis-medium fallback-message">
         Select a <b>Grade</b>, <b>Subject</b>, and a <b>Claim</b> to view

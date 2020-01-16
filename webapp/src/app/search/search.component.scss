@@ -38,6 +38,16 @@
     margin-left: $spacer-md;
   }
 
+  h4.results-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: $brand-blue;
+    margin-top: $spacer-lg;
+  }
+
   .advanced-search {
     background-color: $neutral-50;
 

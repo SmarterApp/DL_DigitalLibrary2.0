@@ -1,25 +1,26 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { MDCRipple } from '@material/ripple';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/internal/operators/filter';
 import { FilterChip } from 'src/app/common/controls/filter-chipset/filter-chipset.component';
 import { ResourceSummary } from 'src/app/data/resource/model/summary.model';
+import { SearchResultCardComponent } from './card/search-result-card.component';
 
 @Component({
   selector: 'sbdl-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.scss']
 })
-export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy {
+export class SearchResultsComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private route: ActivatedRoute) { }
+
+  @ViewChild('results', {static: false})
+  resultsElem: ElementRef;
 
   allResults: ResourceSummary[];
   renderedResults: ResourceSummary[];
   filters: any = {};
-
-  @ViewChildren('searchResult')
-  searchResultsRef: ElementRef[];
 
   showAdvancedFiltersInitially: boolean;
 
@@ -57,14 +58,6 @@ export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy 
     this.showAdvancedFiltersInitially = Object.keys(initParams).filter(x => x !== 'q').length > 0;
   }
 
-  ngAfterViewInit() {
-    if (this.searchResultsRef) {
-      for (const result of this.searchResultsRef) {
-        MDCRipple.attachTo(result.nativeElement);
-      }
-    }
-  }
-
   ngOnDestroy() {
     if (this.paramsSubscription) {
       this.paramsSubscription.unsubscribe();
@@ -85,6 +78,11 @@ export class SearchResultsComponent implements OnInit, AfterViewInit, OnDestroy 
       this.renderedResults.push(this.allResults[this.renderedResults.length]);
       requestAnimationFrame(this.chunkedRender);
     }
+  }
+
+  scrollToResults() {
+    this.resultsElem.nativeElement.scrollIntoView(
+      { behavior: 'smooth', block: 'start', inline: 'nearest' });
   }
 
   private setSelectedFilters(params: any) {

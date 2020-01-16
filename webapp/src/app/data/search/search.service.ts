@@ -184,7 +184,7 @@ export class SearchService {
     const hasSubject = res.subject && res.dlResourceType.code !== 'as';
 
     return {
-      freeText: '',
+      query: '',
       resourceTypes: [{ code: res.dlResourceType.code, title: res.dlResourceType.description }],
       grades: res.grades.map(g => ({ code: g.code, title: g.description })),
       subjects: hasSubject ? [{ code: res.subject.code, title: res.subject.description }] : [],
@@ -194,8 +194,8 @@ export class SearchService {
     };
   }
 
-  private dedupeFilters(filtersList: SearchFilters[], origFreeText: string): SearchFilters {
-    const result = { freeText: origFreeText } as SearchFilters;
+  private dedupeFilters(filtersList: SearchFilters[], origQuery: string): SearchFilters {
+    const result = { query: origQuery } as SearchFilters;
     const codeSets: Set<string>[] = [];
 
     // because I don't want to write this all out exactly the same six times

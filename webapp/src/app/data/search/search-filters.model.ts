@@ -1,5 +1,5 @@
 export interface SearchFilters {
-    freeText: string;
+    query: string;
     resourceTypes: Filter[];
     grades: Filter[];
     subjects: Filter[];
@@ -14,7 +14,7 @@ export interface Filter {
 }
 
 export const emptyFilters: SearchFilters = {
-  freeText: '',
+  query: '',
   resourceTypes: [],
   grades: [],
   subjects: [],
