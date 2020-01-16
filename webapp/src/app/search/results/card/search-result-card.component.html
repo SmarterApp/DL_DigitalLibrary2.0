@@ -37,10 +37,10 @@
         Targets {{ resource.properties.targets | join:{field: 'number', conjunction: 'and'} }}
       </div>
       <div *ngIf="resource.properties.standards.length === 1" class="standards">
-        Standard {{ resource.properties.standards[0].title}}
+        Content Standard {{ resource.properties.standards[0].title}}
       </div>
       <div *ngIf="resource.properties.standards.length > 1" class="standards">
-        Standards {{ resource.properties.standards | join:{field: 'title', conjunction: 'and '} }}
+        Content Standards {{ resource.properties.standards | join:{field: 'title', conjunction: 'and '} }}
       </div>
     </div>
   </div>
