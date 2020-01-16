@@ -53,10 +53,7 @@ const dynamicOptions = {
         { provide: DynamicHTMLOptions, useValue: dynamicOptions },
         { provide: ANALYZE_FOR_ENTRY_COMPONENTS, useValue: dynamicOptions.components, multi: true },
     ],
-    entryComponents: [
-      PopoverComponent,
-      IconComponent
-    ]
+    entryComponents: [ PopoverComponent ]
 })
 export class SbdlCommonModule {
 }
