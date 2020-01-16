@@ -1,11 +1,11 @@
 <sbdl-button-icon class="bookmark" buttonTitle="Toggle Bookmark" (click)="toggleBookmarked()">
   <div *ngIf="!togglingBookmarked && resourceSummary.properties.isBookmarked">
-    <i class="fas fa-bookmark"></i>
+    <i class="fas fa-bookmark" aria-label="Bookmarked (click to remove the bookmark)"></i>
   </div>
   <div *ngIf="!togglingBookmarked && !resourceSummary.properties.isBookmarked">
-    <i class="far fa-bookmark"></i>
+    <i class="far fa-bookmark" aria-label="Not bookmarked (click to bookmark)"></i>
   </div>
-  <div *ngIf="togglingBookmarked">
+  <div *ngIf="togglingBookmarked" aria-label="Bookmark updating...">
     <i class="fas fa-spinner fa-spin"></i>
   </div>
 </sbdl-button-icon>
@@ -19,7 +19,7 @@
 
 <sbdl-button-icon class="print" buttonTitle="Print" tabindex="-1">
   <a [routerLink]="['/resource', resourceSummary.id]" [queryParams]="{print: true}">
-    <i class="far fa-print"></i>
+    <i class="far fa-print" aria-label="Print this resource."></i>
   </a>
 </sbdl-button-icon>
 
