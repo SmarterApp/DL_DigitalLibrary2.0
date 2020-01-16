@@ -3,9 +3,6 @@
     <ng-content></ng-content>
 </button>
 <ng-template #tooltipPopover>
-    <button class="close-button" >
-        <sbdl-icon icon="circle-close" (click)="close()"></sbdl-icon>
-    </button>
     <h6>{{ title }}</h6>
     <dynamic-html [content]="text"></dynamic-html>
     <a *ngIf="readMoreUrl"

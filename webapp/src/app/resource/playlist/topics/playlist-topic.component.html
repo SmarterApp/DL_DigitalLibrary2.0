@@ -5,8 +5,11 @@
   <h3>{{topic.title}}</h3>
   <div *ngIf="!rowCollapsed">
     <a *ngFor="let resource of topic.topicResources"
-       [routerLink]="['/resource', resource.id]" target="_blank" (click)="$event.stopPropagation()">
-      {{resource.title}}&nbsp;<i class="far fa-arrow-right" aria-label="(opens in a new window)"></i>
+       [routerLink]="['/resource', resource.id]"
+       target="_blank"
+       attr.aria-label="{{ resource.title }} (opens in a new window)"
+       (click)="$event.stopPropagation()">
+      {{resource.title}}&nbsp;<i class="far fa-arrow-right" aria-hidden="true"></i>
     </a>
   </div>
 </div>

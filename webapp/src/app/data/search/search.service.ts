@@ -32,7 +32,8 @@ export class SearchService {
   getDefaultFilters(): Observable<SearchFilters> {
     // return this.dataService.get('/api/search/filters');
     // TODO: Replace with an actual way to get default filters
-    return of(initialSearchFilters);
+
+    return of(JSON.parse(JSON.stringify(initialSearchFilters)));
   }
 
   fetchAllResults(req: SearchRequestModel): Observable<SearchResults> {
@@ -77,7 +78,7 @@ export class SearchService {
       // along the way.
       map((bumpy: BumpySearchResults): SearchResults => ({
         results: fastArrayMerge(bumpy.results),
-        filters: this.dedupeFilters(fastArrayMerge(bumpy.filters), req.Search_Text)
+        filters: this.sortFilters(this.dedupeFilters(fastArrayMerge(bumpy.filters), req.Search_Text))
       }))
     );
   }
@@ -104,7 +105,7 @@ export class SearchService {
         image:     json.imagePath,
         isBookmarked: false,
         lastUpdatedDate: new Date(json.updatedAt),
-        subject: this.subjectFromJson(json),
+        subject: this.subjectFromJson(json.subject),
       },
       type: json.dlResourceType.description,
       summary: this.summaryFromJson(json),
@@ -180,19 +181,22 @@ export class SearchService {
   }
 
   private extractFilters(res: any): SearchFilters {
+    // TODO: drop this 'as' special case once the data layer has been updated.
+    const hasSubject = res.subject && res.dlResourceType.code !== 'as';
+
     return {
-      freeText: '',
+      query: '',
       resourceTypes: [{ code: res.dlResourceType.code, title: res.dlResourceType.description }],
       grades: res.grades.map(g => ({ code: g.code, title: g.description })),
-      subjects: res.subject ? [{ code: res.subject.code, title: res.subject.description }] : [],
-      claims: res.claims.map(c => ({ code: c.code, title: c.description })),
-      targets: res.targets.map(t => ({ code: t.code, title: t.description })),
+      subjects: hasSubject ? [{ code: res.subject.code, title: res.subject.description }] : [],
+      claims: res.claims.map(c => ({ code: c.code, title: `${c.sequenceNo}: ${c.description}` })),
+      targets: res.targets.map(t => ({ code: t.code, title: `${t.number}: ${t.description}` })),
       standards: res.standards.map(s => ({ code: s.code, title: s.standard }))
     };
   }
 
-  private dedupeFilters(filtersList: SearchFilters[], origFreeText: string): SearchFilters {
-    const result = { freeText: origFreeText } as SearchFilters;
+  private dedupeFilters(filtersList: SearchFilters[], origQuery: string): SearchFilters {
+    const result = { query: origQuery } as SearchFilters;
     const codeSets: Set<string>[] = [];
 
     // because I don't want to write this all out exactly the same six times
@@ -219,9 +223,36 @@ export class SearchService {
     return result;
   }
 
+  /**
+   * Note that this mutates the filters in place.
+   */
+  private sortFilters(filters: SearchFilters) {
+
+    // Sort the filters. Here we will need to have logic specific to each
+    // filter type.
+    const sortOnCode = (a, b) => {
+      return a.code > b.code ? 1 :
+             a.code < b.code ? -1 :
+             0;
+    };
+
+    const typesOrder = ['ir', 'cp', 'pl', 'fs', 'as'];
+
+    filters.grades.sort((a, b) => +a.code.substring(1) - +b.code.substring(1));
+    filters.subjects.sort(sortOnCode);
+    filters.claims.sort(sortOnCode);
+    filters.targets.sort(sortOnCode);
+    filters.standards.sort(sortOnCode);
+    filters.resourceTypes = typesOrder
+      .map(sortedCode => filters.resourceTypes.find(f => f.code === sortedCode))
+      .filter(f => f);
+
+    return filters;
+  }
+
   public paramsToRequestModel(params: any): SearchRequestModel {
     return {
-      Search_Text: params.q || '',
+      Search_Text: params.query || '',
       Claim: this.splitToArray(params.claims),
       Grade: this.splitToArray(params.grades),
       Standard: this.splitToArray(params.standards),

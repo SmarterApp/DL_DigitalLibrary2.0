@@ -1,97 +1,27 @@
 @import "colors";
 @import "spacing";
-@import "typography";
-@import "@material/ripple/mdc-ripple";
 
 :host {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  flex-direction: column;
+
+  .results-container {
+    margin: $spacer-xl 0;
     width: 100%;
-    max-width: none;
-    flex-direction: column;
+  }
 
-    .results-container {
-        margin-bottom: $spacer-xl;
-        width: 100%;
-        h6.results-header {
-            width: 100%;
-            color: $brand-blue;
-            margin-top: $spacer-lg;
-        }
+  .search-results {
+    margin-top: $spacer-lg;
+
+    sbdl-search-result-card {
+      border-top: 1px solid $neutral-100;
+
+      &:first-child{
+        border-top: none;
+      }
     }
-
-    .search-results {
-        margin-top: $spacer-lg;
-        .search-result {
-            @include mdc-ripple-surface;
-            @include mdc-ripple-radius-bounded;
-            @include mdc-states;
-
-            // keeps the ripple inside the card.
-            position: relative;
-            overflow: hidden;
-
-            display: flex;
-            color: $neutral-900;
-            border-top: 1px solid $neutral-100;
-            margin-left: -2rem;
-            margin-right: -2rem;
-            padding: $spacer-lg;
-
-            .summary-content { flex-grow: 1; }
-
-            .resource-type {
-                grid-area: type;
-
-                font-family: $font-family-title;
-                font-size: $font-size-body-2;
-                line-height: 18px;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                color: rgba($neutral-900, 0.65);
-            }
-            h6{
-                color: $brand-green;
-            }
-            img {
-                width: 120px;
-                height: 120px;
-                margin-left: $spacer;
-                border: 3px solid $neutral-300;
-                border-radius: 3px;
-                object-fit: cover;
-                min-width: 120px;
-            }
-
-            .summary {
-              display: block;
-              overflow: hidden;
-              max-height: 4.4em;
-
-              &::ng-deep p {
-                padding: 0;
-                margin: 0;
-              }
-            }
-
-            .targets, .standards {
-              max-width: var(--measure);
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-            }
-
-            .metadata {
-                font-size: 13.2px;
-
-                .bullet-row {
-                    margin-bottom: $spacer-sm;
-                }
-            }
-
-        }
-        .search-result:first-child{
-            border-top: none;
-        }
-    }
+  }
 }

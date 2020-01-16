@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { OnMount } from '../dynamic/interfaces';
 import { PopoverComponent } from '../popover/popover.component';
 import { PopoverService } from '../popover/popover.service';
@@ -33,6 +34,7 @@ export class TooltipComponent implements OnInit, OnMount {
 
   dynamicLoadedContent: string;
   popover: PopoverComponent;
+  popoverCloseSubscription: Subscription;
 
   @ViewChild('tooltip', { static: false })
   tooltipContainer: ElementRef;
@@ -59,14 +61,17 @@ export class TooltipComponent implements OnInit, OnMount {
       cssClass: 'tooltip',
       placement: 'top'
     });
+    this.popover.onClose.subscribe(this.close);
   }
 
-  close() {
-    if (this.popover) {
-      this.popover.close();
+  close = () => {
+    if (this.popoverCloseSubscription) {
+      this.popoverCloseSubscription.unsubscribe();
     }
 
+    this.popoverCloseSubscription = undefined;
     this.popover = undefined;
+    requestAnimationFrame(() => this.tooltipContainer.nativeElement.focus());
   }
 
   private offset(el) {

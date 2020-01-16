@@ -15,6 +15,9 @@ export class PopoverComponent implements AfterViewInit {
   @Output()
   onClose = new EventEmitter();
 
+  @ViewChild('closeButton', {static: false})
+  closeButton: ElementRef;
+
   /**
    * The ng-template to display in the popover.
    */
@@ -45,6 +48,10 @@ export class PopoverComponent implements AfterViewInit {
         this.cssVarStyle = this.sanitizer.bypassSecurityTrustStyle(`position: absolute; top: ${top}px; left: ${offset.left}px`);
 
       }, 0);
+      setTimeout(() => {
+        this.container.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+        this.closeButton.nativeElement.focus();
+      });
     }
   }
 

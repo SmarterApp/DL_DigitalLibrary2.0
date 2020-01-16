@@ -1,7 +1,12 @@
 <article #sectionHeader class="differentiation-container">
   <h4 class="leading-icon"><i class="far fa-universal-access"></i>
     <span *ngIf="hasDifferentiationContent()">Differentiation</span>
-    <span *ngIf="!hasDifferentiationContent()">Accessibility Strategies Used</span>
+    <span *ngIf="!hasDifferentiationContent()">
+      Accessibility Strategies Used
+      <sbdl-tooltip
+        text="Multi-tiered strategies to support all students individually based on their unique needs and preferences."
+      ><sbdl-icon icon="info"></sbdl-icon></sbdl-tooltip>
+    </span>
   </h4>
   <sbdl-instructional-differentiation-content
     *ngIf="hasDifferentiationContent()"

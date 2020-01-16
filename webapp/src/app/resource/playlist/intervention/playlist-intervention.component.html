@@ -8,7 +8,10 @@
   </h3>
   <p>
     For students who are significantly below,
-    <a [routerLink]="['/search']" target="_blank">search for resources</a> related to the
+    <a
+      aria-label="search for resources (opens in a new window)"
+      [routerLink]="['/search']"
+      target="_blank">search for resources</a> related to the
     following skills:
   </p>
   <dynamic-html [content]="content"></dynamic-html>

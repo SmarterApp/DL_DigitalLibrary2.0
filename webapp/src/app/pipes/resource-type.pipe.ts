@@ -13,7 +13,19 @@ export class ResourceTypePipe implements PipeTransform {
     [ ResourceType.ConnectionsPlaylist, 'Connections Playlist' ]
   ]);
 
+  readonly resourceTypeSlugMap: Map<ResourceType, string> = new Map([
+    [ ResourceType.Instructional, 'instructional' ],
+    [ ResourceType.ProfessionalLearning, 'professional-learning' ],
+    [ ResourceType.FormativeStrategy, 'formative-strategy' ],
+    [ ResourceType.AccessibilityStrategy, 'accessibility-strategy' ],
+    [ ResourceType.ConnectionsPlaylist, 'connections-playlist' ]
+  ]);
+
   transform(value: any, args?: any): any {
-    return this.resourceTypeMap.get(value) || '';
+    if (args && args.slug) {
+      return this.resourceTypeSlugMap.get(value) || '';
+    } else {
+      return this.resourceTypeMap.get(value) || '';
+    }
   }
 }
