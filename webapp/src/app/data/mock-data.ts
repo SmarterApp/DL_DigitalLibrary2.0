@@ -411,10 +411,7 @@ export const initialSearchFilters: SearchFilters = {
   ],
   subjects: [
     { code: 'ela',  title: 'English Language Arts' },
-    { code: 'ut',   title: 'Univeral Tool' },
     { code: 'math', title: 'Mathematics' },
-    { code: 'ds',   title: 'Designated Supports' },
-    { code: 'ac',   title: 'Accommodations' }
   ],
   targets: [
     { code: 'ela-c2-ghs-t9',  title: 'Editing' },
