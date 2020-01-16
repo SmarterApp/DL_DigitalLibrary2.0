@@ -57,20 +57,6 @@ export class PopoverService {
         });
       }, 0);
 
-      // FIXME: Not super happy with this. We need to wait until the element is
-      // actually be attached to the DOM and positioned correctly before
-      // scrolling it into view or focusing it. This feels like it should live in
-      // a component lifecycle event rather than hard-coding a 100ms timeout and
-      // hoping everything is ready in time but putting this logic in the
-      // PopoverComponent.ngAfterViewInit hook is too early.
-      setTimeout(() => {
-        // Scroll our element into view (if needed)
-        if (!this.elementInView(domElem)) {
-          domElem.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
-        }
-        domElem.focus();
-      }, 100);
-
       return popoverRef.instance;
   }
 
