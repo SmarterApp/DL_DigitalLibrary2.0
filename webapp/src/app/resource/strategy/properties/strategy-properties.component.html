@@ -23,7 +23,7 @@
   <h5 *ngIf="properties.category">{{ properties.category }}</h5>
   -->
 
-  <h5 class="subject"> <!--DS=87, 52=UT-->
+  <h5 class="subject">
     {{ properties.subject.shortName }} 
     <sbdl-tooltip *ngIf="properties.subject.shortName == 'DS' || properties.subject.shortName == 'Designated Supports'" 
          text="Accessibility resources that are available to students based on a student need indicated by an educator (or team of educators) with parent/guardian and student input.">
