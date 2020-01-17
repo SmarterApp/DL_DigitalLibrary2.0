@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import flatMap from 'lodash-es/flatmap';
-import uniqBy from 'lodash-es/uniqby';
+import flatMap from 'lodash.flatmap';
+import uniqBy from 'lodash.uniqby';
 import { PlaylistTopic } from 'src/app/data/resource/model/playlist-topic.model';
 
 @Component({
