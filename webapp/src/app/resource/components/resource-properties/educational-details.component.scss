@@ -4,62 +4,62 @@
 @import "@material/ripple/mdc-ripple";
 
 h5,h6 {
-    margin-bottom: 0; 
-    color: $brand-green; // Is this just in the metadata section?
+  margin-bottom: 0; 
+  color: $brand-green; // Is this just in the metadata section?
 }
 
 :host {
-    z-index: inherit;
+  z-index: inherit;
 }
 
 .subject-grades {
-    img {
-        margin-right: 8px;
-        align-self: flex-start;
-        width: 48px;
-        height: 65px;
-    }
-    background-color: $white;
-    display: flex;
-    margin-top: 32px;
-    color: $brand-green;
-    .subjects {
-        margin: 0;
-    }
-    .grades {
-        margin: 0;
-    }
+  img {
+    margin-right: 8px;
+    align-self: flex-start;
+    width: 48px;
+    height: 65px;
+  }
+  background-color: $white;
+  display: flex;
+  margin-top: 32px;
+  color: $brand-green;
+  .subjects {
+    margin: 0;
+  }
+  .grades {
+    margin: 0;
+  }
 }
 
 .details {
-    font-family: $font-family-title;
-    margin-top: 15px;
-    display: grid;
-    grid-template-areas: "label value";
-    grid-row-gap: $spacer;
-    grid-template-columns: 85px 1fr;
-    margin-bottom: $spacer-lg;
-    background-color: $white;
-    > label {
-        grid-area: "label";
-        font-style: normal;
-        font-weight: 200;
-        font-size: 14.1px;
-        line-height: 117%;
-        letter-spacing: -0.021em;
-     }
-    > .value {
-        grid-area: "value" ;
-        font-weight: regular;
-        font-size: 14.1px;
-        line-height: 117%;
-        > div {
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-            max-width: 226px;
-        }
+  font-family: $font-family-title;
+  margin-top: 15px;
+  display: grid;
+  grid-template-areas: "label value";
+  grid-row-gap: $spacer;
+  grid-template-columns: 85px 1fr;
+  margin-bottom: $spacer-lg;
+  background-color: $white;
+  > label {
+    grid-area: "label";
+    font-style: normal;
+    font-weight: 200;
+    font-size: 14.1px;
+    line-height: 117%;
+    letter-spacing: -0.021em;
+   }
+  > .value {
+    grid-area: "value" ;
+    font-weight: regular;
+    font-size: 14.1px;
+    line-height: 117%;
+    > div {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 226px;
     }
+  }
 }
 
 @media only print {
