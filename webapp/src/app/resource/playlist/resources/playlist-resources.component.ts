@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import flatMap from 'lodash.flatmap';
-import { PlaylistTopic } from '../../../data/resource/model/playlist-topic.model';
+import uniqBy from 'lodash.uniqby';
+import { PlaylistTopic } from 'src/app/data/resource/model/playlist-topic.model';
 
 @Component({
   selector: 'sbdl-playlist-resources',
@@ -15,7 +16,8 @@ export class PlaylistResourcesComponent implements OnInit {
   resources: object[];
 
   ngOnInit() {
-    this.resources = flatMap(this.topics, t => t.topicResources);
+    const resources = flatMap(this.topics, t => t.topicResources);
+    this.resources = uniqBy(resources, r => r.id);
   }
 
 }

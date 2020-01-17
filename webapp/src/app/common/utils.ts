@@ -22,17 +22,22 @@ export function getCssVar(cssVar: string, element?: HTMLElement) {
  * See: https://jsperf.com/array-merge-performance
  */
 export function fastArrayMerge<T>(arrays: T[][]): T[] {
-    const totalLength = arrays.reduce((sum, arr) => sum + arr.length, 0);
-    const result = Array(totalLength);
-    let resultIdx = 0;
-    for (let i = 0; i < arrays.length; i++) {
-      for (let j = 0; j < arrays[i].length; j++) {
-        result[resultIdx] = arrays[i][j];
-        resultIdx++;
-      }
+  const totalLength = arrays.reduce((sum, arr) => sum + arr.length, 0);
+  const result = Array(totalLength);
+  let resultIdx = 0;
+  /*tslint:disable:prefer-for-of*/
+  // For this use-case specifically this version of the for loop is roughly
+  // twice as fast as the for-of version (direct array access is faster than
+  // assigning the values to variables on every iteration).
+  for (let i = 0; i < arrays.length; i++) {
+    for (let j = 0; j < arrays[i].length; j++) {
+      result[resultIdx] = arrays[i][j];
+      resultIdx++;
     }
-    return result;
   }
+  /*tslint:enable:prefer-for-of*/
+  return result;
+}
 
 /**
  * From: https://stackoverflow.com/questions/25312134/how-to-test-rendering-speed-in-angular
