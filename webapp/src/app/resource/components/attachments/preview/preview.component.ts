@@ -38,11 +38,11 @@ export class PreviewComponent implements AfterViewInit, OnDestroy, OnInit {
   ) {}
 
   ngOnInit(): void {
-    // TODO: loading spinner
     this.dataService
       .downloadBlob(this.attachment.uri)
       .subscribe(blob => {
-        this.blobUrl = window.URL.createObjectURL(blob);
+        const typedBlob = new Blob([blob], {type: this.attachment.mimeType});
+        this.blobUrl = window.URL.createObjectURL(typedBlob);
         this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.blobUrl);
         this.loading = false;
       });
