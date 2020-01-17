@@ -32,7 +32,6 @@ export class PreviewComponent implements AfterViewInit, OnDestroy, OnInit {
   }
 
   constructor(
-    private sanitizer: DomSanitizer,
     private attachmentsService: AttachmentsService,
     private dataService: DataService
   ) {}
@@ -43,7 +42,6 @@ export class PreviewComponent implements AfterViewInit, OnDestroy, OnInit {
       .subscribe(blob => {
         const typedBlob = new Blob([blob], {type: this.attachment.mimeType});
         this.blobUrl = window.URL.createObjectURL(typedBlob);
-        this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.blobUrl);
         this.loading = false;
       });
   }
