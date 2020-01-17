@@ -10,7 +10,6 @@ import { LoggingService } from './common/logging/logging.service';
 })
 export class RouterService {
 
-  private errorRoot: string;
   private logger: LoggingService;
 
   constructor(
@@ -19,13 +18,12 @@ export class RouterService {
     private injector: Injector
   ) { }
 
-  public setRouteErrorHandler(errorRoot: string = 'error'): void {
+  public setRouteErrorHandler(): void {
     if (!this.logger) {
       this.logger = this.injector.get(LoggingService);
     }
 
     let errorRoute = null;
-    this.errorRoot = errorRoot;
     this.router.errorHandler = (error): void => {
       this.logger.error(error);
       this.router.navigate([ERROR_PATH], { skipLocationChange: true })

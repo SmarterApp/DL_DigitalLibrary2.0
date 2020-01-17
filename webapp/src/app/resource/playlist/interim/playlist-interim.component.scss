@@ -25,6 +25,10 @@
       line-height: 160%;
     }
 
-    img { margin-bottom: $spacer; } // TODO: replace with video
+    iframe {
+      margin-bottom: $spacer;
+      width: 424px;
+      height: 238px;
+    }
   }
 }

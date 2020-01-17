@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { VERSION } from 'src/environments/version';
 import { AppConfig } from './common/config/app.config';
@@ -16,8 +16,11 @@ export class AppComponent implements OnInit {
   env = AppConfig.settings ? AppConfig.settings.env.name : '<not set>';
   appVersion = VERSION;
 
+  private oldPath = '/';
+
   constructor(
     angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
+    private route: ActivatedRoute,
     private router: Router,
     private routerService: RouterService
   ) {
@@ -27,15 +30,30 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Scroll to the top on route changes (except on search filter changes)
     this.router.events.subscribe((evt) => {
-        if (evt instanceof NavigationEnd && evt.url.indexOf('search') === -1) {
+      if (evt instanceof NavigationEnd) {
+        const newPath = this.urlPathPart(evt.url);
+        if (newPath !== this.oldPath) {
           window.scrollTo(0, 0);
         }
+        this.oldPath = newPath;
+      }
+    });
+
+    this.route.fragment.subscribe((fragment) => {
+      if (fragment) {
+        setTimeout(() => {
+          document.querySelector('#' + fragment).scrollIntoView({behavior: 'smooth'});
+        });
+      }
     });
 
     // Gracefully redirect to error pages.
     this.routerService.setRouteErrorHandler();
   }
 
+  private urlPathPart(url: string): string {
+    const PATH_REGEX = /(^[^?&;#]+)/;
+    return url.match(PATH_REGEX)[1] || '';
+  }
 }
