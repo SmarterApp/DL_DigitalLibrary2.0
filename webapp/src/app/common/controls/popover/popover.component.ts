@@ -49,7 +49,9 @@ export class PopoverComponent implements AfterViewInit {
 
       }, 0);
       setTimeout(() => {
-        this.container.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+        if (!this.inView(rect)) {
+          this.container.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+        }
         this.closeButton.nativeElement.focus();
       });
     }
@@ -67,6 +69,13 @@ export class PopoverComponent implements AfterViewInit {
     if (!elementRefInPath) {
       this.close();
     }
+  }
+
+  inView(bounding: DOMRect): boolean {
+    return (bounding.top >= 0 &&
+            bounding.left >= 0 &&
+            bounding.bottom <= window.innerHeight &&
+            bounding.right <= window.innerWidth);
   }
 
   close() {

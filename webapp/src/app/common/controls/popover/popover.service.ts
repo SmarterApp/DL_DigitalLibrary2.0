@@ -60,14 +60,6 @@ export class PopoverService {
       return popoverRef.instance;
   }
 
-  elementInView(elem: HTMLElement): boolean {
-    const bounding = elem.getBoundingClientRect();
-    return (bounding.top >= 0 &&
-            bounding.left >= 0 &&
-            bounding.bottom <= window.innerHeight &&
-            bounding.right <= window.innerWidth);
-  }
-
 }
 
 export interface PopoverOptions {
