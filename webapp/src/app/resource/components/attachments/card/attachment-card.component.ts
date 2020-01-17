@@ -5,7 +5,7 @@ import { PreviewService } from '../preview/preview.service';
 import { FileType, ResourceAttachment } from 'src/app/data/resource/model/attachment.model';
 import { CardType } from '../attachments.component';
 
-const YT_MATCH_VID = /.*youtube.*v=([^&]+).*$/;
+const YT_MATCH_VID = /.*youtube.*v=([^&]+).*$|.*youtu.be\/([^&?]+).*$/;
 const YT_EMBED_URL = /youtube\/embed/;
 
 @Component({
@@ -38,7 +38,7 @@ export class AttachmentCardComponent implements OnInit {
       if (!m) {
         // TODO: placeholder and error message if not a YT URL
       }
-      this.embeddableUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${m[1]}`);
+      this.embeddableUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${m[1] || m[2]}`);
     } else {
       this.embeddableUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.attachment.uri);
     }
