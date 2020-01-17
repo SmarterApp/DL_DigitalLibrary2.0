@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { VERSION } from 'src/environments/version';
 import { AppConfig } from './common/config/app.config';
@@ -16,10 +16,11 @@ export class AppComponent implements OnInit {
   env = AppConfig.settings ? AppConfig.settings.env.name : '<not set>';
   appVersion = VERSION;
 
-  private lastPath = '/';
+  private oldPath = '/';
 
   constructor(
     angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
+    private route: ActivatedRoute,
     private router: Router,
     private routerService: RouterService
   ) {
@@ -30,13 +31,20 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.router.events.subscribe((evt) => {
-      if (evt instanceof NavigationStart) {
-        this.lastPath = this.urlPathPart(this.router.url);
-      } else if (evt instanceof NavigationEnd) {
-        const nextPath = this.urlPathPart(evt.url);
-        if (nextPath !== this.lastPath) {
+      if (evt instanceof NavigationEnd) {
+        const newPath = this.urlPathPart(evt.url);
+        if (newPath !== this.oldPath) {
           window.scrollTo(0, 0);
         }
+        this.oldPath = newPath;
+      }
+    });
+
+    this.route.fragment.subscribe((fragment) => {
+      if (fragment) {
+        setTimeout(() => {
+          document.querySelector('#' + fragment).scrollIntoView({behavior: 'smooth'});
+        });
       }
     });
 

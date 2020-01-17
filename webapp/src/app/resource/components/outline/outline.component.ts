@@ -71,7 +71,6 @@ export class OutlineComponent implements OnInit {
 
   removeHighlight(section: DocumentSection): void {
     section.elementRef.classList.remove('highlighted');
-    this.location.replaceState(this.location.path());
   }
 }
 
