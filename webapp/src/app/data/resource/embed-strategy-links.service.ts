@@ -34,7 +34,7 @@ export class EmbedStrategyLinksService {
     }
 
     for (const strategy of strategies) {
-      content = content.replace(new RegExp('\\b' + strategy.title + '\\b', 'gui'),
+      content = content.replace(new RegExp('\\b' + strategy.title.trim() + '\\b', 'gui'),
 `<sbdl-tooltip title="Accessibility Strategy"
               class="strategy-link"
               text="${strategy.description}"
@@ -54,7 +54,7 @@ export class EmbedStrategyLinksService {
     }
 
     for (const strategy of strategies) {
-      content = content.replace(new RegExp('\\b' + strategy.title + '\\b', 'gui'),
+      content = content.replace(new RegExp('\\b' + strategy.title.trim() + '\\b', 'gui'),
 `<sbdl-tooltip title="Formative Assessment Strategy"
               class="strategy-link"
               text="${strategy.description}"
