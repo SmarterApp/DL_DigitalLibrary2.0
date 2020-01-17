@@ -4,6 +4,7 @@ import { FileTypeIconPipe } from './file-type-icon.pipe';
 import { ReplaceNullImagePipe } from './replace-null-image.pipe';
 import { ResourceTypePipe } from './resource-type.pipe';
 import { SafeUrlPipe } from './safe-url.pipe';
+import { SlugifyPipe } from './slugify.pipe';
 
 @NgModule({
     declarations: [
@@ -11,14 +12,16 @@ import { SafeUrlPipe } from './safe-url.pipe';
       FileTypeIconPipe,
       ReplaceNullImagePipe,
       ResourceTypePipe,
-      SafeUrlPipe
+      SafeUrlPipe,
+      SlugifyPipe
     ],
     exports: [
       JoinPipe,
       FileTypeIconPipe,
       ReplaceNullImagePipe,
       ResourceTypePipe,
-      SafeUrlPipe
+      SafeUrlPipe,
+      SlugifyPipe
     ]
 })
 export class PipesModule { }

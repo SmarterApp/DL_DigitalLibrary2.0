@@ -52,7 +52,7 @@ import { PlaylistInterimComponent } from './playlist/interim/playlist-interim.co
 import { PlaylistInterventionComponent } from './playlist/intervention/playlist-intervention.component';
 import { PlaylistResourceComponent } from './playlist/playlist-resource.component';
 import { PlaylistResourcesComponent } from './playlist/resources/playlist-resources.component';
-import { PlaylistTopicComponent } from './playlist/topics/playlist-topic.component';
+import { PlaylistTopicRowComponent } from './playlist/topics/playlist-topic-row.component';
 import { PlaylistTopicsComponent } from './playlist/topics/playlist-topics.component';
 import { ProgressionScaleButtonComponent } from './playlist/topics/progression-scale-button.component';
 
@@ -105,7 +105,7 @@ import { ProgressionScaleButtonComponent } from './playlist/topics/progression-s
     PlaylistInterventionComponent,
     PlaylistResourceComponent,
     PlaylistResourcesComponent,
-    PlaylistTopicComponent,
+    PlaylistTopicRowComponent,
     PlaylistTopicsComponent,
     ProgressionScaleButtonComponent
   ],
