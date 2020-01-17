@@ -6,6 +6,7 @@ import { mergeMap } from 'rxjs/internal/operators/mergeMap';
 import { reduce } from 'rxjs/internal/operators/reduce';
 import { takeWhile } from 'rxjs/internal/operators/takeWhile';
 import { tap } from 'rxjs/internal/operators/tap';
+import { EMPTY } from 'rxjs';
 import { DataService } from '../data.service';
 import { SearchResults } from './search-results.model';
 import { SearchRequestModel } from './search-request.model';
@@ -44,14 +45,11 @@ export class SearchService {
       // page 2 observable is fed back into the expand function resulting in
       // the request for page 3, etc.
       expand(page => {
-        // Only try to actually fetch the next page if we have a next link.
-        return (this.hasNextPage(page) ?
-                this.dataService.get(page['hydra:view']['hydra:next']) :
-                of({ 'hydra:view': {} })).pipe(
-                  // This is what actually causes the expand recursion to stop,
-                  // returning an immediately completed Observable when the
-                  // page has no next link.
-                  takeWhile(this.hasNextPage)); }),
+        // Continue to try to actually fetch the next page as long as we have a next link.
+        return this.hasNextPage(page) ?
+               this.dataService.get(page['hydra:view']['hydra:next']) :
+               EMPTY;
+      }),
 
       // At this point we have a stream of page results. Now we transform the
       // result items into our ResourceSummary model and collect the summaries
