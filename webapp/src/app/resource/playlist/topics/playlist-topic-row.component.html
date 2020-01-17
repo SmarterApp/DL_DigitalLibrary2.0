@@ -1,4 +1,4 @@
-<div #sectionHeader class="topic-title" (click)="rowCollapsed = !rowCollapsed">
+<th #sectionHeader class="topic-title" (click)="setRowCollapsed(!rowCollapsed)">
   <div *ngIf="!rowCollapsed" class="collapse-btn"><i class="far fa-compress-alt"></i></div>
   <div *ngIf="rowCollapsed" class="collapse-btn"><i class="far fa-expand-alt"></i></div>
 
@@ -12,19 +12,22 @@
       {{resource.title}}&nbsp;<i class="far fa-arrow-right" aria-hidden="true"></i>
     </a>
   </div>
-</div>
+</th>
 
-<div class="below"
-  [ngClass]="{ colCollapsed: belowCollapsed, rowCollapsed: rowCollapsed }">
+<td class="below"
+    [ngClass]="{ colCollapsed: belowCollapsed }">
   <dynamic-html [content]="topic.below" ></dynamic-html>
-</div>
+  <span *ngIf="rowCollapsed">…</span>
+</td>
 
-<div class="near"
-     [ngClass]="{colCollapsed: nearCollapsed, rowCollapsed: rowCollapsed}">
+<td class="near"
+    [ngClass]="{colCollapsed: nearCollapsed}">
   <dynamic-html [content]="topic.near" ></dynamic-html>
-</div>
+  <span *ngIf="rowCollapsed">…</span>
+</td>
 
-<div class="above"
-     [ngClass]="{colCollapsed: aboveCollapsed, rowCollapsed: rowCollapsed}">
+<td class="above"
+    [ngClass]="{colCollapsed: aboveCollapsed }">
   <dynamic-html [content]="topic.above" ></dynamic-html>
-</div>
+  <span *ngIf="rowCollapsed">…</span>
+</td>

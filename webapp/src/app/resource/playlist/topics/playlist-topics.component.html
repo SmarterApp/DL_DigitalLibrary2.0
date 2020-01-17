@@ -9,52 +9,61 @@
       <sbdl-icon icon="info"></sbdl-icon>
     </sbdl-tooltip>
   </h2>
-  <section class="progressions-table">
-    <div class="progressions-info">
-      <div></div>
-      <h3>
+  <table class="progressions-table">
+    <tr>
+      <td></td>
+      <th class="progressions-info" colspan="3">
         Student Performance Progressions
         <sbdl-tooltip text="A description of what students know or can do when they are below, near, or above each topic identified within this playlist.">
           <sbdl-icon icon="info"></sbdl-icon>
         </sbdl-tooltip>
-      </h3>
-    </div>
-    <div class="table-header" aria-hidden="true">
-      <div class="topic-title">
+      </th>
+    </tr>
+
+    <tr class="table-header">
+      <th>
         <h3>Topic</h3>
         <div class="caption emphasis-medium">Resource</div>
-      </div>
-      <div [ngClass]="{collapsed: belowCollapsed}" class="scale below">
+      </th>
+      <td class="scale below"
+          [ngClass]="{collapsed: belowCollapsed}">
         <sbdl-progression-scale-button
           scale="below"
           [collapsed]="belowCollapsed"
           (click)="toggleBelowCollapsed()"
         ></sbdl-progression-scale-button>
-      </div>
-      <div [ngClass]="{collapsed: nearCollapsed}" class="scale near">
+      </td>
+      <td class="scale near"
+          [ngClass]="{collapsed: nearCollapsed}">
         <sbdl-progression-scale-button
           scale="near"
           [collapsed]="nearCollapsed"
           (click)="toggleNearCollapsed()"
         ></sbdl-progression-scale-button>
-      </div>
-      <div [ngClass]="{collapsed: aboveCollapsed}" class="scale above">
+      </td>
+      <td class="scale above"
+          [ngClass]="{collapsed: aboveCollapsed}">
         <sbdl-progression-scale-button
           scale="above"
           [collapsed]="aboveCollapsed"
           (click)="toggleAboveCollapsed()"
         ></sbdl-progression-scale-button>
-      </div>
-    </div>
-    <sbdl-playlist-topic
-      *ngFor="let topic of resource.topics"
-      [topic]="topic"
-      [belowCollapsed]="belowCollapsed"
-      [nearCollapsed]="nearCollapsed"
-      [aboveCollapsed]="aboveCollapsed"
-      (sectionLoaded)="addSubsection($event)"
-    ></sbdl-playlist-topic>
-  </section>
+      </td>
+    </tr>
+
+    <tr sbdl-playlist-topic-row
+        *ngFor="let topic of resource.topics"
+        [topic]="topic"
+        [belowCollapsed]="belowCollapsed"
+        [nearCollapsed]="nearCollapsed"
+        [aboveCollapsed]="aboveCollapsed"
+        [ngClass]="{ rowCollapsed: rowCollapsed.get(topic.title) || false }"
+        (rowCollapseChanged)="setRowCollapsed(topic, $event)"
+        (sectionLoaded)="addSubsection($event)"
+    ></tr>
+
+  </table>
+
   <sbdl-playlist-intervention
     [content]="resource.overview.interventionSuggestions"
     (sectionLoaded)="addSubsection($event)">

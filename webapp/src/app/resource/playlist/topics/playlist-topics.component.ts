@@ -22,6 +22,8 @@ export class PlaylistTopicsComponent extends PrintableSectionComponent implement
   nearCollapsed = false;
   aboveCollapsed = false;
 
+  rowCollapsed = new Map<string, boolean>();
+
   private subsections: DocumentSection[] = [];
 
   constructor(sanitizer: DomSanitizer) {
@@ -33,45 +35,22 @@ export class PlaylistTopicsComponent extends PrintableSectionComponent implement
   }
 
   toggleBelowCollapsed() {
+    if (this.aboveCollapsed && this.nearCollapsed) { return; }
     this.belowCollapsed = !this.belowCollapsed;
-    this.updateCssWidths();
   }
 
   toggleNearCollapsed() {
+    if (this.aboveCollapsed && this.belowCollapsed) { return; }
     this.nearCollapsed = !this.nearCollapsed;
-    this.updateCssWidths();
   }
 
   toggleAboveCollapsed() {
+    if (this.belowCollapsed && this.nearCollapsed) { return; }
     this.aboveCollapsed = !this.aboveCollapsed;
-    this.updateCssWidths();
   }
 
-  private updateCssWidths() {
-    let numCollapsed = 0;
-
-    if (this.belowCollapsed) { numCollapsed++; }
-    if (this.nearCollapsed) { numCollapsed++; }
-    if (this.aboveCollapsed) { numCollapsed++; }
-
-    if (numCollapsed === 0) {
-      this.setBaseStyle('');
-    } else {
-      let belowWidth = '27%';
-      let nearWidth = '27%';
-      let aboveWidth = '27%';
-
-      const openWidth = `calc((81% - (4rem * ${numCollapsed})) / ${3 - numCollapsed})`;
-      belowWidth = this.belowCollapsed ? '4rem' : openWidth;
-      nearWidth = this.nearCollapsed ? '4rem' : openWidth;
-      aboveWidth = this.aboveCollapsed ? '4rem' : openWidth;
-
-      this.setBaseStyle(
-        `--below-width: ${belowWidth};` +
-        `--near-width: ${nearWidth};` +
-        `--above-width: ${aboveWidth};`
-      );
-    }
+  setRowCollapsed(t: PlaylistTopic, collapsed: boolean) {
+    this.rowCollapsed.set(t.title, collapsed);
   }
 
   ngAfterViewInit() {

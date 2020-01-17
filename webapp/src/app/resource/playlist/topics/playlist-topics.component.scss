@@ -12,7 +12,7 @@
     overflow: visible;
 
     h2 {
-      font-size: 1.76875rem;
+      font-size: $font-size-4;
       font-weight: 500;
       line-height: 117%;
     }
@@ -26,7 +26,7 @@
         padding: 7px;
         margin-bottom: -7px;
         margin-left: -16px;
-        font-size: 1.75rem;
+        font-size: $font-size-4;
       }
 
       sbdl-tooltip sbdl-icon {
@@ -35,57 +35,40 @@
     }
 
     .progressions-table {
+      border-spacing: 0;
       margin-bottom: $spacer-xl;
-    }
 
-    .progressions-info {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      white-space: nowrap;
-
-      h3 {
+      .progressions-info {
+        border-bottom: solid 1px $neutral-100;
+        border-left: solid 2rem $white;
         font-size: $font-size-0;
         font-weight: normal;
         letter-spacing: 0.08em;
         text-align: center;
         text-transform: uppercase;
-        width: 81%;
-      }
-    }
-
-    .table-header,
-    sbdl-playlist-topic {
-      border-bottom: solid 1px $neutral-100;
-    }
-
-    .table-header {
-
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: row;
-
-      & > * {
-        box-sizing: border-box;
-        padding: $spacer-sm;
+        white-space: nowrap;
       }
 
-      .topic-title {
+      .table-header th,
+      .table-header td {
+        border-bottom: solid 1px $neutral-100;
+      }
+
+      .table-header th {
         background-color: $neutral-50;
         border-radius: 4px 4px 0 0;
         min-width: 8rem;
+        padding: $spacer-sm;
         text-align: right;
-        width: 19%;
+        width: 21%;
 
         h3 {
           font-size: $font-size-body;
           line-height: 130%;
         }
-
       }
 
       .scale {
-        border-top: solid 1px $neutral-100;
         padding: $spacer-sm 0;
 
         sbdl-progression-scale-button {
@@ -96,98 +79,93 @@
       }
 
       .scale.below {
-        padding-left: 0;
-        margin-left: $spacer;
+        padding-left: $spacer;
       }
 
-      .scale.below { width: var(--below-width); }
-      .scale.near { width: var(--near-width); }
-      .scale.above { width: var(--above-width); }
+      tr[sbdl-playlist-topic-row].rowCollapsed {
+      }
     }
-
-  }
-
-  ::ng-deep {
-    --below-width: 27%;
-    --near-width: 27%;
-    --above-width: 27%;
   }
 }
 
-// The logic behind the table sizing is complex and brittle. To help keep track
-// of it all correctly, please keep it all together right here. :)
+@media only screen {
 
-// First we need to manually constrain the main content column width.
-.topics-container {
-  // because we allow the table to overflow the .topics-container the content
-  // column in the middle will not shrink enough on it's own to allow the
-  // right panel to come into frame at ~1201-1400px. So we need to explicitly
-  // tell it how wide the main column should be (and the table will still
-  // overflow) The calculation is:
+  // The logic behind the table sizing is complex and brittle. To help keep track
+  // of it all correctly, please keep it all together right here. :)
+
+  // First we need to manually constrain the main content column width.
+  .topics-container {
+    // because we allow the table to overflow the .topics-container the content
+    // column in the middle will not shrink enough on it's own to allow the
+    // right panel to come into frame at ~1201-1400px. So we need to explicitly
+    // tell it how wide the main column should be (and the table will still
+    // overflow) The calculation is:
+    //
+    //     100vw                    // Start with the full width of our viewport
+    //     - (var(--nav-width) * 2) // take out the two side panels
+    //     - 4rem                   // take out the main navigation panel
+    //     - 6rem                   // take out the resource content padding
+    --container-width: calc(100vw - (var(--nav-width) * 2) - 10rem);
+    width: var(--container-width);
+
+  }
+
+  // Second we need to explicitly tell the table to overflow that width by a
+  // certain amount (depends on the view width and side-panel sizes)
+  .topics-container .progressions-table {
+    // The table's width is calculated as:
+    //
+    // 80vw                       // Start with almost the whole screen.
+    // - (var(--nav-width) * 2)   // take out the width of the side panels
+    // + 8rem                     // Add back in the width of resource margins
+    //                            // and padding because we don't care about it
+    //                            // here
+    --table-width: calc(80vw - (var(--nav-width) * 2) + 8rem);
+    max-width: none;
+    width: var(--table-width);
+  }
+
+  // Finally we need to center the table on the page. This is tricky // because
+  // there are three modes:
   //
-  //     100vw                    // Start with the full width of our viewport
-  //     - (var(--nav-width) * 2) // take out the two side panels
-  //     - 4rem                   // take out the main navigation panel
-  //     - 6rem                   // take out the resource content padding
-  --container-width: calc(100vw - (var(--nav-width) * 2) - 10rem);
-  width: var(--container-width);
-
-}
-
-// Second we need to explicitly tell the table to overflow that width by a
-// certain amount (depends on the view width and side-panel sizes)
-.topics-container .progressions-table {
-  // The table's width is calculated as:
+  // 1. when the main content column is the size of it's max-width.
+  //    This value is: var(--measure)
   //
-  // 80vw                       // Start with almost the whole screen.
-  // - (var(--nav-width) * 2)   // take out the width of the side panels
-  // + 8rem                     // Add back in the width of resource margins
-  //                            // and padding because we don't care about it
-  //                            // here
-  --table-width: calc(80vw - (var(--nav-width) * 2) + 8rem);
-  max-width: none;
-  width: var(--table-width);
-}
-
-// Finally we need to center the table on the page. This is tricky // because
-// there are three modes:
-//
-// 1. when the main content column is the size of it's max-width.
-//    This value is: var(--measure)
-//
-// 2. when the main content column is less than it's max but the whole page is
-//    still above our 1200px breakpoint. This value is: var(--container-width)
-//
-// 3. when we are below our 1200px breakpoint. In this case we don't need to
-//    overflow the table at all and we can unset the explicit table width and
-//    margin.
-//
-// When we're in reading mode it turns out that scenario 2 almost doesn't
-// happen. With the side panels out of the way the main content itself is able
-// to stay maximized almost entirely until we get below 1200px. For the very
-// small window where 2 does happen the resulting layout is not perfect but is
-// acceptable.
-//
-// This handles reading mode scenarions 1 + 2, as well as full mode scenario 1
-.topics-container .progressions-table {
-  margin-left: calc(((var(--table-width) - var(--measure)) / -2) + 2rem);
-}
-
-// When not in reading more, scencario 2 happens when the view width is between
-// 1664px and 1200px
-@media (max-width: 1664px) {
-  .topics-container.full-mode .progressions-table {
-    margin-left: calc(((var(--table-width) - var(--container-width)) / -2) - 2rem);
+  // 2. when the main content column is less than it's max but the whole page is
+  //    still above our 1200px breakpoint. This value is: var(--container-width)
+  //
+  // 3. when we are below our 1200px breakpoint. In this case we don't need to
+  //    overflow the table at all and we can unset the explicit table width and
+  //    margin.
+  //
+  // When we're in reading mode it turns out that scenario 2 almost doesn't
+  // happen. With the side panels out of the way the main content itself is able
+  // to stay maximized almost entirely until we get below 1200px. For the very
+  // small window where 2 does happen the resulting layout is not perfect but is
+  // acceptable.
+  //
+  // This handles reading mode scenarions 1 + 2, as well as full mode scenario 1
+  .topics-container .progressions-table {
+    margin-left: calc(((var(--table-width) - var(--measure)) / -2) + 2rem);
   }
-}
 
-// This is scenario 3: we can put the table back in regular page layout without
-// needing to manually overflw and recenter it.
-@media (max-width: $breakpoint-lg) {
-  :host .topics-container.reading-mode .progressions-table,
-  :host .topics-container.full-mode .progressions-table {
-    max-width: var(--measure);
-    width: unset;
-    margin-left: 0;
+  // When not in reading more, scencario 2 happens when the view width is between
+  // 1664px and 1200px
+  @media (max-width: 1664px) {
+    .topics-container.full-mode .progressions-table {
+      margin-left: calc(((var(--table-width) - var(--container-width)) / -2) - 2rem);
+    }
   }
+
+  // This is scenario 3: we can put the table back in regular page layout without
+  // needing to manually overflw and recenter it.
+  @media (max-width: $breakpoint-lg) {
+    :host .topics-container.reading-mode .progressions-table,
+    :host .topics-container.full-mode .progressions-table {
+      max-width: var(--measure);
+      width: unset;
+      margin-left: 0;
+    }
+  }
+
 }
