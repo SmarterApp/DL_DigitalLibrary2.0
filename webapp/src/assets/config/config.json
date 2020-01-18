@@ -1,19 +1,16 @@
 {
-    "env": {
-        "name": "Default"
-     },
-    "logging": {
-        "console": true,
-        "aws": false,
-        "level": 0
-    },
-    "apiServer": {
-        "cdl": "https://api-dev.dl.smarterbalanced.org",
-        "authToken": "ZjgwNGFiODBjNzZjODIyNDNjYmQwOWU5NzRiMGQzN2M0N2FmMmEzYmUzMzYyMTQyYThiYzc0OGI1MTEwYzcyMw"
-    },
-    "enableAnalytics": false,
-    "okta": {
-      "clientId": "0oamt7hm566G44ZVm0h7",
-      "domain": "smarterbalanced.oktapreview.com"
-    }
+  "env": {
+    "name": "Default"
+   },
+  "logging": {
+    "console": true,
+    "aws": false,
+    "level": 0
+  },
+  "apiServerHost": "https://api-dev.dl.smarterbalanced.org",
+  "enableAnalytics": false,
+  "okta": {
+    "clientId": "0oamt7hm566G44ZVm0h7",
+    "issuer": "https://smarterbalanced.oktapreview.com/oauth2/auslw2qcsmsUgzsqr0h7"
+  }
 }
