@@ -9,7 +9,7 @@
   z-index: inherit;
 }
 
-.image-thumbnail {
+.image {
   width: fit-content;
   background-color: $white;
   margin-top: 16px;
@@ -20,13 +20,26 @@
 
   box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 3px 3px rgba(0, 0, 0, 0.14);
   border-radius: 4px;
-  img {
-    min-height: 100px;
-    min-width: 100px;
-    max-width: 279px;
-    max-height: 279px;
-    object-fit: cover;
+  
+  &.ela {
+    object {
+      filter: invert(39%) sepia(1) saturate(4) hue-rotate(59.5deg);
+    }
   }
+
+  &.math {
+    object {
+      filter: invert(30%) sepia(1) saturate(10) hue-rotate(160deg);
+    }
+  }
+}
+
+.image > *:first-child {
+  min-height: 100px;
+  min-width: 279px;
+  max-width: 279px;
+  max-height: 279px;
+  object-fit: cover;
 }
 
 @media only print {
