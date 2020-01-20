@@ -1,7 +1,7 @@
 <div *ngIf="!svgSafeUrl" class="image thumbnail">
   <img [src]="properties.image | replaceNullImage" aria-hidden="true">
 </div>
-<div *ngIf="svgSafeUrl" class="image {{ properties.type | resourceType:{slug: true} }} {{ subjectCode }}">
+<div *ngIf="svgSafeUrl" class="image {{ subjectCode }}">
   <object type="image/svg+xml" [data]="svgSafeUrl" aria-hidden="true"></object>
 </div>
 <ng-content></ng-content>
