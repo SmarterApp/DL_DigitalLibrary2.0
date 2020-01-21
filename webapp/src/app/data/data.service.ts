@@ -1,15 +1,10 @@
 /* tslint:disable:object-literal-key-quotes */
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { OktaAuthService } from '@okta/okta-angular';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { AppConfig } from '../common/config/app.config';
-
-const jsonContentType = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json'
-  })
-};
 
 const jsonHeaders = {
   'Content-Type':  'application/json'
@@ -24,37 +19,42 @@ const jsonHeaders = {
 @Injectable()
 export class DataService {
 
-  constructor(private httpService: HttpClient) { }
+  private accessToken: string;
+  private idToken: string;
+
+  constructor(private httpService: HttpClient, private authService: OktaAuthService) {
+    this.authService.$authenticationState.subscribe(
+      async (hasAuth: boolean) => {
+        if (hasAuth) {
+          this.accessToken = await this.authService.getAccessToken();
+        } else {
+          this.accessToken = undefined;
+        }
+      });
+
+    this.initAuth();
+  }
 
   get(url: string, params?: any): Observable<any> {
-    const fullUrl = AppConfig.settings.apiServer.cdl + url;
+    const fullUrl = AppConfig.settings.apiServerHost + url;
     const options = {
-      headers: new HttpHeaders({
-        ... jsonHeaders,
-        'Authorization': 'Bearer ' + AppConfig.settings.apiServer.authToken
-      }),
+      headers: this.withAuth(new HttpHeaders({ ... jsonHeaders })),
       params
     };
 
     return this.httpService.get(fullUrl, options)
-      .pipe(
-          catchError(this.handleError)
-      );
+      .pipe(catchError(this.handleError));
   }
 
   post(url: string, obj: any, params?: any): Observable<any> {
-    const fullUrl = AppConfig.settings.apiServer.cdl + url;
+    const fullUrl = AppConfig.settings.apiServerHost + url;
     const options = {
-      headers: new HttpHeaders({
-        ...jsonHeaders,
-        'Authorization': 'Bearer ' + AppConfig.settings.apiServer.authToken
-      }),
+      headers: this.withAuth(new HttpHeaders({ ...jsonHeaders })),
       params
     };
+
     return this.httpService.post(fullUrl, obj, options)
-      .pipe(
-          catchError(this.handleError)
-      );
+      .pipe(catchError(this.handleError));
   }
 
   /**
@@ -72,15 +72,26 @@ export class DataService {
       responseType : 'arraybuffer',
     } as any;
 
-    if (url.includes(AppConfig.settings.apiServer.cdl)) {
-      options.headers.set('Authorization', 'Bearer ' + AppConfig.settings.apiServer.authToken);
+    if (url.includes(AppConfig.settings.apiServerHost)) {
+      options.headers = this.withAuth(options.headers);
     }
 
     return this.httpService.get(url, options)
       .pipe(map(response => new Blob([ response ])))
-      .pipe(
-          catchError(this.handleError)
-      );
+      .pipe(catchError(this.handleError));
+  }
+
+  private async initAuth() {
+    this.accessToken = await this.authService.getAccessToken();
+    this.idToken = await this.authService.getIdToken();
+  }
+
+  private withAuth(headers: HttpHeaders) {
+    if (this.accessToken) {
+      return headers.set('Authorization', 'Bearer ' + this.accessToken);
+    } else {
+      return headers;
+    }
   }
 
   private handleError(error: HttpErrorResponse) {
