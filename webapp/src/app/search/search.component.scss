@@ -38,14 +38,17 @@
     margin-left: $spacer-md;
   }
 
-  h4.results-header {
+  h1.results-header {
+    align-items: center;
+    color: $brand-blue;
     display: flex;
     flex-direction: row;
+    font-size: $font-size-4;
+    font-weight: 600;
     justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    color: $brand-blue;
+    line-height: 117%;
     margin-top: $spacer-lg;
+    width: 100%;
   }
 
   .advanced-search {
@@ -95,7 +98,7 @@
       justify-content: space-between;
       padding-top: 45px;
 
-      h5 {
+      h2 {
         font-weight: 400;
         font-size: $font-size-2;
       }
@@ -118,7 +121,7 @@
       padding: $spacer;
       margin-bottom: $spacer;
 
-      h6 {
+      h3 {
         color: $neutral-500;
         font-weight: bold;
         font-size: $font-size-body;

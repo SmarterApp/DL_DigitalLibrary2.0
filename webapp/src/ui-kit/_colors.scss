@@ -2,10 +2,14 @@
 Smarter Balanced Brand Colors
 ------------------------------ */
 
-$brand-steel: #484F5B;
-$brand-green: #4AA51D;
-$brand-blue: #007DA3;
+/* In mockups and previous version this was #4AA51D;
+ * The current value did not provide enough contrast against our primary
+ * background (white) to pass a11y audits.
+ */
+$brand-green: #378700;
 
+$brand-steel: #484F5B;
+$brand-blue: #007DA3;
 $brand-accent-green: #5AC923;
 $brand-accent-blue: #00B4EB;
 $brand-accent-gold: #F2C94F;

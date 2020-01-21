@@ -1,5 +1,5 @@
 <div *ngIf="isFormative()">
-  <h6 class="link-title">Learn how this strategy relates to the Formative Assessment Process.</h6>
+  <h3 class="link-title">Learn how this strategy relates to the Formative Assessment Process.</h3>
 
   <a href="https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf"
      aria-label="Formative Assessment Process Flier (opens in a new window)"
@@ -21,26 +21,22 @@
 </div>
 
 <div *ngIf="!isFormative()">
-  <!-- TODO: Need category on resource properties.
-  <h5 *ngIf="properties.category">{{ properties.category }}</h5>
-  -->
-
-  <h5 class="subject">
-    {{ properties.subject.shortName }} 
-    <sbdl-tooltip *ngIf="properties.subject.shortName == 'DS' || properties.subject.shortName == 'Designated Supports'" 
+  <h3 class="subject">
+    {{ properties.subject.fullName }} 
+    <sbdl-tooltip *ngIf="properties.subject.shortName === 'DS' || properties.subject.shortName == 'Designated Supports'" 
          text="Accessibility resources that are available to students based on a student need indicated by an educator (or team of educators) with parent/guardian and student input.">
     <sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
 
-    <sbdl-tooltip *ngIf="properties.subject.shortName == 'UT' || properties.subject.shortName == 'Universal Tool'" 
+    <sbdl-tooltip *ngIf="properties.subject.shortName === 'UT' || properties.subject.shortName == 'Universal Tool'" 
          text="Accessibility resources that are available to students based on student preference and selection.">
     <sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
 
-    <sbdl-tooltip *ngIf="properties.subject.shortName == 'AC' || properties.subject.shortName == 'Accommodations'" 
+    <sbdl-tooltip *ngIf="properties.subject.shortName === 'AC' || properties.subject.shortName == 'Accommodations'" 
          text="Accessibility resources that are available to students based on student need indicated by the student's Individual Education Program (IEP) or 504 plan.">
     <sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
-  </h5>
+  </h3>
 
-  <h6 class="link-title">Learn more about accessibility.</h6>
+  <h4 class="link-title">Learn more about accessibility.</h4>
 
   <a href="https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf"
      aria-label="Usability, Accessibility, and Accommodations Guidelines (opens in a new window)"

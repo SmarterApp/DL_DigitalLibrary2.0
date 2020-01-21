@@ -12,7 +12,7 @@
   Start typing a topic, claim, target, or <a href="javascript:void(0);" (click)="showAdvanced = true">advanced search</a>.
 </div>
 
-<h4 *ngIf="showingResults" class="results-header">
+<h1 *ngIf="showingResults" class="results-header">
   <span>
     Found {{ numResults }}
     <ng-container [ngPlural]="numResults" >
@@ -26,15 +26,15 @@
                *ngIf="showAdvanced && numResults > 0">
     scroll to results <i class="far fa-arrow-down" aria-hidden="true"></i>
   </sbdl-button>
-</h4>
+</h1>
 
 <div [hidden]="!showAdvanced || numResults === 0" class="advanced-search">
-  <div class="loading-overlay" [ngClass]="{loading: loading}">
+  <div class="loading-overlay" [attr.aria-hidden]="loading" [ngClass]="{loading: loading}">
     <div>Loading...</div>
   </div>
   <div class="advanced-header">
-      <h5 *ngIf="!showingResults">Browse for Resources</h5>
-      <h5 *ngIf="showingResults">Advanced Search</h5>
+      <h2 *ngIf="!showingResults">Browse for Resources</h2>
+      <h2 *ngIf="showingResults">Advanced Search</h2>
       <div>
         <a [routerLink]="['/search', {query: filters.query || ''}]"
            class="emphasis-medium caption">
@@ -47,7 +47,7 @@
   </div>
   <div class="filter-container"
        *ngIf="filters.resourceTypes.length > 0">
-    <h6>Select a type</h6>
+    <h3>Select a type</h3>
     <sbdl-filter-chipset
       [filters]="filters.resourceTypes"
       (onChanged)="search({resourceTypes: $event.join(',')})"
@@ -55,7 +55,7 @@
   </div>
   <div class="filter-container"
        *ngIf="filters.grades.length > 0">
-    <h6>Grades</h6>
+    <h3>Grades</h3>
     <sbdl-filter-chipset
       [filters]="filters.grades"
       (onChanged)="search({grades: $event.join(',')})"
@@ -63,7 +63,7 @@
   </div>
   <div class="filter-container"
        *ngIf="filters.subjects.length > 0">
-    <h6>Subjects</h6>
+    <h3>Subjects</h3>
     <sbdl-filter-chipset
       [filters]="filters.subjects"
       (onChanged)="search({subjects: $event.join(',')})"
@@ -71,7 +71,7 @@
   </div>
   <div class="filter-container"
        *ngIf="filters.claims.length > 0">
-    <h6>Claims</h6>
+    <h3>Claims</h3>
     <sbdl-filter-chipset
       *ngIf="params.subjects && params.grades; else displayClaimsMessage"
       [filters]="filters.claims"
@@ -85,7 +85,7 @@
   </div>
   <div class="filter-container"
        *ngIf="filters.targets.length > 0">
-    <h6>Targets</h6>
+    <h3>Targets</h3>
     <sbdl-filter-chipset
       *ngIf="params.subjects && params.grades && params.claims; else displayTargetMessage"
       [filters]="filters.targets"
@@ -99,7 +99,7 @@
   </div>
   <div class="filter-container"
        *ngIf="filters.standards.length > 0">
-    <h6>Content Standards</h6>
+    <h3>Content Standards</h3>
     <sbdl-filter-chipset
       *ngIf="params.subjects && params.grades && params.claims; else displayStandardsMessage"
       [filters]="filters.standards"

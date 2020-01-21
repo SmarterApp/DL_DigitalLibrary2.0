@@ -8,13 +8,13 @@
     </sbdl-button>
   </div>
 </div>
-<h6 class="outline-header">
+<h2 class="outline-header">
   Outline
   <sbdl-button (click)="toggleFullSelection()" class="plain">
     <span *ngIf="allSelected">Clear selection</span>
     <span *ngIf="!allSelected">Select all</span>
   </sbdl-button>
-</h6>
+</h2>
 <ul class="section-list" *ngIf="outline">
   <li *ngFor="let section of sectionsInOrder">
     <sbdl-print-checkbox

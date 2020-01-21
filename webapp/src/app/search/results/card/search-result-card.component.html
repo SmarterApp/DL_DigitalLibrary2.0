@@ -2,11 +2,12 @@
    [routerLink]="['/resource', resource.id]"
    class="search-result">
   <div class="summary-content">
-    <div class="resource-type">
+    <div class="resource-type" aria-hidden="true">
       <sbdl-resource-type-icon [type]="resource.type"></sbdl-resource-type-icon>
       {{ resource.type | resourceType }}
     </div>
-    <h6>{{ resource.properties.title }}</h6>
+    <h3>{{ resource.properties.title }}</h3>
+    <div class="offscreen">{{ resource.type | resourceType }}</div>
     <dynamic-html [content]="resource.summary" class="summary"></dynamic-html>
     <div class="metadata emphasis-medium">
       <div class="bullet-row">
@@ -46,8 +47,10 @@
   </div>
   
 
-  <div *ngIf="svgSafeUrl" class="image {{ resource.type | resourceType:{slug: true} }} {{ subjectCode }}">
-    <object type="image/svg+xml" [data]="svgSafeUrl" aria-hidden="true"></object>
+  <div *ngIf="svgSafeUrl"
+       class="image {{ resource.type | resourceType:{slug: true} }} {{ subjectCode }}"
+       aria-hidden="true">
+    <object type="image/svg+xml" [data]="svgSafeUrl"></object>
   </div>
   <img
     *ngIf="!svgSafeUrl"

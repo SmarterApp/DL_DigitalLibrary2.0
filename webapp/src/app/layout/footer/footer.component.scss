@@ -19,7 +19,10 @@
       justify-content: space-between;
       margin-bottom: $spacer-lg;
 
-      h6 { font-size: 1rem; }
+      h3 {
+        font-size: 1rem;
+        font-weight: normal;
+      }
 
       ul {
         line-height: 200%;

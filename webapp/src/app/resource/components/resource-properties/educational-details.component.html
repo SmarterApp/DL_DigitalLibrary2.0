@@ -2,14 +2,14 @@
   <!-- TODO: better mapping strategy fo claim images; accessibility -->
   <img *ngIf="properties.claims.length > 0" [src]="getClaimImagePath(properties.subject, properties.claims[0])" alt="">
   <div>
-    <h5 class="subject">{{ properties.subject.shortName }}</h5>
-    <h6 class="grades">
+    <h3 class="subject">{{ properties.subject.shortName }}</h3>
+    <h4 class="grades">
       <span [ngPlural]="properties.grades.length" >
         <ng-template ngPluralCase="=1">Grade</ng-template>
         <ng-template ngPluralCase="other">Grades</ng-template>
       </span>
       {{ gradeShortNames | join:  { conjunction: 'and'} }}
-    </h6>
+    </h4>
   </div>
 </div>
 

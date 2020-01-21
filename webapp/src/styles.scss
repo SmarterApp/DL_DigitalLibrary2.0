@@ -37,6 +37,13 @@ body {
 }
 
 .print-only { display: none; }
+.offscreen {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  top: -10px;
+}
 
 @media only print {
   :root {
@@ -44,6 +51,7 @@ body {
   }
 
   .print-only { display: block; }
+  .offscreen { display: none; }
 
   @page {
     /* This is what we actually want to use for the printed footers. But CSS3
