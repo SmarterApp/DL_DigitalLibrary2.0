@@ -60,7 +60,7 @@ export function initializeOkta(appConfig: AppConfig) {
     }, {
       provide: OKTA_CONFIG,
       useFactory: initializeOkta,
-      deps: [ AppConfig ]
+      deps: [ AppConfig, APP_INITIALIZER ]
     },
     Title
   ],

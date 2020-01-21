@@ -10,6 +10,7 @@
   "apiServerHost": "https://api-stage.dl.smarterbalanced.org",
   "enableAnalytics": false,
   "okta": {
-    "clientId": "0oapbg1o7wQS3plCA0h7"
+    "clientId": "0oapbg1o7wQS3plCA0h7",
+    "issuer": "https://smarterbalanced.oktapreview.com/oauth2/auslw2qcsmsUgzsqr0h7"
   }
 }
