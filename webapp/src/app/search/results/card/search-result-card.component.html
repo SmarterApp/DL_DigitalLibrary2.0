@@ -47,8 +47,10 @@
   </div>
   
 
-  <div *ngIf="svgSafeUrl" class="image {{ resource.type | resourceType:{slug: true} }} {{ subjectCode }}">
-    <object type="image/svg+xml" [data]="svgSafeUrl" aria-hidden="true"></object>
+  <div *ngIf="svgSafeUrl"
+       class="image {{ resource.type | resourceType:{slug: true} }} {{ subjectCode }}"
+       aria-hidden="true">
+    <object type="image/svg+xml" [data]="svgSafeUrl"></object>
   </div>
   <img
     *ngIf="!svgSafeUrl"
