@@ -1,15 +1,15 @@
 {
-    "env": {
-        "name": "STAGE"
-     },
-    "logging": {
-        "console": true,
-        "aws": false,
-        "level": 0
-    },
-    "apiServer": {
-        "cdl": "https://api-stage.dl.smarterbalanced.org",
-        "authToken": "YjhlNTM2MTA5Njc3MDAxZDM4ODhkNDViMGRhZTRkYzhiYmJlMmUxYmE3ODQzMjA0MTU1MTZiYmY4Zjc5MGYwMg"
-    },
-    "enableAnalytics": false
+  "env": {
+    "name": "STAGE"
+   },
+  "logging": {
+    "console": true,
+    "aws": false,
+    "level": 0
+  },
+  "apiServerHost": "https://api-stage.dl.smarterbalanced.org",
+  "enableAnalytics": false,
+  "okta": {
+    "clientId": "0oapbg1o7wQS3plCA0h7"
+  }
 }

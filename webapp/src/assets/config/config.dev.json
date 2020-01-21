@@ -1,15 +1,12 @@
 {
-    "env": {
-        "name": "DEV"
-     },
-    "logging": {
-        "console": true,
-        "aws": false,
-        "level": 0
-    },
-    "apiServer": {
-        "cdl": "https://api-dev.dl.smarterbalanced.org",
-        "authToken": "ZjgwNGFiODBjNzZjODIyNDNjYmQwOWU5NzRiMGQzN2M0N2FmMmEzYmUzMzYyMTQyYThiYzc0OGI1MTEwYzcyMw"
-    },
-    "enableAnalytics": false
+  "env": {
+    "name": "DEV"
+   },
+  "logging": {
+    "console": true,
+    "aws": false,
+    "level": 0
+  },
+  "apiServerHost": "https://api-dev.dl.smarterbalanced.org",
+  "enableAnalytics": false
 }
