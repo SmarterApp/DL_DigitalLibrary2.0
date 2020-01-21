@@ -21,7 +21,7 @@
   <label>Accessibility Strategies</label>
 </a>
 
-<a [routerLink]="['/bookmarks']">
+<a *ngIf="isAuthenticated" [routerLink]="['/bookmarks']">
   <i class="far fa-bookmark" aria-hidden="true"></i>
   <label>Bookmarks &amp; Notes</label>
 </a>

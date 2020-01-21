@@ -4,6 +4,7 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { VERSION } from 'src/environments/version';
 import { AppConfig } from './common/config/app.config';
 import { RouterService } from './router.service';
+import { OKTA_CALLBACK_PATH } from './common/constants';
 
 @Component({
   selector: 'sbdl-root',
@@ -41,7 +42,7 @@ export class AppComponent implements OnInit {
     });
 
     this.route.fragment.subscribe((fragment) => {
-      if (fragment) {
+      if (fragment && !this.router.url.includes(OKTA_CALLBACK_PATH)) {
         setTimeout(() => {
           document.querySelector('#' + fragment).scrollIntoView({behavior: 'smooth'});
         });
