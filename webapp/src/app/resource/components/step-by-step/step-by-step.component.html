@@ -7,9 +7,9 @@
       ><sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
   </h4>
   <ol>
-    <sbdl-step *ngFor="let step of steps"
+    <li sbdl-step *ngFor="let step of steps"
                [stepModel]="step"
-               (sectionLoaded)="addSubsection($event)"></sbdl-step>
+               (sectionLoaded)="addSubsection($event)"></li>
   </ol>
 </article>
 <hr *ngIf="steps.length > 0"/>

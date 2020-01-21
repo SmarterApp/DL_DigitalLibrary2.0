@@ -2,14 +2,13 @@
 @import "spacing";
 
 :host {
-  li {
-    padding-top: $spacer;
-    position: relative;  // required to keep the highlighted class only around this li.
-  }
+  padding-top: $spacer;
+  position: relative;  // required to keep the highlighted class only around this li.
 
   a:hover {
       text-decoration: underline;
   }
+
   a { 
       color: $info-500;
   }

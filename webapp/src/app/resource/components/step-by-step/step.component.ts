@@ -5,7 +5,7 @@ import { ResourceStep } from '../../../data/resource/model/step.model';
 import { DocumentSectionType } from '../outline/document-outline.model';
 
 @Component({
-  selector: 'sbdl-step',
+  selector: '[sbdl-step]',
   templateUrl: './step.component.html',
   styleUrls: ['./step.component.scss', '../../printable-section.component.scss']
 })
@@ -16,6 +16,7 @@ export class StepComponent extends PrintableSectionComponent implements AfterVie
 
   constructor(sanitizer: DomSanitizer) {
     super(sanitizer, '', {
+      baseStyle: '--print-display: list-item',
       printSelected: '--print-position: relative; --print-visibility: visible;',
       printHidden: '--print-position: fixed; --print-visibility: hidden;'
     });
