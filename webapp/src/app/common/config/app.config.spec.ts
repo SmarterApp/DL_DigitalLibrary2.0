@@ -6,7 +6,7 @@ describe('AppConfig', () => {
   let injector: TestBed;
   let httpMock: HttpTestingController;
   let service: AppConfig;
-  
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule ],
@@ -23,7 +23,7 @@ describe('AppConfig', () => {
     service.load().then(() => {
       expect(AppConfig.settings.env.name).toBe('Test');
     });
-    
+
     const request = httpMock.expectOne('assets/config/config.json');
     expect(request.request.method).toBe('GET');
     request.flush(stubSettings);
@@ -35,14 +35,14 @@ describe('AppConfig', () => {
     }).catch(err => {
       expect(err).toBe('Unable to load configurations from file \'assets/config/config.json\': Not Available');
     });
-    
+
     const request = httpMock.expectOne('assets/config/config.json');
     expect(request.request.method).toBe('GET');
-    request.error(<ErrorEvent>{ message: 'Not Available' });
+    request.error({ message: 'Not Available' } as ErrorEvent);
   });
 
   // After each, verifies there are no outstanding requests.
-  afterEach(()=> {
+  afterEach(() => {
     httpMock.verify();
   });
 });
