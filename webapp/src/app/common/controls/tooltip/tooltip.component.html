@@ -3,7 +3,7 @@
     <ng-content></ng-content>
 </button>
 <ng-template #tooltipPopover>
-    <h6>{{ title }}</h6>
+    <div class="tooltip-title">{{ title }}</div>
     <dynamic-html [content]="text"></dynamic-html>
     <a *ngIf="readMoreUrl"
        [href]="readMoreUrl"

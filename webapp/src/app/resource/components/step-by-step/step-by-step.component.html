@@ -1,11 +1,11 @@
 <article #sectionHeader *ngIf="steps.length > 0" class="step-container">
-  <h4 class="leading-icon">
+  <h2 class="leading-icon">
     <sbdl-icon icon="steps"></sbdl-icon>
       Step By Step
       <sbdl-tooltip
         text="The process for implementing this resource in your class."
       ><sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
-  </h4>
+  </h2>
   <ol>
     <sbdl-step *ngFor="let step of steps"
                [stepModel]="step"

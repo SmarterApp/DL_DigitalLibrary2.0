@@ -3,7 +3,7 @@
 @import "spacing";
 @import "@material/ripple/mdc-ripple";
 
-h5,h6 {
+h3, h4 {
   margin-bottom: 0; 
   color: $brand-green; // Is this just in the metadata section?
 }
@@ -23,12 +23,11 @@ h5,h6 {
   display: flex;
   margin-top: 32px;
   color: $brand-green;
-  .subjects {
+
+  .subject, .grades {
     margin: 0;
   }
-  .grades {
-    margin: 0;
-  }
+
 }
 
 .details {

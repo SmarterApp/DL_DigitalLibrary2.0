@@ -1,14 +1,22 @@
 <section #sectionHeader>
-  <h5 *ngIf="title && !!(title.trim)">{{ title }}</h5>
+  <h3 *ngIf="!!title">{{ title }}</h3>
   <div *ngFor="let strategy of strategies" class="strategy-link">
-    <h6>
+    <h3 *ngIf="!title" class="strategy-title">
       <a href="/resource/{{strategy.id}}"
          attr.aria-label="{{ strategy.title }} (opens in a new window)"
          target="_blank">
         {{ strategy.title }}
         <i class="far fa-arrow-right" aria-hidden="true"></i>
       </a>
-    </h6>
+    </h3>
+    <h4 *ngIf="!!title" class="strategy-title">
+      <a href="/resource/{{strategy.id}}"
+         attr.aria-label="{{ strategy.title }} (opens in a new window)"
+         target="_blank">
+        {{ strategy.title }}
+        <i class="far fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </h4>
     <dynamic-html [content]="strategy.description"></dynamic-html>
   </div>
 </section>

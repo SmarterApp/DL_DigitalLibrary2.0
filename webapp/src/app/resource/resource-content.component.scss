@@ -1,6 +1,4 @@
 @import "colors";
-@import "spacing";
-@import "typography";
 
 :host {
     position: relative;
@@ -22,6 +20,11 @@
         margin-bottom: 51px;
     }
 
+    ::ng-deep {
+      h2 {
+        line-height: 117%;
+      }
+    }
 }
 
 @media only print {

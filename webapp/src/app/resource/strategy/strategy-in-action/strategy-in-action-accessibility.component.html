@@ -1,7 +1,7 @@
 <article *ngIf="resource.sampleItemContent" #sectionHeader class="section-container">
-  <h4 class="leading-icon">
+  <h2 class="leading-icon">
     <i class="far fa-universal-access" aria-hidden="true"></i>Strategy In Action
-  </h4>
+  </h2>
   <div *ngIf="resource.sampleItemContent.linkToSample; else elseBlock">
     <a [href]="resource.sampleItemContent.linkToSample"
        attr.aria-label="Try out the {{ resource.properties.title }} on the Sample Items or the Sample Tests Websites (opens in a new window)."

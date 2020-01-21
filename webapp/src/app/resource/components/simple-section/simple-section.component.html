@@ -1,9 +1,9 @@
 <article *ngIf="contentHtml" #sectionHeader class="section-container">
-  <h4 class="leading-icon  {{ options.iconBackground }}">
+  <h2 class="leading-icon  {{ options.iconBackground }}">
     <i *ngIf="options.fontAwesomeIcon" class="far {{ options.fontAwesomeIcon }}"></i>
     <sbdl-icon *ngIf="options.sbdlIcon" [icon]="options.sbdlIcon"></sbdl-icon>
     {{ options.title }}
-  </h4>
+  </h2>
   <section>
     <div [innerHtml]="contentHtml"></div>
   </section>

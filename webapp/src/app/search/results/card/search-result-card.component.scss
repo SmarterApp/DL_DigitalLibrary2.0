@@ -31,7 +31,12 @@
     color: rgba($neutral-900, 0.65);
   }
 
-  h6{ color: $brand-green; }
+  h3 {
+    color: $brand-green;
+    font-weight: 400;
+    font-size: $font-size-2;
+    line-height: 160%;
+  }
 
   img, div.image {
       width: 120px;

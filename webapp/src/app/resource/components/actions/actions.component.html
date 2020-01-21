@@ -33,7 +33,7 @@
 </sbdl-button-icon>
 <ng-template #sharePopover>
   <div class="share-popover">
-      <h6>Share this resource</h6>
+      <div class="tooltip-title">Share this resource</div>
       <div class="copy-clipboard">
           <input #url readonly type="text" [value]="currentUrl">
           <sbdl-button-icon buttonTitle="Copy to clipboad" (click)="copyToClipboard(url)">

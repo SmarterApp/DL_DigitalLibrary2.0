@@ -22,7 +22,7 @@ export class StrategyReferenceListComponent extends PrintableSectionComponent im
   }
 
   ngOnInit(): void {
-    this.sectionId = this.title;
+    this.sectionId = this.title.trim();
   }
 
   ngAfterViewInit(): void {
