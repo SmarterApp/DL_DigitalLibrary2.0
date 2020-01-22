@@ -2,6 +2,7 @@ import { Component, OnInit, Input, HostListener, ViewChild, ViewContainerRef, El
 import { Resource } from 'src/app/data/resource/model/resource.model';
 import { getCssVar } from 'src/app/common/utils';
 import { PopoverService } from 'src/app/common/controls/popover/popover.service';
+import { UserService } from 'src/app/data/user/user.service';
 
 @Component({
   selector: 'sbdl-actions',
@@ -44,6 +45,7 @@ export class ActionsComponent implements OnInit {
   hideReadingModeToggle = false;
   currentUrl: string;
   showCopied = false;
+  isAuthenticated = false;
 
   private readingModeDefaultWidth = 1200;
   private resizeTimeout;
@@ -74,12 +76,15 @@ export class ActionsComponent implements OnInit {
     this.wasSmall = isSmall;
   }
 
-  constructor(private popoverService: PopoverService) { }
+  constructor(
+    private popoverService: PopoverService,
+    private userService: UserService) { }
 
   ngOnInit() {
     this.onResize();
     this.currentUrl = location.href;
     this.readingModeDefaultWidth = getCssVar('--breakpoint-lg');
+    this.userService.user.subscribe(user => this.isAuthenticated = !!user);
   }
 
   share() {

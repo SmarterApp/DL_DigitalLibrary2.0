@@ -4,6 +4,8 @@ import { DomSanitizer, SafeStyle, Title } from '@angular/platform-browser';
 import { Map } from 'immutable';
 import { Resource } from '../data/resource/model/resource.model';
 import { Note } from '../data/notes/model/note.model';
+import { User } from '../data/user/user.model';
+import { UserService } from '../data/user/user.service';
 import { DocumentOutline, DocumentSection, DocumentSectionType } from './components/outline/document-outline.model';
 import { ResourceTypePipe } from '../pipes/resource-type.pipe';
 
@@ -19,6 +21,7 @@ export class ResourceComponent implements AfterViewInit, OnInit {
   outline: DocumentOutline = Map<DocumentSectionType, DocumentSection>();
   printingMode = false;
   readingMode = false; // will get set properly by ActionsComponent when it loads.
+  user: User;
 
   navWidth = 331;
   cssVarStyle: SafeStyle;
@@ -34,7 +37,8 @@ export class ResourceComponent implements AfterViewInit, OnInit {
     private cdRef: ChangeDetectorRef,
     private sanitizer: DomSanitizer,
     private titleService: Title,
-    private location: Location) { }
+    private location: Location,
+    private userService: UserService) { }
 
   ngAfterViewInit(): void {
     this.titleService.setTitle(`${this.resource.properties.title} - ${this.resourceTypePipe.transform(this.resource.type)}`);
@@ -42,6 +46,7 @@ export class ResourceComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.setCssVarStyle();
+    this.userService.user.subscribe(u => this.user = u);
   }
 
   setOutline($event) {
@@ -64,7 +69,7 @@ export class ResourceComponent implements AfterViewInit, OnInit {
   }
 
   notesVisibilityChanged(notesVisible: boolean) {
-    this.notesVisible = notesVisible;
+    this.notesVisible = !!this.user && notesVisible;
   }
 
   notesChanged(notes: Note[]) {

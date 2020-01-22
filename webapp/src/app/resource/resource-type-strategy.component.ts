@@ -48,6 +48,11 @@ export class ResourceTypeStrategyComponent implements OnInit {
       this.componentInst = componentRef.instance;
     });
 
+    // TODO: Move into ResourceComponent. Set in OnInit, subscribe in
+    // AfterViewInit. This has been broken by the SSO integration. We now hide
+    // the notes components unless the user is logged in. These initial checks
+    // happen before the ResourceComponent has loaded and so before the user
+    // object is available.
     this.route.queryParams.subscribe(queryParams => {
       if (queryParams.print !== undefined) {
         this.componentInst.printingModeChanged(queryParams.print);

@@ -57,6 +57,7 @@
     ></sbdl-strategy-properties>
   </sbdl-resource-properties>
   <sbdl-notes
+    *ngIf="user"
     [hidden]="!notesVisible"
     [notes]="notes"
     [resource]="resource"

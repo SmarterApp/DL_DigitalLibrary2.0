@@ -10,7 +10,7 @@ import { ResourceService } from '../data/resource/resource.service';
 export class ResourceResolve implements Resolve<Resource> {
     constructor(private service: ResourceService) { }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Resource | Observable<Resource> | Promise<Resource> {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Resource> {
         return this.service.get(route.params.resourceId);
     }
 }

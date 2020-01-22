@@ -8,16 +8,20 @@
     <span *ngIf="notes.length > 0">+ Add another note</span>
   </sbdl-button>
 </div>
-<div [hidden]="!authoringNote">
+<div [hidden]="!authoringNote" [ngClass]="{saving: saving}">
   <h2>Add a Note</h2>
   <angular-editor
     [config]="editorConfig"
-    [(ngModel)]="newNoteContent">
+    [(ngModel)]="newNoteContent"
+    [disabled]="saving">
   </angular-editor>
-  <div class=dialog-buttons>
-    <sbdl-button (click)="cancelNote()">Cancel</sbdl-button>
-    <sbdl-button class="primary" (click)="saveNote()">
+  <div class="dialog-buttons">
+    <sbdl-button (click)="cancelNote()" [hidden]="saving">Cancel</sbdl-button>
+    <sbdl-button class="primary" (click)="saveNote()" [hidden]="saving">
       <i class="fas fa-check-circle" aria-hidden="true"></i> Save
     </sbdl-button>
+    <div *ngIf="saving">
+      <i class="fas fa-spinner fa-pulse" aria-hidden="true"></i> Saving note...
+    </div>
   </div>
 </div>

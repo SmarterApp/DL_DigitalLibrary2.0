@@ -54,6 +54,7 @@
     <sbdl-educational-details [properties]="resource.properties"></sbdl-educational-details>
   </sbdl-resource-properties>
   <sbdl-notes
+    *ngIf="user"
     [hidden]="!notesVisible"
     [notes]="notes"
     [resource]="resource"

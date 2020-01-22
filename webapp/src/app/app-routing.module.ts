@@ -19,7 +19,6 @@ const routes: Routes = [
   {
     path: '',
     component: AppContainerComponent,
-    // resolve: { currentUser: CurrentUserResolve },
     children: [
       {
         path: '',

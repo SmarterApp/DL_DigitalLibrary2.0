@@ -1,36 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
+import { UserService } from 'src/app/data/user/user.service';
+import { User } from 'src/app/data/user/user.model';
 
 @Component({
   selector: 'sbdl-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
   isAuthenticated: boolean;
-  userInitials = '';
 
-  constructor(public oktaAuth: OktaAuthService) {
-    this.oktaAuth.$authenticationState.subscribe(
-      async (isAuthenticated: boolean) => {
-        this.isAuthenticated = isAuthenticated;
-        this.userInitials = await this.fetchUserInitials();
-      }
-    );
-  }
-
-  async ngOnInit() {
-    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
-    if (this.isAuthenticated) { this.userInitials = await this.fetchUserInitials(); }
+  constructor(
+    private userService: UserService,
+    private oktaAuthService: OktaAuthService
+  ) {
+    this.userService.user.subscribe((user: User) => {
+      this.isAuthenticated = user !== null;
+    });
   }
 
   logout() {
-    this.oktaAuth.logout('/');
+    this.oktaAuthService.logout('/');
   }
 
-  async fetchUserInitials() {
-    if (!this.isAuthenticated) { return ''; }
-    const userClaims = await this.oktaAuth.getUser();
-    return userClaims.email.slice(0, 2);
-  }
 }

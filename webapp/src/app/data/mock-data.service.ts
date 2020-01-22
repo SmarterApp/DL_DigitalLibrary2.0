@@ -42,6 +42,10 @@ export class MockDataService implements PublicPart<DataService> {
     return of(undefined);
   }
 
+  delete(url: string, params?: any): Observable<any> {
+    return of(undefined);
+  }
+
   downloadBlob(url: string): Observable<Blob> {
     // Don't want to inject httpClient in a mock data service which shouldn't be using one, but downlaoding from our assets
     // folder is an exception which won't be used in unit tests, only in standalone mode.
