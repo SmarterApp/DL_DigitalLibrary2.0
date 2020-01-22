@@ -15,5 +15,10 @@
       <sbdl-bookmark-actions [resourceSummary]="bookmark"></sbdl-bookmark-actions>
     </li>
   </ul>
+  <div *ngIf="!bookmarks || bookmarks.length === 0" class="no-bookmarks">
+    This page shows all of the resources you have bookmarked. It is currently
+    empty because you haven't bookmarked any resources yet. 
+    <a [routerLink]="['/']">Go find some resources to bookmark!</a>
+  </div>
 </main>
 <aside class="right-margin"></aside>

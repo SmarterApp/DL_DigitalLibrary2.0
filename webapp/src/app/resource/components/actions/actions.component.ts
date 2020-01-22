@@ -1,6 +1,11 @@
-import { Component, OnInit, Input, HostListener, ViewChild, ViewContainerRef, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnDestroy, OnInit, Input, HostListener, ViewChild,
+  ViewContainerRef, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Map } from 'immutable';
 import { Resource } from 'src/app/data/resource/model/resource.model';
 import { getCssVar } from 'src/app/common/utils';
+import { Bookmark } from 'src/app/data/bookmarks/bookmark.model';
+import { BookmarksService } from 'src/app/data/bookmarks/bookmarks.service';
 import { PopoverService } from 'src/app/common/controls/popover/popover.service';
 import { UserService } from 'src/app/data/user/user.service';
 
@@ -9,7 +14,7 @@ import { UserService } from 'src/app/data/user/user.service';
   templateUrl: './actions.component.html',
   styleUrls: ['./actions.component.scss']
 })
-export class ActionsComponent implements OnInit {
+export class ActionsComponent implements OnDestroy, OnInit {
 
   @Input()
   resource: Resource;
@@ -41,16 +46,18 @@ export class ActionsComponent implements OnInit {
   @ViewChild('sharePopover', { static: false })
   sharePopover: ElementRef;
 
-  togglingBookmarked = false;
+  updatingBookmarked = true;
   hideReadingModeToggle = false;
   currentUrl: string;
   showCopied = false;
   isAuthenticated = false;
+  bookmark: Bookmark;
 
   private readingModeDefaultWidth = 1200;
   private resizeTimeout;
   private oldReadingMode: boolean;
   private wasSmall: boolean;
+  private bookmarksSubscription: Subscription;
 
   @HostListener('window:resize', ['$event'])
   onResize(event?) {
@@ -77,6 +84,7 @@ export class ActionsComponent implements OnInit {
   }
 
   constructor(
+    private bookmarksService: BookmarksService,
     private popoverService: PopoverService,
     private userService: UserService) { }
 
@@ -85,12 +93,22 @@ export class ActionsComponent implements OnInit {
     this.currentUrl = location.href;
     this.readingModeDefaultWidth = getCssVar('--breakpoint-lg');
     this.userService.user.subscribe(user => this.isAuthenticated = !!user);
+    this.bookmarksSubscription = this.bookmarksService.userBookmarksByResourceId.subscribe(bkmkMap => {
+      this.bookmark = bkmkMap.get(this.resource.id);
+      this.updatingBookmarked = false;
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.bookmarksSubscription) {
+      this.bookmarksSubscription.unsubscribe();
+      this.bookmarksSubscription = undefined;
+    }
   }
 
   share() {
     this.popoverService.open(this.shareContainer, this.sharePopover);
   }
-
 
   copyToClipboard(inputElement) {
     inputElement.select();
@@ -100,23 +118,16 @@ export class ActionsComponent implements OnInit {
     setTimeout(() => this.showCopied = false, 5000);
   }
 
-  toggleBookmarked() {
-    if (this.togglingBookmarked) { return; }
-
+  toggleBookmarked = () => {
     // prevent multiple clicks
-    this.togglingBookmarked = true;
-    /* Something like
-    this.favoriteService.postFavoriteResource(favoriteResource).subscribe(res => {
-      this.model.details.favorite = res.favorite;
-      this.togglingFavorite = false;
-    }, error => {
-      // TODO: Implement error notification system?
-      this.togglingFavorite = false;
-    });
-    */
-    // Until this API is real:
-    this.resource.properties.isBookmarked = !this.resource.properties.isBookmarked;
-    this.togglingBookmarked = false;
+    if (this.updatingBookmarked) { return; }
+    this.updatingBookmarked = true;
+
+    if (this.bookmark) {
+      this.bookmarksService.deleteBookmark(this.bookmark);
+    } else {
+      this.bookmarksService.createBookmark(this.resource.id);
+    }
   }
 
   toggleReadingMode() {

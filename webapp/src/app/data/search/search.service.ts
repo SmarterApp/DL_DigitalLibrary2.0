@@ -101,13 +101,11 @@ export class SearchService {
         targets:   json.targets.map(this.targetFromJson),
         title:     json.title,
         image:     json.imagePath,
-        isBookmarked: false,
         lastUpdatedDate: new Date(json.updatedAt),
         subject: this.subjectFromJson(json.subject),
       },
       type: json.dlResourceType.description,
-      summary: this.summaryFromJson(json),
-      hasNotes: false
+      summary: this.summaryFromJson(json)
     };
   }
 

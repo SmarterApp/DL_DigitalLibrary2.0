@@ -4,13 +4,13 @@
 <sbdl-button-icon buttonTitle="Share" (click)="share()"><i class="far fa-share"></i></sbdl-button-icon>
 <ng-container #shareButton></ng-container>
 <sbdl-button-icon *ngIf="isAuthenticated" buttonTitle="Bookmark" (click)="toggleBookmarked()">
-  <div *ngIf="!togglingBookmarked && resource.properties.isBookmarked">
+  <div *ngIf="!updatingBookmarked && bookmark">
     <i class="fas fa-bookmark"></i>
   </div>
-  <div *ngIf="!togglingBookmarked && !resource.properties.isBookmarked">
+  <div *ngIf="!updatingBookmarked && !bookmark">
     <i class="far fa-bookmark"></i>
   </div>
-  <div *ngIf="togglingBookmarked">
+  <div *ngIf="updatingBookmarked">
     <i class="fas fa-spinner fa-spin"></i>
   </div>
 </sbdl-button-icon>

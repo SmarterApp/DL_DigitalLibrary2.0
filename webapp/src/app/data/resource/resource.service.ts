@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable, of } from 'rxjs';
-import { map, mergeMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { flatMap, mergeAll, map, toArray } from 'rxjs/operators';
 import { coalesce } from 'src/app/common/utils';
 import { DataService } from '../data.service';
 import { ResourceType } from './model/resource-type.enum';
 import { Resource } from './model/resource.model';
+import { ResourceSummary } from './model/summary.model';
 import { ResourceProperties } from './model/properties.model';
 import { ResourceAttachment, getFileTypeForMimeType } from './model/attachment.model';
 import { InstructionalResource } from './model/instructional.model';
 import { ProfessionalLearningResource } from './model/professional-learning.model';
 import { EmbedStrategyLinksService } from './embed-strategy-links.service';
+import { Bookmark } from '../bookmarks/bookmark.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +36,15 @@ export class ResourceService {
       .pipe(
         map(this.resourceFromJson),
         map(this.embedStrategyLinks));
+  }
+
+  getResourceSummariesForBookmarks = (bookmarks: Observable<Bookmark[]> | Bookmark[]): Observable<ResourceSummary[]> => {
+    const obs: Observable<Bookmark[]> = bookmarks instanceof Observable ? bookmarks : of(bookmarks);
+    return obs.pipe(
+      mergeAll(),
+      flatMap(bookmark => this.dataService.get(`/api/resource/${bookmark.resourceId}`)),
+      map(this.resourceSummaryFromJson),
+      toArray());
   }
 
   private resourceFromJson = (resourceJson: any): Resource => {
@@ -73,6 +84,39 @@ export class ResourceService {
     };
   }
 
+  private resourceSummaryFromJson = (resourceJson: any): ResourceSummary => {
+    const resourceType = resourceJson.type as ResourceType;
+
+    if (!Object.values(ResourceType).includes(resourceType)) {
+      throw Error('Unrecognized resource type: ' + resourceJson.type);
+    }
+
+    // Our model objects should match the data models being returned from the
+    // API, so all we really need to do is map types that are not representable
+    // in JSON alone (Dates, enums, etc).
+
+    return {
+      id: resourceJson.id,
+      properties: this.resourcePropertiesFromJson(resourceJson.properties),
+      type: resourceType,
+      summary: this.summaryFromJson(resourceType, resourceJson)
+    } as ResourceSummary;  // TODO: would be good to have some actual validation of this
+  }
+
+  private summaryFromJson(resType: ResourceType, json: any): string {
+    switch (resType) {
+      case ResourceType.Instructional:
+        return json.getStarted.overview;
+      default:
+      case ResourceType.ProfessionalLearning:
+      case ResourceType.AccessibilityStrategy:
+      case ResourceType.FormativeStrategy:
+        return json.overview.overview;
+      case ResourceType.ConnectionsPlaylist:
+        return json.overview.description;
+    }
+  }
+
   private embedStrategyLinks = (res: Resource) => {
 
     // We're going to call this a lot, so let's shorthand it
@@ -96,9 +140,6 @@ export class ResourceService {
       ir.formativeAssessHowTo.interpret = embed(ir.formativeAssessHowTo.interpret, ir);
       ir.formativeAssessHowTo.act = embed(ir.formativeAssessHowTo.act, ir);
 
-      ir.accessibilityStrategies.forEach(s => s.description = embed(s.description, ir));
-      ir.formativeAssessmentStrategies.forEach(s => s.description = embed(s.description, ir));
-
     } else if (res.type === ResourceType.ProfessionalLearning) {
 
       const pl = res as ProfessionalLearningResource;
@@ -108,7 +149,6 @@ export class ResourceService {
       pl.overview.learningGoal = embed(pl.overview.learningGoal, pl);
       pl.overview.successCriteria = embed(pl.overview.successCriteria, pl);
 
-      pl.formativeAssessmentStrategies.forEach(s => s.description = embed(s.description, pl));
     }
 
     return res;

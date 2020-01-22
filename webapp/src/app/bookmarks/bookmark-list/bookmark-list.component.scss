@@ -1,5 +1,6 @@
 @import "colors";
 @import "spacing";
+@import "typography";
 
 :host {
 
@@ -89,6 +90,12 @@
         }
 
       }
+
+      .no-bookmarks {
+        font-size: $font-size-3;
+        width: 100%;
+        text-align: center;
+      }
     }
   }
 
@@ -113,7 +120,9 @@
   }
 
   h1 {
+    font-size: $font-size-7;
     color: $brand-green;
+    margin-bottom: $spacer-xl;
   }
 }
 
