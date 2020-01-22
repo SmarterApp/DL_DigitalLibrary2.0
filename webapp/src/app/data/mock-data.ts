@@ -18,7 +18,6 @@ export const mockInstructionalResource: InstructionalResource = {
     claims: [],
     grades: [],
     image: '',
-    isBookmarked: false,
     lastUpdatedDate: new Date(),
     standards: [],
     subject: {
@@ -53,7 +52,6 @@ export const mockResourceSummaries: ResourceSummary[] = [
   {
     "id": 200,
     "type": ResourceType.Instructional,
-    hasNotes: false,
     summary: "<p>This lesson will show students how to make and use equivalent ratio tables to find a missing value.</p>",
     "properties": {
       "authorOrg": "",
@@ -76,7 +74,6 @@ export const mockResourceSummaries: ResourceSummary[] = [
         }
       ],
       "image": "https://s3-us-west-2.amazonaws.com/api-dev.dl.smarterbalanced.org/Images/200/image.png",
-      "isBookmarked": false,
       "lastUpdatedDate": new Date("2020-01-01T12:00:01+00:00"),
       "standards": [
         {
@@ -105,7 +102,6 @@ export const mockResourceSummaries: ResourceSummary[] = [
   {
     "id": 126,
     "type": ResourceType.Instructional,
-    hasNotes: false,
     summary: "<p>In this task, students will listen to a short nonfiction article about the moon landing. They will take notes on a provided document, and be able to summarize and identify the central idea of the text.</p>",
     "properties": {
       "authorOrg": "",
@@ -127,7 +123,6 @@ export const mockResourceSummaries: ResourceSummary[] = [
         }
       ],
       "image": "https://s3-us-west-2.amazonaws.com/api-dev.dl.smarterbalanced.org/Images/126/Moon+-+Brendan+Lynch.png",
-      "isBookmarked": false,
       "lastUpdatedDate": new Date("2020-01-01T12:00:01+00:00"),
       "standards": [
         {

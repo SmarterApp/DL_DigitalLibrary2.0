@@ -1,14 +1,17 @@
-import { Component, ElementRef, Input, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { PopoverService } from 'src/app/common/controls/popover/popover.service';
 import { ResourceType } from '../../data/resource/model/resource-type.enum';
 import { ResourceSummary } from '../../data/resource/model/summary.model';
+import { Bookmark } from 'src/app/data/bookmarks/bookmark.model';
+import { BookmarksService } from 'src/app/data/bookmarks/bookmarks.service';
 
 @Component({
   selector: 'sbdl-bookmark-actions',
   templateUrl: './bookmark-actions.component.html',
   styleUrls: ['./bookmark-actions.component.scss']
 })
-export class BookmarkActionsComponent {
+export class BookmarkActionsComponent implements OnInit, OnDestroy {
 
   @Input()
   resourceSummary: ResourceSummary;
@@ -19,27 +22,39 @@ export class BookmarkActionsComponent {
   @ViewChild('sharePopover', { static: false })
   sharePopover: ElementRef;
 
-  togglingBookmarked = false;
+  updatingBookmarked = false;
+  bookmark: Bookmark;
 
-  constructor(private popoverService: PopoverService) {}
+  private bookmarksSubscription: Subscription;
 
-  toggleBookmarked() {
-    if (this.togglingBookmarked) { return; }
+  constructor(
+    private bookmarksService: BookmarksService,
+    private popoverService: PopoverService) {}
 
-    // prevent multiple clicks
-    this.togglingBookmarked = true;
-    /* Something like
-    this.favoriteService.postFavoriteResource(favoriteResource).subscribe(res => {
-      this.model.details.favorite = res.favorite;
-      this.togglingFavorite = false;
-    }, error => {
-      // TODO: Implement error notification system?
-      this.togglingFavorite = false;
+  ngOnInit() {
+    this.bookmarksSubscription = this.bookmarksService.userBookmarksByResourceId.subscribe(bkmkMap => {
+      this.bookmark = bkmkMap.get(this.resourceSummary.id);
+      this.updatingBookmarked = false;
     });
-    */
-    // Until this API is real:
-    this.resourceSummary.properties.isBookmarked = !this.resourceSummary.properties.isBookmarked;
-    this.togglingBookmarked = false;
+  }
+
+  ngOnDestroy() {
+    if (this.bookmarksSubscription) {
+      this.bookmarksSubscription.unsubscribe();
+      this.bookmarksSubscription = undefined;
+    }
+  }
+
+  toggleBookmarked = () => {
+    // prevent multiple clicks
+    if (this.updatingBookmarked) { return; }
+    this.updatingBookmarked = true;
+
+    if (this.bookmark) {
+      this.bookmarksService.deleteBookmark(this.bookmark);
+    } else {
+      this.bookmarksService.createBookmark(this.resourceSummary.id);
+    }
   }
 
   share() {

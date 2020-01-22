@@ -10,7 +10,6 @@ export interface ResourceProperties {
   claims: Claim[];
   grades: Grade[];
   image: string;
-  isBookmarked: boolean;
   lastUpdatedDate: Date;
   standards: Standard[];
   subject: Subject;

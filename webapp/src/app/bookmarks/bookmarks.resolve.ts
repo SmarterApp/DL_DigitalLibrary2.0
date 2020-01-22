@@ -3,6 +3,8 @@ import { ResourceType } from '../data/resource/model/resource-type.enum';
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { BookmarksService } from '../data/bookmarks/bookmarks.service';
 import { ResourceService } from '../data/resource/resource.service';
 import { mockResourceSummaries } from '../data/mock-data';
 
@@ -10,11 +12,18 @@ import { mockResourceSummaries } from '../data/mock-data';
     providedIn: 'root'
 })
 export class BookmarksResolve implements Resolve<ResourceSummary[]> {
-    constructor(private service: ResourceService) { }
+    constructor(
+      private bookmarksService: BookmarksService,
+      private resourceService: ResourceService) { }
 
   resolve(route: ActivatedRouteSnapshot,
-          state: RouterStateSnapshot):
-          ResourceSummary[] | Observable<ResourceSummary[]> | Promise<ResourceSummary[]> {
-    return mockResourceSummaries;
+          state: RouterStateSnapshot): Observable<ResourceSummary[]> {
+
+    return this.bookmarksService
+      .userBookmarks
+      .pipe(
+        take(1),
+        this.resourceService.getResourceSummariesForBookmarks
+      );
   }
 }
