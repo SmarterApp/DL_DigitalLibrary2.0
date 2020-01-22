@@ -82,7 +82,7 @@ export class DataService {
       map(user => {
         const result = { fullUrl, options };
 
-        if (fullUrl.includes(apiBaseUrl) && !!user) {
+        if (fullUrl.includes(apiBaseUrl) && user) {
           result.options = {
             ...options,
             headers: options.headers.set('Authorization', 'Bearer ' + user.accessToken)

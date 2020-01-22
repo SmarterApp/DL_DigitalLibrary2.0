@@ -69,7 +69,7 @@ export class ResourceComponent implements AfterViewInit, OnInit {
   }
 
   notesVisibilityChanged(notesVisible: boolean) {
-    this.notesVisible = !!this.user && notesVisible;
+    this.notesVisible = this.user && notesVisible;
   }
 
   notesChanged(notes: Note[]) {
