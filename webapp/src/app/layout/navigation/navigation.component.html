@@ -21,12 +21,12 @@
   <label>Accessibility Strategies</label>
 </a>
 
-<a *ngIf="isAuthenticated" [routerLink]="['/bookmarks']">
+<a *ngIf="isAuthenticated" [routerLink]="['/bookmarks']" class="auto-margin">
   <i class="far fa-bookmark" aria-hidden="true"></i>
   <label>Bookmarks &amp; Notes</label>
 </a>
 
-<button *ngIf="!isAuthenticated" (click)="login()">
+<button *ngIf="!isAuthenticated" (click)="login()" class="auto-margin">
   <i class="far fa-sign-in-alt" aria-hidden="true"></i><label>Login</label>
 </button>
 <button *ngIf="isAuthenticated" (click)="logout()">
