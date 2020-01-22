@@ -13,6 +13,7 @@ import { SearchResultsComponent } from './search/results/search-results.componen
 import { SearchResultsResolve } from './search/results/search-results.resolve';
 import { SearchFiltersResolve } from './search/search-filters.resolve';
 import { ErrorComponent } from './layout/error/error.component';
+import { LogoutComponent } from './layout/logout/logout.component';
 import { ERROR_PATH, OKTA_CALLBACK_PATH } from './common/constants';
 
 const routes: Routes = [
@@ -45,6 +46,9 @@ const routes: Routes = [
       }, {
         path: 'auth/login',
         component: OktaLoginRedirectComponent
+      }, {
+        path: 'auth/logout',
+        component: LogoutComponent
       }, {
         path: OKTA_CALLBACK_PATH,
         component: OktaCallbackComponent

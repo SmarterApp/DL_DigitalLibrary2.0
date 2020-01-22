@@ -9,9 +9,12 @@ import { ResourceSummary } from './model/summary.model';
 import { ResourceProperties } from './model/properties.model';
 import { ResourceAttachment, getFileTypeForMimeType } from './model/attachment.model';
 import { InstructionalResource } from './model/instructional.model';
+import { AccessibilityStrategyResource } from './model/accessibility-strategy.model';
+import { FormativeStrategyResource } from './model/formative-strategy.model';
 import { ProfessionalLearningResource } from './model/professional-learning.model';
 import { EmbedStrategyLinksService } from './embed-strategy-links.service';
 import { Bookmark } from '../bookmarks/bookmark.model';
+import { teaserIRContent, teaserFAContent, teaserASContent, teaserPLContent, teaserCPContent } from 'src/app/data/mock-data';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +31,7 @@ export class ResourceService {
   ]);
 
   constructor(private dataService: DataService,
-              private embedStrategyLinkService: EmbedStrategyLinksService) { }
+              private embedStrategyLinkService: EmbedStrategyLinksService) {}
 
   get = (id: number): Observable<Resource> => {
     return this.dataService
@@ -54,14 +57,23 @@ export class ResourceService {
       throw Error('Unrecognized resource type: ' + resourceJson.type);
     }
 
+    const properties = this.resourcePropertiesFromJson(resourceJson.properties);
+
+    // If we're looking at teaser previews, bail out early and fill in the body
+    // content with filler.
+    if (resourceJson.teaser) {
+      const teaserResource = this.generateTeaser(resourceType, properties, resourceJson);
+      return teaserResource;
+    }
+
     // Our model objects should match the data models being returned from the
     // API, so all we really need to do is map types that are not representable
     // in JSON alone (Dates, enums, etc).
 
     return {
       ...resourceJson,
+      properties,
       attachments: this.attachmentsFromJson(resourceJson.attachments),
-      properties: this.resourcePropertiesFromJson(resourceJson.properties),
       type: resourceType
     } as Resource;  // TODO: would be good to have some actual validation of this
 
@@ -119,6 +131,8 @@ export class ResourceService {
 
   private embedStrategyLinks = (res: Resource) => {
 
+    if (res.teaser) { return res; }
+
     // We're going to call this a lot, so let's shorthand it
     const embed = this.embedStrategyLinkService.embedStrategyLinks;
 
@@ -153,4 +167,76 @@ export class ResourceService {
 
     return res;
   }
+
+  private generateTeaser(resType: ResourceType, properties: ResourceProperties, resourceJson: any): Resource {
+    switch (resType) {
+      default:
+      case ResourceType.Instructional: return this.fillOutIRContent(properties, resourceJson);
+      case ResourceType.FormativeStrategy: return this.fillOutFAContent(properties, resourceJson);
+      case ResourceType.AccessibilityStrategy: return this.fillOutASContent(properties, resourceJson);
+      case ResourceType.ProfessionalLearning: return this.fillOutPLContent(properties, resourceJson);
+      case ResourceType.ConnectionsPlaylist: return this.fillOutCPContent(properties, resourceJson);
+    }
+  }
+
+  private fillOutIRContent(properties: ResourceProperties, json: any): InstructionalResource {
+    return {
+      ...json,
+      properties,
+      attachments: json.attachmentsExist ? teaserIRContent.attachments : [],
+      stepByStep: json.teaseStepByStep.map(s => ({...s, content: teaserIRContent.stepByStep[0].content})),
+      accessibilityStrategies: teaserIRContent.accessibilityStrategies,
+      formativeAssessmentStrategies: teaserIRContent.formativeAssessmentStrategies,
+      formativeAssessHowTo: json.formativeAssessHowToExist ? teaserIRContent.formativeAssessHowTo : null,
+      differentiation: '',
+      thingsToConsider: json.thingsToConsiderExist ? teaserIRContent.thingsToConsider : null
+    };
+  }
+
+  private fillOutFAContent(properties: ResourceProperties, json: any): FormativeStrategyResource {
+    return {
+      ...json,
+      properties,
+      attachments: json.attachmentsExist ? teaserFAContent.attachments : [],
+      thingsToConsider: json.thingsToConsiderExist ? teaserFAContent.thingsToConsider : null,
+      overview: json.stratOverviewContent,
+      stepByStep: teaserFAContent.stepByStep,
+      strategyInAction: json.strategyInActionExist ? teaserFAContent.strategyInAction : null,
+    };
+  }
+
+  private fillOutASContent(properties: ResourceProperties, json: any): FormativeStrategyResource {
+    return {
+      ...json,
+      properties,
+      attachments: json.attachmentsExist ? teaserASContent.attachments : [],
+      thingsToConsider: json.thingsToConsiderExist ? teaserASContent.thingsToConsider : null,
+      overview: json.stratOverviewContent,
+      sampleItemContent: teaserASContent.sampleItemContent,
+    };
+  }
+
+  private fillOutPLContent(properties: ResourceProperties, json: any): FormativeStrategyResource {
+    return {
+      ...json,
+      properties,
+      attachments: json.attachmentsExist ? teaserPLContent.attachments : [],
+      thingsToConsider: json.thingsToConsiderExist ? teaserPLContent.thingsToConsider : null,
+      stepByStep: json.teaseStepByStep.map(s => ({...s, content: teaserPLContent.stepByStep[0].content})),
+      overview: json.overview,
+      formativeAssessmentStrategies: teaserPLContent.formativeAssessmentStrategies,
+    };
+  }
+
+  private fillOutCPContent(properties: ResourceProperties, json: any): FormativeStrategyResource {
+    return {
+      ...json,
+      properties,
+      attachments: json.attachmentsExist ? teaserCPContent.attachments : [],
+      thingsToConsider: json.thingsToConsiderExist ? teaserCPContent.thingsToConsider : null,
+      overview: json.overview,
+      topics: teaserCPContent.topics
+    };
+  }
+
 }

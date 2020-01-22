@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { OktaAuthService } from '@okta/okta-angular';
 import { UserService } from 'src/app/data/user/user.service';
 import { User } from 'src/app/data/user/user.model';
@@ -13,6 +14,7 @@ export class NavigationComponent {
 
   constructor(
     private userService: UserService,
+    private router: Router,
     private oktaAuthService: OktaAuthService
   ) {
     this.userService.user.subscribe((user: User) => {
@@ -20,8 +22,12 @@ export class NavigationComponent {
     });
   }
 
+  login() {
+    this.oktaAuthService.loginRedirect(this.router.url);
+  }
+
   logout() {
-    this.oktaAuthService.logout('/');
+    this.oktaAuthService.logout('/auth/logout');
   }
 
 }

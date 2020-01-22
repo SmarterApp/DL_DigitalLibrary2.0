@@ -5,7 +5,6 @@ export interface ResourceAttachment {
   fileType: FileType;
   mimeType: string;
   fileExtension: string;
-  fileSize: number;
 }
 
 export enum FileType {

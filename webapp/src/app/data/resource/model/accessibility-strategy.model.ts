@@ -8,6 +8,7 @@ export interface AccessibilityStrategyResource extends Resource {
   };
   instructionalUse: string;
   sampleItemContent: {
+    overview: string;
     linkToSample: string;
     description: string;
   };

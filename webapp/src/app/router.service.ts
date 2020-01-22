@@ -26,7 +26,7 @@ export class RouterService {
     let errorRoute = null;
     this.router.errorHandler = (error): void => {
       this.logger.error(error);
-      this.router.navigate([ERROR_PATH], { skipLocationChange: true })
+      this.router.navigate([ERROR_PATH, { error }], { skipLocationChange: true })
         .then(() => this.location.go(errorRoute.url));
     };
 

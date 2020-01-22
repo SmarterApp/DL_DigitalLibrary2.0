@@ -1,3 +1,5 @@
+import { Params } from '@angular/router';
+
 export function coalesce<T>(value: T, defaultValue: T): T {
     if (value == null) {
       return defaultValue;
@@ -37,6 +39,10 @@ export function fastArrayMerge<T>(arrays: T[][]): T[] {
   }
   /*tslint:enable:prefer-for-of*/
   return result;
+}
+
+export function makeQueryString(params: Params): string {
+  return Object.entries(params).map(e => `${e[0]}=${e[1]}`).join('&');
 }
 
 /**
