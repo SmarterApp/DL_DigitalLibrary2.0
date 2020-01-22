@@ -1,0 +1,18 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+
+:host {
+  display: block;
+  height: 50vh;
+  width: 60ch;
+  margin: $spacer-xl auto;
+
+  h1 {
+    color: $brand-green;
+  }
+
+  div {
+    font-size: $font-size-3
+  }
+}

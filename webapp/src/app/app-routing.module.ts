@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OktaCallbackComponent, OktaLoginRedirectComponent } from '@okta/okta-angular';
+import { OktaLoginRedirectComponent } from '@okta/okta-angular';
 import { HomeComponent } from './home/home.component';
 import { AppContainerComponent } from './layout/app-container/app-container.component';
 import { ResourceTypeStrategyComponent } from './resource/resource-type-strategy.component';
@@ -13,6 +13,7 @@ import { SearchResultsComponent } from './search/results/search-results.componen
 import { SearchResultsResolve } from './search/results/search-results.resolve';
 import { SearchFiltersResolve } from './search/search-filters.resolve';
 import { ErrorComponent } from './layout/error/error.component';
+import { LoginCallbackComponent } from './layout/login-callback/login-callback.component';
 import { LogoutComponent } from './layout/logout/logout.component';
 import { ERROR_PATH, OKTA_CALLBACK_PATH } from './common/constants';
 
@@ -51,7 +52,7 @@ const routes: Routes = [
         component: LogoutComponent
       }, {
         path: OKTA_CALLBACK_PATH,
-        component: OktaCallbackComponent
+        component: LoginCallbackComponent
       }, {
         path: ERROR_PATH,
         component: ErrorComponent

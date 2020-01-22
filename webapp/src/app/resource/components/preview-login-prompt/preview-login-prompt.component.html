@@ -1,0 +1,11 @@
+<div class="prompt-container">
+  <h2>Login for Complete Access</h2>
+  <div>
+    The full content of this resource is available to educators in
+    subscribing states and territories. Login for access.
+  </div>
+  <sbdl-button class="primary" (click)="login()">
+    <span *ngIf="!loading">Log in</span>
+    <span *ngIf="loading"><i class="fas fa-spinner fa-pulse"></i></span>
+  </sbdl-button>
+</div>
