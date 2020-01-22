@@ -5,5 +5,5 @@ export interface PlaylistTopic {
   below: string;
   near: string;
   above: string;
-  topicResources: { id: string, type: ResourceType, title: string }[];
+  topicResources: { id: number, type: ResourceType, title: string }[];
 }

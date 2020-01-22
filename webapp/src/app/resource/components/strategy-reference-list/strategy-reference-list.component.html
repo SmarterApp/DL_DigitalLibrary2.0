@@ -1,5 +1,5 @@
 <section #sectionHeader>
-  <h3 *ngIf="!!title">{{ title }}</h3>
+  <h3 *ngIf="title">{{ title }}</h3>
   <div *ngFor="let strategy of strategies" class="strategy-link">
     <h3 *ngIf="!title" class="strategy-title">
       <a href="/resource/{{strategy.id}}"
@@ -9,7 +9,7 @@
         <i class="far fa-arrow-right" aria-hidden="true"></i>
       </a>
     </h3>
-    <h4 *ngIf="!!title" class="strategy-title">
+    <h4 *ngIf="title" class="strategy-title">
       <a href="/resource/{{strategy.id}}"
          attr.aria-label="{{ strategy.title }} (opens in a new window)"
          target="_blank">

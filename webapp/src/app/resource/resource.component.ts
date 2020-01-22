@@ -1,6 +1,8 @@
 import { AfterViewInit, ChangeDetectorRef, HostBinding, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 import { DomSanitizer, SafeStyle, Title } from '@angular/platform-browser';
+import { OktaAuthService } from '@okta/okta-angular';
 import { Map } from 'immutable';
 import { Resource } from '../data/resource/model/resource.model';
 import { Note } from '../data/notes/model/note.model';
@@ -38,6 +40,8 @@ export class ResourceComponent implements AfterViewInit, OnInit {
     private sanitizer: DomSanitizer,
     private titleService: Title,
     private location: Location,
+    private oktaAuthService: OktaAuthService,
+    private router: Router,
     private userService: UserService) { }
 
   ngAfterViewInit(): void {
@@ -69,7 +73,7 @@ export class ResourceComponent implements AfterViewInit, OnInit {
   }
 
   notesVisibilityChanged(notesVisible: boolean) {
-    this.notesVisible = !!this.user && notesVisible;
+    this.notesVisible = this.user && notesVisible;
   }
 
   notesChanged(notes: Note[]) {
@@ -82,6 +86,10 @@ export class ResourceComponent implements AfterViewInit, OnInit {
         .scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
       this.location.go(this.location.path() + '#' + DocumentSectionType.Attachments);
     }
+  }
+
+  login() {
+    this.oktaAuthService.loginRedirect(this.router.url);
   }
 
   private updatePrintStyles() {

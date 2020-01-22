@@ -18,7 +18,7 @@ export class NotesResolve implements Resolve<Note[]> {
       return this.userService.user.pipe(
         take(1),
         flatMap(user => {
-          if (!!user) {
+          if (user) {
             return this.notesService.listNotesForResource(route.params.resourceId);
           } else {
             return of([]);

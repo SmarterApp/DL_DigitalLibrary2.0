@@ -60,11 +60,67 @@
     }
 
     .resource-content {
-        grid-area: content;
-        padding: 0 $spacer-lg;
-        box-sizing: border-box;
-        max-width: calc(var(--measure) + 8rem);
-        z-index: 1;
+      grid-area: content;
+      padding: 0 $spacer-lg;
+      box-sizing: border-box;
+      max-width: calc(var(--measure) + 8rem);
+      z-index: 1;
+
+      .teaser-login-prompt {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 6;
+
+        .prompt-container {
+          background-color: white;
+          border-radius: 4px;
+          box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 8px 10px rgba(0, 0, 0, 0.14);
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 40rem;
+          opacity: 1;
+          padding: 1rem;
+          width: 34rem;
+          z-index: 6;
+
+          button {
+
+          }
+        }
+      }
+
+      &.teaser {
+        position: relative;
+
+        sbdl-instructional-content ::ng-deep {
+          & > *:not(sbdl-instructional-get-started) {
+            filter: blur(10px);
+          }
+        }
+
+        sbdl-professional-content ::ng-deep {
+          & > *:not(sbdl-professional-overview) {
+            filter: blur(10px);
+          }
+        }
+
+        sbdl-strategy-content ::ng-deep {
+          & > *:not(sbdl-strategy-overview) {
+            filter: blur(10px);
+          }
+        }
+
+        sbdl-playlsit-content ::ng-deep {
+          & > *:not(sbdl-playlist-overview) {
+            filter: blur(10px);
+          }
+        }
+
+      }
     }
 
     .resource-properties {
