@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output, Type, ViewChild } from '@angular/core';
 import { AngularEditorComponent, AngularEditorConfig } from '@kolkov/angular-editor';
+import { catchError } from 'rxjs/operators';
 import { Resource } from '../data/resource/model/resource.model';
 import { Note } from '../data/notes/model/note.model';
+import { NotesService } from '../data/notes/notes.service';
 
 @Component({
   selector: 'sbdl-notes',
@@ -24,6 +26,7 @@ export class NotesComponent {
 
   authoringNote = false;
   newNoteContent = '';
+  saving = false;
 
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -43,21 +46,33 @@ export class NotesComponent {
     ]
   };
 
+  constructor(private notesService: NotesService) { }
+
   addNote() {
     this.newNoteContent = '';
     this.authoringNote = true;
+    this.editorConfig.editable = true;
     requestAnimationFrame(() => { this.editor.focus(); });
   }
 
-  saveNote() {
+  saveNote = () => {
     const newNote: Note = {
+      id: null,
       resourceId: this.resource.id,
       content: this.newNoteContent,
       lastModified: new Date()
     };
 
-    this.notesChanged.emit(this.notes.concat([newNote]));
-    this.authoringNote = false;
+    this.editorConfig.editable = false;
+    this.saving = true;
+    this.notesService
+      .createNote(this.resource.id, newNote)
+      // TODO: pipe(catchError)
+      .subscribe((retNote: Note) => {
+        this.notesChanged.emit(this.notes.concat([retNote]));
+        this.authoringNote = false;
+        this.saving = false;
+      });
   }
 
   cancelNote() {

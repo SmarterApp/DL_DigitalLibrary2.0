@@ -28,4 +28,12 @@
     justify-content: space-between;
     margin-top: $spacer;
   }
+
+  .saving {
+    cursor: wait;
+
+    .dialog-buttons {
+      justify-content: center;
+    }
+  }
 }
