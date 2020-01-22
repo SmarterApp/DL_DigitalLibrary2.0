@@ -54,6 +54,7 @@
     <h3>Professional Learning</h3>
   </sbdl-resource-properties>
   <sbdl-notes
+    *ngIf="user"
     [hidden]="!notesVisible"
     [notes]="notes"
     [resource]="resource"

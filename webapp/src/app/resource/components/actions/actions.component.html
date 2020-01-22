@@ -1,10 +1,9 @@
-
-<sbdl-button-icon buttonTitle="Notes" (click)="toggleNotes()">
+<sbdl-button-icon *ngIf="isAuthenticated" buttonTitle="Notes" (click)="toggleNotes()">
   <sbdl-icon [ngClass]="{'has-notes': hasNotes}" icon="take-note"></sbdl-icon>
 </sbdl-button-icon>
 <sbdl-button-icon buttonTitle="Share" (click)="share()"><i class="far fa-share"></i></sbdl-button-icon>
 <ng-container #shareButton></ng-container>
-<sbdl-button-icon buttonTitle="Bookmark" (click)="toggleBookmarked()">
+<sbdl-button-icon *ngIf="isAuthenticated" buttonTitle="Bookmark" (click)="toggleBookmarked()">
   <div *ngIf="!togglingBookmarked && resource.properties.isBookmarked">
     <i class="fas fa-bookmark"></i>
   </div>
