@@ -20,6 +20,8 @@ export class AppContainerComponent implements OnInit {
 
   routeLoading = false;
 
+  get locationPath() { return this.location.path(); }
+
   private oldPath = '/';
   private loading$ = new Subject<boolean>();
 
