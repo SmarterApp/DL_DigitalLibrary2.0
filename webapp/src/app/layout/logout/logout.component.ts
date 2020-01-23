@@ -1,3 +1,4 @@
+import { APP_BASE_HREF } from '@angular/common';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OktaAuthService } from '@okta/okta-angular';
@@ -10,13 +11,14 @@ import { OktaAuthService } from '@okta/okta-angular';
 export class LogoutComponent implements AfterViewInit, OnInit {
   constructor(
     private oktaAuthService: OktaAuthService,
-    private router: Router) {}
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.oktaAuthService.logout();
   }
 
   ngAfterViewInit() {
-    setTimeout(() => this.router.navigate(['/']), 3000);
+    setTimeout(() => this.router.navigate([APP_BASE_HREF]), 3000);
   }
 }

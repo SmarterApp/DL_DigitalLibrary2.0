@@ -10,12 +10,10 @@ import { OktaAuthService } from '@okta/okta-angular';
 export class PreviewLoginPromptComponent {
   loading = false;
 
-  constructor(
-    private oktaAuthService: OktaAuthService,
-    private router: Router) {}
+  constructor(private oktaAuthService: OktaAuthService) {}
 
   login() {
     this.loading = true;
-    this.oktaAuthService.loginRedirect(this.router.url);
+    this.oktaAuthService.loginRedirect();
   }
 }

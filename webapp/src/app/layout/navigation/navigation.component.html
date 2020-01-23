@@ -1,27 +1,27 @@
 <div class="watercolor"></div>
 <div class="logo">
-  <a [routerLink]="['/']" title="Tools for Teachers Home Page">
+  <a [routerLink]="[baseHref]" title="Tools for Teachers Home Page">
     <img class="small" src="/assets/svg/tft-logo-small.svg" aria-hidden="true">
     <img class="full" src="/assets/svg/tft-logo-full.svg" aria-hidden="true">
   </a>
 </div>
 
-<a [routerLink]="['/']">
+<a [routerLink]="[baseHref]">
   <i class="far fa-search" aria-hidden="true"></i>
   <label>Find Resources</label>
 </a>
 
-<a [routerLink]="['/search', { resourceTypes: ['fs'] }]">
+<a [routerLink]="[baseHref, 'search', { resourceTypes: ['fs'] }]">
   <sbdl-icon icon="strategies" aria-hidden="true"></sbdl-icon>
   <label>Formative Assessment Strategies</label>
 </a>
 
-<a [routerLink]="['/search', { resourceTypes: ['as'] }]">
+<a [routerLink]="[baseHref, 'search', { resourceTypes: ['as'] }]">
   <i class="far fa-universal-access" aria-hidden="true"></i>
   <label>Accessibility Strategies</label>
 </a>
 
-<a *ngIf="isAuthenticated" [routerLink]="['/bookmarks']" class="auto-margin">
+<a *ngIf="isAuthenticated" [routerLink]="[baseHref, 'bookmarks']" class="auto-margin">
   <i class="far fa-bookmark" aria-hidden="true"></i>
   <label>Bookmarks &amp; Notes</label>
 </a>
@@ -29,6 +29,6 @@
 <button *ngIf="!isAuthenticated" (click)="login()" class="auto-margin">
   <i class="far fa-sign-in-alt" aria-hidden="true"></i><label>Login</label>
 </button>
-<button *ngIf="isAuthenticated" (click)="logout()">
+<a *ngIf="isAuthenticated" [routerLink]="[baseHref, 'auth', 'logout']">
   <i class="far fa-sign-out-alt" aria-hidden="true"></i><label>Logout</label>
-</button>
+</a>

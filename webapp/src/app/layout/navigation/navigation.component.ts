@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { APP_BASE_HREF } from '@angular/common';
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { OktaAuthService } from '@okta/okta-angular';
 import { UserService } from 'src/app/data/user/user.service';
@@ -13,9 +14,10 @@ export class NavigationComponent {
   isAuthenticated: boolean;
 
   constructor(
-    private userService: UserService,
+    @Inject(APP_BASE_HREF) public baseHref: string,
+    private oktaAuthService: OktaAuthService,
     private router: Router,
-    private oktaAuthService: OktaAuthService
+    private userService: UserService
   ) {
     this.userService.user.subscribe((user: User) => {
       this.isAuthenticated = user !== null;
@@ -24,10 +26,6 @@ export class NavigationComponent {
 
   login() {
     this.oktaAuthService.loginRedirect(this.router.url);
-  }
-
-  logout() {
-    this.oktaAuthService.logout('/auth/logout');
   }
 
 }

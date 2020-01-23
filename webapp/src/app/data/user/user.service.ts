@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { APP_BASE_HREF } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { map, flatMap, share, skip, tap } from 'rxjs/operators';
 import { OktaAuthService } from '@okta/okta-angular';
@@ -19,11 +20,14 @@ export class UserService {
   // produce a value. For example, see the DataService's usage.
   private userReplay: ReplaySubject<User> = new ReplaySubject(1);
 
-  constructor(private authService: OktaAuthService) {
+  constructor(
+    @Inject(APP_BASE_HREF) private baseHref,
+    private oktaAuthService: OktaAuthService
+  ) {
     // Subscribe to the Okta auth state so that we can push updates to our
     // subscribers when the user logs in or out. This lets Okta push changes to
     // us and our subscribers.
-    this.authService.$authenticationState.subscribe(this.updateUser);
+    this.oktaAuthService.$authenticationState.subscribe(this.updateUser);
 
     // This is a pull from Okta for the first value. When we first load we're
     // not going to receive anything from the above subscription. We need to
@@ -40,8 +44,8 @@ export class UserService {
    * Use the OktaAuthService to pull the initial user state from
    * cookies/wherever it's storing it.
    */
-  loadInitialUser() {
-    this.authService.isAuthenticated().then(this.updateUser);
+  private loadInitialUser() {
+    this.oktaAuthService.isAuthenticated().then(this.updateUser);
   }
 
   /**
@@ -60,11 +64,11 @@ export class UserService {
    * Interrogate the OktaAuthService and build a User model object.
    */
   private readUserFromOkta = async (): Promise<User> => {
-    const userProfile: any = await this.authService.getUser();
+    const userProfile: any = await this.oktaAuthService.getUser();
     return {
       ...userProfile,
-      accessToken: await this.authService.getAccessToken(),
-      idToken: await this.authService.getIdToken()
+      accessToken: await this.oktaAuthService.getAccessToken(),
+      idToken: await this.oktaAuthService.getIdToken()
     } as User;
   }
 }
