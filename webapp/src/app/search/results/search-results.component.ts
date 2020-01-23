@@ -24,17 +24,11 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
 
   showAdvancedFiltersInitially: boolean;
 
-  loading = true;
-
   private dataSubscription: Subscription;
   private paramsSubscription: Subscription;
   private routerSubscription: Subscription;
 
   ngOnInit() {
-    this.routerSubscription = this.router.events
-      .pipe(filter(e => e instanceof NavigationStart))
-      .subscribe(() => { this.loading = true; });
-
     this.dataSubscription = this.route.data.subscribe(data => {
       if (data.results) {
         this.allResults = data.results.results || [];
@@ -73,7 +67,6 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   }
 
   chunkedRender = () => {
-    this.loading = false;
     if (this.renderedResults.length < this.allResults.length) {
       this.renderedResults.push(this.allResults[this.renderedResults.length]);
       requestAnimationFrame(this.chunkedRender);

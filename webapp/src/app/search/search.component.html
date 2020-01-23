@@ -28,10 +28,6 @@
   </sbdl-button>
 </h1>
 
-<div [hidden]="!showAdvanced || numResults === 0" class="advanced-search">
-  <div class="loading-overlay" [attr.aria-hidden]="loading" [ngClass]="{loading: loading}">
-    <div>Loading...</div>
-  </div>
   <div class="advanced-header">
       <h2 *ngIf="!showingResults">Browse for Resources</h2>
       <h2 *ngIf="showingResults">Advanced Search</h2>

@@ -41,9 +41,6 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
   @Input()
   numResults: number;
 
-  @Input()
-  loading = false;
-
   @Output()
   goToResults = new EventEmitter<boolean>();
 
@@ -115,7 +112,6 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
   }
 
   search(newParams: SearchQueryParams) {
-    this.loading = true;
     const params = this.rectifyParams({...this.params, ...newParams });
 
     this.router.navigate(['search', params]);

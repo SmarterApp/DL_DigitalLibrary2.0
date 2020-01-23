@@ -45,6 +45,11 @@ export function makeQueryString(params: Params): string {
   return Object.entries(params).map(e => `${e[0]}=${e[1]}`).join('&');
 }
 
+export function urlPathPart(url: string): string {
+  const PATH_REGEX = /(^[^?&;#]+)/;
+  return url.match(PATH_REGEX)[1] || '';
+}
+
 /**
  * From: https://stackoverflow.com/questions/25312134/how-to-test-rendering-speed-in-angular
  */
