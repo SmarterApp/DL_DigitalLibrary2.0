@@ -1,3 +1,4 @@
+import { APP_BASE_HREF } from '@angular/common';
 import { Location } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { OktaAuthService } from '@okta/okta-angular';
@@ -33,6 +34,7 @@ describe('AppContainerComponent', () => {
       declarations: [ AppContainerComponent, FooterComponent, NavigationComponent ],
       imports: [ RouterTestingModule.withRoutes([]), SbdlCommonModule ],
       providers: [
+        { provide: APP_BASE_HREF, useValue: '/' },
         { provide: ActivatedRoute, useValue: mockRootActivatedRouteSnapshot },
         { provide: Location, useValue: { path: () => {} } },
         { provide: OktaAuthService, useClass: MockOktaAuthService },

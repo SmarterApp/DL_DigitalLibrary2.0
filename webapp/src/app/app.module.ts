@@ -1,3 +1,4 @@
+import { APP_BASE_HREF } from '@angular/common';
 import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { Angulartics2Module } from 'angulartics2';
@@ -50,6 +51,11 @@ export function initializeOkta(appConfig: AppConfig) {
     SbdlCommonModule
   ],
   providers: [
+    {
+      provide: APP_BASE_HREF,
+      useValue: '/' // Could move into AppConfig
+      // deps: [ AppConfig ]
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: initializeApp,
