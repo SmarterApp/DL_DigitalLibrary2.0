@@ -7,8 +7,14 @@
     (keydown.enter)="onIconClick($event)"
     [(ngModel)]="model"
     [value]="model || ''"
+    [disabled]="disabled"
     [placeholder]="placeholder || ''" >
-  <sbdl-button class="primary" (click)="onIconClick($event)">
+
+  <sbdl-button
+    class="primary"
+    (click)="onIconClick($event)"
+    [disabled]="disabled" >
+
     <i *ngIf="fontAwesomeIcon" class="far {{fontAwesomeIcon}}" tabindex="0" role="button"></i>
   </sbdl-button>
   <div class="mdc-notched-outline">
