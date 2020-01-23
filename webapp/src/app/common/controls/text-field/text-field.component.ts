@@ -19,6 +19,9 @@ export class TextFieldComponent implements OnInit, AfterViewInit {
   @Input()
   model: string;
 
+  @Input()
+  disabled: boolean;
+
   @Output()
   submit = new EventEmitter<string>();
 

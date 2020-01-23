@@ -1,3 +1,4 @@
+<h1 *ngIf="showHeadings && newSearch" class="new-search">Search for Resources </h1>
 <sbdl-text-field
   (submit)="search({query: $event})"
   [model]="filters.query"
@@ -5,14 +6,14 @@
   fontAwesomeIcon="fa-search">
 </sbdl-text-field>
 
-<div *ngIf="!showingResults" class="emphasis-medium caption browse-caption">
+<div *ngIf="newSearch" class="emphasis-medium caption browse-caption">
   Start typing a topic, claim, target, or <a href="javascript:void(0)" (click)="showAdvanced = true">browse for resources</a>.
 </div>
-<div *ngIf="showingResults" class="emphasis-medium caption filters-caption">
+<div *ngIf="!newSearch" class="emphasis-medium caption filters-caption">
   Start typing a topic, claim, target, or <a href="javascript:void(0);" (click)="showAdvanced = true">advanced search</a>.
 </div>
 
-<h1 *ngIf="showingResults" class="results-header">
+<h1 *ngIf="!newSearch" class="results-header">
   <span>
     Found {{ numResults }}
     <ng-container [ngPlural]="numResults" >
@@ -28,13 +29,16 @@
   </sbdl-button>
 </h1>
 
-<div [hidden]="!showAdvanced || numResults === 0" class="advanced-search">
-  <div class="loading-overlay" [attr.aria-hidden]="loading" [ngClass]="{loading: loading}">
-    <div>Loading...</div>
-  </div>
+<div *ngIf="showHeadings && newSearch" class="new-search">
+  Search for resources related to your search terms using the search input
+  above or click <a href="javascript:void(0)" (click)="showAdvanced = true">browse for resources</a>
+  to search for resources that exactly match your search criteria.
+</div>
+
+<div [hidden]="!showAdvanced || (!newSearch && numResults === 0)" class="advanced-search">
   <div class="advanced-header">
-      <h2 *ngIf="!showingResults">Browse for Resources</h2>
-      <h2 *ngIf="showingResults">Advanced Search</h2>
+      <h2 *ngIf="newSearch">Browse for Resources</h2>
+      <h2 *ngIf="!newSearch">Advanced Search</h2>
       <div>
         <a [routerLink]="['/search', {query: filters.query || ''}]"
            class="emphasis-medium caption">

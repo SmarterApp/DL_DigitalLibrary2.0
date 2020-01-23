@@ -36,18 +36,16 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
   showAdvanced = false;
 
   @Input()
-  showingResults = false;
-
-  @Input()
   numResults: number;
 
   @Input()
-  loading = false;
+  showHeadings = true;
 
   @Output()
   goToResults = new EventEmitter<boolean>();
 
   params: SearchQueryParams;
+  newSearch = true;
 
   private routerSubscription: Subscription;
 
@@ -55,11 +53,13 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
 
   ngOnInit() {
     this.params = this.rectifyParams(this.parseParams(this.route.snapshot.params || {}));
+    this.newSearch = (Object.keys(this.params).length === 0);
 
     this.routerSubscription = this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe(() => {
         this.params = this.rectifyParams(this.parseParams(this.route.snapshot.params || {}));
+        this.newSearch = (Object.keys(this.params).length === 0);
       });
   }
 
@@ -115,7 +115,6 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
   }
 
   search(newParams: SearchQueryParams) {
-    this.loading = true;
     const params = this.rectifyParams({...this.params, ...newParams });
 
     this.router.navigate(['search', params]);

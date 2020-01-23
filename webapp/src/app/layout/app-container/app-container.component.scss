@@ -1,3 +1,4 @@
+@import "colors";
 @import "spacing";
 
 .app-container {
@@ -31,12 +32,35 @@
 
   .router-outlet {
     grid-area: router-outlet;
+    position: relative;
+
+    .route-loader {
+      background-color: rgba(255, 255, 255, 0.4);
+      cursor: wait;
+      height: 100vh;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width:  calc(100vw - 64px);
+      z-index: 10;
+
+      .spinner-container {
+        margin: calc(50vh - 3rem) auto;
+        width:  6rem;
+
+        svg {
+          color: $neutral-500;
+          font-size: 6rem;
+        }
+      }
+    }
   }
 
   sbdl-footer {
     grid-area: footer;
     max-width: 100%;
   }
+
 }
 
 @media only screen and (max-width: $breakpoint-sm) {
@@ -64,4 +88,6 @@
       display: none;
     }
   }
+
+  .route-loader { display: none; }
 }

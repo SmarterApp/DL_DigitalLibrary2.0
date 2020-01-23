@@ -7,8 +7,14 @@ import { mockUser } from './data/mock-data';
 import { MockDataService } from './data/mock-data.service';
 
 // Common AppModule mocks here.
+export const dummyObservable = {
+  subscribe: () => {},
+  unsubscribe: () => {}
+};
+
 export const mockRootActivatedRouteSnapshot = {
-    snapshot: { data: { currentUser: mockUser } }
+    snapshot: { data: { currentUser: mockUser } },
+    fragment: dummyObservable
 };
 
 export function mockAppConfig() {

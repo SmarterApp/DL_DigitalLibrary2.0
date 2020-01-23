@@ -1,8 +1,8 @@
-import { APP_BASE_HREF, Location } from '@angular/common';
+import { Location } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
 import { OktaAuthService } from '@okta/okta-angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { Observable, of } from 'rxjs';
 import { FooterComponent } from '../footer/footer.component';
 import { NavigationComponent } from '../navigation/navigation.component';
@@ -31,10 +31,9 @@ describe('AppContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AppContainerComponent, FooterComponent, NavigationComponent ],
-      imports: [ RouterTestingModule, SbdlCommonModule ],
+      imports: [ RouterTestingModule.withRoutes([]), SbdlCommonModule ],
       providers: [
         { provide: ActivatedRoute, useValue: mockRootActivatedRouteSnapshot },
-        { provide: APP_BASE_HREF, useValue: '/' },
         { provide: Location, useValue: { path: () => {} } },
         { provide: OktaAuthService, useClass: MockOktaAuthService },
         { provide: UserService, useClass: MockUserService }
