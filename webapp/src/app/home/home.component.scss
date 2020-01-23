@@ -170,13 +170,16 @@
       font-style: normal;
       font-weight: 500;
       line-height: 133%;
-      max-width: 20ch;
+      max-width: 427px;
     }
 
-    .promoted-video img {
-      max-width: 416px;
+    .promoted-video img,
+    .promoted-video iframe {
+      max-width: 427px;
       margin-top: $spacer-md;
       padding: 0 0.25rem;
+      width: 427px;
+      height: 240px;
     }
   }
 }

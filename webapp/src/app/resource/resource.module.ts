@@ -17,6 +17,7 @@ import { EducationalDetailsComponent } from './components/resource-properties/ed
 import { HeaderComponent } from './components/header/header.component';
 import { OutlineComponent } from './components/outline/outline.component';
 import { EnhancedPrintingComponent } from './components/outline/enhanced-printing/enhanced-printing.component';
+import { PreviewLoginPromptComponent } from './components/preview-login-prompt/preview-login-prompt.component';
 import { PrintCheckboxComponent } from './components/outline/enhanced-printing/print-checkbox.component';
 import { ResourcePropertiesComponent } from './components/resource-properties/resource-properties.component';
 import { ResourceSummaryCardComponent } from './components/resource-summary-card/resource-summary-card.component';
@@ -68,6 +69,7 @@ import { ProgressionScaleButtonComponent } from './playlist/topics/progression-s
     HeaderComponent,
     OutlineComponent,
     EnhancedPrintingComponent,
+    PreviewLoginPromptComponent,
     PrintCheckboxComponent,
     ResourceHostDirective,
     ResourcePropertiesComponent,

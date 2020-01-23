@@ -1,10 +1,8 @@
 import { Component, ChangeDetectorRef, Input, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
 import { UserService } from 'src/app/data/user/user.service';
 import { ResourceComponent } from '../resource.component';
 import { DomSanitizer, Title } from '@angular/platform-browser';
-import { OktaAuthService } from '@okta/okta-angular';
 import { FormativeStrategyResource } from '../../data/resource/model/formative-strategy.model';
 import { AccessibilityStrategyResource } from '../../data/resource/model/accessibility-strategy.model';
 
@@ -22,10 +20,8 @@ export class StrategyResourceComponent extends ResourceComponent {
               sanitizer: DomSanitizer,
               titleService: Title,
               location: Location,
-              oktaAuthService: OktaAuthService,
-              router: Router,
               userService: UserService) {
 
-    super(cdRef, sanitizer, titleService, location, oktaAuthService, router, userService);
+    super(cdRef, sanitizer, titleService, location, userService);
   }
 }

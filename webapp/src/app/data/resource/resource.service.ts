@@ -50,6 +50,15 @@ export class ResourceService {
       toArray());
   }
 
+  getResourceSummariesForIds = (ids: Observable<number[]> | number[]): Observable<ResourceSummary[]> => {
+    const obs: Observable<number[]> = ids instanceof Observable ? ids : of(ids);
+    return obs.pipe(
+      mergeAll(),
+      flatMap(id => this.dataService.get(`/api/resource/${id}`)),
+      map(this.resourceSummaryFromJson),
+      toArray());
+  }
+
   private resourceFromJson = (resourceJson: any): Resource => {
     const resourceType = resourceJson.type as ResourceType;
 

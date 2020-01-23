@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { BookmarksService } from '../data/bookmarks/bookmarks.service';
 import { ResourceService } from '../data/resource/resource.service';
-import { mockResourceSummaries } from '../data/mock-data';
 
 @Injectable({
     providedIn: 'root'

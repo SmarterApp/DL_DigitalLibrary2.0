@@ -31,19 +31,10 @@
   ></sbdl-enhanced-printing>
 </nav>
 <main id="main" class="resource-content" [ngClass]="{teaser: resource.teaser}">
-  <div *ngIf="resource.teaser" class="teaser-login-prompt">
-    <div class="prompt-container">
-      <h2>Login for Complete Access</h2>
-      <div>
-        The full content of this resource is available to educators in
-        subscribing states and territories. Login for access.
-      </div>
-      <button class="primary" (click)="login()">
-        <i class="far fa-sign-in-alt" aria-hidden="true"></i><label>Log in</label>
-      </button>
 
-    </div>
-  </div>
+  <sbdl-preview-login-prompt *ngIf="resource.teaser"
+  ></sbdl-preview-login-prompt>
+
   <sbdl-playlist-content
     [notes]="notes"
     [notesVisible]="notesVisible"
