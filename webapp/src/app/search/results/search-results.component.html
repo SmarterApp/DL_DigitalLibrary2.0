@@ -1,9 +1,9 @@
 <article id="main" class="results-container">
   <sbdl-search
     [filters]="filters"
+    [showHeadings]="true"
     [showAdvanced]="showAdvancedFiltersInitially"
     [numResults]="allResults.length"
-    showingResults="true"
     (goToResults)="scrollToResults()"
   ></sbdl-search>
   <section #results class="search-results" width="120px" height="120px">

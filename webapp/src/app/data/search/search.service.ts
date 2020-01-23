@@ -80,6 +80,21 @@ export class SearchService {
       }))
     );
   }
+  public paramsToRequestModel(params: any): SearchRequestModel {
+    if (Object.keys(params).length === 0) {
+      return null;
+    }
+
+    return {
+      Search_Text: params.query || '',
+      Claim: this.splitToArray(params.claims),
+      Grade: this.splitToArray(params.grades),
+      Standard: this.splitToArray(params.standards),
+      Subject: this.splitToArray(params.subjects),
+      Target: this.splitToArray(params.targets),
+      Resource_Type: this.splitToArray(params.resourceTypes)
+    };
+  }
 
   private hasNextPage(page: any): boolean {
     return page['hydra:view'].hasOwnProperty('hydra:next');
@@ -244,18 +259,6 @@ export class SearchService {
       .filter(f => f);
 
     return filters;
-  }
-
-  public paramsToRequestModel(params: any): SearchRequestModel {
-    return {
-      Search_Text: params.query || '',
-      Claim: this.splitToArray(params.claims),
-      Grade: this.splitToArray(params.grades),
-      Standard: this.splitToArray(params.standards),
-      Subject: this.splitToArray(params.subjects),
-      Target: this.splitToArray(params.targets),
-      Resource_Type: this.splitToArray(params.resourceTypes)
-    };
   }
 
   private splitToArray(param: string) {
