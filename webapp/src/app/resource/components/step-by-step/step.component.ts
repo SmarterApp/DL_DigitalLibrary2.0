@@ -16,7 +16,7 @@ export class StepComponent extends PrintableSectionComponent implements AfterVie
 
   constructor(sanitizer: DomSanitizer) {
     super(sanitizer, '', {
-      baseStyle: '--print-display: list-item',
+      baseStyle: '--print-display: list-item;',
       printSelected: '--print-position: relative; --print-visibility: visible;',
       printHidden: '--print-position: fixed; --print-visibility: hidden;'
     });

@@ -102,7 +102,7 @@
         width: var(--nav-width);
         min-width: var(--nav-width);
         transition-property: width, min-width, margin-left, z-index;
-        z-index: 2;
+        z-index: 0;
         transition-duration: 0.5s;
         transition-timing-function: ease-in;
 
@@ -247,7 +247,7 @@
 }
 
 @media only print {
-  :host {
+  :host { 
     grid-template: "header" "properties" "content" / auto;
 
     .outline, nav, sbdl-outline, sbdl-enhanced-printing {
@@ -262,7 +262,7 @@
       img { display: none; }
     }
 
-    .resource-properties {
+    .resource-properties { 
       background-image: none;
       box-shadow: none;
       padding: 0 $spacer-xl;
@@ -271,6 +271,10 @@
       min-width: unset;
       min-height: unset;
       width: unset;
+    }
+
+    .resource-content {
+      z-index: -1;
     }
 
     &::ng-deep {
