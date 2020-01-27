@@ -4,6 +4,11 @@
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-playlist-topics>
 
+<sbdl-playlist-intervention
+  [content]="resource.overview.interventionSuggestions"
+  (sectionLoaded)="addDocumentSection($event)">
+</sbdl-playlist-intervention>
+
 <sbdl-simple-section
   [contentHtml]="resource.thingsToConsider"
   [options]="commentsSectionOptions"
