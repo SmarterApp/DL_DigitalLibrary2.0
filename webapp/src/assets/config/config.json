@@ -1,7 +1,7 @@
 {
   "env": {
     "name": "Default"
-   },
+  },
   "logging": {
     "console": true,
     "aws": false,
@@ -12,5 +12,8 @@
   "okta": {
     "clientId": "0oamt7hm566G44ZVm0h7",
     "issuer": "https://smarterbalanced.oktapreview.com/oauth2/auslw2qcsmsUgzsqr0h7"
+  },
+  "apiServer": {
+    "authToken": "NzJmN2JkM2FmYmQ2NGFhMjhmZjJkYThlMDQwNzE4ZjcwMWJjMWJmZDRhYzkzNTk2YzQwYTA5NjI4NzkwNzg2NA"
   }
 }
