@@ -1,27 +1,47 @@
-import { Injectable } from '@angular/core';
-import { Observable, of, from } from 'rxjs';
-import { expand } from 'rxjs/internal/operators/expand';
-import { map } from 'rxjs/internal/operators/map';
-import { mergeMap } from 'rxjs/internal/operators/mergeMap';
-import { reduce } from 'rxjs/internal/operators/reduce';
-import { takeWhile } from 'rxjs/internal/operators/takeWhile';
-import { tap } from 'rxjs/internal/operators/tap';
-import { EMPTY } from 'rxjs';
-import { DataService } from '../data.service';
-import { SearchResults } from './search-results.model';
-import { SearchRequestModel } from './search-request.model';
-import { coalesce } from 'src/app/common/utils';
-import { ResourceService } from '../resource/resource.service';
-import { Claim } from '../resource/model/claim.model';
-import { Grade } from '../resource/model/grade.model';
-import { Subject } from '../resource/model/subject.model';
-import { Standard } from '../resource/model/standard.model';
-import { Target } from '../resource/model/target.model';
-import { SearchFilters, Filter, emptyFilters } from './search-filters.model';
-import { ResourceType } from '../resource/model/resource-type.enum';
-import { ResourceSummary } from '../resource/model/summary.model';
-import { fastArrayMerge } from 'src/app/common/utils';
-import { initialSearchFilters } from '../mock-data';
+import {Injectable} from '@angular/core';
+import {EMPTY, Observable, of} from 'rxjs';
+import {expand} from 'rxjs/internal/operators/expand';
+import {map} from 'rxjs/internal/operators/map';
+import {reduce} from 'rxjs/internal/operators/reduce';
+import {DataService} from '../data.service';
+import {SearchResults} from './search-results.model';
+import {SearchRequestModel} from './search-request.model';
+import {Claim} from '../resource/model/claim.model';
+import {Grade} from '../resource/model/grade.model';
+import {Subject} from '../resource/model/subject.model';
+import {Standard} from '../resource/model/standard.model';
+import {Target} from '../resource/model/target.model';
+import {Filter, SearchFilters} from './search-filters.model';
+import {ResourceSummary} from '../resource/model/summary.model';
+import {initialSearchFilters} from '../mock-data';
+import {gradeCodeOrdering, resourceTypeCodeOrdering} from '../resource/resource-field-orderings';
+import {byOrdering, byString, Comparator, on} from '../../common/sorting/sorting';
+
+interface BumpySearchResults {
+  results: ResourceSummary[];
+  filters: SearchFilters[];
+}
+
+const byCode: Comparator<Filter> = on(x => x.code, byString());
+const byResourceTypeCode: Comparator<Filter> = on(x => x.code, byOrdering(resourceTypeCodeOrdering));
+const byGradeCode: Comparator<Filter> = on(x => x.code, byOrdering(gradeCodeOrdering));
+
+/**
+ * Creates a copy of the search filters with sorted filter selections
+ * @param filters The search filters to sort
+ */
+function sortFilters(filters: SearchFilters): SearchFilters {
+  return {
+    ...filters,
+    resourceTypes: [...filters.resourceTypes || []].sort(byResourceTypeCode),
+    grades: [...filters.grades || []].sort(byGradeCode),
+    subjects: [...filters.subjects || []].sort(byCode),
+    claims: [...filters.claims || []].sort(byCode),
+    targets: [...filters.targets || []].sort(byCode),
+    standards: [...filters.standards || []].sort(byCode),
+  };
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -33,12 +53,12 @@ export class SearchService {
   getDefaultFilters(): Observable<SearchFilters> {
     // return this.dataService.get('/api/search/filters');
     // TODO: Replace with an actual way to get default filters
-
+    // This is a poor-man's deep-copy used to prevent mutation of the initial filters
     return of(JSON.parse(JSON.stringify(initialSearchFilters)));
   }
 
-  fetchAllResults(req: SearchRequestModel): Observable<SearchResults> {
-    return this.dataService.get('/api/search_dl_resources', req).pipe(
+  fetchAllResults(request: SearchRequestModel): Observable<SearchResults> {
+    return this.dataService.get('/api/search_dl_resources', request).pipe(
       // Fetch all pages of results. expand passes all outputs back into the
       // supplied function. So page 1 is fetched, goes through the expand
       // function and returns an observable for the request for page 2. That
@@ -56,30 +76,32 @@ export class SearchService {
       // and all the filter data into one intermediate object. Note that the
       // form of this intermediate object is:
       //
-      //     { results: ResourceSummary[][],
-      //       filters: SearchFilters[][] }
+      //     { results: ResourceSummary[],
+      //       filters: SearchFilters[] }
       //
       // This is for performance. It will be faster to merge all the resource
       // summary collections together at once, and de-dupe the filter
       // collections once than to do it every time we map in another page of
       // results.
       reduce(
-        (acc, page) => {
-          acc.results.push(page['hydra:member'].map(this.resourceSummaryFromJson));
-          acc.filters.push(page['hydra:member'].map(this.extractFilters));
-          return acc;
+        (searchFiters, page) => {
+          searchFiters.results.push(...page['hydra:member'].map(this.resourceSummaryFromJson));
+          searchFiters.filters.push(...page['hydra:member'].map(this.extractFilters));
+          return searchFiters;
         },
-        { results: [], filters: [] }),
+        { results: [], filters: [] }
+      ),
 
       // Now we flatten our non-flattened (Bumpy) results lists and filter
       // lists into our final SearchResults shape, de-duping the filter values
       // along the way.
       map((bumpy: BumpySearchResults): SearchResults => ({
-        results: fastArrayMerge(bumpy.results),
-        filters: this.sortFilters(this.dedupeFilters(fastArrayMerge(bumpy.filters), req.Search_Text))
+        results: bumpy.results,
+        filters: sortFilters(this.dedupeFilters(bumpy.filters, request.Search_Text))
       }))
     );
   }
+
   public paramsToRequestModel(params: any): SearchRequestModel {
     if (Object.keys(params).length === 0) {
       return null;
@@ -234,39 +256,7 @@ export class SearchService {
     return result;
   }
 
-  /**
-   * Note that this mutates the filters in place.
-   */
-  private sortFilters(filters: SearchFilters) {
-
-    // Sort the filters. Here we will need to have logic specific to each
-    // filter type.
-    const sortOnCode = (a, b) => {
-      return a.code > b.code ? 1 :
-             a.code < b.code ? -1 :
-             0;
-    };
-
-    const typesOrder = ['ir', 'cp', 'pl', 'fs', 'as'];
-
-    filters.grades.sort((a, b) => +a.code.substring(1) - +b.code.substring(1));
-    filters.subjects.sort(sortOnCode);
-    filters.claims.sort(sortOnCode);
-    filters.targets.sort(sortOnCode);
-    filters.standards.sort(sortOnCode);
-    filters.resourceTypes = typesOrder
-      .map(sortedCode => filters.resourceTypes.find(f => f.code === sortedCode))
-      .filter(f => f);
-
-    return filters;
-  }
-
   private splitToArray(param: string) {
     return param ? param.split(',') : [];
   }
-}
-
-interface BumpySearchResults {
-  results: ResourceSummary[][];
-  filters: SearchFilters[][];
 }
