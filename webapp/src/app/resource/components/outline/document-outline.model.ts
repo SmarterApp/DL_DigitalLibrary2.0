@@ -16,6 +16,7 @@ export enum DocumentSectionType {
   StrategyInAction = 'strategy-in-action',
   PlaylistTopics = 'playlist-topics',
   PlaylistInterim = 'playlist-interim',
+  PlaylistIntervention = 'playlist-intervention',
 
   Subsection = 'subsection'
 }
