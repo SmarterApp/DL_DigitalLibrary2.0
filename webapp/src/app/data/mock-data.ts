@@ -113,8 +113,8 @@ export const initialSearchFilters: SearchFilters = {
     { code: 'ir', title: 'Instructional' },
     { code: 'cp', title: 'Connections Playlist' },
     { code: 'pl', title: 'Professional Learning' },
-    { code: 'as', title: 'Accessibility Strategy' },
-    { code: 'fs', title: 'Formative Assessment Strategy' }
+    { code: 'fs', title: 'Formative Assessment Strategy' },
+    { code: 'as', title: 'Accessibility Strategy' }
   ],
   standards: [
     { code: 'ela-g3-l3a',     title: 'L-3a' },
