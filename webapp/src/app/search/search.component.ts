@@ -1,11 +1,20 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy,
-  OnInit, Output, ViewChildren } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { MDCChipSet } from '@material/chips';
-import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/internal/operators/filter';
-import { SearchFilters, emptyFilters } from '../data/search/search-filters.model';
-import { coalesce, whitelistKeys } from '../common/utils';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChildren
+} from '@angular/core';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {MDCChipSet} from '@material/chips';
+import {Subscription} from 'rxjs';
+import {filter} from 'rxjs/internal/operators/filter';
+import {emptyFilters, SearchFilters} from '../data/search/search-filters.model';
+import {whitelistKeys} from '../common/utils';
 
 // Only used by this class. Should move to search-query-params.model.ts is we
 // need to use elsewhere

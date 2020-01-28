@@ -1,11 +1,8 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
-import { MDCRipple } from '@material/ripple';
-import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/internal/operators/filter';
-import { ResourceSummary } from 'src/app/data/resource/model/summary.model';
-import { SearchFilters, Filter, emptyFilters } from '../../data/search/search-filters.model';
-import { SearchResultCardComponent } from './card/search-result-card.component';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {ResourceSummary} from 'src/app/data/resource/model/summary.model';
+import {emptyFilters, Filter, SearchFilters} from '../../data/search/search-filters.model';
 
 @Component({
   selector: 'sbdl-search-results',
