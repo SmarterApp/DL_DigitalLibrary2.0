@@ -24,6 +24,15 @@ export class ProgressionScaleButtonComponent {
     return this.SCALE_TITLES.get(this.scale);
   }
 
+  private SCALE_ABBREVS = new Map<string, string>([
+    ['above', 'A'],
+    ['near', 'N'],
+    ['below', 'B']
+  ]);
+
+  get scaleAbbrev() {
+    return this.SCALE_ABBREVS.get(this.scale);
+  }
 }
 
 export type ScaleValue = 'above' | 'near' | 'below';
