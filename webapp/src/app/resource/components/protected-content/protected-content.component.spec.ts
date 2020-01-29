@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProtectedContentComponent } from './protected-content.component';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('ProtectedContentComponent', () => {
   let component: ProtectedContentComponent;
@@ -8,9 +9,9 @@ describe('ProtectedContentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProtectedContentComponent ]
-    })
-    .compileComponents();
+      declarations: [ ProtectedContentComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
