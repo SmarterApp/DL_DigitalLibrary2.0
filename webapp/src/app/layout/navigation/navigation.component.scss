@@ -4,22 +4,27 @@
 
 :host {
 
-  display: flex;
-  flex-direction: column;
+  .grid {
+    display: grid;
+    grid-template-columns: max-content;
+    grid-template-rows: 84px 1fr max-content;
+    height: 100%;
+  }
 
   transition-duration: 0.2s;
   transition-property: width, z-index;
   transition-timing-function: ease-in;
-  
+
   width: 64px;
 
   padding: $spacer 0 $spacer-lg 0;
   position: fixed;
-  bottom: 0%;
-  top: 0%;
+  bottom: 0;
+  top: 0;
 
   overflow: hidden;
 
+  // TODO why?
   z-index: 4;
 
   .logo {
@@ -36,7 +41,7 @@
     transition-duration: 0.2s;
     transition-property: height, width;
     transition-timing-function: ease-in;
-    
+
     img {
       position: absolute;
       top: 0.75rem;
@@ -45,7 +50,7 @@
       transition-duration: 0.2s;
       transition-property: opacity;
       transition-timing-function: ease-in;
-      
+
       &.full {
         width: 118px;
         height: 52px;
@@ -60,53 +65,55 @@
     }
   }
 
-  & > button, & > a {
+  .links {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
 
-    background-color: rgba($neutral-900, 0.2);
-    border: none;
-    border-radius: $spacer-xs;
-    box-sizing: border-box;
-    color: white;
-    cursor: pointer;
-    font-family: $font-family-title;
-    font-size: $font-size-body-2;
-    font-weight: 300;
-    letter-spacing: -0.021em;
-    margin: $spacer $spacer 0 $spacer;
-    padding: $spacer-xs;
-    text-align: left;
-    height: 32px;
-    min-width: 32px;
+    button,
+    a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
-    sbdl-icon, svg {
-      font-size: 22px;
-      margin-right: $spacer-sm;
-      min-width: 22px;
-    }
-
-    sbdl-icon {
-      margin-top: -4px;
-    }
-
-    label {
-      display: inline-block;
+      background-color: rgba($neutral-900, 0.2);
+      border: none;
+      border-radius: $spacer-xs;
+      box-sizing: border-box;
+      color: white;
       cursor: pointer;
-      max-width: 0;
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      width: 230px;
+      font-family: $font-family-title;
+      font-size: $font-size-body-2;
+      font-weight: 300;
+      letter-spacing: -0.021em;
+      margin: $spacer $spacer 0 $spacer;
+      padding: $spacer-xs;
+      text-align: left;
+      height: 32px;
+      min-width: 32px;
 
-      transition-duration: 0.2s;
-      transition-property: max-height, opacity;
-      transition-timing-function: linear;
-    }
+      sbdl-icon, svg {
+        font-size: 22px;
+        margin-right: $spacer-sm;
+        min-width: 22px;
+      }
 
-    &.auto-margin {
-      margin-top: auto;
+      sbdl-icon {
+        margin-top: -4px;
+      }
+
+      label {
+        display: inline-block;
+        cursor: pointer;
+        max-width: 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        width: 230px;
+
+        transition-duration: 0.2s;
+        transition-property: max-height, opacity;
+        transition-timing-function: linear;
+      }
     }
   }
 
@@ -148,16 +155,19 @@
       height: 75px;
 
       img.full { opacity: 1; }
-
       img.small { opacity: 0; }
     }
 
-    button, a {
-      label {
-        max-width: 311px;
-        max-height: 18px;
-        opacity: 1;
+    .links {
+      button,
+      a {
+        label {
+          max-width: 311px;
+          max-height: 18px;
+          opacity: 1;
+        }
       }
     }
+
   }
 }
