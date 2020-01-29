@@ -3,23 +3,27 @@
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-professional-overview>
 
-<sbdl-step-by-step
-  [steps]="resource.stepByStep"
-  (sectionLoaded)="addDocumentSection($event)"
-></sbdl-step-by-step>
+<sbdl-protected-content
+  [authenticated]="!resource.teaser"
+>
+  <sbdl-step-by-step
+    [steps]="resource.stepByStep"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-step-by-step>
 
-<sbdl-attachments
-  [attachments]="resource.attachments"
-  (sectionLoaded)="addDocumentSection($event)"
-></sbdl-attachments>
+  <sbdl-attachments
+    [attachments]="resource.attachments"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-attachments>
 
-<sbdl-simple-section
-  [contentHtml]="resource.thingsToConsider"
-  [options]="commentsSectionOptions"
-  (sectionLoaded)="addDocumentSection($event)"
-></sbdl-simple-section>
+  <sbdl-simple-section
+    [contentHtml]="resource.thingsToConsider"
+    [options]="commentsSectionOptions"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-simple-section>
 
-<sbdl-professional-formative-list
-  [strategies]="resource.formativeAssessmentStrategies"
-  (sectionLoaded)="addDocumentSection($event)"
-></sbdl-professional-formative-list>
+  <sbdl-professional-formative-list
+    [strategies]="resource.formativeAssessmentStrategies"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-professional-formative-list>
+</sbdl-protected-content>

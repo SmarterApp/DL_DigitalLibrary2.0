@@ -3,39 +3,43 @@
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-strategy-overview>
 
-<sbdl-simple-section
-  *ngIf="isFormative()"
-  [contentHtml]="formativeContent()"
-  [options]="stepByStepSectionOptions"
-  (sectionLoaded)="addDocumentSection($event)"
-></sbdl-simple-section>
+<sbdl-protected-content
+  [authenticated]="!resource.teaser"
+>
+  <sbdl-simple-section
+    *ngIf="isFormative()"
+    [contentHtml]="formativeContent()"
+    [options]="stepByStepSectionOptions"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-simple-section>
 
-<sbdl-simple-section
-  *ngIf="!isFormative()"
-  [contentHtml]="accessibilityContent()"
-  [options]="instructionalUseSectionOptions"
-  (sectionLoaded)="addDocumentSection($event)"
-></sbdl-simple-section>
+  <sbdl-simple-section
+    *ngIf="!isFormative()"
+    [contentHtml]="accessibilityContent()"
+    [options]="instructionalUseSectionOptions"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-simple-section>
 
-<sbdl-attachments
-  [attachments]="resource.attachments"
-  (sectionLoaded)="addDocumentSection($event)"
-></sbdl-attachments>
+  <sbdl-attachments
+    [attachments]="resource.attachments"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-attachments>
 
-<sbdl-simple-section
-  [contentHtml]="resource.thingsToConsider"
-  [options]="commentsSectionOptions"
-  (sectionLoaded)="addDocumentSection($event)"
-></sbdl-simple-section>
+  <sbdl-simple-section
+    [contentHtml]="resource.thingsToConsider"
+    [options]="commentsSectionOptions"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-simple-section>
 
-<sbdl-strategy-in-action-formative
-  *ngIf="isFormative()"
-  [resource]="resource"
-  (sectionLoaded)="addDocumentSection($event)"
-></sbdl-strategy-in-action-formative>
+  <sbdl-strategy-in-action-formative
+    *ngIf="isFormative()"
+    [resource]="resource"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-strategy-in-action-formative>
 
-<sbdl-strategy-in-action-accessibility
-  *ngIf="!isFormative()"
-  [resource]="resource"
-  (sectionLoaded)="addDocumentSection($event)"
-></sbdl-strategy-in-action-accessibility>
+  <sbdl-strategy-in-action-accessibility
+    *ngIf="!isFormative()"
+    [resource]="resource"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-strategy-in-action-accessibility>
+</sbdl-protected-content>

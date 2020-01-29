@@ -33,11 +33,7 @@
     (documentOutlineChanged)="setOutline($event)"
   ></sbdl-enhanced-printing>
 </nav>
-<main id="main" class="resource-content" [ngClass]="{teaser: resource.teaser}">
-
-  <sbdl-preview-login-prompt *ngIf="resource.teaser"
-  ></sbdl-preview-login-prompt>
-
+<main id="main" class="resource-content">
   <sbdl-strategy-content
     [notes]="notes"
     [notesVisible]="notesVisible"

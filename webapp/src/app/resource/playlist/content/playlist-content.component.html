@@ -4,22 +4,26 @@
   (sectionLoaded)="addDocumentSection($event)"
 ></sbdl-playlist-topics>
 
-<sbdl-playlist-intervention
-  [content]="resource.overview.interventionSuggestions"
-  (sectionLoaded)="addDocumentSection($event)">
-</sbdl-playlist-intervention>
+<sbdl-protected-content
+  [authenticated]="!resource.teaser"
+>
+  <sbdl-playlist-intervention
+    [content]="resource.overview.interventionSuggestions"
+    (sectionLoaded)="addDocumentSection($event)">
+  </sbdl-playlist-intervention>
 
-<sbdl-simple-section
-  [contentHtml]="resource.thingsToConsider"
-  [options]="commentsSectionOptions"
-  (sectionLoaded)="addDocumentSection($event)"
-></sbdl-simple-section>
+  <sbdl-simple-section
+    [contentHtml]="resource.thingsToConsider"
+    [options]="commentsSectionOptions"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-simple-section>
 
-<sbdl-playlist-background
-  [overview]="resource.overview"
-  (sectionLoaded)="addDocumentSection($event)"
-></sbdl-playlist-background>
+  <sbdl-playlist-background
+    [overview]="resource.overview"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-playlist-background>
 
-<sbdl-playlist-interim
-  (sectionLoaded)="addDocumentSection($event)">
-</sbdl-playlist-interim>
+  <sbdl-playlist-interim
+    (sectionLoaded)="addDocumentSection($event)">
+  </sbdl-playlist-interim>
+</sbdl-protected-content>
