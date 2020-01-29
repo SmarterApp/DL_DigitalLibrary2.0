@@ -124,8 +124,13 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
   }
 
   search(newParams: SearchQueryParams) {
-    const params = this.rectifyParams({...this.params, ...newParams });
-
-    this.router.navigate(['search', params]);
+    this.router.navigate([
+      'search',
+      this.rectifyParams({
+        ...this.params,
+        query: this.filters.query,
+        ...newParams
+      })
+    ]);
   }
 }

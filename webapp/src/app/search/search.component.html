@@ -1,7 +1,7 @@
 <h1 *ngIf="showHeadings && newSearch" class="new-search">Search for Resources </h1>
 <sbdl-text-field
   (submit)="search({query: $event})"
-  [model]="filters.query"
+  [(ngModel)]="filters.query"
   placeholder="What are you looking for? (e.g., fractions, Grade 6 playlist)"
   fontAwesomeIcon="fa-search">
 </sbdl-text-field>
