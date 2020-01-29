@@ -17,7 +17,7 @@
   <span>
     Found {{ numResults }}
     <ng-container [ngPlural]="numResults" >
-      <ng-template ngPluralCase="=0">resources for "{{filters.query}}"</ng-template>
+      <ng-template ngPluralCase="=0">resources for "{{params.query}}"</ng-template>
       <ng-template ngPluralCase="=1">resource</ng-template>
       <ng-template ngPluralCase="other">resources</ng-template>
     </ng-container>
