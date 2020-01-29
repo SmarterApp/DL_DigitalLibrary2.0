@@ -11,12 +11,9 @@ export class ProtectedContentComponent {
   @Input()
   authenticated: boolean;
 
-  @Input()
-  authorized: boolean;
-
   @HostBinding('class.obscured')
   get obscured(): boolean {
-    return !this.authorized || !this.authorized;
+    return !this.authenticated;
   }
 
 }
