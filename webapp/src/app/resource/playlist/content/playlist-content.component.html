@@ -1,12 +1,12 @@
-<sbdl-playlist-topics
-  [readingMode]="readingMode"
-  [resource]="resource"
-  (sectionLoaded)="addDocumentSection($event)"
-></sbdl-playlist-topics>
-
 <sbdl-protected-content
   [authenticated]="!resource.teaser"
 >
+  <sbdl-playlist-topics
+    [readingMode]="readingMode"
+    [resource]="resource"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-playlist-topics>
+
   <sbdl-playlist-intervention
     [content]="resource.overview.interventionSuggestions"
     (sectionLoaded)="addDocumentSection($event)">

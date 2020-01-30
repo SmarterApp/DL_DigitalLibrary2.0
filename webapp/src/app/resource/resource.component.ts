@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, HostBinding, OnInit } from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, EventEmitter, HostBinding, OnInit, Output} from '@angular/core';
 import { Location } from '@angular/common';
 import { DomSanitizer, SafeStyle, Title } from '@angular/platform-browser';
 import { Map } from 'immutable';
@@ -8,6 +8,7 @@ import { User } from '../data/user/user.model';
 import { UserService } from '../data/user/user.service';
 import { DocumentOutline, DocumentSection, DocumentSectionType } from './components/outline/document-outline.model';
 import { ResourceTypePipe } from '../pipes/resource-type.pipe';
+import {Observable} from 'rxjs';
 
 /**
  * Parent class that other resource component classes extend.
@@ -15,30 +16,38 @@ import { ResourceTypePipe } from '../pipes/resource-type.pipe';
  */
 export class ResourceComponent implements AfterViewInit, OnInit {
 
-  resource: Resource;
-  notesVisible = false;
-  notes: Note[];
-  outline: DocumentOutline = Map<DocumentSectionType, DocumentSection>();
-  printingMode = false;
-  readingMode = false; // will get set properly by ActionsComponent when it loads.
-  user: User;
+  @Output()
+  readonly readingModeChanged: EventEmitter<boolean> = new EventEmitter();
 
-  navWidth = 331;
+  @Output()
+  readonly printModeChanged: EventEmitter<boolean> = new EventEmitter();
+
+  @Output()
+  readonly noteModeChanged: EventEmitter<boolean> = new EventEmitter();
+
+  outline: DocumentOutline = Map<DocumentSectionType, DocumentSection>();
+  user: User;
+  resource: Resource;
+  notes: Note[];
+  printingMode: boolean;
+  readingMode: boolean;
+  notesVisible: boolean;
   cssVarStyle: SafeStyle;
 
   private resourceTypePipe = new ResourceTypePipe();
 
   @HostBinding('style')
-  public get valueAsStyle(): any {
+  get valueAsStyle(): SafeStyle {
     return this.cssVarStyle;
   }
 
   constructor(
-    private cdRef: ChangeDetectorRef,
+    private changeDetectorReference: ChangeDetectorRef,
     private sanitizer: DomSanitizer,
     private titleService: Title,
     private location: Location,
-    private userService: UserService) { }
+    private userService: UserService
+  ) {}
 
   ngAfterViewInit(): void {
     this.titleService.setTitle(`${this.resource.properties.title} - ${this.resourceTypePipe.transform(this.resource.type)}`);
@@ -54,22 +63,22 @@ export class ResourceComponent implements AfterViewInit, OnInit {
 
     this.updatePrintStyles();
 
+    // TODO remove need for this
     // effectively notifies the outline component.
-    this.cdRef.detectChanges();
+    this.changeDetectorReference.detectChanges();
   }
 
-  readingModeChanged(readingMode: boolean) {
-    this.readingMode = readingMode;
-
+  set showReadingMode(value: boolean) {
+    this.readingMode = value;
     this.setCssVarStyle();
   }
 
-  printingModeChanged(printingMode: boolean) {
-    this.printingMode = printingMode;
+  set showPrintingOptions(value: boolean) {
+    this.printingMode = value;
   }
 
-  notesVisibilityChanged(notesVisible: boolean) {
-    this.notesVisible = this.user && notesVisible;
+  set showNotes(value: boolean) {
+    this.notesVisible = value;
   }
 
   notesChanged(notes: Note[]) {
@@ -101,12 +110,10 @@ export class ResourceComponent implements AfterViewInit, OnInit {
 
   }
 
-  private setCssVarStyle() {
-
+  private setCssVarStyle(): void {
     const styles = this.readingMode
       ? `--nav-width:40px; --outline-margin-right:-291px`
       : `--nav-width: 331px; --outline-margin-right: 0`;
-
     this.cssVarStyle = this.sanitizer.bypassSecurityTrustStyle(styles);
   }
 }

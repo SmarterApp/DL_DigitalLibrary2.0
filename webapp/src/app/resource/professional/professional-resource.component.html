@@ -7,9 +7,9 @@
       [readingMode]="readingMode"
       [printingMode]="printingMode"
       [resource]="resource"
-      (readingModeChanged)="readingModeChanged($event)"
-      (printingModeChanged)="printingModeChanged($event)"
-      (notesVisibilityChanged)="notesVisibilityChanged($event)"
+      (readingModeChanged)="readingModeChanged.emit($event)"
+      (printingModeChanged)="printModeChanged.emit($event)"
+      (notesVisibilityChanged)="noteModeChanged.emit($event)"
     ></sbdl-actions>
   </div>
 
@@ -29,7 +29,7 @@
     [resource]="resource"
     [outline]="outline"
     [hidden]="!printingMode"
-    (printingModeChanged)="printingModeChanged($event)"
+    (printingModeChanged)="printModeChanged.emit($event)"
     (documentOutlineChanged)="setOutline($event)"
   ></sbdl-enhanced-printing>
 </nav>
@@ -42,9 +42,9 @@
     [outline]="outline"
     [resource]="resource"
     (outlineLoaded)="setOutline($event)"
-    (printingModeChanged)="printingModeChanged($event)"
-    (readingModeChanged)="readingModeChanged($event)"
-    (notesVisibilityChanged)="notesVisibilityChanged($event)"
+    (printingModeChanged)="printModeChanged.emit($event)"
+    (readingModeChanged)="readingModeChanged.emit($event)"
+    (notesVisibilityChanged)="noteModeChanged.emit($event)"
   ></sbdl-professional-content>
 </main>
 <aside class="resource-properties">
