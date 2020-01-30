@@ -7,9 +7,9 @@
       [readingMode]="readingMode"
       [printingMode]="printingMode"
       [resource]="resource"
-      (readingModeChanged)="readingModeChanged($event)"
-      (printingModeChanged)="printingModeChanged($event)"
-      (notesVisibilityChanged)="notesVisibilityChanged($event)"
+      (readingModeChanged)="readingModeChanged.emit($event)"
+      (printingModeChanged)="printModeChanged.emit($event)"
+      (notesVisibilityChanged)="noteModeChanged.emit($event)"
     ></sbdl-actions>
   </div>
 
@@ -26,15 +26,11 @@
     [resource]="resource"
     [outline]="outline"
     [hidden]="!printingMode"
-    (printingModeChanged)="printingModeChanged($event)"
+    (printingModeChanged)="printModeChanged.emit($event)"
     (documentOutlineChanged)="setOutline($event)"
   ></sbdl-enhanced-printing>
 </nav>
-<main id="main" class="resource-content" [ngClass]="{teaser: resource.teaser}">
-
-  <sbdl-preview-login-prompt *ngIf="resource.teaser"
-  ></sbdl-preview-login-prompt>
-
+<main id="main" class="resource-content">
   <sbdl-playlist-content
     [notes]="notes"
     [notesVisible]="notesVisible"
@@ -43,9 +39,9 @@
     [outline]="outline"
     [resource]="resource"
     (outlineLoaded)="setOutline($event)"
-    (readingModeChanged)="readingModeChanged($event)"
-    (printingModeChanged)="printingModeChanged($event)"
-    (notesVisibilityChanged)="notesVisibilityChanged($event)"
+    (readingModeChanged)="readingModeChanged.emit($event)"
+    (printingModeChanged)="printModeChanged.emit($event)"
+    (notesVisibilityChanged)="noteModeChanged.emit($event)"
   ></sbdl-playlist-content>
 </main>
 <aside class="resource-properties">

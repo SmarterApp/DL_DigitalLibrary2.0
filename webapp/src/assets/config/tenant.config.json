@@ -1,0 +1,451 @@
+{
+  "default": {
+    "displayName": "Smarter Balanced",
+    "logoUris": {
+      "full": "/assets/svg/tft-logo-full.svg",
+      "footer": ""
+    }
+  },
+  "CA": {
+    "displayName": "California",
+    "footerLinks": [
+      {
+        "index": 0,
+        "name": "Reporting System",
+        "uri": "#"
+      },
+      {
+        "index": 1,
+        "name": "Practice Test",
+        "uri": "#"
+      },
+      {
+        "index": 2,
+        "name": "Assessment Portal",
+        "uri": "#"
+      },
+      {
+        "index": 3,
+        "name": "Starting Smarter",
+        "uri": "#"
+      },
+      {
+        "index": 4,
+        "name": "Need help?",
+        "uri": "#"
+      }
+    ],
+    "logoUris": {
+      "full": "/assets/images/t4t-customized-logos/CA.png",
+      "footer": "/assets/images/state-logos/CA.png"
+    }
+  },
+  "CT": {
+    "displayName": "Connecticut",
+    "footerLinks": [
+      {
+        "index": 0,
+        "name": "Reporting System",
+        "uri": "#"
+      },
+      {
+        "index": 1,
+        "name": "Practice Test",
+        "uri": "#"
+      },
+      {
+        "index": 2,
+        "name": "Assessment Portal",
+        "uri": "#"
+      },
+      {
+        "index": 3,
+        "name": "Starting Smarter",
+        "uri": "#"
+      },
+      {
+        "index": 4,
+        "name": "Need help?",
+        "uri": "#"
+      }
+    ],
+    "logoUris": {
+      "full": "/assets/images/t4t-customized-logos/CT.png",
+      "footer": "/assets/images/state-logos/CT.png"
+    }
+  },
+  "DE": {
+    "displayName": "Delaware",
+    "footerLinks": [
+      {
+        "index": 0,
+        "name": "Reporting System",
+        "uri": "#"
+      },
+      {
+        "index": 1,
+        "name": "Practice Test",
+        "uri": "#"
+      },
+      {
+        "index": 2,
+        "name": "Assessment Portal",
+        "uri": "#"
+      },
+      {
+        "index": 3,
+        "name": "Starting Smarter",
+        "uri": "#"
+      },
+      {
+        "index": 4,
+        "name": "Need help?",
+        "uri": "#"
+      }
+    ],
+    "logoUris": {
+      "full": "/assets/images/t4t-customized-logos/DE.png",
+      "footer": "/assets/images/state-logos/DE.png"
+    }
+  },
+  "HI": {
+    "displayName": "Hawaii",
+    "footerLinks": [
+      {
+        "index": 0,
+        "name": "Reporting System",
+        "uri": "#"
+      },
+      {
+        "index": 1,
+        "name": "Practice Test",
+        "uri": "#"
+      },
+      {
+        "index": 2,
+        "name": "Assessment Portal",
+        "uri": "#"
+      },
+      {
+        "index": 3,
+        "name": "Starting Smarter",
+        "uri": "#"
+      },
+      {
+        "index": 4,
+        "name": "Need help?",
+        "uri": "#"
+      }
+    ],
+    "logoUris": {
+      "full": "/assets/images/t4t-customized-logos/HI.png",
+      "footer": "/assets/images/state-logos/HI.png"
+    }
+  },
+  "ID": {
+    "displayName": "Idaho",
+    "footerLinks": [
+      {
+        "index": 0,
+        "name": "Reporting System",
+        "uri": "#"
+      },
+      {
+        "index": 1,
+        "name": "Practice Test",
+        "uri": "#"
+      },
+      {
+        "index": 2,
+        "name": "Assessment Portal",
+        "uri": "#"
+      },
+      {
+        "index": 3,
+        "name": "Starting Smarter",
+        "uri": "#"
+      },
+      {
+        "index": 4,
+        "name": "Need help?",
+        "uri": "#"
+      }
+    ],
+    "logoUris": {
+      "full": "/assets/images/t4t-customized-logos/ID.png",
+      "footer": "/assets/images/state-logos/ID.png"
+    }
+  },
+  "MI": {
+    "displayName": "Michigan",
+    "footerLinks": [
+      {
+        "index": 0,
+        "name": "Reporting System",
+        "uri": "#"
+      },
+      {
+        "index": 1,
+        "name": "Practice Test",
+        "uri": "#"
+      },
+      {
+        "index": 2,
+        "name": "Assessment Portal",
+        "uri": "#"
+      },
+      {
+        "index": 3,
+        "name": "Starting Smarter",
+        "uri": "#"
+      },
+      {
+        "index": 4,
+        "name": "Need help?",
+        "uri": "#"
+      }
+    ],
+    "logoUris": {
+      "full": "/assets/images/t4t-customized-logos/MI.png",
+      "footer": "/assets/images/state-logos/MI.png"
+    }
+  },
+  "MT": {
+    "displayName": "Montana",
+    "footerLinks": [
+      {
+        "index": 0,
+        "name": "Reporting System",
+        "uri": "#"
+      },
+      {
+        "index": 1,
+        "name": "Practice Test",
+        "uri": "#"
+      },
+      {
+        "index": 2,
+        "name": "Assessment Portal",
+        "uri": "#"
+      },
+      {
+        "index": 3,
+        "name": "Starting Smarter",
+        "uri": "#"
+      },
+      {
+        "index": 4,
+        "name": "Need help?",
+        "uri": "#"
+      }
+    ],
+    "logoUris": {
+      "full": "/assets/images/t4t-customized-logos/MT.png",
+      "footer": "/assets/images/state-logos/MT.png"
+    }
+  },
+  "NV": {
+    "displayName": "Nevada",
+    "footerLinks": [
+      {
+        "index": 0,
+        "name": "Reporting System",
+        "uri": "#"
+      },
+      {
+        "index": 1,
+        "name": "Practice Test",
+        "uri": "#"
+      },
+      {
+        "index": 2,
+        "name": "Assessment Portal",
+        "uri": "#"
+      },
+      {
+        "index": 3,
+        "name": "Starting Smarter",
+        "uri": "#"
+      },
+      {
+        "index": 4,
+        "name": "Need help?",
+        "uri": "#"
+      }
+    ],
+    "logoUris": {
+      "full": "/assets/images/t4t-customized-logos/NV.png",
+      "footer": "/assets/images/state-logos/NV.png"
+    }
+  },
+  "OR": {
+    "displayName": "Oregon",
+    "footerLinks": [
+      {
+        "index": 0,
+        "name": "Reporting System",
+        "uri": "#"
+      },
+      {
+        "index": 1,
+        "name": "Practice Test",
+        "uri": "#"
+      },
+      {
+        "index": 2,
+        "name": "Assessment Portal",
+        "uri": "#"
+      },
+      {
+        "index": 3,
+        "name": "Starting Smarter",
+        "uri": "#"
+      },
+      {
+        "index": 4,
+        "name": "Need help?",
+        "uri": "#"
+      }
+    ],
+    "logoUris": {
+      "full": "/assets/images/t4t-customized-logos/OR.png",
+      "footer": "/assets/images/state-logos/OR.png"
+    }
+  },
+  "SD": {
+    "displayName": "South Dakota",
+    "footerLinks": [
+      {
+        "index": 0,
+        "name": "Reporting System",
+        "uri": "#"
+      },
+      {
+        "index": 1,
+        "name": "Practice Test",
+        "uri": "#"
+      },
+      {
+        "index": 2,
+        "name": "Assessment Portal",
+        "uri": "#"
+      },
+      {
+        "index": 3,
+        "name": "Starting Smarter",
+        "uri": "#"
+      },
+      {
+        "index": 4,
+        "name": "Need help?",
+        "uri": "#"
+      }
+    ],
+    "logoUris": {
+      "full": "/assets/images/t4t-customized-logos/SD.png",
+      "footer": "/assets/images/state-logos/SD.png"
+    }
+  },
+  "USVI": {
+    "displayName": "U.S. Virgin Islands",
+    "footerLinks": [
+      {
+        "index": 0,
+        "name": "Reporting System",
+        "uri": "#"
+      },
+      {
+        "index": 1,
+        "name": "Practice Test",
+        "uri": "#"
+      },
+      {
+        "index": 2,
+        "name": "Assessment Portal",
+        "uri": "#"
+      },
+      {
+        "index": 3,
+        "name": "Starting Smarter",
+        "uri": "#"
+      },
+      {
+        "index": 4,
+        "name": "Need help?",
+        "uri": "#"
+      }
+    ],
+    "logoUris": {
+      "full": "/assets/images/t4t-customized-logos/USVI.png",
+      "footer": "/assets/images/state-logos/USVI.png"
+    }
+  },
+  "VT": {
+    "displayName": "Vermont",
+    "footerLinks": [
+      {
+        "index": 0,
+        "name": "Reporting System",
+        "uri": "#"
+      },
+      {
+        "index": 1,
+        "name": "Practice Test",
+        "uri": "#"
+      },
+      {
+        "index": 2,
+        "name": "Assessment Portal",
+        "uri": "#"
+      },
+      {
+        "index": 3,
+        "name": "Starting Smarter",
+        "uri": "#"
+      },
+      {
+        "index": 4,
+        "name": "Need help?",
+        "uri": "#"
+      }
+    ],
+    "logoUris": {
+      "full": "/assets/images/t4t-customized-logos/VT.png",
+      "footer": "/assets/images/state-logos/VT.png"
+    }
+  },
+  "WA": {
+    "displayName": "Washington",
+    "footerLinks": [
+      {
+        "index": 0,
+        "name": "Reporting System",
+        "uri": "#"
+      },
+      {
+        "index": 1,
+        "name": "Practice Test",
+        "uri": "#"
+      },
+      {
+        "index": 2,
+        "name": "Assessment Portal",
+        "uri": "#"
+      },
+      {
+        "index": 3,
+        "name": "Starting Smarter",
+        "uri": "#"
+      },
+      {
+        "index": 4,
+        "name": "Need help?",
+        "uri": "#"
+      }
+    ],
+    "logoUris": {
+      "full": "/assets/images/t4t-customized-logos/WA.png",
+      "footer": "/assets/images/state-logos/WA.png"
+    }
+  }
+}

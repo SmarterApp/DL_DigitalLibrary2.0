@@ -1,19 +1,22 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { OktaAuthService } from '@okta/okta-angular';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {OktaAuthService} from '@okta/okta-angular';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'sbdl-preview-login-prompt',
   templateUrl: './preview-login-prompt.component.html',
-  styleUrls: ['./preview-login-prompt.component.scss']
+  styleUrls: ['./preview-login-prompt.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PreviewLoginPromptComponent {
-  loading = false;
+  loading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  constructor(private oktaAuthService: OktaAuthService) {}
+  constructor(
+    private oktaAuthService: OktaAuthService
+  ) {}
 
-  login() {
-    this.loading = true;
-    this.oktaAuthService.loginRedirect();
+  onLoginButtonClick(): void {
+    this.loading$.next(true);
+    // this.oktaAuthService.loginRedirect();
   }
 }

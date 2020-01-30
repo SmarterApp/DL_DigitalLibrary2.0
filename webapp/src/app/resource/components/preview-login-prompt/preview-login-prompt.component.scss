@@ -1,41 +1,29 @@
 @import "colors";
 @import "spacing";
 @import "typography";
+@import "mixins";
 
 :host {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 6;
+  // this all feels like it should be a common "window" style
+  @include window;
+}
 
-  .prompt-container {
-    background-color: $white;;
-    border-radius: 4px;
-    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 8px 10px rgba(0, 0, 0, 0.14);
+.button-processing-content {
+  display: none;
+}
+
+.processing {
+  position: relative;
+
+  .button-content {
+    visibility: hidden;
+  }
+
+  .button-processing-content {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40rem;
-    opacity: 1;
-    padding: 1rem;
-    width: 34rem;
-    z-index: 6;
-
-    h2 {
-      font-weight: 500;
-    }
-
-    div {
-      margin-bottom: $spacer;
-      font-family: $font-family-body;
-      font-size: $font-size-body;
-      line-height: 150%;
-    }
-
-    sbdl-button {
-      font-weight: 600;
-    }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }

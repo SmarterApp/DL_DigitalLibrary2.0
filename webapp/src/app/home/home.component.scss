@@ -9,8 +9,6 @@
   max-width: none;
   flex-direction: column;
 
-  .watermarks img { opacity: 0.7; }
-
    & > .watermarks {
 
     position: relative;
@@ -182,4 +180,10 @@
       height: 240px;
     }
   }
+}
+
+.waterspot {
+  opacity: 0.7;
+  pointer-events: none;
+  user-select: none;
 }

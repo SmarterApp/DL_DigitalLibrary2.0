@@ -1,29 +1,25 @@
 import { APP_BASE_HREF } from '@angular/common';
 import { Location } from '@angular/common';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { OktaAuthService } from '@okta/okta-angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Observable, of } from 'rxjs';
+import { LoggingService } from 'src/app/common/logging/logging.service';
 import { FooterComponent } from '../footer/footer.component';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { AppContainerComponent } from './app-container.component';
-import { mockRootActivatedRouteSnapshot } from 'src/app/app.module.spec';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 import { SbdlCommonModule } from 'src/app/common/common.module';
-import { User } from 'src/app/data/user/user.model';
+import { TenantThemeService } from 'src/app/data/tenant-theme/tenant-theme.service';
 import { UserService } from 'src/app/data/user/user.service';
-
-class MockOktaAuthService {
-  $authenticationState: object;
-  public isAuthenticated(): boolean { return false; }
-  constructor() {
-    this.$authenticationState = { subscribe() {} };
-  }
-}
-
-class MockUserService {
-  get user(): Observable<User> { return of(null); }
-}
+import {
+  initializeSettingsProvider,
+  mockRootActivatedRouteSnapshot,
+  MockOktaAuthService,
+  MockTenantThemeService,
+  MockUserService
+} from 'src/app/app.module.spec';
 
 describe('AppContainerComponent', () => {
   let component: AppContainerComponent;
@@ -32,13 +28,16 @@ describe('AppContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AppContainerComponent, FooterComponent, NavigationComponent ],
-      imports: [ RouterTestingModule.withRoutes([]), SbdlCommonModule ],
+      imports: [ HttpClientTestingModule, RouterTestingModule.withRoutes([]), PipesModule, SbdlCommonModule ],
       providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
         { provide: ActivatedRoute, useValue: mockRootActivatedRouteSnapshot },
         { provide: Location, useValue: { path: () => {} } },
         { provide: OktaAuthService, useClass: MockOktaAuthService },
-        { provide: UserService, useClass: MockUserService }
+        { provide: UserService, useClass: MockUserService },
+        { provide: TenantThemeService, useClass: MockTenantThemeService },
+        initializeSettingsProvider,
+        LoggingService
       ]
     })
     .compileComponents();

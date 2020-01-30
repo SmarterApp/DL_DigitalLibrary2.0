@@ -21,34 +21,34 @@
     </tr>
 
     <tr class="table-header">
-      <th>
+      <th scope="rowgroup">
         <h3>Topic</h3>
         <div class="caption emphasis-medium">Resource</div>
       </th>
-      <td class="scale below"
+      <th scope="col" class="scale below"
           [ngClass]="{collapsed: belowCollapsed}">
         <sbdl-progression-scale-button
           scale="below"
           [collapsed]="belowCollapsed"
           (click)="toggleBelowCollapsed()"
         ></sbdl-progression-scale-button>
-      </td>
-      <td class="scale near"
+      </th>
+      <th scope="col" class="scale near"
           [ngClass]="{collapsed: nearCollapsed}">
         <sbdl-progression-scale-button
           scale="near"
           [collapsed]="nearCollapsed"
           (click)="toggleNearCollapsed()"
         ></sbdl-progression-scale-button>
-      </td>
-      <td class="scale above"
+      </th>
+      <th scope="col" class="scale above"
           [ngClass]="{collapsed: aboveCollapsed}">
         <sbdl-progression-scale-button
           scale="above"
           [collapsed]="aboveCollapsed"
           (click)="toggleAboveCollapsed()"
         ></sbdl-progression-scale-button>
-      </td>
+      </th>
     </tr>
 
     <tr sbdl-playlist-topic-row

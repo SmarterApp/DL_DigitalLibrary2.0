@@ -65,36 +65,6 @@
       box-sizing: border-box;
       max-width: calc(var(--measure) + 8rem);
       z-index: 1;
-
-
-      &.teaser {
-        position: relative;
-
-        sbdl-instructional-content ::ng-deep {
-          & > *:not(sbdl-instructional-get-started) {
-            filter: blur(10px);
-          }
-        }
-
-        sbdl-professional-content ::ng-deep {
-          & > *:not(sbdl-professional-overview) {
-            filter: blur(10px);
-          }
-        }
-
-        sbdl-strategy-content ::ng-deep {
-          & > *:not(sbdl-strategy-overview) {
-            filter: blur(10px);
-          }
-        }
-
-        sbdl-playlsit-content ::ng-deep {
-          & > *:not(sbdl-playlist-overview) {
-            filter: blur(10px);
-          }
-        }
-
-      }
     }
 
     .resource-properties {
@@ -247,7 +217,7 @@
 }
 
 @media only print {
-  :host { 
+  :host {
     grid-template: "header" "properties" "content" / auto;
 
     .outline, nav, sbdl-outline, sbdl-enhanced-printing {
@@ -262,7 +232,7 @@
       img { display: none; }
     }
 
-    .resource-properties { 
+    .resource-properties {
       background-image: none;
       box-shadow: none;
       padding: 0 $spacer-xl;

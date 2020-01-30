@@ -1,4 +1,4 @@
-<th #sectionHeader class="topic-title" (click)="setRowCollapsed(!rowCollapsed)">
+<th scope="rowgroup" #sectionHeader class="topic-title" (click)="setRowCollapsed(!rowCollapsed)">
   <div *ngIf="!rowCollapsed" class="collapse-btn"><i class="far fa-compress-alt"></i></div>
   <div *ngIf="rowCollapsed" class="collapse-btn"><i class="far fa-expand-alt"></i></div>
 

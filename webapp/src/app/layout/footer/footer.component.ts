@@ -1,24 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
+import { Observable } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
+import { FooterLink, TenantTheme } from 'src/app/data/tenant-theme/tenant-theme.model';
+import { TenantThemeService } from 'src/app/data/tenant-theme/tenant-theme.service';
+import { UserService } from 'src/app/data/user/user.service';
+import { User } from 'src/app/data/user/user.model';
 
 @Component({
   selector: 'sbdl-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
-  isAuthenticated: boolean;
+export class FooterComponent {
+  user$: Observable<User>;
+  theme$: Observable<TenantTheme>;
+  tenantName$: Observable<string>;
+  tenantFooterLinks$: Observable<FooterLink[]>;
 
-  constructor(public oktaAuth: OktaAuthService) {
-    this.oktaAuth.$authenticationState.subscribe(
-      async (isAuthenticated: boolean) => {
-        this.isAuthenticated = isAuthenticated;
-      }
-    );
+  constructor(
+    private userService: UserService,
+    private tenantThemeService: TenantThemeService
+  ) {
+    this.user$ = userService.user;
+    this.theme$ = userService.user.pipe(
+      mergeMap(user => tenantThemeService.getTenantTheme(user)));
+
+    this.tenantName$ = this.theme$.pipe(map(t => t.displayName));
+    this.tenantFooterLinks$ = this.theme$.pipe(map(t => t.footerLinks));
   }
 
-  async ngOnInit() {
-    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
+  ignoreClick(ev) {
+    ev.preventDefault();
+    return false;
   }
 
 }
