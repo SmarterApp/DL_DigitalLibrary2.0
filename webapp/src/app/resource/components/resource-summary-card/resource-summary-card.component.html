@@ -17,15 +17,15 @@
     </div>
 
     <div *ngSwitchCase="resourceTypes.ProfessionalLearning" class="details professional-learning caption emphasis-medium">
-      {{ resourceSummary.summary }}
+      <dynamic-html [content]="resourceSummary.summary"></dynamic-html>
     </div>
 
     <div *ngSwitchCase="resourceTypes.AccessibilityStrategy" class="details professional-learning caption emphasis-medium">
-      {{ resourceSummary.summary }}
+      <dynamic-html [content]="resourceSummary.summary"></dynamic-html>
     </div>
 
     <div *ngSwitchCase="resourceTypes.FormativeStrategy" class="details professional-learning caption emphasis-medium">
-      {{ resourceSummary.summary }}
+      <dynamic-html [content]="resourceSummary.summary"></dynamic-html>
     </div>
 
   </div>
