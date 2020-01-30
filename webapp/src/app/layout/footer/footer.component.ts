@@ -17,6 +17,7 @@ export class FooterComponent {
   theme$: Observable<TenantTheme>;
   tenantName$: Observable<string>;
   tenantFooterLinks$: Observable<FooterLink[]>;
+  tenantFooterLogo$: Observable<string>;
 
   constructor(
     private userService: UserService,
@@ -28,6 +29,7 @@ export class FooterComponent {
 
     this.tenantName$ = this.theme$.pipe(map(t => t.displayName));
     this.tenantFooterLinks$ = this.theme$.pipe(map(t => t.footerLinks));
+    this.tenantFooterLogo$ = this.theme$.pipe(map(t => t.logoUris.footer));
   }
 
   ignoreClick(ev) {
