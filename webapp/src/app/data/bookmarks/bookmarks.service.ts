@@ -26,7 +26,6 @@ export class BookmarksService {
     this.userService.user.subscribe(this.refreshBookmarks);
     this.userBkmks$.subscribe(bkmks => this.userBkmks = bkmks);
     this.userBkmksForResId$.subscribe(bkmkMap => this.userBkmkMap = bkmkMap);
-    window['bkmkSvc'] = this;
   }
 
   listAllBookmarks(): Observable<Bookmark[]> {

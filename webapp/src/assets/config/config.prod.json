@@ -7,6 +7,7 @@
         "aws": true,
         "level": 4
     },
+    "tenantConfigPath": "/assets/config/tenant.config.json",
     "apiServer": {
         "cdl": "https://prod.cdl.sbac.org/api/v1.0/"
     },

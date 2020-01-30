@@ -1,14 +1,18 @@
 <div class=footer>
   <h2 class="offscreen">Footer</h2>
-  <div [ngClass]="{'footer-links': true, 'no-tenant': !isAuthenticated}">
-    <div *ngIf="isAuthenticated" class="member-resources">
-      <h3>California Resources</h3>
+  <div [ngClass]="{'footer-links': true, 'no-tenant': !(user$ | async)}">
+    <div *ngIf="user$ | async" class="member-resources">
+      <h3>{{tenantName$ | async}} Resources</h3>
       <ul>
-        <li><a href="#" target="_blank" aria-label="Reporting System (opens in a new window)">Reporting System</a></li>
-        <li><a href="#" target="_blank" aria-label="Practice Test (opens in a new window)">Practice Test</a></li>
-        <li><a href="#" target="_blank" aria-label="Assessment Portal (opens in a new window)">Assessment Portal</a></li>
-        <li><a href="#" target="_blank" aria-label="Starting Smarter (opens in a new window)">Starting Smarter</a></li>
-        <li><a href="#" target="_blank" aria-label="Need help? (opens in a new window)">Need help?</a></li>
+        <li *ngFor="let link of (tenantFooterLinks$ | async)">
+          <a [href]="link.uri"
+             target="_blank"
+             (click)="ignoreClick($event)"
+             [attr.aria-label]="link.name + ' (opens in a new window'">
+            <span *ngIf="link.icon"><i [ngClass]="link.icon"></i></span>
+            {{ link.name }}
+          </a>
+        </li>
       </ul>
     </div>
     <div class="more-tools-for-teachers">
@@ -18,7 +22,10 @@
         <li><a target="_blank" aria-label="Sample Items Website (opens in a new window)" href="https://sampleitems.smarterbalanced.org">Sample Items Website</a></li>
         <li><a target="_blank" aria-label="Big Ideas for Implementation (opens in a new window)" href="https://www.smarterbalanced.org/educators/smarter-balanced-ready/">Big Ideas for Implementation</a></li>
         <li><a target="_blank" aria-label="Smarter Balanced in the Classroom (opens in a new window)" href="https://www.smarterbalanced.org/educators/classroom/">Smarter Balanced in the Classroom</a></li>
-        <li><a target="_blank" aria-label="Get Involved! (opens in a new window)" href="https://www.smarterbalanced.org/about">Get Involved!</a></li>
+        <!--
+          TODO: Re-enable when the proper link is known.
+          <li><a target="_blank" aria-label="Get Involved! (opens in a new window)" href="https://www.smarterbalanced.org/about">Get Involved!</a></li>
+        -->
       </ul>
     </div>
     <div class="connect">
@@ -28,15 +35,21 @@
         <li><a target="_blank" aria-label="Facebook (opens in a new window)" href="https://www.facebook.com/smarterbalanced/"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a></li>
         <li><a target="_blank" aria-label="Instagram (opens in a new window)" href="https://www.instagram.com/smarterbalanced/"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a></li>
         <li><a target="_blank" aria-label="YouTube (opens in a new window)" href="https://www.youtube.com/user/smarterbalanced"><i class="fab fa-youtube" aria-hidden="true"></i> YouTube</a></li>
-        <li><a target="_blank" aria-label="Pinterest (opens in a new window)" href="#"><i class="fab fa-pinterest" aria-hidden="true"></i> Pinterest</a></li>
+        <!--
+          TODO: Re-enable when the SB Pinterest account is live
+          <li><a target="_blank" aria-label="Pinterest (opens in a new window)" href="#"><i class="fab fa-pinterest" aria-hidden="true"></i> Pinterest</a></li>
+        -->
       </ul>
     </div>
     <div class="policy">
       <h3>Policy</h3>
       <ul>
-        <li><a href="#">Privacy</a></li>
-        <li><a href="#">Terms & Conditions</a></li>
-        <li><a href="#">Accessibility</a></li>
+        <li><a href="https://www.smarterbalanced.org/privacy-policy/">Privacy</a></li>
+        <!--
+          TODO: Re-enable when links/content are available
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Accessibility</a></li>
+        -->
       </ul>
     </div>
   </div>

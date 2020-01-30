@@ -15,14 +15,14 @@ export class LoggingService {
     { severity: LoggerLevel.Error, log: (message) => console.error(message),  logParams: (message, params) => console.error(message, params) }
   ];
 
-  constructor() { 
+  constructor() {
   }
 
   log(severity: LoggerLevel, message: string, params?: any) {
-    if(severity >= this.configuredLevel) {
+    if (severity >= this.configuredLevel) {
       const consoleLogger = this.consoleSeverityLoggers.find(x => x.severity === severity);
-      if(consoleLogger) {
-        if(params !== null && params !== undefined) {
+      if (consoleLogger) {
+        if (params !== null && params !== undefined) {
           consoleLogger.logParams(message, params);
         } else {
           consoleLogger.log(message);
@@ -30,15 +30,15 @@ export class LoggingService {
       }
     }
   }
-  
+
   trace(message: string, params?: any) {
     this.log(LoggerLevel.Trace, message, params);
   }
-  
+
   debug(message: string, params?: any) {
     this.log(LoggerLevel.Debug, message, params);
   }
-  
+
   info(message: string, params?: any) {
     this.log(LoggerLevel.Info, message, params);
   }

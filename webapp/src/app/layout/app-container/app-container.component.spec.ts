@@ -4,26 +4,16 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { OktaAuthService } from '@okta/okta-angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Observable, of } from 'rxjs';
 import { FooterComponent } from '../footer/footer.component';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { AppContainerComponent } from './app-container.component';
-import { mockRootActivatedRouteSnapshot } from 'src/app/app.module.spec';
 import { SbdlCommonModule } from 'src/app/common/common.module';
-import { User } from 'src/app/data/user/user.model';
 import { UserService } from 'src/app/data/user/user.service';
-
-class MockOktaAuthService {
-  $authenticationState: object;
-  public isAuthenticated(): boolean { return false; }
-  constructor() {
-    this.$authenticationState = { subscribe() {} };
-  }
-}
-
-class MockUserService {
-  get user(): Observable<User> { return of(null); }
-}
+import {
+  mockRootActivatedRouteSnapshot,
+  MockOktaAuthService,
+  MockUserService
+} from 'src/app/app.module.spec';
 
 describe('AppContainerComponent', () => {
   let component: AppContainerComponent;
