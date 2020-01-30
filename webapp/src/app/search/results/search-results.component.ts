@@ -1,8 +1,9 @@
 import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Subscription} from 'rxjs';
+import {Subject, Subscription} from 'rxjs';
 import {ResourceSummary} from 'src/app/data/resource/model/summary.model';
 import {emptyFilters, Filter, SearchFilters} from '../../data/search/search-filters.model';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'sbdl-search-results',
@@ -10,7 +11,7 @@ import {emptyFilters, Filter, SearchFilters} from '../../data/search/search-filt
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent implements OnInit, OnDestroy {
-  constructor(private router: Router, private route: ActivatedRoute) { }
+
 
   @ViewChild('results', {static: false})
   resultsElem: ElementRef;
@@ -21,12 +22,17 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
 
   showAdvancedFiltersInitially: boolean;
 
-  private dataSubscription: Subscription;
-  private paramsSubscription: Subscription;
-  private routerSubscription: Subscription;
+  private readonly _destroyed$: Subject<void> = new Subject();
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.dataSubscription = this.route.data.subscribe(data => {
+    this.route.data.pipe(
+      takeUntil(this._destroyed$)
+    ).subscribe(data => {
       if (data.results) {
         this.allResults = data.results.results || [];
         this.renderedResults = [];
@@ -40,7 +46,9 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.paramsSubscription = this.route.params.subscribe(params => {
+    this.route.params.pipe(
+      takeUntil(this._destroyed$)
+    ).subscribe(params => {
       this.filters = {...this.filters, query: params.query };
       this.setSelectedFilters(params);
     });
@@ -50,17 +58,8 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.paramsSubscription) {
-      this.paramsSubscription.unsubscribe();
-    }
-
-    if (this.dataSubscription) {
-      this.dataSubscription.unsubscribe();
-    }
-
-    if (this.routerSubscription) {
-      this.routerSubscription.unsubscribe();
-    }
+    this._destroyed$.next();
+    this._destroyed$.complete();
   }
 
   chunkedRender = () => {

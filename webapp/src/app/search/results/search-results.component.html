@@ -6,7 +6,7 @@
     [numResults]="allResults.length"
     (goToResults)="scrollToResults()"
   ></sbdl-search>
-  <section #results class="search-results" width="120px" height="120px">
+  <section #results class="search-results">
     <h2 class="offscreen">Search Results</h2><!-- accessibility -->
     <sbdl-search-result-card
       *ngFor="let result of renderedResults"

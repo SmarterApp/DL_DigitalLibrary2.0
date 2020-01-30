@@ -1,7 +1,7 @@
 <h1 *ngIf="showHeadings && newSearch" class="new-search">Search for Resources </h1>
 <sbdl-text-field
   (submit)="search({query: $event})"
-  [model]="filters.query"
+  [(ngModel)]="filters.query"
   placeholder="What are you looking for? (e.g., fractions, Grade 6 playlist)"
   fontAwesomeIcon="fa-search">
 </sbdl-text-field>
@@ -17,7 +17,7 @@
   <span>
     Found {{ numResults }}
     <ng-container [ngPlural]="numResults" >
-      <ng-template ngPluralCase="=0">resources for "{{filters.query}}"</ng-template>
+      <ng-template ngPluralCase="=0">resources for "{{params.query}}"</ng-template>
       <ng-template ngPluralCase="=1">resource</ng-template>
       <ng-template ngPluralCase="other">resources</ng-template>
     </ng-container>

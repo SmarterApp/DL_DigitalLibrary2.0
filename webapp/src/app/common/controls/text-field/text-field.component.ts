@@ -1,12 +1,28 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  Output,
+  EventEmitter,
+  Optional
+} from '@angular/core';
 import { MDCTextField } from '@material/textfield';
+import {controlValueAccessorProvider} from '../../form/control-value-accessor.functions';
+import {AbstractFormControlValueAccessor} from '../../form/abstract-form-control-value-accessor';
+import {AbstractControl, ControlContainer, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'sbdl-text-field',
   templateUrl: './text-field.component.html',
-  styleUrls: ['./text-field.component.scss']
+  styleUrls: ['./text-field.component.scss'],
+  providers: [
+    controlValueAccessorProvider(TextFieldComponent)
+  ]
 })
-export class TextFieldComponent implements OnInit, AfterViewInit {
+export class TextFieldComponent extends AbstractFormControlValueAccessor implements AfterViewInit {
   @Input()
   label: string;
 
@@ -17,9 +33,6 @@ export class TextFieldComponent implements OnInit, AfterViewInit {
   fontAwesomeIcon: string;
 
   @Input()
-  model: string;
-
-  @Input()
   disabled: boolean;
 
   @Output()
@@ -28,16 +41,25 @@ export class TextFieldComponent implements OnInit, AfterViewInit {
   @ViewChild('textField', { static: false })
   textFieldRef: ElementRef;
 
-  constructor() { }
+  private readonly _formControl: FormControl = new FormControl('');
 
-  ngOnInit() {
+  constructor(
+    @Optional() private controlContainer: ControlContainer
+  ) {
+    super();
   }
-  
+
+  get control(): AbstractControl {
+    return this.controlContainer != null
+      ? this.controlContainer.control
+      : this._formControl;
+  }
+
   ngAfterViewInit() {
     const textField = new MDCTextField(this.textFieldRef.nativeElement);
   }
 
-  onIconClick(event) {
-    this.submit.emit(this.model);
+  onSubmitButtonClick() {
+    this.submit.emit(this.control.value);
   }
 }
