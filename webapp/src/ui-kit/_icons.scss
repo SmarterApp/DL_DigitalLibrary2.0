@@ -45,7 +45,8 @@ sbdl-icon {
   --icon-width: 1em;
   --icon-margin: 0.25em;
   text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin)));
-  sbdl-icon, .svg-inline--fa {
+  > sbdl-icon,
+  .svg-inline--fa {
       width: var(--icon-width);
       height: auto;
       margin-right: var(--icon-margin);
@@ -56,7 +57,7 @@ sbdl-icon {
 }
 
 /* all other browsers*/
-svg path, 
+svg path,
 /*firefox https://stackoverflow.com/questions/27866893/svg-fill-not-being-applied-in-firefox */
 symbol path {
   fill: currentColor;
