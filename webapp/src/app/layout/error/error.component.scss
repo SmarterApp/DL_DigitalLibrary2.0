@@ -5,7 +5,28 @@
   margin: 8rem auto;
   width: var(--measure);
 
-  p {
-    font-size: 24px;
+  .logo-full {
+    margin-bottom: $spacer-xl;
+    width: 24rem;
+  }
+
+  .button-processing-content {
+    display: none;
+  }
+
+  .processing {
+    position: relative;
+
+    .button-content {
+      visibility: hidden;
+    }
+
+    .button-processing-content {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 }
