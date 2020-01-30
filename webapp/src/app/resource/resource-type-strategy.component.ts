@@ -104,6 +104,7 @@ export class ResourceTypeStrategyComponent implements OnInit, OnDestroy {
     this.router.navigate(['.'], {
       relativeTo: this.route,
       replaceUrl: true,
+      queryParamsHandling: 'merge',
       queryParams: {
         [parameterName]: value
       }
