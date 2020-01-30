@@ -1,13 +1,22 @@
-import { Component, OnDestroy, OnInit, Input, HostListener, ViewChild,
-  ViewContainerRef, ElementRef, Output, EventEmitter } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Map } from 'immutable';
-import { Resource } from 'src/app/data/resource/model/resource.model';
-import { getCssVar } from 'src/app/common/utils';
-import { Bookmark } from 'src/app/data/bookmarks/bookmark.model';
-import { BookmarksService } from 'src/app/data/bookmarks/bookmarks.service';
-import { PopoverService } from 'src/app/common/controls/popover/popover.service';
-import { UserService } from 'src/app/data/user/user.service';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild,
+  ViewContainerRef
+} from '@angular/core';
+import {Observable, Subscription} from 'rxjs';
+import {Resource} from 'src/app/data/resource/model/resource.model';
+import {getCssVar} from 'src/app/common/utils';
+import {Bookmark} from 'src/app/data/bookmarks/bookmark.model';
+import {BookmarksService} from 'src/app/data/bookmarks/bookmarks.service';
+import {PopoverService} from 'src/app/common/controls/popover/popover.service';
+import {UserService} from 'src/app/data/user/user.service';
 
 @Component({
   selector: 'sbdl-actions',
@@ -50,8 +59,8 @@ export class ActionsComponent implements OnDestroy, OnInit {
   hideReadingModeToggle = false;
   currentUrl: string;
   showCopied = false;
-  isAuthenticated = false;
   bookmark: Bookmark;
+  readonly authenticated$: Observable<boolean>;
 
   private readingModeDefaultWidth = 1200;
   private resizeTimeout;
@@ -86,13 +95,15 @@ export class ActionsComponent implements OnDestroy, OnInit {
   constructor(
     private bookmarksService: BookmarksService,
     private popoverService: PopoverService,
-    private userService: UserService) { }
+    private userService: UserService
+  ) {
+    this.authenticated$ = this.userService.authenticated;
+  }
 
   ngOnInit() {
     this.onResize();
-    this.currentUrl = location.href;
+    this.currentUrl = location.href.replace(/(\?.*)/, '');
     this.readingModeDefaultWidth = getCssVar('--breakpoint-lg');
-    this.userService.user.subscribe(user => this.isAuthenticated = !!user);
     this.bookmarksSubscription = this.bookmarksService.userBookmarksByResourceId.subscribe(bkmkMap => {
       this.bookmark = bkmkMap.get(this.resource.id);
       this.updatingBookmarked = false;
