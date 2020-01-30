@@ -31,7 +31,7 @@ export function mockAppConfig() {
 
 export class MockOktaAuthService {
   $authenticationState: object;
-  public isAuthenticated(): Promise<boolean> { return Promise.resolve(false);; }
+  public isAuthenticated(): Promise<boolean> { return Promise.resolve(false); }
   constructor() {
     this.$authenticationState = { subscribe() {} };
   }

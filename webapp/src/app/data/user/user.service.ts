@@ -1,11 +1,10 @@
-import { APP_BASE_HREF } from '@angular/common';
-import { Inject, Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable, ReplaySubject } from 'rxjs';
-import { map, flatMap, share, skip, tap } from 'rxjs/operators';
-import { OktaAuthService, UserClaims } from '@okta/okta-angular';
-import { TenancyChainEntity, TenancyLevel, User, UserTenancy } from './user.model';
-import {fromPromise} from 'rxjs/internal-compatibility';
+import {APP_BASE_HREF} from '@angular/common';
+import {Inject, Injectable} from '@angular/core';
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {Observable, ReplaySubject} from 'rxjs';
+import {map, flatMap, share, skip, tap} from 'rxjs/operators';
+import {OktaAuthService, UserClaims} from '@okta/okta-angular';
+import {TenancyChainEntity, TenancyLevel, User, UserTenancy} from './user.model';
 
 /**
  */
@@ -85,7 +84,7 @@ export class UserService {
   }
 
   get authenticated(): Observable<boolean> {
-    return fromPromise(this.oktaAuthService.isAuthenticated());
+    return this.user$.pipe(map(u => !!u));
   }
 
   /**
