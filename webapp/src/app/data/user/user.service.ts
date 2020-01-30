@@ -4,6 +4,7 @@ import { Observable, ReplaySubject } from 'rxjs';
 import { map, flatMap, share, skip, tap } from 'rxjs/operators';
 import { OktaAuthService } from '@okta/okta-angular';
 import { User } from './user.model';
+import {fromPromise} from 'rxjs/internal-compatibility';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,10 @@ export class UserService {
 
   get user(): Observable<User> {
     return this.userReplay;
+  }
+
+  get authenticated(): Observable<boolean> {
+    return fromPromise(this.oktaAuthService.isAuthenticated());
   }
 
   /**
