@@ -8,6 +8,7 @@ import { DataService } from './data/data.service';
 import { User } from 'src/app/data/user/user.model';
 import { mockUser } from './data/mock-data';
 import { MockDataService } from './data/mock-data.service';
+import { TenantTheme, TenantThemeConfig } from './data/tenant-theme/tenant-theme.model';
 
 // Common AppModule mocks here.
 export const dummyObservable = {
@@ -28,6 +29,24 @@ export function mockAppConfig() {
         } as IAppConfig;
     };
   }
+
+const mockTenantThemeConfig: TenantThemeConfig = {
+  default: {
+    displayName: 'Smarter Balanced',
+    logoUris: {
+      full: '/assets/svg/tft-logo-full.svg',
+      footer: ''
+    }
+  }
+};
+
+export class MockTenantThemeService {
+  tenantThemeConfig: Observable<TenantThemeConfig> = of(mockTenantThemeConfig);
+
+  public getTenantTheme(user: User): Observable<TenantTheme> {
+    return of(mockTenantThemeConfig.default);
+  }
+}
 
 export class MockOktaAuthService {
   $authenticationState: object;

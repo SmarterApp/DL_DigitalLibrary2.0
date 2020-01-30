@@ -11,10 +11,13 @@ import { NavigationComponent } from '../navigation/navigation.component';
 import { AppContainerComponent } from './app-container.component';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { SbdlCommonModule } from 'src/app/common/common.module';
+import { TenantThemeService } from 'src/app/data/tenant-theme/tenant-theme.service';
 import { UserService } from 'src/app/data/user/user.service';
 import {
+  initializeSettingsProvider,
   mockRootActivatedRouteSnapshot,
   MockOktaAuthService,
+  MockTenantThemeService,
   MockUserService
 } from 'src/app/app.module.spec';
 
@@ -32,6 +35,8 @@ describe('AppContainerComponent', () => {
         { provide: Location, useValue: { path: () => {} } },
         { provide: OktaAuthService, useClass: MockOktaAuthService },
         { provide: UserService, useClass: MockUserService },
+        { provide: TenantThemeService, useClass: MockTenantThemeService },
+        initializeSettingsProvider,
         LoggingService
       ]
     })
@@ -44,9 +49,7 @@ describe('AppContainerComponent', () => {
     fixture.detectChanges();
   });
 
-  /*
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  */
 });
