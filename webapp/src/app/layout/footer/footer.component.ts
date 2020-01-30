@@ -14,6 +14,7 @@ import { User } from 'src/app/data/user/user.model';
 })
 export class FooterComponent {
   user$: Observable<User>;
+  theme$: Observable<TenantTheme>;
   tenantName$: Observable<string>;
   tenantFooterLinks$: Observable<FooterLink[]>;
 
@@ -22,11 +23,11 @@ export class FooterComponent {
     private tenantThemeService: TenantThemeService
   ) {
     this.user$ = userService.user;
-    const theme$ = userService.user.pipe(
+    this.theme$ = userService.user.pipe(
       mergeMap(user => tenantThemeService.getTenantTheme(user)));
 
-    this.tenantName$ = theme$.pipe(map(t => t.displayName));
-    this.tenantFooterLinks$ = theme$.pipe(map(t => t.footerLinks));
+    this.tenantName$ = this.theme$.pipe(map(t => t.displayName));
+    this.tenantFooterLinks$ = this.theme$.pipe(map(t => t.footerLinks));
   }
 
   ignoreClick(ev) {

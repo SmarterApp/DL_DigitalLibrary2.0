@@ -57,7 +57,7 @@
   <div class=copyright>
     <img src="/assets/svg/smarter-balanced-footer-logo.svg"
          alt="Smarter Balanced Assessment Consortium">
-    <img *ngIf="isAuthenticated"
+    <img *ngIf="user$ | async"
          src="/assets/images/caaspp-footer-logo.png"
          alt="Logo for CASPP">
     <span>© 2019 The Regents of the University of California</span>
