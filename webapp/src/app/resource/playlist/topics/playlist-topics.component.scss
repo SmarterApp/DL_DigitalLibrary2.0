@@ -54,7 +54,7 @@
         border-bottom: solid 1px $neutral-100;
       }
 
-      .table-header th {
+      .table-header th:not([class^="scale"]) {
         background-color: $neutral-50;
         border-radius: 4px 4px 0 0;
         min-width: 8rem;
@@ -70,6 +70,7 @@
 
       .scale {
         padding: $spacer-sm 0;
+        font-weight: normal;
 
         sbdl-progression-scale-button {
           border-radius: 4px;
