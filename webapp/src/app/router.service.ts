@@ -3,14 +3,11 @@ import { Router, NavigationError, NavigationExtras } from '@angular/router';
 import { Location } from '@angular/common';
 import { ERROR_PATH } from './common/constants';
 import { filter } from 'rxjs/operators';
-import { LoggingService } from './common/logging/logging.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RouterService {
-
-  private logger: LoggingService;
 
   constructor(
     private router: Router,
@@ -19,13 +16,8 @@ export class RouterService {
   ) { }
 
   public setRouteErrorHandler(): void {
-    if (!this.logger) {
-      this.logger = this.injector.get(LoggingService);
-    }
-
     let errorRoute = null;
     this.router.errorHandler = (error): void => {
-      this.logger.error(error);
       this.router.navigate([ERROR_PATH, { error }], { skipLocationChange: true })
         .then(() => this.location.go(errorRoute.url));
     };
