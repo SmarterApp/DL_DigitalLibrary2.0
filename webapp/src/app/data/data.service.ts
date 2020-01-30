@@ -16,6 +16,11 @@ const jsonHeaders = {
  * HttpClient directly except for here, so that any future Angular HttpClient API changes
  * can be updated to this one spot.  This also allows us the opportunity add any generic,
  * Sbdl-specific logic in a single spot that should be applied across the board.
+ *
+ * TODO: Consider a refactor that removes the need for this class and uses an
+ * HttpInterceptor instead to attach the auth token
+ * (https://github.com/auth0/angular2-jwt#usage-injection for example is
+ * available via the @auth0/angular-jwt library we already depend on).
  */
 @Injectable()
 export class DataService {

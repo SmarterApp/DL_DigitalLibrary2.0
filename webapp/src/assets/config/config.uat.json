@@ -7,6 +7,7 @@
     "aws": false,
     "level": 0
   },
+  "tenantConfigPath": "/assets/config/tenant.config.json",
   "apiServerHost": "https://api-dev.dl.smarterbalanced.org",
   "enableAnalytics": false,
   "okta": {

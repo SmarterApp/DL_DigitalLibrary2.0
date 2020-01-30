@@ -8,10 +8,13 @@ import { Observable, of } from 'rxjs';
 import { FooterComponent } from '../footer/footer.component';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { AppContainerComponent } from './app-container.component';
-import { mockRootActivatedRouteSnapshot } from 'src/app/mocks';
+import {initializeSettingsProvider, mockRootActivatedRouteSnapshot} from 'src/app/mocks';
 import { SbdlCommonModule } from 'src/app/common/common.module';
 import { User } from 'src/app/data/user/user.model';
 import { UserService } from 'src/app/data/user/user.service';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {SafeUrlPipe} from '../../pipes/safe-url.pipe';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 class MockOktaAuthService {
   $authenticationState: object;
@@ -31,15 +34,26 @@ describe('AppContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppContainerComponent, FooterComponent, NavigationComponent ],
-      imports: [ RouterTestingModule.withRoutes([]), SbdlCommonModule ],
+      declarations: [
+        AppContainerComponent,
+        FooterComponent,
+        NavigationComponent,
+        SafeUrlPipe
+      ],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes([]),
+        SbdlCommonModule
+      ],
       providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
         { provide: ActivatedRoute, useValue: mockRootActivatedRouteSnapshot },
         { provide: Location, useValue: { path: () => {} } },
         { provide: OktaAuthService, useClass: MockOktaAuthService },
-        { provide: UserService, useClass: MockUserService }
-      ]
+        { provide: UserService, useClass: MockUserService },
+        initializeSettingsProvider
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

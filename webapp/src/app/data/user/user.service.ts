@@ -1,11 +1,13 @@
-import { APP_BASE_HREF } from '@angular/common';
-import { Inject, Injectable } from '@angular/core';
-import { Observable, ReplaySubject } from 'rxjs';
-import { map, flatMap, share, skip, tap } from 'rxjs/operators';
-import { OktaAuthService } from '@okta/okta-angular';
-import { User } from './user.model';
-import {fromPromise} from 'rxjs/internal-compatibility';
+import {APP_BASE_HREF} from '@angular/common';
+import {Inject, Injectable} from '@angular/core';
+import {JwtHelperService} from '@auth0/angular-jwt';
+import {Observable, ReplaySubject} from 'rxjs';
+import {map, flatMap, share, skip, tap} from 'rxjs/operators';
+import {OktaAuthService, UserClaims} from '@okta/okta-angular';
+import {TenancyChainEntity, TenancyLevel, User, UserTenancy} from './user.model';
 
+/**
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -19,12 +21,52 @@ export class UserService {
   // will immediately receive our most recent value. It we have not yet
   // received a value (page load for example) then they will wait for us to
   // produce a value. For example, see the DataService's usage.
-  private userReplay: ReplaySubject<User> = new ReplaySubject(1);
+  private user$: ReplaySubject<User> = new ReplaySubject(1);
+
+  private jwtService: JwtHelperService;
+
+  static parseSbacTenancyChain(sbacTenancyChain: string[]): UserTenancy[] {
+    const validTenancies: UserTenancy[] = [];
+
+    const extractEntity = (segments: string[], idx: number): TenancyChainEntity => {
+      if (segments[idx] && segments[idx].length > 0) {
+        return { id: segments[idx], name: segments[idx + 1] };
+      } else {
+        return undefined;
+      }
+    };
+
+    sbacTenancyChain.forEach(chain => {
+      if (chain.includes('DL_EndUser')) {
+        const segments = chain.split('|');
+
+        if (!segments[3] || !Object.values(TenancyLevel).some(v => v === segments[3])) {
+          throw new Error(`sbacTenancyChain '${chain}' has an invalid value for Level: '${segments[3] || 'undefined'}'`);
+        }
+
+        validTenancies.push({
+          role: extractEntity(segments, 1),
+          level: segments[3] as TenancyLevel,
+          client: extractEntity(segments, 4),
+          stateGroup: extractEntity(segments, 6),
+          state: extractEntity(segments, 8),
+          districtGroup: extractEntity(segments, 10 ),
+          district: extractEntity(segments, 12),
+          institutionGroup: extractEntity(segments, 14),
+          institution: extractEntity(segments, 16),
+        });
+      }
+    });
+
+    return validTenancies;
+  }
 
   constructor(
     @Inject(APP_BASE_HREF) private baseHref,
     private oktaAuthService: OktaAuthService
   ) {
+    this.jwtService = new JwtHelperService();
+
     // Subscribe to the Okta auth state so that we can push updates to our
     // subscribers when the user logs in or out. This lets Okta push changes to
     // us and our subscribers.
@@ -38,11 +80,11 @@ export class UserService {
   }
 
   get user(): Observable<User> {
-    return this.userReplay;
+    return this.user$.asObservable();
   }
 
   get authenticated(): Observable<boolean> {
-    return fromPromise(this.oktaAuthService.isAuthenticated());
+    return this.user$.pipe(map(u => !!u));
   }
 
   /**
@@ -59,9 +101,9 @@ export class UserService {
    */
   private updateUser = async (hasAuth) => {
     if (hasAuth) {
-      this.userReplay.next(await this.readUserFromOkta());
+      this.user$.next(await this.readUserFromOkta());
     } else {
-      this.userReplay.next(null);
+      this.user$.next(null);
     }
   }
 
@@ -69,11 +111,25 @@ export class UserService {
    * Interrogate the OktaAuthService and build a User model object.
    */
   private readUserFromOkta = async (): Promise<User> => {
-    const userProfile: any = await this.oktaAuthService.getUser();
-    return {
-      ...userProfile,
-      accessToken: await this.oktaAuthService.getAccessToken(),
-      idToken: await this.oktaAuthService.getIdToken()
-    } as User;
+    // Frustratingly, the okta-angular library does not provide a way to access
+    // the actual contents of the access token without parsing it yourself. A
+    // newer version (yet to be released as of 2020-01-29) does provide access
+    // to the token manager instance, but the version of the access token
+    // stored therein does not contain all claims in the access token. So we
+    // have to parse the access token ourselves to get, for example, the
+    // sbacTenancyChain value.
+    const accessToken = await this.oktaAuthService.getAccessToken();
+    const decodedAccessToken = this.jwtService.decodeToken(accessToken);
+    const userInfo = await this.oktaAuthService.getUser();
+
+    return new User(
+      userInfo.email,
+      userInfo.name,
+      userInfo.given_name,
+      userInfo.famiyl_name,
+      UserService.parseSbacTenancyChain(decodedAccessToken.sbacTenancyChain),
+      accessToken
+    );
   }
+
 }

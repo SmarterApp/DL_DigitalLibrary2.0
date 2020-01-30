@@ -5,7 +5,7 @@
 </div>
 <main id="main">
   <img class="logo-full"
-       src="/assets/svg/tft-logo-full.svg"
+       [src]="(logo$ | async) | safeUrl"
        alt="Tools for Teachers from Smarter Balanced">
   <img class="dashed-line"
        src="/assets/svg/dashed-line.svg"

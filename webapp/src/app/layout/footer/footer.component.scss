@@ -39,6 +39,10 @@
         }
       }
 
+      .member-resources a {
+        cursor: not-allowed;
+      }
+
       &.no-tenant .connect {
         margin-left: -56px;
       }
