@@ -8,8 +8,11 @@
         "level": 4
     },
     "tenantConfigPath": "/assets/config/tenant.config.json",
-    "apiServer": {
-        "cdl": "https://prod.cdl.sbac.org/api/v1.0/"
-    },
-    "enableAnalytics": true
+    "apiServerHost": "https://api.dl.smarterbalanced.org",
+    "enableAnalytics": true,
+    "okta": {
+      "clientId": "0oa2ot1pcqJNDfCSZ357",
+      "issuer": "https://login.smarterbalanced.org/oauth2/aus17c1v28v70vcF1357"
+    }
+
 }

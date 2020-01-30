@@ -3,7 +3,15 @@ import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { OktaAuthService } from '@okta/okta-angular';
 import { takeLast, takeWhile } from 'rxjs/operators';
+import { User } from 'src/app/data/user/user.model';
 import { UserService } from 'src/app/data/user/user.service';
+import { ErrorType } from 'src/app/common/error-type.enum';
+import { ERROR_PATH } from 'src/app/common/constants';
+
+interface ErrorWithDetails {
+  type: ErrorType;
+  details: string;
+}
 
 @Component({
   selector: 'sbdl-login-callback',
@@ -26,7 +34,7 @@ export class LoginCallbackComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    // TODO: probably better to subscribe to router events or somethin in case
+    // TODO: probably better to subscribe to router events or something in case
     // we somehow get redirected back to ourselves with a new token. Might not
     // trigger a destroy/init cycle
     if (this.route.snapshot.fragment && this.route.snapshot.fragment.includes('token=')) {
@@ -44,11 +52,32 @@ export class LoginCallbackComponent implements AfterViewInit, OnInit {
             takeWhile(u => u === null, true),
             takeLast(1))
           .subscribe(user => {
-            this.router.navigateByUrl(this.loginTarget.uri || this.baseHref, this.loginTarget.extras);
+            const error = this.validateUserSession(user);
+            if (error) {
+              this.router.navigate([ERROR_PATH, { error } ]);
+            } else {
+              this.router.navigateByUrl(this.loginTarget.uri || this.baseHref, this.loginTarget.extras);
+            }
           });
       });
     } else {
       this.router.navigateByUrl(this.loginTarget.uri || this.baseHref, this.loginTarget.extras);
+    }
+  }
+
+  validateUserSession(user: User): ErrorWithDetails | null {
+    if (!user.accessToken) {
+      return {
+        type: ErrorType.AuthNoAppAccess,
+        details: 'User has no access token.'
+      };
+    }
+
+    if (user.tenantIds.length === 0) {
+      return {
+        type: ErrorType.AuthNoAppAccess,
+        details: 'User has no tenancy chain with the role of DL_EndUser.'
+      };
     }
   }
 }

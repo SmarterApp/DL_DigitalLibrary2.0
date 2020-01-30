@@ -1,4 +1,32 @@
-<h1>This is a placeholder error page.</h1>
-<p>I'm sorry but this page does not exist. Also, we're working on more
-informative error messaging</p>
-<p><a [routerLink]="['/']">Take me back to the home page.</a></p>
+<img class="logo-full"
+     [src]="(logo$ | async) | safeUrl"
+     alt="Tools for Teachers from Smarter Balanced">
+<h1>{{ errorMessage.title }}</h1>
+<p>{{ errorMessage.message }}</p>
+<div class="error-details emphasis-medium" *ngIf="errorDetails">
+  Technical details: {{ errorDetails }}
+</div>
+<div *ngIf="user$ | async">
+  <p>
+    <a [routerLink]="['/']">
+      <i class='far fa-arrow-left' alt='' aria-hidden='true'></i>
+      Take me back to the home page.
+    </a>
+  </p>
+</div>
+<div *ngIf="!(user$ | async)">
+  <sbdl-button
+    class="primary"
+    (click)="onLoginButtonClick()"
+    [ngClass]="{
+      processing: loading$ | async
+    }"
+  >
+    <span class="button-content">
+      Login
+    </span>
+    <span class="button-processing-content">
+      <i class="fas fa-spinner fa-pulse"></i>
+    </span>
+  </sbdl-button>
+</div>
