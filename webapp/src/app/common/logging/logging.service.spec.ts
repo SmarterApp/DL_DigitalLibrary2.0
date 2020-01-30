@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { LoggingService } from './logging.service';
-import { initializeSettingsProvider } from 'src/app/app.module.spec';
+import { initializeSettingsProvider } from 'src/app/mocks';
 
 describe('LoggingService', () => {
   beforeEach(() => TestBed.configureTestingModule({

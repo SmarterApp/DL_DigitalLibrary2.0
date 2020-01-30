@@ -8,7 +8,7 @@ import { Observable, of } from 'rxjs';
 import { FooterComponent } from '../footer/footer.component';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { AppContainerComponent } from './app-container.component';
-import { mockRootActivatedRouteSnapshot } from 'src/app/app.module.spec';
+import { mockRootActivatedRouteSnapshot } from 'src/app/mocks';
 import { SbdlCommonModule } from 'src/app/common/common.module';
 import { User } from 'src/app/data/user/user.model';
 import { UserService } from 'src/app/data/user/user.service';
