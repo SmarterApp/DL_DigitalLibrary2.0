@@ -17,4 +17,13 @@
   width: 279px;
   height: 279px;
   overflow: hidden;
+
+  sbdl-resource-thumbnail {
+    ::ng-deep {
+      object {
+        width: calc(100% - 2rem); // $spacer * 2
+        padding: $spacer;
+      }
+    }
+  }
 }

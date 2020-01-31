@@ -29,6 +29,7 @@
       0 0 2px rgba(0, 0, 0, 0.14);
 
     margin-top: $spacer-sm;
+    max-height: 100px;
 
     display: flex;
     flex-direction: row;
@@ -61,11 +62,12 @@
       color: $neutral-900;
       font-family: $font-family-title;
       font-size: $font-size-body;
-      margin-bottom: $spacer-sm;
     }
 
     .details {
       color: $neutral-900;
+      max-height: 4.5em;
+      overflow: hidden;
 
       .detail-item {
         white-space: nowrap;
