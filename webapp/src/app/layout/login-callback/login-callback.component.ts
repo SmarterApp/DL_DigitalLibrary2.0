@@ -5,11 +5,11 @@ import { OktaAuthService } from '@okta/okta-angular';
 import { takeLast, takeWhile } from 'rxjs/operators';
 import { User } from 'src/app/data/user/user.model';
 import { UserService } from 'src/app/data/user/user.service';
-import { ErrorType } from 'src/app/common/error-type.enum';
+import { TftErrorType } from 'src/app/common/tft-error-type.enum';
 import { ERROR_PATH } from 'src/app/common/constants';
 
-interface ErrorWithDetails {
-  type: ErrorType;
+interface TftError {
+  type: TftErrorType;
   details: string;
 }
 
@@ -65,17 +65,17 @@ export class LoginCallbackComponent implements AfterViewInit, OnInit {
     }
   }
 
-  validateUserSession(user: User): ErrorWithDetails | null {
+  validateUserSession(user: User): TftError | null {
     if (!user.accessToken) {
       return {
-        type: ErrorType.AuthNoAppAccess,
+        type: TftErrorType.AuthNoAppAccess,
         details: 'User has no access token.'
       };
     }
 
     if (user.tenantIds.length === 0) {
       return {
-        type: ErrorType.AuthNoAppAccess,
+        type: TftErrorType.AuthNoAppAccess,
         details: 'User has no tenancy chain with the role of DL_EndUser.'
       };
     }

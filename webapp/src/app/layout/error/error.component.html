@@ -1,10 +1,12 @@
 <img class="logo-full"
      [src]="(logo$ | async) | safeUrl"
      alt="Tools for Teachers from Smarter Balanced">
-<h1>{{ errorMessage.title }}</h1>
-<p>{{ errorMessage.message }}</p>
-<div class="error-details emphasis-medium" *ngIf="errorDetails">
-  Technical details: {{ errorDetails }}
+<h1>{{ (errorMessage$ | async).title }}</h1>
+<p>{{ (errorMessage$ | async).message }}</p>
+<div class="error-details emphasis-medium" *ngIf="errorDetails$ | async">
+  <p>
+    Technical details: {{ errorDetails$ | async }}
+  </p>
 </div>
 <div *ngIf="user$ | async">
   <p>

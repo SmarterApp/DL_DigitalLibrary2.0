@@ -4,7 +4,7 @@ import {BehaviorSubject, Observable, Subscription } from 'rxjs';
 import {map, mergeMap} from 'rxjs/operators';
 import {filter} from 'rxjs/internal/operators/filter';
 import {OktaAuthService} from '@okta/okta-angular';
-import {ErrorType, ErrorMessage, errorMessages} from 'src/app/common/error-type.enum';
+import {TftErrorType, TftErrorMessage, errorMessages} from 'src/app/common/tft-error-type.enum';
 import {TenantThemeService} from 'src/app/data/tenant-theme/tenant-theme.service';
 import {User} from 'src/app/data/user/user.model';
 import {UserService} from 'src/app/data/user/user.service';
@@ -16,9 +16,9 @@ import {UserService} from 'src/app/data/user/user.service';
 })
 export class ErrorComponent implements OnInit {
 
-  error: ErrorType;
-  errorDetails: string;
-  errorMessage: ErrorMessage;
+  error$: Observable<TftErrorType>;
+  errorDetails$: Observable<string>;
+  errorMessage$: Observable<TftErrorMessage>;
   loading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   logo$: Observable<string>;
   user$: Observable<User>;
@@ -39,15 +39,17 @@ export class ErrorComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('Error page params: ', this.route.snapshot);
+    this.error$ = this.route.params.pipe(map(p => {
+      const errorType: TftErrorType = p.type;
+      if (!Object.values(TftErrorType).some(v => v === errorType)) {
+        return TftErrorType.Unknown;
+      } else {
+        return errorType;
+      }
+    }));
 
-    this.error = this.route.snapshot.params.type || ErrorType.Unknown;
-    if (!Object.values(ErrorType).some(v => v === this.error)) {
-      this.error = ErrorType.Unknown;
-    }
-
-    this.errorMessage = errorMessages.get(this.error);
-    this.errorDetails = this.route.snapshot.params.details;
+    this.errorMessage$ = this.error$.pipe(map(et => errorMessages.get(et)));
+    this.errorDetails$ = this.route.params.pipe(map(p => p.details));
   }
 
   onLoginButtonClick(): void {
