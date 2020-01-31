@@ -1,47 +1,22 @@
 @import "colors";
 @import "typography";
 @import "spacing";
-@import "@material/ripple/mdc-ripple";
 
 :host {
-  background-color: white;
-  margin-left: 20px;
-  z-index: inherit;
+  padding: $spacer-md;
 }
 
-.image {
-  width: fit-content;
-  background-color: $white;
-  margin-top: 16px;
-  margin-right: 5px;
-  margin-bottom: $spacer-lg;
-  border: 8px solid #FFFFFF;
-  box-sizing: border-box;
-
-  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 3px 3px rgba(0, 0, 0, 0.14);
+.thumbnail-container {
+  display: inline-block;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2), 0 3px 4px rgba(0, 0, 0, 0.12), 0 3px 3px rgba(0, 0, 0, 0.14);
   border-radius: 4px;
-  
-  &.ela {
-    object {
-      filter: invert(39%) sepia(1) saturate(4) hue-rotate(59.5deg);
-    }
+  padding: $spacer-sm;
+  margin-bottom: $spacer-md;
+
+  sbdl-resource-thumbnail {
+    min-height: 100px;
+    min-width: 279px;
+    max-width: 279px;
+    max-height: 279px;
   }
-
-  &.math {
-    object {
-      filter: invert(30%) sepia(1) saturate(10) hue-rotate(160deg);
-    }
-  }
-}
-
-.image > *:first-child {
-  min-height: 100px;
-  min-width: 279px;
-  max-width: 279px;
-  max-height: 279px;
-  object-fit: cover;
-}
-
-@media only print {
-  .image-thumbnail { display: none; }
 }

@@ -46,12 +46,10 @@
       min-width: 0;
     }
 
-    img {
-      object-fit: cover;
-
+    sbdl-resource-thumbnail {
+      min-width: 100px;
       width: 100px;
       height: 100px;
-      min-width: 100px;
     }
 
     .title, .details {
