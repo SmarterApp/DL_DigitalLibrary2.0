@@ -3,7 +3,13 @@ export enum TftErrorType {
   AuthNoAppAccess = 'auth-no-app-access',
   ResourceIsPrivate = 'resource-is-private',
   ResourceIsTenantSpecific = 'resource-is-tenant-specific',
+  ResourceUnavailable = 'resource-unavailable',
   Unknown = 'unknown'
+}
+
+export interface TftError {
+  type: TftErrorType;
+  details: string;
 }
 
 export interface TftErrorMessage {
@@ -26,8 +32,12 @@ export const errorMessages: Map<TftErrorType, TftErrorMessage>  = new Map([
     title: 'This resource is restricted.',
     message: 'Unfortunately this resource is not available to educators in your state/territory.',
   }],
-  [TftErrorType.Unknown, {
+  [TftErrorType.ResourceUnavailable, {
     title: 'This resource is unavaiable.',
     message: 'We apologize for the inconvenience.'
-  }]
+  }],
+  [TftErrorType.Unknown, {
+    title: 'Tools for Teachers has encountered an error.',
+    message: 'An error has occured that we cannot automatically correct. We apologize for the inconvenience.'
+  }],
 ]);

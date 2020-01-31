@@ -41,8 +41,8 @@
       left: 0;
       position: absolute;
       top: 0;
-      width:  calc(100vw - 64px);
-      z-index: 10;
+      width:  100vw;
+      z-index: 4;
 
       .spinner-container {
         margin: calc(50vh - 3rem) auto;

@@ -1,8 +1,8 @@
 import {APP_BASE_HREF} from '@angular/common';
 import {Inject, Injectable} from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {Observable, ReplaySubject} from 'rxjs';
-import {map, flatMap, share, skip, tap} from 'rxjs/operators';
+import {Observable, OperatorFunction, of, ReplaySubject} from 'rxjs';
+import {map, mergeMap, flatMap, share, skip, tap} from 'rxjs/operators';
 import {OktaAuthService, UserClaims} from '@okta/okta-angular';
 import {TenancyChainEntity, TenancyLevel, User, UserTenancy} from './user.model';
 
@@ -86,6 +86,23 @@ export class UserService {
   get authenticated(): Observable<boolean> {
     return this.user$.pipe(map(u => !!u));
   }
+
+  /**
+   * Convenience method to wrap the common case where a reactive pipeline
+   * should be executed only if a valid user session is present, returning a
+   * given default value otherwise.
+   */
+  withUserOrDefault<T>(fun: OperatorFunction<User, T>, defaultValue: T): Observable<T> {
+    return this.user$.pipe(
+      mergeMap(user => {
+        if (user) {
+          return fun(of(user));
+        } else {
+          return of(defaultValue);
+        }
+      }));
+  }
+
 
   /**
    * Use the OktaAuthService to pull the initial user state from

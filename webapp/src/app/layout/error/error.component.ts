@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Location} from '@angular/common';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {BehaviorSubject, Observable, Subscription } from 'rxjs';
 import {map, mergeMap} from 'rxjs/operators';
@@ -26,8 +27,9 @@ export class ErrorComponent implements OnInit {
   private routerSubscription: Subscription;
 
   constructor(
-    private route: ActivatedRoute,
+    private location: Location,
     private oktaAuthService: OktaAuthService,
+    private route: ActivatedRoute,
     private router: Router,
     private tenantThemeService: TenantThemeService,
     private userService: UserService
@@ -54,6 +56,6 @@ export class ErrorComponent implements OnInit {
 
   onLoginButtonClick(): void {
     this.loading$.next(true);
-    this.oktaAuthService.loginRedirect(this.router.url);
+    this.oktaAuthService.loginRedirect(this.location.path());
   }
 }
