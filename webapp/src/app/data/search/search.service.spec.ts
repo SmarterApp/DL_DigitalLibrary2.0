@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { mockDataServiceProviders } from 'src/app/app.module.spec';
+import { mockDataServiceProviders } from 'src/app/mocks';
 import { SearchService } from './search.service';
 
 describe('SearchService', () => {

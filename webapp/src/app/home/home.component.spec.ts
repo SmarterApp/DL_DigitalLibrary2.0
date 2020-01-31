@@ -13,7 +13,7 @@ import {
   MockOktaAuthService,
   MockTenantThemeService,
   MockUserService
-} from 'src/app/app.module.spec';
+} from 'src/app/mocks';
 import { SearchModule } from '../search/search.module';
 import { ResourceModule } from '../resource/resource.module';
 import { HomeComponent } from './home.component';

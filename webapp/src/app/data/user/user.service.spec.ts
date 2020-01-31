@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { OktaAuthService } from '@okta/okta-angular';
-import { mockDataServiceProviders, MockOktaAuthService } from 'src/app/app.module.spec';
+import { mockDataServiceProviders, MockOktaAuthService } from 'src/app/mocks';
 import { UserService } from './user.service';
 import { TenancyLevel, UserTenancy } from './user.model';
 

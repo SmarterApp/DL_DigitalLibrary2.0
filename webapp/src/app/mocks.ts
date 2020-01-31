@@ -10,6 +10,8 @@ import { mockUser } from './data/mock-data';
 import { MockDataService } from './data/mock-data.service';
 import { TenantTheme, TenantThemeConfig } from './data/tenant-theme/tenant-theme.model';
 
+// TODO move to appropriate modules
+
 // Common AppModule mocks here.
 export const dummyObservable = {
   subscribe: () => {},
@@ -72,3 +74,4 @@ export const mockDataServiceProviders = [
     LoggingService,
     initializeSettingsProvider,
 ];
+
