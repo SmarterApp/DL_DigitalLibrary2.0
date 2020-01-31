@@ -12,7 +12,7 @@
   }
 
   transition-duration: 0.2s;
-  transition-property: width, z-index;
+  transition-property: width;
   transition-timing-function: ease-in;
 
   width: 64px;
@@ -24,8 +24,7 @@
 
   overflow: hidden;
 
-  // TODO why?
-  z-index: 4;
+  z-index: 5;
 
   .logo {
     background: white;
