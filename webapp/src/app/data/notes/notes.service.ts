@@ -27,6 +27,10 @@ export class NotesService {
     this.dataService.delete(`/api/note/${noteId}`);
   }
 
+  listIdsOfResourcesWithNotes(): Observable<number[]> {
+    return this.dataService.get('/api/notes/resourceids');
+  }
+
   private noteFromJson(json: any): Note {
     return {
       id: json.noteId,
