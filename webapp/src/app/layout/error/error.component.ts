@@ -24,6 +24,8 @@ export class ErrorComponent implements OnInit {
   logo$: Observable<string>;
   user$: Observable<User>;
 
+  errorTypes = TftErrorType;
+
   private routerSubscription: Subscription;
 
   constructor(
