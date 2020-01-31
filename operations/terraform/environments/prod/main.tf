@@ -23,4 +23,5 @@ module "prod_env" {
   log_bucket_id = data.terraform_remote_state.global.outputs.aws_s3_bucket_logs.id
   route53_zone_id = var.route53_zone_id
   webapp_url_base = var.webapp_url_base
+  additional_cloudfront_aliases = ["smartertoolsforteachers.org","www.smartertoolsforteachers.org"] 
 }
