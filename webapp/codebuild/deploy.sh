@@ -126,7 +126,7 @@ echo "Invalidating the CloudFront cache for ${target_env}."
 invalidation_id=$(aws cloudfront create-invalidation \
   --query 'Invalidation.Id' \
   --distribution-id "${cloudfront_distribution_id}" \
-  --paths '/index.html' '/assets/config/config.json')
+  --paths '/index.html' '/assets/config/config.json' '/assets/config/tenant.config.json')
 
 if [[ $? -ne 0 || -z "${invalidation_id}" ]]; then
   >&2 echo "Unable to create the CloudFront invalidation."
