@@ -8,15 +8,13 @@
 
 .thumbnail-container {
   display: inline-block;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2), 0 3px 4px rgba(0, 0, 0, 0.12), 0 3px 3px rgba(0, 0, 0, 0.14);
+  box-shadow:
+    0 1px 8px rgba(0, 0, 0, 0.2),
+    0 3px 4px rgba(0, 0, 0, 0.12),
+    0 3px 3px rgba(0, 0, 0, 0.14);
   border-radius: 4px;
-  padding: $spacer-sm;
   margin-bottom: $spacer-md;
-
-  sbdl-resource-thumbnail {
-    min-height: 100px;
-    min-width: 279px;
-    max-width: 279px;
-    max-height: 279px;
-  }
+  width: 279px;
+  height: 279px;
+  overflow: hidden;
 }

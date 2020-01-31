@@ -5,7 +5,6 @@
 :host {
   box-sizing: border-box;
   max-width: none;
-
   position: relative;
 
   .resource-type {
@@ -25,9 +24,9 @@
     background-color: $white;
     border-radius: 4px;
     box-shadow:
-      0px 1px 3px rgba(0, 0, 0, 0.2),
-      0px 2px 2px rgba(0, 0, 0, 0.12),
-      0px 0px 2px rgba(0, 0, 0, 0.14);
+      0 1px 3px rgba(0, 0, 0, 0.2),
+      0 2px 2px rgba(0, 0, 0, 0.12),
+      0 0 2px rgba(0, 0, 0, 0.14);
 
     margin-top: $spacer-sm;
 
@@ -38,10 +37,11 @@
 
     overflow: hidden;
 
-    & > div {
+    .resource-summary-card-right {
+      padding: $spacer-sm $spacer;
       display: flex;
       flex-direction: column;
-      flex-grow: 1;
+      flex: 1;
       align-items: stretch;
       min-width: 0;
     }
@@ -52,22 +52,24 @@
       height: 100px;
     }
 
-    .title, .details {
+    .title,
+    .details {
       text-overflow: ellipsis;
     }
 
     .title {
-      margin: $spacer-sm $spacer 0 $spacer;
       color: $neutral-900;
       font-family: $font-family-title;
       font-size: $font-size-body;
+      margin-bottom: $spacer-sm;
     }
 
     .details {
-      margin: $spacer-sm $spacer;
       color: $neutral-900;
 
-      .detail-item { white-space: nowrap; }
+      .detail-item {
+        white-space: nowrap;
+      }
 
       &.professional-learning {
         text-overflow: ellipsis;
