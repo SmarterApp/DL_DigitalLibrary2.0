@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { flatMap, mergeAll, map, toArray } from 'rxjs/operators';
+import { Location } from '@angular/common';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, flatMap, mergeAll, map, take, tap, toArray } from 'rxjs/operators';
 import { coalesce } from 'src/app/common/utils';
 import { DataService } from '../data.service';
+import { UserService } from '../user/user.service';
 import { ResourceType } from './model/resource-type.enum';
 import { Resource } from './model/resource.model';
 import { ResourceSummary } from './model/summary.model';
@@ -15,6 +17,8 @@ import { ProfessionalLearningResource } from './model/professional-learning.mode
 import { EmbedStrategyLinksService } from './embed-strategy-links.service';
 import { Bookmark } from '../bookmarks/bookmark.model';
 import { teaserIRContent, teaserFAContent, teaserASContent, teaserPLContent, teaserCPContent } from 'src/app/data/mock-data';
+import { TftErrorService } from 'src/app/common/tft-error.service';
+import { TftErrorType } from 'src/app/common/tft-error-type.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -30,15 +34,22 @@ export class ResourceService {
     [ 4, 'asmt-ela-read-informational-texts' ],
   ]);
 
-  constructor(private dataService: DataService,
-              private embedStrategyLinkService: EmbedStrategyLinksService) {}
+  constructor(
+    private dataService: DataService,
+    private location: Location,
+    private embedStrategyLinkService: EmbedStrategyLinksService,
+    private errorService: TftErrorService,
+    private userService: UserService
+  ) {}
 
   get = (id: number): Observable<Resource> => {
     return this.dataService
       .get(`/api/resource/${id}`)
       .pipe(
         map(this.resourceFromJson),
-        map(this.embedStrategyLinks));
+        map(this.embedStrategyLinks),
+        catchError(this.handleResourceError)
+      );
   }
 
   getResourceSummariesForBookmarks = (bookmarks: Observable<Bookmark[]> | Bookmark[]): Observable<ResourceSummary[]> => {
@@ -57,6 +68,28 @@ export class ResourceService {
       flatMap(id => this.dataService.get(`/api/resource/${id}`)),
       map(this.resourceSummaryFromJson),
       toArray());
+  }
+
+  private handleResourceError = (error: any): Observable<never> => {
+    // TODO: API should return more information that we can use to error
+    // appropriately.
+    let errorType = TftErrorType.Unknown;
+
+    this.userService.user.pipe(take(1)).subscribe(user => {
+      if (error.status === 401) {
+        if (user) {
+          errorType = TftErrorType.ResourceIsTenantSpecific;
+        } else {
+          errorType = TftErrorType.ResourceIsPrivate;
+        }
+      } else {
+        errorType = TftErrorType.ResourceUnavailable;
+      }
+
+      this.errorService.redirectTftError({ type: errorType, details: error.error });
+    });
+
+    return throwError(error);
   }
 
   private resourceFromJson = (resourceJson: any): Resource => {

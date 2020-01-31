@@ -1,10 +1,12 @@
 import { ErrorHandler, Injectable, Injector } from '@angular/core';
 import { LoggingService } from './logging/logging.service';
-
+import { TftErrorService } from './tft-error.service';
+import { TftErrorType } from './tft-error-type.enum';
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
   private logger: LoggingService;
+  private errorService: TftErrorService;
 
   /*
    * https://medium.com/@amcdnl/global-error-handling-with-angular2-6b992bdfb59c
@@ -19,8 +21,16 @@ export class GlobalErrorHandler implements ErrorHandler {
       this.logger = this.injector.get(LoggingService);
     }
 
+    if (!this.errorService) {
+      this.errorService = this.injector.get(TftErrorService);
+    }
+
     if (this.logger) {
       this.logger.error(error);
+    }
+
+    if (this.errorService) {
+      this.errorService.redirectTftError({ type: TftErrorType.Unknown, details: error.toString() });
     }
 
     throw error;
