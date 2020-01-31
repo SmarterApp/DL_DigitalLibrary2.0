@@ -93,7 +93,6 @@
     background: $neutral-50;
     display: flex;
     flex-direction: column;
-    padding-bottom: $spacer-xl;
     width: 100%;
 
     & > * {
@@ -140,14 +139,15 @@
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-around;
-      margin-top: $spacer-lg;
+      margin: 2rem 4rem 4rem 4rem;
+      width: 100%;
 
       sbdl-resource-summary-card {
         display: inline-block;
-        max-width: 416px;
+        max-width: 435px;
         margin-top: $spacer-md;
         flex-grow: 1;
-        padding: 0 0.25rem;
+        padding: 0px 4px;
       }
     }
   }
