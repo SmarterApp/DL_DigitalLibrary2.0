@@ -10,15 +10,13 @@ import {JoinPipe} from '../../../pipes/join.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ResourceSummaryCardComponent implements OnInit {
+  readonly ResourceType = ResourceType;
 
   @Input()
   resourceSummary: ResourceSummary;
 
   details: string[];
   joinPipe: JoinPipe = new JoinPipe();
-  resourceTypes = ResourceType;
-
-  constructor() { }
 
   ngOnInit() {
     this.setDetails();

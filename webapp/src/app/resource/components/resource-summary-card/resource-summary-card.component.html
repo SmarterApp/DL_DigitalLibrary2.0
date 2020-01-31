@@ -19,9 +19,12 @@
       {{ resourceSummary.properties.title }}
     </div>
 
-    <ng-container [ngSwitch]="resourceSummary.type">
+    <ng-container>
       <p
-        *ngSwitchCase="resourceTypes.Instructional"
+        *ngIf="
+          resourceSummary.type === ResourceType.Instructional
+          || resourceSummary.type === ResourceType.ConnectionsPlaylist
+        "
         class="details caption emphasis-medium"
       >
         <span
@@ -32,13 +35,6 @@
           <span *ngIf="!last">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
         </span>
       </p>
-
-      <span
-        *ngSwitchCase="resourceTypes.ConnectionsPlaylist"
-        class="details caption emphasis-medium"
-      >
-        <dynamic-html [content]="resourceSummary.summary"></dynamic-html>
-      </span>
     </ng-container>
   </div>
 
