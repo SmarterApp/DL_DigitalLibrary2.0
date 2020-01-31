@@ -57,6 +57,7 @@ import { PlaylistTopicRowComponent } from './playlist/topics/playlist-topic-row.
 import { PlaylistTopicsComponent } from './playlist/topics/playlist-topics.component';
 import { ProgressionScaleButtonComponent } from './playlist/topics/progression-scale-button.component';
 import { ProtectedContentComponent } from './components/protected-content/protected-content.component';
+import { ResourceThumbnailComponent } from './components/resource-thumbnail/resource-thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +112,8 @@ import { ProtectedContentComponent } from './components/protected-content/protec
     PlaylistTopicRowComponent,
     PlaylistTopicsComponent,
     ProgressionScaleButtonComponent,
-    ProtectedContentComponent
+    ProtectedContentComponent,
+    ResourceThumbnailComponent
   ],
   imports: [
     CommonModule,

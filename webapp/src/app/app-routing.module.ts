@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OktaLoginRedirectComponent } from '@okta/okta-angular';
+import {OktaAuthGuard, OktaLoginRedirectComponent} from '@okta/okta-angular';
 import { HomeComponent } from './home/home.component';
 import { AppContainerComponent } from './layout/app-container/app-container.component';
 import { ResourceTypeStrategyComponent } from './resource/resource-type-strategy.component';
@@ -32,7 +32,8 @@ const routes: Routes = [
       }, {
         path: 'bookmarks',
         component: BookmarkListComponent,
-        resolve: { bookmarks: BookmarksResolve }
+        resolve: { bookmarks: BookmarksResolve },
+        canActivate: [ OktaAuthGuard ]
       }, {
         path: 'resource/:resourceId',
         component: ResourceTypeStrategyComponent,
