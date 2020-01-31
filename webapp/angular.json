@@ -125,7 +125,7 @@
                 }
               ]
             },
-            "production": {
+            "prod": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -160,8 +160,8 @@
             "browserTarget": "sb-digital-library:build"
           },
           "configurations": {
-            "production": {
-              "browserTarget": "sb-digital-library:build:production"
+            "prod": {
+              "browserTarget": "sb-digital-library:build:prod"
             }, 
             "stage": {
               "browserTarget": "sb-digital-library:build:stage"
@@ -223,8 +223,8 @@
             "devServerTarget": "sb-digital-library:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "sb-digital-library:serve:production"
+            "prod": {
+              "devServerTarget": "sb-digital-library:serve:prod"
             }
           }
         }
