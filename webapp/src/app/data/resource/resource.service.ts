@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { flatMap, mergeAll, map, toArray } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, flatMap, mergeAll, map, toArray } from 'rxjs/operators';
 import { coalesce } from 'src/app/common/utils';
 import { DataService } from '../data.service';
 import { ResourceType } from './model/resource-type.enum';
@@ -15,6 +16,8 @@ import { ProfessionalLearningResource } from './model/professional-learning.mode
 import { EmbedStrategyLinksService } from './embed-strategy-links.service';
 import { Bookmark } from '../bookmarks/bookmark.model';
 import { teaserIRContent, teaserFAContent, teaserASContent, teaserPLContent, teaserCPContent } from 'src/app/data/mock-data';
+import { ERROR_PATH } from 'src/app/common/constants';
+import { TftErrorType } from 'src/app/common/tft-error-type.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -30,15 +33,20 @@ export class ResourceService {
     [ 4, 'asmt-ela-read-informational-texts' ],
   ]);
 
-  constructor(private dataService: DataService,
-              private embedStrategyLinkService: EmbedStrategyLinksService) {}
+  constructor(
+    private dataService: DataService,
+    private embedStrategyLinkService: EmbedStrategyLinksService,
+    private router: Router
+  ) {}
 
   get = (id: number): Observable<Resource> => {
     return this.dataService
       .get(`/api/resource/${id}`)
       .pipe(
         map(this.resourceFromJson),
-        map(this.embedStrategyLinks));
+        map(this.embedStrategyLinks),
+        catchError(this.handleResourceError)
+      );
   }
 
   getResourceSummariesForBookmarks = (bookmarks: Observable<Bookmark[]> | Bookmark[]): Observable<ResourceSummary[]> => {
@@ -57,6 +65,21 @@ export class ResourceService {
       flatMap(id => this.dataService.get(`/api/resource/${id}`)),
       map(this.resourceSummaryFromJson),
       toArray());
+  }
+
+  private handleResourceError = (error: any): Observable<never> => {
+    // TODO: API should return more information that we can use to error
+    // appropriately.
+    let errorType = TftErrorType.Unknown;
+
+    if (error.status === 401) {
+      errorType = TftErrorType.ResourceIsTenantSpecific;
+    }
+
+    this.router.navigate(
+      [ERROR_PATH, { type: errorType, details: error.error }],
+      { skipLocationChange: true, replaceUrl: false });
+    return throwError(error);
   }
 
   private resourceFromJson = (resourceJson: any): Resource => {
