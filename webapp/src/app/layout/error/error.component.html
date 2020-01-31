@@ -16,7 +16,7 @@
     </a>
   </p>
 </div>
-<div *ngIf="!(user$ | async)">
+<div *ngIf="!(user$ | async) && (error$ | async) !== errorTypes.AuthNoAppAccess">
   <sbdl-button
     class="primary"
     (click)="onLoginButtonClick()"
