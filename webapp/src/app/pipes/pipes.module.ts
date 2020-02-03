@@ -3,7 +3,7 @@ import { JoinPipe } from './join.pipe';
 import { FileTypeIconPipe } from './file-type-icon.pipe';
 import { ReplaceNullImagePipe } from './replace-null-image.pipe';
 import { ResourceTypePipe } from './resource-type.pipe';
-import { TrustUrlPipe } from './safe-url.pipe';
+import { TrustUrlPipe } from './trust-url.pipe';
 import { SlugifyPipe } from './slugify.pipe';
 
 @NgModule({
