@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject } from 'rxjs';
+import { combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AppConfig } from 'src/app/common/config/app.config';
 import { LoggingService } from 'src/app/common/logging/logging.service';
 import { TenantTheme, TenantThemeConfig } from './tenant-theme.model';
 import { User } from 'src/app/data/user/user.model';
+import { UserService } from 'src/app/data/user/user.service';
 
 const DEFAULT_TENANT_ID = 'default';
 
@@ -16,19 +17,22 @@ export class TenantThemeService {
 
   private tenantThemeConfig$ = new ReplaySubject<TenantThemeConfig>(1);
 
-  constructor(private http: HttpClient, private logger: LoggingService) {
+  public  currentTenantTheme$: Observable<TenantTheme>;
+
+  constructor(
+    private http: HttpClient,
+    private logger: LoggingService,
+    private userService: UserService
+  ) {
     this.load(AppConfig.settings.tenantConfigPath);
 
     this.tenantThemeConfig$.subscribe(() => {}, error => this.logger.error(error));
-  }
 
-  public get tenantThemeConfig(): Observable<TenantThemeConfig> {
-    return this.tenantThemeConfig$.asObservable();
-  }
-
-  public getTenantTheme(user: User): Observable<TenantTheme> {
-    return this.tenantThemeConfig.pipe(
-      map(cfg => {
+    this.currentTenantTheme$ = combineLatest(
+      this.userService.user,
+      this.tenantThemeConfig$
+    ).pipe(
+      map(([user, cfg]) => {
         let tenantId = DEFAULT_TENANT_ID;
         if (user) {
           tenantId = user.tenantIds.find(id => !!cfg[id]);
@@ -36,6 +40,11 @@ export class TenantThemeService {
         return cfg[tenantId] || cfg[DEFAULT_TENANT_ID];
       })
     );
+
+  }
+
+  public get tenantThemeConfig(): Observable<TenantThemeConfig> {
+    return this.tenantThemeConfig$.asObservable();
   }
 
   load(configPath: string) {

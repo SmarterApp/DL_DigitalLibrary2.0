@@ -4,7 +4,7 @@
   <div class="logo">
     <a [routerLink]="[baseHref]" title="Tools for Teachers Home Page">
       <img class="small" src="/assets/svg/tft-logo-small.svg" aria-hidden="true">
-      <img class="full" [src]="(logo$ | async) | safeUrl" aria-hidden="true">
+      <img class="full" [src]="(logo$ | async) | trustUrl" aria-hidden="true">
     </a>
   </div>
 

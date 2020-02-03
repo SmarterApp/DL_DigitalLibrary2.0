@@ -6,6 +6,7 @@ export interface FooterLink {
 }
 
 export interface TenantTheme {
+  contactUri: string;
   displayName: string;
   logoUris: {
     full: string;

@@ -1,5 +1,5 @@
 import { APP_BASE_HREF } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { OktaAuthService } from '@okta/okta-angular';
@@ -15,9 +15,8 @@ import { User } from 'src/app/data/user/user.model';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
 
-  tenantTheme$: Observable<TenantTheme>;
   logo$: Observable<string>;
 
   constructor(
@@ -27,14 +26,9 @@ export class NavigationComponent implements OnInit {
     private router: Router,
     private tenantThemeService: TenantThemeService,
     private userService: UserService
-  ) { }
-
-  ngOnInit() {
-    this.tenantTheme$ = this.userService.user.pipe(
-      mergeMap(user => this.tenantThemeService.getTenantTheme(user))
-    );
-
-    this.logo$ = this.tenantTheme$.pipe(map(theme => theme.logoUris.full));
+  ) {
+    this.logo$ = this.tenantThemeService.currentTenantTheme$.pipe(
+      map(theme => theme.logoUris.full));
   }
 
   get user$(): Observable<User> {
