@@ -1,10 +1,13 @@
 import {APP_BASE_HREF} from '@angular/common';
 import {Inject, Injectable} from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {Observable, ReplaySubject} from 'rxjs';
-import {map, flatMap, share, skip, tap} from 'rxjs/operators';
+import {Observable, OperatorFunction, of, ReplaySubject} from 'rxjs';
+import {map, mergeMap, flatMap, share, skip, tap} from 'rxjs/operators';
 import {OktaAuthService, UserClaims} from '@okta/okta-angular';
 import {TenancyChainEntity, TenancyLevel, User, UserTenancy} from './user.model';
+import { TftError, TftErrorType } from 'src/app/common/tft-error-type.enum';
+import { TftErrorService } from 'src/app/common/tft-error.service';
+import { ERROR_PATH } from 'src/app/common/constants';
 
 /**
  */
@@ -61,8 +64,25 @@ export class UserService {
     return validTenancies;
   }
 
+  static validateUserSession(user: User): TftError | null {
+    if (!user.accessToken) {
+      return {
+        type: TftErrorType.AuthNoAppAccess,
+        details: 'User has no access token.'
+      };
+    }
+
+    if (user.tenantIds.length === 0) {
+      return {
+        type: TftErrorType.AuthNoAppAccess,
+        details: 'User has no tenancy chain with the role of DL_EndUser.'
+      };
+    }
+  }
+
   constructor(
     @Inject(APP_BASE_HREF) private baseHref,
+    private errorService: TftErrorService,
     private oktaAuthService: OktaAuthService
   ) {
     this.jwtService = new JwtHelperService();
@@ -88,6 +108,23 @@ export class UserService {
   }
 
   /**
+   * Convenience method to wrap the common case where a reactive pipeline
+   * should be executed only if a valid user session is present, returning a
+   * given default value otherwise.
+   */
+  withUserOrDefault<T>(fun: OperatorFunction<User, T>, defaultValue: T): Observable<T> {
+    return this.user$.pipe(
+      mergeMap(user => {
+        if (user) {
+          return fun(of(user));
+        } else {
+          return of(defaultValue);
+        }
+      }));
+  }
+
+
+  /**
    * Use the OktaAuthService to pull the initial user state from
    * cookies/wherever it's storing it.
    */
@@ -101,7 +138,14 @@ export class UserService {
    */
   private updateUser = async (hasAuth) => {
     if (hasAuth) {
-      this.user$.next(await this.readUserFromOkta());
+      const user = await this.readUserFromOkta();
+      const error = UserService.validateUserSession(user);
+      if (error) {
+        this.user$.next(null);
+        this.errorService.redirectTftError(error);
+      } else {
+        this.user$.next(await this.readUserFromOkta());
+      }
     } else {
       this.user$.next(null);
     }

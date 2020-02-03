@@ -16,6 +16,9 @@ export class BookmarkActionsComponent implements OnInit, OnDestroy {
   @Input()
   resourceSummary: ResourceSummary;
 
+  @Input()
+  hasNotes: boolean;
+
   @ViewChild('shareButton', { static: false, read: ViewContainerRef })
   shareContainer: ViewContainerRef;
 

@@ -1,23 +1,22 @@
-import { Component, ElementRef, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { ResourceType } from '../../../data/resource/model/resource-type.enum';
-import { ResourceSummary } from '../../../data/resource/model/summary.model';
-import { JoinPipe } from '../../../pipes/join.pipe';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ResourceType} from '../../../data/resource/model/resource-type.enum';
+import {ResourceSummary} from '../../../data/resource/model/summary.model';
+import {JoinPipe} from '../../../pipes/join.pipe';
 
 @Component({
   selector: 'sbdl-resource-summary-card',
   templateUrl: './resource-summary-card.component.html',
-  styleUrls: ['./resource-summary-card.component.scss']
+  styleUrls: ['./resource-summary-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ResourceSummaryCardComponent implements OnInit {
+  readonly ResourceType = ResourceType;
 
   @Input()
   resourceSummary: ResourceSummary;
 
   details: string[];
   joinPipe: JoinPipe = new JoinPipe();
-  resourceTypes = ResourceType;
-
-  constructor() { }
 
   ngOnInit() {
     this.setDetails();

@@ -5,13 +5,6 @@ import { OktaAuthService } from '@okta/okta-angular';
 import { takeLast, takeWhile } from 'rxjs/operators';
 import { User } from 'src/app/data/user/user.model';
 import { UserService } from 'src/app/data/user/user.service';
-import { ErrorType } from 'src/app/common/error-type.enum';
-import { ERROR_PATH } from 'src/app/common/constants';
-
-interface ErrorWithDetails {
-  type: ErrorType;
-  details: string;
-}
 
 @Component({
   selector: 'sbdl-login-callback',
@@ -52,12 +45,7 @@ export class LoginCallbackComponent implements AfterViewInit, OnInit {
             takeWhile(u => u === null, true),
             takeLast(1))
           .subscribe(user => {
-            const error = this.validateUserSession(user);
-            if (error) {
-              this.router.navigate([ERROR_PATH, { error } ]);
-            } else {
-              this.router.navigateByUrl(this.loginTarget.uri || this.baseHref, this.loginTarget.extras);
-            }
+            this.router.navigateByUrl(this.loginTarget.uri || this.baseHref, this.loginTarget.extras);
           });
       });
     } else {
@@ -65,19 +53,4 @@ export class LoginCallbackComponent implements AfterViewInit, OnInit {
     }
   }
 
-  validateUserSession(user: User): ErrorWithDetails | null {
-    if (!user.accessToken) {
-      return {
-        type: ErrorType.AuthNoAppAccess,
-        details: 'User has no access token.'
-      };
-    }
-
-    if (user.tenantIds.length === 0) {
-      return {
-        type: ErrorType.AuthNoAppAccess,
-        details: 'User has no tenancy chain with the role of DL_EndUser.'
-      };
-    }
-  }
 }

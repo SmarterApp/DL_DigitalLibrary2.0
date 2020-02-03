@@ -1,14 +1,19 @@
+import { Location } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { OktaAuthService } from '@okta/okta-angular';
 import { mockDataServiceProviders, MockOktaAuthService } from 'src/app/app.module.spec';
+import { SbdlCommonModule } from 'src/app/common/common.module';
 import { UserService } from './user.service';
 import { TenancyLevel, UserTenancy } from './user.model';
 
 describe('UserService', () => {
   beforeEach(() => TestBed.configureTestingModule({
+    imports: [ RouterTestingModule.withRoutes([]), SbdlCommonModule ],
     providers: [
       ...mockDataServiceProviders,
-      { provide: OktaAuthService, useClass: MockOktaAuthService }
+      { provide: OktaAuthService, useClass: MockOktaAuthService },
+      { provide: Location, useValue: { path: () => {} } },
     ]
   }));
 

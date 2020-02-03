@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { OktaAuthModule } from '@okta/okta-angular';
 import { AppContainerComponent } from './app-container/app-container.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginCallbackComponent } from './login-callback/login-callback.component';
@@ -20,6 +21,7 @@ import { SbdlCommonModule } from '../common/common.module';
     NavigationComponent
   ],
   imports: [
+    OktaAuthModule,
     SbdlCommonModule,
     CommonModule,
     PipesModule,
