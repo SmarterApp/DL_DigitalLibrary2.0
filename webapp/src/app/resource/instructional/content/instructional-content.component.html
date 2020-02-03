@@ -1,0 +1,34 @@
+<sbdl-instructional-get-started
+  [resource]="resource"
+  (sectionLoaded)="addDocumentSection($event)"
+></sbdl-instructional-get-started>
+
+<sbdl-protected-content
+  [authenticated]="!resource.teaser"
+>
+  <sbdl-step-by-step
+    [steps]="resource.stepByStep"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-step-by-step>
+
+  <sbdl-attachments
+    [attachments]="resource.attachments"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-attachments>
+
+  <sbdl-instructional-differentiation
+    [resource]="resource"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-instructional-differentiation>
+
+  <sbdl-simple-section
+    [contentHtml]="resource.thingsToConsider"
+    [options]="commentsSectionOptions"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-simple-section>
+
+  <sbdl-instructional-formative
+    [resource]="resource"
+    (sectionLoaded)="addDocumentSection($event)"
+  ></sbdl-instructional-formative>
+</sbdl-protected-content>

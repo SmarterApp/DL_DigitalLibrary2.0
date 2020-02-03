@@ -1,0 +1,48 @@
+@import "spacing";
+@import "colors";
+
+:host {
+    display: block;
+    max-width: none;
+}
+
+.attachments-container {
+    padding-top: $spacer;
+    max-width: var(--measure);
+    margin-right: $spacer-xl;
+    margin-left: $spacer-lg;
+    margin-bottom: $spacer-lg;
+    position: relative;
+
+    .leading-icon {
+      margin-left: -16px;
+
+      svg {
+        color: darken($warning-900, 25%);
+        background: url('/assets/images/yellow-spot-3.png') no-repeat;
+        background-size: contain;
+        padding: 7px;
+        margin-bottom: -7px;
+        font-size: 1.75rem;
+      }
+    }
+
+    h3 {
+      margin-top: $spacer-xl;
+    }
+
+    .video-embed{
+        overflow:hidden;
+        padding-bottom:56.25%;
+        position:relative;
+        height:0;
+        margin-bottom: 1rem;
+    }
+    .video-embed iframe{
+        left:0;
+        top:0;
+        height:100%;
+        width:100%;
+        position:absolute;
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "env": {
+    "name": "QA"
+   },
+  "logging": {
+    "console": true,
+    "aws": false,
+    "level": 0
+  },
+  "tenantConfigPath": "/assets/config/tenant.config.json",
+  "apiServerHost": "https://api-dev.dl.smarterbalanced.org",
+  "enableAnalytics": false,
+  "okta": {
+    "clientId": "0oamt7hm566G44ZVm0h7",
+    "issuer": "https://smarterbalanced.oktapreview.com/oauth2/auslw2qcsmsUgzsqr0h7"
+  }
+}

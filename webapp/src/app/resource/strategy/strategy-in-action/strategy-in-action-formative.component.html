@@ -1,0 +1,34 @@
+<article *ngIf="resource.strategyInAction" #sectionHeader class="section-container">
+  <h2 class="leading-icon">
+    <sbdl-icon icon="strategies"></sbdl-icon>Strategy In Action
+  </h2>
+  <h3>
+    Clarify
+    <sbdl-tooltip
+      text="What students will know or be able to do.">
+    <sbdl-icon icon="info"></sbdl-icon></sbdl-tooltip>
+  </h3>
+  <dynamic-html [content]="resource.strategyInAction.clarify"></dynamic-html>
+  <h3>
+    Elicit
+    <sbdl-tooltip
+      text="What students currently know or can do.">
+    <sbdl-icon icon="info"></sbdl-icon></sbdl-tooltip>
+  </h3>
+  <dynamic-html [content]="resource.strategyInAction.elicit"></dynamic-html>
+  <h3>
+    Interpret
+    <sbdl-tooltip
+      text="Evaluation of what students currently know/can do in relation to learning goal.">
+    <sbdl-icon icon="info"></sbdl-icon></sbdl-tooltip>
+  </h3>
+  <dynamic-html [content]="resource.strategyInAction.interpret"></dynamic-html>
+  <h3>
+    Act
+    <sbdl-tooltip
+      text="How we are going to get students to where they need to be.">
+    <sbdl-icon icon="info"></sbdl-icon></sbdl-tooltip>
+  </h3>
+  <dynamic-html [content]="resource.strategyInAction.act"></dynamic-html>
+</article>
+<hr *ngIf="resource.strategyInAction"/>

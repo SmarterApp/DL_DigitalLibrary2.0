@@ -1,0 +1,17 @@
+<article *ngIf="resource.sampleItemContent" #sectionHeader class="section-container">
+  <h2 class="leading-icon">
+    <i class="far fa-universal-access" aria-hidden="true"></i>Strategy In Action
+  </h2>
+  <div *ngIf="resource.sampleItemContent.linkToSample; else elseBlock">
+    <a [href]="resource.sampleItemContent.linkToSample"
+       attr.aria-label="Try out the {{ resource.properties.title }} on the Sample Items or the Sample Tests Websites (opens in a new window)."
+       target="_blank">
+      Try out the {{ resource.properties.title }} on the Sample Items or the Sample Tests Websites.
+    </a>
+    <dynamic-html [content]=resource.sampleItemContent.description></dynamic-html>
+  </div>
+  <ng-template #elseBlock>
+    <dynamic-html [content]=resource.sampleItemContent.description></dynamic-html>
+  </ng-template>
+</article>
+<hr *ngIf="resource.sampleItemContent"/>

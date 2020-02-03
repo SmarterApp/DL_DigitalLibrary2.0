@@ -1,0 +1,20 @@
+<article #sectionHeader class="intervention-container">
+<section>
+  <h2 class="leading-icon">
+    <i class="fas fa-comment-dots" aria-hidden="true"></i>
+    Suggestions for Intervention
+    <sbdl-tooltip text="A list of skills that teachers can work on with students who are significantly below.">
+      <sbdl-icon icon="info"></sbdl-icon>
+    </sbdl-tooltip>
+  </h2>
+  <p>
+    For students who are significantly below,
+    <a
+      aria-label="search for resources (opens in a new window)"
+      [routerLink]="['/search']"
+      target="_blank">search for resources</a> related to the
+    following skills:
+  </p>
+  <dynamic-html [content]="content"></dynamic-html>
+</section>
+</article>

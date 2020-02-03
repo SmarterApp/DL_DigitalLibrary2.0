@@ -1,0 +1,87 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+@import "@material/ripple/mdc-ripple";
+
+:host a {
+  @include mdc-ripple-surface;
+  @include mdc-ripple-radius-bounded;
+  @include mdc-states;
+
+  // keeps the ripple inside the card.
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  color: $neutral-900;
+  margin-left: -2rem;
+  margin-right: -2rem;
+  padding: $spacer-lg;
+
+  .summary-content { flex-grow: 1; }
+
+  .resource-type {
+    grid-area: type;
+
+    font-family: $font-family-title;
+    font-size: $font-size-body-2;
+    line-height: 18px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba($neutral-900, 0.65);
+  }
+
+  h3 {
+    color: $brand-green;
+    font-weight: 400;
+    font-size: $font-size-2;
+    line-height: 160%;
+  }
+
+  img, div.image {
+      width: 120px;
+      height: 120px;
+      margin-left: $spacer;
+      border: 3px solid $neutral-300;
+      border-radius: 3px;
+      object-fit: cover;
+      min-width: 120px;
+  }
+
+  div.image {
+    box-sizing: border-box;
+    padding:$spacer-sm;
+
+    &.connections-playlist.math object {
+      filter: invert(30%) sepia(1) saturate(10) hue-rotate(160deg);
+    }
+    &.connections-playlist.ela object {
+      filter: invert(39%) sepia(1) saturate(4) hue-rotate(59.5deg);
+    }
+
+  }
+
+  .summary {
+    display: block;
+    overflow: hidden;
+    max-height: 4.2em;
+
+    &::ng-deep p {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .targets, .standards {
+    max-width: var(--measure);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .metadata {
+      font-size: 13.2px;
+  }
+
+}
+

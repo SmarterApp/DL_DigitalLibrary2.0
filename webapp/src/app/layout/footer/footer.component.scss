@@ -1,0 +1,111 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+
+:host {
+  background: $neutral-50;
+  color: $neutral-500;
+  z-index: 4;
+
+  .footer {
+
+    box-sizing: border;
+    margin: 0 auto;
+    padding: $spacer $spacer-lg;
+    max-width: calc(var(--measure) + #{$spacer-xl});
+
+    .footer-links {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $spacer-lg;
+
+      h3 {
+        font-size: 1rem;
+        font-weight: normal;
+      }
+
+      ul {
+        line-height: 200%;
+        list-style: none;
+        font-size: 80%;
+        padding: 0;
+
+        a {
+          color: $neutral-500;
+
+          &:hover {
+            color: $action-700;
+          }
+        }
+      }
+
+      .member-resources a {
+        cursor: not-allowed;
+      }
+
+      &.no-tenant .connect {
+        margin-left: -56px;
+      }
+
+      .fa-youtube {
+        color: $neutral-500;
+      }
+    }
+
+    hr {
+      background-color: $neutral-100;
+      border: none;
+      height: 1px;
+      max-width: unset;
+      width: 100%;
+    }
+
+    .copyright {
+
+      display: flex;
+      justify-content: space-between;
+      font-size: 80%;
+      margin: $spacer-lg 0;
+
+      span {
+        color: $neutral-300;
+        margin-left: auto;
+      }
+
+      img {
+        margin-right: $spacer;
+        height: auto;
+        width: auto;
+        max-height: 64px;
+      }
+    }
+  }
+}
+
+@media only print {
+  :host {
+
+    /* See the note in src/styles.scss. Ideally, once CSS Paged Media is
+     * implemented in browsers, we can replace all of the following with just
+     * 'display: none' on the :host element. */
+    .footer  {
+      .footer-links {
+        display: none;
+      }
+
+      hr { display: none; }
+
+      .copyright {
+        margin: 0;
+        position: fixed;
+        bottom: 0;
+        right: $spacer-xl;
+
+        span {
+          padding: 0;
+        }
+        img { display: none; }
+      }
+    }
+  }
+}

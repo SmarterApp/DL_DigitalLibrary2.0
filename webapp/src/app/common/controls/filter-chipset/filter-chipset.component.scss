@@ -1,0 +1,26 @@
+@import "colors";
+@import "@material/chips/mdc-chips";
+
+.mdc-chip{
+    @include mdc-chip-ink-color($action-900);
+    @include mdc-chip-fill-color($action-100);
+    @include mdc-chip-trailing-icon-color($action-300);
+    font-size: 13.2px;
+    padding: 0.2rem 1rem;
+
+    @include mdc-chip-height(fit-content);
+    
+    .mdc-chip__text {
+        white-space: initial;
+    }
+}
+
+.mdc-chip--selected {
+    @include mdc-chip-ink-color($white);
+    @include mdc-chip-fill-color($action-700);
+    @include mdc-chip-trailing-icon-color($action-300);
+}
+
+.mdc-chip__icon--trailing {
+    vertical-align: text-bottom;
+}

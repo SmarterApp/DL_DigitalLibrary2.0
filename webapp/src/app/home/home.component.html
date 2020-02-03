@@ -1,0 +1,76 @@
+<div class="watermarks">
+  <img class="waterspot green" src="/assets/images/green-spot-2.png" aria-hidden="true">
+  <img class="waterspot yellow" src="/assets/images/yellow-spot-6.png" aria-hidden="true">
+  <img class="waterspot blue" src="/assets/images/blue-spot-3.png" aria-hidden="true">
+</div>
+<main id="main">
+  <img class="logo-full"
+       [src]="(logo$ | async) | safeUrl"
+       alt="Tools for Teachers from Smarter Balanced">
+  <img class="dashed-line"
+       src="/assets/svg/dashed-line.svg"
+       aria-hidden="true">
+  <h1>
+    Discover <span class="strong-green">classroom </span>
+    <span class="strong-blue">resources</span> you can use today.
+  </h1>
+  <p>
+  Educator-created lessons, activities, strategies, and professional
+  development to help tailor instruction and boost learning.
+  </p>
+  <sbdl-search
+    [showHeadings]="false"
+    [filters]="filters"></sbdl-search>
+</main>
+
+<hr/>
+
+<section class="promoted-resources">
+  <div class="watermarks">
+    <img class="waterspot yellow" src="/assets/images/yellow-spot-7.png" aria-hidden="true">
+    <img class="waterspot blue" src="/assets/images/blue-spot-4.png" aria-hidden="true">
+    <img class="waterspot green" src="/assets/images/green-spot-4.png" aria-hidden="true">
+  </div>
+  <h1>Preview Resources</h1>
+  <div class="caption emphasis-medium">
+    Check out the following samples of teacher-approved resources for a preview
+    of time-saving tools you can use. Or
+    <a [routerLink]="['/search']">search for your own resources.</a>
+  </div>
+  <div class="resource-summary-cards">
+    <sbdl-resource-summary-card
+      *ngFor="let summary of promotedResources"
+      [resourceSummary]="summary"
+    ></sbdl-resource-summary-card>
+  </div>
+</section>
+
+<hr/>
+
+<section class="promoted-videos">
+
+
+  <div class="promoted-video">
+    <h2>Understanding the Smarter Balanced Interim Assessments</h2>
+    <iframe
+      src="https://www.youtube.com/embed/Im-thuZCp4c"
+      alt="Understanding the Smarter Balanced Interim Assessments"
+      frameborder="0"
+      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen="allowfullscreen"
+    ></iframe>
+  </div>
+
+  <div class="promoted-video">
+    <h2>Understanding the Formative Assessment Process</h2>
+    <iframe
+      src="https://www.youtube.com/embed/wpwZCqvt70U"
+      alt="Understanding the Smarter Balanced Interim Assessments"
+      frameborder="0"
+      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen="allowfullscreen"
+    ></iframe>
+  </div>
+</section>
+
+<hr/>

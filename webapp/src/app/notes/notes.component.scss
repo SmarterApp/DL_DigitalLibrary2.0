@@ -1,0 +1,39 @@
+@import "spacing";
+@import "typography";
+
+:host {
+  display: block;
+  margin: $spacer-xl $spacer;
+
+  &[hidden] {
+    display: none;
+  }
+
+  h2 {
+    font-style: normal;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: $spacer-lg;
+  }
+
+  h3 {
+    font-style: normal;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .dialog-buttons {
+    display: flex;
+    font-size: $font-size-body-2;
+    justify-content: space-between;
+    margin-top: $spacer;
+  }
+
+  .saving {
+    cursor: wait;
+
+    .dialog-buttons {
+      justify-content: center;
+    }
+  }
+}

@@ -1,0 +1,78 @@
+@import 'typography';
+
+.primary > .mdc-button:before,
+.primary > .mdc-button:after {
+  background-color: $white;
+}
+
+.primary > .mdc-button:not(:disabled){
+    color: $white;
+    background-color: $action-700;
+}
+
+.plain > .mdc-button {
+  color: $action-700;
+  text-transform: none;
+    font-family: $font-family-body;
+}
+
+.mdc-icon-button {
+    color: $action-700;
+    font-size: 1.2rem;
+}
+
+.outline > .mdc-button:not(:disabled) {
+    color: $neutral-900;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: $font-family-title;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+    justify-content: initial;
+    padding: calc(1rem - 8px);
+    height: 3rem;
+}
+
+.outline > .mdc-button:not(:disabled):focus{
+    border-left: $action-500 solid 6px;
+    margin-left: -6px;
+}
+
+.subsection > .mdc-button:not(:disabled) {
+    color: $neutral-900;
+    width: calc(100% + 15px);
+    margin-left: -15px;
+    padding-left: 36px;
+    padding-right: 28px;
+
+    // ellipsis for overflow
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    font-size: 0.9rem;
+    font-weight: 300;
+    font-family: $font-family-body;
+    text-align: left;
+
+    vertical-align: baseline; // aligns with numbers
+
+    text-transform: none;
+    letter-spacing: normal;
+    justify-content: initial;
+}
+
+.subsection > .mdc-button:not(:disabled):focus {
+    border-left: $action-500 solid 4px;
+    margin-left: -19px;
+}
+
+.subsection > .mdc-button:before,
+.subsection > .mdc-button:after,
+.outline >.mdc-button:before,
+.outline > .mdc-button:after {
+  background-color: $action-500;
+}

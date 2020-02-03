@@ -1,0 +1,133 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+
+:host {
+
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  max-width: none;
+
+  .outline {
+    box-sizing: border-box;
+    width: var(--nav-width);
+    min-width: var(--nav-width);
+
+    box-shadow: inset -10px 0px 18px -10px rgba(0, 0, 0, 0.2);
+    background-color: $white;
+    transition-property: width, min-width, margin-right, z-index;
+    z-index: 2;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+
+    background-image: url('/assets/images/blue-spot-2.png');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: bottom left;
+
+  }
+
+  .outline:hover {
+    width: 331px;
+    min-width: 331px;
+    margin-right: var(--outline-margin-right);
+    overflow-x:initial;
+  }
+
+  .right-margin:hover {
+    width: 331px;
+    min-width: 331px;
+    margin-left: var(--outline-margin-right);
+    overflow-x:initial;
+  }
+
+  .bookmark-list {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 $spacer-lg;
+    max-width: none;
+    z-index: 1;
+
+    & > * {
+      padding: 0 $spacer-xl;
+    }
+
+    .top-header {
+      padding: 0;
+      width: 100%;
+    }
+
+    ul.bookmarks {
+      list-style: none;
+      padding: 0;
+      max-width: none;
+
+      & > li {
+        border-left: 4px solid rgba($white, 0);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: none;
+        padding: 0 0 $spacer-md $spacer-xl;
+
+        sbdl-resource-summary-card { flex-grow: 1; }
+        sbdl-bookmark-actions { visibility: hidden; }
+
+        &:focus,
+        &:focus-within {
+          border-left: solid 4px rgba($brand-accent-blue, 0.5);
+          outline: none;
+        }
+
+        &:focus,
+        &:focus-within,
+        &:hover {
+          background-color: rgba($brand-accent-blue, 0.05);
+
+          sbdl-bookmark-actions { visibility: visible; }
+        }
+
+      }
+
+      .no-bookmarks {
+        font-size: $font-size-3;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+
+
+  .right-margin {
+    width: var(--nav-width);
+    min-width: var(--nav-width);
+    transition-property: width, min-width, margin-left, z-index;
+    z-index: 2;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+
+    box-shadow: inset 10px 0px 18px -10px rgba(182, 109, 109, 0.2);
+
+    background-image: url('/assets/images/green-spot-2.png'), url('/assets/images/yellow-spot-2.png');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: right 184px bottom, bottom right;
+    min-height: 80vh;
+    background-color: $white;
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: $font-size-7;
+    color: $brand-green;
+    margin-bottom: $spacer-xl;
+  }
+}
+
+@media only screen and (max-width: $breakpoint-lg) {
+  :host {
+    --nav-width: 0;
+  }
+}

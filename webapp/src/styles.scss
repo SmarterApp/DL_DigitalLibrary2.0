@@ -1,0 +1,69 @@
+// Material Components
+@import "@material/button/mdc-button";
+@import "@material/icon-button/mdc-icon-button";
+@import "@material/textfield/mdc-text-field";
+@import "@material/textfield/icon/mdc-text-field-icon";
+@import "@material/chips/mdc-chips";
+
+// SBAC Digital Library UI Kit
+@import "ui-kit/colors";
+@import "ui-kit/typography";
+@import "ui-kit/buttons";
+@import "ui-kit/icons";
+@import "ui-kit/spacing";
+
+:root {
+    --measure: 85ch;
+    --nav-width: 331px;
+}
+
+* {
+    max-width: var(--measure);
+}
+
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+    max-width: none;
+}
+
+body {
+    background-color: $white;
+    margin: 0;
+}
+
+.print-only { display: none; }
+.offscreen {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  top: -10px;
+}
+
+@media only print {
+  :root {
+    --measure: 100ch;
+  }
+
+  .print-only { display: block; }
+  .offscreen { display: none; }
+
+  @page {
+    /* This is what we actually want to use for the printed footers. But CSS3
+     * page-margin boxes are part of the paged media draft document and not
+     * implemented yet (see https://www.w3.org/TR/css-page-3/).
+
+    @bottom-right {
+      color: $neutral-300;
+      content: "© 2019 The Regents of the University of California";
+      font-size: 80%;
+      margin: 0 $spacer;
+    }
+    */
+  }
+}

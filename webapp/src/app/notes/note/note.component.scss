@@ -1,0 +1,12 @@
+@import "colors";
+@import "spacing";
+
+:host {
+
+  display: block;
+  margin: 2rem 0;
+
+  .last-modified {
+    margin-top: $spacer-sm;
+  }
+}

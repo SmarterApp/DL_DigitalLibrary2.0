@@ -1,0 +1,89 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+
+:host {
+
+  vertical-align: top;
+
+  th, td {
+    border-bottom: solid 1px $neutral-100;
+  }
+
+  .topic-title {
+
+    background-color: $neutral-50;
+    cursor: pointer;
+    min-width: 8rem;
+    padding: $spacer-sm;
+    position: relative;
+    text-align: right;
+
+    h3 {
+      font-size: $font-size-00;
+      line-height: 130%;
+    }
+
+    a {
+      font-size: $font-size-00;
+      font-weight: normal;
+    }
+
+    .collapse-btn {
+      position: absolute;
+      top: $spacer-sm;
+      left: $spacer-sm;
+      visibility: hidden;
+    }
+
+    &:hover .collapse-btn {
+      visibility: visible;
+    }
+  }
+
+  dynamic-html {
+    display: block;
+    font-size: $font-size-00;
+
+    ::ng-deep {
+      p:first-child { margin-top: 0; }
+      p:last-child { margin-bottom: 0; }
+    }
+  }
+
+  .below, .near, .above {
+    padding: $spacer-sm $spacer-sm $spacer-sm 0;
+
+    &.colCollapsed dynamic-html {
+      display: none;
+    }
+  }
+
+  .below {
+    padding-left: $spacer;
+  }
+
+  &.rowCollapsed {
+
+    th {
+      color: $neutral-300;
+    }
+
+    dynamic-html {
+      display: inline-block;
+      color: $neutral-300;
+      font-style: italic;
+      height: 1.75em;
+      overflow: hidden;
+      width: calc(100% - 2em);
+      word-wrap: anywhere;
+    }
+
+    span {
+      display: inline-block;
+      height: 1.75em;
+      position: relative;
+      top: -0.45rem;
+    }
+  }
+}

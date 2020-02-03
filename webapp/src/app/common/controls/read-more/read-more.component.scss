@@ -1,0 +1,23 @@
+.text-container {
+  display: block;
+  overflow-y: hidden;
+  --max-height: 44px;
+
+  &.collapsed {
+    max-height:  var(--max-height);
+  }
+  &::ng-deep {
+    p:first-child {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    ul {
+      margin: 0;
+    }
+  }
+}
+    
+@media only print {
+  .text-container.collapsed { max-height: none; }
+  .more-less { display: none; }
+}

@@ -1,0 +1,18 @@
+<article #sectionHeader class="formative-container">
+  <h2 class="leading-icon">
+    <sbdl-icon icon="strategies"></sbdl-icon>
+    Formative Assessment Process
+    <sbdl-tooltip
+        text="A deliberate process that’s used to adjust teaching and learning strategies to improve students' attainment of learning goals."
+      ><sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
+  </h2>
+  <sbdl-instructional-formative-content
+    [content]="resource.formativeAssessHowTo"
+    (sectionLoaded)="addSubsection($event)">
+  </sbdl-instructional-formative-content>
+  <sbdl-strategy-reference-list
+    title="Strategies Used"
+    [strategies]="resource.formativeAssessmentStrategies"
+    (sectionLoaded)="addSubsection($event)">
+  </sbdl-strategy-reference-list>
+</article>

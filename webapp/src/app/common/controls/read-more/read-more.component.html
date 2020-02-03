@@ -1,0 +1,11 @@
+<div
+    class="text-container"
+    #textContainer
+    [ngClass]="{'collapsed': collapsed }"
+    [innerHtml]="text">
+</div>
+<a *ngIf="collapsible"
+   class="more-less"
+   href="javascript:void(0)"
+   (click)="toggleCollapsed()"
+   aria-hidden="true">{{ collapsed ? '... more' : 'less' }}</a>

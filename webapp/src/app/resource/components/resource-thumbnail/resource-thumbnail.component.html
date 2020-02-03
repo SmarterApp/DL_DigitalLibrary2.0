@@ -1,0 +1,13 @@
+<ng-container *ngIf="url && url.endsWith('svg'); else notSvg">
+  <object
+    type="image/svg+xml"
+    [data]="url | replaceNullImage | safeUrl"
+    aria-hidden="true"
+  ></object>
+</ng-container>
+<ng-template #notSvg>
+  <img
+    [src]="url | replaceNullImage | safeUrl"
+    aria-hidden="true"
+  >
+</ng-template>

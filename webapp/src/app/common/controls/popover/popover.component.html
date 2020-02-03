@@ -1,0 +1,8 @@
+<div role="tooltip" class="popover-container {{options.cssClass}}" #container [ngClass]="{'top': options.placement === 'top'}">
+  <div class="popover-content">
+    <button #closeButton class="close-button" >
+        <sbdl-icon icon="circle-close" (click)="close()"></sbdl-icon>
+    </button>
+    <ng-container *ngTemplateOutlet="template"></ng-container>
+  </div>
+</div>

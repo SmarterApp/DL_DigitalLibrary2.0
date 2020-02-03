@@ -1,0 +1,14 @@
+<button class="open-button" (click)="openTooltipPopover()" #tooltip>
+    <dynamic-html [content]="dynamicLoadedContent"></dynamic-html>
+    <ng-content></ng-content>
+</button>
+<ng-template #tooltipPopover>
+    <div class="tooltip-title">{{ title }}</div>
+    <dynamic-html [content]="text"></dynamic-html>
+    <a *ngIf="readMoreUrl"
+       [href]="readMoreUrl"
+       [title]="title + ' (opens in a new window)'"
+       class="read-more"
+       target="_blank"
+       >Keep Reading<i class="far fa-arrow-right" aria-hidden="true"></i></a>
+</ng-template>

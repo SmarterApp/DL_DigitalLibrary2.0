@@ -1,0 +1,33 @@
+<th scope="rowgroup" #sectionHeader class="topic-title" (click)="setRowCollapsed(!rowCollapsed)">
+  <div *ngIf="!rowCollapsed" class="collapse-btn"><i class="far fa-compress-alt"></i></div>
+  <div *ngIf="rowCollapsed" class="collapse-btn"><i class="far fa-expand-alt"></i></div>
+
+  <h3>{{topic.title}}</h3>
+  <div *ngIf="!rowCollapsed">
+    <a *ngFor="let resource of topic.topicResources"
+       [routerLink]="['/resource', resource.id]"
+       target="_blank"
+       attr.aria-label="{{ resource.title }} (opens in a new window)"
+       (click)="$event.stopPropagation()">
+      {{resource.title}}&nbsp;<i class="far fa-arrow-right" aria-hidden="true"></i><br>
+    </a>
+  </div>
+</th>
+
+<td class="below"
+    [ngClass]="{ colCollapsed: belowCollapsed }">
+  <dynamic-html [content]="topic.below" ></dynamic-html>
+  <span *ngIf="rowCollapsed">…</span>
+</td>
+
+<td class="near"
+    [ngClass]="{colCollapsed: nearCollapsed}">
+  <dynamic-html [content]="topic.near" ></dynamic-html>
+  <span *ngIf="rowCollapsed">…</span>
+</td>
+
+<td class="above"
+    [ngClass]="{colCollapsed: aboveCollapsed }">
+  <dynamic-html [content]="topic.above" ></dynamic-html>
+  <span *ngIf="rowCollapsed">…</span>
+</td>

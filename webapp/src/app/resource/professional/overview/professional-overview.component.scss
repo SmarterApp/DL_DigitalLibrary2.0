@@ -1,0 +1,29 @@
+@import "colors";
+@import "spacing";
+
+:host {
+    display: block;
+    max-width: none;
+}
+
+.overview-container {
+    padding-top: $spacer;
+    max-width: var(--measure);
+    margin-right: $spacer-xl;
+    margin-left: $spacer-lg;
+    margin-bottom: $spacer-lg;
+    position: relative;
+
+    .leading-icon {
+      margin-left: -16px;
+
+      svg {
+        color: $brand-green;
+        background: url('/assets/images/green-spot-3.png') no-repeat;
+        background-size: contain;
+        padding: 7px;
+        margin-bottom: -7px;
+        font-size: 1.75rem;
+      }
+    }
+}

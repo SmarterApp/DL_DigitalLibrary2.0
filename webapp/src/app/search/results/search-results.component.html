@@ -1,0 +1,17 @@
+<article id="main" class="results-container">
+  <sbdl-search
+    [filters]="filters"
+    [showHeadings]="true"
+    [showAdvanced]="showAdvancedFiltersInitially"
+    [numResults]="allResults.length"
+    (goToResults)="scrollToResults()"
+  ></sbdl-search>
+  <section #results class="search-results">
+    <h2 class="offscreen">Search Results</h2><!-- accessibility -->
+    <sbdl-search-result-card
+      *ngFor="let result of renderedResults"
+      [resource]="result"
+    ></sbdl-search-result-card>
+  </section>
+</article>
+

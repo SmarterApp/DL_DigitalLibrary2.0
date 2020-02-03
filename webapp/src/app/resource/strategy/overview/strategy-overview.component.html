@@ -1,0 +1,28 @@
+<article #sectionHeader class="overview-container">
+  <h2 class="leading-icon">
+    <i class="far fa-hand-point-right"></i>
+      Overview
+      <sbdl-tooltip 
+         text="Information to help you get started with this strategy.">
+      <sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
+  </h2>
+  <div>
+    <h3>
+      Description
+    </h3>
+    <p>
+      <sbdl-read-more [text] = "resource.overview.overview"></sbdl-read-more>
+    </p>
+  </div>
+  <div>
+    <h3>Student Benefits</h3>
+    <p>
+      <sbdl-read-more [text] = "resource.overview.studentBenefits"></sbdl-read-more>
+    </p>
+  </div>
+  <div>
+    <h3>Suggested Materials</h3>
+    <div [innerHtml]="resource.overview.suggestedMaterials"></div>
+  </div>
+</article>
+<hr/>

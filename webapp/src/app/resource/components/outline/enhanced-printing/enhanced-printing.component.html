@@ -1,0 +1,33 @@
+<div class="print-message">
+  <div class="font-light">Select sections you would like to print.</div>
+  <div class="dialog-buttons">
+    <sbdl-button (click)="cancel()">Cancel</sbdl-button>
+    <sbdl-button class="primary" (click)="print()">
+      <i class="far fa-print" aria-hidden="true"></i>
+      Print
+    </sbdl-button>
+  </div>
+</div>
+<h2 class="outline-header">
+  Outline
+  <sbdl-button (click)="toggleFullSelection()" class="plain">
+    <span *ngIf="allSelected">Clear selection</span>
+    <span *ngIf="!allSelected">Select all</span>
+  </sbdl-button>
+</h2>
+<ul class="section-list" *ngIf="outline">
+  <li *ngFor="let section of sectionsInOrder">
+    <sbdl-print-checkbox
+      [documentSection]="section"
+      (changed)="sectionChanged($event)">
+    </sbdl-print-checkbox>
+    <ul class="subsection-list" *ngIf="section.subsections">
+      <li *ngFor="let subsection of section.subsections">
+        <sbdl-print-checkbox class="subsection font-light"
+          [documentSection]="subsection"
+          (changed)="subsectionChanged(section, $event)">
+        </sbdl-print-checkbox>
+      </li>
+    </ul>
+  </li>
+</ul>

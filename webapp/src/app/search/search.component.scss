@@ -1,0 +1,128 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+@import "@material/textfield/mdc-text-field";
+@import "@material/chips/mdc-chips";
+
+:host{
+
+  ::ng-deep {
+    .mdc-text-field {
+      border: 4px solid #E0F7FF !important;
+      border-radius: 4px !important;
+      box-shadow:
+        0px 4px 5px rgba(0, 0, 0, 0.2),
+        0px 3px 14px rgba(0, 0, 0, 0.12),
+        0px 8px 10px rgba(0, 0, 0, 0.14);
+
+      .mdc-notched-outline > * {
+        border: none;
+      }
+
+      sbdl-button > button {
+        margin: 8px !important;
+
+        svg { font-size: 1rem; }
+      }
+
+      #tf-outlined {
+        padding-right: 0;
+        font-size: 1rem;
+      }
+    }
+  }
+
+
+
+  .emphasis-medium.caption {
+    opacity: 0.65;
+    color: $neutral-900;
+    font-size: $font-size-body-2;
+  }
+
+  & > .emphasis-medium.caption {
+    margin-top: $spacer;
+    margin-left: $spacer-md;
+  }
+
+  h1.new-search {
+    color: $brand-green;
+    font-size: $font-size-7;
+  }
+
+  div.new-search {
+    font-size: $font-size-2;
+    margin: $spacer-lg $spacer;
+  }
+
+  h1.results-header {
+    align-items: center;
+    color: $brand-blue;
+    display: flex;
+    flex-direction: row;
+    font-size: $font-size-4;
+    font-weight: 600;
+    justify-content: space-between;
+    line-height: 117%;
+    margin-top: $spacer-lg;
+    width: 100%;
+  }
+
+  .advanced-search {
+    background-color: $neutral-50;
+
+    margin-top: 34px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 44px;
+    position: relative;
+    box-shadow:
+      0px 4px 5px rgba(0, 0, 0, 0.2),
+      0px 3px 14px rgba(0, 0, 0, 0.12),
+      0px 8px 10px rgba(0, 0, 0, 0.14);
+
+    .advanced-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding-top: 45px;
+
+      h2 {
+        font-weight: 400;
+        font-size: $font-size-2;
+      }
+
+      a.emphasis-medium.caption {
+        opacity: 0.65;
+        color: $neutral-900;
+        font-size: 13.2px;
+      }
+
+      sbdl-icon {
+        font-size: 1rem;
+        padding-left: 21px;
+        padding-right: 1rem;
+      }
+    }
+
+    .filter-container {
+      background-color: $white;
+      padding: $spacer;
+      margin-bottom: $spacer;
+
+      h3 {
+        color: $neutral-500;
+        font-weight: bold;
+        font-size: $font-size-body;
+        font-family: $font-family-body;
+        padding: 0;
+      }
+
+      sbdl-filter-chipset div.mdc-chip-set,
+      .fallback-message {
+        margin-left: $spacer-lg;
+      }
+    }
+
+  }
+}

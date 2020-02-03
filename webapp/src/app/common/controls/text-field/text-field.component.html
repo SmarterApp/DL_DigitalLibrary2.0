@@ -1,0 +1,50 @@
+<div
+  #textField
+  class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon"
+>
+  <!-- TODO use a form and the browser-default enter key behavior -->
+  <input
+    id="tf-outlined"
+    class="mdc-text-field__input"
+    autocomplete="off"
+    type="text"
+    [formControl]="control"
+    (keydown.enter)="onSubmitButtonClick()"
+    [disabled]="disabled"
+    [placeholder]="placeholder || ''"
+  >
+  <sbdl-button
+    class="primary"
+    (click)="onSubmitButtonClick()"
+    [disabled]="disabled"
+  >
+    <!-- TODO why not actually make this a button? -->
+    <i
+      *ngIf="fontAwesomeIcon"
+      class="far {{fontAwesomeIcon}}"
+      tabindex="0"
+      role="button"
+    ></i>
+  </sbdl-button>
+  <div class="mdc-notched-outline">
+    <div class="mdc-notched-outline__leading"></div>
+    <div class="mdc-notched-outline__notch">
+      <label
+        *ngIf="label"
+        for="tf-outlined"
+        class="mdc-floating-label"
+        [ngClass]="{
+          'mdc-floating-label--float-above': control.value != null
+        }"
+      >
+        {{ label }}
+      </label>
+    </div>
+    <div
+      class="mdc-notched-outline__trailing"
+      [ngClass]="{
+        'mdc-notched-outline--notched': control.value
+      }"
+    ></div>
+  </div>
+</div>

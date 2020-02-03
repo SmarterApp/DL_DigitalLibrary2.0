@@ -1,0 +1,62 @@
+@import "colors";
+@import "spacing";
+
+:host {
+  background-color: rgba(0, 0, 0, 0.3);
+
+  position: fixed;
+  left: 4rem;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  max-height: unset;
+  max-width: unset;
+  z-index: 3;
+
+  .preview-container {
+    background-color: $white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    padding: $spacer;
+
+    position: absolute;
+    top: $spacer-lg;
+    left: $spacer-lg;
+    bottom: $spacer-lg;
+    right: $spacer-lg;
+
+    .close {
+      align-self: flex-end;
+      margin-bottom: $spacer;
+    }
+
+    object {
+      border: none;
+      flex-grow: 1;
+      max-width: unset;
+      transition: opacity 0.5s linear;
+      opacity: 1;
+
+      &.loading { opacity: 0; }
+    }
+
+    .loading-msg {
+
+      color: $neutral-700;
+
+      position: absolute;
+      top: calc(50vh - 7rem);
+      left: 0;
+      right: 0;
+      max-width: unset;
+
+      text-align: center;
+    }
+
+    .download {
+      align-self: center;
+      margin-top: $spacer;
+    }
+  }
+}

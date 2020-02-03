@@ -1,0 +1,29 @@
+{
+    "dest": "src/",
+    "mode": {
+      "symbol": {
+        "sprite": "sprites.symbols.html", 
+        "dest": "sprites",
+        "inline": true,
+        "render": {
+          "scss": {
+            "dest": "_sprite.scss"
+          }
+        }
+      }
+    },
+    "shape": {
+      "transform": [
+          { "svgo": {
+              "plugins": [
+                  {   
+                    "removeAttrs": {
+                        "attrs": "fill"
+                    } 
+                  }
+              ]
+          }}
+      ]
+  }
+  }
+  

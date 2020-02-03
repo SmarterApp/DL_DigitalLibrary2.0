@@ -1,0 +1,29 @@
+@import "spacing";
+@import "typography";
+
+:host {
+  .intervention-container {
+    padding-top: $spacer;
+    margin-bottom: $spacer-lg;
+    margin-left: $spacer-lg;
+    position: relative;
+    overflow: visible;
+
+    .leading-icon {
+
+      i, svg {
+        color: $success-900;
+        background: url('/assets/images/green-spot-3.png') no-repeat;
+        background-size: contain;
+        padding: 7px;
+        margin-bottom: -7px;
+        margin-left: -16px;
+        font-size: 1.75rem;
+      }
+
+      sbdl-tooltip sbdl-icon {
+        color: $info-500;
+      }
+    }
+  }
+}

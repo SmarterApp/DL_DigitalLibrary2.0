@@ -1,0 +1,27 @@
+@import "colors";
+@import "spacing";
+
+:host {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  flex-direction: column;
+
+  .results-container {
+    margin: $spacer-xl 0;
+    width: 100%;
+  }
+
+  .search-results {
+    margin-top: $spacer-lg;
+
+    sbdl-search-result-card {
+      border-top: 1px solid $neutral-100;
+
+      &:first-child{
+        border-top: none;
+      }
+    }
+  }
+}

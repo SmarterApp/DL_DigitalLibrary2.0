@@ -1,0 +1,39 @@
+<h2 class="outline-header">
+  <span *ngIf="readingMode && !mobile">
+    <i class="fas fa-bars"></i>
+  </span>
+  Outline
+</h2>
+<ul class=section-list *ngIf="outline">
+  <li *ngFor="let section of sectionsInOrder">
+    <div class="section-header">
+      <sbdl-button  class="outline"
+                    (click)="scrollTo(section)"
+                    (blur)="removeHighlight(section)">
+        <sbdl-icon *ngIf="section.sbdlIcon" [icon]="section.sbdlIcon"></sbdl-icon>
+        <i *ngIf="section.fontAwesomeIcon" class="far" [ngClass]="section.fontAwesomeIcon"></i>
+        {{ section.title }}
+      </sbdl-button>
+    </div>
+    <ol class="subsection-list"
+        *ngIf="section.subsections && section.subsectionsNumbered">
+      <li *ngFor="let subsection of section.subsections">
+        <sbdl-button class="subsection"
+                     (click)="scrollTo(subsection)"
+                     (blur)="removeHighlight(subsection)">
+          {{ subsection.title }}
+        </sbdl-button>
+      </li>
+    </ol>
+    <ul class="subsection-list"
+        *ngIf="section.subsections && !section.subsectionsNumbered">
+      <li *ngFor="let subsection of section.subsections">
+        <sbdl-button class="subsection"
+                     (click)="scrollTo(subsection)"
+                     (blur)="removeHighlight(subsection)">
+          {{ subsection.title }}
+        </sbdl-button>
+      </li>
+    </ul>
+  </li>
+</ul>

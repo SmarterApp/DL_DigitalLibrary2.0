@@ -1,0 +1,67 @@
+<article #sectionHeader
+  *ngIf="resource.topics.length > 0"
+  class="topics-container"
+  [ngClass]="{'reading-mode': readingMode, 'full-mode': !readingMode}">
+  <h2 class="leading-icon">
+    <i class="far fa-chart-network"></i>
+      Connect Student Performance to Instructional Resources
+      <sbdl-tooltip text="A description of what students know or can do for each topic, as well as resources to support instructional next steps.">
+      <sbdl-icon icon="info"></sbdl-icon>
+    </sbdl-tooltip>
+  </h2>
+  <table class="progressions-table">
+    <tr>
+      <td></td>
+      <th class="progressions-info" colspan="3">
+        Student Performance Progressions
+        <sbdl-tooltip text="A description of what students know or can do when they are below, near, or above each topic identified within this playlist.">
+          <sbdl-icon icon="info"></sbdl-icon>
+        </sbdl-tooltip>
+      </th>
+    </tr>
+
+    <tr class="table-header">
+      <th scope="rowgroup">
+        <h3>Topic</h3>
+        <div class="caption emphasis-medium">Resource</div>
+      </th>
+      <th scope="col" class="scale below"
+          [ngClass]="{collapsed: belowCollapsed}">
+        <sbdl-progression-scale-button
+          scale="below"
+          [collapsed]="belowCollapsed"
+          (click)="toggleBelowCollapsed()"
+        ></sbdl-progression-scale-button>
+      </th>
+      <th scope="col" class="scale near"
+          [ngClass]="{collapsed: nearCollapsed}">
+        <sbdl-progression-scale-button
+          scale="near"
+          [collapsed]="nearCollapsed"
+          (click)="toggleNearCollapsed()"
+        ></sbdl-progression-scale-button>
+      </th>
+      <th scope="col" class="scale above"
+          [ngClass]="{collapsed: aboveCollapsed}">
+        <sbdl-progression-scale-button
+          scale="above"
+          [collapsed]="aboveCollapsed"
+          (click)="toggleAboveCollapsed()"
+        ></sbdl-progression-scale-button>
+      </th>
+    </tr>
+
+    <tr sbdl-playlist-topic-row
+        *ngFor="let topic of resource.topics"
+        [topic]="topic"
+        [belowCollapsed]="belowCollapsed"
+        [nearCollapsed]="nearCollapsed"
+        [aboveCollapsed]="aboveCollapsed"
+        [ngClass]="{ rowCollapsed: rowCollapsed.get(topic.title) || false }"
+        (rowCollapseChanged)="setRowCollapsed(topic, $event)"
+        (sectionLoaded)="addSubsection($event)"
+    ></tr>
+
+  </table>
+</article>
+<hr *ngIf="resource.topics.length > 0"/>

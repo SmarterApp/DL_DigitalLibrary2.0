@@ -1,0 +1,34 @@
+@import "colors";
+@import "spacing";
+
+:host {
+  --print-display: block;
+  --print-position: initial;
+  --print-visibility: visible;
+
+  hr {
+      width:100%;
+      box-sizing: border-box;
+      height: 1px;
+      color: $neutral-900;
+      background-color: $neutral-900;
+      border:none;
+
+      padding-left: 5rem;
+      opacity: 0.2;
+      transform: translateX(-1.5rem);
+      margin-bottom: 51px;
+  }
+}
+
+@media only print {
+  :host {
+    display: var(--print-display);
+    position: var(--print-position);
+    visibility: var(--print-visibility);
+
+    hr {
+      margin-bottom: $spacer;
+    }
+  }
+}

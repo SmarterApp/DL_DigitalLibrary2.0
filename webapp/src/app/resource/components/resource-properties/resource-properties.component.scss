@@ -1,0 +1,29 @@
+@import "colors";
+@import "typography";
+@import "spacing";
+
+:host {
+  padding: $spacer-md;
+}
+
+.thumbnail-container {
+  display: inline-block;
+  box-shadow:
+    0 1px 8px rgba(0, 0, 0, 0.2),
+    0 3px 4px rgba(0, 0, 0, 0.12),
+    0 3px 3px rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
+  margin-bottom: $spacer-md;
+  width: 279px;
+  height: 279px;
+  overflow: hidden;
+
+  sbdl-resource-thumbnail {
+    ::ng-deep {
+      object {
+        width: calc(100% - 2rem); // $spacer * 2
+        padding: $spacer;
+      }
+    }
+  }
+}

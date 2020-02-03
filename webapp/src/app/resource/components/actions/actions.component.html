@@ -1,0 +1,44 @@
+<sbdl-button-icon *ngIf="authenticated$ | async" buttonTitle="Notes" (click)="toggleNotes()">
+  <sbdl-icon [ngClass]="{'has-notes': hasNotes}" icon="take-note"></sbdl-icon>
+</sbdl-button-icon>
+<sbdl-button-icon buttonTitle="Share" (click)="share()"><i class="far fa-share"></i></sbdl-button-icon>
+<ng-container #shareButton></ng-container>
+<sbdl-button-icon *ngIf="authenticated$ | async" buttonTitle="Bookmark" (click)="toggleBookmarked()">
+  <div *ngIf="!updatingBookmarked && bookmark">
+    <i class="fas fa-bookmark"></i>
+  </div>
+  <div *ngIf="!updatingBookmarked && !bookmark">
+    <i class="far fa-bookmark"></i>
+  </div>
+  <div *ngIf="updatingBookmarked">
+    <i class="fas fa-spinner fa-spin"></i>
+  </div>
+</sbdl-button-icon>
+<sbdl-button-icon buttonTitle="Print" (click)="togglePrintingMode()">
+  <div *ngIf="printingMode">
+    <i class="fas fa-print"></i>
+  </div>
+  <div *ngIf="!printingMode">
+    <i class="far fa-print"></i>
+  </div>
+</sbdl-button-icon>
+<sbdl-button-icon buttonTitle="Toggle Reading Mode" [hidden]="hideReadingModeToggle" (click)="toggleReadingMode()">
+  <div *ngIf="readingMode">
+    <i class="far fa-compress-alt"></i>
+  </div>
+  <div *ngIf="!readingMode">
+    <i class="far fa-expand-alt"></i>
+  </div>
+</sbdl-button-icon>
+<ng-template #sharePopover>
+  <div class="share-popover">
+      <div class="tooltip-title">Share this resource</div>
+      <div class="copy-clipboard">
+          <input #url readonly type="text" [value]="currentUrl">
+          <sbdl-button-icon buttonTitle="Copy to clipboad" (click)="copyToClipboard(url)">
+            <i class="fas fa-copy"></i>
+            <div class="copy-success" [hidden]="!showCopied">Copied!</div>
+          </sbdl-button-icon>
+      </div>
+  </div>
+</ng-template>

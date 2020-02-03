@@ -1,0 +1,19 @@
+<h2>Login for Complete Access</h2>
+<p>
+  The full content of this resource is available to educators in
+  subscribing states and territories. Login for access.
+</p>
+<sbdl-button
+  class="primary"
+  (click)="onLoginButtonClick()"
+  [ngClass]="{
+    processing: loading$ | async
+  }"
+>
+  <span class="button-content">
+    Login
+  </span>
+  <span class="button-processing-content">
+    <i class="fas fa-spinner fa-pulse"></i>
+  </span>
+</sbdl-button>

@@ -1,0 +1,93 @@
+@import "colors";
+@import "spacing";
+
+.app-container {
+  display: grid;
+  grid-template-areas:
+    "navigation skip-link"
+    "navigation router-outlet"
+    "navigation footer";
+  grid-template-rows: 0 auto 1fr;
+  grid-template-columns: 64px 1fr;
+
+  .skip-link {
+    grid-area: skip-link;
+    width: 1px;
+    height: 0px;
+    overflow: hidden;
+    z-index: -999;
+
+    &:focus, &:active {
+      overflow: visible;;
+      z-index: 999;
+      width: auto;
+      height: auto;
+      margin: 1rem;
+    }
+  }
+
+  sbdl-navigation {
+    grid-area: navigation;
+  }
+
+  .router-outlet {
+    grid-area: router-outlet;
+    position: relative;
+
+    .route-loader {
+      background-color: rgba(255, 255, 255, 0.4);
+      cursor: wait;
+      height: 100vh;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width:  100vw;
+      z-index: 4;
+
+      .spinner-container {
+        margin: calc(50vh - 3rem) auto;
+        width:  6rem;
+
+        svg {
+          color: $neutral-500;
+          font-size: 6rem;
+        }
+      }
+    }
+  }
+
+  sbdl-footer {
+    grid-area: footer;
+    max-width: 100%;
+  }
+
+}
+
+@media only screen and (max-width: $breakpoint-sm) {
+  .app-container {
+    grid-template-areas: "skip-link" "navigation" "router-outlet" "footer";
+    grid-template-rows: 0 auto 1fr auto;
+    grid-template-columns: 1fr;
+
+    sbdl-navigation {
+      position: relative;
+      flex-direction: row;
+      justify-content: space-around;
+      width: 100%;
+    }
+  }
+}
+
+@media only print {
+  .app-container {
+    display: block;
+    margin-bottom: 2rem;
+
+    sbdl-navigation,
+    .skip-link {
+      display: none;
+    }
+  }
+
+  .route-loader { display: none; }
+}

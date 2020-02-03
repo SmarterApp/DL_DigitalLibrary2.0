@@ -1,0 +1,41 @@
+<div class="resource-type">
+  <sbdl-resource-type-icon
+    [type]="resourceSummary.type"
+  ></sbdl-resource-type-icon>
+  {{ resourceSummary.type | resourceType }}
+</div>
+
+<a
+  [routerLink]="['/resource', resourceSummary.id]"
+  class="inner-card"
+>
+  <sbdl-resource-thumbnail
+    [subjectCode]="resourceSummary.properties.subject.code"
+    [url]="resourceSummary.properties.image"
+  ></sbdl-resource-thumbnail>
+
+  <div class="resource-summary-card-right">
+    <div class="title">
+      {{ resourceSummary.properties.title }}
+    </div>
+
+    <ng-container>
+      <p
+        *ngIf="
+          resourceSummary.type === ResourceType.Instructional
+          || resourceSummary.type === ResourceType.ConnectionsPlaylist
+        "
+        class="details caption emphasis-medium"
+      >
+        <span
+          *ngFor="let detail of details; last as last"
+          class="detail-item"
+        >
+          {{ detail }}
+          <span *ngIf="!last">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+        </span>
+      </p>
+    </ng-container>
+  </div>
+
+</a>

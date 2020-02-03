@@ -1,0 +1,90 @@
+@import "colors";
+
+$font-family-body: 'Open Sans', sans-serif;
+$font-family-title: 'Montserrat', sans-serif;
+$font-size-body: 16px;
+$font-size-body-2: 14.41px;
+
+$font-size-00: 0.84375rem;
+$font-size-0: 0.900625rem;
+$font-size-1: 1rem;
+$font-size-2: 1.2125rem;
+$font-size-3: 1.4625rem;
+$font-size-4: 1.76875rem;
+$font-size-5: 2.14375rem;
+$font-size-6: 2.59375rem;
+$font-size-7: 3.1375rem;
+
+body {
+    font-size: $font-size-body;
+    font-family: $font-family-body;
+    font-weight: 400;
+    font-style: normal;
+    color: $neutral-900;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-title;
+    font-style: normal;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.subtitle-1 {
+    font-family: $font-family-title;
+    font-weight: 400;
+    font-size: $font-size-1;
+    line-height: 160%;
+}
+
+.subtitle-2 {
+    font-family: $font-family-title;
+    font-weight: 400;
+    font-size: $font-size-0;
+    line-height: 175%;
+}
+
+.body-1 {
+    font-family: $font-family-body;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 150%;
+}
+
+// lets set default copy style to body-2
+.body-2,
+p, ol, ul, table {
+    font-family: $font-family-body;
+    font-weight: 400;
+    font-size: 0.900625rem;
+    line-height: 150%;
+}
+
+.caption {
+    font-size: 0.825rem;
+}
+
+.overline {
+    font-family: $font-family-title;
+    font-weight: 400;
+    font-size: 0.900625rem;
+    line-height: 1.24913em;
+    /* identical to box height */
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.font-light {
+    font-weight: 300;
+}
+.emphasis-medium {
+    opacity: 0.65;
+}
+.italics {
+    font-style: italic;
+}
+
+a {
+    color: $action-700;
+    text-decoration: none;
+}

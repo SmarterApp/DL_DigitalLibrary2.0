@@ -1,0 +1,47 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+
+:host {
+  display: block;
+  max-width: none;
+}
+
+.section-container {
+
+  padding-top: $spacer;
+  max-width: var(--measure);
+  margin-right: $spacer-xl;
+  margin-left: $spacer-lg;
+  margin-bottom: $spacer-lg;
+  position: relative;
+
+  .leading-icon {
+    margin-left: -16px;
+
+    svg {
+      color: $success-900;
+      background: url('/assets/images/green-spot-3.png') no-repeat;
+      background-size: contain;
+      padding: 7px;
+      font-size: 1.5rem;
+    }
+  }
+
+  ::ng-deep{
+    a {
+      color: $success-900;
+      text-decoration: underline;
+    }
+
+    a:after {
+      content: ' \f061';
+      font-family: 'Font Awesome 5 Pro';
+      text-decoration: none;
+      display: inline-block;
+      padding-left: 8px;
+    }
+
+  }
+
+}

@@ -1,0 +1,63 @@
+<header class="resource-header">
+  <div class="top-header">
+    <img src="/assets/images/yellow-spot.png" alt="" />
+    <sbdl-actions
+      [hasNotes]="notes.length > 0"
+      [notesVisible]="notesVisible"
+      [readingMode]="readingMode"
+      [printingMode]="printingMode"
+      [resource]="resource"
+      (readingModeChanged)="readingModeChanged.emit($event)"
+      (printingModeChanged)="printModeChanged.emit($event)"
+      (notesVisibilityChanged)="noteModeChanged.emit($event)"
+    ></sbdl-actions>
+  </div>
+
+  <sbdl-header
+    [resource]="resource"
+    (attachmentsClicked)="scrollToAttachments()"
+  ></sbdl-header>
+</header>
+<nav class="outline">
+  <sbdl-outline
+    [resource]="resource"
+    [outline]="outline"
+    [readingMode]="readingMode"
+    [hidden]="printingMode"
+  ></sbdl-outline>
+  <sbdl-enhanced-printing
+    [resource]="resource"
+    [outline]="outline"
+    [hidden]="!printingMode"
+    (printingModeChanged)="printModeChanged.emit($event)"
+    (documentOutlineChanged)="setOutline($event)"
+  ></sbdl-enhanced-printing>
+</nav>
+<main id="main" class="resource-content">
+  <sbdl-instructional-content
+    [notes]="notes"
+    [notesVisible]="notesVisible"
+    [printingMode]="printingMode"
+    [readingMode]="readingMode"
+    [outline]="outline"
+    [resource]="resource"
+    (outlineLoaded)="setOutline($event)"
+    (readingModeChanged)="readingModeChanged.emit($event)"
+    (printingModeChanged)="printModeChanged.emit($event)"
+    (notesVisibilityChanged)="noteModeChanged.emit($event)"
+  ></sbdl-instructional-content>
+</main>
+<aside class="resource-properties">
+  <sbdl-resource-properties
+    [properties]="resource.properties"
+    [hidden]="notesVisible">
+    <sbdl-educational-details [properties]="resource.properties"></sbdl-educational-details>
+  </sbdl-resource-properties>
+  <sbdl-notes
+    *ngIf="user"
+    [hidden]="!notesVisible"
+    [notes]="notes"
+    [resource]="resource"
+    (notesChanged)="notesChanged($event)">
+  </sbdl-notes>
+</aside>

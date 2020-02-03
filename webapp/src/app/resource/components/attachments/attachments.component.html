@@ -1,0 +1,24 @@
+<article *ngIf="attachments.length > 0" #sectionHeader class="attachments-container">
+  <h2 class="leading-icon">
+      <i class="far fa-paperclip"></i>Attachments
+  </h2>
+  <p>This resource relies on the following materials. Download them to use.</p>
+  <sbdl-attachment-card
+    *ngFor="let attachment of fileAttachments"
+    class="file-attachment"
+    [attachment]="attachment"
+    [attachmentCardType]="CardType.File"></sbdl-attachment-card>
+  <h3 *ngIf="mediaAttachments.length > 0">Videos</h3>
+  <sbdl-attachment-card
+    *ngFor="let attachment of mediaAttachments"
+    class="media-attachment"
+    [attachment]="attachment"
+    [attachmentCardType]="CardType.Media"></sbdl-attachment-card>
+  <h3 *ngIf="linkAttachments.length > 0">External Links</h3>
+  <sbdl-attachment-card
+    *ngFor="let attachment of linkAttachments"
+    class="link-attachment"
+    [attachment]="attachment"
+    [attachmentCardType]="CardType.Link"></sbdl-attachment-card>
+</article>
+<hr *ngIf="attachments.length > 0"/>

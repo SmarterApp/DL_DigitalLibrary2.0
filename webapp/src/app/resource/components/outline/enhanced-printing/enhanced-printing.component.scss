@@ -1,0 +1,53 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+
+:host {
+
+  --mdc-theme-primary: $neutral-500;
+
+  .print-message {
+    background-color: rgba($warning-100, 0.4);
+    border-radius: $spacer-sm;
+    color: $neutral-500;
+    margin: $spacer $spacer $spacer $spacer;
+    padding: $spacer;
+    width: 16.5em;
+
+    .dialog-buttons {
+      display: flex;
+      justify-content: flex-end;
+
+      sbdl-button {
+        margin-left: $spacer;
+      }
+    }
+  }
+
+  ul.section-list {
+    & > li {
+      font-family: $font-family-title;
+    }
+
+    ul.subsection-list {
+      list-style-type: none;
+      padding: 0;
+
+      & > li {
+        text-indent: 0;
+      }
+    }
+  }
+
+  .subsection {
+    font-family: $font-family-body;
+    font-size: 0.9rem;
+  }
+
+  .outline-header sbdl-button {
+    display: inline-block;
+    margin-left: $spacer-md;
+    position: relative;
+    top: -2px;
+  }
+}

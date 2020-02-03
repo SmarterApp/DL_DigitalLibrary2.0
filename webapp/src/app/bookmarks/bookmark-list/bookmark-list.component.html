@@ -1,0 +1,27 @@
+<nav class="outline">
+  <!-- TODO: Future enhancement: categorize bookmarked resource by resource
+    type. -->
+</nav>
+<main id="main" class="bookmark-list">
+  <div class="top-header" aria-hidden="true">
+    <img src="/assets/images/yellow-spot.png"/>
+  </div>
+  <header>
+    <h1>My Bookmarks</h1>
+  </header>
+  <ul class="bookmarks">
+    <li *ngFor="let bookmark of bookmarks">
+      <sbdl-resource-summary-card [resourceSummary]="bookmark" ></sbdl-resource-summary-card>
+      <sbdl-bookmark-actions
+        [resourceSummary]="bookmark"
+        [hasNotes]="bookmarkHasNotes(bookmark)"
+      ></sbdl-bookmark-actions>
+    </li>
+  </ul>
+  <div *ngIf="!bookmarks || bookmarks.length === 0" class="no-bookmarks">
+    This page shows all of the resources you have bookmarked. It is currently
+    empty because you haven't bookmarked any resources yet.
+    <a [routerLink]="['/']">Go find some resources to bookmark!</a>
+  </div>
+</main>
+<aside class="right-margin"></aside>

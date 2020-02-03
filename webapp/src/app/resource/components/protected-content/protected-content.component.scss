@@ -1,0 +1,21 @@
+:host {
+  position: relative;
+
+  &.obscured {
+    ::ng-deep > *:not(sbdl-preview-login-prompt) {
+      display: block;
+      filter: blur(6px);
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+  > sbdl-preview-login-prompt {
+    // TODO make sticky? - would need to fiddle with parent element overflow settings
+    position: absolute;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 44ch;
+  }
+}

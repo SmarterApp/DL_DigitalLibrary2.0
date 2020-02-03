@@ -1,0 +1,29 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+@import "mixins";
+
+:host {
+  // this all feels like it should be a common "window" style
+  @include window;
+}
+
+.button-processing-content {
+  display: none;
+}
+
+.processing {
+  position: relative;
+
+  .button-content {
+    visibility: hidden;
+  }
+
+  .button-processing-content {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

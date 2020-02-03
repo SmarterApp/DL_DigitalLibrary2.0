@@ -1,0 +1,94 @@
+// Icons
+.icon {
+  display: inline-flex;
+  align-self: center;
+  svg {
+    max-height: 100%;
+    max-width: 100%;
+    height: 1em;
+    width: 1em;
+    top: .125em;
+    position: relative;
+  }
+}
+
+sbdl-icon {
+  height: 1em;
+}
+
+.icon-lg {
+  font-size: 1.2em;
+}
+.icon-xlg {
+  font-size: 3em;
+}
+.icon-xxlg {
+  font-size: 4em;
+}
+.icon-sm {
+  .icon {
+    height: .8em;
+    max-width: .8em;
+  }
+}
+.icon-drop {
+  .icon {
+    height: .65em;
+    max-width: .65em;
+  }
+}
+
+// Leading Icon
+// Usually used for headlines
+// requires <sbdl-icon> inside of a classed text element
+.leading-icon {
+  --icon-width: 1em;
+  --icon-margin: 0.25em;
+  text-indent: calc((-1) * (var(--icon-width) + var(--icon-margin)));
+  > sbdl-icon,
+  .svg-inline--fa {
+      width: var(--icon-width);
+      height: auto;
+      margin-right: var(--icon-margin);
+      text-indent: 0;
+      color: $neutral-900;
+      opacity: 0.65;
+  }
+}
+
+/* all other browsers*/
+svg path,
+/*firefox https://stackoverflow.com/questions/27866893/svg-fill-not-being-applied-in-firefox */
+symbol path {
+  fill: currentColor;
+}
+
+// Defs only
+svg.defs-only {
+    display: block;
+    position: absolute;
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+}
+
+sbdl-icon[icon="info"] {
+  font-size: 18px;
+}
+
+// Icons that should always have the same color
+svg #info, symbol #info {
+  color: $info-500;
+}
+
+.fa-file-pdf, .fa-youtube {
+  // YouTube's brand color is just straight up red, #FF0000
+  color: #ff0000;
+}
+
+.fa-file-word {
+  color: #2B5797;
+}

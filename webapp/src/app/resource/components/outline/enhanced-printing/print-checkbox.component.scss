@@ -1,0 +1,73 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+@import "@material/form-field/mdc-form-field";
+@import "@material/checkbox/mdc-checkbox";
+
+.mdc-form-field {
+  color: $success-900;
+
+  /* Unset MDC font styles so that styles applied to the component cascade down
+   * to the label text. */
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+
+  & > label {
+    padding-left: 0;
+  }
+}
+
+.mdc-checkbox {
+  .mdc-checkbox__native-control {
+    padding: 8px;
+  }
+
+  .sbdl-print-checkbox-icon {
+    display: flex;
+    font-size: $font-size-body;
+    align-content: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: -1;
+
+    &.checked { opacity: 0; }
+    &.unchecked { font-size: 50%; }
+    &.disabled {
+      color: $neutral-500;
+      opacity: 0;
+    }
+    svg { margin:auto; }
+  }
+
+  &.mdc-checkbox--selected {
+    .sbdl-print-checkbox-icon.checked   { opacity: 1; }
+    .sbdl-print-checkbox-icon.unchecked { opacity: 0; }
+  }
+
+  label { cursor: pointer; }
+}
+
+.caption { margin-left: 2.5rem; }
+
+.mdc-form-field.disabled {
+
+  color: $neutral-500;
+  cursor: not-allowed;
+  
+  .mdc-checkbox {
+    cursor: not-allowed;
+
+    input, label { cursor: not-allowed; }
+  }
+
+  .sbdl-print-checkbox-icon.checked   { opacity: 0; }
+  .sbdl-print-checkbox-icon.disabled  { opacity: 1; }
+  .sbdl-print-checkbox-icon.unchecked { opacity: 0; }
+}

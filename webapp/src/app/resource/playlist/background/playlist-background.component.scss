@@ -1,0 +1,46 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+
+:host {
+
+.background-container {
+
+    padding-top: $spacer;
+    margin-bottom: $spacer-lg;
+    margin-left: $spacer-lg;
+    position: relative;
+    overflow: visible;
+
+    .leading-icon {
+
+      i, svg {
+        color: $success-900;
+        background: url('/assets/images/green-spot-3.png') no-repeat;
+        background-size: contain;
+        padding: 7px;
+        margin-bottom: -7px;
+        margin-left: -16px;
+        font-size: 1.75rem;
+      }
+
+      sbdl-tooltip sbdl-icon {
+        color: $info-500;
+      }
+    }
+
+    div.dive-links {
+      margin-left: -16px;
+    }
+
+    a.primary {
+      background-color: $brand-blue;
+      border-radius: 4px;
+      color: $white;
+      display: inline-block;
+      padding: $spacer-sm;
+      margin: $spacer;
+      text-transform: uppercase;
+    }
+  }
+}

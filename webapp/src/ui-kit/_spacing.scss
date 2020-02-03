@@ -1,0 +1,22 @@
+/* ------------------------------
+Spacing
+------------------------------ */
+
+// default body font-size: 16px;
+// so 0.5rem gives us a base unit of 8px
+$unit: 0.5rem;
+
+$spacer-xs:   $unit / 2;
+$spacer-sm:   $unit;
+$spacer:      $unit * 2; // 1rem / 16px
+$spacer-md:   $unit * 3;
+$spacer-lg:   $unit * 4;
+$spacer-xl:   $unit * 8;
+
+$breakpoint-sm: 500px;
+$breakpoint-lg: 1200px;
+
+:root {
+    --breakpoint-sm: #{$breakpoint-sm};
+    --breakpoint-lg: #{$breakpoint-lg};
+}

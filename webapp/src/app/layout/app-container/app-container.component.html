@@ -1,0 +1,15 @@
+<div class="app-container">
+  <a href="{{locationPath}}#main" class="skip-link">&nbsp;Skip to the main content.</a>
+  <sbdl-navigation role="navigation"></sbdl-navigation>
+  <div class="router-outlet" role="main">
+    <div *ngIf="routeLoading" class="route-loader">
+      <div class="spinner-container">
+        <i class="fas fa-spinner fa-pulse" aria-label="Loading..."></i>
+      </div>
+    </div>
+    <router-outlet>
+    </router-outlet>
+  </div>
+  <sbdl-footer></sbdl-footer>
+</div>
+
