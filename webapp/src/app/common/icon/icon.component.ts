@@ -6,8 +6,7 @@ import { OnMount } from '../controls/dynamic/interfaces';
  */
 @Component({
   selector: 'sbdl-icon',
-  templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.scss']
+  templateUrl: './icon.component.html'
 })
 export class IconComponent implements OnMount {
   dynamicOnMount(attrs?: Map<string, string>, content?: string, element?: Element): void {
