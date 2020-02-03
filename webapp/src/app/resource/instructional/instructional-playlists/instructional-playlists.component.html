@@ -3,31 +3,33 @@
   <p class="caption emphasis-medium">
     Connections playlists utilizing this resource.
   </p>
-  <a
-    *ngFor="let playlist of playlists"
-    class="playlist-card"
-    attr.aria-label="{{ playlist.title }} (opens in a new window)"
-    [routerLink]="['/resource', playlist.id]"
-  >
-    <div class="playlist-card-left">
-      <sbdl-resource-thumbnail
-        [subjectCode]="subjectCode"
-        [url]="playlist.image"
-      ></sbdl-resource-thumbnail>
-    </div>
-    <div class="playlist-card-right">
-      <div class="playlist-card-information">
-        <h4 class="title">{{ playlist.title }}</h4>
-        <p class="caption emphasis-medium" [ngPlural]="playlist.count" >
-          <ng-template ngPluralCase="=1">{{ playlist.count }} resource</ng-template>
-          <ng-template ngPluralCase="other">{{ playlist.count }} resources</ng-template>
-        </p>
-      </div>
-      <sbdl-icon
-        icon="playlist-play"
-        class="playlist-icon"
-      ></sbdl-icon>
-    </div>
-
-  </a>
+  <ul>
+    <li *ngFor="let playlist of playlists">
+      <a
+        class="playlist-card"
+        attr.aria-label="{{ playlist.title }} (opens in a new window)"
+        [routerLink]="['/resource', playlist.id]"
+      >
+        <div class="playlist-card-left">
+          <sbdl-resource-thumbnail
+            [subjectCode]="subjectCode"
+            [url]="playlist.image"
+          ></sbdl-resource-thumbnail>
+        </div>
+        <div class="playlist-card-right">
+          <div class="playlist-card-information">
+            <h4 class="title">{{ playlist.title }}</h4>
+            <p class="caption emphasis-medium" [ngPlural]="playlist.count" >
+              <ng-template ngPluralCase="=1">{{ playlist.count }} resource</ng-template>
+              <ng-template ngPluralCase="other">{{ playlist.count }} resources</ng-template>
+            </p>
+          </div>
+          <sbdl-icon
+            icon="playlist-play"
+            class="playlist-icon"
+          ></sbdl-icon>
+        </div>
+      </a>
+    </li>
+  </ul>
 </ng-container>
