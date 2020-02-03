@@ -9,6 +9,12 @@ variable "webapp_url_base" {
   default = "webapp.dl.smarterbalanced.org"
 }
 
+variable "additional_cloudfront_aliases" {
+  description = "Additional domains for cloudfront to serve content."
+  default = []
+  type = list(string)
+}
+
 variable "route53_zone_id" {
   # The hosted zone is not specific to DL webapp front end (also used by the
   # API) and is not managed by this Terraform module.

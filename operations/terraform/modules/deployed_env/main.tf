@@ -72,7 +72,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     prefix          = "${var.environment}/cloudfront/"
   }
 
-  aliases = ["${var.environment}.${var.webapp_url_base}"]
+  aliases = concat(["${var.environment}.${var.webapp_url_base}"],var.additional_cloudfront_aliases)
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
