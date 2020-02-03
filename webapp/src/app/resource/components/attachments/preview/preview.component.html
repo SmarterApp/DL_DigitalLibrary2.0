@@ -5,7 +5,7 @@
   <div *ngIf="loading" class="loading-msg">Loading preview...</div>
   <object
     [ngClass]="{loading: loading}"
-    [data]="blobUrl | safeUrl"
+    [data]="blobUrl | trustUrl"
     [type]="attachment.mimeType"
   ></object>
   <sbdl-button class="primary download" (click)="download(attachment)">
