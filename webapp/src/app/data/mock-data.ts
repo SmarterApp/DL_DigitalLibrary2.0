@@ -85,7 +85,8 @@ export const mockInstructionalResource: InstructionalResource = {
     elicit: '',
     interpret: '',
     act: ''
-  }
+  },
+  listConnectionsPlaylists: []
 };
 
 
@@ -256,6 +257,7 @@ export const teaserIRContent: InstructionalResource = {
   id: 200,
   type: ResourceType.Instructional,
   teaser: false,
+  listConnectionsPlaylists: [],
   properties: {
     authorOrg: '',
     authors: [

@@ -10,7 +10,7 @@ export interface InstructionalResource extends Resource {
   formativeAssessmentStrategies: ResourceStrategyReference[];
   differentiation: string;
   formativeAssessHowTo: FormativeAssessmentContent;
-  listConnectionsPlaylists: PlaylistResourceLink[];
+  listConnectionsPlaylists: ConnectionsPlaylistReference[];
 }
 
 export interface InstructionalResourceGettingStarted {
@@ -19,7 +19,7 @@ export interface InstructionalResourceGettingStarted {
   successCriteria: string;
 }
 
-export interface PlaylistResourceLink {
+export interface ConnectionsPlaylistReference {
   id: number;
   title: string;
   count: number;

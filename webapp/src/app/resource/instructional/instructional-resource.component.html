@@ -53,34 +53,10 @@
     [hidden]="notesVisible">
     <sbdl-educational-details [properties]="resource.properties"></sbdl-educational-details>
 
-    <!-- playlist -->
-    <div
-      *ngIf="resource.listConnectionsPlaylists && resource.listConnectionsPlaylists.length > 0"
-      class="playlists"
-    >
-      <h6>Playlists</h6>
-      <div class="caption emphasis-medium">
-        Connections playlists utilizing this resource.
-      </div>
-      <a
-        *ngFor="let playlist of resource.listConnectionsPlaylists"
-        class="playlist-card"
-        [routerLink]="['/resource', playlist.id]"
-      >
-<!--        <sbdl-icon [icon]="playlist.assessmentTypeIcon" class="assessment-type-icon"></sbdl-icon>-->
-        <div class="playlist-title">
-          <div class="title">{{ playlist.title }}</div>
-          <div class="resources" [ngPlural]="playlist.count" >
-            <ng-template ngPluralCase="=1">{{ playlist.count }} resource</ng-template>
-            <ng-template ngPluralCase="other">{{ playlist.count }} resources</ng-template>
-          </div>
-        </div>
-        <sbdl-icon
-          icon="playlist-play"
-          class="playlist-icon"
-        ></sbdl-icon>
-      </a>
-    </div>
+  <sbdl-instructional-playlists
+    [playlists]="resource.listConnectionsPlaylists"
+    [subjectCode]="resource.properties.subject.code"
+  ></sbdl-instructional-playlists>
 
   </sbdl-resource-properties>
   <sbdl-notes
