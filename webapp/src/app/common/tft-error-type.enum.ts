@@ -33,7 +33,7 @@ export const errorMessages: Map<TftErrorType, TftErrorMessage>  = new Map([
     message: 'Unfortunately this resource is not available to educators in your state/territory.',
   }],
   [TftErrorType.ResourceUnavailable, {
-    title: 'This resource is unavaiable.',
+    title: 'This resource is unavailable.',
     message: 'We apologize for the inconvenience.'
   }],
   [TftErrorType.Unknown, {
