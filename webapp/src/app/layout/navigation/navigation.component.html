@@ -28,10 +28,10 @@
       <i class="far fa-bookmark" aria-hidden="true"></i>
       <label>Bookmarks &amp; Notes</label>
     </a>
-    <button *ngIf="!(user$ | async)" (click)="login()" class="auto-margin">
+    <button *ngIf="!(hasToken$ | async)" (click)="login()" class="auto-margin">
       <i class="far fa-sign-in-alt" aria-hidden="true"></i><label>Login</label>
     </button>
-    <a *ngIf="user$ | async" [routerLink]="[baseHref, 'auth', 'logout']">
+    <a *ngIf="hasToken$ | async" [routerLink]="[baseHref, 'auth', 'logout']">
       <i class="far fa-sign-out-alt" aria-hidden="true"></i><label>Logout</label>
     </a>
   </div>
