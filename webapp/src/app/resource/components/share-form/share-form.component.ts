@@ -11,6 +11,9 @@ export class ShareFormComponent {
   @Input()
   value: string;
 
+  /**
+   * Emitted when tabbing out of the form
+   */
   @Output()
   closed: EventEmitter<void> = new EventEmitter();
 
@@ -21,11 +24,9 @@ export class ShareFormComponent {
     document.execCommand('copy');
     input.setSelectionRange(0, 0);
     button.focus();
-    // input.setSelectionRange(0, 0);
     this.copied$.next(true);
     setTimeout(() => {
       this.copied$.next(false);
-      // this.changeDetectorReference.detectChanges();
     }, 1000);
   }
 }
