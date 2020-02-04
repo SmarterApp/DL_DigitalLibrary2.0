@@ -33,6 +33,7 @@ export function mockAppConfig() {
 const mockTenantThemeConfig: TenantThemeConfig = {
   default: {
     displayName: 'Smarter Balanced',
+    contactUri: '',
     logoUris: {
       full: '/assets/svg/tft-logo-full.svg',
       footer: ''
@@ -43,9 +44,7 @@ const mockTenantThemeConfig: TenantThemeConfig = {
 export class MockTenantThemeService {
   tenantThemeConfig: Observable<TenantThemeConfig> = of(mockTenantThemeConfig);
 
-  public getTenantTheme(user: User): Observable<TenantTheme> {
-    return of(mockTenantThemeConfig.default);
-  }
+  public currentTenantTheme$ = of(mockTenantThemeConfig.default);
 }
 
 export class MockOktaAuthService {

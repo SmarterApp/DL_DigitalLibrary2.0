@@ -4,7 +4,6 @@ import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { TenantThemeService } from 'src/app/data/tenant-theme/tenant-theme.service';
-import { UserService } from 'src/app/data/user/user.service';
 import { SearchFilters, emptyFilters } from '../data/search/search-filters.model';
 
 @Component({
@@ -22,10 +21,8 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute,
     private tenantThemeService: TenantThemeService,
     private titleService: Title,
-    private userService: UserService
   ) {
-    this.logo$ = userService.user.pipe(
-      mergeMap(user => tenantThemeService.getTenantTheme(user)),
+    this.logo$ = tenantThemeService.currentTenantTheme$.pipe(
       map(theme => theme.logoUris.full));
   }
 

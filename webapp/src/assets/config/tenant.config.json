@@ -1,5 +1,6 @@
 {
   "default": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Smarter Balanced",
     "logoUris": {
       "full": "/assets/svg/tft-logo-full.svg",
@@ -7,6 +8,7 @@
     }
   },
   "CA": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "California",
     "footerLinks": [
       {
@@ -41,6 +43,7 @@
     }
   },
   "CT": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Connecticut",
     "footerLinks": [
       {
@@ -75,6 +78,7 @@
     }
   },
   "DE": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Delaware",
     "footerLinks": [
       {
@@ -109,6 +113,7 @@
     }
   },
   "HI": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Hawaii",
     "footerLinks": [
       {
@@ -143,6 +148,7 @@
     }
   },
   "ID": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Idaho",
     "footerLinks": [
       {
@@ -177,6 +183,7 @@
     }
   },
   "MI": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Michigan",
     "footerLinks": [
       {
@@ -211,6 +218,7 @@
     }
   },
   "MT": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Montana",
     "footerLinks": [
       {
@@ -245,6 +253,7 @@
     }
   },
   "NV": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Nevada",
     "footerLinks": [
       {
@@ -279,6 +288,7 @@
     }
   },
   "OR": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Oregon",
     "footerLinks": [
       {
@@ -313,6 +323,7 @@
     }
   },
   "SD": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "South Dakota",
     "footerLinks": [
       {
@@ -347,6 +358,7 @@
     }
   },
   "VI": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "U.S. Virgin Islands",
     "footerLinks": [
       {
@@ -381,6 +393,7 @@
     }
   },
   "VT": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Vermont",
     "footerLinks": [
       {
@@ -415,6 +428,7 @@
     }
   },
   "WA": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Washington",
     "footerLinks": [
       {
