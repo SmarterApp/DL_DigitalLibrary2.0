@@ -45,7 +45,6 @@ export class BookmarkActionsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // this is not the shared URL
     this.shareValue = `${location.protocol}//${location.host}/resource/${this.resourceSummary.id}`;
     this.bookmarksSubscription = this.bookmarksService.userBookmarksByResourceId.subscribe(bkmkMap => {
       this.bookmark = bkmkMap.get(this.resourceSummary.id);
