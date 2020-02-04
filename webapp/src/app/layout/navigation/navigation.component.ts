@@ -17,6 +17,7 @@ import { User } from 'src/app/data/user/user.model';
 })
 export class NavigationComponent {
 
+  hasToken$: Observable<boolean>;
   logo$: Observable<string>;
 
   constructor(
@@ -27,6 +28,7 @@ export class NavigationComponent {
     private tenantThemeService: TenantThemeService,
     private userService: UserService
   ) {
+    this.hasToken$ = userService.hasOktaAuthToken;
     this.logo$ = this.tenantThemeService.currentTenantTheme$.pipe(
       map(theme => theme.logoUris.full));
   }
