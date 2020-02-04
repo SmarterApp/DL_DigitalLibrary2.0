@@ -1,0 +1,26 @@
+<h4>Share this resource</h4>
+<div class="form-field">
+  <input
+    #valueInput
+    readonly
+    type="text"
+    [value]="value"
+    tabindex="-1"
+  >
+    <button
+      #button
+      class="mdc-icon-button material-icons"
+      title="Copy to clipboard"
+      (click)="onCopyButtonClick(valueInput, button)"
+      (keydown.tab)="closed.emit()"
+      (keydown.shift.tab)="closed.emit()"
+    >
+      <i class="fas fa-copy"></i>
+    </button>
+    <span
+      [hidden]="!(copied$ | async)"
+      class="success-message"
+    >
+      Copied!
+    </span>
+</div>

@@ -1,33 +1,10 @@
 @import "colors";
 
-.share-popover {
-    .tooltip-title {
-        margin: 0;
-        color: $brand-green;
-    }
-    .copy-clipboard {
-        width: 100%;
-        display:inline-flex;
-        align-items: center;
-        justify-items: center;
-        justify-content: space-between;
-        input {
-            font-size: 1rem;
-            flex-grow: 1;
-        }
-    }
-    .copy-success {
-        font-size: 10px;
-        margin-left: -6px;
-    }
-}
-
 sbdl-icon.has-notes {
   background: $brand-blue;
   color: $white;
   padding: 2px;
   border-radius: 4px;
 }
-
 
 @media only print { :host { display: none } }

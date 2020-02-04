@@ -18,6 +18,8 @@ import { SvgDefsComponent } from './common/icon/svg-defs.component';
 import { SbdlCommonModule } from './common/common.module';
 import { NotesModule } from './notes/notes.module';
 import { OKTA_CALLBACK_PATH } from './common/constants';
+import {MdePopoverModule} from '@material-extended/mde';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -40,8 +42,8 @@ export function initializeOkta(appConfig: AppConfig) {
     Angulartics2Module.forRoot(),
     OktaAuthModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-
     BookmarksModule,
     DataModule,
     LayoutModule,

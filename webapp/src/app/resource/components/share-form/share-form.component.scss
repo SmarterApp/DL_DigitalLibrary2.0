@@ -1,0 +1,26 @@
+@import "colors";
+@import "spacing";
+
+h4,
+.success-message {
+  color: $brand-green;
+}
+
+input {
+  font-size: 1em;
+  width: 256px;
+  border: none;
+  padding: $spacer-xs 0;
+}
+
+.form-field {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr max-content max-content;
+  gap: $spacer;
+  align-items: center;
+}
+
+.success-message {
+  padding: 13px; // to match icon button
+}
