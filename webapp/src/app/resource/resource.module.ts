@@ -58,6 +58,9 @@ import { PlaylistTopicsComponent } from './playlist/topics/playlist-topics.compo
 import { ProgressionScaleButtonComponent } from './playlist/topics/progression-scale-button.component';
 import { ProtectedContentComponent } from './components/protected-content/protected-content.component';
 import { ResourceThumbnailComponent } from './components/resource-thumbnail/resource-thumbnail.component';
+import { ShareFormComponent } from './components/share-form/share-form.component';
+import {A11yModule} from '@angular/cdk/a11y';
+import {OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -113,9 +116,12 @@ import { ResourceThumbnailComponent } from './components/resource-thumbnail/reso
     PlaylistTopicsComponent,
     ProgressionScaleButtonComponent,
     ProtectedContentComponent,
-    ResourceThumbnailComponent
+    ResourceThumbnailComponent,
+    ShareFormComponent
   ],
   imports: [
+    A11yModule,
+    OverlayModule,
     CommonModule,
     RouterModule,
 
@@ -125,7 +131,8 @@ import { ResourceThumbnailComponent } from './components/resource-thumbnail/reso
   ],
   exports: [
     ResourceTypeIconComponent,
-    ResourceSummaryCardComponent
+    ResourceSummaryCardComponent,
+    ShareFormComponent
   ],
   entryComponents: [
     // Resource components are loaded dynamically so they need to be explicitly set here
