@@ -17,7 +17,9 @@ import { User } from 'src/app/data/user/user.model';
 })
 export class NavigationComponent {
 
+  authenticated$: Observable<boolean>;
   logo$: Observable<string>;
+  user: Observable<User>;
 
   constructor(
     @Inject(APP_BASE_HREF) public baseHref: string,
@@ -27,12 +29,10 @@ export class NavigationComponent {
     private tenantThemeService: TenantThemeService,
     private userService: UserService
   ) {
+    this.authenticated$ = this.userService.authenticated;
+    this.user = this.userService.user;
     this.logo$ = this.tenantThemeService.currentTenantTheme$.pipe(
       map(theme => theme.logoUris.full));
-  }
-
-  get user$(): Observable<User> {
-    return this.userService.user;
   }
 
   login() {

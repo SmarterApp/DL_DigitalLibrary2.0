@@ -58,7 +58,7 @@
     ></sbdl-strategy-properties>
   </sbdl-resource-properties>
   <sbdl-notes
-    *ngIf="user"
+    *ngIf="authenticated$ | async"
     [hidden]="!notesVisible"
     [notes]="notes"
     [resource]="resource"

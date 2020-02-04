@@ -71,13 +71,6 @@ export class UserService {
         details: 'User has no access token.'
       };
     }
-
-    if (user.tenantIds.length === 0) {
-      return {
-        type: TftErrorType.AuthNoAppAccess,
-        details: 'User has no tenancy chain with the role of DL_EndUser.'
-      };
-    }
   }
 
   constructor(
@@ -104,7 +97,7 @@ export class UserService {
   }
 
   get authenticated(): Observable<boolean> {
-    return this.user$.pipe(map(u => !!u));
+    return this.user$.pipe(map(u => u && u.isDlEndUser));
   }
 
   /**
@@ -165,14 +158,16 @@ export class UserService {
     const accessToken = await this.oktaAuthService.getAccessToken();
     const decodedAccessToken = this.jwtService.decodeToken(accessToken);
     const userInfo = await this.oktaAuthService.getUser();
+    const tenancyChain = UserService.parseSbacTenancyChain(decodedAccessToken.sbacTenancyChain);
 
     return new User(
       userInfo.email,
       userInfo.name,
       userInfo.given_name,
       userInfo.famiyl_name,
-      UserService.parseSbacTenancyChain(decodedAccessToken.sbacTenancyChain),
-      accessToken
+      tenancyChain,
+      accessToken,
+      tenancyChain.length > 0
     );
   }
 

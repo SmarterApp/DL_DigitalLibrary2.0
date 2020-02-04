@@ -56,7 +56,7 @@ export class BookmarksService {
   }
 
   private refreshBookmarks = (user: User) => {
-    if (user) {
+    if (user && user.isDlEndUser) {
       this.listAllBookmarks().subscribe(bookmarks => {
         this.userBkmks$.next(bookmarks);
         this.userBkmksForResId$.next(

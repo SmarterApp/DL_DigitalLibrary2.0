@@ -52,7 +52,7 @@
     <sbdl-playlist-resources [topics]="resource.topics"></sbdl-playlist-resources>
   </sbdl-resource-properties>
   <sbdl-notes
-    *ngIf="user"
+    *ngIf="authenticated$ | async"
     [hidden]="!notesVisible"
     [notes]="notes"
     [resource]="resource"

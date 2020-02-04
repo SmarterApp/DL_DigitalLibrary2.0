@@ -13,6 +13,7 @@ import { User } from 'src/app/data/user/user.model';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
+  authenticated$: Observable<boolean>;
   user$: Observable<User>;
   theme$: Observable<TenantTheme>;
   tenantName$: Observable<string>;
@@ -23,6 +24,7 @@ export class FooterComponent {
     private userService: UserService,
     private tenantThemeService: TenantThemeService
   ) {
+    this.authenticated$ = userService.authenticated;
     this.user$ = userService.user;
     this.theme$ = tenantThemeService.currentTenantTheme$;
 

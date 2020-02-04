@@ -5,6 +5,8 @@ import { OktaAuthService } from '@okta/okta-angular';
 import { takeLast, takeWhile } from 'rxjs/operators';
 import { User } from 'src/app/data/user/user.model';
 import { UserService } from 'src/app/data/user/user.service';
+import { TftErrorService } from 'src/app/common/tft-error.service';
+import { TftErrorType } from 'src/app/common/tft-error-type.enum';
 
 @Component({
   selector: 'sbdl-login-callback',
@@ -18,6 +20,7 @@ export class LoginCallbackComponent implements AfterViewInit, OnInit {
 
   constructor(
     @Inject(APP_BASE_HREF) private baseHref: string,
+    private errorService: TftErrorService,
     private oktaAuthService: OktaAuthService,
     private route: ActivatedRoute,
     private router: Router,
@@ -45,7 +48,17 @@ export class LoginCallbackComponent implements AfterViewInit, OnInit {
             takeWhile(u => u === null, true),
             takeLast(1))
           .subscribe(user => {
-            this.router.navigateByUrl(this.loginTarget.uri || this.baseHref, this.loginTarget.extras);
+            if (!user.isDlEndUser) {
+              // we do this here so that it only happens once after the user
+              // logs in but continues to allow them to browse the library as a
+              // public user.
+              this.errorService.redirectTftError({
+                type: TftErrorType.AuthNoAppAccess,
+                details: 'User has no tenancy chain with the role of DL_EndUser.'
+              });
+            } else {
+              this.router.navigateByUrl(this.loginTarget.uri || this.baseHref, this.loginTarget.extras);
+            }
           });
       });
     } else {

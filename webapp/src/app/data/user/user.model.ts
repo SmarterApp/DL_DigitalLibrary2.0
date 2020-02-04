@@ -28,7 +28,9 @@ export class User {
     public givenName: string,
     public familyName: string,
     public tenancy: UserTenancy[],
-    public accessToken: string) {}
+    public accessToken: string,
+    public isDlEndUser: boolean
+  ) {}
 
   get tenantIds(): string[] {
     return this.tenancy
