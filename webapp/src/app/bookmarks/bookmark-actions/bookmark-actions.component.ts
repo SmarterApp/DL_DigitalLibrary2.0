@@ -1,10 +1,9 @@
-import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { PopoverService } from 'src/app/common/controls/popover/popover.service';
-import { ResourceType } from '../../data/resource/model/resource-type.enum';
-import { ResourceSummary } from '../../data/resource/model/summary.model';
-import { Bookmark } from 'src/app/data/bookmarks/bookmark.model';
-import { BookmarksService } from 'src/app/data/bookmarks/bookmarks.service';
+import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {ResourceSummary} from '../../data/resource/model/summary.model';
+import {Bookmark} from 'src/app/data/bookmarks/bookmark.model';
+import {BookmarksService} from 'src/app/data/bookmarks/bookmarks.service';
+import {ConnectedPosition} from '@angular/cdk/overlay';
 
 @Component({
   selector: 'sbdl-bookmark-actions',
@@ -25,16 +24,28 @@ export class BookmarkActionsComponent implements OnInit, OnDestroy {
   @ViewChild('sharePopover', { static: false })
   sharePopover: ElementRef;
 
-  updatingBookmarked = false;
+  // TODO this should be the input
   bookmark: Bookmark;
+  shareValue: string;
+  shareOverlayOpen: boolean;
+  readonly shareOverlayPositions: ConnectedPosition[] = [
+    {
+      originX: 'center',
+      originY: 'bottom',
+      overlayX: 'center',
+      overlayY: 'top'
+    }
+  ];
 
+  updatingBookmarked: boolean;
   private bookmarksSubscription: Subscription;
 
   constructor(
-    private bookmarksService: BookmarksService,
-    private popoverService: PopoverService) {}
+    private bookmarksService: BookmarksService
+  ) {}
 
   ngOnInit() {
+    this.shareValue = `${location.protocol}//${location.host}/resource/${this.resourceSummary.id}`;
     this.bookmarksSubscription = this.bookmarksService.userBookmarksByResourceId.subscribe(bkmkMap => {
       this.bookmark = bkmkMap.get(this.resourceSummary.id);
       this.updatingBookmarked = false;
@@ -58,10 +69,6 @@ export class BookmarkActionsComponent implements OnInit, OnDestroy {
     } else {
       this.bookmarksService.createBookmark(this.resourceSummary.id);
     }
-  }
-
-  share() {
-    this.popoverService.open(this.shareContainer, this.sharePopover);
   }
 
 }

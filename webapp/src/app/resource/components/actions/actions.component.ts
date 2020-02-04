@@ -17,6 +17,7 @@ import {Bookmark} from 'src/app/data/bookmarks/bookmark.model';
 import {BookmarksService} from 'src/app/data/bookmarks/bookmarks.service';
 import {PopoverService} from 'src/app/common/controls/popover/popover.service';
 import {UserService} from 'src/app/data/user/user.service';
+import {ConnectedPosition} from '@angular/cdk/overlay';
 
 @Component({
   selector: 'sbdl-actions',
@@ -57,10 +58,18 @@ export class ActionsComponent implements OnDestroy, OnInit {
 
   updatingBookmarked = true;
   hideReadingModeToggle = false;
-  currentUrl: string;
-  showCopied = false;
   bookmark: Bookmark;
   readonly authenticated$: Observable<boolean>;
+  shareValue: string;
+  shareOverlayOpen: boolean;
+  readonly shareOverlayPositions: ConnectedPosition[] = [
+    {
+      originX: 'center',
+      originY: 'bottom',
+      overlayX: 'center',
+      overlayY: 'top'
+    }
+  ];
 
   private readingModeDefaultWidth = 1200;
   private resizeTimeout;
@@ -102,7 +111,7 @@ export class ActionsComponent implements OnDestroy, OnInit {
 
   ngOnInit() {
     this.onResize();
-    this.currentUrl = location.href.replace(/(\?.*)/, '');
+    this.shareValue = location.href.replace(/(\?.*)/, '');
     this.readingModeDefaultWidth = getCssVar('--breakpoint-lg');
     this.bookmarksSubscription = this.bookmarksService.userBookmarksByResourceId.subscribe(bkmkMap => {
       this.bookmark = bkmkMap.get(this.resource.id);
@@ -119,14 +128,6 @@ export class ActionsComponent implements OnDestroy, OnInit {
 
   share() {
     this.popoverService.open(this.shareContainer, this.sharePopover);
-  }
-
-  copyToClipboard(inputElement) {
-    inputElement.select();
-    document.execCommand('copy');
-    inputElement.setSelectionRange(0, 0);
-    this.showCopied = true;
-    setTimeout(() => this.showCopied = false, 5000);
   }
 
   toggleBookmarked = () => {
