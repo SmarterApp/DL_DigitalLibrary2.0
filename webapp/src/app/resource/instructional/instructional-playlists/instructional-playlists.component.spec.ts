@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InstructionalPlaylistsComponent } from './instructional-playlists.component';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('InstructionalPlaylistsComponent', () => {
   let component: InstructionalPlaylistsComponent;
@@ -8,9 +9,9 @@ describe('InstructionalPlaylistsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InstructionalPlaylistsComponent ]
-    })
-    .compileComponents();
+      declarations: [ InstructionalPlaylistsComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
