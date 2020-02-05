@@ -1,6 +1,7 @@
 @import "colors";
 @import "spacing";
 @import "typography";
+@import "mixins";
 
 :host {
     display: grid;
@@ -146,21 +147,21 @@
         h6 {
         }
 
-        &.highlighted:not(.interim-container)::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: -$spacer;
-            left: -3.5rem;
-            right: -$spacer-xl;
-            display: block;
-            background-color: rgba($action-100, 0.2);
-            border-color: rgba($action-500, 0.4);
-            border-radius: 0.25rem;
-            border-width: 0 0 0 4px;
-            border-style: solid;
-            z-index: -1;
+        &.highlighted {
+          &:not(.interim-container):not(tr) {
+            @include highlighted;
+          }
         }
+
+        tr.highlighted {
+          background-color: rgba($action-100, 0.4);
+          border-left: 4px solid rgba($action-500, 0.4);
+          border-radius: 0.25rem;
+          > th {
+            @include highlighted(0, -100%);
+          }
+        }
+
         &article:not(.interim-container):not(.highlighted):not(.step-container):not(.topics-container):not(.info-card):not(.external-resources)::before {
             content: '';
             position: absolute;
