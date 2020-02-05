@@ -47,19 +47,25 @@
     (notesVisibilityChanged)="noteModeChanged.emit($event)"
   ></sbdl-strategy-content>
 </main>
-<aside class="resource-properties">
+<aside class="resource-properties" [ngClass]="{hidden: notesVisible}">
   <sbdl-resource-properties
     [properties]="resource.properties"
-    [hidden]="notesVisible"
   >
     <sbdl-strategy-properties
       [properties]="resource.properties"
       [resourceType]="resource.type"
     ></sbdl-strategy-properties>
   </sbdl-resource-properties>
+</aside>
+<aside
+  class="resource-notes"
+  [ngClass]="{
+    hidden: !notesVisible,
+    'has-notes': notes.length
+  }"
+>
   <sbdl-notes
     *ngIf="user"
-    [hidden]="!notesVisible"
     [notes]="notes"
     [resource]="resource"
     (notesChanged)="notesChanged($event)"
