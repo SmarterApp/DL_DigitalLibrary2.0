@@ -200,20 +200,26 @@
       max-width: 100%;
     }
 
-    .outline, .resource-properties,
-    .outline:hover, .resource-properties:hover {
+    .outline,
+    .resource-properties,
+    .resource-notes,
+    .outline:hover,
+    .resource-properties:hover,
+    .resource-notes:hover {
       width: 100%;
       transition: none;
       min-width: unset;
     }
 
-    .resource-properties {
+    .resource-properties,
+    .resource-notes {
       padding-left: $spacer-xl;
       box-sizing: border-box;
       background-attachment: scroll;
     }
 
-    .resource-properties:hover {
+    .resource-properties:hover,
+    .resource-notes:hover {
       margin-left: 0;
     }
 
