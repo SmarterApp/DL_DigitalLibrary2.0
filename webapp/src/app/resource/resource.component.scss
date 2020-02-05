@@ -50,7 +50,8 @@
     }
   }
 
-  .resource-properties:hover {
+  .resource-properties:hover,
+  .resource-notes:hover {
     width: 331px;
     min-width: 331px;
     margin-left: var(--outline-margin-right);
