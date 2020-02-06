@@ -73,7 +73,7 @@
     width: var(--nav-width);
     min-width: var(--nav-width);
     transition-property: width, min-width, margin-left, z-index;
-    z-index: 0;
+    z-index: 2;
     transition-duration: 0.5s;
     transition-timing-function: ease-in;
 
