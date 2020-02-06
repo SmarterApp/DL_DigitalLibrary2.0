@@ -6,16 +6,6 @@
 
 :host {
 
-  a { 
-    text-decoration: none;
-
-    > .detail-info {
-      & > span { 
-        text-decoration: underline; 
-      }
-    }
-  }
-
   &.file-attachment {
     background-image: url('/assets/images/file-attachment-card-bg.png');
   }
@@ -81,7 +71,6 @@
         cursor: pointer;
         margin-top: $spacer-sm;
         white-space: nowrap;
-        text-decoration: underline;
       }
     }
   }
