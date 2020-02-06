@@ -1,6 +1,6 @@
 <header class="resource-header">
   <div class="top-header">
-    <img src="/assets/images/yellow-spot.png" alt="" />
+    <img src="/assets/images/yellow-spot.png" aria-hidden="true">
     <sbdl-actions
       [hasNotes]="notes.length > 0"
       [notesVisible]="notesVisible"
@@ -44,16 +44,23 @@
     (notesVisibilityChanged)="noteModeChanged.emit($event)"
   ></sbdl-playlist-content>
 </main>
-<aside class="resource-properties">
+<aside class="resource-properties" [ngClass]="{hidden: notesVisible}">
   <sbdl-resource-properties
     [properties]="resource.properties"
-    [hidden]="notesVisible">
+  >
     <sbdl-educational-details [properties]="resource.properties"></sbdl-educational-details>
     <sbdl-playlist-resources [topics]="resource.topics"></sbdl-playlist-resources>
   </sbdl-resource-properties>
+</aside>
+<aside
+  class="resource-notes"
+  [ngClass]="{
+    hidden: !notesVisible,
+    'has-notes': notes.length
+  }"
+>
   <sbdl-notes
     *ngIf="user"
-    [hidden]="!notesVisible"
     [notes]="notes"
     [resource]="resource"
     (notesChanged)="notesChanged($event)">
