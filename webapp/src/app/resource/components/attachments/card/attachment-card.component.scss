@@ -8,6 +8,16 @@
   @include mdc-ripple-radius-bounded;
   @include mdc-states;
 
+  a { 
+    text-decoration: none;
+
+    > .detail-info {
+      & > span/*:hover*/ { 
+        text-decoration: underline; 
+      }
+    }
+  }
+
   &.file-attachment {
     background-image: url('/assets/images/file-attachment-card-bg.png');
   }
@@ -56,8 +66,8 @@
     flex-direction: row;
     justify-content: space-between;
     margin-top: $spacer;
-    font-size: $font-size-0;
-
+    font-size: $font-size-0; 
+    
     .actions {
       align-self: flex-end;
 
@@ -71,9 +81,9 @@
         margin-top: $spacer-sm;
         white-space: nowrap;
 
-        &:hover {
+        /*&:hover {*/
           text-decoration: underline;
-        }
+        /*}*/
       }
 
     }

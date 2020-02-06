@@ -32,9 +32,11 @@
 
         a {
           color: $neutral-500;
+          text-decoration: none;
 
           &:hover {
-            color: $action-700;
+            color: $action-900;
+            text-decoration: underline;
           }
         }
       }
