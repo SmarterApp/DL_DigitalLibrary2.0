@@ -33,3 +33,9 @@
     }
   }
 }
+
+@media only print {
+  .thumbnail-container {
+    display: none;
+  }
+}
