@@ -25,6 +25,11 @@
         height: calc(100% - 2rem); // $spacer * 2
         padding: $spacer;
       }
+
+      img { 
+        height: 279px;
+        width: 279px;
+      }
     }
   }
 }

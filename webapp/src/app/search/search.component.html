@@ -6,10 +6,10 @@
   fontAwesomeIcon="fa-search">
 </sbdl-text-field>
 
-<div *ngIf="newSearch" class="emphasis-medium caption browse-caption">
+<div *ngIf="newSearch" class="caption browse-caption">
   Start typing a topic, claim, target, or <a href="javascript:void(0)" (click)="showAdvanced = true">browse for resources</a>.
 </div>
-<div *ngIf="!newSearch && numResults > 0" class="emphasis-medium caption filters-caption">
+<div *ngIf="!newSearch && numResults > 0" class="caption filters-caption">
   Start typing a topic, claim, target, or <a href="javascript:void(0);" (click)="showAdvanced = true">advanced search</a>.
 </div>
 

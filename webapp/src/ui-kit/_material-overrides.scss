@@ -1,0 +1,18 @@
+/*This was added to address specific scenarios where opacity variables deep inside Material needed to be overridden
+    for visibility and WCAG issues*/
+
+.mdc-button:hover::before {
+  opacity: .07;
+}
+
+.mdc-button:focus::before {
+  opacity: .12;
+}
+
+button.mdc-button.mdc-ripple-upgraded:focus {
+    opacity: .85;
+}
+
+button.mdc-button.mdc-ripple-upgraded:hover {
+    opacity: .85;
+}

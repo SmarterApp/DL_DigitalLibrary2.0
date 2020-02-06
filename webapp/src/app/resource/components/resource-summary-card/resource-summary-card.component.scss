@@ -7,6 +7,15 @@
   max-width: none;
   position: relative;
 
+  a {
+    text-decoration: none;
+  }
+  a {
+    .title {
+      text-decoration: underline;
+    }
+  }
+
   .resource-type {
     font-family: $font-family-title;
     font-size: $font-size-body-2;
@@ -59,7 +68,7 @@
     }
 
     .title {
-      color: $neutral-900;
+      color: $action-900;
       font-family: $font-family-title;
       font-size: $font-size-body;
     }

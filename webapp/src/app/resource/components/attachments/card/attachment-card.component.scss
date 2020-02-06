@@ -6,6 +6,16 @@
 
 :host {
 
+  a { 
+    text-decoration: none;
+
+    > .detail-info {
+      & > span { 
+        text-decoration: underline; 
+      }
+    }
+  }
+
   &.file-attachment {
     background-image: url('/assets/images/file-attachment-card-bg.png');
   }
@@ -58,13 +68,21 @@
     flex-direction: row;
     justify-content: space-between;
     margin-top: $spacer;
-    font-size: $font-size-0;
-
+    font-size: $font-size-0; 
+    
     .actions {
       align-self: flex-end;
       display: flex;
       align-items: flex-end;
       flex-direction: column;
+
+      & > div {
+        color: $action-900;
+        cursor: pointer;
+        margin-top: $spacer-sm;
+        white-space: nowrap;
+        text-decoration: underline;
+      }
     }
   }
 

@@ -31,7 +31,11 @@
   ::ng-deep{
     a {
       color: $success-900;
-      text-decoration: underline;
+      text-decoration: none;
+
+      &:hover, &:focus {
+        text-decoration: underline;
+      }
     }
 
     a:after {
