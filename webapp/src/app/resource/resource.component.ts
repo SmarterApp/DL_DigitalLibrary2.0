@@ -87,9 +87,10 @@ export class ResourceComponent implements AfterViewInit, OnInit {
 
   scrollToAttachments() {
     if (this.outline && this.outline.has(DocumentSectionType.Attachments)) {
-      this.outline.get(DocumentSectionType.Attachments).elementRef
-        .scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
-      this.location.go(this.location.path() + '#' + DocumentSectionType.Attachments);
+      const element = this.outline.get(DocumentSectionType.Attachments).elementRef;
+      element.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+      // ensures tab indexing position changes
+      location.href = this.location.path() + '#' + DocumentSectionType.Attachments;
     }
   }
 
