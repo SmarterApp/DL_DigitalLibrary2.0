@@ -37,8 +37,7 @@ export class ErrorComponent implements OnInit {
     private userService: UserService
   ) {
     this.user$ = userService.user;
-    this.logo$ = this.user$.pipe(
-      mergeMap(user => tenantThemeService.getTenantTheme(user)),
+    this.logo$ = tenantThemeService.currentTenantTheme$.pipe(
       map(theme => theme.logoUris.full));
   }
 

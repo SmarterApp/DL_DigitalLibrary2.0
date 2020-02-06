@@ -1,7 +1,10 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { PrintableSectionComponent } from '../../printable-section.component';
-import { DocumentSectionType } from '../../components/outline/document-outline.model';
+import {AfterViewInit, Component, Input} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {PrintableSectionComponent} from '../../printable-section.component';
+import {DocumentSectionType} from '../../components/outline/document-outline.model';
+import {TenantThemeService} from 'src/app/data/tenant-theme/tenant-theme.service';
 
 @Component({
   selector: 'sbdl-playlist-interim',
@@ -13,8 +16,16 @@ export class PlaylistInterimComponent extends PrintableSectionComponent implemen
   @Input()
   content: string;
 
-  constructor(sanitizer: DomSanitizer) {
+  contactUri$: Observable<string>;
+
+  constructor(
+    sanitizer: DomSanitizer,
+    themeService: TenantThemeService
+  ) {
     super(sanitizer, DocumentSectionType.PlaylistInterim);
+
+    this.contactUri$ = themeService.currentTenantTheme$.pipe(
+      map(t => t.contactUri));
   }
 
   ngAfterViewInit() {

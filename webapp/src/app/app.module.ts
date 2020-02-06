@@ -1,23 +1,21 @@
-import { APP_BASE_HREF } from '@angular/common';
-import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
-import { BrowserModule, Title } from '@angular/platform-browser';
-import { Angulartics2Module } from 'angulartics2';
-import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AppConfig } from './common/config/app.config';
-import { GlobalErrorHandler } from './common/global-error-handler';
-import { BookmarksModule } from './bookmarks/bookmarks.module';
-import { DataModule } from './data/data.module';
-import { HomeModule } from './home/home.module';
-import { LayoutModule } from './layout/layout.module';
-import { ResourceModule } from './resource/resource.module';
-import { JoinPipe } from './pipes/join.pipe';
-import { IconComponent } from './common/icon/icon.component';
-import { SvgDefsComponent } from './common/icon/svg-defs.component';
-import { SbdlCommonModule } from './common/common.module';
-import { NotesModule } from './notes/notes.module';
-import { OKTA_CALLBACK_PATH } from './common/constants';
+import {APP_BASE_HREF} from '@angular/common';
+import {APP_INITIALIZER, ErrorHandler, NgModule} from '@angular/core';
+import {BrowserModule, Title} from '@angular/platform-browser';
+import {Angulartics2Module} from 'angulartics2';
+import {OKTA_CONFIG, OktaAuthModule} from '@okta/okta-angular';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {AppConfig} from './common/config/app.config';
+import {GlobalErrorHandler} from './common/global-error-handler';
+import {BookmarksModule} from './bookmarks/bookmarks.module';
+import {DataModule} from './data/data.module';
+import {HomeModule} from './home/home.module';
+import {LayoutModule} from './layout/layout.module';
+import {ResourceModule} from './resource/resource.module';
+import {SbdlCommonModule} from './common/common.module';
+import {NotesModule} from './notes/notes.module';
+import {OKTA_CALLBACK_PATH} from './common/constants';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -40,8 +38,8 @@ export function initializeOkta(appConfig: AppConfig) {
     Angulartics2Module.forRoot(),
     OktaAuthModule,
     BrowserModule,
+    NoopAnimationsModule,
     AppRoutingModule,
-
     BookmarksModule,
     DataModule,
     LayoutModule,

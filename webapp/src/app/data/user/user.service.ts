@@ -25,6 +25,7 @@ export class UserService {
   // received a value (page load for example) then they will wait for us to
   // produce a value. For example, see the DataService's usage.
   private user$: ReplaySubject<User> = new ReplaySubject(1);
+  private hasOktaAuthToken$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   private jwtService: JwtHelperService;
 
@@ -71,13 +72,6 @@ export class UserService {
         details: 'User has no access token.'
       };
     }
-
-    if (user.tenantIds.length === 0) {
-      return {
-        type: TftErrorType.AuthNoAppAccess,
-        details: 'User has no tenancy chain with the role of DL_EndUser.'
-      };
-    }
   }
 
   constructor(
@@ -105,6 +99,10 @@ export class UserService {
 
   get authenticated(): Observable<boolean> {
     return this.user$.pipe(map(u => !!u));
+  }
+
+  get hasOktaAuthToken(): Observable<boolean> {
+    return this.hasOktaAuthToken$;
   }
 
   /**
@@ -143,12 +141,20 @@ export class UserService {
       if (error) {
         this.user$.next(null);
         this.errorService.redirectTftError(error);
+      } else if (user.tenantIds.length === 0) {
+        // special case: valid user but no DL_EndUser. Allow them to progress
+        // like an anonymouse user.
+        this.user$.next(null);
       } else {
         this.user$.next(await this.readUserFromOkta());
       }
     } else {
       this.user$.next(null);
     }
+
+    // Do this last as it is used by the login component as a signal that user
+    // authentication has completed.
+    this.hasOktaAuthToken$.next(hasAuth);
   }
 
   /**

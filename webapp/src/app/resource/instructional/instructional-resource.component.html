@@ -52,6 +52,12 @@
     [properties]="resource.properties"
     [hidden]="notesVisible">
     <sbdl-educational-details [properties]="resource.properties"></sbdl-educational-details>
+
+  <sbdl-instructional-playlists
+    [playlists]="resource.listConnectionsPlaylists"
+    [subjectCode]="resource.properties.subject.code"
+  ></sbdl-instructional-playlists>
+
   </sbdl-resource-properties>
   <sbdl-notes
     *ngIf="user"

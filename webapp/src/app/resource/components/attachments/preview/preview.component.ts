@@ -23,12 +23,13 @@ export class PreviewComponent implements AfterViewInit, OnDestroy, OnInit {
   closeButton: ButtonComponent;
 
   blobUrl: string;
-  trustedUrl: SafeResourceUrl;
   loading = true;
 
   @HostListener('window:keyup', ['$event'])
   handleEsc(event: KeyboardEvent) {
-    if (event.key === 'Escape') { this.onClose.emit(true); }
+    if (event.key === 'Escape') {
+      this.onClose.emit(true);
+    }
   }
 
   constructor(

@@ -24,8 +24,7 @@ export class FooterComponent {
     private tenantThemeService: TenantThemeService
   ) {
     this.user$ = userService.user;
-    this.theme$ = userService.user.pipe(
-      mergeMap(user => tenantThemeService.getTenantTheme(user)));
+    this.theme$ = tenantThemeService.currentTenantTheme$;
 
     this.tenantName$ = this.theme$.pipe(map(t => t.displayName));
     this.tenantFooterLinks$ = this.theme$.pipe(map(t => t.footerLinks));

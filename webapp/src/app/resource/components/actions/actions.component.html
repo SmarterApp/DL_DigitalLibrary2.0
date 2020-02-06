@@ -1,7 +1,33 @@
 <sbdl-button-icon *ngIf="authenticated$ | async" buttonTitle="Notes" (click)="toggleNotes()">
   <sbdl-icon [ngClass]="{'has-notes': hasNotes}" icon="take-note"></sbdl-icon>
 </sbdl-button-icon>
-<sbdl-button-icon buttonTitle="Share" (click)="share()"><i class="far fa-share"></i></sbdl-button-icon>
+<sbdl-button-icon
+  buttonTitle="Share"
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+  (click)="shareOverlayOpen = !shareOverlayOpen"
+>
+  <i class="far fa-share"></i>
+</sbdl-button-icon>
+<ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayPanelClass="windowed"
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  [cdkConnectedOverlayOpen]="shareOverlayOpen"
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayPositions]="shareOverlayPositions"
+  [cdkConnectedOverlayPush]="true"
+  (backdropClick)="shareOverlayOpen = false"
+>
+  <sbdl-share-form
+    cdkTrapFocus
+    cdkTrapFocusAutoCapture
+    [value]="shareValue"
+    (closed)="shareOverlayOpen = false"
+  ></sbdl-share-form>
+</ng-template>
+
 <ng-container #shareButton></ng-container>
 <sbdl-button-icon *ngIf="authenticated$ | async" buttonTitle="Bookmark" (click)="toggleBookmarked()">
   <div *ngIf="!updatingBookmarked && bookmark">
@@ -30,15 +56,3 @@
     <i class="far fa-expand-alt"></i>
   </div>
 </sbdl-button-icon>
-<ng-template #sharePopover>
-  <div class="share-popover">
-      <div class="tooltip-title">Share this resource</div>
-      <div class="copy-clipboard">
-          <input #url readonly type="text" [value]="currentUrl">
-          <sbdl-button-icon buttonTitle="Copy to clipboad" (click)="copyToClipboard(url)">
-            <i class="fas fa-copy"></i>
-            <div class="copy-success" [hidden]="!showCopied">Copied!</div>
-          </sbdl-button-icon>
-      </div>
-  </div>
-</ng-template>
