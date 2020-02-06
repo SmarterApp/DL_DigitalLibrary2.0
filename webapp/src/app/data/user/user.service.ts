@@ -135,8 +135,6 @@ export class UserService {
    * auth state.
    */
   private updateUser = async (hasAuth) => {
-    this.hasOktaAuthToken$.next(hasAuth);
-
     if (hasAuth) {
       const user = await this.readUserFromOkta();
       const error = UserService.validateUserSession(user);
@@ -153,6 +151,10 @@ export class UserService {
     } else {
       this.user$.next(null);
     }
+
+    // Do this last as it is used by the login component as a signal that user
+    // authentication has completed.
+    this.hasOktaAuthToken$.next(hasAuth);
   }
 
   /**
