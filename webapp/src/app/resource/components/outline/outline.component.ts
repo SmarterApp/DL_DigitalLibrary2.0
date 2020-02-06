@@ -74,10 +74,8 @@ export class OutlineComponent implements OnInit {
 
   scrollTo(section: DocumentSection): void {
     section.elementRef.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
-
     getHighlightTarget(section.elementRef).classList.add('highlighted');
-
-    this.location.go(this.location.path() + '#' + section.component.sectionId);
+    location.href = this.location.path() + '#' + section.component.sectionId;
   }
 
   removeHighlight(section: DocumentSection): void {

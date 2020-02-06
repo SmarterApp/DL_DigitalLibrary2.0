@@ -22,6 +22,11 @@
     --nav-width: 331px;
 }
 
+html {
+  // enables smooth scrolling for traditional anchor links
+  scroll-behavior: smooth;
+}
+
 * {
     max-width: var(--measure);
 }
