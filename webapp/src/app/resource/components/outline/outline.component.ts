@@ -1,11 +1,20 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
-import { Location } from '@angular/common';
-import { Map } from 'immutable';
-import { Resource } from 'src/app/data/resource/model/resource.model';
-import { getCssVar } from 'src/app/common/utils';
-import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
-import { commentsSectionOptions } from '../simple-section/section.definitions';
-import { DocumentOutline, DocumentSection, DocumentSectionType as DST} from './document-outline.model';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
+import {Location} from '@angular/common';
+import {Map} from 'immutable';
+import {Resource} from 'src/app/data/resource/model/resource.model';
+import {getCssVar} from 'src/app/common/utils';
+import {ResourceType} from 'src/app/data/resource/model/resource-type.enum';
+import {DocumentOutline, DocumentSection, DocumentSectionType as DST} from './document-outline.model';
+
+/**
+ * Gets the appropriate element to highlight given the selected section element
+ * @param element The section element
+ */
+function getHighlightTarget(element: HTMLElement): HTMLElement {
+  return element.closest('tr') != null
+    ? element.closest('tr')
+    : element;
+}
 
 @Component({
   selector: 'sbdl-outline',
@@ -65,12 +74,13 @@ export class OutlineComponent implements OnInit {
 
   scrollTo(section: DocumentSection): void {
     section.elementRef.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
-    section.elementRef.classList.add('highlighted');
+    getHighlightTarget(section.elementRef).classList.add('highlighted');
     location.href = this.location.path() + '#' + section.component.sectionId;
   }
 
   removeHighlight(section: DocumentSection): void {
-    section.elementRef.classList.remove('highlighted');
+    getHighlightTarget(section.elementRef).classList.remove('highlighted');
   }
+
 }
 
