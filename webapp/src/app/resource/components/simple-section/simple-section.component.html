@@ -5,7 +5,7 @@
     {{ options.title }}
   </h2>
   <section>
-    <div [innerHtml]="contentHtml"></div>
+    <dynamic-html [content]="contentHtml"></dynamic-html>
   </section>
 </article>
 <hr *ngIf="contentHtml"/>
