@@ -41,7 +41,7 @@ export class UserService {
     };
 
     sbacTenancyChain.forEach(chain => {
-      if (chain.includes('DL_EndUser')) {
+      if (chain.toLowerCase().includes('dl_enduser')) {
         const segments = chain.split('|');
 
         if (!segments[3] || !Object.values(TenancyLevel).some(v => v === segments[3])) {
