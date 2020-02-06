@@ -29,8 +29,10 @@
     }
     h1 {
       grid-area: title;
-      color: $brand-green;
-      word-break: break-word;
+      a {
+        color: $brand-green;
+        word-break: break-word;
+      }
     }
 
     .print-url {

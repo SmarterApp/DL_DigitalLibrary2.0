@@ -1,5 +1,5 @@
 <div class="resource-type">{{ resource.type | resourceType }}</div>
-<h1 *ngIf="!showIconsCol; else titleWithIcons">{{ properties.title }}</h1>
+<h1 *ngIf="!showIconsCol; else titleWithIcons"><a [routerLink]="['/resource', resource.id]">{{ properties.title }}</a></h1>
 <ng-template #titleWithIcons>
   <div class="title-with-icons">
     <div class="icon-col">
