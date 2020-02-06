@@ -1,5 +1,5 @@
 <button
-  class="mdc-icon-button material-icons"
+  class="bookmark mdc-icon-button material-icons"
   title="Toggle Bookmark"
   [attr.aria-label]="
     updatingBookmarked
@@ -24,7 +24,7 @@
 </button>
 
 <button
-  class="mdc-icon-button material-icons"
+  class="notes mdc-icon-button material-icons"
   title="Notes"
   [routerLink]="['/resource', resourceSummary.id]"
   [queryParams]="{viewNotes: true}"
@@ -36,7 +36,7 @@
 </button>
 
 <button
-  class="mdc-icon-button material-icons"
+  class="share mdc-icon-button material-icons"
   title="Share"
   [attr.aria-label]="'share this resource.'"
   cdkOverlayOrigin
@@ -67,7 +67,7 @@
 </ng-template>
 
 <button
-  class="mdc-icon-button material-icons"
+  class="print mdc-icon-button material-icons"
   title="Print"
   [attr.aria-label]="'print this resource.'"
   [routerLink]="['/resource', resourceSummary.id]"
