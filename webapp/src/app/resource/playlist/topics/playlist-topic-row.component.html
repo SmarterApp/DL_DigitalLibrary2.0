@@ -7,7 +7,7 @@
     <a *ngFor="let resource of topic.topicResources"
        [routerLink]="['/resource', resource.id]"
        target="_blank"
-       attr.aria-label="{{ resource.title }} (opens in a new window)"
+       [attr.aria-label]="resource.title + ' (opens in a new window)'"
        (click)="$event.stopPropagation()">
       {{resource.title}}&nbsp;<i class="far fa-arrow-right" aria-hidden="true"></i><br>
     </a>

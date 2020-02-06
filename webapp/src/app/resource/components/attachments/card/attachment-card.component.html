@@ -91,7 +91,7 @@
         <a
           target="_blank"
           href="{{ attachment.uri }}"
-          attr.aria-label="{{ attachment.name }} (opens in a new window)"
+          [attr.aria-label]="attachment.name + ' (opens in a new window)'"
         ><i class="far fa-external-link" aria-hidden="true"></i> Visit</a>
       </div>
     </div>

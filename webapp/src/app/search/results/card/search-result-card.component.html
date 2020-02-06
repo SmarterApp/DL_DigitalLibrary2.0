@@ -1,6 +1,9 @@
 <a #card
    [routerLink]="['/resource', resource.id]"
-   class="search-result">
+   [attr.aria-label]="(resource.type | resourceType) + ' ' + resource.properties.title"
+   [attr.aria-describedby]="resource.id + '-summary'"
+   class="search-result"
+>
   <div class="summary-content">
     <div class="resource-type" aria-hidden="true">
       <sbdl-resource-type-icon [type]="resource.type"></sbdl-resource-type-icon>
@@ -8,7 +11,11 @@
     </div>
     <h3>{{ resource.properties.title }}</h3>
     <div class="offscreen">{{ resource.type | resourceType }}</div>
-    <dynamic-html [content]="resource.summary" class="summary"></dynamic-html>
+    <dynamic-html
+      id="{{resource.id}}-summary"
+      class="summary"
+      [content]="resource.summary"
+    ></dynamic-html>
     <div class="metadata emphasis-medium">
       <div class="bullet-row">
           <span *ngIf="resource.properties.grades.length > 0">
@@ -45,8 +52,6 @@
       </div>
     </div>
   </div>
-  
-
   <div *ngIf="svgSafeUrl"
        class="image {{ resource.type | resourceType:{slug: true} }} {{ subjectCode }}"
        aria-hidden="true">
