@@ -3,16 +3,14 @@
 @import "colors";
 @import "@material/ripple/mdc-ripple";
 
+
 :host {
-  @include mdc-ripple-surface;
-  @include mdc-ripple-radius-bounded;
-  @include mdc-states;
 
   a { 
     text-decoration: none;
 
     > .detail-info {
-      & > span/*:hover*/ { 
+      & > span { 
         text-decoration: underline; 
       }
     }
@@ -44,7 +42,11 @@
   position: relative;
   overflow: hidden;
 
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 0px 2px rgba(0, 0, 0, 0.14);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    0 2px 2px rgba(0, 0, 0, 0.12),
+    0 0 2px rgba(0, 0, 0, 0.14);
+
   padding: $spacer $spacer $spacer $spacer-md;
 
   .type-info {
@@ -70,7 +72,6 @@
     
     .actions {
       align-self: flex-end;
-
       display: flex;
       align-items: flex-end;
       flex-direction: column;
@@ -80,12 +81,8 @@
         cursor: pointer;
         margin-top: $spacer-sm;
         white-space: nowrap;
-
-        /*&:hover {*/
-          text-decoration: underline;
-        /*}*/
+        text-decoration: underline;
       }
-
     }
   }
 

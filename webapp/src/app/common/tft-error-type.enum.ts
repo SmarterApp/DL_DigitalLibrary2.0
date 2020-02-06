@@ -20,7 +20,7 @@ export interface TftErrorMessage {
 export const errorMessages: Map<TftErrorType, TftErrorMessage>  = new Map([
   [TftErrorType.AuthNoAppAccess, {
     title: 'Unable to access Tools for Teachers.',
-    message: 'It looks like your user is not configured with access to the Tools for Teachers application. Please contact help@smarterbalanced.org for assisstance.'
+    message: 'It looks like your user is not configured with full access to the Tools for Teachers application. Please contact support@smarterbalanced.org for assistance.'
   }],
 
   [TftErrorType.ResourceIsPrivate, {
@@ -33,7 +33,7 @@ export const errorMessages: Map<TftErrorType, TftErrorMessage>  = new Map([
     message: 'Unfortunately this resource is not available to educators in your state/territory.',
   }],
   [TftErrorType.ResourceUnavailable, {
-    title: 'This resource is unavaiable.',
+    title: 'This resource is unavailable.',
     message: 'We apologize for the inconvenience.'
   }],
   [TftErrorType.Unknown, {

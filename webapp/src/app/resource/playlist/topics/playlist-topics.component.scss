@@ -3,6 +3,7 @@
 @import "typography";
 
 :host {
+
   .topics-container {
 
     padding-top: $spacer;
@@ -65,6 +66,12 @@
         h3 {
           font-size: $font-size-body;
           line-height: 130%;
+        }
+      }
+
+      tr.highlighted ::ng-deep {
+        th, td {
+          background-color: transparent;
         }
       }
 

@@ -21,6 +21,7 @@ Inspecting the build environment for deploy target:
   CODEBUILD_WEBHOOK_EVENT = ${CODEBUILD_WEBHOOK_EVENT}
   CODEBUILD_WEBHOOK_BASE_REF = ${CODEBUILD_WEBHOOK_BASE_REF}
   DL_TARGET_ENV = ${DL_TARGET_ENV}
+
 BANNER
 
 # This build script is triggered in 3 scenarios:
@@ -61,9 +62,11 @@ elif [[ -n $CODEBUILD_WEBHOOK_EVENT && \
 # 3. A build has been manually triggered (deploy to qa, uat, stage, or prod).
 elif [[ -n $DL_TARGET_ENV ]]; then
 
-  echo "Deploying to $DL_TARGET_ENV, build for the same."
+  buildCfg="$DL_TARGET_ENV";
+  if [ "$buildCfg" = "prod" ]; then buildCfg="production"; fi
+  echo "Deploying to $DL_TARGET_ENV, build with config '$buildCfg'."
   npm run pre-build-ci
-  npx ng build --aot --vendor-chunk --c "${DL_TARGET_ENV}"
+  npx ng build --aot --vendor-chunk --c "$buildCfg"
 
 else
 

@@ -5,6 +5,9 @@
 @import "@material/textfield/icon/mdc-text-field-icon";
 @import "@material/chips/mdc-chips";
 
+// CDK styles
+@import '~@angular/cdk/overlay-prebuilt.css';
+
 // SBAC Digital Library UI Kit
 @import "ui-kit/colors";
 @import "ui-kit/typography";
@@ -12,6 +15,7 @@
 @import "ui-kit/icons";
 @import "ui-kit/spacing";
 @import "ui-kit/material-overrides";
+@import "mixins";
 
 :root {
     --measure: 85ch;
@@ -67,4 +71,8 @@ body {
     }
     */
   }
+}
+
+.windowed {
+  @include window;
 }

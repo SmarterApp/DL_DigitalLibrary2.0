@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResourceThumbnailComponent } from './resource-thumbnail.component';
-import {SafeUrlPipe} from '../../../pipes/safe-url.pipe';
+import {ResourceThumbnailComponent} from './resource-thumbnail.component';
+import {TrustUrlPipe} from '../../../pipes/trust-url.pipe';
 import {ReplaceNullImagePipe} from '../../../pipes/replace-null-image.pipe';
 
 describe('ResourceThumbnailComponent', () => {
@@ -10,7 +10,7 @@ describe('ResourceThumbnailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResourceThumbnailComponent, SafeUrlPipe, ReplaceNullImagePipe ]
+      declarations: [ ResourceThumbnailComponent, TrustUrlPipe, ReplaceNullImagePipe ]
     }).compileComponents();
   }));
 

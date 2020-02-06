@@ -22,6 +22,7 @@
     ::ng-deep {
       object {
         width: calc(100% - 2rem); // $spacer * 2
+        height: calc(100% - 2rem); // $spacer * 2
         padding: $spacer;
       }
 

@@ -6,16 +6,16 @@
   display: inline-block;
   user-select: none;
   pointer-events: none;
+  height: inherit;
+  width: inherit;
 
   > img {
     width: 100%;
-
-    // allow non-square images to clip?
-    //object-fit: cover;
   }
 
   > object {
     width: calc(100% - 1rem); // $spacer-sm * 2
+    height: calc(100% - 1rem); // $spacer-sm * 2
     padding: $spacer-sm;
   }
 
