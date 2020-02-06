@@ -3,7 +3,7 @@
   <div *ngFor="let strategy of strategies" class="strategy-link">
     <h3 *ngIf="!title" class="strategy-title">
       <a href="/resource/{{strategy.id}}"
-         attr.aria-label="{{ strategy.title }} (opens in a new window)"
+         [attr.aria-label]="strategy.title + ' (opens in a new window)'"
          target="_blank">
         {{ strategy.title }}
         <i class="far fa-arrow-right" aria-hidden="true"></i>
@@ -11,7 +11,7 @@
     </h3>
     <h4 *ngIf="title" class="strategy-title">
       <a href="/resource/{{strategy.id}}"
-         attr.aria-label="{{ strategy.title }} (opens in a new window)"
+         [attr.aria-label]="strategy.title + ' (opens in a new window)'"
          target="_blank">
         {{ strategy.title }}
         <i class="far fa-arrow-right" aria-hidden="true"></i>
