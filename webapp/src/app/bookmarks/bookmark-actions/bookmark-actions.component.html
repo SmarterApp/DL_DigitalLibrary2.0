@@ -10,17 +10,15 @@
   "
   (click)="toggleBookmarked()"
 >
-  <ng-container *ngIf="updatingBookmarked; else notUpdating">
+  <div *ngIf="updatingBookmarked">
     <i class="fas fa-spinner fa-spin"></i>
-  </ng-container>
-  <ng-template #notUpdating>
-    <ng-container *ngIf="bookmark; else notBookmarked">
-      <i class="fas fa-bookmark"></i>
-    </ng-container>
-    <ng-template #notBookmarked>
-      <i class="far fa-bookmark"></i>
-    </ng-template>
-  </ng-template>
+  </div>
+  <div *ngIf="!updatingBookmarked && bookmark">
+    <i class="fas fa-bookmark"></i>
+  </div>
+  <div *ngIf="!updatingBookmarked && !bookmark">
+    <i class="far fa-bookmark"></i>
+  </div>
 </button>
 
 <button
