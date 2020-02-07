@@ -35,7 +35,8 @@
   to search for resources that exactly match your search criteria.
 </div>
 
-<div [hidden]="!showAdvanced || (!newSearch && numResults === 0)" class="advanced-search">
+<!-- using ngIf > hidden because it does not render correctly with [hidden] in edge 18 (non-chromium version) -->
+<div *ngIf="showAdvanced && (newSearch || numResults !== 0)" class="advanced-search">
   <div class="advanced-header">
       <h2 *ngIf="newSearch">Browse for Resources</h2>
       <h2 *ngIf="!newSearch">Advanced Search</h2>
