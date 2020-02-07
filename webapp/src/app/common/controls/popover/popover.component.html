@@ -1,7 +1,17 @@
-<div role="tooltip" class="popover-container {{options.cssClass}}" #container [ngClass]="{'top': options.placement === 'top'}">
+<div
+  #container
+  cdkTrapFocus
+  role="tooltip"
+  class="popover-container {{options.cssClass}} {{options.placement}}"
+>
   <div class="popover-content">
-    <button #closeButton class="close-button" >
-        <sbdl-icon icon="circle-close" (click)="close()"></sbdl-icon>
+    <button
+      #closeButton
+      class="close-button"
+      aria-label="close"
+      (click)="close()"
+    >
+        <sbdl-icon icon="circle-close"></sbdl-icon>
     </button>
     <ng-container *ngTemplateOutlet="template"></ng-container>
   </div>

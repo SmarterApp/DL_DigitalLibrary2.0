@@ -14,6 +14,7 @@ import { PopoverService } from '../popover/popover.service';
   styleUrls: ['./tooltip.component.scss']
 })
 export class TooltipComponent implements OnInit, OnMount {
+
   /**
    * The title of this tooltip.
    */
