@@ -12,6 +12,7 @@ export class PreviewService {
     private injector: Injector) { }
 
   preview(attachment: ResourceAttachment): PreviewComponent {
+
     const previewRef = this.resolver
       .resolveComponentFactory(PreviewComponent)
       .create(this.injector);
