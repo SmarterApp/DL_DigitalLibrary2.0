@@ -4,7 +4,7 @@
 .mdc-chip{
     @include mdc-chip-ink-color($action-900);
     @include mdc-chip-fill-color($action-100);
-    @include mdc-chip-trailing-icon-color($action-300);
+    @include mdc-chip-trailing-icon-color($action-500);
     font-size: 13.2px;
     padding: 0.2rem 1rem;
 
@@ -17,10 +17,50 @@
 
 .mdc-chip--selected {
     @include mdc-chip-ink-color($white);
-    @include mdc-chip-fill-color($action-700);
-    @include mdc-chip-trailing-icon-color($action-300);
+    @include mdc-chip-fill-color($action-500);
+    @include mdc-chip-trailing-icon-color($action-100);
 }
 
 .mdc-chip__icon--trailing {
     vertical-align: text-bottom;
 }
+
+
+/* sooo, everything below this comment was to try and adjust opacities in the chips and ensure that
+   accessibility concerns were addressed (everything from making sure there's enough contrast
+   between the text color and background to adjusting the color difference in hover/focus vs. 
+   active states that aren't handled well with the default ripple "stuff"). Issue is that there
+   are so many states in ripple -- and some transitions that seem to remove ripple, but then also use      the not() notation -- we needed all of these statements to override the defaults. Seems like we
+   need a cleaner solution, but didn't have time to figure out what that should be 
+
+   That being said, all of this does work... in the sense that the chips show up more readable, and 
+   lighten in a noticeable way when hovered/receiving focus. Only wrinkle is the "not" notation
+   referenced below
+*/
+   
+.mdc-chip.mdc-ripple-upgraded::before { opacity: .10; }
+.mdc-chip.mdc-ripple-upgraded:hover::before, 
+.mdc-chip.mdc-ripple-upgraded:focus::before { opacity: .03; }
+
+.mdc-chip::before { opacity: .10; }
+.mdc-chip:hover::before, 
+.mdc-chip:focus::before { opacity: .03; }
+
+/* This is the dreaded "not" notation and wasn't easily reproducible. The chip control only          intermittently uses the "not" notation and ran out of time trying to identify a pattern */
+
+.mdc-chip:not(.mdc-ripple-upgraded):focus::before {
+  opacity: .43;
+}
+
+/* There's also an issue with the selected chips having a lighter background than the non-selected
+   ones, so the opacity works opposite (higher opacity makes the chip appear lighter). Again, most
+   likely solution would be to make the backgrounds the same but we didn't have time to 
+   fix/test/repeat */
+
+.mdc-chip--selected::before { opacity: .1 }
+.mdc-chip--selected:hover::before, 
+.mdc-chip--selected:focus::before { opacity: .43; }
+
+.mdc-chip--selected.mdc-ripple-upgraded::before { opacity: .01 }
+.mdc-chip--selected.mdc-ripple-upgraded:hover::before, 
+.mdc-chip--selected.mdc-ripple-upgraded:focus::before { opacity: .43; }
