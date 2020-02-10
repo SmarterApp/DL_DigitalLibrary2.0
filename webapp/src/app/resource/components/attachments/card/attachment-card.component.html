@@ -14,13 +14,15 @@
       </span>
       <div class="actions">
         <a
-          *ngIf="canPreview(attachment.fileType)"
+          *ngIf="previewEnabled"
           href="javascript:void(0)"
           (click)="preview(attachment)"
+          [attr.aria-label]="'Preview ' + fileName"
         ><i class="far fa-eye" aria-hidden="true"></i> Preview</a>
         <a
           href="javascript:void(0)"
           (click)="download(attachment)"
+          [attr.aria-label]="'Download ' + fileName"
         ><i class="far fa-cloud-download" aria-hidden="true"></i> Download</a>
       </div>
     </div>
@@ -42,6 +44,7 @@
           href="javascript:void(0)"
           (click)="previewMedia = true"
           [hidden]="previewMedia"
+          [attr.aria-label]="'Watch ' + fileName"
         ><i class="far fa-eye" aria-hidden="true"></i> Watch</a>
       </div>
     </div>
@@ -51,7 +54,7 @@
       <ng-template [ngSwitchCase]='FileType.YouTubeLink'>
         <iframe
           *ngIf="previewMedia"
-          [src]="embeddableUrl"
+          [src]="embedUrl | trustUrl"
           class="youtube-player"
           frameborder="0"
           allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
@@ -61,7 +64,7 @@
       <ng-template [ngSwitchCase]='FileType.Audio'>
         <iframe
           *ngIf="previewMedia"
-          [src]="embeddableUrl"
+          [src]="embedUrl | trustUrl"
           class="audio-player"
           frameborder="0"
         ></iframe>

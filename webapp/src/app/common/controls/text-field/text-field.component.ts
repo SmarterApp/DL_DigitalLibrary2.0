@@ -35,6 +35,9 @@ export class TextFieldComponent extends AbstractFormControlValueAccessor impleme
   @Input()
   disabled: boolean;
 
+  @Input()
+  submitButtonAriaLabel = '';
+
   @Output()
   submit = new EventEmitter<string>();
 

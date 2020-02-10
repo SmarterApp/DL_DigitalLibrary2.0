@@ -7,7 +7,7 @@
     <li *ngFor="let playlist of playlists">
       <a
         class="playlist-card"
-        [attr.aria-label]="playlist.title + ' (opens in a new window)'"
+        [attr.aria-label]="playlist.title"
         [routerLink]="['/resource', playlist.id]"
       >
         <div class="playlist-card-left">

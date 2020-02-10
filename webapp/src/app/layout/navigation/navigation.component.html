@@ -2,37 +2,71 @@
 
 <div class="grid">
   <div class="logo">
-    <a [routerLink]="[baseHref]" title="Tools for Teachers Home Page">
+    <a
+      [routerLink]="[baseHref]"
+      title="Tools for Teachers Home Page"
+      [attr.aria-label]="'Tools for Teachers Home Page'"
+    >
       <img class="small" src="/assets/svg/tft-logo-small.svg" aria-hidden="true">
       <img class="full" [src]="(logo$ | async) | trustUrl" aria-hidden="true">
     </a>
   </div>
 
   <div class="links links-top">
-    <a [routerLink]="[baseHref, 'search']">
+    <a
+      title="Find Resources"
+      [attr.aria-label]="'Find Resources'"
+      [routerLink]="[baseHref, 'search']"
+    >
       <i class="far fa-search" aria-hidden="true"></i>
-      <label>Find Resources</label>
+      <span>Find Resources</span>
     </a>
-    <a [routerLink]="[baseHref, 'search', { resourceTypes: ['fs'] }]">
+    <a
+      title="Formative Assessment Strategies"
+      [attr.aria-label]="'Formative Assessment Strategies'"
+      [routerLink]="[baseHref, 'search', { resourceTypes: ['fs'] }]"
+    >
       <sbdl-icon icon="strategies" aria-hidden="true"></sbdl-icon>
-      <label>Formative Assessment Strategies</label>
+      <span>Formative Assessment Strategies</span>
     </a>
-    <a [routerLink]="[baseHref, 'search', { resourceTypes: ['as'] }]">
+    <a
+      title="Accessibility Strategies"
+      [attr.aria-label]="'Accessibility Strategies'"
+      [routerLink]="[baseHref, 'search', { resourceTypes: ['as'] }]"
+    >
       <i class="far fa-universal-access" aria-hidden="true"></i>
-      <label>Accessibility Strategies</label>
+      <span>Accessibility Strategies</span>
     </a>
   </div>
 
   <div class="links links-bottom">
-    <a *ngIf="user$ | async" [routerLink]="[baseHref, 'bookmarks']" class="auto-margin">
+    <a
+      *ngIf="user$ | async"
+      class="auto-margin"
+      title="Bookmarks & Notes"
+      [attr.aria-label]="'Bookmarks & Notes'"
+      [routerLink]="[baseHref, 'bookmarks']"
+    >
       <i class="far fa-bookmark" aria-hidden="true"></i>
-      <label>Bookmarks &amp; Notes</label>
+      <span>Bookmarks &amp; Notes</span>
     </a>
-    <button *ngIf="!(hasToken$ | async)" (click)="login()" class="auto-margin">
-      <i class="far fa-sign-in-alt" aria-hidden="true"></i><label>Login</label>
+    <button
+      *ngIf="!(hasToken$ | async)"
+      title="Login"
+      [attr.aria-label]="'Login'"
+      (click)="login()"
+    >
+      <i class="far fa-sign-in-alt" aria-hidden="true"></i>
+      <span>Login</span>
     </button>
-    <a *ngIf="hasToken$ | async" [routerLink]="[baseHref, 'auth', 'logout']">
-      <i class="far fa-sign-out-alt" aria-hidden="true"></i><label>Logout</label>
+    <a
+      *ngIf="hasToken$ | async"
+      title="Logout"
+      [attr.aria-label]="'Logout'"
+      [routerLink]="[baseHref, 'auth', 'logout']"
+    >
+      <i class="far fa-sign-out-alt" aria-hidden="true"></i>
+      <span>Logout</span>
     </a>
   </div>
 </div>

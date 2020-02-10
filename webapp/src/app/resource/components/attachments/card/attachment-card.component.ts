@@ -1,56 +1,62 @@
-import { AfterViewInit, ElementRef, Component, Input, OnInit, SecurityContext } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { AttachmentsService } from '../attachments.service';
-import { PreviewService } from '../preview/preview.service';
-import { FileType, ResourceAttachment } from 'src/app/data/resource/model/attachment.model';
-import { CardType } from '../attachments.component';
+import {Component, Input, OnInit} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
+import {AttachmentsService} from '../attachments.service';
+import {PreviewService} from '../preview/preview.service';
+import {FileType, ResourceAttachment} from 'src/app/data/resource/model/attachment.model';
+import {CardType} from '../attachments.component';
 
 const YT_MATCH_VID = /.*youtube.*v=([^&]+).*$|.*youtu.be\/([^&?]+).*$/;
 const YT_EMBED_URL = /youtube\/embed/;
+
+function attachmentToEmbedUrl(attachment: ResourceAttachment): string {
+  if (
+    attachment.fileType === FileType.YouTubeLink &&
+    !attachment.uri.match(YT_EMBED_URL)
+  ) {
+    const matches = attachment.uri.match(YT_MATCH_VID);
+    if (!matches) {
+      // TODO: placeholder and error message if not a YT URL
+    }
+    return `https://www.youtube.com/embed/${matches[1] || matches[2]}`;
+  }
+  return attachment.uri;
+}
 
 @Component({
   selector: 'sbdl-attachment-card',
   templateUrl: './attachment-card.component.html',
   styleUrls: ['./attachment-card.component.scss']
 })
-export class AttachmentCardComponent implements OnInit {
-
-  @Input()
-  attachment: ResourceAttachment;
+export class AttachmentCardComponent {
+  readonly CardType = CardType;
+  readonly FileType = FileType;
 
   @Input()
   attachmentCardType: CardType;
 
   previewMedia = false;
-  embeddableUrl: SafeResourceUrl;
-  fileTypes = FileType;
-  CardType = CardType; // Alias so the template can see it
-  FileType = FileType;
+  fileName: string;
+  embedUrl: string;
+  previewEnabled: boolean;
 
-  constructor(private sanitizer: DomSanitizer,
-              private attachmentsService: AttachmentsService,
-              private previewService: PreviewService) { }
+  private _attachment: ResourceAttachment;
 
-  ngOnInit(): void {
-    if (this.attachment.fileType === FileType.YouTubeLink &&
-        !this.attachment.uri.match(YT_EMBED_URL)) {
-      const m = this.attachment.uri.match(YT_MATCH_VID);
-      if (!m) {
-        // TODO: placeholder and error message if not a YT URL
-      }
-      this.embeddableUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${m[1] || m[2]}`);
-    } else {
-      this.embeddableUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.attachment.uri);
-    }
+  constructor(
+    private sanitizer: DomSanitizer,
+    private attachmentsService: AttachmentsService,
+    private previewService: PreviewService
+  ) {}
+
+  get attachment(): ResourceAttachment {
+    return this._attachment;
   }
 
-  canPreview(fileType: FileType) {
-    switch (fileType) {
-      case FileType.Image:
-      case FileType.Pdf:
-        return true;
-      default: return false;
-    }
+  @Input()
+  set attachment(value: ResourceAttachment) {
+    this._attachment = value;
+    this.fileName = `${value.name}.${value.fileExtension}`;
+    this.embedUrl = attachmentToEmbedUrl(value);
+    this.previewEnabled = value.fileType === FileType.Image || value.fileType === FileType.Pdf;
   }
 
   download(attachment: ResourceAttachment): void {

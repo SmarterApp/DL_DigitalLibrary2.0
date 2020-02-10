@@ -3,7 +3,9 @@
   (submit)="search({query: $event})"
   [(ngModel)]="filters.query"
   placeholder="What are you looking for? (e.g., fractions, Grade 3, Connections Playlist)"
-  fontAwesomeIcon="fa-search">
+  fontAwesomeIcon="fa-search"
+  submitButtonAriaLabel="search resources"
+>
 </sbdl-text-field>
 
 <div *ngIf="newSearch" class="caption browse-caption">
