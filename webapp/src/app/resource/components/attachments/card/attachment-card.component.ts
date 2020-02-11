@@ -1,25 +1,23 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {AttachmentsService} from '../attachments.service';
 import {PreviewService} from '../preview/preview.service';
 import {FileType, ResourceAttachment} from 'src/app/data/resource/model/attachment.model';
 import {CardType} from '../attachments.component';
+import {AblePlayerComponent} from 'src/app/resource/components/able-player/able-player.component';
 
-const YT_MATCH_VID = /.*youtube.*v=([^&]+).*$|.*youtu.be\/([^&?]+).*$/;
-const YT_EMBED_URL = /youtube\/embed/;
+const YT_MATCH_VID = /.*youtube.*v=([^&]+).*$|.*youtu.be\/([^&?]+).*$|.*youtube\/embed\/([^&?]+).*$/;
 
-function attachmentToEmbedUrl(attachment: ResourceAttachment): string {
-  if (
-    attachment.fileType === FileType.YouTubeLink &&
-    !attachment.uri.match(YT_EMBED_URL)
-  ) {
-    const matches = attachment.uri.match(YT_MATCH_VID);
-    if (!matches) {
-      // TODO: placeholder and error message if not a YT URL
-    }
-    return `https://www.youtube.com/embed/${matches[1] || matches[2]}`;
+function extractYouTubeVideoId(attachment: ResourceAttachment): string {
+  if (attachment.fileType !== FileType.YouTubeLink) {
+    throw new Error('Cannot extract YouTube video ID from attachment type ' + attachment.fileType);
   }
-  return attachment.uri;
+
+  const matches = attachment.uri.match(YT_MATCH_VID);
+  if (!matches) {
+    throw new Error('Cannot extract video ID from unrecognized YouTube URL pattern:' + attachment.uri);
+  }
+  return matches[1] || matches[2] || matches[3];
 }
 
 @Component({
@@ -36,10 +34,13 @@ export class AttachmentCardComponent {
 
   previewMedia = false;
   fileName: string;
-  embedUrl: string;
   previewEnabled: boolean;
+  youtubeVideoId: string;
 
   private _attachment: ResourceAttachment;
+
+  @ViewChild(AblePlayerComponent, { static: false })
+  private ablePlayer: AblePlayerComponent;
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -55,8 +56,11 @@ export class AttachmentCardComponent {
   set attachment(value: ResourceAttachment) {
     this._attachment = value;
     this.fileName = `${value.name}.${value.fileExtension}`;
-    this.embedUrl = attachmentToEmbedUrl(value);
     this.previewEnabled = value.fileType === FileType.Image || value.fileType === FileType.Pdf;
+
+    if (value.fileType === FileType.YouTubeLink) {
+      this.youtubeVideoId = extractYouTubeVideoId(value);
+    }
   }
 
   download(attachment: ResourceAttachment): void {
@@ -65,5 +69,15 @@ export class AttachmentCardComponent {
 
   preview(attachment: ResourceAttachment): void {
     this.previewService.preview(attachment);
+  }
+
+  showPlayer(): void {
+    this.ablePlayer.show();
+    this.previewMedia = true;
+  }
+
+  hidePlayer(): void {
+    this.ablePlayer.hide();
+    this.previewMedia = false;
   }
 }

@@ -42,7 +42,7 @@
       <div class="actions">
         <a
           href="javascript:void(0)"
-          (click)="previewMedia = true"
+          (click)="showPlayer()"
           [hidden]="previewMedia"
           [attr.aria-label]="'Watch ' + fileName"
         ><i class="far fa-eye" aria-hidden="true"></i> Watch</a>
@@ -52,28 +52,17 @@
          [ngClass]="{ preview: previewMedia }"
          class="embedded-media-player">
       <ng-template [ngSwitchCase]='FileType.YouTubeLink'>
-        <iframe
-          *ngIf="previewMedia"
-          [src]="embedUrl | trustUrl"
-          class="youtube-player"
-          frameborder="0"
-          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      </ng-template>
-      <ng-template [ngSwitchCase]='FileType.Audio'>
-        <iframe
-          *ngIf="previewMedia"
-          [src]="embedUrl | trustUrl"
-          class="audio-player"
-          frameborder="0"
-        ></iframe>
+        <sbdl-able-player
+          [hidden]="!previewMedia"
+          [youtubeVideoId]="youtubeVideoId"
+        ></sbdl-able-player>
       </ng-template>
       <ng-template ngSwitchCaseDefault>
         <div class="unknown-media">
+          Unrecognized media type: {{ attachment.mimeType }}
         </div>
       </ng-template>
-      <sbdl-button class="plain" (click)="previewMedia=false">
+      <sbdl-button class="plain" (click)="hidePlayer()">
         <i class="far fa-compress-alt" aria-hidden="true"></i> Close
       </sbdl-button>
     </div>
