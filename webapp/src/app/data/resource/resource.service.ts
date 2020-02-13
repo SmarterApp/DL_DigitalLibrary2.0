@@ -241,7 +241,6 @@ export class ResourceService {
       properties,
       attachments: json.attachmentsExist ? teaserFAContent.attachments : [],
       thingsToConsider: json.thingsToConsiderExist ? teaserFAContent.thingsToConsider : null,
-      overview: json.stratOverviewContent,
       stepByStep: teaserFAContent.stepByStep,
       strategyInAction: json.strategyInActionExist ? teaserFAContent.strategyInAction : null,
     };
@@ -253,7 +252,6 @@ export class ResourceService {
       properties,
       attachments: json.attachmentsExist ? teaserASContent.attachments : [],
       thingsToConsider: json.thingsToConsiderExist ? teaserASContent.thingsToConsider : null,
-      overview: json.stratOverviewContent,
       sampleItemContent: teaserASContent.sampleItemContent,
     };
   }
@@ -265,7 +263,6 @@ export class ResourceService {
       attachments: json.attachmentsExist ? teaserPLContent.attachments : [],
       thingsToConsider: json.thingsToConsiderExist ? teaserPLContent.thingsToConsider : null,
       stepByStep: json.teaseStepByStep.map(s => ({...s, content: teaserPLContent.stepByStep[0].content})),
-      overview: json.overview,
       formativeAssessmentStrategies: teaserPLContent.formativeAssessmentStrategies,
     };
   }
@@ -276,7 +273,6 @@ export class ResourceService {
       properties,
       attachments: json.attachmentsExist ? teaserCPContent.attachments : [],
       thingsToConsider: json.thingsToConsiderExist ? teaserCPContent.thingsToConsider : null,
-      overview: json.overview,
       topics: teaserCPContent.topics
     };
   }
