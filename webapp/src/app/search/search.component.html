@@ -8,11 +8,8 @@
 >
 </sbdl-text-field>
 
-<div *ngIf="newSearch" class="caption browse-caption">
+<div class="caption">
   Start typing a topic, claim, target, or <a href="javascript:void(0)" (click)="showAdvanced = true">filter resources</a>.
-</div>
-<div *ngIf="!newSearch && numResults > 0" class="caption filters-caption">
-  Start typing a topic, claim, target, or <a href="javascript:void(0);" (click)="showAdvanced = true">filter resources</a>.
 </div>
 
 <h1 *ngIf="!newSearch" class="results-header">
