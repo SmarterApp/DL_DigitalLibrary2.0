@@ -7,7 +7,7 @@
     "build": "npm run pre-build && ng build --prod --aot --vendor-chunk --stats-json",
     "build-ci": "npm run pre-build-ci && ng build --prod --aot --vendor-chunk",
     "build-debug": "npm run pre-build && ng build",
-    "pre-build": "node stamp-version && npm run sprites && npm run test",
+    "pre-build": "node stamp-version && npm run sprites",
     "pre-build-ci": "node stamp-version && npm run sprites && npm run test-ci",
     "test": "ng test --source-map=false --watch=false",
     "test-ci": "ng test --source-map=false --watch=false --browsers=ChromeNoSandbox",

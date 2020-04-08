@@ -8,6 +8,8 @@ import {SearchComponent} from './search.component';
 import {ResourceModule} from '../resource/resource.module';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import { LoginWarningComponent } from './login-warning/login-warning.component';
+import {OverlayModule} from '@angular/cdk/overlay';
 
 @NgModule({
   imports: [
@@ -16,15 +18,18 @@ import {FormsModule} from '@angular/forms';
     SbdlCommonModule,
     PipesModule,
     ResourceModule,
-    RouterModule
+    RouterModule,
+    OverlayModule
   ],
   declarations: [
     SearchComponent,
     SearchResultsComponent,
-    SearchResultCardComponent
+    SearchResultCardComponent,
+    LoginWarningComponent
   ],
   exports: [
-    SearchComponent
+    SearchComponent,
+    LoginWarningComponent
   ]
 })
 export class SearchModule {}

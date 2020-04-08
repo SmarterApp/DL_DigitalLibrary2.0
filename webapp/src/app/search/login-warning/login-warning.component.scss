@@ -1,0 +1,41 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+@import "@material/ripple/mdc-ripple";
+
+
+
+$purple: #941082;
+
+.login-popover {
+  height: 224.75px;
+  width: 374px;
+  background-image: linear-gradient(0deg, rgba(148, 16, 130, 0.232), rgba(148, 16, 130, 0.232)), linear-gradient(90deg, rgba(148, 16, 126, 0.628) 0%, rgba(207, 107, 189, 0.628) 75.59%), url("/assets/images/tx11-purple.png");
+  color: white;
+
+  a {
+    color: white;
+  }
+}
+
+.login-warning {
+  font-size: $font-size-body-2;
+  padding-top: 15px;
+  line-height: 175%;
+}
+
+.foot-note {
+  font-size: $font-size-0;
+  padding-top: 15px;
+  line-height: 15px;
+}
+
+.pt-3 {
+  padding-top: 3px;
+  line-height: 18px;
+}
+
+.pt-15 {
+  padding-top: 15px;
+  line-height: 18px;
+}

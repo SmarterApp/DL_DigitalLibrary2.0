@@ -1,12 +1,92 @@
 <h1 *ngIf="showHeadings && newSearch" class="new-search">Search for Resources </h1>
-<sbdl-text-field
+<div>
+  
+  <sbdl-text-field
+    (submit)="search({query: $event})"
+    [(ngModel)]="filters.query"
+    placeholder="What are you looking for? (e.g., fractions, Grade 3, Connections Playlist)"
+    fontAwesomeIcon="fa-search"
+    submitButtonAriaLabel="search resources"
+    (click)="onSearchClick()"
+    #loginWarning
+  >
+  </sbdl-text-field>
+  <!-- <input style="display:block; visibility: hidden; margin-left:auto; margin-right: auto;" type="text" #loginWarning (click)="onSearchClick()"> -->
+  
+  <ng-template #loginWarningPopover>
+    <div style="height: 208.75px; width: 358px;">
+      <div class="login-warning">Wait! Do you want to log in?</div>
+
+      <div class="caption pt-3">More resources and other subjects may be available based on your state/territory.
+          * When you log in, you can access everything available in your location.
+      </div>
+
+      <a class="caption pt-15"
+        href="javascript:void(0)"
+        (click)="login()"
+      >Yes, log in to access my state/territory resources.</a>
+
+      <div class="caption pt-15">No, continue with a limited search.</div>
+
+      <div class="foot-note">*Access is available to educators in subscribing states/territories.</div>
+    </div>
+  </ng-template>
+</div>
+
+<!-- <sbdl-text-field
+  (click)="onSearchClick()"
   (submit)="search({query: $event})"
   [(ngModel)]="filters.query"
   placeholder="What are you looking for? (e.g., fractions, Grade 3, Connections Playlist)"
   fontAwesomeIcon="fa-search"
   submitButtonAriaLabel="search resources"
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+  #loginWarning
 >
 </sbdl-text-field>
+<ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayPanelClass="windowed"
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  [cdkConnectedOverlayOpen]="shareOverlayOpen"
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayPositions]="shareOverlayPositions"
+  [cdkConnectedOverlayPush]="true"
+  (backdropClick)="shareOverlayOpen = false"
+>
+  <sbdl-login-warning
+    cdkTrapFocus
+    cdkTrapFocusAutoCapture
+    (closed)="shareOverlayOpen = false"
+  ></sbdl-login-warning>
+</ng-template> -->
+
+
+
+<!-- <sbdl-tooltip
+  text="<div class='login-warning'>Wait! Do you want to log in?</div>
+
+  <div class='caption pt-3'>More resources and other subjects may be available based on your state/territory.
+      * When you log in, you can access everything available in your location.
+  </div>
+
+  <a class='caption pt-15'
+    href='javascript:void(0)''
+    (click)='login()'
+  >Yes, log in to access my state/territory resources.</a>
+
+  <div class='caption pt-15'>No, continue with a limited search.</div>
+
+  <div class='foot-note'>*Access is available to educators in subscribing states/territories.</div>"
+>
+  <sbdl-icon icon="info"></sbdl-icon>
+</sbdl-tooltip> -->
+
+
+
+
 
 <div *ngIf="newSearch" class="caption browse-caption">
   Start typing a topic, claim, target, or <a href="javascript:void(0)" (click)="showAdvanced = true">browse for resources</a>.
@@ -120,3 +200,22 @@
     </ng-template>
   </div>
 </div>
+
+<!-- <ng-template #loginWarning>
+  <p>login-warning works!</p>
+
+  <h2>Wait! Do you want to log in?</h2>
+
+  <p>More resources and other subjects may be available based on your state/territory.
+      * When you log in, you can access everything available in your location.
+  </p>
+
+  <a 
+    href="javascript:void(0)"
+    (click)="login()"
+  >Yes, log in to access my state/territory resources.</a>
+
+  <h2>No, continue with a limited search.</h2>
+
+  <p>*Access is available to educators in subscribing states/territories.</p>
+</ng-template> -->
