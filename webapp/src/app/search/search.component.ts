@@ -74,7 +74,7 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
   // loginWarningContainer: ViewContainerRef;
 
   @ViewChild(TextFieldComponent, { static: false })
-  loginWarningContainer: ElementRef;
+  searchInputTextField: TextFieldComponent;
 
   @ViewChild('loginWarningPopover', { static: false })
   loginWarningPopover: ElementRef;
@@ -94,14 +94,14 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
   private oldReadingMode: boolean;
   private wasSmall: boolean;
 
-  
+
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private userService: UserService,
     private popoverService: PopoverService
-  ) { 
+  ) {
     this.hasToken$ = userService.hasOktaAuthToken;
   }
 
@@ -197,7 +197,7 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
 
     this.popoverCloseSubscription = undefined;
     this.popover = undefined;
-    requestAnimationFrame(() => this.loginWarningContainer.nativeElement.focus());
+    requestAnimationFrame(() => this.searchInputTextField.textFieldRef.nativeElement.focus());
   }
 
   private offset(el) {
@@ -214,10 +214,10 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
     sessionStorage.setItem('loginWarningDisplayed', 'true');
 
     this.loginWarningDisplayed = true;
-    // this.popoverService.open(this.loginWarningContainer, this.loginWarningPopover);
-    
+    // this.popoverService.open(this.searchInputTextField, this.loginWarningPopover);
+
     this.popover = this.popoverService.openOnBody(this.loginWarningPopover, {
-      offset: this.offset(this.loginWarningContainer.nativeElement),
+      offset: this.offset(this.searchInputTextField.textFieldRef.nativeElement),
       cssClass: 'tooltip',
       placement: 'bottom'
     });
@@ -226,7 +226,7 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
 
 
 
-  
+
 
   onSearchClick() {
     this.shareOverlayOpen = !this.shareOverlayOpen;
