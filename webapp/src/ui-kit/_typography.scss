@@ -4,6 +4,7 @@ $font-family-body: 'Open Sans', sans-serif;
 $font-family-title: 'Montserrat', sans-serif;
 $font-size-body: 16px;
 $font-size-body-2: 14.41px;
+$font-size-body-3: 13.2px;
 
 $font-size-00: 0.84375rem;
 $font-size-0: 0.900625rem;
@@ -78,7 +79,7 @@ p, ol, ul, table {
     font-weight: 300;
 }
 .emphasis-medium {
-    opacity: 0.65;
+    opacity: 0.75;
 }
 .italics {
     font-style: italic;

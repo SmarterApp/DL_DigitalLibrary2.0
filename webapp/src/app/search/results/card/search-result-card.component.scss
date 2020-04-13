@@ -33,6 +33,15 @@
     color: rgba($neutral-900, 0.65);
   }
 
+  .grade-subject {
+    color: $neutral-900;
+    font-family: $font-family-title;
+    font-size: $font-size-body-3;
+    font-weight: 600;
+    line-height: 16px;
+    margin-bottom: 0.5em;
+  }
+
   h3 {
     color: $brand-green;
     font-weight: 400;

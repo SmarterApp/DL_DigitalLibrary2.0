@@ -25,7 +25,7 @@ export const errorMessages: Map<TftErrorType, TftErrorMessage>  = new Map([
 
   [TftErrorType.ResourceIsPrivate, {
     title: 'Please login to check for access.',
-    message: 'The resource you\'re trying to view hs limited availability. Please login to see if your state/territory has access.',
+    message: 'The resource you\'re trying to view has limited availability. Please login to see if your state/territory has access.',
   }],
 
   [TftErrorType.ResourceIsTenantSpecific, {

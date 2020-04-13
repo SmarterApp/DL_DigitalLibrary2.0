@@ -11,6 +11,19 @@
     </div>
     <h3>{{ resource.properties.title }}</h3>
     <div class="offscreen">{{ resource.type | resourceType }}</div>
+    <div class="grade-subject">
+      <span *ngIf="resource.properties.grades.length > 0">
+        <span [ngPlural]="resource.properties.grades.length" >
+          <ng-template ngPluralCase="=1">Grade</ng-template>
+          <ng-template ngPluralCase="other">Grades</ng-template>
+        </span>
+        {{ resource.properties.grades | join:{field: 'shortName', conjunction:'and'} }}
+      </span>
+      <span *ngIf="resource.properties.subject">
+        <span *ngIf="resource.properties.subject.code">&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
+        {{ resource.properties.subject.fullName }}
+      </span>
+    </div>
     <dynamic-html
       id="{{resource.id}}-summary"
       class="summary"
@@ -18,31 +31,20 @@
     ></dynamic-html>
     <div class="metadata emphasis-medium">
       <div class="bullet-row">
-          <span *ngIf="resource.properties.grades.length > 0">
-              <span [ngPlural]="resource.properties.grades.length" >
-                <ng-template ngPluralCase="=1">Grade</ng-template>
-                <ng-template ngPluralCase="other">Grades</ng-template>
-              </span>
-              {{ resource.properties.grades | join:{field: 'shortName', conjunction:'and'} }}
-          </span>
-          <span *ngIf="resource.properties.subject">
-            <span *ngIf="resource.properties.subject.code">&nbsp;&nbsp;&bull;&nbsp;&nbsp;</span>
-            {{ resource.properties.subject.fullName }}
-          </span>
           <span *ngIf="resource.properties.claims.length === 1">
-            &nbsp;&nbsp;&bull;&nbsp;&nbsp;
             Claim {{ resource.properties.claims[0].number }}: {{ resource.properties.claims[0].title }}
           </span>
           <span *ngIf="resource.properties.claims.length > 1">
-            &nbsp;&nbsp;&bull;&nbsp;&nbsp;
             Claims {{ resource.properties.claims | join:{field: 'number', conjunction: 'and' } }}
           </span>
-      </div>
-      <div class="targets" *ngIf="resource.properties.targets.length === 1">
-        Target {{resource.properties.targets[0].number}}: {{resource.properties.targets[0].description}}
-      </div>
-      <div class="targets" *ngIf="resource.properties.targets.length > 1">
-        Targets {{ resource.properties.targets | join:{field: 'number', conjunction: 'and'} }}
+          <span *ngIf="resource.properties.targets.length === 1">
+            &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+            Target {{resource.properties.targets[0].number}}: {{resource.properties.targets[0].description}}
+          </span>
+          <span *ngIf="resource.properties.targets.length > 1">
+            &nbsp;&nbsp;&bull;&nbsp;&nbsp;
+            Targets {{ resource.properties.targets | join:{field: 'number', conjunction: 'and'} }}
+          </span>
       </div>
       <div *ngIf="resource.properties.standards.length === 1" class="standards">
         Content Standard {{ resource.properties.standards[0].title}}

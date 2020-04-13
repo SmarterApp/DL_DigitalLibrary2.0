@@ -36,6 +36,13 @@
       visibility: hidden;
     }
 
+    .future-resource {
+      font-size: $font-size-00;
+      font-style: normal;
+      font-weight: normal;
+      opacity: 0.75;
+    }
+
     &:hover .collapse-btn {
       visibility: visible;
     }
