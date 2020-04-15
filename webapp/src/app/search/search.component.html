@@ -1,90 +1,18 @@
 <h1 *ngIf="showHeadings && newSearch" class="new-search">Search for Resources </h1>
 <div>
-  
   <sbdl-text-field
-    (submit)="search({query: $event})"
+    (submit)="search({query: $event}, true)"
     [(ngModel)]="filters.query"
     placeholder="What are you looking for? (e.g., fractions, Grade 3, Connections Playlist)"
     fontAwesomeIcon="fa-search"
     submitButtonAriaLabel="search resources"
-    (click)="onSearchClick()"
   >
   </sbdl-text-field>
   
   <ng-template #loginWarningPopover>
-    <div style="height: 208.75px; width: 358px;">
-      <div class="login-warning">Wait! Do you want to log in?</div>
-
-      <div class="caption pt-3">More resources and other subjects may be available based on your state/territory.
-          * When you log in, you can access everything available in your location.
-      </div>
-
-      <a class="caption pt-15"
-        href="javascript:void(0)"
-        (click)="login()"
-      >Yes, log in to access my state/territory resources.</a>
-
-      <div class="caption pt-15">No, continue with a limited search.</div>
-
-      <div class="foot-note">*Access is available to educators in subscribing states/territories.</div>
-    </div>
+    <sbdl-login-warning [queryParams]="rectifyParams({query: filters.query})"></sbdl-login-warning>
   </ng-template>
 </div>
-
-<!-- <sbdl-text-field
-  (click)="onSearchClick()"
-  (submit)="search({query: $event})"
-  [(ngModel)]="filters.query"
-  placeholder="What are you looking for? (e.g., fractions, Grade 3, Connections Playlist)"
-  fontAwesomeIcon="fa-search"
-  submitButtonAriaLabel="search resources"
-  cdkOverlayOrigin
-  #trigger="cdkOverlayOrigin"
-  #loginWarning
->
-</sbdl-text-field>
-<ng-template
-  cdkConnectedOverlay
-  cdkConnectedOverlayPanelClass="windowed"
-  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
-  [cdkConnectedOverlayHasBackdrop]="true"
-  [cdkConnectedOverlayOpen]="shareOverlayOpen"
-  [cdkConnectedOverlayOrigin]="trigger"
-  [cdkConnectedOverlayPositions]="shareOverlayPositions"
-  [cdkConnectedOverlayPush]="true"
-  (backdropClick)="shareOverlayOpen = false"
->
-  <sbdl-login-warning
-    cdkTrapFocus
-    cdkTrapFocusAutoCapture
-    (closed)="shareOverlayOpen = false"
-  ></sbdl-login-warning>
-</ng-template> -->
-
-
-
-<!-- <sbdl-tooltip
-  text="<div class='login-warning'>Wait! Do you want to log in?</div>
-
-  <div class='caption pt-3'>More resources and other subjects may be available based on your state/territory.
-      * When you log in, you can access everything available in your location.
-  </div>
-
-  <a class='caption pt-15'
-    href='javascript:void(0)''
-    (click)='login()'
-  >Yes, log in to access my state/territory resources.</a>
-
-  <div class='caption pt-15'>No, continue with a limited search.</div>
-
-  <div class='foot-note'>*Access is available to educators in subscribing states/territories.</div>"
->
-  <sbdl-icon icon="info"></sbdl-icon>
-</sbdl-tooltip> -->
-
-
-
-
 
 <div *ngIf="newSearch" class="caption browse-caption">
   Start typing a topic, claim, target, or <a href="javascript:void(0)" (click)="showAdvanced = true">browse for resources</a>.
@@ -135,7 +63,7 @@
     <h3>Select a type</h3>
     <sbdl-filter-chipset
       [filters]="filters.resourceTypes"
-      (onChanged)="search({resourceTypes: $event.join(',')})"
+      (onChanged)="search({resourceTypes: $event.join(',')}, false)"
     ></sbdl-filter-chipset>
   </div>
   <div class="filter-container"
@@ -143,7 +71,7 @@
     <h3>Grades</h3>
     <sbdl-filter-chipset
       [filters]="filters.grades"
-      (onChanged)="search({grades: $event.join(',')})"
+      (onChanged)="search({grades: $event.join(',')}, false)"
       ></sbdl-filter-chipset>
   </div>
   <div class="filter-container"
@@ -151,7 +79,7 @@
     <h3>Subjects</h3>
     <sbdl-filter-chipset
       [filters]="filters.subjects"
-      (onChanged)="search({subjects: $event.join(',')})"
+      (onChanged)="search({subjects: $event.join(',')}, false)"
     ></sbdl-filter-chipset>
   </div>
   <div class="filter-container"
@@ -160,7 +88,7 @@
     <sbdl-filter-chipset
       *ngIf="params.subjects && params.grades; else displayClaimsMessage"
       [filters]="filters.claims"
-      (onChanged)="search({claims: $event.join(',')})"
+      (onChanged)="search({claims: $event.join(',')}, false)"
     ></sbdl-filter-chipset>
     <ng-template #displayClaimsMessage>
       <p class="body-2 emphasis-medium fallback-message">
@@ -174,7 +102,7 @@
     <sbdl-filter-chipset
       *ngIf="params.subjects && params.grades && params.claims; else displayTargetMessage"
       [filters]="filters.targets"
-      (onChanged)="search({targets: $event.join(',')})"
+      (onChanged)="search({targets: $event.join(',')}, false)"
     ></sbdl-filter-chipset>
     <ng-template #displayTargetMessage>
       <p class="body-2 emphasis-medium fallback-message">
@@ -188,7 +116,7 @@
     <sbdl-filter-chipset
       *ngIf="params.subjects && params.grades && params.claims; else displayStandardsMessage"
       [filters]="filters.standards"
-      (onChanged)="search({standards: $event.join(',')})"
+      (onChanged)="search({standards: $event.join(',')}, false)"
     ></sbdl-filter-chipset>
     <ng-template #displayStandardsMessage>
       <p class="body-2 emphasis-medium fallback-message">
@@ -198,22 +126,3 @@
     </ng-template>
   </div>
 </div>
-
-<!-- <ng-template #loginWarning>
-  <p>login-warning works!</p>
-
-  <h2>Wait! Do you want to log in?</h2>
-
-  <p>More resources and other subjects may be available based on your state/territory.
-      * When you log in, you can access everything available in your location.
-  </p>
-
-  <a 
-    href="javascript:void(0)"
-    (click)="login()"
-  >Yes, log in to access my state/territory resources.</a>
-
-  <h2>No, continue with a limited search.</h2>
-
-  <p>*Access is available to educators in subscribing states/territories.</p>
-</ng-template> -->

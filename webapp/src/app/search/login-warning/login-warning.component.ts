@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/data/user/user.service';
+import { LoginWarningStateServiceService } from './login-warning-state-service.service';
+import { SearchQueryParams } from '../search.component';
 
 @Component({
   selector: 'sbdl-login-warning',
@@ -11,18 +11,26 @@ import { UserService } from 'src/app/data/user/user.service';
 })
 export class LoginWarningComponent {
 
-  
+  @Input()
+  queryParams: SearchQueryParams;
+
+  @Output()
+  closeClick: EventEmitter<any>;
 
   constructor(
     private oktaAuthService: OktaAuthService,
     private router: Router,
-    private userService: UserService
+    private loginWarningStateService: LoginWarningStateServiceService
   ) { 
-    // this.hasToken$ = userService.hasOktaAuthToken;
+    this.closeClick = new EventEmitter<any>();
   }
 
   login() {
-    this.oktaAuthService.loginRedirect(this.router.url);
+    const redirectUrl = this.router.createUrlTree(['/search'], { queryParams: this.queryParams }).toString().replace('search?', 'search;');
+    this.oktaAuthService.loginRedirect(redirectUrl);
   }
 
+  close() {
+    this.loginWarningStateService.close();
+  }
 }

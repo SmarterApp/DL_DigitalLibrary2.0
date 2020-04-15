@@ -17,15 +17,16 @@ export class StorageService {
     sessionStorage.setItem(key, value);
   }
 
-  getSearchLoginWarningDisplayed() {
+  getSearchLoginWarningDisplayed(): boolean {
     if (!sessionStorage.getItem(this.searchLoginWarningDisplayedKey)) {
-      this.setSearchLoginWarningDisplayed('false');
+      this.setSearchLoginWarningDisplayed(false);
     }
 
-    return sessionStorage.getItem(this.searchLoginWarningDisplayedKey);
+    const sessionVal = sessionStorage.getItem(this.searchLoginWarningDisplayedKey);
+    return (sessionVal === 'true');
   }
 
-  setSearchLoginWarningDisplayed(value: string) {
-    sessionStorage.setItem(this.searchLoginWarningDisplayedKey, value);
+  setSearchLoginWarningDisplayed(value: boolean) {
+    sessionStorage.setItem(this.searchLoginWarningDisplayedKey, value.toString());
   }
 }

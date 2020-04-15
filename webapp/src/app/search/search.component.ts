@@ -22,6 +22,7 @@ import { ConnectedPosition } from '@angular/cdk/overlay';
 import { PopoverComponent } from '../common/controls/popover/popover.component';
 import { TextFieldComponent } from '../common/controls/text-field/text-field.component';
 import { StorageService } from '../common/storage.service';
+import { LoginWarningStateServiceService } from './login-warning/login-warning-state-service.service';
 
 // Only used by this class. Should move to search-query-params.model.ts is we
 // need to use elsewhere
@@ -64,12 +65,12 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
   newSearch = true;
   
   popover: PopoverComponent;
-  popoverCloseSubscription: Subscription;
 
   private routerSubscription: Subscription;
 
   private authSubscription: Subscription;
   private authenticated: boolean;
+  private loginWarningCloseSubscription: Subscription;
 
   @ViewChild(TextFieldComponent, { static: false })
   searchInputTextField: TextFieldComponent;
@@ -99,10 +100,9 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
     private route: ActivatedRoute,
     private userService: UserService,
     private popoverService: PopoverService,
-    private storageService: StorageService
-  ) {
-    // this.authenticated$ = this.userService.authenticated;
-  }
+    private storageService: StorageService,
+    private loginWarningStateService: LoginWarningStateServiceService
+  ) { }
 
   ngOnInit() {
     this.params = this.rectifyParams(this.parseParams(this.route.snapshot.params || {}));
@@ -174,25 +174,31 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
     return result;
   }
 
-  search(newParams: SearchQueryParams) {
-    this.router.navigate([
-      'search',
-      this.rectifyParams({
-        ...this.params,
-        query: this.filters.query,
-        ...newParams
-      })
-    ]);
+  search(newParams: SearchQueryParams, checkLoginWarning: boolean) {
+    if (checkLoginWarning && this.shouldDisplayLoginWarning()) {
+      this.displayLoginWarning();
+    }
+    else {
+      this.router.navigate([
+        'search',
+        this.rectifyParams({
+          ...this.params,
+          query: this.filters.query,
+          ...newParams
+        })
+      ]);
+    }
   }
 
   close = () => {
-    if (this.popoverCloseSubscription) {
-      this.popoverCloseSubscription.unsubscribe();
+    if (this.loginWarningCloseSubscription) {
+      this.loginWarningCloseSubscription.unsubscribe();
     }
 
-    this.popoverCloseSubscription = undefined;
     this.popover = undefined;
     requestAnimationFrame(() => this.searchInputTextField.textFieldRef.nativeElement.focus());
+
+    this.search({query: this.filters.query}, false);
   }
 
   private offset(el) {
@@ -205,19 +211,28 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
     return { top: rect.top + scrollTop, left: rect.left + scrollLeft + width / 2 + 24 };
   }
 
-  private openLoginWarningPopover() {
+  private displayLoginWarning() {
     this.popover = this.popoverService.openOnBody(this.loginWarningPopover, {
       offset: this.offset(this.searchInputTextField.textFieldRef.nativeElement),
       cssClass: 'tooltip',
       placement: 'bottom'
     });
+    
+    this.loginWarningCloseSubscription = this.loginWarningStateService.onCloseClick
+      .subscribe(() => { 
+        if (this.popover) {
+          this.popover.close();
+        }
+      });
+
     this.popover.onClose.subscribe(this.close);
-    this.storageService.setSearchLoginWarningDisplayed('true');
+    this.storageService.setSearchLoginWarningDisplayed(true);
   }
 
-  onSearchClick() {
-    if (!this.authenticated && this.storageService.getSearchLoginWarningDisplayed() === 'false') {
-      this.openLoginWarningPopover();
-    }
+  private shouldDisplayLoginWarning(): boolean {
+    const previouslyDisplayed = this.storageService.getSearchLoginWarningDisplayed();
+    const displayPopover = !this.authenticated && !previouslyDisplayed;
+
+    return displayPopover;
   }
 }
