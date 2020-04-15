@@ -1,6 +1,6 @@
 {
   "name": "sb-digital-library",
-  "version": "1.2.0-rc1",
+  "version": "1.2.0-rc1(DataLayerUAT)",
   "scripts": {
     "ng": "ng",
     "start": "npm run pre-build && ng serve -o",
