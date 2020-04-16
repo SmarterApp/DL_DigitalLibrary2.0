@@ -30,6 +30,9 @@ import {OverlayModule} from '@angular/cdk/overlay';
   exports: [
     SearchComponent,
     LoginWarningComponent
+  ],
+  entryComponents: [
+    LoginWarningComponent
   ]
 })
 export class SearchModule {}

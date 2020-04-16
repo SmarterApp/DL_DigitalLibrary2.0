@@ -57,6 +57,7 @@ export class MockOktaAuthService {
 
 export class MockUserService {
   get user(): Observable<User> { return of(null); }
+  get authenticated(): Observable<boolean> { return of(true); }
 }
 
 export const initializeSettingsProvider = {
