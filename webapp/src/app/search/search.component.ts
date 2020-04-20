@@ -67,7 +67,6 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
 
   private routerSubscription: Subscription;
   private loginWarningCloseSubscription: Subscription;
-  private showAdvancedClicked: boolean;
 
   @ViewChild(TextFieldComponent, { static: false })
   searchInputTextField: TextFieldComponent;
@@ -114,14 +113,7 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
 
     this.loginWarningService.onWarningClosed.subscribe(() => {
       requestAnimationFrame(() => this.searchInputTextField.textFieldRef.nativeElement.focus());
-
-      if (this.showAdvancedClicked) {
-        this.showAdvanced = true;
-      }
-      else {
-        this.search({ query: this.filters.query }, false);
-      }
-      
+      this.search({ query: this.filters.query }, false);
     });
   }
 
@@ -193,17 +185,6 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
           ...newParams
         })
       ]);
-    }
-  }
-
-  onFilterResourcesClick() {
-    this.showAdvancedClicked = true;
-
-    if (this.loginWarningService.shouldDisplay(SessionStateKey.searchLoginWarningDisplayed)) {
-      this.loginWarningService.displayLoginWarning(this.loginWarningPopover, this.searchInputTextField.textFieldRef, SessionStateKey.searchLoginWarningDisplayed);
-    }
-    else {
-      this.showAdvanced = true;
     }
   }
 }
