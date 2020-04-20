@@ -51,7 +51,7 @@ export class LoginWarningService implements OnDestroy {
 
   shouldDisplay(sessionKey: SessionStateKey): boolean {
     const previouslyDisplayed = this.storageService.getLoginWarningDisplayed(sessionKey);
-    const searchCriteriaMet = !this.router.url.includes('resourceTypes=fs');
+    const searchCriteriaMet = !this.router.url.includes('resourceTypes=as');
     const displayPopover = !this.authenticated && searchCriteriaMet && !previouslyDisplayed;
 
     return displayPopover;
