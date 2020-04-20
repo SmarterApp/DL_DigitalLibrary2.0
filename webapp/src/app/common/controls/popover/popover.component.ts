@@ -9,6 +9,8 @@ import { PopoverOptions } from './popover.service';
 })
 export class PopoverComponent implements AfterViewInit {
 
+  public isVisible: boolean;
+
   @HostBinding('style')
   cssVarStyle: SafeStyle;
 
@@ -46,7 +48,7 @@ export class PopoverComponent implements AfterViewInit {
 
       setTimeout( () => {
         this.cssVarStyle = this.sanitizer.bypassSecurityTrustStyle(`position: absolute; top: ${top}px; left: ${offset.left}px`);
-
+        this.isVisible = true;
       }, 0);
       setTimeout(() => {
         if (!this.inView(rect)) {
@@ -59,15 +61,17 @@ export class PopoverComponent implements AfterViewInit {
 
   @HostListener('document:click', ['$event.path'])
   onClickOutside($event: Array<any>) {
-    if (!$event) {
-      this.close();
-      return;
-    }
-
-    const elementRefInPath = $event.find(
-      node => node.className && node.className.indexOf && node.className.indexOf('popover-container') !== -1);
-    if (!elementRefInPath) {
-      this.close();
+    if (this.isVisible) {
+      if (!$event) {
+        this.close();
+        return;
+      }
+  
+      const elementRefInPath = $event.find(
+        node => node.className && node.className.indexOf && node.className.indexOf('popover-container') !== -1);
+      if (!elementRefInPath) {
+        this.close();
+      }
     }
   }
 
