@@ -1,12 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LoginWarningComponent } from './login-warning.component';
 import { OktaAuthService } from '@okta/okta-angular';
 import { Router } from '@angular/router';
-import { LoginWarningStateServiceService } from './login-warning-state-service.service';
+import { LoginWarningService } from './login-warning.service';
+import { StorageService } from 'src/app/common/storage.service';
+import { Observable } from 'rxjs';
+import { UserService } from 'src/app/data/user/user.service';
 
 const mockAuthService = jasmine.createSpyObj('OktaAuthService', ['loginRedirect']);
-const mockLoginWarningStateService = jasmine.createSpyObj('LoginWarningStateService', ['close']);
+const mockLoginWarningService = jasmine.createSpyObj('LoginWarningService', ['close']);
+const mockStorageService = jasmine.createSpyObj('StorageService', ['getLoginWarningDisplayed']);
+
+const mockAuthenticated = new Observable<boolean>();
+const mockUserService = <UserService> { 
+  authenticated: mockAuthenticated
+}
 
 describe('LoginWarningComponent', () => {
   let component: LoginWarningComponent;
@@ -17,8 +25,10 @@ describe('LoginWarningComponent', () => {
       declarations: [ LoginWarningComponent ],
       providers: [ 
         { provide: OktaAuthService, useValue: mockAuthService },
-        { provide: LoginWarningStateServiceService, useValue: mockLoginWarningStateService },
-        { provide: Router, useValue: jasmine.createSpy('Router') }
+        { provide: LoginWarningService, useValue: mockLoginWarningService },
+        { provide: Router, useValue: jasmine.createSpy('Router') },
+        { provide: StorageService, useValue: mockStorageService },
+        { provide: UserService, useValue: mockUserService },
       ]
     })
     .compileComponents();

@@ -5,22 +5,14 @@ import { SbdlCommonModule } from '../common/common.module';
 import { SearchComponent } from './search.component';
 import { LoginWarningComponent } from './login-warning/login-warning.component';
 import { of, Observable } from 'rxjs';
-import { UserService } from '../data/user/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { emptyFilters } from '../data/search/search-filters.model';
-import { PopoverService } from '../common/controls/popover/popover.service';
-import { StorageService } from '../common/storage.service';
-import { LoginWarningStateServiceService } from './login-warning/login-warning-state-service.service';
+import { LoginWarningService } from './login-warning/login-warning.service';
 
-const mockAuthenticated = new Observable<boolean>();
-const mockUserService = <UserService> { 
-  authenticated: mockAuthenticated
-}
-
-const mockPopoverService = jasmine.createSpyObj('PopoverService', ['openOnBody']);
-const mockStorageService= jasmine.createSpyObj('StorageService', ['getSearchLoginWarningDisplayed', 'setSearchLoginWarningDisplayed']);
-const mockLoginWarningStateService = jasmine.createSpyObj('LoginWarningStateService', ['onCloseClick']);
-
+const mockOnWarningClosed = new Observable<any>();
+const mockLoginWarningService = <LoginWarningService> {
+  onWarningClosed: mockOnWarningClosed
+};
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -31,7 +23,6 @@ describe('SearchComponent', () => {
       imports: [ FormsModule, SbdlCommonModule, RouterTestingModule ],
       declarations: [ SearchComponent, LoginWarningComponent ],
       providers: [ 
-        { provide: UserService, useValue: mockUserService },
         { provide: ActivatedRoute,
           useValue: {
             snapshot: { params: {} },
@@ -39,9 +30,7 @@ describe('SearchComponent', () => {
             params: of({ params: { query: 'text' }})
           }
         },
-        { provide: PopoverService, useValue: mockPopoverService },
-        { provide: StorageService, useValue: mockStorageService },
-        { provide: LoginWarningStateServiceService, useValue: mockLoginWarningStateService }
+        { provide: LoginWarningService, useValue: mockLoginWarningService }
        ]
     })
     .compileComponents();

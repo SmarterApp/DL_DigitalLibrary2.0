@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
+import { SessionStateKey } from './enums/session-state-key.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
-
-  readonly searchLoginWarningDisplayedKey = 'SearchLoginWarningDisplayed';
 
   constructor() { }
 
@@ -17,16 +16,15 @@ export class StorageService {
     sessionStorage.setItem(key, value);
   }
 
-  getSearchLoginWarningDisplayed(): boolean {
-    if (!sessionStorage.getItem(this.searchLoginWarningDisplayedKey)) {
-      this.setSearchLoginWarningDisplayed(false);
+  getLoginWarningDisplayed(key: SessionStateKey): boolean {
+    if (!sessionStorage.getItem(key)) {
+      this.setLoginWarningDisplayed(key, false);
     }
 
-    const sessionVal = sessionStorage.getItem(this.searchLoginWarningDisplayedKey);
-    return (sessionVal === 'true');
+    return (sessionStorage.getItem(key) === 'true');
   }
 
-  setSearchLoginWarningDisplayed(value: boolean) {
-    sessionStorage.setItem(this.searchLoginWarningDisplayedKey, value.toString());
+  setLoginWarningDisplayed(key: SessionStateKey, value: boolean) {
+    sessionStorage.setItem(key, value.toString());
   }
 }
