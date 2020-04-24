@@ -1,0 +1,10 @@
+<div class="confirmation-popover">
+  <h4 *ngIf="title" class=modal-title>{{ title }}</h4>
+  <div class="confirmation-body">
+    {{ message }}
+  </div>
+  <div class="confirmation-footer">
+    <sbdl-button type="button" class="primary" (click)="accept()">{{ btnOkText }}</sbdl-button>
+    <sbdl-button type="button" class="plain" (click)="decline()">{{ btnCancelText }}</sbdl-button>
+  </div>
+</div>

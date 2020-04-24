@@ -8,6 +8,7 @@ import { of } from 'rxjs/internal/observable/of';
 import { OktaAuthService } from '@okta/okta-angular';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/data/user/user.service';
+import { ConfirmationDialogService } from 'src/app/common/confirmation-dialog/confirmation-dialog.service';
 
 const mockAuthService = jasmine.createSpyObj('OktaAuthService', ['loginRedirect']);
 
@@ -15,6 +16,8 @@ const mockAuthenticated = new Observable<boolean>();
 const mockUserService = <UserService> { 
   authenticated: mockAuthenticated
 }
+
+const mockConfirmationDialogService = jasmine.createSpyObj('ConfirmationDialogService', ['close']);
 
 describe('SearchResultsComponent', () => {
   let component: SearchResultsComponent;
@@ -32,7 +35,8 @@ describe('SearchResultsComponent', () => {
         }
       },
       { provide: OktaAuthService, useValue: mockAuthService },
-      { provide: UserService, useValue: mockUserService }
+      { provide: UserService, useValue: mockUserService },
+      { provide: ConfirmationDialogService, useValue: mockConfirmationDialogService }
      ]
     })
     .compileComponents();

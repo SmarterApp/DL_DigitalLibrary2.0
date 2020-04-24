@@ -1,12 +1,32 @@
-@import "colors";
 @import "spacing";
+@import "typography";
 
 :host {
-
   display: block;
   margin: 2rem 0;
 
   .last-modified {
     margin-top: $spacer-sm;
+  }
+
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $spacer;
+  }
+
+  .dialog-buttons {
+    font-size: $font-size-body-2;
+  }
+
+  .deleting {
+    cursor: wait;
+
+    .action-msg {
+      display: flex;
+      font-size: $font-size-body-2;
+      justify-content: center;
+      margin-top: $spacer;
+    }
   }
 }

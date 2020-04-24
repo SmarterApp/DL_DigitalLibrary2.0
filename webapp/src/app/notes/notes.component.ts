@@ -4,6 +4,7 @@ import { catchError } from 'rxjs/operators';
 import { Resource } from '../data/resource/model/resource.model';
 import { Note } from '../data/notes/model/note.model';
 import { NotesService } from '../data/notes/notes.service';
+import { ConfirmationDialogService } from '../common/confirmation-dialog/confirmation-dialog.service';
 
 @Component({
   selector: 'sbdl-notes',
@@ -46,7 +47,16 @@ export class NotesComponent {
     ]
   };
 
-  constructor(private notesService: NotesService) { }
+  constructor(
+    private notesService: NotesService,
+    private confirmationDialogService: ConfirmationDialogService
+  ) { }
+
+  ngOnInit() {
+    this.confirmationDialogService.okClicked.subscribe((id) => {
+      this.deleteNote(id);
+    });
+  }
 
   addNote() {
     this.newNoteContent = '';
@@ -60,7 +70,8 @@ export class NotesComponent {
       id: null,
       resourceId: this.resource.id,
       content: this.newNoteContent,
-      lastModified: new Date()
+      lastModified: new Date(),
+      isDeleted: false
     };
 
     this.editorConfig.editable = false;
@@ -80,4 +91,12 @@ export class NotesComponent {
     this.authoringNote = false;
   }
 
+  deleteNote($event) {
+    this.notesService
+      .deleteNote($event.id)
+      .subscribe(() => {
+        const note = this.notes.find((n) => n.id === $event.id);
+        note.isDeleted = true;
+      });
+  }
 }
