@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ResourceType } from '../../../data/resource/model/resource-type.enum';
+import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
 
 @Component({
   selector: 'sbdl-resource-type-icon',

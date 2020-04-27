@@ -1,0 +1,14 @@
+<h2>Bookmarks by Category</h2>
+<ul class=resource-type-list>
+  <li *ngFor="let resourceType of resourceTypesInOrder"
+      [ngClass]="{ 'no-resources': !resourcesByType.has(resourceType)}"
+  >
+    <a (click)="resourceTypeSelected.emit(resourceType); false" tabindex="0">
+      <sbdl-resource-type-icon [type]="resourceType"></sbdl-resource-type-icon>
+      {{ resourceType | resourceType:{plural: true} }}
+      <span class="count" *ngIf="resourcesByType.has(resourceType)">
+        ({{ resourcesByType.get(resourceType).length }})
+      </span>
+    </a>
+  </li>
+</ul>

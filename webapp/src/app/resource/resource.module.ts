@@ -22,7 +22,6 @@ import {PreviewLoginPromptComponent} from './components/preview-login-prompt/pre
 import {PrintCheckboxComponent} from './components/outline/enhanced-printing/print-checkbox.component';
 import {ResourcePropertiesComponent} from './components/resource-properties/resource-properties.component';
 import {ResourceSummaryCardComponent} from './components/resource-summary-card/resource-summary-card.component';
-import {ResourceTypeIconComponent} from './components/resource-type-icon/resource-type-icon.component';
 import {SimpleSectionComponent} from './components/simple-section/simple-section.component';
 import {StepByStepComponent} from './components/step-by-step/step-by-step.component';
 import {StepComponent} from './components/step-by-step/step.component';
@@ -82,7 +81,6 @@ import {OverlayModule} from '@angular/cdk/overlay';
     ResourceHostDirective,
     ResourcePropertiesComponent,
     ResourceSummaryCardComponent,
-    ResourceTypeIconComponent,
     ResourceTypeStrategyComponent,
     SimpleSectionComponent,
     StepByStepComponent,
@@ -133,7 +131,6 @@ import {OverlayModule} from '@angular/cdk/overlay';
     SbdlCommonModule
   ],
   exports: [
-    ResourceTypeIconComponent,
     ResourceSummaryCardComponent,
     ShareFormComponent
   ],
