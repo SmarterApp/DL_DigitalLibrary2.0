@@ -19,6 +19,9 @@ import { ResourceModule } from '../resource/resource.module';
 import { HomeComponent } from './home.component';
 import { TenantThemeService } from 'src/app/data/tenant-theme/tenant-theme.service';
 import { UserService } from 'src/app/data/user/user.service';
+import { ConfirmationDialogService } from 'src/app/common/confirmation-dialog/confirmation-dialog.service';
+
+const mockConfirmationDialogService = jasmine.createSpyObj('ConfirmationDialogService', ['close']);
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -34,6 +37,7 @@ describe('HomeComponent', () => {
         { provide: OktaAuthService, useClass: MockOktaAuthService },
         { provide: UserService, useClass: MockUserService },
         { provide: TenantThemeService, useClass: MockTenantThemeService },
+        { provide: ConfirmationDialogService, useClass: mockConfirmationDialogService },
         initializeSettingsProvider
       ],
       declarations: [ HomeComponent ],

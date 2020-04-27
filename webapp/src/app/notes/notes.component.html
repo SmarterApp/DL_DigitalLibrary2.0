@@ -1,7 +1,7 @@
 <div *ngIf="!authoringNote">
   <h2>Notes</h2>
   <!--<h3>Resource Notes</h3>-->
-  <sbdl-note *ngFor="let note of notes" [note]="note">
+  <sbdl-note *ngFor="let note of notes" [note]="note" (deleteClick)="deleteNote(note.id)">
   </sbdl-note>
   <sbdl-button class="plain" (click)="addNote()">
     <span *ngIf="notes.length === 0">+ Add your first note</span>

@@ -5,6 +5,7 @@ import { SbdlCommonModule } from '../common/common.module';
 import { NotesComponent } from './notes.component';
 import { NoteComponent } from './note/note.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     FormsModule,
     SbdlCommonModule,
     CommonModule,
-    AngularEditorModule
+    AngularEditorModule,
+    OverlayModule
   ],
   exports: [
     NotesComponent,

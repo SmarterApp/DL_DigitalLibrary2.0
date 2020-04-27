@@ -1,0 +1,14 @@
+@import "spacing";
+@import "typography";
+
+.confirmation-body {
+  font-size: $font-size-2;
+}
+
+.confirmation-footer {
+  padding-top: 16px;
+
+  sbdl-button {
+    padding: 2px;
+  }
+}
