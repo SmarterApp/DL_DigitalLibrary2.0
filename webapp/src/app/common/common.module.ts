@@ -15,7 +15,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {FilterChipsetComponent} from './controls/filter-chipset/filter-chipset.component';
 import {A11yModule} from '@angular/cdk/a11y';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from '../layout/login/login.component';
 
 // This object contains the components which can be loaded dyanmically via
 // the dynamic-html component.

@@ -19,6 +19,6 @@ export class PreviewLoginPromptComponent {
 
   onLoginButtonClick(): void {
     this.loading$.next(true);
-    this.oktaAuthService.loginRedirect(this.router.url);
+    this.router.navigate(['/auth/login']);
   }
 }

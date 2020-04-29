@@ -46,14 +46,8 @@ export class LoginWarningComponent {
   }
 
   login() {
-    const redirectUrl = this.router.createUrlTree(['/search'], { queryParams: this.queryParams }).toString().replace('search?', 'search;');
-    // this.oktaAuthService.loginRedirect(redirectUrl);
-
     this.close();
-
-    // TODO: Need to add callback url so user is redirected back to where
-    //       they were before being redirected to the login page
-    this.router.navigate(['/login']);
+    this.router.navigate(['/auth/login']);
   }
 
   shouldDisplay(sessionKey: SessionStateKey): boolean {

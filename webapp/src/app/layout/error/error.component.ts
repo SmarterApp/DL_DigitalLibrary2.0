@@ -57,6 +57,6 @@ export class ErrorComponent implements OnInit {
 
   onLoginButtonClick(): void {
     this.loading$.next(true);
-    this.oktaAuthService.loginRedirect(this.location.path());
+    this.router.navigate(['/auth/login']);
   }
 }

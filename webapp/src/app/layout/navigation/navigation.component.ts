@@ -37,8 +37,8 @@ export class NavigationComponent {
     return this.userService.user;
   }
 
-  // login() {
-  //   this.oktaAuthService.loginRedirect(this.router.url);
-  // }
+  login() {
+    this.router.navigate(['/auth/login']);
+  }
 
 }
