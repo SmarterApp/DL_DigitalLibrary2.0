@@ -30,16 +30,31 @@
     </div>
     <div class="connect">
       <h3>Connect</h3>
-      <ul>
-        <li><a target="_blank" aria-label="Twitter j(opens in a new window)" href="https://twitter.com/SmarterBalanced"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a></li>
-        <li><a target="_blank" aria-label="Facebook (opens in a new window)" href="https://www.facebook.com/smarterbalanced/"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a></li>
-        <li><a target="_blank" aria-label="Instagram (opens in a new window)" href="https://www.instagram.com/smarterbalanced/"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a></li>
-        <li><a target="_blank" aria-label="YouTube (opens in a new window)" href="https://www.youtube.com/user/smarterbalanced"><i class="fab fa-youtube" aria-hidden="true"></i> YouTube</a></li>
-        <!--
-          TODO: Re-enable when the SB Pinterest account is live
-          <li><a target="_blank" aria-label="Pinterest (opens in a new window)" href="#"><i class="fab fa-pinterest" aria-hidden="true"></i> Pinterest</a></li>
-        -->
-      </ul>
+      <div *ngIf="user$ | async; else loggedOut" class="member-resources">
+        <ul>
+            <li *ngFor="let link of (tenantFooterConnect$ | async)">
+              <a [href]="link.uri"
+                 target="_blank"
+                 (click)="ignoreClick($event)"
+                 [attr.aria-label]="link.name + ' (opens in a new window'">
+                <span *ngIf="link.icon"><i [ngClass]="link.icon"></i></span>
+                {{ link.name }}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <ng-template #loggedOut>
+          <ul>
+            <li><a target="_blank" aria-label="Twitter j(opens in a new window)" href="https://twitter.com/SmarterBalanced"><i class="fab fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+            <li><a target="_blank" aria-label="Facebook (opens in a new window)" href="https://www.facebook.com/smarterbalanced/"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a></li>
+            <li><a target="_blank" aria-label="Instagram (opens in a new window)" href="https://www.instagram.com/smarterbalanced/"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+            <li><a target="_blank" aria-label="YouTube (opens in a new window)" href="https://www.youtube.com/user/smarterbalanced"><i class="fab fa-youtube" aria-hidden="true"></i> YouTube</a></li>
+            <!--
+              TODO: Re-enable when the SB Pinterest account is live
+              <li><a target="_blank" aria-label="Pinterest (opens in a new window)" href="#"><i class="fab fa-pinterest" aria-hidden="true"></i> Pinterest</a></li>
+            -->
+          </ul>
+        </ng-template>
     </div>
     <div class="policy">
       <h3>Policy</h3>
@@ -57,7 +72,7 @@
   <div class=copyright>
     <img src="/assets/svg/smarter-balanced-footer-logo.svg"
          alt="Smarter Balanced Assessment Consortium">
-    <img *ngIf="user$ | async"
+    <img *ngIf="user$ && tenantFooterLogo$ | async"
          [src]="(tenantFooterLogo$ | async) | trustUrl"
          alt="Logo for CASPP">
     <span>© 2019 The Regents of the University of California</span>

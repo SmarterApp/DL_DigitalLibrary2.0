@@ -5,12 +5,38 @@
     "logoUris": {
       "full": "/assets/svg/tft-logo-full.svg",
       "footer": ""
-    }
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/SmarterBalanced",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/smarterbalanced/",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Instagram",
+        "uri": "https://www.instagram.com/smarterbalanced/",
+        "icon": "fab fa-instagram"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "icon": "fab fa-youtube"
+      }
+	  ]
   },
   "CA": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "California",
-    "footerLinks": [
+    "footerResourceLinks": [
       {
         "index": 0,
         "name": "Reporting System",
@@ -40,12 +66,26 @@
     "logoUris": {
       "full": "/assets/images/t4t-customized-logos/CA.png",
       "footer": "/assets/images/state-logos/CA.png"
-    }
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/cadepted",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/CAEducation",
+        "icon": "fab fa-facebook"
+      }
+	  ]
   },
   "CT": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Connecticut",
-    "footerLinks": [
+    "footerResourceLinks": [
       {
         "index": 0,
         "name": "Reporting System",
@@ -80,7 +120,7 @@
   "DE": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Delaware",
-    "footerLinks": [
+    "footerResourceLinks": [
       {
         "index": 0,
         "name": "Reporting System",
@@ -115,7 +155,7 @@
   "HI": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Hawaii",
-    "footerLinks": [
+    "footerResourceLinks": [
       {
         "index": 0,
         "name": "Reporting System",
@@ -150,7 +190,7 @@
   "ID": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Idaho",
-    "footerLinks": [
+    "footerResourceLinks": [
       {
         "index": 0,
         "name": "Reporting System",
@@ -185,7 +225,7 @@
   "MI": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Michigan",
-    "footerLinks": [
+    "footerResourceLinks": [
       {
         "index": 0,
         "name": "Reporting System",
@@ -220,7 +260,7 @@
   "MT": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Montana",
-    "footerLinks": [
+    "footerResourceLinks": [
       {
         "index": 0,
         "name": "Reporting System",
@@ -255,7 +295,7 @@
   "NV": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Nevada",
-    "footerLinks": [
+    "footerResourceLinks": [
       {
         "index": 0,
         "name": "Reporting System",
@@ -290,7 +330,7 @@
   "OR": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Oregon",
-    "footerLinks": [
+    "footerResourceLinks": [
       {
         "index": 0,
         "name": "Reporting System",
@@ -325,7 +365,7 @@
   "SD": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "South Dakota",
-    "footerLinks": [
+    "footerResourceLinks": [
       {
         "index": 0,
         "name": "Reporting System",
@@ -360,7 +400,7 @@
   "VI": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "U.S. Virgin Islands",
-    "footerLinks": [
+    "footerResourceLinks": [
       {
         "index": 0,
         "name": "Reporting System",
@@ -395,7 +435,7 @@
   "VT": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Vermont",
-    "footerLinks": [
+    "footerResourceLinks": [
       {
         "index": 0,
         "name": "Reporting System",
@@ -430,7 +470,7 @@
   "WA": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Washington",
-    "footerLinks": [
+    "footerResourceLinks": [
       {
         "index": 0,
         "name": "Reporting System",
@@ -461,5 +501,39 @@
       "full": "/assets/images/t4t-customized-logos/WA.png",
       "footer": "/assets/images/state-logos/WA.jpg"
     }
+  },
+  "OT": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
+    "displayName": "Smarter Balanced",
+    "logoUris": {
+      "full": "/assets/svg/tft-logo-full.svg"
+    },
+    "footerResourceLinks": [],
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/SmarterBalanced",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/smarterbalanced/",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Instagram",
+        "uri": "https://www.instagram.com/smarterbalanced/",
+        "icon": "fab fa-instagram"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "icon": "fab fa-youtube"
+      }
+	  ]
   }
 }
