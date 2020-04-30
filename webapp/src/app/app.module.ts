@@ -26,7 +26,7 @@ export function initializeOkta(appConfig: AppConfig) {
     issuer: AppConfig.settings.okta.issuer,
     clientId: AppConfig.settings.okta.clientId,
     redirectUri: `${window.location.protocol}//${window.location.host}/${OKTA_CALLBACK_PATH}`,
-    scopes: ['openid', 'profile', 'email', 'digital_library_read']
+    scopes: ['openid', 'profile']
   };
 }
 
