@@ -16,5 +16,45 @@
     </p>
   </div>
 
+  <!-- <div class="mdc-select mdc-select-width">
+    <div class="mdc-select__anchor">
+      <span class="mdc-select__ripple"></span>
+      <input type="text" disabled readonly class="mdc-select__selected-text">
+      <i class="mdc-select__dropdown-icon"></i>
+      <span class="mdc-floating-label">Pick a Food Group</span>
+      <span class="mdc-line-ripple"></span>
+    </div>
+  
+    <div class="mdc-select__menu mdc-menu mdc-menu-surface mdc-menu-surface--fullwidth">
+      <ul class="mdc-list">
+        <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true"></li>
+        <li class="mdc-list-item" data-value="grains">
+          <span class="mdc-list-item__text">
+            Bread, Cereal, Rice, and Pasta
+          </span>
+        </li>
+        <li class="mdc-list-item" data-value="vegetables">
+          <span class="mdc-list-item__text">
+            Vegetables
+          </span>
+        </li>
+        <li class="mdc-list-item" data-value="fruit">
+          <span class="mdc-list-item__text">
+            Fruit
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+
+  <div class="select-group">
+    <select class="mdc-select" [(ngModel)]="preloginValue" (change)="onPreloginSelected()">
+      <option *ngFor="let s of preloginSelections" class="mdc-list-item" [ngValue]="s">
+        {{ s.selectionLabel }}
+      </option>
+    </select>
+    <sbdl-button class="primary" (click)="onGoButtonClicked()" [hidden]="goButtonHidden" [disabled]="goButtonDisabled">Go</sbdl-button>
+  </div>
+
   <a href="#">Not in a subscribing location? Learn more about Tools for Teachers access.</a>
 </main>

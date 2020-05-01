@@ -15,6 +15,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {FilterChipsetComponent} from './controls/filter-chipset/filter-chipset.component';
 import {A11yModule} from '@angular/cdk/a11y';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { FormsModule } from '@angular/forms';
 import { LoginComponent } from '../layout/login/login.component';
 
 // This object contains the components which can be loaded dyanmically via
@@ -30,7 +31,8 @@ const dynamicOptions = {
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    A11yModule
+    A11yModule,
+    FormsModule
   ],
   declarations: [
     ButtonComponent,

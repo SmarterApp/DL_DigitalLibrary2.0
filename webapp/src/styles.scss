@@ -5,6 +5,12 @@
 @import "@material/textfield/icon/mdc-text-field-icon";
 @import "@material/chips/mdc-chips";
 
+// Material for the select list
+@import "@material/list/mdc-list";
+@import "@material/menu-surface/mdc-menu-surface";
+@import "@material/menu/mdc-menu";
+@import "@material/select/mdc-select";
+
 // CDK styles
 @import '~@angular/cdk/overlay-prebuilt.css';
 
