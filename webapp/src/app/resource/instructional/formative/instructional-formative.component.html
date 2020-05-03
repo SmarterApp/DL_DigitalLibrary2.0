@@ -7,6 +7,7 @@
       ><sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
   </h2>
   <sbdl-instructional-formative-content
+    *ngIf="resource.formativeAssessHowTo"
     [content]="resource.formativeAssessHowTo"
     (sectionLoaded)="addSubsection($event)">
   </sbdl-instructional-formative-content>
