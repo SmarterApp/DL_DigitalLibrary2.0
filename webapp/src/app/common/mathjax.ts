@@ -1,27 +1,27 @@
 /* This is a little bit magical. MathJax doesn't really behave like a standard
- * library does. It still creates its object instance as a global on the
- * window object. However, the MathJax startup code is not re-entrant. The
- * first time MathJax runs, it expects the global window.MathJax variable to
+ * library does. It creates its object instance as a global on the window
+ * object. Complicating things, the MathJax startup code is not re-entrant. The
+ * first time MathJax runs it expects the global window.MathJax variable to
  * contain configuration information (as a convenience for configuring it). It
- * then replaces fills that object out with the full instance. If it gets
- * executed again, it now takes that already instantiated object and inspects
- * it for configuration. This leads to an infinite regression and dies with
- * "too much recursion." This is a great example of the kinds of unexpected
- * errors that happen easily when you depend on global state.
+ * then fills that object out with the full instance. If it gets executed again
+ * it takes that already instantiated object and inspects it for configuration.
+ * This leads to an infinite recursion, dying with "too much recursion." This
+ * is a great example of the kinds of unexpected errors that happen easily when
+ * you depend on global state.
  *
- * Because of this, we have to be very careful how MathJax is referenced. If we
- * import MathJax in our components it gets pulled in via Webpack. At first
- * this works, as Webpack sets things up so the code for each module runs only
- * once. However, if we use this method we miss other source files that are
- * included dynamically by MathJax as needed (the primary MathJax package
- * doesn't actually deliver the source code, but rather the compiled JS output.
- * So we lose all the dependency information from the original TypeScript
+ * Because of this we have to be very careful how MathJax is referenced. If we
+ * import MathJax in our components then it gets pulled in via Webpack. At
+ * first this works, as Webpack sets things up so the code for each module runs
+ * only once. However if we use this method then we miss other source files
+ * that are included dynamically by MathJax as needed (the primary MathJax
+ * package doesn't actually deliver the source code, but rather the compiled JS
+ * output.  We lose all the dependency information from the original TypeScript
  * source).  For example, the sre/sre_browser.js file required for the a11y
  * features. We could include these manually via the scripts option in the
  * Angular build architect configuration but this feels brittle and we don't
  * have a difinitive list of what all we should include.
  *
- * To fix the above, we need to load MathJax via an external script. That way
+ * To fix the above we need to load MathJax via an external script. That way
  * when it does its own dynamic inspection of its origin path it gets something
  * it can use to actually find the dependencies it's expecting. With this
  * approach we would include a link to the version published on CDNJS. This
@@ -40,12 +40,16 @@
  * loaded once and accessed via the global window object. In order to make that
  * play nice with Angular we are:
  *
- * 1. including the via index.html, and *never* importing in TypeScript,
+ * 1. including the script from CDNJS via index.html, and *never* importing in
+ *    TypeScript,
  * 2. creating a bare-bones interface in globals.d.ts to enable static type
  *    checking for our use-cases (and satisfying the TypeScript compiler),
  * 3. hiding/wrapping the global variable access behind a factory function, and
  * 4. using that factory function to expose the MathJax instance to the rest of
  *    our app in a standard manner (via Angular dependency injection).
+ *
+ * This way we should at least be able to write proper tests, mocking out
+ * MathJax as needed.
  */
 
 import {InjectionToken} from '@angular/core';
