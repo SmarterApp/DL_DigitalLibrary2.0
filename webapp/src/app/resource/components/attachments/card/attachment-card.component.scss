@@ -58,13 +58,20 @@
     flex-direction: row;
     justify-content: space-between;
     margin-top: $spacer;
-    font-size: $font-size-0;
-
+    font-size: $font-size-0; 
+    
     .actions {
       align-self: flex-end;
       display: flex;
       align-items: flex-end;
       flex-direction: column;
+
+      & > div {
+        color: $action-900;
+        cursor: pointer;
+        margin-top: $spacer-sm;
+        white-space: nowrap;
+      }
     }
   }
 

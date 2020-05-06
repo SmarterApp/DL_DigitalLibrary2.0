@@ -16,13 +16,14 @@ export class ButtonComponent implements OnInit {
   @Input()
   disabled: boolean;
 
+  @Input()
+  ariaLabel = '';
+
   /**
    * Emits when the button loses focus via [(blur)](https://angular.io/guide/user-input#on-blur)
    */
   @Output()
   blur = new EventEmitter();
-
-  constructor() { }
 
   ngOnInit() {
     // required for ripple effect.

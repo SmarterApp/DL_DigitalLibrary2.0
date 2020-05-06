@@ -13,6 +13,7 @@ import {DynamicHTMLOptions} from './controls/dynamic/options';
 import {TextFieldComponent} from './controls/text-field/text-field.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {FilterChipsetComponent} from './controls/filter-chipset/filter-chipset.component';
+import {A11yModule} from '@angular/cdk/a11y';
 
 // This object contains the components which can be loaded dyanmically via
 // the dynamic-html component.
@@ -26,7 +27,8 @@ const dynamicOptions = {
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    A11yModule
   ],
   declarations: [
     ButtonComponent,

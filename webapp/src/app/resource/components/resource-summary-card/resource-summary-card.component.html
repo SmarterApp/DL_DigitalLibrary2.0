@@ -8,6 +8,7 @@
 <a
   [routerLink]="['/resource', resourceSummary.id]"
   class="inner-card"
+  [attr.aria-label]="(resourceSummary.type | resourceType) + ' ' + resourceSummary.properties.title"
 >
   <sbdl-resource-thumbnail
     [subjectCode]="resourceSummary.properties.subject.code"

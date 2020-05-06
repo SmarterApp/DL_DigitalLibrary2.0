@@ -1,224 +1,236 @@
 @import "colors";
 @import "spacing";
 @import "typography";
+@import "mixins";
 
 :host {
-    display: grid;
-    grid-template:
-      "outline header properties"
-      "outline content properties"
+  display: grid;
+  grid-template: "outline header properties" "outline content properties"
       / auto auto auto;
-    justify-items: stretch;
-    justify-content: space-between;
+  justify-items: stretch;
+  justify-content: space-between;
 
-    max-width: unset;
+  max-width: unset;
 
-    .outline {
-        grid-area: outline;
-        box-sizing: border-box;
-        width: var(--nav-width);
-        min-width: var(--nav-width);
-        box-shadow: inset -10px 0px 18px -10px rgba(0, 0, 0, 0.2);
-        background-color: $white;
-        transition-property: width, min-width, margin-right, z-index;
-        z-index: 2;
-        transition-duration: 0.5s;
-        transition-timing-function: ease-in;
+  .outline {
+    grid-area: outline;
+    box-sizing: border-box;
+    width: var(--nav-width);
+    min-width: var(--nav-width);
+    box-shadow: inset -10px 0px 18px -10px rgba(0, 0, 0, 0.2);
+    background-color: $white;
+    transition-property: width, min-width, margin-right, z-index;
+    z-index: 2;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
 
-        background-image: url('/assets/images/blue-spot-2.png');
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        background-position: bottom left;
+    background-image: url('/assets/images/blue-spot-2.png');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: bottom left;
+  }
+
+  .outline:hover {
+    width: 331px;
+    min-width: 331px;
+    margin-right: var(--outline-margin-right);
+    overflow-x: initial;
+  }
+
+  .resource-header {
+    grid-area: header;
+    box-sizing: border-box;
+    max-width: calc(var(--measure) + 8rem);
+    padding: 0 $spacer-lg;
+
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: baseline;
+    }
+  }
+
+  .resource-properties:hover,
+  .resource-notes:hover {
+    width: 331px;
+    min-width: 331px;
+    margin-left: var(--outline-margin-right);
+    overflow-x: initial;
+  }
+
+  .resource-content {
+    grid-area: content;
+    padding: 0 $spacer-lg;
+    box-sizing: border-box;
+    max-width: calc(var(--measure) + 8rem);
+    z-index: 1;
+  }
+
+  .resource-properties,
+  .resource-notes {
+    grid-area: properties;
+    width: var(--nav-width);
+    min-width: var(--nav-width);
+    transition-property: width, min-width, margin-left, z-index;
+    z-index: 2;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+
+    box-shadow: inset 10px 0px 18px -10px rgba(0, 0, 0, 0.2);
+
+    background-image: url('/assets/images/green-spot-2.png'), url('/assets/images/yellow-spot-2.png');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: right 184px bottom, bottom right;
+    min-height: 100vh;
+    background-color: $white;
+    overflow-x: hidden;
+
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  nav sbdl-outline,
+  nav sbdl-enhanced-printing,
+  aside sbdl-resource-properties {
+    position: fixed;
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden; // reading mode intentionally clips.
+    transition-property: width, min-width;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+
+    h5 {
+      margin-bottom: $spacer-sm;
+      color: $brand-green;
+    }
+  }
+
+  nav sbdl-outline,
+  nav sbdl-enhanced-printing {
+    width: var(--nav-width);
+  }
+
+  nav sbdl-outline:hover,
+  nav sbdl-enhanced-printing:hover {
+    width: 331px;
+  }
+
+  &::ng-deep {
+    h1 {
+      font-weight: 700;
+      font-size: $font-size-7;
+      letter-spacing: -.005em;
     }
 
-    .outline:hover {
-        width: 331px;
-        min-width: 331px;
-        margin-right: var(--outline-margin-right);
-        overflow-x:initial;
+    h2 {
+      font-weight: 600;
+      font-size: $font-size-4;
+      line-height: 160%
     }
 
-    .resource-header {
-        grid-area: header;
-        box-sizing: border-box;
-        max-width: calc(var(--measure) + 8rem);
-        padding: 0 $spacer-lg;
-
-        .top-header {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            align-items: baseline;
-        }
+    h3 {
+      font-weight: 500;
+      font-size: $font-size-3;
+      line-height: 133%;
     }
 
-    .resource-properties:hover {
-        width: 331px;
-        min-width: 331px;
-        margin-left: var(--outline-margin-right);
-        overflow-x:initial;
+    h4 {
+      font-weight: 400;
+      font-size: $font-size-2;
+      line-height: 160%;
     }
 
-    .resource-content {
-      grid-area: content;
-      padding: 0 $spacer-lg;
-      box-sizing: border-box;
-      max-width: calc(var(--measure) + 8rem);
-      z-index: 1;
+    h5 {
     }
 
-    .resource-properties {
-        grid-area: properties;
-        width: var(--nav-width);
-        min-width: var(--nav-width);
-        transition-property: width, min-width, margin-left, z-index;
-        z-index: 2;
-        transition-duration: 0.5s;
-        transition-timing-function: ease-in;
+    h6 {
+    }
 
-        box-shadow: inset 10px 0px 18px -10px rgba(0, 0, 0, 0.2);
+    &.highlighted {
+      &:not(.interim-container):not(tr) {
+        @include highlighted;
+      }
+    }
 
-        background-image: url('/assets/images/green-spot-2.png'), url('/assets/images/yellow-spot-2.png');
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        background-position: right 184px bottom, bottom right;
-        min-height: 100vh;
-        background-color: $white;
-        overflow-x: hidden;
+    tr.highlighted {
+      background-color: rgba($action-100, 0.4);
+      border-left: 4px solid rgba($action-500, 0.4);
+      border-radius: 0.25rem;
+      > th {
+        @include highlighted(0, -100%);
+      }
+    }
+
+    &article:not(.interim-container):not(.highlighted):not(.step-container):not(.topics-container):not(.info-card):not(.external-resources)::before {
+        content: '';
+        position: absolute;
+        top: 4rem;
+        bottom: 0;
+        left: -2.05rem;
+        display: block;
+        border-color: $neutral-75;
+        border-radius: 0.25rem;
+        border-width: 0 0 0 2px;
+        border-style: solid;
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoint-sm) {
+  :host {
+    --nav-width: 100vw;
+    flex-direction: column;
+
+    > * {
+      width: 100%;
+      max-width: unset;
     }
 
     nav sbdl-outline,
     nav sbdl-enhanced-printing,
+    aside sbdl-detailed-metadata,
     aside sbdl-resource-properties {
-      position: fixed;
-      max-height: 100%;
-      overflow-y: auto;
-      overflow-x: hidden; // reading mode intentionally clips.
-      transition-property: width, min-width;
-      transition-duration: 0.5s;
-      transition-timing-function: ease-in;
-
-      h5 {
-        margin-bottom: $spacer-sm;
-        color: $brand-green;
-      }
+      position: relative;
+      max-width: 100%;
     }
 
-    nav sbdl-outline,
-    nav sbdl-enhanced-printing {
-        width: var(--nav-width);
+    .outline,
+    .resource-properties,
+    .resource-notes,
+    .outline:hover,
+    .resource-properties:hover,
+    .resource-notes:hover {
+      width: 100%;
+      transition: none;
+      min-width: unset;
     }
 
-    nav sbdl-outline:hover,
-    nav sbdl-enhanced-printing:hover {
-        width: 331px;
+    .resource-properties,
+    .resource-notes {
+      padding-left: $spacer-xl;
+      box-sizing: border-box;
+      background-attachment: scroll;
     }
 
-    &::ng-deep {
-
-        h1 {
-          font-weight: 700;
-          font-size: $font-size-7;
-          letter-spacing: -.005em;
-        }
-
-        h2 {
-          font-weight: 600;
-          font-size: $font-size-4;
-          line-height: 160%
-        }
-
-        h3 {
-          font-weight: 500;
-          font-size: $font-size-3;
-          line-height: 133%;
-        }
-
-        h4 {
-          font-weight: 400;
-          font-size: $font-size-2;
-          line-height: 160%;
-        }
-
-        h5 {
-        }
-
-        h6 {
-        }
-
-        &.highlighted:not(.interim-container)::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: -$spacer;
-            left: -3.5rem;
-            right: -$spacer-xl;
-            display: block;
-            background-color: rgba($action-100, 0.2);
-            border-color: rgba($action-500, 0.4);
-            border-radius: 0.25rem;
-            border-width: 0 0 0 4px;
-            border-style: solid;
-            z-index: -1;
-        }
-        &article:not(.interim-container):not(.highlighted):not(.step-container):not(.topics-container):not(.info-card):not(.external-resources)::before {
-            content: '';
-            position: absolute;
-            top: 4rem;
-            bottom: 0;
-            left: -2.05rem;
-            display: block;
-            border-color: $neutral-75;
-            border-radius: 0.25rem;
-            border-width: 0 0 0 2px;
-            border-style: solid;
-        }
+    .resource-properties:hover,
+    .resource-notes:hover {
+      margin-left: 0;
     }
-}
 
-@media only screen and (max-width: $breakpoint-sm) {
-    :host {
-        --nav-width: 100vw;
-        flex-direction: column;
-        > * {
-            width: 100%;
-            max-width: unset;
-        }
-
-        nav sbdl-outline,
-        nav sbdl-enhanced-printing,
-        aside sbdl-detailed-metadata,
-        aside sbdl-resource-properties {
-          position: relative;
-          max-width: 100%;
-        }
-
-        .outline, .resource-properties,
-        .outline:hover, .resource-properties:hover {
-            width: 100%;
-            transition: none;
-            min-width: unset;
-        }
-
-        .resource-properties {
-            padding-left: $spacer-xl;
-            box-sizing: border-box;
-            background-attachment: scroll;
-        }
-
-        .resource-properties:hover {
-            margin-left: 0;
-        }
-
-        .outline:hover {
-            margin-right: 0;
-        }
+    .outline:hover {
+      margin-right: 0;
     }
+  }
 }
 
 @media only print {
   :host {
-    grid-template: "header" "properties" "content" / auto;
+    grid-template: "header" "properties" "content" "notes" / auto;
 
     .outline, nav, sbdl-outline, sbdl-enhanced-printing {
       display: none;
@@ -229,10 +241,13 @@
     }
 
     .top-header {
-      img { display: none; }
+      img {
+        display: none;
+      }
     }
 
-    .resource-properties {
+    .resource-properties,
+    .resource-notes {
       background-image: none;
       box-shadow: none;
       padding: 0 $spacer-xl;
@@ -241,6 +256,19 @@
       min-width: unset;
       min-height: unset;
       width: unset;
+    }
+
+    // ignore hidden
+    .resource-properties.hidden {
+      display: block;
+    }
+
+    .resource-notes.hidden.has-notes {
+      display: block;
+    }
+
+    .resource-notes {
+      grid-area: notes;
     }
 
     .resource-content {

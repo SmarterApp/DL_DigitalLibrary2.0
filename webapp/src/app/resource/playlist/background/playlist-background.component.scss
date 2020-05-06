@@ -41,6 +41,10 @@
       padding: $spacer-sm;
       margin: $spacer;
       text-transform: uppercase;
+      
+      &:focus, &:hover {
+        opacity: .85;
+      }
     }
   }
 }

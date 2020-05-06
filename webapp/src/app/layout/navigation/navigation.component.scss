@@ -89,6 +89,7 @@
       text-align: left;
       height: 32px;
       min-width: 32px;
+      text-decoration: none;
 
       sbdl-icon, svg {
         font-size: 22px;
@@ -100,7 +101,7 @@
         margin-top: -4px;
       }
 
-      label {
+      > span {
         display: inline-block;
         cursor: pointer;
         max-width: 0;
@@ -160,7 +161,7 @@
     .links {
       button,
       a {
-        label {
+        > span {
           max-width: 311px;
           max-height: 18px;
           opacity: 1;

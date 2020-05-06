@@ -1,4 +1,11 @@
-<button #button class="mdc-button" [disabled]="disabled" (blur)="onBlur($event)" (click)="click()">
+<button
+  #button
+  class="mdc-button"
+  [disabled]="disabled"
+  (blur)="onBlur($event)"
+  (click)="click()"
+  [attr.aria-label]="ariaLabel"
+>
   <span class="mdc-button__label">
     <ng-content></ng-content>
   </span>

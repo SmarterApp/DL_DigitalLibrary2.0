@@ -3,14 +3,13 @@
   (submit)="search({query: $event})"
   [(ngModel)]="filters.query"
   placeholder="What are you looking for? (e.g., fractions, Grade 3, Connections Playlist)"
-  fontAwesomeIcon="fa-search">
+  fontAwesomeIcon="fa-search"
+  submitButtonAriaLabel="search resources"
+>
 </sbdl-text-field>
 
-<div *ngIf="newSearch" class="emphasis-medium caption browse-caption">
-  Start typing a topic, claim, target, or <a href="javascript:void(0)" (click)="showAdvanced = true">browse for resources</a>.
-</div>
-<div *ngIf="!newSearch && numResults > 0" class="emphasis-medium caption filters-caption">
-  Start typing a topic, claim, target, or <a href="javascript:void(0);" (click)="showAdvanced = true">advanced search</a>.
+<div class="caption">
+  Start typing a topic, claim, target, or <a href="javascript:void(0)" (click)="showAdvanced = true">filter resources</a>.
 </div>
 
 <h1 *ngIf="!newSearch" class="results-header">
@@ -31,14 +30,13 @@
 
 <div *ngIf="showHeadings && newSearch" class="new-search">
   Search for resources related to your search terms using the search input
-  above or click <a href="javascript:void(0)" (click)="showAdvanced = true">browse for resources</a>
-  to search for resources that exactly match your search criteria.
+  above or <a href="javascript:void(0)" (click)="showAdvanced = true">filter resources</a>.
 </div>
 
-<div [hidden]="!showAdvanced || (!newSearch && numResults === 0)" class="advanced-search">
+<!-- using ngIf > hidden because it does not render correctly with [hidden] in edge 18 (non-chromium version) -->
+<div *ngIf="showAdvanced && (newSearch || numResults !== 0)" class="advanced-search">
   <div class="advanced-header">
-      <h2 *ngIf="newSearch">Browse for Resources</h2>
-      <h2 *ngIf="!newSearch">Advanced Search</h2>
+      <h2>Filter Resources</h2>
       <div>
         <a [routerLink]="['/search', {query: filters.query || ''}]"
            class="emphasis-medium caption">

@@ -1,7 +1,7 @@
 <h3>Playlist Resources</h3>
 <p class="caption emphasis-medium">Quick links to the referenced materials.</p>
 <a #resourceRef
-   attr.aria-label="{{ resource.title }} (opens in a new window)"
+   [attr.aria-label]="resource.title + ' (opens in a new window)'"
    class="link-card"
    *ngFor="let resource of resources"
    [routerLink]="['/resource', resource.id]" target="_blank">

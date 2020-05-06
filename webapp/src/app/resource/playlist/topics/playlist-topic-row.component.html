@@ -4,13 +4,18 @@
 
   <h3>{{topic.title}}</h3>
   <div *ngIf="!rowCollapsed">
-    <a *ngFor="let resource of topic.topicResources"
-       [routerLink]="['/resource', resource.id]"
-       target="_blank"
-       attr.aria-label="{{ resource.title }} (opens in a new window)"
-       (click)="$event.stopPropagation()">
-      {{resource.title}}&nbsp;<i class="far fa-arrow-right" aria-hidden="true"></i><br>
-    </a>
+    <div *ngIf="topic.topicResources.length > 0">
+      <a *ngFor="let resource of topic.topicResources"
+        [routerLink]="['/resource', resource.id]"
+        target="_blank"
+        [attr.aria-label]="resource.title + ' (opens in a new window)'"
+        (click)="$event.stopPropagation()">
+        {{resource.title}}&nbsp;<i class="far fa-arrow-right" aria-hidden="true"></i><br>
+      </a>
+    </div>
+    <div *ngIf="topic.topicResources.length === 0">
+      <div class="future-resource">Future resource</div>
+    </div>
   </div>
 </th>
 

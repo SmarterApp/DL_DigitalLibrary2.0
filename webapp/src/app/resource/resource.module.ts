@@ -9,6 +9,7 @@ import {SbdlCommonModule} from '../common/common.module';
 import {ResourceHostDirective} from './resource-host.directive';
 import {ResourceTypeStrategyComponent} from './resource-type-strategy.component';
 
+import {AblePlayerComponent} from './components/able-player/able-player.component';
 import {ActionsComponent} from './components/actions/actions.component';
 import {AttachmentsComponent} from './components/attachments/attachments.component';
 import {AttachmentCardComponent} from './components/attachments/card/attachment-card.component';
@@ -67,6 +68,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
   declarations: [
 
     // Components
+    AblePlayerComponent,
     ActionsComponent,
     AttachmentsComponent,
     AttachmentCardComponent,

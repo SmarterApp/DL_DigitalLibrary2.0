@@ -24,11 +24,12 @@ export class PreviewComponent implements AfterViewInit, OnDestroy, OnInit {
 
   blobUrl: string;
   loading = true;
+  previousActiveElement: HTMLElement;
 
   @HostListener('window:keyup', ['$event'])
   handleEsc(event: KeyboardEvent) {
     if (event.key === 'Escape') {
-      this.onClose.emit(true);
+      this.close();
     }
   }
 
@@ -48,6 +49,7 @@ export class PreviewComponent implements AfterViewInit, OnDestroy, OnInit {
   }
 
   ngAfterViewInit(): void {
+    this.previousActiveElement = document.activeElement as HTMLElement;
     this.closeButton.focus();
   }
 
@@ -55,7 +57,18 @@ export class PreviewComponent implements AfterViewInit, OnDestroy, OnInit {
     window.URL.revokeObjectURL(this.blobUrl);
   }
 
-  download(attachment: ResourceAttachment): void {
+  onCloseButtonClick(): void {
+    this.close();
+  }
+
+  onDownloadButtonClick(attachment: ResourceAttachment): void {
     this.attachmentsService.download(attachment);
+  }
+
+  private close(): void {
+    this.onClose.emit(true);
+    if (this.previousActiveElement != null) {
+      this.previousActiveElement.focus();
+    }
   }
 }

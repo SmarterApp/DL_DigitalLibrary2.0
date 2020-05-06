@@ -31,8 +31,9 @@ ul {
 }
 
 .playlist-card {
+  text-decoration: none;
 
-  color: black;
+  background-color: $white;
   box-shadow:
     0 1px 3px rgba(0, 0, 0, 0.2),
     0 2px 2px rgba(0, 0, 0, 0.12),
@@ -69,16 +70,18 @@ ul {
       align-self: center;
       h4 {
         font-size: 1em;
+        text-decoration: underline;
       }
       h4,
       p {
         margin: 0;
       }
+      p {
+        color: black;
+      }
       ::ng-deep .icon {
         width: max-content;
       }
     }
-
   }
-
 }

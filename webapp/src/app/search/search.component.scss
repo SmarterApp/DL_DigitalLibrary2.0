@@ -34,13 +34,12 @@
 
 
 
-  .emphasis-medium.caption {
-    opacity: 0.65;
+  .caption {
     color: $neutral-900;
     font-size: $font-size-body-2;
   }
 
-  & > .emphasis-medium.caption {
+  & > .caption {
     margin-top: $spacer;
     margin-left: $spacer-md;
   }

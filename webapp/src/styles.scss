@@ -14,11 +14,17 @@
 @import "ui-kit/buttons";
 @import "ui-kit/icons";
 @import "ui-kit/spacing";
+@import "ui-kit/material-overrides";
 @import "mixins";
 
 :root {
     --measure: 85ch;
     --nav-width: 331px;
+}
+
+html {
+  // enables smooth scrolling for traditional anchor links
+  scroll-behavior: smooth;
 }
 
 * {

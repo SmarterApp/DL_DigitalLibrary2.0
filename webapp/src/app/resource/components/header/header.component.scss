@@ -4,12 +4,13 @@
 
 :host {
     display: grid;
-    grid-template-areas:"type type" 
-                        "title title"
-                        "url url"
-                        "byline button"
-                        "updated button";
-    grid-template-rows: repeat (3, auto);
+    grid-template-areas:
+      "type type"
+      "title title"
+      "url url"
+      "byline button"
+      "updated button";
+    grid-template-rows: repeat(3, auto);
     grid-template-columns: 1fr auto;
     margin-bottom: $spacer-xl;
     // calculating the max-width
@@ -32,6 +33,7 @@
         a {
           color: $brand-green;
           word-break: break-word;
+          text-decoration: none;
         }
     }
 
@@ -78,7 +80,7 @@
                 margin-right: 8px;
                 margin-left: 0;
                 // width: 16px;
-                // height: 16px; 
+                // height: 16px;
                 background-color: $success-700;
                 color: $white;
             }

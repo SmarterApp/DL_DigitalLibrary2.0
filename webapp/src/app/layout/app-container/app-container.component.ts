@@ -42,7 +42,8 @@ export class AppContainerComponent implements OnInit {
     this.route.fragment.subscribe((fragment) => {
       if (fragment && !this.router.url.includes(OKTA_CALLBACK_PATH)) {
         setTimeout(() => {
-          document.querySelector('#' + fragment).scrollIntoView({behavior: 'smooth'});
+          const el = document.querySelector('#' + fragment);
+          if (el) { el.scrollIntoView({behavior: 'smooth'}); }
         });
       }
     });

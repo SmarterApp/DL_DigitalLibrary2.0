@@ -1,55 +1,65 @@
-import { AfterViewInit, ElementRef, Component, Input, OnInit, SecurityContext } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { AttachmentsService } from '../attachments.service';
-import { PreviewService } from '../preview/preview.service';
-import { FileType, ResourceAttachment } from 'src/app/data/resource/model/attachment.model';
-import { CardType } from '../attachments.component';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
+import {AttachmentsService} from '../attachments.service';
+import {PreviewService} from '../preview/preview.service';
+import {FileType, ResourceAttachment} from 'src/app/data/resource/model/attachment.model';
+import {CardType} from '../attachments.component';
+import {AblePlayerComponent} from 'src/app/resource/components/able-player/able-player.component';
 
-const YT_MATCH_VID = /.*youtube.*v=([^&]+).*$|.*youtu.be\/([^&?]+).*$/;
-const YT_EMBED_URL = /youtube\/embed/;
+const YT_MATCH_VID = /.*youtube.*v=([^&]+).*$|.*youtu.be\/([^&?]+).*$|.*youtube\/embed\/([^&?]+).*$/;
+
+function extractYouTubeVideoId(attachment: ResourceAttachment): string {
+  if (attachment.fileType !== FileType.YouTubeLink) {
+    throw new Error('Cannot extract YouTube video ID from attachment type ' + attachment.fileType);
+  }
+
+  const matches = attachment.uri.match(YT_MATCH_VID);
+  if (!matches) {
+    throw new Error('Cannot extract video ID from unrecognized YouTube URL pattern:' + attachment.uri);
+  }
+  return matches[1] || matches[2] || matches[3];
+}
 
 @Component({
   selector: 'sbdl-attachment-card',
   templateUrl: './attachment-card.component.html',
   styleUrls: ['./attachment-card.component.scss']
 })
-export class AttachmentCardComponent implements OnInit {
-
-  @Input()
-  attachment: ResourceAttachment;
+export class AttachmentCardComponent {
+  readonly CardType = CardType;
+  readonly FileType = FileType;
 
   @Input()
   attachmentCardType: CardType;
 
   previewMedia = false;
-  embeddableUrl: SafeResourceUrl;
-  fileTypes = FileType;
-  CardType = CardType; // Alias so the template can see it
-  FileType = FileType;
+  fileName: string;
+  previewEnabled: boolean;
+  youtubeVideoId: string;
 
-  constructor(private sanitizer: DomSanitizer,
-              private attachmentsService: AttachmentsService,
-              private previewService: PreviewService) { }
+  private _attachment: ResourceAttachment;
 
-  ngOnInit(): void {
-    if (this.attachment.fileType === FileType.YouTubeLink &&
-        !this.attachment.uri.match(YT_EMBED_URL)) {
-      const m = this.attachment.uri.match(YT_MATCH_VID);
-      if (!m) {
-        // TODO: placeholder and error message if not a YT URL
-      }
-      this.embeddableUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${m[1] || m[2]}`);
-    } else {
-      this.embeddableUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.attachment.uri);
-    }
+  @ViewChild(AblePlayerComponent, { static: false })
+  private ablePlayer: AblePlayerComponent;
+
+  constructor(
+    private sanitizer: DomSanitizer,
+    private attachmentsService: AttachmentsService,
+    private previewService: PreviewService
+  ) {}
+
+  get attachment(): ResourceAttachment {
+    return this._attachment;
   }
 
-  canPreview(fileType: FileType) {
-    switch (fileType) {
-      case FileType.Image:
-      case FileType.Pdf:
-        return true;
-      default: return false;
+  @Input()
+  set attachment(value: ResourceAttachment) {
+    this._attachment = value;
+    this.fileName = `${value.name}.${value.fileExtension}`;
+    this.previewEnabled = value.fileType === FileType.Image || value.fileType === FileType.Pdf;
+
+    if (value.fileType === FileType.YouTubeLink) {
+      this.youtubeVideoId = extractYouTubeVideoId(value);
     }
   }
 
@@ -59,5 +69,15 @@ export class AttachmentCardComponent implements OnInit {
 
   preview(attachment: ResourceAttachment): void {
     this.previewService.preview(attachment);
+  }
+
+  showPlayer(): void {
+    this.ablePlayer.show();
+    this.previewMedia = true;
+  }
+
+  hidePlayer(): void {
+    this.ablePlayer.hide();
+    this.previewMedia = false;
   }
 }
