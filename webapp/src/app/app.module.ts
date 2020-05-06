@@ -4,7 +4,6 @@ import {BrowserModule, Title} from '@angular/platform-browser';
 import {Angulartics2Module} from 'angulartics2';
 import {OKTA_CONFIG, OktaAuthModule} from '@okta/okta-angular';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {getMathJax} from './common/mathjax';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AppConfig} from './common/config/app.config';
@@ -17,7 +16,6 @@ import {ResourceModule} from './resource/resource.module';
 import {SbdlCommonModule} from './common/common.module';
 import {NotesModule} from './notes/notes.module';
 import {OKTA_CALLBACK_PATH} from './common/constants';
-import {MATHJAX_INST} from './common/mathjax';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -67,9 +65,6 @@ export function initializeOkta(appConfig: AppConfig) {
       provide: OKTA_CONFIG,
       useFactory: initializeOkta,
       deps: [ AppConfig, APP_INITIALIZER ]
-    }, {
-      provide: MATHJAX_INST,
-      useFactory: getMathJax
     },
     Title
   ],

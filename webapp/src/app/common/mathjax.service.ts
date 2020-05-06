@@ -40,30 +40,44 @@
  * loaded once and accessed via the global window object. In order to make that
  * play nice with Angular we are:
  *
- * 1. including the script from CDNJS via index.html, and *never* importing in
- *    TypeScript,
+ * 1. including the script from CDNJS via a <script> tag appended to the body
+ *    (via ScriptService), and *never* importing in TypeScript,
  * 2. creating a bare-bones interface in globals.d.ts to enable static type
  *    checking for our use-cases (and satisfying the TypeScript compiler),
- * 3. hiding/wrapping the global variable access behind a factory function, and
- * 4. using that factory function to expose the MathJax instance to the rest of
- *    our app in a standard manner (via Angular dependency injection).
+ * 3. hiding/wrapping the MathJax global object behind a service that wraps
+ *    calls in a way Angular is accustomed to receiving them.
  *
  * This way we should at least be able to write proper tests, mocking out
  * MathJax as needed.
  */
 
-import {InjectionToken} from '@angular/core';
+import {Injectable} from '@angular/core';
+import {concat, Observable, ReplaySubject} from 'rxjs';
+import {mergeMap} from 'rxjs/operators';
+import {ScriptService} from './script.service';
 
-// This is the injection token that will be used to ID the MathJax instance in
-// the Angular DI framework.
-export const MATHJAX_INST = new InjectionToken<MathJax>('MathJax');
+@Injectable({
+  providedIn: 'root'
+})
+export class MathJaxService {
+  private mathjax$ = new ReplaySubject<MathJax>(1);
+  private typesetPromise: Promise<void> = Promise.resolve(null);
 
-// This is the factory function that wraps the global window access and
-// provides the MathJax instance.
-export function getMathJax(): MathJax {
-  if (typeof window !== undefined) {
-    if ((window as any).MathJax !== undefined) {
-      return (window as any).MathJax;
-    }
+  constructor(private scriptService: ScriptService) {
+    concat(
+      this.scriptService.require('https://polyfill.io/v3/polyfill.min.js?features=es6'),
+      this.scriptService.require('https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-svg.js')
+    ).subscribe(_ => {
+      this.mathjax$.next((window as any).MathJax);
+    });
+  }
+
+  public typeset(): Observable<void> {
+    return this.mathjax$.pipe(
+      mergeMap(mj => {
+        this.typesetPromise = this.typesetPromise.then(mj.typesetPromise);
+        return this.typesetPromise;
+      })
+    );
   }
 }

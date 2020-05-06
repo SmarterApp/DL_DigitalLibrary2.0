@@ -9,8 +9,8 @@ import {ResourceComponent} from './resource.component';
 import {StrategyResourceComponent} from './strategy/strategy-resource.component';
 import {combineLatest, Subject} from 'rxjs';
 import {UserService} from '../data/user/user.service';
-import {map, takeUntil, tap} from 'rxjs/operators';
-import {MATHJAX_INST} from '../common/mathjax';
+import {MathJaxService} from '../common/mathjax.service';
+import {map, take, takeUntil, tap} from 'rxjs/operators';
 
 const showPrintingOptionsParameter = 'print';
 const showNotesParameter = 'viewNotes';
@@ -43,7 +43,7 @@ export class ResourceTypeStrategyComponent implements AfterViewInit, OnInit, OnD
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
-    @Inject(MATHJAX_INST) private mathjax: MathJax,
+    private mathjaxService: MathJaxService,
     private userService: UserService,
     private route: ActivatedRoute,
     private router: Router
@@ -99,11 +99,7 @@ export class ResourceTypeStrategyComponent implements AfterViewInit, OnInit, OnD
   }
 
   ngAfterViewInit() {
-    if (this.typesetPromise) {
-      this.typesetPromise = this.typesetPromise.then(this.mathjax.typesetPromise);
-    } else {
-      this.typesetPromise = this.mathjax.typesetPromise();
-    }
+    this.mathjaxService.typeset().pipe(take(1));
   }
 
   ngOnDestroy(): void {
