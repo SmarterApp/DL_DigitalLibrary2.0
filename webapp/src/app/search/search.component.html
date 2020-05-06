@@ -1,15 +1,21 @@
 <h1 *ngIf="showHeadings && newSearch" class="new-search">Search for Resources </h1>
-<sbdl-text-field
-  (submit)="search({query: $event})"
-  [(ngModel)]="filters.query"
-  placeholder="What are you looking for? (e.g., fractions, Grade 3, Connections Playlist)"
-  fontAwesomeIcon="fa-search"
-  submitButtonAriaLabel="search resources"
->
-</sbdl-text-field>
+<div>
+  <sbdl-text-field
+    (submit)="search({query: $event}, true)"
+    [(ngModel)]="filters.query"
+    placeholder="What are you looking for? (e.g., fractions, Grade 3, Connections Playlist)"
+    fontAwesomeIcon="fa-search"
+    submitButtonAriaLabel="search resources"
+  >
+  </sbdl-text-field>
+  
+  <ng-template #loginWarningPopover>
+    <sbdl-login-warning [queryParams]="rectifyParams({query: filters.query})"></sbdl-login-warning>
+  </ng-template>
+</div>
 
 <div class="caption">
-  Start typing a topic, claim, target, or <a href="javascript:void(0)" (click)="showAdvanced = true">filter resources</a>.
+  Start typing a topic, claim, target, or <a href="javascript:void(0)" (click)="onFilterResourcesClick()">filter resources</a>.
 </div>
 
 <h1 *ngIf="!newSearch" class="results-header">
@@ -52,7 +58,7 @@
     <h3>Select a type</h3>
     <sbdl-filter-chipset
       [filters]="filters.resourceTypes"
-      (onChanged)="search({resourceTypes: $event.join(',')})"
+      (onChanged)="search({resourceTypes: $event.join(',')}, false)"
     ></sbdl-filter-chipset>
   </div>
   <div class="filter-container"
@@ -60,7 +66,7 @@
     <h3>Grades</h3>
     <sbdl-filter-chipset
       [filters]="filters.grades"
-      (onChanged)="search({grades: $event.join(',')})"
+      (onChanged)="search({grades: $event.join(',')}, false)"
       ></sbdl-filter-chipset>
   </div>
   <div class="filter-container"
@@ -68,7 +74,7 @@
     <h3>Subjects</h3>
     <sbdl-filter-chipset
       [filters]="filters.subjects"
-      (onChanged)="search({subjects: $event.join(',')})"
+      (onChanged)="search({subjects: $event.join(',')}, false)"
     ></sbdl-filter-chipset>
   </div>
   <div class="filter-container"
@@ -77,7 +83,7 @@
     <sbdl-filter-chipset
       *ngIf="params.subjects && params.grades; else displayClaimsMessage"
       [filters]="filters.claims"
-      (onChanged)="search({claims: $event.join(',')})"
+      (onChanged)="search({claims: $event.join(',')}, false)"
     ></sbdl-filter-chipset>
     <ng-template #displayClaimsMessage>
       <p class="body-2 emphasis-medium fallback-message">
@@ -91,7 +97,7 @@
     <sbdl-filter-chipset
       *ngIf="params.subjects && params.grades && params.claims; else displayTargetMessage"
       [filters]="filters.targets"
-      (onChanged)="search({targets: $event.join(',')})"
+      (onChanged)="search({targets: $event.join(',')}, false)"
     ></sbdl-filter-chipset>
     <ng-template #displayTargetMessage>
       <p class="body-2 emphasis-medium fallback-message">
@@ -105,7 +111,7 @@
     <sbdl-filter-chipset
       *ngIf="params.subjects && params.grades && params.claims; else displayStandardsMessage"
       [filters]="filters.standards"
-      (onChanged)="search({standards: $event.join(',')})"
+      (onChanged)="search({standards: $event.join(',')}, false)"
     ></sbdl-filter-chipset>
     <ng-template #displayStandardsMessage>
       <p class="body-2 emphasis-medium fallback-message">
