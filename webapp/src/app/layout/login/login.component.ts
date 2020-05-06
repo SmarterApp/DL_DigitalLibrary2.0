@@ -4,7 +4,6 @@ import { TenantThemeService } from 'src/app/data/tenant-theme/tenant-theme.servi
 import { map } from 'rxjs/operators';
 import { PreloginSelectionsService } from 'src/app/data/prelogin-selections/prelogin-selections.service';
 import { PreloginSelection } from 'src/app/data/prelogin-selections/model/prelogin-selection.model';
-import { FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { OktaAuthService } from '@okta/okta-angular';
 
@@ -17,11 +16,11 @@ export class LoginComponent implements OnInit {
 
   logo$: Observable<string>;
 
-  preloginSelectionId = null;
+  preloginSelectionId = "";
   preloginSelections: PreloginSelection[];
 
-  preloginValue = null;
   goButtonHidden = true;
+  selectMenuHidden = true;
 
   private selectionsSubscription: Subscription;
 
@@ -49,10 +48,10 @@ export class LoginComponent implements OnInit {
 
   onPreloginSelected() {
     this.goButtonHidden = false;
-    console.log("Currently selected value: " + this.preloginValue.selectionLabel);
   }
 
   onGoButtonClicked() {
-    this.oktaAuthService.loginRedirect(this.router.url, { idp: [this.preloginValue.oktaIdpId] });
+    const sel = this.preloginSelections.find(s => s.preloginSelectionId.toString() === this.preloginSelectionId);
+    this.oktaAuthService.loginRedirect(this.router.url, { idp: [sel.oktaIdpId] });
   }
 }

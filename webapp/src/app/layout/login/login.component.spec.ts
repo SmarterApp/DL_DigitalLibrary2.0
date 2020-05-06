@@ -5,6 +5,12 @@ import { TenantThemeService } from 'src/app/data/tenant-theme/tenant-theme.servi
 import { MockTenantThemeService } from 'src/app/app.module.spec';
 import { PreloginSelectionsService } from 'src/app/data/prelogin-selections/prelogin-selections.service';
 import { of } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+import { ButtonComponent } from 'src/app/common/controls/button/button.component';
+import { Router } from '@angular/router';
+import { OktaAuthService } from '@okta/okta-angular';
+
+const mockAuthService = jasmine.createSpyObj('OktaAuthService', ['loginRedirect']);
 
 const mockPreloginSelectionsService = jasmine.createSpyObj('MockPreloginSelectionsService', ['getAll']);
 mockPreloginSelectionsService.getAll.and.callFake(function() {
@@ -17,11 +23,16 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ 
+        FormsModule
+      ],
       providers: [
         { provide: TenantThemeService, useClass: MockTenantThemeService },
-        { provide: PreloginSelectionsService, useValue: mockPreloginSelectionsService }
+        { provide: PreloginSelectionsService, useValue: mockPreloginSelectionsService },
+        { provide: Router, useValue: jasmine.createSpy('Router') },
+        { provide: OktaAuthService, useValue: mockAuthService },
       ],
-      declarations: [ LoginComponent ]
+      declarations: [ LoginComponent, ButtonComponent ]
     })
     .compileComponents();
   }));
@@ -30,9 +41,6 @@ describe('LoginComponent', () => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-
-
-    // mockPreloginSelectionsService.getAll.and.returnValue(of(new Observable<PreloginSelection[]>()));
   });
 
   it('should create', () => {
