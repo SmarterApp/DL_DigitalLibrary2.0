@@ -68,7 +68,10 @@ export class MathJaxService {
       this.scriptService.require('https://polyfill.io/v3/polyfill.min.js?features=es6'),
       this.scriptService.require('https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-svg.js')
     ).subscribe(_ => {
-      this.mathjax$.next((window as any).MathJax);
+      const mjObj = (window as any).MathJax;
+      if (mjObj) {
+        this.mathjax$.next(mjObj);
+      }
     });
   }
 

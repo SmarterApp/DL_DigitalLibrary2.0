@@ -99,7 +99,7 @@ export class ResourceTypeStrategyComponent implements AfterViewInit, OnInit, OnD
   }
 
   ngAfterViewInit() {
-    this.mathjaxService.typeset().pipe(take(1));
+    this.mathjaxService.typeset().pipe(take(1)).subscribe(() => {});
   }
 
   ngOnDestroy(): void {
