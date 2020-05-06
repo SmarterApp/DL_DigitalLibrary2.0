@@ -1,5 +1,8 @@
 <nav class="outline">
-  <sbdl-categorized-resource-summary [summaries]="bookmarks"></sbdl-categorized-resource-summary>
+  <sbdl-categorized-resource-summary
+    (resourceTypeSelected)="scrollToType($event)"
+    [summaries]="bookmarks"
+  ></sbdl-categorized-resource-summary>
   <!-- TODO: Future enhancement: categorize bookmarked resource by resource
     type. -->
 </nav>
@@ -10,15 +13,27 @@
   <header>
     <h1>My Bookmarks</h1>
   </header>
-  <ul class="bookmarks">
-    <li *ngFor="let bookmark of bookmarks">
-      <sbdl-resource-summary-card [resourceSummary]="bookmark" ></sbdl-resource-summary-card>
-      <sbdl-bookmark-actions
-        [resourceSummary]="bookmark"
-        [hasNotes]="bookmarkHasNotes(bookmark)"
-      ></sbdl-bookmark-actions>
-    </li>
-  </ul>
+  <div
+    *ngFor="let type of resourceTypesInOrder; last as last"
+    class="resources-for-type {{ type | resourceType:{slug: true} }} {{ last && 'last' }}"
+  >
+    <h2 class="leading-icon">
+      <sbdl-resource-type-icon [type]="type"></sbdl-resource-type-icon>{{ type | resourceType:{plural: true} }}
+    </h2>
+    <ul *ngIf="bookmarksByType.has(type)" class="bookmarks">
+      <li *ngFor="let bookmark of bookmarksByType.get(type)">
+        <sbdl-resource-summary-card [resourceSummary]="bookmark" ></sbdl-resource-summary-card>
+        <sbdl-bookmark-actions
+          [resourceSummary]="bookmark"
+          [hasNotes]="bookmarkHasNotes(bookmark)"
+        ></sbdl-bookmark-actions>
+      </li>
+    </ul>
+    <div *ngIf="!bookmarksByType.has(type)">
+      You haven't bookmarked any of these resources yet.
+      <a title="Search Now!" [routerLink]="['/search']"> Search now!</a>
+    </div>
+  </div>
   <div *ngIf="!bookmarks || bookmarks.length === 0" class="no-bookmarks">
     This page shows all of the resources you have bookmarked. It is currently
     empty because you haven't bookmarked any resources yet.
