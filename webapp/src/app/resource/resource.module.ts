@@ -150,5 +150,4 @@ import {OverlayModule} from '@angular/cdk/overlay';
     PreviewComponent
   ]
 })
-export class ResourceModule {
-}
+export class ResourceModule {}

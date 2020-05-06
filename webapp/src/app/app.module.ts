@@ -3,6 +3,7 @@ import {APP_INITIALIZER, ErrorHandler, NgModule} from '@angular/core';
 import {BrowserModule, Title} from '@angular/platform-browser';
 import {Angulartics2Module} from 'angulartics2';
 import {OKTA_CONFIG, OktaAuthModule} from '@okta/okta-angular';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AppConfig} from './common/config/app.config';
@@ -15,7 +16,6 @@ import {ResourceModule} from './resource/resource.module';
 import {SbdlCommonModule} from './common/common.module';
 import {NotesModule} from './notes/notes.module';
 import {OKTA_CALLBACK_PATH} from './common/constants';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
