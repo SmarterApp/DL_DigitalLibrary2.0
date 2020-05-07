@@ -5,6 +5,7 @@ import { Resource } from '../data/resource/model/resource.model';
 import { Note } from '../data/notes/model/note.model';
 import { NotesService } from '../data/notes/notes.service';
 import { ConfirmationDialogService } from '../common/confirmation-dialog/confirmation-dialog.service';
+import { BookmarksService } from '../data/bookmarks/bookmarks.service';
 
 @Component({
   selector: 'sbdl-notes',
@@ -52,6 +53,7 @@ export class NotesComponent {
 
   constructor(
     private notesService: NotesService,
+    private bookmarksService: BookmarksService,
     private confirmationDialogService: ConfirmationDialogService
   ) { }
 
@@ -104,6 +106,8 @@ export class NotesComponent {
         this.saving = false;
       });
     }
+
+    this.bookmarksService.createBookmark(this.resource.id);
   }
 
   cancelNote() {
