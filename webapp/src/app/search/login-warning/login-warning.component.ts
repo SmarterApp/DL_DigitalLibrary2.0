@@ -27,6 +27,7 @@ export class LoginWarningComponent {
   constructor(
     private oktaAuthService: OktaAuthService,
     private router: Router,
+    private route: ActivatedRoute,
     private loginWarningService: LoginWarningService,
     private userService: UserService,
     private storageService: StorageService,
@@ -46,7 +47,7 @@ export class LoginWarningComponent {
   }
 
   login() {
-    const redirectUrl = this.router.createUrlTree([], { queryParams: this.queryParams, relativeTo: <ActivatedRoute><unknown>this.router.url }).toString().replace('?',';');
+    const redirectUrl = this.router.createUrlTree([], { queryParams: this.queryParams, relativeTo: this.route }).toString().replace('?',';');
     this.oktaAuthService.loginRedirect(redirectUrl);
   }
 
