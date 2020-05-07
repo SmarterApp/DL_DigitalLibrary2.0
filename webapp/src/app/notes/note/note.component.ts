@@ -15,6 +15,9 @@ export class NoteComponent {
   @Input()
   note: Note;
 
+  @Output()
+  editClick: EventEmitter<any>;
+
   @ViewChild('deleteButton', { static: false, read: ViewContainerRef })
   shareContainer: ViewContainerRef;
 
@@ -28,9 +31,12 @@ export class NoteComponent {
     }
   ];
 
+  editing: boolean;
   deleting: boolean;
 
-  constructor(private confirmationDialogService: ConfirmationDialogService) { }
+  constructor(private confirmationDialogService: ConfirmationDialogService) {
+    this.editClick = new EventEmitter<any>();
+   }
 
   ngOnInit() {
     this.confirmationDialogService.okClicked.subscribe((deleteParams) => {
@@ -43,5 +49,9 @@ export class NoteComponent {
     this.confirmationDialogService.cancelClicked.subscribe(() => {
       this.shareOverlayOpen = false;
     });
+  }
+
+  editClicked() {
+    this.editClick.emit();
   }
 }

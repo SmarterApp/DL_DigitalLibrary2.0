@@ -4,10 +4,8 @@
     <div class="font-light emphasis-medium last-modified">
       {{ note.lastModified | date: 'LLL. d, yyyy @ h:mmaa' }}
     </div>
-    <!--
-    <a href="#">Edit</a>
-    -->
     <div class="dialog-buttons">
+      <sbdl-button class="plain" (click)="editClicked()" [hidden]="editing">Edit</sbdl-button>
       <sbdl-button 
         cdkOverlayOrigin
         #trigger="cdkOverlayOrigin"
