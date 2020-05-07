@@ -18,13 +18,13 @@
 
   <div class="select-group">
     <div class="select-control-group">
-      <select [(ngModel)]="preloginSelectionId" (change)="onPreloginSelected()">
+      <select class="select" [ngClass]="{'select-placeholder' : preloginSelectionId == ''}" [(ngModel)]="preloginSelectionId" (change)="onPreloginSelected()">
         <option value="" disabled>Select your location</option>
         <option *ngFor="let s of preloginSelections" class="list-item" value="{{s.preloginSelectionId}}">
           {{ s.selectionLabel }}
         </option>
       </select>
-      <i class="far fa-chevron-square-down select-icon"></i>
+      <i class="far fa-chevron-square-down fa-lg select-icon"></i>
     </div>
     <sbdl-button class="primary" (click)="onGoButtonClicked()" [hidden]="goButtonHidden">Go</sbdl-button>
   </div>

@@ -51,37 +51,53 @@
       font-size: $font-size-body;
     }
 
+    select {
+      appearance: none;
+      background: #FFFFFF;
+      background-color: #fff;
+      background-repeat: no-repeat, repeat;
+      border: 4px solid #E0F7FF;
+      border-radius: 4px;
+      box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 8px 10px rgba(0, 0, 0, 0.14);
+      box-sizing: border-box;
+      color: #636974;
+      display: block;
+      font-size: 18px;
+      font-weight: 300;
+      height: 56px;
+      line-height: 1.5em;
+      margin: 0;
+      mix-blend-mode: multiply;
+      padding: .6em 1.4em .5em .8em;
+      position: relative;
+      width: 415px;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      -o-appearance: none;
+    }
+
+    .select::-ms-expand {
+      display: none;
+    }
+
     .select-group {
       display: flex;
       justify-content: space-between;
       margin-bottom: 28px;
     }
 
-    select {
-      background: #FFFFFF;
-      mix-blend-mode: multiply;
-      border: 4px solid #E0F7FF;
-      box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 8px 10px rgba(0, 0, 0, 0.14);
-      border-radius: 4px;
-      width: 415px;
-      height: 56px;
-      position: relative;
-      line-height: 1.5em;
-      font-size: 18px;
-
-      /* remove the original icon */
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      -o-appearance: none;
+    .select-icon {
+      background-color: #fff;
+      color: #636974;
+      float: right;
+      margin-left: -25px;
+      margin-top: -38px;
+      padding-right: 15px;
+      pointer-events: none;
     }
 
-    .select-icon {
-      float: right;
-      margin-top: 20px;
-      margin-left: -25px;
-      pointer-events: none;
-      background-color: #fff;
-      padding-right: 15px;
+    .select-placeholder {
+      font-style: italic;
     }
   }
 }
@@ -109,10 +125,10 @@ a {
 
 ::ng-deep {
   .primary > .mdc-button:not(:disabled) {
-      min-width: 97px;
-      height: 36px;
-      display: block;
-      margin-top: 11px;
-      margin-right: 11px
+    display: block;
+    height: 36px;
+    margin-right: 11px;
+    margin-top: 11px;
+    min-width: 97px;
   }
 }
