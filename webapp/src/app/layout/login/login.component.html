@@ -16,17 +16,25 @@
     </p>
   </div>
 
-  <div class="select-group">
-    <div class="select-control-group">
-      <select [(ngModel)]="preloginSelectionId" (change)="onPreloginSelected()">
-        <option value="" disabled>Select your location</option>
-        <option *ngFor="let s of preloginSelections" class="list-item" value="{{s.preloginSelectionId}}">
-          {{ s.selectionLabel }}
-        </option>
-      </select>
-      <i class="far fa-chevron-square-down select-icon"></i>
+  <div class="selection-area">
+    <div class="select-group">
+      <div class="select-control-group">
+        <select [(ngModel)]="preloginSelectionId" (change)="onPreloginSelected()">
+          <option value="" disabled>Select your location</option>
+          <option *ngFor="let s of preloginSelections" value="{{s.preloginSelectionId}}">
+            {{ s.selectionLabel }}
+          </option>
+        </select>
+        <i class="far fa-chevron-square-down select-icon"></i>
+      </div>
+      <sbdl-button class="primary" (click)="onGoButtonClicked()" [hidden]="goButtonHidden">Go</sbdl-button>
     </div>
-    <sbdl-button class="primary" (click)="onGoButtonClicked()" [hidden]="goButtonHidden">Go</sbdl-button>
+    <div class="info-text-block" *ngIf="infoText">
+      <div class="info-text-background"></div>
+      <div class="loc-msg-area">
+        <p class="loc-msg">{{infoText}}</p>
+      </div>
+    </div>
   </div>
 
   <a href="#">Not in a subscribing location? Learn more about Tools for Teachers access.</a>

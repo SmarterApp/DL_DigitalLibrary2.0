@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   preloginSelectionId = "";
   preloginSelections: PreloginSelection[];
+  infoText = "";
 
   goButtonHidden = true;
   selectMenuHidden = true;
@@ -48,6 +49,7 @@ export class LoginComponent implements OnInit {
 
   onPreloginSelected() {
     this.goButtonHidden = false;
+    this.infoText = this.preloginSelections.find(s => s.preloginSelectionId.toString() === this.preloginSelectionId).infoText;
   }
 
   onGoButtonClicked() {
