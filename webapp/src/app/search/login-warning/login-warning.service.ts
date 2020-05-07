@@ -5,6 +5,7 @@ import { UserService } from 'src/app/data/user/user.service';
 import { PopoverComponent } from 'src/app/common/controls/popover/popover.component';
 import { PopoverService } from 'src/app/common/controls/popover/popover.service';
 import { SessionStateKey } from 'src/app/common/enums/session-state-key.enum';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,7 @@ export class LoginWarningService implements OnDestroy {
     private storageService: StorageService,
     private userService: UserService,
     private popoverService: PopoverService,
+    private router: Router
   ) {
     this.onCloseClick = new EventEmitter<any>();
     this.onWarningClosed = new EventEmitter<any>();
@@ -49,7 +51,8 @@ export class LoginWarningService implements OnDestroy {
 
   shouldDisplay(sessionKey: SessionStateKey): boolean {
     const previouslyDisplayed = this.storageService.getLoginWarningDisplayed(sessionKey);
-    const displayPopover = !this.authenticated && !previouslyDisplayed;
+    const searchCriteriaMet = !this.router.url.includes('resourceTypes=as');
+    const displayPopover = !this.authenticated && searchCriteriaMet && !previouslyDisplayed;
 
     return displayPopover;
   }
