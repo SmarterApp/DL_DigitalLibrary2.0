@@ -26,8 +26,11 @@ export class NotesComponent {
   @ViewChild(AngularEditorComponent, { static: false })
   editor: AngularEditorComponent;
 
-  authoringNote = false;
-  newNoteContent = '';
+  addingNote = false;
+  editingNote = false;
+  editNoteId = 0;
+  noteContent = '';
+  actionText = '';
   saving = false;
 
   editorConfig: AngularEditorConfig = {
@@ -61,8 +64,9 @@ export class NotesComponent {
   }
 
   addNote() {
-    this.newNoteContent = '';
-    this.authoringNote = true;
+    this.actionText = 'Add a Note';
+    this.noteContent = '';
+    this.addingNote = true;
     this.editorConfig.editable = true;
     requestAnimationFrame(() => { this.editor.focus(); });
   }
@@ -71,28 +75,55 @@ export class NotesComponent {
     const newNote: Note = {
       id: null,
       resourceId: this.resource.id,
-      content: this.newNoteContent,
+      content: this.noteContent,
       lastModified: new Date(),
       isDeleted: false
     };
 
     this.editorConfig.editable = false;
     this.saving = true;
-    this.notesService
-      .createNote(this.resource.id, newNote)
-      // TODO: pipe(catchError)
-      .subscribe((retNote: Note) => {
-        this.notesChanged.emit(this.notes.concat([retNote]));
-        this.authoringNote = false;
+
+    if (this.addingNote) {
+      this.notesService
+        .createNote(this.resource.id, newNote)
+        // TODO: pipe(catchError)
+        .subscribe((retNote: Note) => {
+          this.notesChanged.emit(this.notes.concat([retNote]));
+          this.addingNote = false;
+          this.saving = false;
+        });
+    }
+    else if (this.editingNote) {
+      const arrayNote = this.notes.find((n) => n.id === this.editNoteId);
+      arrayNote.content = this.noteContent;
+
+      this.notesService.updateNote(arrayNote).subscribe((retNote: Note) => {
+        arrayNote.lastModified = retNote.lastModified;
+
+        this.notesChanged.emit(this.notes);
+        this.editingNote = false;
+        this.editNoteId = 0;
         this.saving = false;
       });
+    }
 
     this.bookmarksService.createBookmark(this.resource.id);
   }
 
   cancelNote() {
-    this.newNoteContent = '';
-    this.authoringNote = false;
+    this.noteContent = '';
+    this.addingNote = false;
+    this.editingNote = false;
+    this.editNoteId = 0;
+  }
+
+  editNote(note: Note) {
+    this.actionText = 'Edit Note';
+    this.noteContent = note.content;
+    this.editingNote = true;
+    this.editNoteId = note.id;
+    this.editorConfig.editable = true;
+    requestAnimationFrame(() => { this.editor.focus(); });
   }
 
   deleteNote($event) {

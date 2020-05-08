@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input, OnDestroy } from '@angular/core';
 import { OktaAuthService } from '@okta/okta-angular';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LoginWarningService } from './login-warning.service';
 import { SearchQueryParams } from '../search.component';
 import { StorageService } from 'src/app/common/storage.service';
@@ -27,6 +27,7 @@ export class LoginWarningComponent {
   constructor(
     private oktaAuthService: OktaAuthService,
     private router: Router,
+    private route: ActivatedRoute,
     private loginWarningService: LoginWarningService,
     private userService: UserService,
     private storageService: StorageService,
@@ -46,8 +47,8 @@ export class LoginWarningComponent {
   }
 
   login() {
-    this.close();
-    this.router.navigate(['/auth/login']);
+    const redirectUrl = this.router.createUrlTree([], { queryParams: this.queryParams, relativeTo: this.route }).toString().replace('?',';');
+    this.oktaAuthService.loginRedirect(redirectUrl);
   }
 
   shouldDisplay(sessionKey: SessionStateKey): boolean {
