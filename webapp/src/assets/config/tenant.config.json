@@ -71,14 +71,26 @@
       {
         "index": 0,
         "name": "Twitter",
-        "uri": "https://twitter.com/cadepted",
+        "uri": "https://twitter.com/SmarterBalanced",
         "icon": "fab fa-twitter"
       },
       {
         "index": 1,
         "name": "Facebook",
-        "uri": "https://www.facebook.com/CAEducation",
+        "uri": "https://www.facebook.com/smarterbalanced/",
         "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Instagram",
+        "uri": "https://www.instagram.com/smarterbalanced/",
+        "icon": "fab fa-instagram"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "icon": "fab fa-youtube"
       }
 	  ]
   },
@@ -115,7 +127,33 @@
     "logoUris": {
       "full": "/assets/images/t4t-customized-logos/CT.png",
       "footer": "/assets/images/state-logos/CT.png"
-    }
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/SmarterBalanced",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/smarterbalanced/",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Instagram",
+        "uri": "https://www.instagram.com/smarterbalanced/",
+        "icon": "fab fa-instagram"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "icon": "fab fa-youtube"
+      }
+	  ]
   },
   "DE": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
@@ -150,7 +188,33 @@
     "logoUris": {
       "full": "/assets/images/t4t-customized-logos/DE.png",
       "footer": "/assets/images/state-logos/DE.png"
-    }
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/SmarterBalanced",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/smarterbalanced/",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Instagram",
+        "uri": "https://www.instagram.com/smarterbalanced/",
+        "icon": "fab fa-instagram"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "icon": "fab fa-youtube"
+      }
+	  ]
   },
   "HI": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
@@ -185,7 +249,33 @@
     "logoUris": {
       "full": "/assets/images/t4t-customized-logos/HI.png",
       "footer": "/assets/images/state-logos/HI.png"
-    }
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/SmarterBalanced",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/smarterbalanced/",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Instagram",
+        "uri": "https://www.instagram.com/smarterbalanced/",
+        "icon": "fab fa-instagram"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "icon": "fab fa-youtube"
+      }
+	  ]
   },
   "ID": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
@@ -220,7 +310,33 @@
     "logoUris": {
       "full": "/assets/images/t4t-customized-logos/ID.png",
       "footer": "/assets/images/state-logos/ID.png"
-    }
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/SmarterBalanced",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/smarterbalanced/",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Instagram",
+        "uri": "https://www.instagram.com/smarterbalanced/",
+        "icon": "fab fa-instagram"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "icon": "fab fa-youtube"
+      }
+	  ]
   },
   "MI": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
@@ -255,7 +371,33 @@
     "logoUris": {
       "full": "/assets/images/t4t-customized-logos/MI.png",
       "footer": "/assets/images/state-logos/MI.png"
-    }
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/SmarterBalanced",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/smarterbalanced/",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Instagram",
+        "uri": "https://www.instagram.com/smarterbalanced/",
+        "icon": "fab fa-instagram"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "icon": "fab fa-youtube"
+      }
+	  ]
   },
   "MT": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
@@ -263,34 +405,55 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "https://MT.portal.cambiumast.com"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Starting Smarter",
+        "uri": "https://mt.startingsmarter.org/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "Office of Public Instruction",
+        "uri": "http://opi.mt.gov/Leadership/Assessment-Accountability/MontCAS"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "mailto:MThelpdesk@cambiumassessment.com"
       }
     ],
     "logoUris": {
       "full": "/assets/images/t4t-customized-logos/MT.png",
       "footer": "/assets/images/state-logos/MT.png"
-    }
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/SmarterBalanced",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/smarterbalanced/",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Instagram",
+        "uri": "https://www.instagram.com/smarterbalanced/",
+        "icon": "fab fa-instagram"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "icon": "fab fa-youtube"
+      }
+	  ]
   },
   "NV": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
@@ -325,7 +488,33 @@
     "logoUris": {
       "full": "/assets/images/t4t-customized-logos/NV.png",
       "footer": "/assets/images/state-logos/NV.png"
-    }
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/SmarterBalanced",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/smarterbalanced/",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Instagram",
+        "uri": "https://www.instagram.com/smarterbalanced/",
+        "icon": "fab fa-instagram"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "icon": "fab fa-youtube"
+      }
+	  ]
   },
   "OR": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
@@ -360,7 +549,33 @@
     "logoUris": {
       "full": "/assets/images/t4t-customized-logos/OR.png",
       "footer": "/assets/images/state-logos/OR.png"
-    }
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/SmarterBalanced",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/smarterbalanced/",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Instagram",
+        "uri": "https://www.instagram.com/smarterbalanced/",
+        "icon": "fab fa-instagram"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "icon": "fab fa-youtube"
+      }
+	  ]
   },
   "SD": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
@@ -395,7 +610,33 @@
     "logoUris": {
       "full": "/assets/images/t4t-customized-logos/SD.png",
       "footer": "/assets/images/state-logos/SD.png"
-    }
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/SmarterBalanced",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/smarterbalanced/",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Instagram",
+        "uri": "https://www.instagram.com/smarterbalanced/",
+        "icon": "fab fa-instagram"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "icon": "fab fa-youtube"
+      }
+	  ]
   },
   "VI": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
@@ -430,7 +671,33 @@
     "logoUris": {
       "full": "/assets/images/t4t-customized-logos/USVI.png",
       "footer": "/assets/images/state-logos/USVI.png"
-    }
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/SmarterBalanced",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/smarterbalanced/",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Instagram",
+        "uri": "https://www.instagram.com/smarterbalanced/",
+        "icon": "fab fa-instagram"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "icon": "fab fa-youtube"
+      }
+	  ]
   },
   "VT": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
@@ -465,7 +732,33 @@
     "logoUris": {
       "full": "/assets/images/t4t-customized-logos/VT.png",
       "footer": "/assets/images/state-logos/VT.png"
-    }
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/SmarterBalanced",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/smarterbalanced/",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Instagram",
+        "uri": "https://www.instagram.com/smarterbalanced/",
+        "icon": "fab fa-instagram"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "icon": "fab fa-youtube"
+      }
+	  ]
   },
   "WA": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
@@ -473,34 +766,55 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "https://wa.portal.airast.org/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Starting Smarter",
+        "uri": "https://wa.startingsmarter.org/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "Department of Education",
+        "uri": "https://www.k12.wa.us/"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "mailto:wahelpdesk@air.org"
       }
     ],
     "logoUris": {
       "full": "/assets/images/t4t-customized-logos/WA.png",
       "footer": "/assets/images/state-logos/WA.jpg"
-    }
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/waOSPI",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "Facebook",
+        "uri": "https://www.facebook.com/waOSPI",
+        "icon": "fab fa-facebook"
+      },
+      {
+        "index": 2,
+        "name": "Pinterest",
+        "uri": "#",
+        "icon": "fab fa-pinterest"
+      },
+      {
+        "index": 3,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/waOSPI",
+        "icon": "fab fa-youtube"
+      }
+	  ]
   },
   "OT": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
