@@ -32,7 +32,9 @@
         text="How students can demonstrate learning (e.g., Students explain, describe, or write)."
       ><sbdl-icon icon="info"></sbdl-icon></sbdl-tooltip>
     </h3>
-    <div [innerHtml]="resource.getStarted.successCriteria"></div>
+    <dynamic-html
+      [content]="resource.getStarted.successCriteria"
+    ></dynamic-html>
   </div>
 </article>
 <hr/>
