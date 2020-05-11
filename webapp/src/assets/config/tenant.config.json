@@ -406,7 +406,7 @@
       {
         "index": 0,
         "name": "Assessment Portal",
-        "uri": "https://MT.portal.cambiumast.com"
+        "uri": "http://MT.portal.cambiumast.com"
       },
       {
         "index": 1,
@@ -461,28 +461,23 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "http://www.doe.nv.gov/Assessments/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Starting Smarter",
+        "uri": "https://nv.startingsmarter.org/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "Department of Education",
+        "uri": "http://www.doe.nv.gov/"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "mailto:adaminfo@doe.nv.gov"
       }
     ],
     "logoUris": {
