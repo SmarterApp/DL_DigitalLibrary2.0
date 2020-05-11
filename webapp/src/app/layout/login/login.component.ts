@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.selectionsSubscription = this.preloginSelectionsService.getAll().subscribe(sel => {
-      this.preloginSelections = sel;
+      this.preloginSelections = sel.result;
     });
   }
 
