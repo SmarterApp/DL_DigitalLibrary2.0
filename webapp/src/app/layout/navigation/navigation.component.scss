@@ -84,7 +84,7 @@
       font-size: $font-size-body-2;
       font-weight: 300;
       letter-spacing: -0.021em;
-      margin: $spacer $spacer 0 $spacer;
+      margin: $spacer 0.75rem 0 0.75rem;
       padding: $spacer-xs;
       text-align: left;
       height: 32px;
@@ -93,7 +93,7 @@
 
       sbdl-icon, svg {
         font-size: 22px;
-        margin-right: $spacer-sm;
+        margin: 0 $spacer-xs;
         min-width: 22px;
       }
 
