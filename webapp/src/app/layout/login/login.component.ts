@@ -4,8 +4,10 @@ import { TenantThemeService } from 'src/app/data/tenant-theme/tenant-theme.servi
 import { map } from 'rxjs/operators';
 import { PreloginSelectionsService } from 'src/app/data/prelogin-selections/prelogin-selections.service';
 import { PreloginSelection } from 'src/app/data/prelogin-selections/model/prelogin-selection.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { OktaAuthService } from '@okta/okta-angular';
+
+const redirectUrlParameter = 'redirectUrl';
 
 @Component({
   selector: 'sbdl-login',
@@ -22,14 +24,17 @@ export class LoginComponent implements OnInit {
 
   goButtonHidden = true;
   selectMenuHidden = true;
+  queryParams: Params;
 
   private selectionsSubscription: Subscription;
+  private queryParamsSubscription: Subscription;
 
   constructor(
     private tenantThemeService: TenantThemeService,
     private preloginSelectionsService: PreloginSelectionsService,
     private router: Router,
-    private oktaAuthService: OktaAuthService
+    private oktaAuthService: OktaAuthService,
+    private route: ActivatedRoute
   ) {
     this.logo$ = tenantThemeService.currentTenantTheme$.pipe(
       map(theme => theme.logoUris.full));
@@ -39,11 +44,19 @@ export class LoginComponent implements OnInit {
     this.selectionsSubscription = this.preloginSelectionsService.getAll().subscribe(sel => {
       this.preloginSelections = sel;
     });
+
+    this.queryParamsSubscription = this.route.queryParams.subscribe(params => {
+      this.queryParams = params;
+    })
   }
 
   ngOnDestroy() {
     if (this.selectionsSubscription) {
       this.selectionsSubscription.unsubscribe();
+    }
+
+    if (this.queryParamsSubscription) {
+      this.queryParamsSubscription.unsubscribe();
     }
   }
 
@@ -54,6 +67,8 @@ export class LoginComponent implements OnInit {
 
   onGoButtonClicked() {
     const sel = this.preloginSelections.find(s => s.preloginSelectionId.toString() === this.preloginSelectionId);
-    this.oktaAuthService.loginRedirect(this.router.url, { idp: [sel.oktaIdpId] });
+    // this.oktaAuthService.loginRedirect(this.router.url, { idp: [sel.oktaIdpId] });
+    debugger;
+    this.oktaAuthService.loginRedirect(this.queryParams[redirectUrlParameter], { idp: [sel.oktaIdpId] });
   }
 }

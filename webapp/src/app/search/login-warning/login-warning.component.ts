@@ -48,7 +48,7 @@ export class LoginWarningComponent {
 
   login() {
     this.close();
-    this.router.navigate(['/auth/login']);
+    this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: this.router.url }});
   }
 
   shouldDisplay(sessionKey: SessionStateKey): boolean {

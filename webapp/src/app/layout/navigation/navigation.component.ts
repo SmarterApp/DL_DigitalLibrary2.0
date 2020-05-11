@@ -38,7 +38,7 @@ export class NavigationComponent {
   }
 
   login() {
-    this.router.navigate(['/auth/login']);
+    this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: this.router.url }});
   }
 
 }
