@@ -804,12 +804,6 @@
       },
       {
         "index": 2,
-        "name": "Pinterest",
-        "uri": "#",
-        "icon": "fab fa-pinterest"
-      },
-      {
-        "index": 3,
         "name": "YouTube",
         "uri": "https://www.youtube.com/waOSPI",
         "icon": "fab fa-youtube"
