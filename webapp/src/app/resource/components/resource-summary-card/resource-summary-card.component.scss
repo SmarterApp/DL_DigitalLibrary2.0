@@ -16,19 +16,6 @@
     }
   }
 
-  .resource-type {
-    font-family: $font-family-title;
-    font-size: $font-size-body-2;
-    line-height: 18px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba($neutral-900, 0.65);
-
-    sbdl-resource-type-icon {
-      font-size: $font-size-body;
-    }
-  }
-
   .inner-card {
     background-color: $white;
     border-radius: 4px;
@@ -48,7 +35,7 @@
     overflow: hidden;
 
     .resource-summary-card-right {
-      padding: $spacer-sm $spacer;
+      padding: $spacer $spacer;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -68,18 +55,27 @@
     }
 
     .title {
-      color: $action-900;
+      color: $neutral-900;
       font-family: $font-family-title;
       font-size: $font-size-body;
+      font-weight: 500;
+      text-decoration: none;
     }
 
     .details {
-      color: $neutral-900;
+      color: $neutral-500;
       max-height: 4.5em;
       overflow: hidden;
 
       .detail-item {
         white-space: nowrap;
+
+        &.grades, &.subject {
+          .value {
+            color: $neutral-900;
+            font-weight: 600;
+          }
+        }
       }
 
       &.professional-learning {
