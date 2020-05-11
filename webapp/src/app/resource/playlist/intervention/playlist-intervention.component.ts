@@ -23,7 +23,7 @@ export class PlaylistInterventionComponent extends PrintableSectionComponent imp
         canPrint: true,
         component: this,
         elementRef: this.headerElement.nativeElement,
-        fontAwesomeIcon: 'fa-comment-dots', 
+        fontAwesomeIcon: 'fa-comment-dots',
         selectedForPrint: true,
         title: 'Suggestions for Intervention',
         type: DocumentSectionType.PlaylistIntervention

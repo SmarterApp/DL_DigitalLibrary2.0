@@ -12,7 +12,7 @@ import { BookmarksService } from '../data/bookmarks/bookmarks.service';
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.scss']
 })
-export class NotesComponent {
+export class NotesComponent implements OnInit {
 
   @Input()
   notes: Note[];
