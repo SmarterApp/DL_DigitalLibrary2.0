@@ -48,7 +48,8 @@ export class LoginWarningComponent {
 
   login() {
     this.close();
-    this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: this.router.url }});
+    const redirectUrl = this.router.createUrlTree(['/search'], { queryParams: this.queryParams, relativeTo: this.route }).toString().replace('?',';');
+    this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: redirectUrl }});
   }
 
   shouldDisplay(sessionKey: SessionStateKey): boolean {
