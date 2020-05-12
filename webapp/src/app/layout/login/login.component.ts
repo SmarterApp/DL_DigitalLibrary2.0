@@ -4,7 +4,7 @@ import { TenantThemeService } from 'src/app/data/tenant-theme/tenant-theme.servi
 import { map } from 'rxjs/operators';
 import { PreloginSelectionsService } from 'src/app/data/prelogin-selections/prelogin-selections.service';
 import { PreloginSelection } from 'src/app/data/prelogin-selections/model/prelogin-selection.model';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { OktaAuthService } from '@okta/okta-angular';
 
 const redirectUrlParameter = 'redirectUrl';
@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private tenantThemeService: TenantThemeService,
     private preloginSelectionsService: PreloginSelectionsService,
-    private router: Router,
     private oktaAuthService: OktaAuthService,
     private route: ActivatedRoute
   ) {
@@ -42,7 +41,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.selectionsSubscription = this.preloginSelectionsService.getAll().subscribe(sel => {
-      this.preloginSelections = sel;
+      this.preloginSelections = sel.result;
     });
 
     this.queryParamsSubscription = this.route.queryParams.subscribe(params => {
@@ -67,8 +66,6 @@ export class LoginComponent implements OnInit {
 
   onGoButtonClicked() {
     const sel = this.preloginSelections.find(s => s.preloginSelectionId.toString() === this.preloginSelectionId);
-    // this.oktaAuthService.loginRedirect(this.router.url, { idp: [sel.oktaIdpId] });
-    debugger;
     this.oktaAuthService.loginRedirect(this.queryParams[redirectUrlParameter], { idp: [sel.oktaIdpId] });
   }
 }
