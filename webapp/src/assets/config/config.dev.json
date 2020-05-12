@@ -9,6 +9,7 @@
   },
   "tenantConfigPath": "/assets/config/tenant.config.json",
   "apiServerHost": "https://api-dev.dl.smarterbalanced.org",
+  "interimItemPortalUrl": "https://interim-stage.smarterbalanced.org/BrowseItems",
   "enableAnalytics": false,
   "okta": {
     "clientId": "0oamt7hm566G44ZVm0h7",
