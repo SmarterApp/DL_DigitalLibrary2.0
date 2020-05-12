@@ -16,6 +16,7 @@ import {ResourceModule} from './resource/resource.module';
 import {SbdlCommonModule} from './common/common.module';
 import {NotesModule} from './notes/notes.module';
 import {OKTA_CALLBACK_PATH} from './common/constants';
+import { FormsModule} from '@angular/forms';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -46,7 +47,8 @@ export function initializeOkta(appConfig: AppConfig) {
     HomeModule,
     ResourceModule,
     NotesModule,
-    SbdlCommonModule
+    SbdlCommonModule,
+    FormsModule
   ],
   providers: [
     {

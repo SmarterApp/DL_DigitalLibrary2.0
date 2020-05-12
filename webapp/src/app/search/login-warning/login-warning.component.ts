@@ -47,8 +47,8 @@ export class LoginWarningComponent {
   }
 
   login() {
-    const redirectUrl = this.router.createUrlTree([], { queryParams: this.queryParams, relativeTo: this.route }).toString().replace('?',';');
-    this.oktaAuthService.loginRedirect(redirectUrl);
+    this.close();
+    this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: this.router.url }});
   }
 
   shouldDisplay(sessionKey: SessionStateKey): boolean {

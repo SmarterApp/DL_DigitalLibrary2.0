@@ -15,6 +15,8 @@ import {DynamicHTMLRenderer} from './controls/dynamic/dynamic-html-render';
 import {DynamicHTMLOptions} from './controls/dynamic/options';
 import {TextFieldComponent} from './controls/text-field/text-field.component';
 import {FilterChipsetComponent} from './controls/filter-chipset/filter-chipset.component';
+import {FormsModule} from '@angular/forms';
+import {LoginComponent} from '../layout/login/login.component';
 import {ConfirmationDialogComponent} from './confirmation-dialog/confirmation-dialog.component';
 import {CategorizedResourceSummaryComponent} from './categorized-resource-summary/categorized-resource-summary.component';
 import {ResourceTypeIconComponent} from './resource-type-icon/resource-type-icon.component';
@@ -32,8 +34,10 @@ const dynamicOptions = {
   imports: [
     A11yModule,
     CommonModule,
-    PipesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    A11yModule,
+    FormsModule,
+    PipesModule
   ],
   declarations: [
     ButtonComponent,
@@ -47,6 +51,7 @@ const dynamicOptions = {
     TextFieldComponent,
     FilterChipsetComponent,
     ConfirmationDialogComponent,
+    LoginComponent,
     CategorizedResourceSummaryComponent,
     ResourceTypeIconComponent
   ],

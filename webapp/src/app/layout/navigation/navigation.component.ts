@@ -44,7 +44,7 @@ export class NavigationComponent implements OnInit {
   }
 
   login() {
-    this.oktaAuthService.loginRedirect(this.router.url);
+    this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: this.router.url }});
   }
 
 }
