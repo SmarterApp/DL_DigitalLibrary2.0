@@ -1,9 +1,9 @@
-<dynamic-html
+<div
     class="text-container"
     #textContainer
     [ngClass]="{'collapsed': collapsed }"
-    [content]="text">
-</dynamic-html>
+    [innerHtml]="text">
+</div>
 <a *ngIf="collapsible"
    class="more-less"
    href="javascript:void(0)"
