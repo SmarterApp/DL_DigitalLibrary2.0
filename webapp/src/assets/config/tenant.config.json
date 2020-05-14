@@ -578,28 +578,23 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "https://sd.portal.airast.org/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Department of Education- Assessment Office",
+        "uri": "https://doe.sd.gov/Assessment/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "emailto:sdhelpdesk@cambiumassessment.com"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "SD DOE Assessment Staff Email",
+        "uri": "emailto:DOEAssessment@state.sd.us"
       }
     ],
     "logoUris": {
@@ -610,13 +605,13 @@
       {
         "index": 0,
         "name": "Twitter",
-        "uri": "https://twitter.com/SmarterBalanced",
+        "uri": "https://twitter.com/sddoe",
         "icon": "fab fa-twitter"
       },
       {
         "index": 1,
         "name": "Facebook",
-        "uri": "https://www.facebook.com/smarterbalanced/",
+        "uri": "https://www.facebook.com/sddoe/",
         "icon": "fab fa-facebook"
       },
       {
@@ -628,7 +623,7 @@
       {
         "index": 3,
         "name": "YouTube",
-        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "uri": "https://www.youtube.com/user/SouthDakotaDOE",
         "icon": "fab fa-youtube"
       }
 	  ]
