@@ -39,28 +39,28 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "California Assessment of Student Performance and Progess (CAASPP)",
+        "uri": "http://www.caaspp.org/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "California Educator Reporting System (CERS )",
+        "uri": "https://reporting.smarterbalanced.org/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "California Department of Education (CDE) Home Page",
+        "uri": "https://www.cde.ca.gov/"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
+        "name": "CDE Interim Assessments Information Web Page",
+        "uri": "https://www.cde.ca.gov/ta/tg/sa/sbacinterimassess.asp"
       },
       {
         "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support",
+        "uri": "mailto:caloutreach@ets.org"
       }
     ],
     "logoUris": {
@@ -71,25 +71,25 @@
       {
         "index": 0,
         "name": "Twitter",
-        "uri": "https://twitter.com/SmarterBalanced",
+        "uri": "https://twitter.com/cadepted",
         "icon": "fab fa-twitter"
       },
       {
         "index": 1,
         "name": "Facebook",
-        "uri": "https://www.facebook.com/smarterbalanced/",
+        "uri": "https://www.facebook.com/CAEducation",
         "icon": "fab fa-facebook"
       },
       {
         "index": 2,
         "name": "Instagram",
-        "uri": "https://www.instagram.com/smarterbalanced/",
+        "uri": "https://www.instagram.com/cadepted/?hl=en",
         "icon": "fab fa-instagram"
       },
       {
         "index": 3,
         "name": "YouTube",
-        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "uri": "https://www.youtube.com/user/caeducation",
         "icon": "fab fa-youtube"
       }
 	  ]
