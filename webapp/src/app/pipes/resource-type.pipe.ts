@@ -10,7 +10,7 @@ export class ResourceTypePipe implements PipeTransform {
     [ ResourceType.ProfessionalLearning, 'Professional Learning Resource' ],
     [ ResourceType.FormativeStrategy, 'Formative Strategy' ],
     [ ResourceType.AccessibilityStrategy, 'Accessibility Strategy' ],
-    [ ResourceType.ConnectionsPlaylist, 'Connections Playlist' ]
+    [ ResourceType.ConnectionsPlaylist, 'Interim Connections Playlist' ]
   ]);
 
   readonly pluralNames: Map<ResourceType, string> = new Map([
@@ -18,7 +18,7 @@ export class ResourceTypePipe implements PipeTransform {
     [ ResourceType.ProfessionalLearning, 'Professional Learning' ],
     [ ResourceType.FormativeStrategy, 'Formative Strategies' ],
     [ ResourceType.AccessibilityStrategy, 'Accessibility Strategies' ],
-    [ ResourceType.ConnectionsPlaylist, 'Connections Playlists' ]
+    [ ResourceType.ConnectionsPlaylist, 'Interim Connections Playlists' ]
   ]);
 
   readonly slugs: Map<ResourceType, string> = new Map([
