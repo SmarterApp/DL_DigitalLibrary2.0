@@ -8,7 +8,7 @@
     "level": 0
   },
   "tenantConfigPath": "/assets/config/tenant.config.json",
-  "apiServerHost": "https://api-dev.dl.smarterbalanced.org",
+  "apiServerHost": "http://localhost:8080",
   "interimItemPortalUrl": "https://interim-stage.smarterbalanced.org/BrowseItems",
   "enableAnalytics": true,
   "okta": {
