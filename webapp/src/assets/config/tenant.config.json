@@ -222,28 +222,23 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "https://smarterbalanced.alohahsap.org/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Starting Smarter",
+        "uri": "https://hi.startingsmarter.org/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "Department of Education",
+        "uri": "http://www.hawaiipublicschools.org/Pages/Home.aspx"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "emailto:hsaphelpdesk@air.org"
       }
     ],
     "logoUris": {
@@ -283,28 +278,23 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "https://idaho.portal.airast.org/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Starting Smarter",
+        "uri": "https://id.startingsmarter.org/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "Department of Education",
+        "uri": "https://www.sde.idaho.gov/assessment/index.html"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "emailto:IDHelpDesk@air.org"
       }
     ],
     "logoUris": {
@@ -315,25 +305,25 @@
       {
         "index": 0,
         "name": "Twitter",
-        "uri": "https://twitter.com/SmarterBalanced",
+        "uri": "https://twitter.com/IdahoSDE",
         "icon": "fab fa-twitter"
       },
       {
         "index": 1,
         "name": "Facebook",
-        "uri": "https://www.facebook.com/smarterbalanced/",
+        "uri": "https://www.facebook.com/IDSDE/",
         "icon": "fab fa-facebook"
       },
       {
         "index": 2,
         "name": "Instagram",
-        "uri": "https://www.instagram.com/smarterbalanced/",
+        "uri": "https://www.instagram.com/idaho.sde/",
         "icon": "fab fa-instagram"
       },
       {
         "index": 3,
         "name": "YouTube",
-        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "uri": "https://www.youtube.com/user/SDEIdaho",
         "icon": "fab fa-youtube"
       }
 	  ]
