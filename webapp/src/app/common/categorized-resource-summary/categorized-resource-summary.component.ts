@@ -22,8 +22,8 @@ export class CategorizedResourceSummaryComponent implements OnInit {
   resourceTypesInOrder = [
     ResourceType.ConnectionsPlaylist,
     ResourceType.Instructional,
-    ResourceType.AccessibilityStrategy,
     ResourceType.FormativeStrategy,
+    ResourceType.AccessibilityStrategy,
     ResourceType.ProfessionalLearning
   ];
 
