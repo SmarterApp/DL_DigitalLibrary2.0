@@ -39,28 +39,28 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "California Assessment of Student Performance and Progess (CAASPP)",
+        "uri": "http://www.caaspp.org/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "California Educator Reporting System (CERS )",
+        "uri": "https://reporting.smarterbalanced.org/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "California Department of Education (CDE) Home Page",
+        "uri": "https://www.cde.ca.gov/"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
+        "name": "CDE Interim Assessments Information Web Page",
+        "uri": "https://www.cde.ca.gov/ta/tg/sa/sbacinterimassess.asp"
       },
       {
         "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support",
+        "uri": "mailto:caloutreach@ets.org"
       }
     ],
     "logoUris": {
@@ -71,25 +71,25 @@
       {
         "index": 0,
         "name": "Twitter",
-        "uri": "https://twitter.com/SmarterBalanced",
+        "uri": "https://twitter.com/cadepted",
         "icon": "fab fa-twitter"
       },
       {
         "index": 1,
         "name": "Facebook",
-        "uri": "https://www.facebook.com/smarterbalanced/",
+        "uri": "https://www.facebook.com/CAEducation",
         "icon": "fab fa-facebook"
       },
       {
         "index": 2,
         "name": "Instagram",
-        "uri": "https://www.instagram.com/smarterbalanced/",
+        "uri": "https://www.instagram.com/cadepted/?hl=en",
         "icon": "fab fa-instagram"
       },
       {
         "index": 3,
         "name": "YouTube",
-        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "uri": "https://www.youtube.com/user/caeducation",
         "icon": "fab fa-youtube"
       }
 	  ]
@@ -161,28 +161,23 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "DeSSA Portal",
+        "uri": "https://de.portal.airast.org/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Starting Smarter",
+        "uri": "https://de.startingsmarter.org/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "Department of Education",
+        "uri": "https://www.doe.k12.de.us/"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "DeSSA Help Desk Support Email",
+        "uri": "mailto:DeSSAHelpDesk@air.org"
       }
     ],
     "logoUris": {
@@ -199,7 +194,7 @@
       {
         "index": 1,
         "name": "Facebook",
-        "uri": "https://www.facebook.com/smarterbalanced/",
+        "uri": "https://www.facebook.com/groups/206987743941913/",
         "icon": "fab fa-facebook"
       },
       {
@@ -222,28 +217,23 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "https://smarterbalanced.alohahsap.org/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Starting Smarter",
+        "uri": "https://hi.startingsmarter.org/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "Department of Education",
+        "uri": "http://www.hawaiipublicschools.org/Pages/Home.aspx"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "mailto:hsaphelpdesk@air.org"
       }
     ],
     "logoUris": {
@@ -283,28 +273,23 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "https://idaho.portal.airast.org/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Starting Smarter",
+        "uri": "https://id.startingsmarter.org/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "Department of Education",
+        "uri": "https://www.sde.idaho.gov/assessment/index.html"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "mailto:IDHelpDesk@air.org"
       }
     ],
     "logoUris": {
@@ -315,25 +300,25 @@
       {
         "index": 0,
         "name": "Twitter",
-        "uri": "https://twitter.com/SmarterBalanced",
+        "uri": "https://twitter.com/IdahoSDE",
         "icon": "fab fa-twitter"
       },
       {
         "index": 1,
         "name": "Facebook",
-        "uri": "https://www.facebook.com/smarterbalanced/",
+        "uri": "https://www.facebook.com/IDSDE/",
         "icon": "fab fa-facebook"
       },
       {
         "index": 2,
         "name": "Instagram",
-        "uri": "https://www.instagram.com/smarterbalanced/",
+        "uri": "https://www.instagram.com/idaho.sde/",
         "icon": "fab fa-instagram"
       },
       {
         "index": 3,
         "name": "YouTube",
-        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "uri": "https://www.youtube.com/user/SDEIdaho",
         "icon": "fab fa-youtube"
       }
 	  ]
@@ -578,28 +563,23 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "https://sd.portal.airast.org/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Department of Education- Assessment Office",
+        "uri": "https://doe.sd.gov/Assessment/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "mailto:sdhelpdesk@cambiumassessment.com"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "SD DOE Assessment Staff Email",
+        "uri": "mailto:DOEAssessment@state.sd.us"
       }
     ],
     "logoUris": {
@@ -610,13 +590,13 @@
       {
         "index": 0,
         "name": "Twitter",
-        "uri": "https://twitter.com/SmarterBalanced",
+        "uri": "https://twitter.com/sddoe",
         "icon": "fab fa-twitter"
       },
       {
         "index": 1,
         "name": "Facebook",
-        "uri": "https://www.facebook.com/smarterbalanced/",
+        "uri": "https://www.facebook.com/sddoe/",
         "icon": "fab fa-facebook"
       },
       {
@@ -628,7 +608,7 @@
       {
         "index": 3,
         "name": "YouTube",
-        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "uri": "https://www.youtube.com/user/SouthDakotaDOE",
         "icon": "fab fa-youtube"
       }
 	  ]
@@ -700,28 +680,18 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "https://vt.portal.cambiumast.com/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Department of Education",
+        "uri": "https://education.vermont.gov/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
-      },
-      {
-        "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "mailto:vthelpdesk@cambiumassessment.com"
       }
     ],
     "logoUris": {
