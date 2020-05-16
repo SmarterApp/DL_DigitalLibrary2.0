@@ -161,28 +161,23 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "DeSSA Portal",
+        "uri": "https://de.portal.airast.org/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Starting Smarter",
+        "uri": "https://de.startingsmarter.org/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "Department of Education",
+        "uri": "https://www.doe.k12.de.us/"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "DeSSA Help Desk Support Email",
+        "uri": "mailto:DeSSAHelpDesk@air.org"
       }
     ],
     "logoUris": {
@@ -199,7 +194,7 @@
       {
         "index": 1,
         "name": "Facebook",
-        "uri": "https://www.facebook.com/smarterbalanced/",
+        "uri": "https://www.facebook.com/groups/206987743941913/",
         "icon": "fab fa-facebook"
       },
       {
@@ -238,7 +233,7 @@
       {
         "index": 3,
         "name": "Help Desk Support Email",
-        "uri": "emailto:hsaphelpdesk@air.org"
+        "uri": "mailto:hsaphelpdesk@air.org"
       }
     ],
     "logoUris": {
@@ -294,7 +289,7 @@
       {
         "index": 3,
         "name": "Help Desk Support Email",
-        "uri": "emailto:IDHelpDesk@air.org"
+        "uri": "mailto:IDHelpDesk@air.org"
       }
     ],
     "logoUris": {
@@ -579,12 +574,12 @@
       {
         "index": 2,
         "name": "Help Desk Support Email",
-        "uri": "emailto:sdhelpdesk@cambiumassessment.com"
+        "uri": "mailto:sdhelpdesk@cambiumassessment.com"
       },
       {
         "index": 3,
         "name": "SD DOE Assessment Staff Email",
-        "uri": "emailto:DOEAssessment@state.sd.us"
+        "uri": "mailto:DOEAssessment@state.sd.us"
       }
     ],
     "logoUris": {
@@ -685,28 +680,18 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "https://vt.portal.cambiumast.com/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Department of Education",
+        "uri": "https://education.vermont.gov/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
-      },
-      {
-        "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "mailto:vthelpdesk@cambiumassessment.com"
       }
     ],
     "logoUris": {
