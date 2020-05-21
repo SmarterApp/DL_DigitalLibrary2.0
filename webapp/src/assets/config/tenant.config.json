@@ -100,28 +100,18 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "https://ct.portal.airast.org/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Department of Education",
+        "uri": "https://portal.ct.gov/SDE"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
-      },
-      {
-        "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "mailto:cthelpdesk@air.org"
       }
     ],
     "logoUris": {
@@ -589,28 +579,23 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "https://vide.portal.airast.org/"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Starting Smarter",
+        "uri": "https://usvi.startingsmarter.org/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "Department of Education",
+        "uri": "https://www.vide.vi/"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "mailto:vihelpdesk@air.org"
       }
     ],
     "logoUris": {
