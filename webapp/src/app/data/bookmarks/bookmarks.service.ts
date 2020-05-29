@@ -39,6 +39,7 @@ export class BookmarksService {
       .post(`/api/bookmark/resource/${resourceId}`, null)
       .pipe(map(this.bookmarkFromJson))
       .subscribe(this.addBookmark);
+    this.userService.user.subscribe(this.refreshBookmarks);
   }
 
   deleteBookmark(b: Bookmark): void {
