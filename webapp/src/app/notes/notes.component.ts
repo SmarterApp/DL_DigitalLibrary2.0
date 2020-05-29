@@ -92,6 +92,7 @@ export class NotesComponent {
           this.addingNote = false;
           this.saving = false;
         });
+      this.bookmarksService.createBookmark(this.resource.id);
     }
     else if (this.editingNote) {
       const arrayNote = this.notes.find((n) => n.id === this.editNoteId);
@@ -106,8 +107,6 @@ export class NotesComponent {
         this.saving = false;
       });
     }
-
-    this.bookmarksService.createBookmark(this.resource.id);
   }
 
   cancelNote() {
