@@ -101,7 +101,7 @@
       {
         "index": 0,
         "name": "Assessment Portal",
-        "uri": "https://ct.portal.airast.org/"
+        "uri": "https://ct.portal.cambiumast.com"
       },
       {
         "index": 1,
@@ -152,7 +152,7 @@
       {
         "index": 0,
         "name": "DeSSA Portal",
-        "uri": "https://de.portal.airast.org/"
+        "uri": "https://de.portal.cambiumast.com"
       },
       {
         "index": 1,
@@ -264,7 +264,7 @@
       {
         "index": 0,
         "name": "Assessment Portal",
-        "uri": "https://idaho.portal.airast.org/"
+        "uri": "https://idaho.portal.cambiumast.com"
       },
       {
         "index": 1,
@@ -366,7 +366,7 @@
       {
         "index": 0,
         "name": "Assessment Portal",
-        "uri": "http://MT.portal.cambiumast.com"
+        "uri": "https://MT.portal.cambiumast.com"
       },
       {
         "index": 1,
@@ -524,7 +524,7 @@
       {
         "index": 0,
         "name": "Assessment Portal",
-        "uri": "https://sd.portal.airast.org/"
+        "uri": "https://sd.portal.cambiumast.com"
       },
       {
         "index": 1,
@@ -580,7 +580,7 @@
       {
         "index": 0,
         "name": "Assessment Portal",
-        "uri": "https://vide.portal.airast.org/"
+        "uri": "https://vide.portal.cambiumast.com"
       },
       {
         "index": 1,
@@ -636,7 +636,7 @@
       {
         "index": 0,
         "name": "Assessment Portal",
-        "uri": "https://vt.portal.cambiumast.com/"
+        "uri": "https://vt.portal.cambiumast.com"
       },
       {
         "index": 1,
@@ -697,7 +697,7 @@
       {
         "index": 0,
         "name": "Assessment Portal",
-        "uri": "https://wa.portal.airast.org/"
+        "uri": "https://wa.portal.cambiumast.com"
       },
       {
         "index": 1,
