@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, Type, ViewChild } from '@angular/core';
 import { AngularEditorComponent, AngularEditorConfig } from '@kolkov/angular-editor';
 import { catchError } from 'rxjs/operators';
+import {Subscription} from 'rxjs';
 import { Resource } from '../data/resource/model/resource.model';
 import { Note } from '../data/notes/model/note.model';
 import { NotesService } from '../data/notes/notes.service';
@@ -26,6 +27,7 @@ export class NotesComponent {
   @ViewChild(AngularEditorComponent, { static: false })
   editor: AngularEditorComponent;
 
+  isDeleted = false;
   addingNote = false;
   editingNote = false;
   editNoteId = 0;
@@ -51,6 +53,8 @@ export class NotesComponent {
     ]
   };
 
+  private deleteNoteSubscription: Subscription;
+  
   constructor(
     private notesService: NotesService,
     private bookmarksService: BookmarksService,
@@ -58,9 +62,16 @@ export class NotesComponent {
   ) { }
 
   ngOnInit() {
-    this.confirmationDialogService.okClicked.subscribe((id) => {
+    this.deleteNoteSubscription = this.confirmationDialogService.okClicked.subscribe((id) => {
       this.deleteNote(id);
     });
+  }
+
+  ngOnDestroy(){
+    if(this.deleteNoteSubscription){
+      this.deleteNoteSubscription.unsubscribe();
+      this.deleteNoteSubscription = undefined;
+    }
   }
 
   addNote() {
