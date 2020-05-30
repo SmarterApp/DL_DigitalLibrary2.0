@@ -6,6 +6,7 @@ import { Resource } from '../data/resource/model/resource.model';
 import { Note } from '../data/notes/model/note.model';
 import { NotesService } from '../data/notes/notes.service';
 import { ConfirmationDialogService } from '../common/confirmation-dialog/confirmation-dialog.service';
+import {Bookmark} from 'src/app/data/bookmarks/bookmark.model';
 import { BookmarksService } from '../data/bookmarks/bookmarks.service';
 
 @Component({
@@ -34,6 +35,7 @@ export class NotesComponent {
   noteContent = '';
   actionText = '';
   saving = false;
+  bookmark: Bookmark;
 
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -54,6 +56,7 @@ export class NotesComponent {
   };
 
   private deleteNoteSubscription: Subscription;
+  private bookmarksSubscription: Subscription;
   
   constructor(
     private notesService: NotesService,
@@ -103,7 +106,6 @@ export class NotesComponent {
           this.addingNote = false;
           this.saving = false;
         });
-      this.bookmarksService.createBookmark(this.resource.id);
     }
     else if (this.editingNote) {
       const arrayNote = this.notes.find((n) => n.id === this.editNoteId);
@@ -117,6 +119,12 @@ export class NotesComponent {
         this.editNoteId = 0;
         this.saving = false;
       });
+    }
+    this.bookmarksSubscription = this.bookmarksService.userBookmarksByResourceId.subscribe(bkmkMap => {
+      this.bookmark = bkmkMap.get(this.resource.id);
+    });
+    if(!this.bookmark){    
+      this.bookmarksService.createBookmark(this.resource.id);
     }
   }
 
