@@ -321,16 +321,10 @@
         "index": 0,
         "name": "Starting Smarter",
         "uri": "https://mi.startingsmarter.org/"
-      },
-      {
-        "index": 1,
-        "name": "Department of Education",
-        "uri": "https://www.michigan.gov/mde/"
       }
     ],
     "logoUris": {
-      "full": "/assets/images/t4t-customized-logos/MI.png",
-      "footer": "/assets/images/state-logos/MI.png"
+      "full": "/assets/images/t4t-customized-logos/MI.png"
     },
     "footerSocialLinks": [
       {
@@ -479,16 +473,10 @@
         "index": 0,
         "name": "Starting Smarter",
         "uri": "https://or.startingsmarter.org/"
-      },
-      {
-        "index": 1,
-        "name": "Department of Education",
-        "uri": "https://www.oregon.gov/ode/pages/default.aspx"
       }
     ],
     "logoUris": {
-      "full": "/assets/images/t4t-customized-logos/OR.png",
-      "footer": "/assets/images/state-logos/OR.png"
+      "full": "/assets/images/t4t-customized-logos/OR.png"
     },
     "footerSocialLinks": [
       {
