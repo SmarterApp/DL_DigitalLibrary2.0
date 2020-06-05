@@ -3,6 +3,7 @@
     type="image/svg+xml"
     [data]="url | replaceNullImage | trustUrl"
     aria-hidden="true"
+    tabindex="-1"
   ></object>
 </ng-container>
 <ng-template #notSvg>

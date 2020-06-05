@@ -1,10 +1,46 @@
-<dynamic-html [content]="note.content"></dynamic-html>
-<div class="body-2">
-  <div class="font-light emphasis-medium last-modified">
-    {{ note.lastModified | date: 'LLL. d, yyyy @ h:mmaa' }}
+<div *ngIf="!note.isDeleted" [ngClass]="{deleting: deleting}">
+  <dynamic-html [content]="note.content"></dynamic-html>
+  <div class="body-2 footer-row">
+    <div class="font-light emphasis-medium last-modified">
+      {{ note.lastModified | date: 'LLL. d, yyyy @ h:mmaa' }}
+    </div>
+    <div class="dialog-buttons">
+      <sbdl-button class="plain" (click)="editClicked()" [hidden]="editing">Edit</sbdl-button>
+      <sbdl-button 
+        cdkOverlayOrigin
+        #trigger="cdkOverlayOrigin"
+        class="plain"
+        (click)="shareOverlayOpen = !shareOverlayOpen"
+        [hidden]="deleting"
+      >Delete</sbdl-button>
+    </div>
   </div>
-  <!--
-  <a href="#">Edit</a>
-  <a href="#">Delete</a>
-  -->
+
+  <ng-template
+    cdkConnectedOverlay
+    cdkConnectedOverlayPanelClass="windowed"
+    cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+    [cdkConnectedOverlayHasBackdrop]="true"
+    [cdkConnectedOverlayOpen]="shareOverlayOpen"
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayPositions]="shareOverlayPositions"
+    [cdkConnectedOverlayPush]="true"
+    (backdropClick)="shareOverlayOpen = false"
+  >
+    <sbdl-confirmation-dialog
+      cdkTrapFocus
+      cdkTrapFocusAutoCapture
+      [message]="'Are you sure?'"
+      [btnOkText]="'Delete'"
+      [btnCancelText]="'Cancel'"
+      [id]="note.id"
+    ></sbdl-confirmation-dialog>
+  </ng-template>
+
+  <ng-container #deleteButton></ng-container>
+
+  <div *ngIf="deleting" class="action-msg">
+    <i class="fas fa-spinner fa-pulse" aria-hidden="true"></i>&nbsp;Deleting note...
+  </div>
+  <hr>
 </div>

@@ -17,6 +17,7 @@ import { ErrorComponent } from './layout/error/error.component';
 import { LoginCallbackComponent } from './layout/login-callback/login-callback.component';
 import { LogoutComponent } from './layout/logout/logout.component';
 import { ERROR_PATH, OKTA_CALLBACK_PATH } from './common/constants';
+import { LoginComponent } from './layout/login/login.component';
 
 const routes: Routes = [
   {
@@ -51,7 +52,7 @@ const routes: Routes = [
         resolve: { results: SearchResultsResolve }
       }, {
         path: 'auth/login',
-        component: OktaLoginRedirectComponent
+        component: LoginComponent
       }, {
         path: 'auth/logout',
         component: LogoutComponent

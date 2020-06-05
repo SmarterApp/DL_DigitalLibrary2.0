@@ -3,6 +3,11 @@ import {ResourceType} from '../../../data/resource/model/resource-type.enum';
 import {ResourceSummary} from '../../../data/resource/model/summary.model';
 import {JoinPipe} from '../../../pipes/join.pipe';
 
+interface Detail {
+  value: string;
+  type: 'grades' | 'subject' | 'claims' | 'targets' | 'standards';
+}
+
 @Component({
   selector: 'sbdl-resource-summary-card',
   templateUrl: './resource-summary-card.component.html',
@@ -15,58 +20,83 @@ export class ResourceSummaryCardComponent implements OnInit {
   @Input()
   resourceSummary: ResourceSummary;
 
-  details: string[];
+  details: Detail[];
   joinPipe: JoinPipe = new JoinPipe();
 
   ngOnInit() {
     this.setDetails();
   }
 
-  setDetails(): string[] {
+  setDetails(): Detail[] {
     if (!this.resourceSummary) { return; }
 
-    const result: string[] = [];
+    const result: Detail[] = [];
 
     if (this.resourceSummary.properties.grades.length === 1)  {
-      result.push('Grade ' + this.resourceSummary.properties.grades[0].shortName);
+      result.push({
+        value: 'Grade ' + this.resourceSummary.properties.grades[0].shortName,
+        type: 'grades'
+      });
     } else if (this.resourceSummary.properties.grades.length > 1) {
-      result.push(
-        'Grades ' +
-        this.joinPipe.transform(
-          this.resourceSummary.properties.grades.map(g => g.shortName),
-          { conjunction: 'and' }));
+      result.push({
+        value: 'Grades ' +
+          this.joinPipe.transform(
+            this.resourceSummary.properties.grades.map(g => g.shortName),
+            { conjunction: 'and' }),
+        type: 'grades'
+      });
     }
 
     if (this.resourceSummary.properties.subject && this.resourceSummary.properties.subject.code) {
-      result.push(this.resourceSummary.properties.subject.shortName);
+      result.push({
+        value: this.resourceSummary.properties.subject.shortName,
+        type: 'subject'
+      });
     }
 
     if (this.resourceSummary.properties.claims.length === 1) {
-      result.push('Claim ' + this.resourceSummary.properties.claims[0].number);
+      result.push({
+        value: 'Claim ' + this.resourceSummary.properties.claims[0].number,
+        type: 'claims'
+      });
     } else if (this.resourceSummary.properties.claims.length > 1) {
-      result.push('Claims ' +
-        this.joinPipe.transform(
-          this.resourceSummary.properties.claims.map(c => c.number),
-          { conjunction: 'and' }));
-
+      result.push({
+        value: 'Claims ' +
+          this.joinPipe.transform(
+            this.resourceSummary.properties.claims.map(c => c.number),
+            { conjunction: 'and' }),
+        type: 'claims'
+      });
     }
 
     if (this.resourceSummary.properties.targets.length === 1) {
-      result.push('Target ' + this.resourceSummary.properties.targets[0].number);
+      result.push({
+        value: 'Target ' + this.resourceSummary.properties.targets[0].number,
+        type: 'targets'
+      });
     } else if (this.resourceSummary.properties.targets.length > 1) {
-      result.push('Targets ' +
-        this.joinPipe.transform(
-          this.resourceSummary.properties.targets.map(t => t.number),
-          { conjunction: 'and' }));
+      result.push({
+        value: 'Targets ' +
+          this.joinPipe.transform(
+            this.resourceSummary.properties.targets.map(t => t.number),
+            { conjunction: 'and' }),
+        type: 'targets'
+      });
     }
 
     if (this.resourceSummary.properties.standards.length === 1) {
-      result.push('Content Standard ' + this.resourceSummary.properties.standards[0].title);
+      result.push({
+        value: 'Content Standard ' + this.resourceSummary.properties.standards[0].title,
+        type: 'standards'
+      });
     } else if (this.resourceSummary.properties.standards.length > 1) {
-      result.push('Content Standards ' +
-        this.joinPipe.transform(
-          this.resourceSummary.properties.standards.map(t => t.title),
-          { conjunction: 'and' }));
+      result.push({
+        value: 'Content Standards ' +
+          this.joinPipe.transform(
+            this.resourceSummary.properties.standards.map(t => t.title),
+            { conjunction: 'and' }),
+        type: 'standards'
+      });
     }
 
     this.details = result;

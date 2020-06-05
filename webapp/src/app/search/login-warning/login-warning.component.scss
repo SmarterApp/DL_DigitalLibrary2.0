@@ -1,0 +1,57 @@
+@import "colors";
+@import "typography";
+
+.login-popover {
+  width: 358px;
+  color: white;
+
+  a {
+    color: white;
+  }
+}
+
+.login-warning {
+  font-family: $font-family-title;
+  font-size: $font-size-body-2;
+  font-weight: bold;
+  line-height: 175%;
+}
+
+.body {
+  font-size: 0.825rem;
+  font-weight: normal;
+  margin-top: 3px;
+  width: 325px;
+}
+
+.login {
+  font-family: $font-family-body;
+  font-weight: bold;
+  font-size: 0.825rem;
+  line-height: 18px;
+  margin-top: 16px;
+}
+
+.continue {
+  font-family: $font-family-body;
+  font-weight: normal;
+  font-size: 0.825rem;
+  line-height: 18px;
+  margin-top: 9px;
+}
+
+.foot-note {
+  font-size: 0.6875rem;
+  line-height: 15px;
+  margin-top: 20px;
+}
+
+.pt-3 {
+  padding-top: 3px;
+  line-height: 18px;
+}
+
+.pt-15 {
+  padding-top: 15px;
+  line-height: 18px;
+}

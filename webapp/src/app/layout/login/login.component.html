@@ -1,0 +1,42 @@
+<div class="watermarks">
+  <img class="waterspot green" src="/assets/images/green-spot-2.png" aria-hidden="true">
+  <img class="waterspot yellow" src="/assets/images/yellow-spot-6.png" aria-hidden="true">
+  <img class="waterspot blue" src="/assets/images/blue-spot-3.png" aria-hidden="true">
+</div>
+<main id="main">
+  <img class="logo-full"
+    [src]="(logo$ | async)"
+    alt="Tools for Teachers from Smarter Balanced">
+
+  <h1>Select your location to log in.</h1>
+
+  <div class="body">
+    <p>Access to the content on this site is available to educators in subscribing states, territories, and districts.
+      Make a selection below to log in.
+    </p>
+  </div>
+
+  <div class="selection-area">
+    <div class="select-group">
+      <div class="select-control-group">
+        <select class="select" [ngClass]="{'select-placeholder' : preloginSelectionId == ''}" [(ngModel)]="preloginSelectionId" (change)="onPreloginSelected()">
+          <option value="" disabled>Select your location</option>
+          <option *ngFor="let s of preloginSelections" value="{{s.preloginSelectionId}}">
+            {{ s.selectionLabel }}
+          </option>
+        </select>
+        <i class="far fa-chevron-square-down fa-lg select-icon"></i>
+      </div>
+      <sbdl-button class="primary" (click)="onGoButtonClicked()" [hidden]="goButtonHidden">Go</sbdl-button>
+    </div>
+    <div class="info-text-block" *ngIf="infoText">
+      <div class="info-text-background"></div>
+      <div class="loc-msg-area">
+        <p class="loc-msg">{{infoText}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TODO: Add this hyperlink to page when the appropriate link is identified and available.
+  <a href="#">Not in a subscribing location? Learn more about Tools for Teachers access.</a> -->
+</main>

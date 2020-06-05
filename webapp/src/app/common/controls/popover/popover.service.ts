@@ -59,7 +59,6 @@ export class PopoverService {
 
       return popoverRef.instance;
   }
-
 }
 
 export interface PopoverOptions {

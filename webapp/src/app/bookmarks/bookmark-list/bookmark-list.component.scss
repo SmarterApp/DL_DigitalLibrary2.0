@@ -26,6 +26,15 @@
     background-attachment: scroll;
     background-position: bottom left;
 
+    sbdl-categorized-resource-summary {
+      position: fixed;
+      max-height: 100%;
+      width: var(--nav-width);
+      overflow: hidden;
+      transition-property: width, min-width, margin-right, z-index;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in;
+    }
   }
 
   .outline:hover {
@@ -58,6 +67,29 @@
       width: 100%;
     }
 
+    .resources-for-type {
+      border-bottom: solid 1px $neutral-75;
+      margin-bottom: $spacer-lg;
+      padding-bottom: $unit * 6;
+
+      &.last {
+        border-bottom: none;
+      }
+
+      h2 {
+        font-family: $font-family-title;
+        font-weight: 600;
+        font-size: $font-size-4;
+        margin-bottom: $spacer-md;
+
+        sbdl-resource-type-icon, svg {
+          color: rgba($neutral-900, 0.75);
+          padding-right: 8px;
+        };
+
+      }
+    }
+
     ul.bookmarks {
       list-style: none;
       padding: 0;
@@ -70,7 +102,7 @@
         flex-direction: row;
         justify-content: space-between;
         max-width: none;
-        padding: 0 0 $spacer-md $spacer-xl;
+        padding: $spacer 0 $spacer-md $spacer-md;
 
         sbdl-resource-summary-card { flex-grow: 1; }
         sbdl-bookmark-actions { visibility: hidden; }

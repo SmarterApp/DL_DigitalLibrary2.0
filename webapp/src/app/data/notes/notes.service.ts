@@ -23,8 +23,14 @@ export class NotesService {
       .pipe(map(this.noteFromJson));
   }
 
-  deleteNote(noteId: number): void {
-    this.dataService.delete(`/api/note/${noteId}`);
+  deleteNote(noteId: number): Observable<any> {
+    return this.dataService.delete(`/api/note/${noteId}`);
+  }
+
+  updateNote(note: Note) {
+    return this.dataService
+      .post(`/api/note/${note.id}`, { noteText: note.content })
+      .pipe(map(this.noteFromJson));
   }
 
   listIdsOfResourcesWithNotes(): Observable<number[]> {
@@ -36,7 +42,8 @@ export class NotesService {
       id: json.noteId,
       resourceId: json.resourceId,
       content: json.noteText,
-      lastModified: new Date(json.noteDate || json.updatedAt)
+      lastModified: new Date(json.noteDate || json.updatedAt),
+      isDeleted: false
     };
   }
 }

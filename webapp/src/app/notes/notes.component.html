@@ -1,18 +1,18 @@
-<div *ngIf="!authoringNote">
+<div *ngIf="!addingNote && !editingNote">
   <h2>Notes</h2>
   <!--<h3>Resource Notes</h3>-->
-  <sbdl-note *ngFor="let note of notes" [note]="note">
+  <sbdl-note *ngFor="let note of notes" [note]="note" (editClick)="editNote(note)" (deleteClick)="deleteNote(note.id)">
   </sbdl-note>
   <sbdl-button class="plain" (click)="addNote()">
     <span *ngIf="notes.length === 0">+ Add your first note</span>
     <span *ngIf="notes.length > 0">+ Add another note</span>
   </sbdl-button>
 </div>
-<div [hidden]="!authoringNote" [ngClass]="{saving: saving}">
-  <h2>Add a Note</h2>
+<div [hidden]="!addingNote && !editingNote" [ngClass]="{saving: saving}">
+  <h2>{{ actionText }}</h2>
   <angular-editor
     [config]="editorConfig"
-    [(ngModel)]="newNoteContent"
+    [(ngModel)]="noteContent"
     [disabled]="saving">
   </angular-editor>
   <div class="dialog-buttons">

@@ -177,7 +177,7 @@ export class UserService {
       userInfo.name,
       userInfo.given_name,
       userInfo.famiyl_name,
-      UserService.parseSbacTenancyChain(decodedAccessToken.sbacTenancyChain),
+      UserService.parseSbacTenancyChain(userInfo.sbacTenancyChain),
       accessToken
     );
   }

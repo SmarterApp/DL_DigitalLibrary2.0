@@ -12,9 +12,11 @@ export interface TenantTheme {
     full: string;
     footer: string;
   };
-  footerLinks?: FooterLink[];
+  footerResourceLinks?: FooterLink[];
+  footerSocialLinks?: FooterLink[];
 }
 
 export interface TenantThemeConfig {
   [key: string]: TenantTheme;
 }
+

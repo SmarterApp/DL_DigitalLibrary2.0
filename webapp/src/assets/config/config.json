@@ -1,6 +1,6 @@
 {
   "env": {
-    "name": "Default"
+    "name": "localhost"
    },
   "logging": {
     "console": true,
@@ -9,9 +9,10 @@
   },
   "tenantConfigPath": "/assets/config/tenant.config.json",
   "apiServerHost": "https://api-dev.dl.smarterbalanced.org",
-  "enableAnalytics": false,
+  "interimItemPortalUrl": "https://interim-stage.smarterbalanced.org/BrowseItems",
+  "enableAnalytics": true,
   "okta": {
     "clientId": "0oamt7hm566G44ZVm0h7",
-    "issuer": "https://smarterbalanced.oktapreview.com/oauth2/auslw2qcsmsUgzsqr0h7"
+    "issuer": "https://smarterbalanced.oktapreview.com/oauth2/ausr8b7sqjHONBENP0h7"
   }
 }
