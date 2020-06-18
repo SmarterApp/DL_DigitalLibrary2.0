@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output, Type, ViewChild } from '@angular/core';
 import { AngularEditorComponent, AngularEditorConfig } from '@kolkov/angular-editor';
 import { catchError } from 'rxjs/operators';
+import {Subscription} from 'rxjs';
 import { Resource } from '../data/resource/model/resource.model';
 import { Note } from '../data/notes/model/note.model';
 import { NotesService } from '../data/notes/notes.service';
 import { ConfirmationDialogService } from '../common/confirmation-dialog/confirmation-dialog.service';
+import {Bookmark} from 'src/app/data/bookmarks/bookmark.model';
 import { BookmarksService } from '../data/bookmarks/bookmarks.service';
 
 @Component({
@@ -26,12 +28,14 @@ export class NotesComponent {
   @ViewChild(AngularEditorComponent, { static: false })
   editor: AngularEditorComponent;
 
+  isDeleted = false;
   addingNote = false;
   editingNote = false;
   editNoteId = 0;
   noteContent = '';
   actionText = '';
   saving = false;
+  bookmark: Bookmark;
 
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -51,6 +55,9 @@ export class NotesComponent {
     ]
   };
 
+  private deleteNoteSubscription: Subscription;
+  private bookmarksSubscription: Subscription;
+  
   constructor(
     private notesService: NotesService,
     private bookmarksService: BookmarksService,
@@ -58,9 +65,16 @@ export class NotesComponent {
   ) { }
 
   ngOnInit() {
-    this.confirmationDialogService.okClicked.subscribe((id) => {
+    this.deleteNoteSubscription = this.confirmationDialogService.okClicked.subscribe((id) => {
       this.deleteNote(id);
     });
+  }
+
+  ngOnDestroy(){
+    if(this.deleteNoteSubscription){
+      this.deleteNoteSubscription.unsubscribe();
+      this.deleteNoteSubscription = undefined;
+    }
   }
 
   addNote() {
@@ -106,8 +120,12 @@ export class NotesComponent {
         this.saving = false;
       });
     }
-
-    this.bookmarksService.createBookmark(this.resource.id);
+    this.bookmarksSubscription = this.bookmarksService.userBookmarksByResourceId.subscribe(bkmkMap => {
+      this.bookmark = bkmkMap.get(this.resource.id);
+    });
+    if(!this.bookmark){    
+      this.bookmarksService.createBookmark(this.resource.id);
+    }
   }
 
   cancelNote() {

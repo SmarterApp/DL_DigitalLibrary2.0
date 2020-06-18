@@ -100,28 +100,18 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "https://ct.portal.cambiumast.com"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Department of Education",
+        "uri": "https://portal.ct.gov/SDE"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
-      },
-      {
-        "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "mailto:cthelpdesk@air.org"
       }
     ],
     "logoUris": {
@@ -162,7 +152,7 @@
       {
         "index": 0,
         "name": "DeSSA Portal",
-        "uri": "https://de.portal.airast.org/"
+        "uri": "https://de.portal.cambiumast.com"
       },
       {
         "index": 1,
@@ -274,7 +264,7 @@
       {
         "index": 0,
         "name": "Assessment Portal",
-        "uri": "https://idaho.portal.airast.org/"
+        "uri": "https://idaho.portal.cambiumast.com"
       },
       {
         "index": 1,
@@ -329,33 +319,12 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
-      },
-      {
-        "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
-      },
-      {
-        "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
-      },
-      {
-        "index": 3,
         "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "uri": "https://mi.startingsmarter.org/"
       }
     ],
     "logoUris": {
-      "full": "/assets/images/t4t-customized-logos/MI.png",
-      "footer": "/assets/images/state-logos/MI.png"
+      "full": "/assets/images/t4t-customized-logos/MI.png"
     },
     "footerSocialLinks": [
       {
@@ -391,7 +360,7 @@
       {
         "index": 0,
         "name": "Assessment Portal",
-        "uri": "http://MT.portal.cambiumast.com"
+        "uri": "https://MT.portal.cambiumast.com"
       },
       {
         "index": 1,
@@ -502,33 +471,12 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
-      },
-      {
-        "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
-      },
-      {
-        "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
-      },
-      {
-        "index": 3,
         "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "uri": "https://or.startingsmarter.org/"
       }
     ],
     "logoUris": {
-      "full": "/assets/images/t4t-customized-logos/OR.png",
-      "footer": "/assets/images/state-logos/OR.png"
+      "full": "/assets/images/t4t-customized-logos/OR.png"
     },
     "footerSocialLinks": [
       {
@@ -564,7 +512,7 @@
       {
         "index": 0,
         "name": "Assessment Portal",
-        "uri": "https://sd.portal.airast.org/"
+        "uri": "https://sd.portal.cambiumast.com"
       },
       {
         "index": 1,
@@ -619,28 +567,23 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Reporting System",
-        "uri": "#"
+        "name": "Assessment Portal",
+        "uri": "https://vide.portal.cambiumast.com"
       },
       {
         "index": 1,
-        "name": "Practice Test",
-        "uri": "#"
+        "name": "Starting Smarter",
+        "uri": "https://usvi.startingsmarter.org/"
       },
       {
         "index": 2,
-        "name": "Assessment Portal",
-        "uri": "#"
+        "name": "Department of Education",
+        "uri": "https://www.vide.vi/"
       },
       {
         "index": 3,
-        "name": "Starting Smarter",
-        "uri": "#"
-      },
-      {
-        "index": 4,
-        "name": "Need help?",
-        "uri": "#"
+        "name": "Help Desk Support Email",
+        "uri": "mailto:vihelpdesk@air.org"
       }
     ],
     "logoUris": {
@@ -681,7 +624,7 @@
       {
         "index": 0,
         "name": "Assessment Portal",
-        "uri": "https://vt.portal.cambiumast.com/"
+        "uri": "https://vt.portal.cambiumast.com"
       },
       {
         "index": 1,
@@ -692,6 +635,16 @@
         "index": 2,
         "name": "Help Desk Support Email",
         "uri": "mailto:vthelpdesk@cambiumassessment.com"
+      },
+      {
+        "index": 3,
+        "name": "Agency of Education ELA webpage",
+        "uri": "https://education.vermont.gov/student-learning/content-areas/language-arts"
+      },
+      {
+        "index": 4,
+        "name": "Agency of Education MA webpage",
+        "uri": "https://education.vermont.gov/student-learning/content-areas/mathematics"
       }
     ],
     "logoUris": {
@@ -732,7 +685,7 @@
       {
         "index": 0,
         "name": "Assessment Portal",
-        "uri": "https://wa.portal.airast.org/"
+        "uri": "https://wa.portal.cambiumast.com"
       },
       {
         "index": 1,
