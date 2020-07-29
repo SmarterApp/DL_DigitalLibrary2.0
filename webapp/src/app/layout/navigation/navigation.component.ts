@@ -21,6 +21,7 @@ export class NavigationComponent implements OnInit {
   hasToken$: Observable<boolean>;
   logo$: Observable<string>;
   interimItemPortalUrl = '#';
+  hasIaipAccess$: Observable<boolean>;
 
   constructor(
     @Inject(APP_BASE_HREF) public baseHref: string,
@@ -31,6 +32,7 @@ export class NavigationComponent implements OnInit {
     private userService: UserService
   ) {
     this.hasToken$ = userService.hasOktaAuthToken;
+    this.hasIaipAccess$ = userService.hasIaipRole;
     this.logo$ = this.tenantThemeService.currentTenantTheme$.pipe(
       map(theme => theme.logoUris.full));
   }

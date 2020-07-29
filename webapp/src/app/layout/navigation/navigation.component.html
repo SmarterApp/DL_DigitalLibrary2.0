@@ -38,7 +38,7 @@
       <span>Accessibility Strategies</span>
     </a>
     <a
-    *ngIf="user$ | async"
+    *ngIf="hasIaipAccess$ | async"
     title="Interim Assessment Item Portal"
     [attr.aria-label]="'Interim Assessment Item Portal (opens in a new window)'"
     [href]='interimItemPortalUrl'
