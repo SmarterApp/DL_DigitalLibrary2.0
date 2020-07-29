@@ -8,7 +8,6 @@ import {TenancyChainEntity, TenancyLevel, User, UserTenancy} from './user.model'
 import { TftError, TftErrorType } from 'src/app/common/tft-error-type.enum';
 import { TftErrorService } from 'src/app/common/tft-error.service';
 import { ERROR_PATH } from 'src/app/common/constants';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 /**
  */
@@ -180,7 +179,6 @@ export class UserService {
     // Do this last as it is used by the login component as a signal that user
     // authentication has completed.
     this.hasOktaAuthToken$.next(hasAuth);
-
   }
 
   /**
