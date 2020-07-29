@@ -68,12 +68,8 @@ export class UserService {
 
   static parseSbacTenancyChainForIAIP(sbacTenancyChain: string[]): boolean {
     return sbacTenancyChain.some(chain => {
-      if (chain.toLowerCase().includes('sb_iaip_user')) {
-        return true;
-    } else {
-      return false;
-    }
-  });
+      return chain.toLowerCase().includes('sb_iaip_user');
+    });
   }
 
   static validateUserSession(user: User): TftError | null {
