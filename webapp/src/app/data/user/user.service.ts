@@ -71,7 +71,11 @@ export class UserService {
 
     sbacTenancyChain.some(chain => {
       if (chain.toLowerCase().includes('sb_iaip_user')) {
+        const segments = chain.split('|');
         iaip = true;
+        return true;
+    } else {
+      return false;
     }
   });
     return iaip;
