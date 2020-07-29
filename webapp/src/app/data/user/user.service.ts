@@ -67,18 +67,13 @@ export class UserService {
   }
 
   static parseSbacTenancyChainForIAIP(sbacTenancyChain: string[]): boolean {
-    let iaip: boolean = false;
-
-    sbacTenancyChain.some(chain => {
+    return sbacTenancyChain.some(chain => {
       if (chain.toLowerCase().includes('sb_iaip_user')) {
-        const segments = chain.split('|');
-        iaip = true;
         return true;
     } else {
       return false;
     }
   });
-    return iaip;
   }
 
   static validateUserSession(user: User): TftError | null {
@@ -156,7 +151,6 @@ export class UserService {
    * Additionally update new iaipRole status
    */
   private updateUser = async (hasAuth) => {
-    let iaipCheck:boolean = false;
     if (hasAuth) {
       const user = await this.readUserFromOkta();
       const error = UserService.validateUserSession(user);
@@ -170,8 +164,8 @@ export class UserService {
       } else {
         this.user$.next(await this.readUserFromOkta());
         const userInfo = await this.oktaAuthService.getUser();
-        iaipCheck = UserService.parseSbacTenancyChainForIAIP(userInfo.sbacTenancyChain);
-        if(iaipCheck){
+        const iaipCheck = UserService.parseSbacTenancyChainForIAIP(userInfo.sbacTenancyChain);
+        if (iaipCheck) {
           this.hasIaipRole$.next(hasAuth);
         }
       }
