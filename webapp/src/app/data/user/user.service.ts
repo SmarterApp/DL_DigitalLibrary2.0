@@ -26,7 +26,7 @@ export class UserService {
   // produce a value. For example, see the DataService's usage.
   private user$: ReplaySubject<User> = new ReplaySubject(1);
   private hasOktaAuthToken$: ReplaySubject<boolean> = new ReplaySubject(1);
-  private hasIaipRole$: ReplaySubject<boolean> = new ReplaySubject(1); 
+  private hasIaipRole$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   private jwtService: JwtHelperService;
 
@@ -72,9 +72,9 @@ export class UserService {
     sbacTenancyChain.some(chain => {
       if (chain.toLowerCase().includes('sb_iaip_user')) {
         iaip = true;
-    }     
+    }
   });
-    return iaip;  
+    return iaip;
   }
 
   static validateUserSession(user: User): TftError | null {
