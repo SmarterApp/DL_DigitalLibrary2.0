@@ -5,6 +5,7 @@ export interface IAppConfig {
     logging: { console: boolean, aws: boolean, level: LoggerLevel };
     tenantConfigPath: string;
     apiServerHost: string;
+    interimItemPortalUrl: string;
     enableAnalytics: boolean;
     okta: { clientId: string, issuer: string };
 }
