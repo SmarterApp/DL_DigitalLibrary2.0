@@ -52,6 +52,8 @@ p {
   :host {
     display: none;
 
-    &.strategy-link { display: inline; }
+    &.strategy-link,
+    &.educational-details-link
+    { display: inline; }
   }
 }

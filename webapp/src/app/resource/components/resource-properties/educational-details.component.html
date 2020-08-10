@@ -34,7 +34,12 @@
   </label>
   <div *ngIf="properties.targets && properties.targets.length > 0" class="value">
     <div *ngFor="let target of orderedTargets" title="{{ target.description }}">
-      {{ target.number }}: {{ target.description }}
+      <sbdl-tooltip [title]="'TARGET '+target.number"
+                    [text]=target.description
+                    class="educational-details-link"
+                    style="white-space:nowrap;">
+        <span class="gradient-hover">{{ target.number }}</span>
+      </sbdl-tooltip>
     </div>
   </div>
 
@@ -46,7 +51,12 @@
   </label>
   <div *ngIf="properties.standards && properties.standards.length > 0" class="value">
     <div *ngFor="let standard of orderedStandards" title="{{ standard.title }}">
-      {{ standard.title }}
+      <sbdl-tooltip [title]="'STANDARD '+standard.title"
+                    [text]=standard.description
+                    class="educational-details-link"
+                    style="white-space:nowrap;"
+      ><span class="gradient-hover">{{standard.title}}</span>
+      </sbdl-tooltip>
     </div>
   </div>
 
