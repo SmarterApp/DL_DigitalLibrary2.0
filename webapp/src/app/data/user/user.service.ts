@@ -26,6 +26,7 @@ export class UserService {
   // produce a value. For example, see the DataService's usage.
   private user$: ReplaySubject<User> = new ReplaySubject(1);
   private hasOktaAuthToken$: ReplaySubject<boolean> = new ReplaySubject(1);
+  private hasIaipRole$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   private jwtService: JwtHelperService;
 
@@ -63,6 +64,12 @@ export class UserService {
     });
 
     return validTenancies;
+  }
+
+  static parseSbacTenancyChainForIAIP(sbacTenancyChain: string[]): boolean {
+    return sbacTenancyChain.some(chain => {
+      return chain.toLowerCase().includes('sb_iaip_user');
+    });
   }
 
   static validateUserSession(user: User): TftError | null {
@@ -105,6 +112,10 @@ export class UserService {
     return this.hasOktaAuthToken$;
   }
 
+  get hasIaipRole(): Observable<boolean> {
+    return this.hasIaipRole$;
+  }
+
   /**
    * Convenience method to wrap the common case where a reactive pipeline
    * should be executed only if a valid user session is present, returning a
@@ -133,6 +144,7 @@ export class UserService {
   /**
    * Update our ReplaySubject with new User information depending on the new
    * auth state.
+   * Additionally update new iaipRole status
    */
   private updateUser = async (hasAuth) => {
     if (hasAuth) {
@@ -147,9 +159,15 @@ export class UserService {
         this.user$.next(null);
       } else {
         this.user$.next(await this.readUserFromOkta());
+        const userInfo = await this.oktaAuthService.getUser();
+        const iaipCheck = UserService.parseSbacTenancyChainForIAIP(userInfo.sbacTenancyChain);
+        if (iaipCheck) {
+          this.hasIaipRole$.next(hasAuth);
+        }
       }
     } else {
       this.user$.next(null);
+      this.hasIaipRole$.next(null);
     }
 
     // Do this last as it is used by the login component as a signal that user
