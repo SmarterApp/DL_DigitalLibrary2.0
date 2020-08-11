@@ -26,6 +26,7 @@
     display: var(--print-display);
     position: var(--print-position);
     visibility: var(--print-visibility);
+    width: 43.75rem;
 
     hr {
       margin-bottom: $spacer;
