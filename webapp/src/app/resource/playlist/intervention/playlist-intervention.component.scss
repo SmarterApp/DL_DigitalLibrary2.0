@@ -27,3 +27,8 @@
     }
   }
 }
+@media only print {
+  .intervention-container{
+    break-before: always;
+  }
+}

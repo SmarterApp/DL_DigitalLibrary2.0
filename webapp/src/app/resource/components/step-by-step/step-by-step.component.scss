@@ -41,3 +41,8 @@
         }
     }
 }
+@media only print{
+   .step-container{
+     break-before: always;
+   }
+}
