@@ -313,6 +313,50 @@
       }
 	  ]
   },
+  "IN": {
+    "contactUri": "http://www.smarterbalanced.org/contact/",
+    "displayName": "Indiana",
+    "footerResourceLinks": [
+      {
+        "index": 0,
+        "name": "ILEARN Portal",
+        "uri": "https://ilearn.portal.cambiumast.com/"
+      },
+      {
+        "index": 1,
+        "name": "Department of Education",
+        "uri": "https://www.doe.in.gov/"
+      },
+      {
+        "index": 2,
+        "name": "Indiana Office of Student Assessment",
+        "uri": "https://www.doe.in.gov/assessment"
+      },
+      {
+        "index": 3,
+        "name": "Help Desk Support Email",
+        "uri": "https://indiana.portal.cambiumast.com/chat.stml"
+      }
+    ],
+    "logoUris": {
+      "full": "/assets/images/t4t-customized-logos/IN.png",
+      "footer": "/assets/images/state-logos/IN.png"
+    },
+    "footerSocialLinks": [
+      {
+        "index": 0,
+        "name": "Twitter",
+        "uri": "https://twitter.com/dr_cflores",
+        "icon": "fab fa-twitter"
+      },
+      {
+        "index": 1,
+        "name": "YouTube",
+        "uri": "https://www.youtube.com/user/INEducation",
+        "icon": "fab fa-youtube"
+      }
+	  ]
+  },
   "MI": {
     "contactUri": "http://www.smarterbalanced.org/contact/",
     "displayName": "Michigan",
@@ -471,24 +515,40 @@
     "footerResourceLinks": [
       {
         "index": 0,
+        "name": "Assessment Portal",
+        "uri": "https://osasportal.org/"
+      },
+      {
+        "index": 1,
         "name": "Starting Smarter",
         "uri": "https://or.startingsmarter.org/"
+      },
+      {
+        "index": 2,
+        "name": "Department of Education",
+        "uri": "https://www.oregon.gov/ode/Pages/default.aspx"
+      },
+      {
+        "index": 3,
+        "name": "Help Desk Support Email",
+        "uri": "mailto:osashelpdesk@cambiumassessment.com"
       }
     ],
     "logoUris": {
-      "full": "/assets/images/t4t-customized-logos/OR.png"
+      "full": "/assets/images/t4t-customized-logos/OR.png",
+      "footer": "/assets/images/state-logos/OR.png"
     },
     "footerSocialLinks": [
       {
         "index": 0,
         "name": "Twitter",
-        "uri": "https://twitter.com/SmarterBalanced",
+        "uri": "https://twitter.com/ordepted",
         "icon": "fab fa-twitter"
       },
       {
         "index": 1,
         "name": "Facebook",
-        "uri": "https://www.facebook.com/smarterbalanced/",
+        "uri": "https://www.facebook.com/ORDeptEd/",
         "icon": "fab fa-facebook"
       },
       {
@@ -500,7 +560,7 @@
       {
         "index": 3,
         "name": "YouTube",
-        "uri": "https://www.youtube.com/user/smarterbalanced",
+        "uri": "https://www.youtube.com/c/oregondepartmenteducation",
         "icon": "fab fa-youtube"
       }
 	  ]
