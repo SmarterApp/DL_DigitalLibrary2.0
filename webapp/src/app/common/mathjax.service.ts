@@ -66,7 +66,7 @@ export class MathJaxService {
   constructor(private scriptService: ScriptService) {
     concat(
       this.scriptService.require('https://polyfill.io/v3/polyfill.min.js?features=es6'),
-      this.scriptService.require('https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js')
+      this.scriptService.require('https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js')
     ).subscribe(_ => {
       const mjObj = (window as any).MathJax;
       if (mjObj) {
