@@ -7,6 +7,7 @@ export const preloginSelectionsOrdering: string[] = [
   'DE',
   'HI',
   'ID',
+  'IN',
   'MI',
   'MT',
   'NV',
