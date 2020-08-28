@@ -1,13 +1,14 @@
 import {APP_BASE_HREF} from '@angular/common';
 import {Inject, Injectable} from '@angular/core';
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {Observable, OperatorFunction, of, ReplaySubject} from 'rxjs';
-import {map, mergeMap, flatMap, share, skip, tap} from 'rxjs/operators';
-import {OktaAuthService, UserClaims} from '@okta/okta-angular';
+import {Observable, of, OperatorFunction, ReplaySubject} from 'rxjs';
+import {map, mergeMap} from 'rxjs/operators';
+import {OktaAuthService} from '@okta/okta-angular';
 import {TenancyChainEntity, TenancyLevel, User, UserTenancy} from './user.model';
-import { TftError, TftErrorType } from 'src/app/common/tft-error-type.enum';
-import { TftErrorService } from 'src/app/common/tft-error.service';
-import { ERROR_PATH } from 'src/app/common/constants';
+import {TftError, TftErrorType} from 'src/app/common/tft-error-type.enum';
+import {TftErrorService} from 'src/app/common/tft-error.service';
+import {OktaAuth} from "@okta/okta-auth-js";
+import {StorageService} from "../../common/storage.service";
 
 /**
  */
@@ -29,6 +30,8 @@ export class UserService {
   private hasIaipRole$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   private jwtService: JwtHelperService;
+
+  private authClient: OktaAuth;
 
   static parseSbacTenancyChain(sbacTenancyChain: string[]): UserTenancy[] {
     const validTenancies: UserTenancy[] = [];
@@ -84,15 +87,14 @@ export class UserService {
   constructor(
     @Inject(APP_BASE_HREF) private baseHref,
     private errorService: TftErrorService,
-    private oktaAuthService: OktaAuthService
+    private oktaAuthService: OktaAuthService,
+    private storageService : StorageService
   ) {
     this.jwtService = new JwtHelperService();
-
     // Subscribe to the Okta auth state so that we can push updates to our
     // subscribers when the user logs in or out. This lets Okta push changes to
     // us and our subscribers.
     this.oktaAuthService.$authenticationState.subscribe(this.updateUser);
-
     // This is a pull from Okta for the first value. When we first load we're
     // not going to receive anything from the above subscription. We need to
     // manually seed our user state by asking the OktaAuthService for the
@@ -115,7 +117,6 @@ export class UserService {
   get hasIaipRole(): Observable<boolean> {
     return this.hasIaipRole$;
   }
-
   /**
    * Convenience method to wrap the common case where a reactive pipeline
    * should be executed only if a valid user session is present, returning a
@@ -198,6 +199,20 @@ export class UserService {
       UserService.parseSbacTenancyChain(userInfo.sbacTenancyChain),
       accessToken
     );
+  }
+
+  userSessionCheck(): Promise<void> {
+    this.authClient = new OktaAuth(this.oktaAuthService.getOktaConfig());
+    return this.authClient.session.exists().then(hasUserSession => {
+      if (hasUserSession && !this.storageService.get("userSessionState")) {
+        const randomHash = Math.random().toString(36).slice(-5);
+        this.storageService.set("userSessionState", randomHash);
+        //override the default setting of Okta token redirect API
+        const settings = {responseType: ['token', 'id_token'],prompt: 'none', display: null}
+        //redirects to login callback endpoint configured for okta
+        return this.authClient.token.getWithRedirect(settings);
+      }
+    })
   }
 
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { VERSION } from 'src/environments/version';
-import { AppConfig } from './common/config/app.config';
+import {Component, OnInit} from '@angular/core';
+import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
+import {VERSION} from 'src/environments/version';
+import {AppConfig} from './common/config/app.config';
+import {UserService} from "./data/user/user.service";
 
 @Component({
   selector: 'sbdl-root',
@@ -14,12 +15,12 @@ export class AppComponent implements OnInit {
   env = '<not set>';
   appVersion = VERSION;
 
-  constructor(
+   constructor(
     private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
-  ) { }
+    private userService:UserService,
+  ) {}
 
-  ngOnInit() {
-
+    ngOnInit  () {
     if (AppConfig.settings) {
       this.env = AppConfig.settings.env.name;
 
@@ -27,5 +28,7 @@ export class AppComponent implements OnInit {
         this.angulartics2GoogleAnalytics.startTracking();
       }
     }
-  }
+     //seamless login on page load if user has active session
+      this.userService.userSessionCheck();
+    }
 }
