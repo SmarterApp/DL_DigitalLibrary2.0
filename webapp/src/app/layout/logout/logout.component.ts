@@ -3,6 +3,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {Router} from '@angular/router';
 import {OktaAuthService} from '@okta/okta-angular';
 import {StorageService} from "../../common/storage.service";
+import {UserService} from "../../data/user/user.service";
 
 @Component({
   selector: 'sbdl-logout',
@@ -15,6 +16,7 @@ export class LogoutComponent implements AfterViewInit {
     @Inject(APP_BASE_HREF) private appBaseHref: string,
     private oktaAuthService: OktaAuthService,
     private storageService : StorageService,
+    private userService : UserService,
     private router: Router
   ) {}
 
@@ -27,6 +29,7 @@ export class LogoutComponent implements AfterViewInit {
     this.oktaAuthService.logout().then(
       pauseAndRedirect,
       pauseAndRedirect);
+    this.userService.clearTokenExpirationTimer();
   }
 
 }

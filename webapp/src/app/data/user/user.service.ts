@@ -9,6 +9,7 @@ import {TftError, TftErrorType} from 'src/app/common/tft-error-type.enum';
 import {TftErrorService} from 'src/app/common/tft-error.service';
 import {OktaAuth} from '@okta/okta-auth-js';
 import {StorageService} from "../../common/storage.service";
+import {Router} from "@angular/router";
 
 /**
  */
@@ -32,6 +33,8 @@ export class UserService {
   private jwtService: JwtHelperService;
 
   private authClient: OktaAuth;
+
+  private tokenExpirationTimer :any;
 
   static parseSbacTenancyChain(sbacTenancyChain: string[]): UserTenancy[] {
     const validTenancies: UserTenancy[] = [];
@@ -88,7 +91,8 @@ export class UserService {
     @Inject(APP_BASE_HREF) private baseHref,
     private errorService: TftErrorService,
     private oktaAuthService: OktaAuthService,
-    private storageService : StorageService
+    private storageService : StorageService,
+    private route : Router
   ) {
     this.jwtService = new JwtHelperService();
     // Subscribe to the Okta auth state so that we can push updates to our
@@ -165,6 +169,7 @@ export class UserService {
         if (iaipCheck) {
           this.hasIaipRole$.next(hasAuth);
         }
+        this.setTokenExpirationTimer();
       }
     } else {
       this.user$.next(null);
@@ -218,5 +223,28 @@ export class UserService {
         }
       })
     }
+  }
+
+  private setTokenExpirationTimer() {
+    const {accessToken}
+      = JSON.parse(localStorage.getItem("okta-token-storage"));
+
+    const expirationDuration
+      = new Date(accessToken.expiresAt * 1000).getTime() - new Date().getTime();
+
+    this.autoLogout(expirationDuration);
+  }
+
+  private autoLogout(expirationDuration: number) {
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.route.navigate(['/auth/logout']);
+    }, expirationDuration);
+  }
+
+  clearTokenExpirationTimer() {
+    if (this.tokenExpirationTimer) {
+      clearTimeout(this.tokenExpirationTimer);
+    }
+    this.tokenExpirationTimer = null;
   }
 }
