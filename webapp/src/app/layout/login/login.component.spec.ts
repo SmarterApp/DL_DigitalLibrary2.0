@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from 'src/app/common/controls/button/button.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OktaAuthService } from '@okta/okta-angular';
+import {StorageService} from "../../common/storage.service";
 
 const mockAuthService = jasmine.createSpyObj('OktaAuthService', ['loginRedirect']);
 
@@ -17,13 +18,16 @@ mockPreloginSelectionsService.getAll.and.callFake(function() {
   return of([]);
 });
 
+const mockStorageService = jasmine.createSpyObj('StorageService', ['getLoginWarningDisplayed', 'setLoginWarningDisplayed']);
+
+
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ 
+      imports: [
         FormsModule
       ],
       providers: [
@@ -31,6 +35,7 @@ describe('LoginComponent', () => {
         { provide: PreloginSelectionsService, useValue: mockPreloginSelectionsService },
         { provide: Router, useValue: jasmine.createSpy('Router') },
         { provide: OktaAuthService, useValue: mockAuthService },
+        { provide: StorageService, useValue: mockStorageService },
         { provide: ActivatedRoute, useValue: { queryParams: of([]) } }
       ],
       declarations: [ LoginComponent, ButtonComponent ]
