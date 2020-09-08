@@ -6,6 +6,7 @@ import { PreloginSelectionsService } from 'src/app/data/prelogin-selections/prel
 import { PreloginSelection } from 'src/app/data/prelogin-selections/model/prelogin-selection.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { OktaAuthService } from '@okta/okta-angular';
+import {StorageService} from "../../common/storage.service";
 
 const redirectUrlParameter = 'redirectUrl';
 
@@ -33,7 +34,8 @@ export class LoginComponent implements OnInit {
     private tenantThemeService: TenantThemeService,
     private preloginSelectionsService: PreloginSelectionsService,
     private oktaAuthService: OktaAuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private storageService : StorageService
   ) {
     this.logo$ = tenantThemeService.currentTenantTheme$.pipe(
       map(theme => theme.logoUris.full));
@@ -66,6 +68,8 @@ export class LoginComponent implements OnInit {
 
   onGoButtonClicked() {
     const sel = this.preloginSelections.find(s => s.preloginSelectionId.toString() === this.preloginSelectionId);
+    //use to differential between seamless login and normal login
+    this.storageService.set("isNormalLoginFlow",'1');
     this.oktaAuthService.loginRedirect(this.queryParams[redirectUrlParameter], { idp: [sel.oktaIdpId] });
   }
 }

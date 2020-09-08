@@ -14,6 +14,6 @@ export class PromotedResourcesResolve implements Resolve<ResourceSummary[]> {
           state: RouterStateSnapshot):
           Observable<ResourceSummary[]> {
 
-    return this.resourceService.getResourceSummariesForIds([126, 200]);
+    return this.resourceService.getResourceSummariesForIds([1341, 1249]);
   }
 }
