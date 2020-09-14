@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { PopoverOptions } from './popover.service';
+import {take} from "rxjs/operators";
+import {MathJaxService} from "../../mathjax.service";
 
 @Component({
   selector: 'sbdl-popover',
@@ -37,9 +39,11 @@ export class PopoverComponent implements AfterViewInit {
     this.close();
   }
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer,private mathJaxService : MathJaxService) { }
 
   ngAfterViewInit(): void {
+    this.mathJaxService.typeset().pipe(take(1)).subscribe(() => {});
+
     const offset = this.options.offset;
     if (offset) {
       const rect = this.container.nativeElement.getBoundingClientRect();
@@ -66,7 +70,7 @@ export class PopoverComponent implements AfterViewInit {
         this.close();
         return;
       }
-  
+
       const elementRefInPath = $event.find(
         node => node.className && node.className.indexOf && node.className.indexOf('popover-container') !== -1);
       if (!elementRefInPath) {

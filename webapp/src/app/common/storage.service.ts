@@ -16,6 +16,10 @@ export class StorageService {
     sessionStorage.setItem(key, value);
   }
 
+  remove(key: string){
+    sessionStorage.removeItem(key);
+  }
+
   getLoginWarningDisplayed(key: SessionStateKey): boolean {
     if (!sessionStorage.getItem(key)) {
       this.setLoginWarningDisplayed(key, false);

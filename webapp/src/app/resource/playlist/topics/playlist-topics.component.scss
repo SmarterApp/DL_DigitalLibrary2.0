@@ -177,3 +177,25 @@
   }
 
 }
+
+@media only print {
+    .progressions-table {
+      display: table;
+      width: 90vw;
+      vertical-align: top;
+      line-height: 100%;
+      page-break-inside:auto ;
+      overflow: visible;
+      tr{
+        page-break-inside:avoid;
+      }
+    }
+  //firefox browser hack to make content fit on the pdf since firefox has smaller viewport size
+  @media (-moz-device-pixel-ratio) {
+    @supports (animation: calc(0s)) {
+      .progressions-table {
+        width:50vw;
+      }
+    }
+  }
+}
