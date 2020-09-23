@@ -22,7 +22,7 @@ export class PreviewLoginPromptComponent {
   onLoginButtonClick(): void {
     this.loading$.next(true);
     //use to differential between seamless login and normal login
-    this.storageService.set("isNormalLoginFlow",'1');
+    this.storageService.set('isNormalLoginFlow', '1');
     this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: this.router.url }});
   }
 }

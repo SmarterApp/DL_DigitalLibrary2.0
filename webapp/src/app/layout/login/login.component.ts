@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
   onGoButtonClicked() {
     const sel = this.preloginSelections.find(s => s.preloginSelectionId.toString() === this.preloginSelectionId);
     //use to differential between seamless login and normal login
-    this.storageService.set("isNormalLoginFlow",'1');
+    this.storageService.set('isNormalLoginFlow', '1');
     this.oktaAuthService.loginRedirect(this.queryParams[redirectUrlParameter], { idp: [sel.oktaIdpId] });
   }
 }
