@@ -23,7 +23,7 @@ export class LogoutComponent implements AfterViewInit {
   ngAfterViewInit() {
 
     const pauseAndRedirect = () => {
-      this.storageService.remove("userSessionState");
+      this.storageService.remove('userSessionState');
       setTimeout(() => this.router.navigate([this.appBaseHref]), 2000);
     }
     this.oktaAuthService.logout().then(

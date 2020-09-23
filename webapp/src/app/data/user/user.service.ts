@@ -209,28 +209,26 @@ export class UserService {
   userSessionCheck(): Promise<void> {
     this.authClient = new OktaAuth(this.oktaAuthService.getOktaConfig());
     //use sessionStorage to track the login entry point
-    if (!sessionStorage.getItem("isNormalLoginFlow")) {
+    if (!sessionStorage.getItem('isNormalLoginFlow')) {
       //seamless login on page load if user has an active session
       //If an okta session is not detected,renders as if the user is a public user.
       return this.authClient.session.exists().then(hasUserSession => {
-        if (hasUserSession && !this.storageService.get("userSessionState")) {
+        if (hasUserSession && !this.storageService.get('userSessionState')) {
           const randomHash = Math.random().toString(36).slice(-5);
-          this.storageService.set("userSessionState", randomHash);
+          this.storageService.set('userSessionState', randomHash);
           //override the default setting of Okta token redirect API
-          const overrideSetting = {responseType: ['token', 'id_token'], prompt: 'none', display: null}
+          const overrideSetting = {responseType: ['token', 'id_token'], prompt: 'none', display: null};
           //redirects to login callback endpoint configured for okta
           return this.authClient.token.getWithRedirect(overrideSetting);
         }
-      })
+      });
     }
   }
 
   private setTokenExpirationTimer() {
-    const {accessToken}
-      = JSON.parse(localStorage.getItem("okta-token-storage"));
+    const {accessToken} = JSON.parse(localStorage.getItem('okta-token-storage'));
 
-    const expirationDuration
-      = new Date(accessToken.expiresAt * 1000).getTime() - new Date().getTime();
+    const expirationDuration = new Date(accessToken.expiresAt * 1000).getTime() - new Date().getTime();
 
     this.autoLogout(expirationDuration);
   }
