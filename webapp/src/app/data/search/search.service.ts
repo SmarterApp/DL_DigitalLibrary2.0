@@ -102,9 +102,9 @@ export class SearchService {
     );
   }
 
-  public paramsToRequestModel(params: any): SearchRequestModel {
-    if (Object.keys(params).length === 0) {
-      return null;
+  public paramsToRequestModel(params: any,isDefaultSearch:boolean): SearchRequestModel {
+    if (isDefaultSearch) {
+      params = {query: ''};
     }
 
     return {

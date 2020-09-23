@@ -16,11 +16,20 @@ export class SearchResultsResolve implements Resolve<SearchResults> {
     state: RouterStateSnapshot
   ): SearchResults | Observable<SearchResults> | Promise<SearchResults> {
 
-    const searchParams = this.service.paramsToRequestModel(route.params);
-    // if we have no search params, don't do an expensive search over the entire index.
-    if (!searchParams) {
-      return this.service.getDefaultFilters().pipe(
-        map(filters => ({ filters, results: [] })));
+    const isDefaultSearchFilter = Object.keys(route.params).length === 0;
+
+    const searchParams = this.service.paramsToRequestModel(route.params, isDefaultSearchFilter);
+    // if we have no search params, make an elasticsearch api call with blank search text
+    // to get all the filters from the data layer
+    // the ideal solution will be creating a new api that return all the search filter values
+    // and then store in a cache Map with key being the api url and value being the api response
+    if (isDefaultSearchFilter) {
+      return this.service.fetchAllResults(searchParams)
+        .pipe(map(search => ({
+            results: [],
+            filters: search.filters
+          }
+        )));
     } else {
       return this.service.fetchAllResults(searchParams);
     }
