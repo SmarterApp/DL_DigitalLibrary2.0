@@ -1,9 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ResourceProperties } from 'src/app/data/resource/model/properties.model';
-import { Claim } from 'src/app/data/resource/model/claim.model';
-import { Subject } from 'src/app/data/resource/model/subject.model';
-import { Standard } from 'src/app/data/resource/model/standard.model';
-import { Target } from 'src/app/data/resource/model/target.model';
+import {Component, Input, OnInit} from '@angular/core';
+import {ResourceProperties} from 'src/app/data/resource/model/properties.model';
+import {Claim} from 'src/app/data/resource/model/claim.model';
+import {Subject} from 'src/app/data/resource/model/subject.model';
+import {Standard} from 'src/app/data/resource/model/standard.model';
+import {Target} from 'src/app/data/resource/model/target.model';
+import {byString, Comparator, on} from '../../../common/sorting/sorting';
+
+const byTargetNumber: Comparator<Target> = on(x => x.number);
+const byStandardTitle: Comparator<Standard> = on(x => x.title, byString());
 
 @Component({
   selector: 'sbdl-educational-details',
@@ -23,8 +27,8 @@ export class EducationalDetailsComponent implements OnInit {
 
   public ngOnInit() {
     this.gradeShortNames = this.properties.grades.map(g => g.shortName);
-    this.orderedStandards = this.properties.standards.sort((a, b) => a.title.localeCompare(b.title));
-    this.orderedTargets = this.properties.targets.sort((a, b) => a.number.localeCompare(b.number));
+    this.orderedStandards = this.properties.standards.sort(byStandardTitle);
+    this.orderedTargets = this.properties.targets.sort(byTargetNumber);
   }
 
   getClaimImagePath = (subject: Subject, claim: Claim) => {
