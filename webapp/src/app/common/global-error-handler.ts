@@ -32,7 +32,5 @@ export class GlobalErrorHandler implements ErrorHandler {
     if (this.errorService) {
       this.errorService.redirectTftError({ type: TftErrorType.Unknown, details: error.toString() });
     }
-
-    throw error;
   }
 }

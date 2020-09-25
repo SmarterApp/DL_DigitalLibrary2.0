@@ -13,7 +13,7 @@ import { SessionStateKey } from 'src/app/common/enums/session-state-key.enum';
   templateUrl: './login-warning.component.html',
   styleUrls: ['./login-warning.component.scss']
 })
-export class LoginWarningComponent {
+export class LoginWarningComponent implements OnInit, OnDestroy {
 
   @Input()
   queryParams: SearchQueryParams;
@@ -31,7 +31,7 @@ export class LoginWarningComponent {
     private loginWarningService: LoginWarningService,
     private userService: UserService,
     private storageService: StorageService,
-  ) { 
+  ) {
     this.closeClick = new EventEmitter<any>();
   }
 
@@ -61,5 +61,5 @@ export class LoginWarningComponent {
 
   close = () => {
     this.loginWarningService.close();
-  }  
+  }
 }

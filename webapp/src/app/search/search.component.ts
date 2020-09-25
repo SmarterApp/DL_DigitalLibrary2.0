@@ -62,7 +62,7 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
 
   params: SearchQueryParams;
   newSearch = true;
-  
+
   popover: PopoverComponent;
 
   private routerSubscription: Subscription;
@@ -117,8 +117,7 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
 
       if (this.filterResourcesClicked) {
         this.showAdvanced = true;
-      }
-      else {
+      } else {
         this.search({ query: this.filters.query }, false);
       }
     });
@@ -143,7 +142,7 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
   }
 
   /**
-   * Take an arbitraty object and filter down it's key discrading anything that
+   * Take an arbitraty object and filter down it's key discarding anything that
    * is not a valid SearchQueryParam property.
    */
   private parseParams(params: object): SearchQueryParams {
@@ -181,9 +180,11 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
 
   search(newParams: SearchQueryParams, checkLoginWarning: boolean) {
     if (checkLoginWarning && this.loginWarningService.shouldDisplay(SessionStateKey.searchLoginWarningDisplayed)) {
-      this.loginWarningService.displayLoginWarning(this.loginWarningPopover, this.searchInputTextField.textFieldRef, SessionStateKey.searchLoginWarningDisplayed);
-    }
-    else {
+      this.loginWarningService.displayLoginWarning(
+        this.loginWarningPopover,
+        this.searchInputTextField.textFieldRef,
+        SessionStateKey.searchLoginWarningDisplayed);
+    } else {
       this.router.navigate([
         'search',
         this.rectifyParams({
@@ -199,9 +200,11 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
     this.filterResourcesClicked = true;
 
     if (this.loginWarningService.shouldDisplay(SessionStateKey.searchLoginWarningDisplayed)) {
-      this.loginWarningService.displayLoginWarning(this.loginWarningPopover, this.searchInputTextField.textFieldRef, SessionStateKey.searchLoginWarningDisplayed);
-    }
-    else {
+      this.loginWarningService.displayLoginWarning(
+        this.loginWarningPopover,
+        this.searchInputTextField.textFieldRef,
+        SessionStateKey.searchLoginWarningDisplayed);
+    } else {
       this.showAdvanced = true;
     }
   }

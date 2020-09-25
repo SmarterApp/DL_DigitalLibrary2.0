@@ -42,7 +42,8 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
         this.filters = {...this.filters, query: params.query };
         this.setSelectedFilters(params);
 
-        requestAnimationFrame(this.chunkedRender);
+        requestAnimationFrame(() =>
+          this.addInAnimationFrames(this.renderedResults, this.allResults));
       }
     });
 
@@ -62,10 +63,10 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     this._destroyed$.complete();
   }
 
-  chunkedRender = () => {
-    if (this.renderedResults.length < this.allResults.length) {
-      this.renderedResults.push(this.allResults[this.renderedResults.length]);
-      requestAnimationFrame(this.chunkedRender);
+  addInAnimationFrames = <T>(target: Array<T>, source: Array<T>) => {
+    if (target.length < source.length) {
+      target.push(source[target.length]);
+      requestAnimationFrame(() => this.addInAnimationFrames(target, source));
     }
   }
 
