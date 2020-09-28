@@ -363,23 +363,28 @@
     "footerResourceLinks": [
       {
         "index": 0,
-        "name": "Assessment Portal",
-        "uri": "https://wbte.drcedirect.com/MI/portals/mi"
+        "name": "Access Smarter Interim Assessments",
+        "uri": "http://www.drcedirect.com/"
       },
       {
         "index": 1,
-        "name": "Starting Smarter",
-        "uri": "https://mi.startingsmarter.org/"
+        "name": "MDE-Michigan Department of Education",
+        "uri": "https://www.michigan.gov/mde"
       },
       {
         "index": 2,
-        "name": "Department of Education",
-        "uri": "https://www.michigan.gov/mde/"
+        "name": "MAC-Michigan Assessment Consortium",
+        "uri": "https://www.michiganassessmentconsortium.org/"
       },
       {
         "index": 3,
-        "name": "Help Desk Support Email",
-        "uri": "mailto:mde-oeaa@michigan.gov"
+        "name": "FAME-Formative Assessment for Mich Educators",
+        "uri": "https://famemichigan.org/"
+      },
+      {
+        "index": 4,
+        "name": "Help Desk Email",
+        "uri": "mailto:misupport@datarecognitioncorp.com"
       }
     ],
     "logoUris": {
