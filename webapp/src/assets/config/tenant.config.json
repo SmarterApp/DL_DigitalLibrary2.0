@@ -44,7 +44,7 @@
       },
       {
         "index": 1,
-        "name": "California Educator Reporting System (CERS )",
+        "name": "California Educator Reporting System (CERS)",
         "uri": "https://reporting.smarterbalanced.org/"
       },
       {
@@ -363,12 +363,28 @@
     "footerResourceLinks": [
       {
         "index": 0,
+        "name": "Assessment Portal",
+        "uri": "https://wbte.drcedirect.com/MI/portals/mi"
+      },
+      {
+        "index": 1,
         "name": "Starting Smarter",
         "uri": "https://mi.startingsmarter.org/"
+      },
+      {
+        "index": 2,
+        "name": "Department of Education",
+        "uri": "https://www.michigan.gov/mde/"
+      },
+      {
+        "index": 3,
+        "name": "Help Desk Support Email",
+        "uri": "mailto:mde-oeaa@michigan.gov"
       }
     ],
     "logoUris": {
-      "full": "/assets/images/t4t-customized-logos/MI.png"
+      "full": "/assets/images/t4t-customized-logos/MI.png",
+      "footer": "/assets/images/state-logos/MI.png"
     },
     "footerSocialLinks": [
       {
