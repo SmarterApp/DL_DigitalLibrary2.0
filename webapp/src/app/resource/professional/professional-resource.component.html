@@ -68,3 +68,9 @@
     (notesChanged)="notesChanged($event)">
   </sbdl-notes>
 </aside>
+<footer
+  class="resource-footer"
+  [ngClass]="{'reading-mode': readingMode, 'full-mode': !readingMode}">
+  <sbdl-footer
+  ></sbdl-footer>
+</footer>

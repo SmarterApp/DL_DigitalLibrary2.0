@@ -62,6 +62,7 @@ import {InstructionalPlaylistsComponent} from './instructional/instructional-pla
 import {ShareFormComponent} from './components/share-form/share-form.component';
 import {A11yModule} from '@angular/cdk/a11y';
 import {OverlayModule} from '@angular/cdk/overlay';
+import {LayoutModule} from '../layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -121,15 +122,16 @@ import {OverlayModule} from '@angular/cdk/overlay';
     InstructionalPlaylistsComponent,
     ShareFormComponent
   ],
-  imports: [
-    A11yModule,
-    OverlayModule,
-    CommonModule,
-    RouterModule,
-    PipesModule,
-    NotesModule,
-    SbdlCommonModule
-  ],
+    imports: [
+        A11yModule,
+        OverlayModule,
+        CommonModule,
+        RouterModule,
+        PipesModule,
+        NotesModule,
+        SbdlCommonModule,
+        LayoutModule
+    ],
   exports: [
     ResourceSummaryCardComponent,
     ShareFormComponent

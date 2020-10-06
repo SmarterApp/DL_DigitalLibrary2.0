@@ -11,6 +11,7 @@ import {combineLatest, Subject} from 'rxjs';
 import {UserService} from '../data/user/user.service';
 import {MathJaxService} from '../common/mathjax.service';
 import {map, take, takeUntil, tap} from 'rxjs/operators';
+import {ResourceService} from '../data/resource/resource.service';
 
 const showPrintingOptionsParameter = 'print';
 const showNotesParameter = 'viewNotes';
@@ -46,8 +47,11 @@ export class ResourceTypeStrategyComponent implements AfterViewInit, OnInit, OnD
     private mathjaxService: MathJaxService,
     private userService: UserService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private router: Router,
+    private resourceService: ResourceService
+  ) {
+    this.resourceService.onResourceFooterView(true);
+  }
 
   ngOnInit() {
 
@@ -105,6 +109,7 @@ export class ResourceTypeStrategyComponent implements AfterViewInit, OnInit, OnD
   ngOnDestroy(): void {
     this._destroyed$.next();
     this._destroyed$.complete();
+    this.resourceService.onResourceFooterView(false);
   }
 
   private setQueryParameter(parameterName: string, value: any): void {
