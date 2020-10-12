@@ -57,6 +57,24 @@ export function byString(): ReversibleComparator<string> {
 }
 
 /**
+ * A string comparator factory
+ * Use this to smartly recognize numbers and detect case-insensitive
+ * when comparing string values
+ */
+export function byStringWithNumber(): ReversibleComparator<string> {
+  return createReversible(
+    comparing(
+      byNullLast(),
+      (a, b) =>
+        a.localeCompare(b,
+          undefined,
+          {numeric: true, sensitivity: 'base'
+          })
+    )
+  );
+}
+
+/**
  * Creates and returns a comparator given the rankings
  * @param ordering The ordered set of primitives of the same type to use for sorting
  */
