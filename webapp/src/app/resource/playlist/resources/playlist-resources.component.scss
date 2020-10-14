@@ -8,6 +8,10 @@
     color: $brand-green;
   }
 
+  .playlist-resources {
+    margin-bottom: $spacer-ml;
+  }
+
   .link-card  {
     @include mdc-ripple-surface;
     @include mdc-ripple-radius-bounded;

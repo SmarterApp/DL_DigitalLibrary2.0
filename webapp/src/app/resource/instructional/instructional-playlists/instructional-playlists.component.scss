@@ -7,6 +7,7 @@ $thumbnail-size: 92px;
 
 :host {
   display: block;
+  margin-bottom: $spacer-ml;
 
   // TODO this style should be padding of the container
   margin-right: $spacer-md;
