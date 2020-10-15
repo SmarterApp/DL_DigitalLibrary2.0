@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Location } from '@angular/common';
-import { Observable, of, throwError } from 'rxjs';
+import {BehaviorSubject, Observable, of, throwError} from 'rxjs';
 import { catchError, flatMap, mergeAll, map, take, tap, toArray } from 'rxjs/operators';
 import { coalesce } from 'src/app/common/utils';
 import { DataService } from '../data.service';
@@ -33,6 +33,8 @@ export class ResourceService {
     [ 3, 'asmt-ela-research' ],
     [ 4, 'asmt-ela-read-informational-texts' ],
   ]);
+
+  private resourcePageFooter$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(
     private dataService: DataService,
@@ -275,6 +277,14 @@ export class ResourceService {
       thingsToConsider: json.thingsToConsiderExist ? teaserCPContent.thingsToConsider : null,
       topics: teaserCPContent.topics
     };
+  }
+
+  onResourceFooterView(isOnResourcePage: boolean) {
+    this.resourcePageFooter$.next(isOnResourcePage);
+  }
+
+  get resourcePageFooter(): Observable<boolean> {
+    return this.resourcePageFooter$.asObservable();
   }
 
 }

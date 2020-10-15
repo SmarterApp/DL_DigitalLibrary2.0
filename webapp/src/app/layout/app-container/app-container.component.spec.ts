@@ -18,8 +18,10 @@ import {
   mockRootActivatedRouteSnapshot,
   MockOktaAuthService,
   MockTenantThemeService,
-  MockUserService
+  MockUserService,
+  MockResourceService
 } from 'src/app/app.module.spec';
+import {ResourceService} from '../../data/resource/resource.service';
 
 describe('AppContainerComponent', () => {
   let component: AppContainerComponent;
@@ -36,6 +38,7 @@ describe('AppContainerComponent', () => {
         { provide: OktaAuthService, useClass: MockOktaAuthService },
         { provide: UserService, useClass: MockUserService },
         { provide: TenantThemeService, useClass: MockTenantThemeService },
+        { provide: ResourceService, useClass: MockResourceService},
         initializeSettingsProvider,
         LoggingService
       ]

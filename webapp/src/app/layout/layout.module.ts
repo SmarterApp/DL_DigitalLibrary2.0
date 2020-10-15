@@ -13,21 +13,24 @@ import { SbdlCommonModule } from '../common/common.module';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppContainerComponent,
-    ErrorComponent,
-    FooterComponent,
-    LoginCallbackComponent,
-    LogoutComponent,
-    NavigationComponent
-  ],
-  imports: [
-    OktaAuthModule,
-    SbdlCommonModule,
-    CommonModule,
-    PipesModule,
-    RouterModule,
-    FormsModule
-  ]
+    declarations: [
+        AppContainerComponent,
+        ErrorComponent,
+        FooterComponent,
+        LoginCallbackComponent,
+        LogoutComponent,
+        NavigationComponent
+    ],
+    exports: [
+        FooterComponent
+    ],
+    imports: [
+        OktaAuthModule,
+        SbdlCommonModule,
+        CommonModule,
+        PipesModule,
+        RouterModule,
+        FormsModule
+    ]
 })
 export class LayoutModule { }
