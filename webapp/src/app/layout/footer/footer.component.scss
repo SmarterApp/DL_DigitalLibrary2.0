@@ -29,10 +29,12 @@
         list-style: none;
         font-size: 80%;
         padding: 0;
+        max-width: 15rem;
 
         a {
           color: $neutral-500;
           text-decoration: none;
+          word-wrap: break-word;
 
           &:hover {
             color: $action-900;
