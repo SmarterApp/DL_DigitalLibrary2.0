@@ -4,6 +4,7 @@ export enum TftErrorType {
   ResourceIsPrivate = 'resource-is-private',
   ResourceIsTenantSpecific = 'resource-is-tenant-specific',
   ResourceUnavailable = 'resource-unavailable',
+  PageNotFound = 'page-not-found',
   Unknown = 'unknown'
 }
 
@@ -17,7 +18,7 @@ export interface TftErrorMessage {
   message: string;
 }
 
-export const errorMessages: Map<TftErrorType, TftErrorMessage>  = new Map([
+export const errorMessages: Map<TftErrorType, TftErrorMessage> = new Map([
   [TftErrorType.AuthNoAppAccess, {
     title: 'Unable to access Tools for Teachers.',
     message: 'It looks like your user is not configured with full access to the Tools for Teachers application. Please contact your district assessment coordinator for assistance.'
@@ -35,6 +36,10 @@ export const errorMessages: Map<TftErrorType, TftErrorMessage>  = new Map([
   [TftErrorType.ResourceUnavailable, {
     title: 'This resource is unavailable.',
     message: 'We apologize for the inconvenience.'
+  }],
+  [TftErrorType.PageNotFound, {
+    title: 'Oops!',
+    message: 'We can’t seem to find the page you are looking for.'
   }],
   [TftErrorType.Unknown, {
     title: 'Tools for Teachers has encountered an error.',

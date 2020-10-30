@@ -11,11 +11,13 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { ErrorComponent } from './error/error.component';
 import { SbdlCommonModule } from '../common/common.module';
 import { FormsModule } from '@angular/forms';
+import { PageNotFoundComponent } from './error/page-not-found/page-not-found.component';
 
 @NgModule({
     declarations: [
         AppContainerComponent,
         ErrorComponent,
+        PageNotFoundComponent,
         FooterComponent,
         LoginCallbackComponent,
         LogoutComponent,
