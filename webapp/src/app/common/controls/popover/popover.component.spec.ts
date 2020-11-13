@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PopoverComponent } from './popover.component';
 import { IconComponent } from '../../icon/icon.component';
+import {mockWindowObj} from '../../../app.module.spec';
 
 describe('PopoverComponent', () => {
   let component: PopoverComponent;
@@ -9,8 +10,10 @@ describe('PopoverComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IconComponent, PopoverComponent ]
-    })
+      declarations: [ IconComponent, PopoverComponent ],
+      providers: [mockWindowObj]
+    },
+  )
     .compileComponents();
   }));
 
