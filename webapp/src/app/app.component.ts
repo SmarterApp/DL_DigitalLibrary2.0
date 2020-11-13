@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 import {VERSION} from 'src/environments/version';
 import {AppConfig} from './common/config/app.config';
-import {UserService} from "./data/user/user.service";
-import {OktaAuthService} from "@okta/okta-angular";
-import {OKTA_CALLBACK_PATH} from "./common/constants";
+import {UserService} from './data/user/user.service';
+import {OktaAuthService} from '@okta/okta-angular';
+import {OKTA_CALLBACK_PATH} from './common/constants';
 
 
 @Component({
@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   appVersion = VERSION;
 
   constructor(
+    @Inject(Window) private window: Window,
     private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
     private userService: UserService,
     private oktaAuthService: OktaAuthService
@@ -33,7 +34,7 @@ export class AppComponent implements OnInit {
       }
     }
 
-    this.storePathOnPageLoad(window.location.pathname);
+    this.storePathOnPageLoad(this.window.location.pathname);
 
     this.userService.userSessionCheck();
   }

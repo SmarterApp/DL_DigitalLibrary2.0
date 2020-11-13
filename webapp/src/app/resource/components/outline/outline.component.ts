@@ -1,4 +1,4 @@
-import {Component, HostListener, Input, OnInit} from '@angular/core';
+import {Component, HostListener, Inject, Input, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {Map} from 'immutable';
 import {Resource} from 'src/app/data/resource/model/resource.model';
@@ -54,11 +54,11 @@ export class OutlineComponent implements OnInit {
       ResourceType.ConnectionsPlaylist,
       [ DST.PlaylistTopics, DST.PlaylistIntervention, DST.ThingsToConsider, DST.Overview, DST.PlaylistInterim ]);
 
-  constructor(private location: Location) { }
+  constructor(@Inject(Window) public window: Window, private location: Location) {}
 
   @HostListener('window:resize', ['$event'])
   onResize(event?) {
-    this.mobile = window.innerWidth <= this.breakpointSmall;
+    this.mobile = this.window.innerWidth <= this.breakpointSmall;
   }
 
   get sectionsInOrder(): DocumentSection[] {
@@ -69,7 +69,7 @@ export class OutlineComponent implements OnInit {
 
   ngOnInit() {
     this.breakpointSmall = getCssVar('--breakpoint-sm');
-    this.mobile = window.innerWidth <= this.breakpointSmall;
+    this.mobile = this.window.innerWidth <= this.breakpointSmall;
   }
 
   scrollTo(section: DocumentSection): void {

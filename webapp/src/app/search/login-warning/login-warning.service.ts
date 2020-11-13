@@ -1,4 +1,4 @@
-import { Injectable, Output, EventEmitter, OnDestroy, ElementRef } from '@angular/core';
+import {Injectable, Output, EventEmitter, OnDestroy, ElementRef, Inject} from '@angular/core';
 import { StorageService } from 'src/app/common/storage.service';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/data/user/user.service';
@@ -27,6 +27,7 @@ export class LoginWarningService implements OnDestroy {
   private loginWarningCloseSubscription: Subscription;
 
   constructor(
+    @Inject(Window) private window: Window,
     private storageService: StorageService,
     private userService: UserService,
     private popoverService: PopoverService,
@@ -61,8 +62,8 @@ export class LoginWarningService implements OnDestroy {
     const rect = el.getBoundingClientRect();
     const width = rect.right - rect.left;
 
-    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = this.window.pageXOffset || document.documentElement.scrollLeft;
+    const scrollTop = this.window.pageYOffset || document.documentElement.scrollTop;
 
     return { top: rect.top + scrollTop, left: rect.left + scrollLeft + width / 2 + 24 };
   }
@@ -95,7 +96,7 @@ export class LoginWarningService implements OnDestroy {
     this.popover.onClose.subscribe(this.closeLoginWarning);
 
     this.loginWarningCloseSubscription = this.onCloseClick
-      .subscribe(() => { 
+      .subscribe(() => {
         if (this.popover) {
           this.popover.close();
         }

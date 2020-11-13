@@ -3,6 +3,7 @@ import {
   ElementRef,
   EventEmitter,
   HostListener,
+  Inject,
   Input,
   OnDestroy,
   OnInit,
@@ -84,7 +85,7 @@ export class ActionsComponent implements OnDestroy, OnInit {
   }
 
   doResize = () =>  {
-    const isSmall = window.innerWidth < this.readingModeDefaultWidth;
+    const isSmall = this.window.innerWidth < this.readingModeDefaultWidth;
 
     // Transition from large to small, set readingMode = true
     if (isSmall && (!this.wasSmall || this.wasSmall === undefined)) {
@@ -102,6 +103,7 @@ export class ActionsComponent implements OnDestroy, OnInit {
   }
 
   constructor(
+    @Inject(Window) private window: Window,
     private bookmarksService: BookmarksService,
     private popoverService: PopoverService,
     private userService: UserService

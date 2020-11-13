@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import { ActivatedRoute, NavigationStart, NavigationEnd, Router } from '@angular/router';
 import {Observable, Subject, Subscription} from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
@@ -14,6 +14,7 @@ import {ResourceService} from '../../data/resource/resource.service';
 })
 export class AppContainerComponent implements OnInit {
   constructor(
+    @Inject(Window) private window: Window,
     private route: ActivatedRoute,
     private location: Location,
     private router: Router,
@@ -37,7 +38,7 @@ export class AppContainerComponent implements OnInit {
         this.loading$.next(false);
         const newPath = urlPathPart(evt.url);
         if (newPath !== this.oldPath) {
-          window.scrollTo(0, 0);
+          this.window.scrollTo(0, 0);
         }
         this.oldPath = newPath;
       }
