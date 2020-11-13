@@ -63,7 +63,7 @@ export class MathJaxService {
   private mathjax$ = new ReplaySubject<MathJax>(1);
   private typesetPromise: Promise<void> = Promise.resolve(null);
 
-  constructor(@Inject(Window) private window: Window, private scriptService: ScriptService) {
+  constructor(@Inject('Window') private window: Window, private scriptService: ScriptService) {
     concat(
       this.scriptService.require('assets/mathjax/mathjax-config.js'),
       this.scriptService.require('https://polyfill.io/v3/polyfill.min.js?features=es6'),

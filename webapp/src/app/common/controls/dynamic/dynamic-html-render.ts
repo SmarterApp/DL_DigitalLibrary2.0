@@ -19,7 +19,7 @@ export class DynamicHTMLRenderer {
   private componentRefs = new Map<any, Array<ComponentRef<any>>>();
 
   constructor(
-    @Inject(Window) private window: Window,
+    @Inject('Window') private window: Window,
     private options: DynamicHTMLOptions,
     private cfr: ComponentFactoryResolver,
     private injector: Injector) {

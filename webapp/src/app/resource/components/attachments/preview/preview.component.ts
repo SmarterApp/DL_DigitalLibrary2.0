@@ -36,7 +36,7 @@ export class PreviewComponent implements AfterViewInit, OnDestroy, OnInit {
   }
 
   constructor(
-    @Inject(Window) private window: Window,
+    @Inject('Window') private window: Window,
     private attachmentsService: AttachmentsService,
     private dataService: DataService
   ) {}

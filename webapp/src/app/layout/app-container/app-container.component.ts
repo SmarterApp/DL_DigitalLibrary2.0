@@ -14,7 +14,7 @@ import {ResourceService} from '../../data/resource/resource.service';
 })
 export class AppContainerComponent implements OnInit {
   constructor(
-    @Inject(Window) private window: Window,
+    @Inject('Window') private window: Window,
     private route: ActivatedRoute,
     private location: Location,
     private router: Router,

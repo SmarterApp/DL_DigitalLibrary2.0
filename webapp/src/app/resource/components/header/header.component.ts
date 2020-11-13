@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
     return this.resource.properties;
   }
 
-  constructor(@Inject(Window) private window: Window) {}
+  constructor(@Inject('Window') private window: Window) {}
 
   ngOnInit() {
     if (this.showIconsCol && this.resource.properties.grades.length > 0) {

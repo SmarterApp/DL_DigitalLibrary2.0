@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   appVersion = VERSION;
 
   constructor(
-    @Inject(Window) private window: Window,
+    @Inject('Window') private window: Window,
     private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
     private userService: UserService,
     private oktaAuthService: OktaAuthService

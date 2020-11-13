@@ -5,7 +5,7 @@ import { FileType, ResourceAttachment } from 'src/app/data/resource/model/attach
 @Injectable({ providedIn: 'root' })
 export class AttachmentsService {
 
-  constructor(@Inject(Window) private window: Window, private dataService: DataService) {}
+  constructor(@Inject('Window') private window: Window, private dataService: DataService) {}
 
   download(attachment: ResourceAttachment) {
     this.dataService

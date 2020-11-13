@@ -27,7 +27,7 @@ export class LoginWarningService implements OnDestroy {
   private loginWarningCloseSubscription: Subscription;
 
   constructor(
-    @Inject(Window) private window: Window,
+    @Inject('Window') private window: Window,
     private storageService: StorageService,
     private userService: UserService,
     private popoverService: PopoverService,

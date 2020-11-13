@@ -54,7 +54,7 @@ export class OutlineComponent implements OnInit {
       ResourceType.ConnectionsPlaylist,
       [ DST.PlaylistTopics, DST.PlaylistIntervention, DST.ThingsToConsider, DST.Overview, DST.PlaylistInterim ]);
 
-  constructor(@Inject(Window) public window: Window, private location: Location) {}
+  constructor(@Inject('Window') public window: Window, private location: Location) {}
 
   @HostListener('window:resize', ['$event'])
   onResize(event?) {

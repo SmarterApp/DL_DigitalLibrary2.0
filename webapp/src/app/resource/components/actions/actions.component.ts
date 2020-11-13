@@ -103,7 +103,7 @@ export class ActionsComponent implements OnDestroy, OnInit {
   }
 
   constructor(
-    @Inject(Window) private window: Window,
+    @Inject('Window') private window: Window,
     private bookmarksService: BookmarksService,
     private popoverService: PopoverService,
     private userService: UserService

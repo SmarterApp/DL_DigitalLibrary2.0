@@ -53,7 +53,7 @@ export class TooltipComponent implements OnInit, OnMount {
   ngOnInit() {
   }
 
-  constructor(@Inject(Window) private window: Window, private popoverService: PopoverService) {
+  constructor(@Inject('Window') private window: Window, private popoverService: PopoverService) {
   }
 
   openTooltipPopover() {

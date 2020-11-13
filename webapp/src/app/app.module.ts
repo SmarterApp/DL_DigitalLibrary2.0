@@ -70,7 +70,7 @@ export function initializeOkta(appConfig: AppConfig) {
       deps: [ AppConfig, APP_INITIALIZER ]
     },
     {
-      provide: Window,
+      provide: 'Window',
       useValue: window
     },
     Title

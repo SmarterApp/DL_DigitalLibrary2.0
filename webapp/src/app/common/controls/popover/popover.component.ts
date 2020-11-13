@@ -51,7 +51,7 @@ export class PopoverComponent implements AfterViewInit {
   }
 
   constructor(
-    @Inject(Window) private window: Window,
+    @Inject('Window') private window: Window,
     private sanitizer: DomSanitizer,
     private mathJaxService : MathJaxService) { }
 
