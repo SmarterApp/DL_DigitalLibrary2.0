@@ -80,6 +80,6 @@ export const mockDataServiceProviders = [
 export const windowMock: Window = <any> {};
 
 export const mockWindowObj = {
-  provide: Window,
+  provide: 'Window',
   useFactory: (() => {return windowMock;})
 };
