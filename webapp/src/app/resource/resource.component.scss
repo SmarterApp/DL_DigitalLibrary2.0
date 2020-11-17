@@ -5,7 +5,7 @@
 
 :host {
   display: grid;
-  grid-template: "outline header properties" "outline content properties"
+  grid-template: "outline header properties" "outline content properties" "outline footer properties"
       / auto auto auto;
   justify-items: stretch;
   justify-content: space-between;
@@ -65,6 +65,11 @@
     box-sizing: border-box;
     max-width: calc(var(--measure) + 8rem);
     z-index: 1;
+  }
+
+  .resource-footer{
+    margin-top: $spacer-xl;
+    background:$neutral-50;
   }
 
   .resource-properties,

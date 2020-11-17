@@ -10,6 +10,6 @@
     <router-outlet>
     </router-outlet>
   </div>
-  <sbdl-footer></sbdl-footer>
+  <sbdl-footer *ngIf="!(resourcePageFooterView$ | async)"></sbdl-footer>
 </div>
 
