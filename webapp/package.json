@@ -1,6 +1,6 @@
 {
   "name": "sb-digital-library",
-  "version": "1.5.1",
+  "version": "1.6.1",
   "scripts": {
     "ng": "ng",
     "start": "npm run pre-build && ng serve -o",
