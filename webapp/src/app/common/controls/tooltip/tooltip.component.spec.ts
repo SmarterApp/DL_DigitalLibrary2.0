@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TooltipComponent } from './tooltip.component';
 import { SbdlCommonModule } from '../../common.module';
+import {mockWindowObj} from '../../../app.module.spec';
 
 describe('TooltipComponent', () => {
   let component: TooltipComponent;
@@ -9,7 +10,8 @@ describe('TooltipComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ SbdlCommonModule ]
+      imports: [ SbdlCommonModule ],
+      providers: [mockWindowObj]
     })
     .compileComponents();
   }));

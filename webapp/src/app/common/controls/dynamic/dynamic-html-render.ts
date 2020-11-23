@@ -1,4 +1,4 @@
-import { Injectable, Injector, ElementRef, ComponentFactoryResolver, ComponentFactory, ComponentRef } from '@angular/core';
+import {Injectable, Injector, ElementRef, ComponentFactoryResolver, ComponentFactory, ComponentRef, Inject} from '@angular/core';
 import { DynamicHTMLOptions } from './options';
 import { OnMount } from './interfaces';
 
@@ -7,7 +7,7 @@ export interface DynamicHTMLRef {
   destroy: () => void;
 }
 
-function isBrowserPlatform() {
+function isBrowserPlatform(window: Window) {
   return window != null && window.document != null;
 }
 
@@ -18,7 +18,11 @@ export class DynamicHTMLRenderer {
 
   private componentRefs = new Map<any, Array<ComponentRef<any>>>();
 
-  constructor(private options: DynamicHTMLOptions, private cfr: ComponentFactoryResolver, private injector: Injector) {
+  constructor(
+    @Inject('Window') private window: Window,
+    private options: DynamicHTMLOptions,
+    private cfr: ComponentFactoryResolver,
+    private injector: Injector) {
     this.options.components.forEach(({ selector, component }) => {
       let cf: ComponentFactory<any>;
       cf = this.cfr.resolveComponentFactory(component);
@@ -27,7 +31,7 @@ export class DynamicHTMLRenderer {
   }
 
   renderInnerHTML(elementRef: ElementRef, html: string): DynamicHTMLRef {
-    if (!isBrowserPlatform()) {
+    if (!isBrowserPlatform(this.window)) {
       return {
         check: () => {},
         destroy: () => {},
@@ -36,7 +40,7 @@ export class DynamicHTMLRenderer {
     elementRef.nativeElement.innerHTML = html;
 
     const componentRefs: Array<ComponentRef<any>> = [];
-    
+
     this.options.components.forEach(({ selector }) => {
       const elements = (elementRef.nativeElement as Element).querySelectorAll(selector);
       Array.prototype.forEach.call(elements, (el: Element) => {
@@ -69,4 +73,3 @@ export class DynamicHTMLRenderer {
   }
 }
 
-  

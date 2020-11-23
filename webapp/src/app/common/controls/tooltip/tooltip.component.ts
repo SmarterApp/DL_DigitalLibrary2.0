@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {Component, ElementRef, Inject, Input, OnInit, ViewChild} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { OnMount } from '../dynamic/interfaces';
 import { PopoverComponent } from '../popover/popover.component';
@@ -53,7 +53,7 @@ export class TooltipComponent implements OnInit, OnMount {
   ngOnInit() {
   }
 
-  constructor(private popoverService: PopoverService) {
+  constructor(@Inject('Window') private window: Window, private popoverService: PopoverService) {
   }
 
   openTooltipPopover() {
@@ -79,8 +79,8 @@ export class TooltipComponent implements OnInit, OnMount {
     const rect = el.getBoundingClientRect();
     const width = rect.right - rect.left;
 
-    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = this.window.pageXOffset || document.documentElement.scrollLeft;
+    const scrollTop = this.window.pageYOffset || document.documentElement.scrollTop;
 
     return { top: rect.top + scrollTop, left: rect.left + scrollLeft + width / 2 + 24 };
   }
