@@ -3,13 +3,15 @@
 
   &.obscured {
     ::ng-deep > {
-      :first-child:not(sbdl-preview-login-prompt) {
+      :first-child,
+      sbdl-strategy-in-action-accessibility {
         display: block;
         filter: blur(6px);
         pointer-events: none;
         user-select: none;
       }
-      :not(first-child):not(sbdl-preview-login-prompt) {
+
+      :not(first-child):not(sbdl-preview-login-prompt):not(sbdl-strategy-in-action-accessibility) {
         display: none;
       }
     }
