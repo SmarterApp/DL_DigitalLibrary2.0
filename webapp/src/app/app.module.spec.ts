@@ -76,3 +76,10 @@ export const mockDataServiceProviders = [
     LoggingService,
     initializeSettingsProvider,
 ];
+
+export const windowMock: Window = <any> {};
+
+export const mockWindowObj = {
+  provide: 'Window',
+  useFactory: (() => {return windowMock;})
+};

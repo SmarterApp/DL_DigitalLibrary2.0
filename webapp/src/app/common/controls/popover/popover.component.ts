@@ -1,4 +1,15 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Inject,
+  Input,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { PopoverOptions } from './popover.service';
 import {take} from "rxjs/operators";
@@ -39,7 +50,10 @@ export class PopoverComponent implements AfterViewInit {
     this.close();
   }
 
-  constructor(private sanitizer: DomSanitizer,private mathJaxService : MathJaxService) { }
+  constructor(
+    @Inject('Window') private window: Window,
+    private sanitizer: DomSanitizer,
+    private mathJaxService : MathJaxService) { }
 
   ngAfterViewInit(): void {
     this.mathJaxService.typeset().pipe(take(1)).subscribe(() => {});
@@ -82,8 +96,8 @@ export class PopoverComponent implements AfterViewInit {
   inView(bounding: DOMRect): boolean {
     return (bounding.top >= 0 &&
             bounding.left >= 0 &&
-            bounding.bottom <= window.innerHeight &&
-            bounding.right <= window.innerWidth);
+            bounding.bottom <= this.window.innerHeight &&
+            bounding.right <= this.window.innerWidth);
   }
 
   close() {

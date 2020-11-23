@@ -1,10 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Map } from 'immutable';
-import { Resource } from 'src/app/data/resource/model/resource.model';
-import { OutlineComponent } from '../outline.component';
-import { DocumentOutline, DocumentSection, DocumentSectionType } from '../document-outline.model';
-import { getCssVar } from 'src/app/common/utils';
-import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Map} from 'immutable';
+import {Resource} from 'src/app/data/resource/model/resource.model';
+import {OutlineComponent} from '../outline.component';
+import {DocumentOutline, DocumentSection, DocumentSectionType} from '../document-outline.model';
 
 @Component({
   selector: 'sbdl-enhanced-printing',
@@ -48,7 +46,7 @@ export class EnhancedPrintingComponent extends OutlineComponent implements OnIni
     this.printingModeChanged.emit(false);
   }
 
-  print() { window.print(); }
+  print() { this.window.print(); }
 
   sectionChanged(section: DocumentSection) {
 

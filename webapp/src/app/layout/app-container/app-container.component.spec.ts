@@ -14,12 +14,13 @@ import { SbdlCommonModule } from 'src/app/common/common.module';
 import { TenantThemeService } from 'src/app/data/tenant-theme/tenant-theme.service';
 import { UserService } from 'src/app/data/user/user.service';
 import {
+  mockWindowObj,
   initializeSettingsProvider,
   mockRootActivatedRouteSnapshot,
   MockOktaAuthService,
   MockTenantThemeService,
   MockUserService,
-  MockResourceService
+  MockResourceService,
 } from 'src/app/app.module.spec';
 import {ResourceService} from '../../data/resource/resource.service';
 
@@ -39,6 +40,7 @@ describe('AppContainerComponent', () => {
         { provide: UserService, useClass: MockUserService },
         { provide: TenantThemeService, useClass: MockTenantThemeService },
         { provide: ResourceService, useClass: MockResourceService},
+        mockWindowObj,
         initializeSettingsProvider,
         LoggingService
       ]

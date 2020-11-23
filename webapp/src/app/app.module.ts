@@ -69,6 +69,10 @@ export function initializeOkta(appConfig: AppConfig) {
       useFactory: initializeOkta,
       deps: [ AppConfig, APP_INITIALIZER ]
     },
+    {
+      provide: 'Window',
+      useValue: window
+    },
     Title
   ],
   bootstrap: [ AppComponent ]
