@@ -57,6 +57,6 @@ export class ErrorComponent implements OnInit {
 
   onLoginButtonClick(): void {
     this.loading$.next(true);
-    this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: this.router.url }});
+    this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: this.location.path() }});
   }
 }

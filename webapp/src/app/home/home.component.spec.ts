@@ -12,7 +12,8 @@ import {
   initializeSettingsProvider,
   MockOktaAuthService,
   MockTenantThemeService,
-  MockUserService
+  MockUserService,
+  mockWindowObj
 } from 'src/app/app.module.spec';
 import { SearchModule } from '../search/search.module';
 import { ResourceModule } from '../resource/resource.module';
@@ -38,6 +39,7 @@ describe('HomeComponent', () => {
         { provide: UserService, useClass: MockUserService },
         { provide: TenantThemeService, useClass: MockTenantThemeService },
         { provide: ConfirmationDialogService, useClass: mockConfirmationDialogService },
+        mockWindowObj,
         initializeSettingsProvider
       ],
       declarations: [ HomeComponent ],

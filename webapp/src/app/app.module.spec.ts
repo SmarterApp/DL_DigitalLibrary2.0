@@ -60,6 +60,10 @@ export class MockUserService {
   get authenticated(): Observable<boolean> { return of(true); }
 }
 
+export class MockResourceService {
+  get resourcePageFooter():Observable<boolean> { return of(true);}
+}
+
 export const initializeSettingsProvider = {
     provide: APP_INITIALIZER,
     useFactory: (mockAppConfig),
@@ -72,3 +76,10 @@ export const mockDataServiceProviders = [
     LoggingService,
     initializeSettingsProvider,
 ];
+
+export const windowMock: Window = <any> {};
+
+export const mockWindowObj = {
+  provide: 'Window',
+  useFactory: (() => {return windowMock;})
+};

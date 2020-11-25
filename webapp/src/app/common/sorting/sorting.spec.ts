@@ -1,4 +1,4 @@
-import {byOrdering, byString, on} from './sorting';
+import {byOrdering, byString, byStringWithNumber, on} from './sorting';
 
 describe('byString', () => {
   it('should sort by string', () => {
@@ -25,6 +25,12 @@ describe('byOrdering', () => {
   });
   it('should be reversible', () => {
     expect(['a', 'b', 'c'].sort(byOrdering(['a', 'b', 'c']).descending())).toEqual(['c', 'b', 'a']);
+  });
+});
+
+describe('byStringWithNumber', () => {
+  it('should sort by string with number', () => {
+    expect(['CO-18', 'CO-2', 'CO-11'].sort(byStringWithNumber())).toEqual(['CO-2', 'CO-11', 'CO-18']);
   });
 });
 

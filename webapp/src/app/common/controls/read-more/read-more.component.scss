@@ -11,12 +11,14 @@
       margin-top: 0;
       margin-bottom: 0;
     }
+    p:not(:first-child) {
+      margin-top: 3px;
+    }
     ul {
       margin: 0;
     }
   }
 }
-    
 @media only print {
   .text-container.collapsed { max-height: none; }
   .more-less { display: none; }

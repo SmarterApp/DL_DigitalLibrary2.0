@@ -1,13 +1,14 @@
-import { HttpClientModule } from '@angular/common/http';
-import { async, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
-import { DataModule } from './data/data.module';
-import { Angulartics2Module } from 'angulartics2';
-import { SbdlCommonModule } from './common/common.module';
-import {OktaAuthService} from "@okta/okta-angular";
-import {MockOktaAuthService} from "./app.module.spec";
-import {APP_BASE_HREF} from "@angular/common";
+import {HttpClientModule} from '@angular/common/http';
+import {async, TestBed} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import {AppComponent} from './app.component';
+import {DataModule} from './data/data.module';
+import {Angulartics2Module} from 'angulartics2';
+import {SbdlCommonModule} from './common/common.module';
+import {OktaAuthService} from '@okta/okta-angular';
+import {MockOktaAuthService, mockWindowObj} from './app.module.spec';
+import {APP_BASE_HREF} from '@angular/common';
+
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -19,10 +20,11 @@ describe('AppComponent', () => {
         DataModule,
         SbdlCommonModule
       ],
-      providers:[
-        { provide: APP_BASE_HREF, useValue: '/' },
-        { provide: OktaAuthService, useClass: MockOktaAuthService }
-        ],
+      providers: [
+        {provide: APP_BASE_HREF, useValue: '/'},
+        {provide: OktaAuthService, useClass: MockOktaAuthService},
+        mockWindowObj
+      ],
       declarations: [
         AppComponent
       ],
