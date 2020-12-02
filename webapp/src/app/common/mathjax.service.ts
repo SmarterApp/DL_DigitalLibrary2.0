@@ -65,7 +65,6 @@ export class MathJaxService {
 
   constructor(@Inject('Window') private window: Window, private scriptService: ScriptService) {
     concat(
-      this.scriptService.require('assets/mathjax/mathjax-config.js'),
       this.scriptService.require('https://polyfill.io/v3/polyfill.min.js?features=es6'),
       this.scriptService.require('https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js')
     ).subscribe(_ => {
