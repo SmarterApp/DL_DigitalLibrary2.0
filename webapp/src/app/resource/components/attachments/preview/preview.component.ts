@@ -1,5 +1,7 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input,
-  OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Inject, Input,
+  OnDestroy, OnInit, Output, ViewChild
+} from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { DataService } from 'src/app/data/data.service';
 import { ResourceAttachment } from 'src/app/data/resource/model/attachment.model';
@@ -34,6 +36,7 @@ export class PreviewComponent implements AfterViewInit, OnDestroy, OnInit {
   }
 
   constructor(
+    @Inject('Window') private window: Window,
     private attachmentsService: AttachmentsService,
     private dataService: DataService
   ) {}
@@ -43,7 +46,7 @@ export class PreviewComponent implements AfterViewInit, OnDestroy, OnInit {
       .downloadBlob(this.attachment.uri)
       .subscribe(blob => {
         const typedBlob = new Blob([blob], {type: this.attachment.mimeType});
-        this.blobUrl = window.URL.createObjectURL(typedBlob);
+        this.blobUrl =(this.window as any).URL.createObjectURL(typedBlob);
         this.loading = false;
       });
   }
@@ -54,7 +57,7 @@ export class PreviewComponent implements AfterViewInit, OnDestroy, OnInit {
   }
 
   ngOnDestroy(): void {
-    window.URL.revokeObjectURL(this.blobUrl);
+    (this.window as any).URL.revokeObjectURL(this.blobUrl);
   }
 
   onCloseButtonClick(): void {

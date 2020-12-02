@@ -51,7 +51,7 @@
  * MathJax as needed.
  */
 
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {concat, Observable, ReplaySubject} from 'rxjs';
 import {mergeMap} from 'rxjs/operators';
 import {ScriptService} from './script.service';
@@ -63,12 +63,12 @@ export class MathJaxService {
   private mathjax$ = new ReplaySubject<MathJax>(1);
   private typesetPromise: Promise<void> = Promise.resolve(null);
 
-  constructor(private scriptService: ScriptService) {
+  constructor(@Inject('Window') private window: Window, private scriptService: ScriptService) {
     concat(
       this.scriptService.require('https://polyfill.io/v3/polyfill.min.js?features=es6'),
       this.scriptService.require('https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js')
     ).subscribe(_ => {
-      const mjObj = (window as any).MathJax;
+      const mjObj = (this.window as any).MathJax;
       if (mjObj) {
         this.mathjax$.next(mjObj);
       }

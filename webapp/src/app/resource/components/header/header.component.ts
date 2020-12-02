@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import { Resource } from 'src/app/data/resource/model/resource.model';
 import { Grade } from 'src/app/data/resource/model/grade.model';
 
@@ -25,14 +25,14 @@ export class HeaderComponent implements OnInit {
     return this.resource.properties;
   }
 
-  constructor() { }
+  constructor(@Inject('Window') private window: Window) {}
 
   ngOnInit() {
     if (this.showIconsCol && this.resource.properties.grades.length > 0) {
       this.grade = this.resource.properties.grades[0];
     }
 
-    this.fullUrl = window.location.href;
+    this.fullUrl = this.window.location.href;
   }
 
   emitAttachmentsClicked() {
