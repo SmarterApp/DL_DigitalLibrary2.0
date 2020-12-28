@@ -12,7 +12,6 @@ import { ResourcesWithNotesResolve } from './notes/resources-with-notes.resolve'
 import { PromotedResourcesResolve } from './home/promoted-resources.resolve';
 import { SearchResultsComponent } from './search/results/search-results.component';
 import { SearchResultsResolve } from './search/results/search-results.resolve';
-import { SearchFiltersResolve } from './search/search-filters.resolve';
 import { ErrorComponent } from './layout/error/error.component';
 import { LoginCallbackComponent } from './layout/login-callback/login-callback.component';
 import { LogoutComponent } from './layout/logout/logout.component';
@@ -28,7 +27,6 @@ const routes: Routes = [
         path: '',
         component: HomeComponent,
         resolve: {
-          filters: SearchFiltersResolve,
           promotedResources: PromotedResourcesResolve
         }
       }, {

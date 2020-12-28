@@ -11,19 +11,20 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
 import {
   initializeSettingsProvider,
   MockOktaAuthService,
+  mockSearchResult,
   MockTenantThemeService,
   MockUserService,
   mockWindowObj
 } from 'src/app/app.module.spec';
-import { SearchModule } from '../search/search.module';
-import { ResourceModule } from '../resource/resource.module';
-import { HomeComponent } from './home.component';
-import { TenantThemeService } from 'src/app/data/tenant-theme/tenant-theme.service';
-import { UserService } from 'src/app/data/user/user.service';
-import { ConfirmationDialogService } from 'src/app/common/confirmation-dialog/confirmation-dialog.service';
+import {SearchModule} from '../search/search.module';
+import {ResourceModule} from '../resource/resource.module';
+import {HomeComponent} from './home.component';
+import {TenantThemeService} from 'src/app/data/tenant-theme/tenant-theme.service';
+import {UserService} from 'src/app/data/user/user.service';
+import {ConfirmationDialogService} from 'src/app/common/confirmation-dialog/confirmation-dialog.service';
+import {SearchService} from "../data/search/search.service";
 
 const mockConfirmationDialogService = jasmine.createSpyObj('ConfirmationDialogService', ['close']);
-
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
@@ -39,6 +40,7 @@ describe('HomeComponent', () => {
         { provide: UserService, useClass: MockUserService },
         { provide: TenantThemeService, useClass: MockTenantThemeService },
         { provide: ConfirmationDialogService, useClass: mockConfirmationDialogService },
+        { provide: SearchService, useValue: mockSearchResult },
         mockWindowObj,
         initializeSettingsProvider
       ],

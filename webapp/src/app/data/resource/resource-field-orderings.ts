@@ -17,6 +17,9 @@ export const resourceTypeCodeOrdering: string[] = [
  * The natural ordering of grades
  */
 export const gradeCodeOrdering: string[] = [
+  'gk',
+  'g1',
+  'g2',
   'g3',
   'g4',
   'g5',

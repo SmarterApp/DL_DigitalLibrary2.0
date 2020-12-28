@@ -9,6 +9,7 @@ import { User } from 'src/app/data/user/user.model';
 import { mockUser } from './data/mock-data';
 import { MockDataService } from './data/mock-data.service';
 import { TenantTheme, TenantThemeConfig } from './data/tenant-theme/tenant-theme.model';
+import {emptyFilters} from "./data/search/search-filters.model";
 
 // Common AppModule mocks here.
 export const dummyObservable = {
@@ -83,3 +84,9 @@ export const mockWindowObj = {
   provide: 'Window',
   useFactory: (() => {return windowMock;})
 };
+
+export const mockSearchResult = of({
+  results: [],
+  filters: emptyFilters
+});
+

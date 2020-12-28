@@ -8,7 +8,7 @@
     submitButtonAriaLabel="search resources"
   >
   </sbdl-text-field>
-  
+
   <ng-template #loginWarningPopover>
     <sbdl-login-warning [queryParams]="rectifyParams({query: filters.query})"></sbdl-login-warning>
   </ng-template>
@@ -38,9 +38,13 @@
   Search for resources related to your search terms using the search input
   above or <a href="javascript:void(0)" (click)="showAdvanced = true">filter resources</a>.
 </div>
-
+<div *ngIf="filterLoading" class="filter-loader">
+  <div class="filter-spinner-container">
+    <i class="fas fa-spinner fa-pulse" aria-label="Loading..."></i>
+  </div>
+</div>
 <!-- using ngIf > hidden because it does not render correctly with [hidden] in edge 18 (non-chromium version) -->
-<div *ngIf="showAdvanced && (newSearch || numResults !== 0)" class="advanced-search">
+<div *ngIf="!filterLoading && showAdvanced && (newSearch || numResults !== 0)" class="advanced-search">
   <div class="advanced-header">
       <h2>Filter Resources</h2>
       <div>

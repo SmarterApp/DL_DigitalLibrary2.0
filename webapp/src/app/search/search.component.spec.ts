@@ -8,6 +8,8 @@ import { of, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { emptyFilters } from '../data/search/search-filters.model';
 import { LoginWarningService } from './login-warning/login-warning.service';
+import {SearchService} from "../data/search/search.service";
+import {mockSearchResult} from "../app.module.spec";
 
 const mockOnWarningClosed = new Observable<any>();
 const mockLoginWarningService = <LoginWarningService> {
@@ -22,7 +24,7 @@ describe('SearchComponent', () => {
     TestBed.configureTestingModule({
       imports: [ FormsModule, SbdlCommonModule, RouterTestingModule ],
       declarations: [ SearchComponent, LoginWarningComponent ],
-      providers: [ 
+      providers: [
         { provide: ActivatedRoute,
           useValue: {
             snapshot: { params: {} },
@@ -30,8 +32,10 @@ describe('SearchComponent', () => {
             params: of({ params: { query: 'text' }})
           }
         },
-        { provide: LoginWarningService, useValue: mockLoginWarningService }
-       ]
+        { provide: LoginWarningService, useValue: mockLoginWarningService },
+        { provide: SearchService, useValue: mockSearchResult }
+
+      ]
     })
     .compileComponents();
   }));
