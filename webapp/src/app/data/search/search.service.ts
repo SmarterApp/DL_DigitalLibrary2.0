@@ -87,7 +87,7 @@ export class SearchService {
   }
 
   private createKey(url: string, accessToken?: string): string {
-    return accessToken ? url + '?token=' + accessToken : url;
+    return accessToken ? url + '?' + accessToken : url;
   }
 
   private searchResourcesPaginate(request: SearchRequestModel, url:string): Observable<SearchResults>{
