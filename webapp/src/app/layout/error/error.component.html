@@ -8,7 +8,7 @@
     Technical details: {{ errorDetails$ | async }}
   </p>
 </div>
-<div *ngIf="user$ | async">
+<div *ngIf="(user$ | async ) || (error$ | async) == errorTypes.PageNotFound">
   <p>
     <a [routerLink]="['/']">
       <i class='far fa-arrow-left' alt='' aria-hidden='true'></i>
@@ -16,7 +16,9 @@
     </a>
   </p>
 </div>
-<div *ngIf="!(user$ | async) && (error$ | async) !== errorTypes.AuthNoAppAccess">
+<div *ngIf="!(user$ | async) &&
+     (error$ | async) !== (errorTypes.AuthNoAppAccess && errorTypes.PageNotFound)
+      ">
   <sbdl-button
     class="primary"
     (click)="onLoginButtonClick()"
