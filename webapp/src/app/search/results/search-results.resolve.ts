@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { SearchResults } from 'src/app/data/search/search-results.model';
-import { SearchService } from 'src/app/data/search/search.service';
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {SearchResults} from 'src/app/data/search/search-results.model';
+import {SearchService} from 'src/app/data/search/search.service';
 
 @Injectable({
     providedIn: 'root'
@@ -16,14 +16,19 @@ export class SearchResultsResolve implements Resolve<SearchResults> {
     state: RouterStateSnapshot
   ): SearchResults | Observable<SearchResults> | Promise<SearchResults> {
 
+    const isDefaultSearchFilter = Object.keys(route.params).length === 0;
+
     const searchParams = this.service.paramsToRequestModel(route.params);
-    // if we have no search params, don't do an expensive search over the entire index.
-    if (!searchParams) {
-      return this.service.getDefaultFilters().pipe(
-        map(filters => ({ filters, results: [] })));
+    // if we have no search params, make an elasticsearch api call with blank search text
+    // to get all the filters from the data layer
+    if (isDefaultSearchFilter) {
+      return this.service.fetchSearchResult(searchParams, true)
+        .pipe(map(search => ({
+          results: [],
+          filters: this.service.resetSelected(search.filters)
+        })));
     } else {
-      return this.service.fetchAllResults(searchParams);
+      return this.service.fetchSearchResult(searchParams, false);
     }
   }
-
 }
