@@ -64,13 +64,20 @@
     box-sizing: border-box;
     padding:$spacer-sm;
 
-    &.connections-playlist.math object {
-      filter: invert(30%) sepia(1) saturate(10) hue-rotate(160deg);
-    }
-    &.connections-playlist.ela object {
-      filter: invert(39%) sepia(1) saturate(4) hue-rotate(59.5deg);
-    }
+    &.connections-playlist {
+      object {
+        height: 100%;
+        width: 100%;
+      }
 
+      &.math object {
+        filter: invert(30%) sepia(1) saturate(10) hue-rotate(160deg);
+      }
+
+      &.ela object {
+        filter: invert(39%) sepia(1) saturate(4) hue-rotate(59.5deg);
+      }
+    }
   }
 
   .summary {
