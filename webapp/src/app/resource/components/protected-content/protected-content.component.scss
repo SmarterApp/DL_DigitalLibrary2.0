@@ -3,8 +3,7 @@
 
   &.obscured {
     ::ng-deep > {
-      :first-child,
-      sbdl-strategy-in-action-accessibility {
+      :first-child, sbdl-strategy-in-action-accessibility {
         display: block;
         filter: blur(6px);
         pointer-events: none;
