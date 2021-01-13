@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filters = this.route.snapshot.data.filters;
     this.promotedResources = this.route.snapshot.data.promotedResources;
     this.titleService.setTitle('Tools for Teachers - Smarter Balanced');
   }

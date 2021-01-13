@@ -13,14 +13,18 @@ import {Standard} from '../resource/model/standard.model';
 import {Target} from '../resource/model/target.model';
 import {Filter, SearchFilters} from './search-filters.model';
 import {ResourceSummary} from '../resource/model/summary.model';
-import {initialSearchFilters} from '../mock-data';
 import {gradeCodeOrdering, resourceTypeCodeOrdering} from '../resource/resource-field-orderings';
 import {byOrdering, byString, Comparator, on} from '../../common/sorting/sorting';
+import {UserService} from "../user/user.service";
+import {User} from "../user/user.model";
+import {share, take, tap} from "rxjs/operators";
 
 interface BumpySearchResults {
   results: ResourceSummary[];
   filters: SearchFilters[];
 }
+
+const searchUrl= '/api/search_dl_resources';
 
 const byCode: Comparator<Filter> = on(x => x.code, byString());
 const byResourceTypeCode: Comparator<Filter> = on(x => x.code, byOrdering(resourceTypeCodeOrdering));
@@ -48,17 +52,47 @@ function sortFilters(filters: SearchFilters): SearchFilters {
 })
 export class SearchService {
 
-  constructor(private dataService: DataService) { }
+  private publicUserCacheMap: Map<string, Observable<SearchResults>> = new Map();
 
-  getDefaultFilters(): Observable<SearchFilters> {
-    // return this.dataService.get('/api/search/filters');
-    // TODO: Replace with an actual way to get default filters
-    // This is a poor-man's deep-copy used to prevent mutation of the initial filters
-    return of(JSON.parse(JSON.stringify(initialSearchFilters)));
+  private authUserCacheMap: Map<string, Observable<SearchResults>> = new Map();
+
+  user: User;
+
+  constructor(private dataService: DataService, private userService: UserService) {
   }
 
-  fetchAllResults(request: SearchRequestModel): Observable<SearchResults> {
-    return this.dataService.get('/api/search_dl_resources', request).pipe(
+  fetchSearchResult(request: SearchRequestModel, defaultSearch: boolean): Observable<SearchResults> {
+    if (defaultSearch) {
+      this.userService.user.pipe(take(1)).subscribe(s => this.user = s);
+      return this.user ?
+        this.getFilterCacheables(request, this.authUserCacheMap, searchUrl, this.user.accessToken) :
+        this.getFilterCacheables(request, this.publicUserCacheMap, searchUrl);
+    } else {
+      return this.searchResourcesPaginate(request, searchUrl);
+    }
+  }
+
+  private getFilterCacheables(request: SearchRequestModel, cacheMap: Map<any, any>, cacheKey: string, token?: string): Observable<SearchResults> {
+    const cachedKey = this.createKey(cacheKey, token);
+    const cachedResponse = cacheMap.get(cachedKey);
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+    return this.searchResourcesPaginate(request, searchUrl).pipe(
+      tap(value => {
+        cacheMap.set(cachedKey, of(value));
+      }),
+      share()
+    );
+  }
+
+  private createKey(url: string, accessToken?: string): string {
+    return accessToken ? url + '?' + accessToken : url;
+  }
+
+  private searchResourcesPaginate(request: SearchRequestModel, url:string): Observable<SearchResults>{
+
+   return  this.dataService.get(url, request).pipe(
       // Fetch all pages of results. expand passes all outputs back into the
       // supplied function. So page 1 is fetched, goes through the expand
       // function and returns an observable for the request for page 2. That
@@ -103,10 +137,6 @@ export class SearchService {
   }
 
   public paramsToRequestModel(params: any): SearchRequestModel {
-    if (Object.keys(params).length === 0) {
-      return null;
-    }
-
     return {
       Search_Text: params.query || '',
       Claim: this.splitToArray(params.claims),
@@ -116,6 +146,13 @@ export class SearchService {
       Target: this.splitToArray(params.targets),
       Resource_Type: this.splitToArray(params.resourceTypes)
     };
+  }
+
+  public resetSelected = (filters: SearchFilters): SearchFilters => {
+    filters.resourceTypes.forEach(rs => rs.selected = false);
+    filters.grades.forEach(g => g.selected = false);
+    filters.subjects.forEach(sub => sub.selected = false);
+    return filters;
   }
 
   private hasNextPage(page: any): boolean {

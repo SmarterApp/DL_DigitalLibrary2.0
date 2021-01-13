@@ -22,6 +22,8 @@ import { TextFieldComponent } from '../common/controls/text-field/text-field.com
 import { LoginWarningService } from './login-warning/login-warning.service';
 import { LoginWarningComponent } from './login-warning/login-warning.component';
 import { SessionStateKey } from '../common/enums/session-state-key.enum';
+import {SearchService} from '../data/search/search.service';
+import {map} from 'rxjs/operators';
 
 // Only used by this class. Should move to search-query-params.model.ts is we
 // need to use elsewhere
@@ -62,8 +64,10 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
 
   params: SearchQueryParams;
   newSearch = true;
-  
+
   popover: PopoverComponent;
+
+  filterLoading = false;
 
   private routerSubscription: Subscription;
   private loginWarningCloseSubscription: Subscription;
@@ -98,7 +102,8 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private loginWarningService: LoginWarningService
+    private loginWarningService: LoginWarningService,
+    private searchService: SearchService
   ) { }
 
   ngOnInit() {
@@ -197,12 +202,26 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
 
   onFilterResourcesClick() {
     this.filterResourcesClicked = true;
-
+    this.filterLoading = true;
     if (this.loginWarningService.shouldDisplay(SessionStateKey.searchLoginWarningDisplayed)) {
       this.loginWarningService.displayLoginWarning(this.loginWarningPopover, this.searchInputTextField.textFieldRef, SessionStateKey.searchLoginWarningDisplayed);
     }
     else {
       this.showAdvanced = true;
+    }
+
+    const isDefaultSearchFilter = Object.keys(this.params).length === 0;
+    const searchParams = this.searchService.paramsToRequestModel(this.params);
+    if (isDefaultSearchFilter) {
+      this.searchService.fetchSearchResult(searchParams, isDefaultSearchFilter)
+        .pipe(map(searchParams =>
+          this.searchService.resetSelected(searchParams.filters)))
+        .subscribe(filterOptions => {
+          this.filters = filterOptions;
+          this.filterLoading = false;
+        });
+    } else {
+      this.filterLoading = false;
     }
   }
 }

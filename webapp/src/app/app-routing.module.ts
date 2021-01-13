@@ -12,12 +12,12 @@ import { ResourcesWithNotesResolve } from './notes/resources-with-notes.resolve'
 import { PromotedResourcesResolve } from './home/promoted-resources.resolve';
 import { SearchResultsComponent } from './search/results/search-results.component';
 import { SearchResultsResolve } from './search/results/search-results.resolve';
-import { SearchFiltersResolve } from './search/search-filters.resolve';
 import { ErrorComponent } from './layout/error/error.component';
 import { LoginCallbackComponent } from './layout/login-callback/login-callback.component';
 import { LogoutComponent } from './layout/logout/logout.component';
 import { ERROR_PATH, OKTA_CALLBACK_PATH } from './common/constants';
 import { LoginComponent } from './layout/login/login.component';
+import { PageNotFoundComponent } from './layout/error/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -28,7 +28,6 @@ const routes: Routes = [
         path: '',
         component: HomeComponent,
         resolve: {
-          filters: SearchFiltersResolve,
           promotedResources: PromotedResourcesResolve
         }
       }, {
@@ -62,6 +61,9 @@ const routes: Routes = [
       }, {
         path: ERROR_PATH,
         component: ErrorComponent
+      }, {
+        path: '**',
+        component: PageNotFoundComponent
       }
     ]
   }
