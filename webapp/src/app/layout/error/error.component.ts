@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+// change for spike T4T-645
+import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {BehaviorSubject, Observable, Subscription } from 'rxjs';
@@ -10,12 +11,16 @@ import {TenantThemeService} from 'src/app/data/tenant-theme/tenant-theme.service
 import {User} from 'src/app/data/user/user.model';
 import {UserService} from 'src/app/data/user/user.service';
 
+// change for spike T4T-645
+declare let gtag:Function;
+
 @Component({
   selector: 'sbdl-error',
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.scss']
 })
-export class ErrorComponent implements OnInit {
+// change for spike T4T-645
+export class ErrorComponent implements OnInit, AfterViewInit {
 
   error$: Observable<TftErrorType>;
   errorDetails$: Observable<string>;
@@ -27,6 +32,9 @@ export class ErrorComponent implements OnInit {
   errorTypes = TftErrorType;
 
   private routerSubscription: Subscription;
+
+  // change for spike T4T-645
+  private errorType: TftErrorType
 
   constructor(
     private location: Location,
@@ -44,6 +52,10 @@ export class ErrorComponent implements OnInit {
   ngOnInit() {
     this.error$ = this.route.params.pipe(map(p => {
       const errorType: TftErrorType = p.type;
+
+      // change for spike T4T-645
+      this.errorType = errorType;
+
       if (!Object.values(TftErrorType).some(v => v === errorType)) {
         return TftErrorType.Unknown;
       } else {
@@ -58,5 +70,16 @@ export class ErrorComponent implements OnInit {
   onLoginButtonClick(): void {
     this.loading$.next(true);
     this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: this.location.path() }});
+  }
+
+  // change for spike T4T-645
+  ngAfterViewInit(): void {
+
+    gtag('event', "Message - " + this.errorType, { 
+      eventCategory: "user: " + this.user$,
+      eventLabel: this.errorType, 
+      eventAction: 'eventAction', 
+      eventValue: new Date()
+    });
   }
 }

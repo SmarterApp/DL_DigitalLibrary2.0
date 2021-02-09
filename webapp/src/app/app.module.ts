@@ -18,6 +18,9 @@ import {NotesModule} from './notes/notes.module';
 import {OKTA_CALLBACK_PATH} from './common/constants';
 import { FormsModule} from '@angular/forms';
 
+// change for spike T4T-645
+import {GoogleAnalyticsService} from './google-analytics.service';
+
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
 }
@@ -73,7 +76,11 @@ export function initializeOkta(appConfig: AppConfig) {
       provide: 'Window',
       useValue: window
     },
-    Title
+    Title,
+
+    // change for spike T4T-645
+    GoogleAnalyticsService,
+    
   ],
   bootstrap: [ AppComponent ]
 })
