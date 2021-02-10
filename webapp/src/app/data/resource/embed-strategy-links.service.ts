@@ -9,8 +9,8 @@ import { ResourceStrategyReference } from './model/strategy-reference.model';
 })
 export class EmbedStrategyLinksService {
 
-  constructor() { }
-
+   constructor() { }
+   
   embedStrategyLinks = (
     content: string,
     resource: InstructionalResource | ProfessionalLearningResource)
@@ -20,52 +20,48 @@ export class EmbedStrategyLinksService {
       return content;
     }
 
+    // T4T-639
+    // to handle the left and right parentheses, first need to replace the content with the encoded values.  
+    content = this.replaceParentheses(content);
+
     if (resource.type === ResourceType.Instructional) {
-      content = this.embedAccessibilityStrategies(content, (resource as InstructionalResource).accessibilityStrategies);
+      content = this.embedStrategies(content, (resource as InstructionalResource).accessibilityStrategies, "Accessibility Strategy");
     }
 
-    content = this.embedFormativeStrategies(content, resource.formativeAssessmentStrategies);
+    content = this.embedStrategies(content, resource.formativeAssessmentStrategies, "Formative Assessment Strategy");
     return content;
   }
 
-  private embedAccessibilityStrategies(content: string, strategies: ResourceStrategyReference[]): string {
+  embedStrategies(content: string, strategies: ResourceStrategyReference[], title: string): string {
     if (!strategies || !strategies.length) {
       return content;
     }
 
     for (const strategy of strategies) {
-      content = content.replace(new RegExp('\\b' + strategy.title.trim() + '\\b', 'gui'),
-`<sbdl-tooltip title="Accessibility Strategy"
-              class="strategy-link"
-              text="${strategy.description}"
-              readMoreUrl="/resource/${strategy.id}"
-              style="white-space:nowrap;"
-  ><i class="far fa-universal-access"></i>
-  <span class="gradient-hover">${strategy.title}</span
-></sbdl-tooltip>`
-      );
+      var replacedStrategy = this.replaceParentheses(strategy.title.trim());
+
+      if (replacedStrategy === strategy.title.trim())
+      replacedStrategy = '\\b' + replacedStrategy + '\\b';
+
+      content = content.replace(new RegExp( replacedStrategy , 'gui'),
+      `<sbdl-tooltip title="` + title + `"
+                    class="strategy-link"
+                    text="${strategy.description}"
+                    readMoreUrl="/resource/${strategy.id}"
+                    style="white-space:nowrap;"
+        ><i class="far fa-universal-access"></i>
+        <span class="gradient-hover">${strategy.title}</span
+      ></sbdl-tooltip>` );
     }
     return content;
   }
 
-  private embedFormativeStrategies(content: string, strategies: ResourceStrategyReference[]): string {
-    if (!strategies || !strategies.length) {
-      return content;
-    }
-
-    for (const strategy of strategies) {
-      content = content.replace(new RegExp('\\b' + strategy.title.trim() + '\\b', 'gui'),
-`<sbdl-tooltip title="Formative Assessment Strategy"
-              class="strategy-link"
-              text="${strategy.description}"
-              readMoreUrl="/resource/${strategy.id}"
-              style="white-space:nowrap;"
-  ><sbdl-icon icon="strategies"></sbdl-icon>
-  <span class="gradient-hover">${strategy.title}</span
-></sbdl-tooltip>`
-      );
-    }
-
-    return content;
+  private replaceParentheses(value: string): string {
+    // T4T-639
+    // to handle the left and right parentheses, first need to replace the 
+    // content with the encoded values.  
+    // the first regex: /\s\(/gi replaces ' (' and does it globally for the content text
+    // the second regex: /\)/gi replaces ')' and does it globally for the content text
+    return value.replace(/\s\(/gi,"&nbsp;&lpar;").replace(/\)/gi,"&rpar;");
   }
 }
