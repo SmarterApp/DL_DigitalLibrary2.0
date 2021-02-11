@@ -73,7 +73,7 @@ export class EmbedStrategyLinksService {
                     readMoreUrl="/resource/${strategy.id}"
                     style="white-space:nowrap;">` + 
                     icon +
-        `<span class="gradient-hover">${strategy.title}</span
+        `&nbsp;<span class="gradient-hover">${strategy.title}</span
       ></sbdl-tooltip>` );
     }
 
