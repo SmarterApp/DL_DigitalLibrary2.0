@@ -18,10 +18,13 @@ export class PlaylistBackgroundComponent extends PrintableSectionComponent imple
     importance: string;
     academicVocabulary: string;
   };
-
   constructor(sanitizer: DomSanitizer) {
     super(sanitizer, DocumentSectionType.Overview);
   }
+
+  // TODOJR: in progress
+  private isViewInterimItemsVisable = true;
+  
 
   ngAfterViewInit() {
     if (this.headerElement) {

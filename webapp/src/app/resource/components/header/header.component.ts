@@ -27,6 +27,9 @@ export class HeaderComponent implements OnInit {
 
   constructor(@Inject('Window') private window: Window) {}
 
+  // TODOJR: in progress
+  private isViewInterimItemsVisable = true;
+
   ngOnInit() {
     if (this.showIconsCol && this.resource.properties.grades.length > 0) {
       this.grade = this.resource.properties.grades[0];
