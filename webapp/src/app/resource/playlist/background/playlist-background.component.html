@@ -14,13 +14,10 @@
     <dynamic-html [content]="overview.description"></dynamic-html>
 
     <!-- TODOJR: in progress -->
-    <div class="dive-links" *ngIf="isViewInterimItemsVisable">
-      <a target="_blank" class="primary"
-        style="text-decoration: none;"
-        href="https://sampleitems.smarterbalanced.org/BrowseItems/?Claim=MATH3&Subject=MATH&Grade=1&Target=A">
-        <i class="fas fa-badge-check" aria-label="(opens in a new window)">&nbsp;&nbsp;&nbsp;&nbsp;</i>
-        VIEW INTERIM ITEMS
-      </a>
+    <div class="primary">
+      <sbdl-button *ngIf="hasIaipAccess$ | async" class="primary" (click)="openInterimItems()">
+        <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
+      </sbdl-button>    
     </div>
 
     <h3>Why is this important for students to learn?</h3>

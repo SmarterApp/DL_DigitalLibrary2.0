@@ -17,23 +17,6 @@
     <em>Missing author data.</em>
   </div>
 
-
-
-
-
-
-    <!-- TODOJR: in progress -->
-    <div class="dive-links" *ngIf="isViewInterimItemsVisable"
-      style="float: right;">
-      <a target="_blank" class="primary"
-        style="text-decoration: none;"
-        href="https://sampleitems.smarterbalanced.org/BrowseItems/?Claim=MATH3&Subject=MATH&Grade=1&Target=A">
-        <i class="fas fa-badge-check" aria-label="(opens in a new window)">&nbsp;&nbsp;&nbsp;&nbsp;</i>
-        VIEW INTERIM ITEMS
-      </a>
-    </div>
-
-
 <span *ngIf="properties.lastUpdatedDate" class="caption">
   <span class="emphasis-medium">Updated</span>
   {{ properties.lastUpdatedDate | date: 'mediumDate' }}
@@ -43,4 +26,9 @@
 
 <sbdl-button *ngIf="resource.attachments.length > 0" class="primary attachments-btn" (click)="emitAttachmentsClicked()">
   <i class="far fa-paperclip"></i> Attachments
+</sbdl-button>
+
+<!-- TODOJR: in progress -->
+<sbdl-button *ngIf="hasIaipAccess$ | async" class="primary attachments-btn" (click)="openInterimItems()" >
+    <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
 </sbdl-button>

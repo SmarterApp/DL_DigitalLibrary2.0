@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import { Resource } from 'src/app/data/resource/model/resource.model';
 import { Grade } from 'src/app/data/resource/model/grade.model';
+import { UserService } from 'src/app/data/user/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'sbdl-header',
@@ -25,10 +27,14 @@ export class HeaderComponent implements OnInit {
     return this.resource.properties;
   }
 
-  constructor(@Inject('Window') private window: Window) {}
+  constructor(@Inject('Window') private window: Window,
+  private userService: UserService) {
+    this.hasIaipAccess$ = userService.hasIaipRole;
+  }
 
   // TODOJR: in progress
-  private isViewInterimItemsVisable = true;
+  hasIaipAccess$: Observable<boolean>;
+  interimItemPortalUrl = "https://sampleitems.smarterbalanced.org/BrowseItems/?Claim=MATH3&Subject=MATH&Grade=1&Target=A";
 
   ngOnInit() {
     if (this.showIconsCol && this.resource.properties.grades.length > 0) {
@@ -42,4 +48,7 @@ export class HeaderComponent implements OnInit {
     this.attachmentsClicked.emit();
   }
 
+  openInterimItems() {
+    window.open(this.interimItemPortalUrl, '_blank');
+  }
 }

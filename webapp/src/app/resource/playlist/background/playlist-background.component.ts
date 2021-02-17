@@ -4,6 +4,8 @@ import { DocumentSection, DocumentSectionType } from '../../components/outline/d
 import { PrintableSectionComponent } from '../../printable-section.component';
 import { PlaylistResource } from '../../../data/resource/model/playlist.model';
 import { PlaylistTopic } from '../../../data/resource/model/playlist-topic.model';
+import { UserService } from 'src/app/data/user/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'sbdl-playlist-background',
@@ -18,13 +20,16 @@ export class PlaylistBackgroundComponent extends PrintableSectionComponent imple
     importance: string;
     academicVocabulary: string;
   };
-  constructor(sanitizer: DomSanitizer) {
+  constructor(sanitizer: DomSanitizer,
+    private userService: UserService) {
     super(sanitizer, DocumentSectionType.Overview);
+
+    this.hasIaipAccess$ = userService.hasIaipRole;
   }
 
   // TODOJR: in progress
-  private isViewInterimItemsVisable = true;
-  
+  hasIaipAccess$: Observable<boolean>;
+  interimItemPortalUrl = "https://sampleitems.smarterbalanced.org/BrowseItems/?Claim=MATH3&Subject=MATH&Grade=1&Target=A";
 
   ngAfterViewInit() {
     if (this.headerElement) {
@@ -38,5 +43,9 @@ export class PlaylistBackgroundComponent extends PrintableSectionComponent imple
         type: DocumentSectionType.Overview
       });
     }
+  }
+
+  openInterimItems() {
+    window.open(this.interimItemPortalUrl, '_blank');
   }
 }
