@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DocumentSection, DocumentSectionType } from '../../components/outline/document-outline.model';
 import { PrintableSectionComponent } from '../../printable-section.component';
@@ -6,13 +6,15 @@ import { PlaylistResource } from '../../../data/resource/model/playlist.model';
 import { PlaylistTopic } from '../../../data/resource/model/playlist-topic.model';
 import { UserService } from 'src/app/data/user/user.service';
 import { Observable } from 'rxjs';
+import { ResourceType } from 'src/app/data/resource/model/resource-type.enum';
 
 @Component({
   selector: 'sbdl-playlist-background',
   templateUrl: './playlist-background.component.html',
   styleUrls: ['./playlist-background.component.scss', './../../printable-section.component.scss']
 })
-export class PlaylistBackgroundComponent extends PrintableSectionComponent implements AfterViewInit {
+export class PlaylistBackgroundComponent extends PrintableSectionComponent 
+    implements AfterViewInit, OnInit {
 
   @Input()
   overview: {
@@ -20,6 +22,15 @@ export class PlaylistBackgroundComponent extends PrintableSectionComponent imple
     importance: string;
     academicVocabulary: string;
   };
+
+  @Input()
+  type: ResourceType;
+
+  // TODOJR: in progress
+  hasIaipAccess$: Observable<boolean>;
+  prefilteredIaipLink = "https://sampleitems.smarterbalanced.org/BrowseItems/?Claim=MATH3&Subject=MATH&Grade=1&Target=A";
+  isInterimItemPortalVisable: boolean = false;
+
   constructor(sanitizer: DomSanitizer,
     private userService: UserService) {
     super(sanitizer, DocumentSectionType.Overview);
@@ -27,9 +38,12 @@ export class PlaylistBackgroundComponent extends PrintableSectionComponent imple
     this.hasIaipAccess$ = userService.hasIaipRole;
   }
 
-  // TODOJR: in progress
-  hasIaipAccess$: Observable<boolean>;
-  interimItemPortalUrl = "https://sampleitems.smarterbalanced.org/BrowseItems/?Claim=MATH3&Subject=MATH&Grade=1&Target=A";
+  ngOnInit() {
+    if (this.type === ResourceType.ConnectionsPlaylist && 
+      this.prefilteredIaipLink.length > 0) {
+      this.isInterimItemPortalVisable = true;
+    }
+  }
 
   ngAfterViewInit() {
     if (this.headerElement) {
@@ -46,6 +60,6 @@ export class PlaylistBackgroundComponent extends PrintableSectionComponent imple
   }
 
   openInterimItems() {
-    window.open(this.interimItemPortalUrl, '_blank');
+    window.open(this.prefilteredIaipLink, '_blank');
   }
 }

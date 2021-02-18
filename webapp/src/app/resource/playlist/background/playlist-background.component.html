@@ -14,8 +14,8 @@
     <dynamic-html [content]="overview.description"></dynamic-html>
 
     <!-- TODOJR: in progress -->
-    <div class="primary">
-      <sbdl-button *ngIf="hasIaipAccess$ | async" class="primary" (click)="openInterimItems()">
+    <div class="primary" *ngIf="(hasIaipAccess$ | async) && isInterimItemPortalVisable">
+      <sbdl-button *ngIf="(hasIaipAccess$ | async)" class="primary" (click)="openInterimItems()">
         <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
       </sbdl-button>    
     </div>

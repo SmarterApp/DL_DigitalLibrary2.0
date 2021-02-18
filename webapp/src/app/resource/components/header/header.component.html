@@ -29,6 +29,6 @@
 </sbdl-button>
 
 <!-- TODOJR: in progress -->
-<sbdl-button *ngIf="hasIaipAccess$ | async" class="primary attachments-btn" (click)="openInterimItems()" >
+<sbdl-button *ngIf="(hasIaipAccess$ | async) && isInterimItemPortalVisable" class="primary attachments-btn" (click)="openInterimItems()" >
     <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
 </sbdl-button>

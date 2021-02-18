@@ -71,6 +71,7 @@ export const mockInstructionalResource: InstructionalResource = {
   },
   attachments: [],
   thingsToConsider: '',
+  prefilteredIaipLink: "",
   getStarted: {
     overview: '',
     learningGoal: '',
@@ -430,6 +431,7 @@ export const teaserIRContent: InstructionalResource = {
     }
   ],
   thingsToConsider: '<ul>\r\n<li>Keep in mind that ratio tables are ways to record one&rsquo;s thought processes and that there are several ways to solve these problems.</li>\r\n<li>Many students will have used in the past (and may attempt to use) skip-counting to find the missing values in a table and may become frustrated if this is not feasible with the values given.</li>\r\n<li>If an addition pattern is not apparent with the table, students can use multiplication and/or division patterns to solve or possibly create an addition pattern by inserting missing rows.</li>\r\n</ul>',
+  prefilteredIaipLink: "",
   differentiation: '',
   formativeAssessHowTo: {
     clarify: loremIpsum,
@@ -486,6 +488,7 @@ export const teaserFAContent: FormativeStrategyResource = {
   ],
   stepByStep: loremIpsum,
   thingsToConsider: loremIpsum,
+  prefilteredIaipLink: "",
   strategyInAction: {
     clarify: '<p>The teacher discusses the learning goal and success criteria with the class and explains how this activity aligns with them.</p>',
     elicit: '<p>Students&rsquo; knowledge and thoughts are elicited as they respond to the item and/or their peers&rsquo; comments/questions.</p>',
@@ -522,6 +525,7 @@ export const teaserASContent: AccessibilityStrategyResource = {
   instructionalUse: loremIpsum,
   attachments: [],
   thingsToConsider: loremIpsum,
+  prefilteredIaipLink: "",
   sampleItemContent: {
     overview: '<p>Select writing tools (i.e., bold, italic, bullets, undo/redo) are available for all student-generated responses.</p>',
     linkToSample: 'https://sampleitems.smarterbalanced.org/BrowseItems',
@@ -645,7 +649,8 @@ export const teaserPLContent: ProfessionalLearningResource = {
       description: '<p>Students take a few minutes to think about a question or prompt individually. Then, they pair with a designated partner to compare thoughts before sharing with the whole class.</p>'
     }
   ],
-  thingsToConsider: ''
+  thingsToConsider: '',
+  prefilteredIaipLink: "",
 };
 
 export const teaserCPContent: PlaylistResource = {
@@ -768,5 +773,6 @@ export const teaserCPContent: PlaylistResource = {
     }
   ],
   thingsToConsider: loremIpsum,
+  prefilteredIaipLink: "",
   attachments: []
 };
