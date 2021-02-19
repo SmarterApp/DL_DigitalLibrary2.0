@@ -23,9 +23,8 @@ export class HeaderComponent implements OnInit {
 
   grade: Grade;
   fullUrl: string;
-  // TODOJR: in progress
   hasIaipAccess$: Observable<boolean>;
-  prefilteredIaipLink = "https://sampleitems.smarterbalanced.org/BrowseItems/?Claim=MATH3&Subject=MATH&Grade=1&Target=A";
+  prefilteredIaipLink: string; 
   isInterimItemPortalVisable: boolean = false;
 
   get properties() {
@@ -43,11 +42,13 @@ export class HeaderComponent implements OnInit {
     }
 
     this.fullUrl = this.window.location.href;
-
+    this.prefilteredIaipLink = this.resource.prefilteredIaipLink;
     
-    if (this.resource.type === ResourceType.ConnectionsPlaylist && 
-      this.prefilteredIaipLink.length > 0) {
-      this.isInterimItemPortalVisable = true;
+    if (this.prefilteredIaipLink) {
+      if (this.resource.type === ResourceType.ConnectionsPlaylist && 
+        this.prefilteredIaipLink.length > 0) {
+        this.isInterimItemPortalVisable = true;
+      }
     }
   }
 

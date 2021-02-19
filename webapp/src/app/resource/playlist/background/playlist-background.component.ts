@@ -26,9 +26,10 @@ export class PlaylistBackgroundComponent extends PrintableSectionComponent
   @Input()
   type: ResourceType;
 
-  // TODOJR: in progress
+  @Input()
+  prefilteredIaipLink: string;
+
   hasIaipAccess$: Observable<boolean>;
-  prefilteredIaipLink = "https://sampleitems.smarterbalanced.org/BrowseItems/?Claim=MATH3&Subject=MATH&Grade=1&Target=A";
   isInterimItemPortalVisable: boolean = false;
 
   constructor(sanitizer: DomSanitizer,
@@ -39,9 +40,12 @@ export class PlaylistBackgroundComponent extends PrintableSectionComponent
   }
 
   ngOnInit() {
-    if (this.type === ResourceType.ConnectionsPlaylist && 
-      this.prefilteredIaipLink.length > 0) {
-      this.isInterimItemPortalVisable = true;
+
+    if (this.prefilteredIaipLink) {
+      if (this.type === ResourceType.ConnectionsPlaylist && 
+        this.prefilteredIaipLink.length > 0) {
+        this.isInterimItemPortalVisable = true;
+      }
     }
   }
 
