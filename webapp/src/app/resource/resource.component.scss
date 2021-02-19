@@ -44,6 +44,8 @@
     max-width: calc(var(--measure) + 8rem);
     padding: 0 $spacer-lg;
     justify-content: center;
+    justify-self: center;
+    width: -webkit-fill-available;
 
     .top-header {
       display: flex;
@@ -67,7 +69,7 @@
     box-sizing: border-box;
     max-width: calc(var(--measure) + 8rem);
     z-index: 1;
-    margin: 0 auto;
+    justify-self: center;
   }
 
   .resource-footer {
