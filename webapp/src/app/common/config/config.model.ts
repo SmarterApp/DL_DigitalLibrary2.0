@@ -7,5 +7,6 @@ export interface IAppConfig {
     apiServerHost: string;
     interimItemPortalUrl: string;
     enableAnalytics: boolean;
+    GA4AnalyticsTrackingId: string;
     okta: { clientId: string, issuer: string };
 }
