@@ -4,7 +4,8 @@
     Interim connections playlists utilizing this resource.
   </p>
   <ul>
-    <li *ngFor="let playlist of playlists">
+    <li *ngFor="let playlist of playlists; let i = index" 
+      [ngClass]="{'fireFoxPadding': playlists.length-1 === i}">
       <a
         class="playlist-card"
         [attr.aria-label]="playlist.title"
