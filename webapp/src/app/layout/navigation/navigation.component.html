@@ -20,8 +20,8 @@
     >
       <i class="far fa-search" aria-hidden="true"></i>
       <span>Find Resources</span>
-    </a>
-    <a
+    </a>   
+    <!-- <a
       title="Formative Assessment Strategies"
       [attr.aria-label]="'Formative Assessment Strategies'"
       [routerLink]="[baseHref, 'search', { resourceTypes: ['fs'] }]"
@@ -29,6 +29,7 @@
       <sbdl-icon icon="strategies" aria-hidden="true"></sbdl-icon>
       <span>Formative Assessment Strategies</span>
     </a>
+
     <a
       title="Accessibility Strategies"
       [attr.aria-label]="'Accessibility Strategies'"
@@ -36,7 +37,51 @@
     >
       <i class="far fa-universal-access" aria-hidden="true"></i>
       <span>Accessibility Strategies</span>
+    </a> -->
+
+    <!-- TODOJR -->
+    <a
+      title="Interim Connections Playlist"
+      [attr.aria-label]="'Interim Connections Playlist'"
+      [routerLink]="[baseHref, 'landing']">  
+      
+      <i class="far fa-chart-network" aria-hidden="true"></i>
+      <span>Interim Connections Playlist</span>
+      <!-- , { resourceTypes: ['cp'] }] -->
     </a>
+
+    <a
+      title="Instructional"
+      [attr.aria-label]="'Instructional'"
+      [routerLink]="[baseHref, 'search', { resourceTypes: ['ir'] }]">
+      <sbdl-icon icon="steps" aria-hidden="true"></sbdl-icon>
+      <span>Instructional</span>
+    </a> 
+
+    <a
+      title="Formative Strategies"
+      [attr.aria-label]="'Formative Assessment Strategies'"
+      [routerLink]="[baseHref, 'search', { resourceTypes: ['fs'] }]">
+      <sbdl-icon icon="strategies" aria-hidden="true"></sbdl-icon>
+      <span>Formative Strategies</span>
+    </a>
+    
+    <a
+      title="Accessibility Strategies"
+      [attr.aria-label]="'Accessibility Strategies'"
+      [routerLink]="[baseHref, 'search', { resourceTypes: ['as'] }]">
+      <i class="far fa-universal-access" aria-hidden="true"></i>
+      <span>Accessibility Strategies</span>
+    </a>
+
+    <a
+      title="Professional Learning Resource"
+      [attr.aria-label]="'Professional Learning Resource'"
+      [routerLink]="[baseHref, 'search', { resourceTypes: ['pl'] }]">
+      <sbdl-icon icon="goal" aria-hidden="true"></sbdl-icon>
+      <span>Professional Learning Resource</span>
+    </a>
+
     <a
     *ngIf="hasIaipAccess$ | async"
     title="Interim Assessment Item Portal"

@@ -17,6 +17,7 @@ import {
   mockWindowObj
 } from 'src/app/app.module.spec';
 import {SearchModule} from '../search/search.module';
+import {LandingModule} from '../landing/landing.module';
 import {ResourceModule} from '../resource/resource.module';
 import {HomeComponent} from './home.component';
 import {TenantThemeService} from 'src/app/data/tenant-theme/tenant-theme.service';
@@ -31,7 +32,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpClientTestingModule, RouterTestingModule, ResourceModule, PipesModule, SearchModule ],
+      imports: [ HttpClientTestingModule, RouterTestingModule, ResourceModule, PipesModule, SearchModule, LandingModule ],
       providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
         { provide: ActivatedRoute, useValue: { snapshot: { data: { filters: emptyFilters } } } },
