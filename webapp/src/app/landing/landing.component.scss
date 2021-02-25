@@ -1,0 +1,21 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+@import "mixins";
+
+.landing-header {
+  grid-area: header;
+  box-sizing: border-box;
+  max-width: calc(var(--measure) + 8rem);
+  padding: 0 $spacer-lg;
+  justify-content: center;
+  justify-self: center;
+  width: -webkit-fill-available;
+
+  .top-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: baseline;
+  }
+}

@@ -17,6 +17,7 @@ import {SbdlCommonModule} from './common/common.module';
 import {NotesModule} from './notes/notes.module';
 import {OKTA_CALLBACK_PATH} from './common/constants';
 import { FormsModule} from '@angular/forms';
+import { LandingModule } from './landing/landing.module';
 import { LandingComponent } from './landing/landing.component';
 
 export function initializeApp(appConfig: AppConfig) {
@@ -51,7 +52,9 @@ export function initializeOkta(appConfig: AppConfig) {
     ResourceModule,
     NotesModule,
     SbdlCommonModule,
-    FormsModule
+    FormsModule,
+    LandingModule,
+    
   ],
   providers: [
     {
