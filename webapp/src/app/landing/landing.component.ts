@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgModule } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Landing } from '../data/landing/model/landing.model';
 
 @Component({
   selector: 'sbdl-landing',
@@ -7,10 +8,19 @@ import { NgModule } from '@angular/core';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
+  landing: Landing;
+  resourceType: string;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router) { 
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    }
 
   ngOnInit() {
+    const routeParams = this.route.snapshot.paramMap;
+    this.resourceType = this.route.snapshot.paramMap.get('resourceType');
+    
   }
 
 }

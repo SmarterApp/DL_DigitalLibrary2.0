@@ -1,0 +1,28 @@
+{
+    "landing" : [ {
+        "id": 1,
+        "title" : "Interim Connections Playlist",
+        "type" : "cp"
+      }, 
+      {
+        "id": 2,
+        "title" : "Instructional",
+        "type" : "ir"
+      },
+      {
+        "id": 3,
+        "title" : "Formative Assessment Strategies",
+        "type" : "fs"
+      },
+      {
+        "id": 2,
+        "title" : "Accessibility Strategies",
+        "type" : "as"
+      },      
+      {
+        "id": 2,
+        "title" : "Professional Learning Resource",
+        "type" : "pl"
+      }
+    ]
+}

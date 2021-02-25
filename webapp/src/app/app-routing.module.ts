@@ -51,7 +51,7 @@ const routes: Routes = [
         component: SearchResultsComponent,
         resolve: { results: SearchResultsResolve }
       }, {
-        path: 'landing',
+        path: 'landing/:resourceType',
         component: LandingComponent
       }, {
         path: 'auth/login',
@@ -65,9 +65,6 @@ const routes: Routes = [
       }, {
         path: ERROR_PATH,
         component: ErrorComponent
-      }, {
-        path: 'landing',
-        component: LandingComponent
       }, {
         path: '**',
         component: PageNotFoundComponent
