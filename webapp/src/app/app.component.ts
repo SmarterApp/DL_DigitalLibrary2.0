@@ -5,7 +5,9 @@ import {AppConfig} from './common/config/app.config';
 import {UserService} from './data/user/user.service';
 import {OktaAuthService} from '@okta/okta-angular';
 import {OKTA_CALLBACK_PATH} from './common/constants';
+import { filter } from 'rxjs/operators';
 
+declare var gtag
 
 @Component({
   selector: 'sbdl-root',
@@ -32,6 +34,9 @@ export class AppComponent implements OnInit {
       if (AppConfig.settings.enableAnalytics) {
         this.angulartics2GoogleAnalytics.startTracking();
       }
+
+      gtag('config', AppConfig.settings.GA4AnalyticsTrackingId);
+
     }
 
     this.storePathOnPageLoad(this.window.location.pathname);

@@ -11,6 +11,7 @@
     "apiServerHost": "https://api.dl.smarterbalanced.org",
     "interimItemPortalUrl": "https://interimitems.smartertoolsforteachers.org/BrowseItems",
     "enableAnalytics": true,
+    "GA4AnalyticsTrackingId": "G-R6S1ZM1X5W",
     "okta": {
       "clientId": "0oa2ot1pcqJNDfCSZ357",
       "issuer": "https://login.smarterbalanced.org/oauth2/aus46dj0ryZeEdHOY357"
