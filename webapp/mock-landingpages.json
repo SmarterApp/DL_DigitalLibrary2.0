@@ -2,27 +2,88 @@
     "landing" : [ {
         "id": 1,
         "title" : "Interim Connections Playlist",
-        "type" : "cp"
+        "type" : "cp",
+        "titleShort" : "Playlist",
+        "introTitle" : "introTitle - Playlist",
+        "introText" : "introText - Playlist",
+        "howHelp" : [ {
+          "title" : "number 1 title Playlist",
+          "text" : "number 1 text Playlist"
+          },
+          {
+            "title" : "number 2 title Playlist",
+            "text" : "number 2 text Playlist"
+            }
+        ]
+        
       }, 
       {
         "id": 2,
         "title" : "Instructional",
-        "type" : "ir"
+        "type" : "ir",
+        "titleShort" : "Instructional",
+        "introTitle" : "introTitle - Instructional",
+        "introText" : "introText - Instructional",
+        "howHelp" : [ {
+          "title" : "number 1 title Instructional",
+          "text" : "number 1 text Instructional"
+          },
+          {
+            "title" : "number 2 title Instructional",
+            "text" : "number 2 text Instructional"
+            }
+        ]
       },
       {
         "id": 3,
         "title" : "Formative Assessment Strategies",
-        "type" : "fs"
+        "type" : "fs",
+        "titleShort" : "Formative Assessment",
+        "introTitle" : "introTitle - Formative Assessment",
+        "introText" : "introText - Formative Assessment",
+        "howHelp" : [ {
+          "title" : "number 1 title Formative Assessment",
+          "text" : "number 1 text Formative Assessment"
+          },
+          {
+            "title" : "number 2 title Formative Assessment",
+            "text" : "number 2 text Formative Assessment"
+            }
+        ]
       },
       {
         "id": 2,
         "title" : "Accessibility Strategies",
-        "type" : "as"
+        "type" : "as",
+        "titleShort" : "Accessibility",
+        "introTitle" : "introTitle - Accessibility",
+        "introText" : "introText - Accessibility",
+        "howHelp" : [ {
+          "title" : "number 1 title Accessibility",
+          "text" : "number 1 text Accessibility"
+          },
+          {
+            "title" : "number 2 title Accessibility",
+            "text" : "number 2 text Accessibility"
+            }
+        ]
       },      
       {
         "id": 2,
         "title" : "Professional Learning Resource",
-        "type" : "pl"
+        "type" : "pl",
+        "titleShort" : "Professional Learning",
+        "introTitle" : "introTitle - Professional Learning",
+        "introText" : "introText - Professional Learning",
+        "howHelp" : [ {
+          "title" : "number 1 title Professional Learning",
+          "text" : "number 1 text Professional Learning"
+          },
+          {
+            "title" : "number 2 title Professional Learning",
+            "text" : "number 2 text Professional Learning"
+            }
+        ]
       }
     ]
 }
