@@ -3,8 +3,30 @@
         <img src="/assets/images/yellow-spot.png" aria-hidden="true">
     </div>
 
+    <span>
+        <h1>
+            <ng-container [ngSwitch]="landing.type">
+                <i *ngSwitchCase="'cp'" class="far fa-chart-network"></i>
+                <sbdl-icon *ngSwitchCase="'ir'" icon="steps"></sbdl-icon>
+                <sbdl-icon *ngSwitchCase="'fs'" icon="strategies"></sbdl-icon>
+                <i *ngSwitchCase="'as'" class="far fa-universal-access"></i>
+                <sbdl-icon *ngSwitchCase="'pl'" icon="goal"></sbdl-icon>
+            </ng-container>
+            {{landing.title}}
+        </h1>
+    </span>
 
-    <h1>{{landing.title}} - {{landing.type}}</h1>
+    <h3>{{landing.introTitle}}</h3>
+    <div
+        class="text-container"
+        #textContainer>{{landing.introText}}
+    </div>
 
+    <h2>How will they help me?</h2>
+    
 
+    <h3>Start Using {{landing.titleShort}}</h3>
+
+    <h2>How can I use {{landing.titleShort}}?</h2>
 </main>
+
