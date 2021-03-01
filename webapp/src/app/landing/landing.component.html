@@ -30,19 +30,62 @@
         </li>
     </ul>
 
+    <div class="promoted-video">
+        <iframe
+          src="https://www.youtube.com/embed/wpwZCqvt70U"
+          alt="Understanding the Smarter Balanced Interim Assessments"
+          frameborder="0"
+          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen="allowfullscreen">
+        </iframe>
+    </div>
+
     <h3>Start Using {{landing.titleShort}}</h3>
+
      <div class="select-group">
-     <!--   <div class="select-control-group">
-          <select class="select" [ngClass]="{'select-placeholder' : preloginSelectionId == ''}" [(ngModel)]="preloginSelectionId" (change)="onPreloginSelected()">
-            <option value="" disabled>Select your location</option>
-            <option *ngFor="let s of preloginSelections" value="{{s.preloginSelectionId}}">
-              {{ s.selectionLabel }}
+        <div class="select-control-group">
+          <select class="select" [ngClass]="{'select-placeholder' : selectedGrade == ''}" [(ngModel)]="selectedGrade">
+            <option value="" disabled>Select a grade</option>
+            <option *ngFor="let g of grades" value="{{g.code}}">
+              {{ g.longName }}
             </option>
           </select>
           <i class="far fa-chevron-square-down fa-lg select-icon"></i>
-        </div> -->
+        </div> 
       </div>
 
+      <div class="select-group">
+        <div class="select-control-group">
+          <select class="select" [ngClass]="{'select-placeholder' : selectedSubject == ''}" [(ngModel)]="selectedSubject">
+            <option value="" disabled>Select a subject</option>
+            <option *ngFor="let s of subjects" value="{{s.code}}">
+              {{ s.fullName }}
+            </option>
+          </select>
+          <i class="far fa-chevron-square-down fa-lg select-icon"></i>
+        </div> 
+      </div>
+
+      <sbdl-button  class="primary" >
+          <!-- (click)="emitAttachmentsClicked()"> -->
+         GO!
+      </sbdl-button>
+      <a href="javascript:void(0)" (click)="onBrowseAllClick()">or browse all</a>
+
+
     <h2>How can I use {{landing.titleShort}}?</h2>
+
+    <ul>
+        <li *ngFor="let howUse of landing.howUse">
+            <h3>{{howUse.title}}</h3>   
+            {{howUse.message}}
+        </li>
+    </ul>
+
+    <h2>Dive Deeper</h2>
+    Check out these addditional resourses to learn more about {{landing.titleShort}}
+
+
+    <h2>Sample Playlists</h2>
 </main>
 

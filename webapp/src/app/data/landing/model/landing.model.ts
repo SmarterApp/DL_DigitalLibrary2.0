@@ -1,4 +1,5 @@
 import {HowHelp} from './howhelp.model';
+import {HowUse} from './howuse.model';
 
 export interface Landing {
     id: number;
@@ -7,5 +8,8 @@ export interface Landing {
     titleShort: string;
     introTitle: string;
     introText: string;
+    promotedVideoLink: string;
+    promotedVideoMessage: string;
     howHelp: HowHelp[];
+    howUse: HowUse[];
   }
