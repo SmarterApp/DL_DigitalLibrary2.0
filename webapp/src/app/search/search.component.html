@@ -3,7 +3,7 @@
   <sbdl-text-field
     (submit)="search({query: $event}, true)"
     [(ngModel)]="filters.query"
-    placeholder="What are you looking for? (e.g., fractions, Grade 3, Connections Playlist)"
+    placeholder="What are you looking for? (e.g., fractions, research, shapes)"
     fontAwesomeIcon="fa-search"
     submitButtonAriaLabel="search resources"
   >
@@ -15,7 +15,7 @@
 </div>
 
 <div class="caption">
-  Start typing a topic, claim, target, or <a href="javascript:void(0)" (click)="onFilterResourcesClick()">filter resources</a>.
+  Type a keyword to start searching.  <a href="javascript:void(0)" (click)="onFilterResourcesClick()">Go to the filter</a> to choose your grade and subject.
 </div>
 
 <h1 *ngIf="!newSearch" class="results-header">
@@ -34,10 +34,11 @@
   </sbdl-button>
 </h1>
 
-<div *ngIf="showHeadings && newSearch" class="new-search">
+
+<!-- <div *ngIf="showHeadings && newSearch" class="new-search">
   Search for resources related to your search terms using the search input
   above or <a href="javascript:void(0)" (click)="showAdvanced = true">filter resources</a>.
-</div>
+</div> -->
 <div *ngIf="filterLoading" class="filter-loader">
   <div class="filter-spinner-container">
     <i class="fas fa-spinner fa-pulse" aria-label="Loading..."></i>

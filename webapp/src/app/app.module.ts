@@ -19,6 +19,7 @@ import {OKTA_CALLBACK_PATH} from './common/constants';
 import { FormsModule} from '@angular/forms';
 import { LandingModule } from './landing/landing.module';
 import { LandingComponent } from './landing/landing.component';
+import {GoogleAnalyticsService} from './google-analytics.service';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -78,7 +79,8 @@ export function initializeOkta(appConfig: AppConfig) {
       provide: 'Window',
       useValue: window
     },
-    Title
+    Title,
+    GoogleAnalyticsService
   ],
   bootstrap: [ AppComponent ]
 })

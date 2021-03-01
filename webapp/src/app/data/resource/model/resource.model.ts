@@ -9,4 +9,5 @@ export interface Resource {
   properties: ResourceProperties;
   attachments: ResourceAttachment[];
   thingsToConsider: string;
+  prefilteredIaipLink: string;
 }

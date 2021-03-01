@@ -3,9 +3,7 @@
 @import "typography";
 
 :host {
-
-.background-container {
-
+  .background-container {
     padding-top: $spacer;
     margin-bottom: $spacer-lg;
     margin-left: $spacer-lg;
@@ -13,10 +11,10 @@
     overflow: visible;
 
     .leading-icon {
-
-      i, svg {
+      i,
+      svg {
         color: $success-900;
-        background: url('/assets/images/green-spot-3.png') no-repeat;
+        background: url("/assets/images/green-spot-3.png") no-repeat;
         background-size: contain;
         padding: 7px;
         margin-bottom: -7px;
@@ -41,10 +39,15 @@
       padding: $spacer-sm;
       margin: $spacer;
       text-transform: uppercase;
-      
-      &:focus, &:hover {
-        opacity: .85;
+
+      &:focus,
+      &:hover {
+        opacity: 0.85;
       }
+    }
+
+    div.primary {
+      margin-bottom: 1em;
     }
   }
 }

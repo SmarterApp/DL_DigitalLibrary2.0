@@ -16,11 +16,18 @@
   <div *ngIf="properties.authors.length === 0 && !properties.authorOrg">
     <em>Missing author data.</em>
   </div>
-</section>
+
 <span *ngIf="properties.lastUpdatedDate" class="caption">
   <span class="emphasis-medium">Updated</span>
   {{ properties.lastUpdatedDate | date: 'mediumDate' }}
 </span>
+
+</section>
+
 <sbdl-button *ngIf="resource.attachments.length > 0" class="primary attachments-btn" (click)="emitAttachmentsClicked()">
   <i class="far fa-paperclip"></i> Attachments
+</sbdl-button>
+
+<sbdl-button *ngIf="(hasIaipAccess$ | async) && isInterimItemPortalVisable" class="primary attachments-btn" (click)="openInterimItems()" >
+    <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
 </sbdl-button>
