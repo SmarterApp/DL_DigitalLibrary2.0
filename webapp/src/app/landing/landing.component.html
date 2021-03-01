@@ -22,10 +22,26 @@
         #textContainer>{{landing.introText}}
     </div>
 
+
     <h2>How will they help me?</h2>
-    
+    <ul>
+        <li *ngFor="let howHelp of landing.howHelp">
+            <span>{{howHelp.title}}: {{howHelp.message}}</span>
+        </li>
+    </ul>
 
     <h3>Start Using {{landing.titleShort}}</h3>
+     <div class="select-group">
+     <!--   <div class="select-control-group">
+          <select class="select" [ngClass]="{'select-placeholder' : preloginSelectionId == ''}" [(ngModel)]="preloginSelectionId" (change)="onPreloginSelected()">
+            <option value="" disabled>Select your location</option>
+            <option *ngFor="let s of preloginSelections" value="{{s.preloginSelectionId}}">
+              {{ s.selectionLabel }}
+            </option>
+          </select>
+          <i class="far fa-chevron-square-down fa-lg select-icon"></i>
+        </div> -->
+      </div>
 
     <h2>How can I use {{landing.titleShort}}?</h2>
 </main>
