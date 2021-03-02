@@ -1,7 +1,7 @@
 export interface SamplePlaylist {
     id: number;
     title: string;
-    url: string;
+    resourceId: string;
     grade: string;
     subject: string;
   }

@@ -53,7 +53,9 @@ export class LandingComponent implements OnInit {
     else if (this.resourceType === "as")
       this.getAS();      
     else if (this.resourceType === "pl")
-      this.getPL();     
+      this.getPL();    
+    else if (this.resourceType === "iai")
+      this.getIAI();  
   }
 
   getCP()  {
@@ -88,8 +90,11 @@ export class LandingComponent implements OnInit {
       {id: 1, title: "Individual Student Assessment Accessibility Profile (ISAAP) Tool",  link: "https://portal.smarterbalanced.org/library/en/about-the-individual-student-assessment-accessibility-profile-isaap-process-and-the-isaap-tool.pdf" },
     ];
 
-    landing.samplePlaylist = [];
-
+    landing.samplePlaylist = [
+      { id: 1, title: "Place Value Rumble", resourceId: "117", grade: "Grade 3", subject: "Math" },
+      { id: 2, title: "Breaking Down Numbers", resourceId: "118", grade: "Grade 4", subject: "Math" },
+    ];
+   
     this.landing = landing;
     };
 
@@ -153,4 +158,40 @@ export class LandingComponent implements OnInit {
     this.landing = landing;
   };
 
+  getIAI()  {
+
+    let landing = {} as Landing;
+
+    landing.id = 2;
+    landing.title = "Interim Assessment Item Portal";
+    landing.type = "iai";
+    landing.titleShort = "the IAIP";
+    landing.introTitle = "A better way to access and use interim test questions.";
+    landing.introText = "Access the Intererim Assessment Item Portal (IAIP) to quickly find and use interim items in more flexible wasy than ever before. Whether viewing them on the website or printing them out, high-quality, content-specific items aew a few clicks away and ready for classroom use.";
+    landing.promotedVideoLink = "https://www.youtube.com/embed/wpwZCqvt70U";
+    landing.promotedVideoMessage = "Understanding the Smarter Balanced Interim Assessments";
+    landing.howHelp = [ 
+      {id: 1, title: "Support Students",  message: "Railor the content that is comvered by and interim assess,emt to better align with the focus of instruction." },
+      {id: 2, title: "Flexible Use",  message: "Print interim assessmemt items to use contesnt in more ways and support access outside of computer labs." },
+      {id: 3, title: "Formative Assessment",  message: "Quickly and easily use interim items to support students through the use of formative assessment practices." },
+      {id: 3, title: "Professiional Learning",  message: "Better inderstand the context of an assessment to plan test adminnistration in the school year by viewing items inclded in the assesments." }
+    ];
+
+    landing.howUse = [
+      {id: 1, title: "Before Instruction",  message: "Use the content standards on the playlist with your curriclum to ensure you teach the grade-level content before giving an interim assessment." },
+      {id: 2, title: "During Instruction",  message: "Use Performance Progressions as an observation too; and make sure the Academic Vocabulary is part of instruction." },
+      {id: 3, title: "Maximize the Use of Interims",  message: "Each interim block has a corresponding playlist with performance progressions that describes what students know or can do for each tipic, as well as instructional resource you can use to support instuctional next steps." },
+      {id: 4, title: "Goal Setting and Success Criteria",  message: "Use Performance Progressions with students as a goal-setting tool.  Once you have identified where students are in their learning, use the progressions to differentiate instructionm and move learning forward." },
+    ];
+
+    landing.diveDeeper = [
+      {id: 1, title: "Formative Assessment Process Flier",  link: "https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf" },
+      {id: 1, title: "Usability, Accessibility, and Accommodations Guidelines",  link: "https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf" },
+      {id: 1, title: "Individual Student Assessment Accessibility Profile (ISAAP) Tool",  link: "https://portal.smarterbalanced.org/library/en/about-the-individual-student-assessment-accessibility-profile-isaap-process-and-the-isaap-tool.pdf" },
+    ];
+
+    //landing.samplePlaylist = [];
+   
+    this.landing = landing;
+    };
 }
