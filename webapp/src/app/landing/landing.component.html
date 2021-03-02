@@ -85,6 +85,18 @@
     <h2>Dive Deeper</h2>
     Check out these addditional resourses to learn more about {{landing.titleShort}}
 
+    <ul>
+        <li *ngFor="let dd of landing.diveDeeper">
+            <a href={{dd.link}}
+                aria-label="Formative Assessment Process Flier (opens in a new window)"
+                class="link-card" target="_blank" #link>
+                <div class="type-info">
+                    <span>{{dd.title}}</span>
+                    <i class="far fa-file-pdf" aria-hidden="true"></i>
+                </div>
+            </a>
+        </li>
+    </ul>
 
     <h2>Sample Playlists</h2>
 </main>

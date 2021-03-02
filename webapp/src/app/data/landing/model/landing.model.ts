@@ -1,5 +1,7 @@
 import {HowHelp} from './howhelp.model';
 import {HowUse} from './howuse.model';
+import {DiveDeeper} from './diveDeeper.model';
+import {SamplePlaylist} from './samplePlaylist.model';
 
 export interface Landing {
     id: number;
@@ -12,4 +14,6 @@ export interface Landing {
     promotedVideoMessage: string;
     howHelp: HowHelp[];
     howUse: HowUse[];
+    diveDeeper: DiveDeeper[];
+    samplePlaylist: SamplePlaylist[];
   }

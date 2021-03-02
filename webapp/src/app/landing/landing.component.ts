@@ -82,6 +82,14 @@ export class LandingComponent implements OnInit {
       {id: 4, title: "Goal Setting and Success Criteria",  message: "Use Performance Progressions with students as a goal-setting tool.  Once you have identified where students are in their learning, use the progressions to differentiate instructionm and move learning forward." },
     ];
 
+    landing.diveDeeper = [
+      {id: 1, title: "Formative Assessment Process Flier",  link: "https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf" },
+      {id: 1, title: "Usability, Accessibility, and Accommodations Guidelines",  link: "https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf" },
+      {id: 1, title: "Individual Student Assessment Accessibility Profile (ISAAP) Tool",  link: "https://portal.smarterbalanced.org/library/en/about-the-individual-student-assessment-accessibility-profile-isaap-process-and-the-isaap-tool.pdf" },
+    ];
+
+    landing.samplePlaylist = [];
+
     this.landing = landing;
     };
 
