@@ -1,3 +1,6 @@
+<header class="resource-header">
+
+</header>
 <main id="main" class="landing-header">
     <div class="top-header">
         <img src="/assets/images/yellow-spot.png" aria-hidden="true">
@@ -78,18 +81,47 @@
     </div>
 
     <div  *ngIf="landing.type === 'iai'">
+      <!-- For Authenticated, w/o access -->
+      <div>
+        <div
+          class="text-container"
+          #textContainer>Use the botton below to go to the IAIP and access interim items.  To find items, you can search be interim assessment name or be content area.
+        </div>
 
-      <div
-      class="text-container"
-      #textContainer>Use the botton below to go to the IAIP and access interim items.  To find items, you can search be interim assessment name or be content area.
+        <sbdl-button class="primary attachments-btn" >
+          <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
+        </sbdl-button>
+        <!-- <sbdl-button *ngIf="(hasIaipAccess$ | async) && isInterimItemPortalVisable" class="primary attachments-btn" (click)="openInterimItems()" >
+          <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
+        </sbdl-button> -->
       </div>
 
-      <sbdl-button class="primary attachments-btn" >
-        <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
-      </sbdl-button>
-    <!-- <sbdl-button *ngIf="(hasIaipAccess$ | async) && isInterimItemPortalVisable" class="primary attachments-btn" (click)="openInterimItems()" >
-      <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
-  </sbdl-button> -->
+      <div>
+        <h3>Log in to Access the IAIP</h3>
+        <div
+          class="text-container"
+          #textContainer>Access to the IAIP is avilable to approved K-12 educators in participation member states.  Use the button below to log in and check for access.
+        </div>
+
+        <sbdl-button class="primary attachments-btn" >
+          <i class="fas fa-badge-check"></i> LOG IN
+        </sbdl-button>
+        <!-- <sbdl-button *ngIf="(hasIaipAccess$ | async) && isInterimItemPortalVisable" class="primary attachments-btn" (click)="openInterimItems()" >
+          <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
+        </sbdl-button> -->
+      </div>
+
+      <div>
+        <h3>About the IAIP</h3>
+        <div
+          class="text-container"
+          #textContainer>Access to the IAIP is avilable to approved K-12 educators in participation member states. 
+        </div>
+        <div
+          class="text-container"
+          #textContainer>Unfortunately, your account has not been granted access.  Please contact your district or state support if you have questionsor believe this is an error. 
+      </div>
+      </div>
     </div>
 
 
@@ -102,7 +134,7 @@
         </li>
     </ul>
 
-    <div *ngIf="landing.diveDeeper.length > 0">
+    <div *ngIf="landing.diveDeeper && landing.diveDeeper.length > 0">
 
       <h2>Dive Deeper</h2>
       Check out these addditional resourses to learn more about {{landing.titleShort}}

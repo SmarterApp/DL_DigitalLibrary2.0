@@ -3,68 +3,140 @@
 @import "typography";
 @import "mixins";
 
-.landing-header {
-  grid-area: header;
-  box-sizing: border-box;
-  max-width: calc(var(--measure) + 8rem);
-  padding: 0 $spacer-lg;
-  justify-content: center;
-  justify-self: center;
-  width: -webkit-fill-available;
+:host {
+  display: grid;
+  grid-template:
+    "header properties"
+    "content properties"
+    "footer properties" / 1fr auto;
+  justify-items: stretch;
+  justify-content: space-between;
+  max-width: unset;
 
-  .top-header {
+  .landing-header {
+    grid-area: header;
+    box-sizing: border-box;
+    max-width: calc(var(--measure) + 8rem);
+    padding: 0 $spacer-lg;
+    justify-content: center;
+    justify-self: center;
+    width: -webkit-fill-available;
+
+    .top-header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: baseline;
+    }
+  }
+
+  select {
+    appearance: none;
+    background: #ffffff;
+    background-color: #fff;
+    background-repeat: no-repeat, repeat;
+    border: 4px solid #e0f7ff;
+    border-radius: 4px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2), 0px 3px 14px rgba(0, 0, 0, 0.12),
+      0px 8px 10px rgba(0, 0, 0, 0.14);
+    box-sizing: border-box;
+    color: #636974;
+    display: block;
+    font-size: 18px;
+    font-weight: 300;
+    height: 56px;
+    line-height: 1.5em;
+    margin: 0;
+    mix-blend-mode: multiply;
+    padding: 0.6em 1.4em 0.5em 0.8em;
+    position: relative;
+    width: 415px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+  }
+
+  .select::-ms-expand {
+    display: none;
+  }
+  .select-group {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    align-items: baseline;
+    margin-bottom: 28px;
   }
-}
-select {
-  appearance: none;
-  background: #ffffff;
-  background-color: #fff;
-  background-repeat: no-repeat, repeat;
-  border: 4px solid #e0f7ff;
-  border-radius: 4px;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2), 0px 3px 14px rgba(0, 0, 0, 0.12),
-    0px 8px 10px rgba(0, 0, 0, 0.14);
-  box-sizing: border-box;
-  color: #636974;
-  display: block;
-  font-size: 18px;
-  font-weight: 300;
-  height: 56px;
-  line-height: 1.5em;
-  margin: 0;
-  mix-blend-mode: multiply;
-  padding: 0.6em 1.4em 0.5em 0.8em;
-  position: relative;
-  width: 415px;
 
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -o-appearance: none;
-}
+  .select-icon {
+    background-color: #fff;
+    color: #636974;
+    float: right;
+    margin-left: -25px;
+    margin-top: -38px;
+    padding-right: 15px;
+    pointer-events: none;
+  }
 
-.select::-ms-expand {
-  display: none;
-}
-.select-group {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 28px;
-}
+  .select-placeholder {
+    font-style: italic;
+  }
+  &::ng-deep {
+    h1 {
+      font-weight: 700;
+      font-size: $font-size-7;
+      letter-spacing: -0.005em;
+      color: $brand-green;
+    }
 
-.select-icon {
-  background-color: #fff;
-  color: #636974;
-  float: right;
-  margin-left: -25px;
-  margin-top: -38px;
-  padding-right: 15px;
-  pointer-events: none;
-}
+    h2 {
+      font-weight: 600;
+      font-size: $font-size-4;
+      line-height: 160%;
+    }
 
-.select-placeholder {
-  font-style: italic;
+    h3 {
+      font-weight: 500;
+      font-size: $font-size-3;
+      line-height: 133%;
+    }
+
+    h4 {
+      font-weight: 400;
+      font-size: $font-size-2;
+      line-height: 160%;
+    }
+
+    h5 {
+    }
+
+    h6 {
+    }
+
+    &.highlighted {
+      &:not(.interim-container):not(tr) {
+        @include highlighted;
+      }
+    }
+
+    tr.highlighted {
+      background-color: rgba($action-100, 0.4);
+      border-left: 4px solid rgba($action-500, 0.4);
+      border-radius: 0.25rem;
+      > th {
+        @include highlighted(0, -100%);
+      }
+    }
+
+    &article:not(.interim-container):not(.highlighted):not(.step-container):not(.topics-container):not(.info-card):not(.external-resources)::before {
+      content: "";
+      position: absolute;
+      top: 4rem;
+      bottom: 0;
+      left: -2.05rem;
+      display: block;
+      border-color: $neutral-75;
+      border-radius: 0.25rem;
+      border-width: 0 0 0 2px;
+      border-style: solid;
+    }
+  }
 }
