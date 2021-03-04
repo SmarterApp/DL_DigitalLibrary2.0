@@ -1,7 +1,9 @@
-<header class="resource-header">
+<!-- <header class="resource-header">
 
-</header>
-<main id="main" class="landing-header">
+</header> -->
+<main id="main">
+
+  <div  class="landing-header">
     <div class="top-header">
         <img src="/assets/images/yellow-spot.png" aria-hidden="true">
     </div>
@@ -9,135 +11,146 @@
     <span>
         <h1>
             <ng-container [ngSwitch]="landing.type">
-                <i *ngSwitchCase="'cp'" class="far fa-chart-network"></i>
+                <i *ngSwitchCase="'icp'" class="far fa-chart-network"></i>
                 <sbdl-icon *ngSwitchCase="'ir'" icon="steps"></sbdl-icon>
-                <sbdl-icon *ngSwitchCase="'fs'" icon="strategies"></sbdl-icon>
-                <i *ngSwitchCase="'as'" class="far fa-universal-access"></i>
-                <sbdl-icon *ngSwitchCase="'pl'" icon="goal"></sbdl-icon>
-                <i  *ngSwitchCase="'iai'" class="fas fa-badge-check" aria-hidden="true"></i>
+                <sbdl-icon *ngSwitchCase="'fasr'" icon="strategies"></sbdl-icon>
+                <i *ngSwitchCase="'asr'" class="far fa-universal-access"></i>
+                <sbdl-icon *ngSwitchCase="'plr'" icon="goal"></sbdl-icon>
+                <i  *ngSwitchCase="'iaip'" class="fas fa-badge-check" aria-hidden="true"></i>
             </ng-container>
             {{landing.title}}
         </h1>
     </span>
 
-    <h3>{{landing.introTitle}}</h3>
-    <div
-        class="text-container"
-        #textContainer>{{landing.introText}}
-    </div>
+
+    <section class="landing-splits">
+
+        <div class="landing-card-right">
+          <h3>{{landing.introTitle}}</h3>
+          <div style="margin-bottom: 35px;"
+              class="text-container"
+              #textContainer>{{landing.introText}}
+          </div>
 
 
-    <h2>How will they help me?</h2>
-    <ul>
-        <li *ngFor="let howHelp of landing.howHelp">
-            <span>{{howHelp.title}}: {{howHelp.message}}</span>
-        </li>
-    </ul>
-
-    <div class="promoted-video">
-        <iframe
-          src="https://www.youtube.com/embed/wpwZCqvt70U"
-          alt="Understanding the Smarter Balanced Interim Assessments"
-          frameborder="0"
-          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen="allowfullscreen">
-        </iframe>
-    </div>
-
-    <h3>Start Using {{landing.titleShort}}</h3>
-
-    <!-- Select grade and subject -->
-    <div  *ngIf="landing.type !== 'iai'">
-      <div class="select-group">
-        <div class="select-control-group">
-          <select class="select" [ngClass]="{'select-placeholder' : selectedGrade == ''}" [(ngModel)]="selectedGrade">
-            <option value="" disabled>Select a grade</option>
-            <option *ngFor="let g of grades" value="{{g.code}}">
-              {{ g.longName }}
-            </option>
-          </select>
-          <i class="far fa-chevron-square-down fa-lg select-icon"></i>
-        </div> 
-      </div>
-
-      <div class="select-group">
-        <div class="select-control-group">
-          <select class="select" [ngClass]="{'select-placeholder' : selectedSubject == ''}" [(ngModel)]="selectedSubject">
-            <option value="" disabled>Select a subject</option>
-            <option *ngFor="let s of subjects" value="{{s.code}}">
-              {{ s.fullName }}
-            </option>
-          </select>
-          <i class="far fa-chevron-square-down fa-lg select-icon"></i>
-        </div> 
-      </div>
-
-      <sbdl-button  class="primary" >
-          <!-- (click)="emitAttachmentsClicked()">  -->
-         GO!
-      </sbdl-button>&nbsp;&nbsp;&nbsp;
-      <a href="javascript:void(0)" (click)="onBrowseAllClick()">or browse all</a>
-
-    </div>
-
-    <div  *ngIf="landing.type === 'iai'">
-      <!-- For Authenticated, w/o access -->
-      <div>
-        <div
-          class="text-container"
-          #textContainer>Use the botton below to go to the IAIP and access interim items.  To find items, you can search be interim assessment name or be content area.
+          <h2 style="font-weight: bold;">How will they help me?</h2>
+          <ul style="padding: 1rem 1rem;margin-top: unset;">
+              <li *ngFor="let howHelp of landing.howHelp" style="margin-bottom: 10px;">
+                  <span style="font-weight: bold;">{{howHelp.title}}: </span><span>{{howHelp.message}}</span>
+              </li>
+          </ul>
         </div>
 
-        <sbdl-button class="primary attachments-btn" >
-          <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
-        </sbdl-button>
-        <!-- <sbdl-button *ngIf="(hasIaipAccess$ | async) && isInterimItemPortalVisable" class="primary attachments-btn" (click)="openInterimItems()" >
-          <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
-        </sbdl-button> -->
-      </div>
 
-      <div>
-        <h3>Log in to Access the IAIP</h3>
-        <div
-          class="text-container"
-          #textContainer>Access to the IAIP is avilable to approved K-12 educators in participation member states.  Use the button below to log in and check for access.
+        <div class="landing-card-right">
+          <iframe
+            src="https://www.youtube.com/embed/wpwZCqvt70U"
+            alt="Understanding the Smarter Balanced Interim Assessments"
+            frameborder="0"
+            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen="allowfullscreen">
+          </iframe>
+        
+
+          <div style="background-color: #E0F7FF;padding: 20px;min-width: 300px;border-radius: 15px;margin-top: 20px;">
+            <h2>Start Using {{landing.howDoIUse}}</h2>
+
+            <!-- Select grade and subject -->
+            <div  *ngIf="landing.type !== 'iaip'">
+              <div class="select-group">
+                <div class="select-control-group selectDDL">
+                  <select class="select" [ngClass]="{'select-placeholder' : selectedGrade == ''}" [(ngModel)]="selectedGrade">
+                    <option value="" disabled>Select a grade</option>
+                    <option *ngFor="let g of grades" value="{{g.code}}">
+                      {{ g.longName }}
+                    </option>
+                  </select>
+                  <i class="far fa-chevron-square-down fa-lg select-icon"></i>
+                </div> 
+              </div>
+
+              <div class="select-group">
+                <div class="select-control-group selectDDL">
+                  <select class="select" [ngClass]="{'select-placeholder' : selectedSubject == ''}" [(ngModel)]="selectedSubject">
+                    <option value="" disabled>Select a subject</option>
+                    <option *ngFor="let s of subjects" value="{{s.code}}">
+                      {{ s.fullName }}
+                    </option>
+                  </select>
+                  <i class="far fa-chevron-square-down fa-lg select-icon"></i>
+                </div> 
+              </div>
+
+              <sbdl-button  class="primary" >
+                  <!-- (click)="emitAttachmentsClicked()">  -->
+                GO!
+              </sbdl-button>&nbsp;&nbsp;&nbsp;
+              <a href="javascript:void(0)" (click)="onBrowseAllClick()">or browse all</a>
+
+            </div>
+
+            <div  *ngIf="landing.type === 'iaip'">
+              <!-- For Authenticated, w/o access -->
+              <div>
+                <div
+                  class="text-container"
+                  #textContainer>Use the botton below to go to the IAIP and access interim items.  To find items, you can search be interim assessment name or be content area.
+                </div>
+
+                <sbdl-button class="primary attachments-btn" >
+                  <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
+                </sbdl-button>
+                <!-- <sbdl-button *ngIf="(hasIaipAccess$ | async) && isInterimItemPortalVisable" class="primary attachments-btn" (click)="openInterimItems()" >
+                  <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
+                </sbdl-button> -->
+              </div>
+
+              <div>
+                <h3>Log in to Access the IAIP</h3>
+                <div
+                  class="text-container"
+                  #textContainer>Access to the IAIP is avilable to approved K-12 educators in participation member states.  Use the button below to log in and check for access.
+                </div>
+
+                <sbdl-button class="primary attachments-btn" >
+                  <i class="fas fa-badge-check"></i> LOG IN
+                </sbdl-button>
+                <!-- <sbdl-button *ngIf="(hasIaipAccess$ | async) && isInterimItemPortalVisable" class="primary attachments-btn" (click)="openInterimItems()" >
+                  <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
+                </sbdl-button> -->
+              </div>
+
+              <div>
+                <h3>About the IAIP</h3>
+                <div
+                  class="text-container"
+                  #textContainer>Access to the IAIP is avilable to approved K-12 educators in participation member states. 
+                </div>
+                <div
+                  class="text-container"
+                  #textContainer>Unfortunately, your account has not been granted access.  Please contact your district or state support if you have questionsor believe this is an error. 
+              </div>
+              </div>
+            </div>
+          </div>
         </div>
+    </section>
+  </div>
 
-        <sbdl-button class="primary attachments-btn" >
-          <i class="fas fa-badge-check"></i> LOG IN
-        </sbdl-button>
-        <!-- <sbdl-button *ngIf="(hasIaipAccess$ | async) && isInterimItemPortalVisable" class="primary attachments-btn" (click)="openInterimItems()" >
-          <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
-        </sbdl-button> -->
-      </div>
-
-      <div>
-        <h3>About the IAIP</h3>
-        <div
-          class="text-container"
-          #textContainer>Access to the IAIP is avilable to approved K-12 educators in participation member states. 
-        </div>
-        <div
-          class="text-container"
-          #textContainer>Unfortunately, your account has not been granted access.  Please contact your district or state support if you have questionsor believe this is an error. 
-      </div>
-      </div>
-    </div>
-
-
-    <h2>How can I use {{landing.titleShort}}?</h2>
-
-    <ul>
-        <li *ngFor="let howUse of landing.howUse">
+  <section class="landing-howcaniuse">
+    <h2 style="margin-top: 30px;margin-left: 10rem;">How can I use {{landing.howDoIUse}}?</h2>
+    <ul style="list-style-type: none;">
+        <li *ngFor="let howUse of landing.howUse" style="margin-bottom: 15px;margin-left: 8rem;" class="blueImage">
             <h3>{{howUse.title}}</h3>   
             {{howUse.message}}
         </li>
     </ul>
+  </section>
 
     <div *ngIf="landing.diveDeeper && landing.diveDeeper.length > 0">
 
       <h2>Dive Deeper</h2>
-      Check out these addditional resourses to learn more about {{landing.titleShort}}
+      {{landing.diveDeeperHeader}}
 
       <ul>
           <li *ngFor="let dd of landing.diveDeeper">

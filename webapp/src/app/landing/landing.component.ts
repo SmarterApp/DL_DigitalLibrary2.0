@@ -44,17 +44,17 @@ export class LandingComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     this.resourceType = this.route.snapshot.paramMap.get('resourceType');
 
-    if (this.resourceType === "cp")
+    if (this.resourceType === "icp")
       this.getCP();
     else if (this.resourceType === "ir")
       this.getIR();
-    else if (this.resourceType === "fs")
+    else if (this.resourceType === "fasr")
       this.getFS();
-    else if (this.resourceType === "as")
+    else if (this.resourceType === "asr")
       this.getAS();      
-    else if (this.resourceType === "pl")
+    else if (this.resourceType === "plr")
       this.getPL();    
-    else if (this.resourceType === "iai")
+    else if (this.resourceType === "iaip")
       this.getIAI();  
   }
 
@@ -64,8 +64,8 @@ export class LandingComponent implements OnInit {
 
     landing.id = 1;
     landing.title = "Interim Connections Playlists";
-    landing.type = "cp";
-    landing.titleShort = "Playlist";
+    landing.type = "icp";
+    landing.howDoIUse = "Playlist";
     landing.introTitle = "Connect student performance to instructional resources.";
     landing.introText = "Playlist link students' results on interim assessments to ELA and math lessions matched to their knowledge and skills.  Playlists help educators ensure that students receive instruction tailored for their individual performance level - a key to accelerating learning.";
     landing.promotedVideoLink = "https://www.youtube.com/embed/wpwZCqvt70U";
@@ -84,6 +84,7 @@ export class LandingComponent implements OnInit {
       {id: 4, title: "Goal Setting and Success Criteria",  message: "Use Performance Progressions with students as a goal-setting tool.  Once you have identified where students are in their learning, use the progressions to differentiate instructionm and move learning forward." },
     ];
 
+    landing.diveDeeperHeader = "Check out these additional resources to learn more about Playlists.";
     landing.diveDeeper = [
       {id: 1, title: "Formative Assessment Process Flier",  link: "https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf" },
       {id: 1, title: "Usability, Accessibility, and Accommodations Guidelines",  link: "https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf" },
@@ -103,16 +104,22 @@ export class LandingComponent implements OnInit {
     let landing = {} as Landing;
 
     landing.id = 2;
-    landing.title = "Instructional";
+    landing.title = "Instructional Resources";
     landing.type = "ir";
-    landing.titleShort = "Instructional";
+    landing.howDoIUse = "Instructional";
     landing.introTitle = "Instructional introTitle";
     landing.introText = "Instructional introText";
+    landing.diveDeeperHeader = "Check out these additional resources to learn more about using the formative assessment process during instruction.";
     landing.howHelp = [ 
       {id: 1, title: "Instructional title 1",  message: "Instructional  message 1" },
       {id: 2, title: "Instructional title 2",  message: "Instructional  message 2" },
       {id: 3, title: "Instructional title 3",  message: "Instructional  message 3" }
     ];      
+    landing.diveDeeper = [
+      {id: 1, title: "Formative Assessment Process Flier",  link: "https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf" },
+      {id: 1, title: "Usability, Accessibility, and Accommodations Guidelines",  link: "https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf" },
+      {id: 1, title: "Individual Student Assessment Accessibility Profile (ISAAP) Tool",  link: "https://portal.smarterbalanced.org/library/en/about-the-individual-student-assessment-accessibility-profile-isaap-process-and-the-isaap-tool.pdf" },
+    ];
     this.landing = landing;
   };
 
@@ -122,11 +129,16 @@ export class LandingComponent implements OnInit {
 
     landing.id = 3;
     landing.title = "Formative Assessment Strategies";
-    landing.type = "fs";
-    landing.titleShort = "Formative Assessment";
+    landing.type = "fasr";
+    landing.howDoIUse = "Formative Assessment";
     landing.introTitle = "Formative Assessment introTitle";
     landing.introText = "Formative Assessment introText";
-
+    landing.diveDeeperHeader = "Check out these additional resources to learn more about the Formative Assessment Process.";
+    landing.diveDeeper = [
+      {id: 1, title: "Formative Assessment Process Flier",  link: "https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf" },
+      {id: 1, title: "Usability, Accessibility, and Accommodations Guidelines",  link: "https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf" },
+      {id: 1, title: "Individual Student Assessment Accessibility Profile (ISAAP) Tool",  link: "https://portal.smarterbalanced.org/library/en/about-the-individual-student-assessment-accessibility-profile-isaap-process-and-the-isaap-tool.pdf" },
+    ];
     this.landing = landing;
   };    
 
@@ -135,12 +147,17 @@ export class LandingComponent implements OnInit {
     let landing = {} as Landing;
 
     landing.id = 4;
-    landing.title = "Accessibility Strategies";
-    landing.type = "as";
-    landing.titleShort = "Accessibility";
+    landing.title = "Accessibility Instructional Strategies";
+    landing.type = "asr";
+    landing.howDoIUse = "Accessibility";
     landing.introTitle = "Accessibility introTitle";
     landing.introText = "Accessibility introText";      
-
+    landing.diveDeeperHeader = "Check out these additional resources to learn more about accessibility.";
+    landing.diveDeeper = [
+      {id: 1, title: "Formative Assessment Process Flier",  link: "https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf" },
+      {id: 1, title: "Usability, Accessibility, and Accommodations Guidelines",  link: "https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf" },
+      {id: 1, title: "Individual Student Assessment Accessibility Profile (ISAAP) Tool",  link: "https://portal.smarterbalanced.org/library/en/about-the-individual-student-assessment-accessibility-profile-isaap-process-and-the-isaap-tool.pdf" },
+    ];
     this.landing = landing;
   };
 
@@ -149,12 +166,17 @@ export class LandingComponent implements OnInit {
     let landing = {} as Landing;
 
     landing.id = 5;
-    landing.title = "Professional Learning Resource";
-    landing.type = "pl";
-    landing.titleShort = "Professional Learning";
+    landing.title = "Professional Learning Resources";
+    landing.type = "plr";
+    landing.howDoIUse = "Professional Learning";
     landing.introTitle = "Professional Learning introTitle";
     landing.introText = "Professional Learning introText";
-
+    landing.diveDeeperHeader = "Check out these additional resources to learn more about using a balanced assessment system.";
+    landing.diveDeeper = [
+      {id: 1, title: "Formative Assessment Process Flier",  link: "https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf" },
+      {id: 1, title: "Usability, Accessibility, and Accommodations Guidelines",  link: "https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf" },
+      {id: 1, title: "Individual Student Assessment Accessibility Profile (ISAAP) Tool",  link: "https://portal.smarterbalanced.org/library/en/about-the-individual-student-assessment-accessibility-profile-isaap-process-and-the-isaap-tool.pdf" },
+    ];
     this.landing = landing;
   };
 
@@ -164,8 +186,8 @@ export class LandingComponent implements OnInit {
 
     landing.id = 2;
     landing.title = "Interim Assessment Item Portal";
-    landing.type = "iai";
-    landing.titleShort = "the IAIP";
+    landing.type = "iaip";
+    landing.howDoIUse = "the IAIP";
     landing.introTitle = "A better way to access and use interim test questions.";
     landing.introText = "Access the Intererim Assessment Item Portal (IAIP) to quickly find and use interim items in more flexible wasy than ever before. Whether viewing them on the website or printing them out, high-quality, content-specific items aew a few clicks away and ready for classroom use.";
     landing.promotedVideoLink = "https://www.youtube.com/embed/wpwZCqvt70U";
@@ -184,6 +206,7 @@ export class LandingComponent implements OnInit {
       {id: 4, title: "Goal Setting and Success Criteria",  message: "Use Performance Progressions with students as a goal-setting tool.  Once you have identified where students are in their learning, use the progressions to differentiate instructionm and move learning forward." },
     ];
 
+    landing.diveDeeperHeader = "Check out these additional resources to learn more about using individual items during instruction.";
     landing.diveDeeper = [
       {id: 1, title: "Formative Assessment Process Flier",  link: "https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf" },
       {id: 1, title: "Usability, Accessibility, and Accommodations Guidelines",  link: "https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf" },

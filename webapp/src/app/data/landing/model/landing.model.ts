@@ -7,13 +7,14 @@ export interface Landing {
     id: number;
     title: string;
     type: string;
-    titleShort: string;
+    howDoIUse: string;
     introTitle: string;
     introText: string;
     promotedVideoLink: string;
     promotedVideoMessage: string;
     howHelp: HowHelp[];
     howUse: HowUse[];
+    diveDeeperHeader: string;
     diveDeeper: DiveDeeper[];
     samplePlaylist: SamplePlaylist[];
   }

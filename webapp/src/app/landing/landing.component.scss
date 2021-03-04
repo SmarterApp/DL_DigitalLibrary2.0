@@ -16,7 +16,7 @@
   .landing-header {
     grid-area: header;
     box-sizing: border-box;
-    max-width: calc(var(--measure) + 8rem);
+    max-width: 1000px;
     padding: 0 $spacer-lg;
     justify-content: center;
     justify-self: center;
@@ -50,7 +50,8 @@
     mix-blend-mode: multiply;
     padding: 0.6em 1.4em 0.5em 0.8em;
     position: relative;
-    width: 415px;
+    width: inherit;
+    min-width: 250px;
 
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -138,5 +139,115 @@
       border-width: 0 0 0 2px;
       border-style: solid;
     }
+  }
+
+  .landing-splits {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    max-width: none;
+    margin-bottom: 40px;
+
+    h2 {
+      font-size: 23.4px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 133%;
+      max-width: 427px;
+    }
+
+    .landing-card-right {
+      padding: $spacer $spacer;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      align-items: stretch;
+      min-width: 225px;
+    }
+
+    .landing-card-right iframe {
+      max-width: 427px;
+      padding: 0 0.25rem;
+      width: 427px;
+      height: 240px;
+      margin-bottom: $spacer-md;
+    }
+  }
+
+  .selectDDL {
+    background-color: $white;
+    width: -webkit-fill-available;
+  }
+
+  .landing-howcaniuse {
+    background: $neutral-50;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+
+    & > * {
+      max-width: 900px;
+    }
+
+    & > .watermarks {
+      position: relative;
+      width: 100%;
+
+      .yellow {
+        position: relative;
+        left: -20px;
+        top: 0;
+      }
+
+      .green {
+        position: absolute;
+        right: -20px;
+        top: 0;
+      }
+
+      .blue {
+        position: absolute;
+        top: 0;
+        left: 94px;
+      }
+    }
+
+    h1 {
+      font-size: 34px;
+      font-weight: 600;
+    }
+
+    .caption.emphasis-medium {
+      font-size: $font-size-body-2;
+      max-width: 550px;
+      text-align: center;
+    }
+
+    .resource-summary-cards {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 2rem 4rem 4rem 4rem;
+      width: 100%;
+
+      sbdl-resource-summary-card {
+        display: inline-block;
+        max-width: 435px;
+        margin-top: $spacer-md;
+        flex-grow: 1;
+        padding: 0px 4px;
+      }
+    }
+  }
+
+  li.blueImage {
+    background: url("src/assets/images/blue-spot.png") no-repeat left top;
+    // height: 54px;
+    // padding-left: 44px;
+    // padding-top: 3px;
   }
 }
