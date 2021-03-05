@@ -4,19 +4,19 @@
 <main id="main">
 
   <div  class="landing-header">
-    <div class="top-header">
+    <!-- <div class="top-header">
         <img src="/assets/images/yellow-spot.png" aria-hidden="true">
-    </div>
+    </div> -->
 
     <span>
         <h1>
             <ng-container [ngSwitch]="landing.type">
-                <i *ngSwitchCase="'icp'" class="far fa-chart-network"></i>
-                <sbdl-icon *ngSwitchCase="'ir'" icon="steps"></sbdl-icon>
-                <sbdl-icon *ngSwitchCase="'fasr'" icon="strategies"></sbdl-icon>
-                <i *ngSwitchCase="'asr'" class="far fa-universal-access"></i>
-                <sbdl-icon *ngSwitchCase="'plr'" icon="goal"></sbdl-icon>
-                <i  *ngSwitchCase="'iaip'" class="fas fa-badge-check" aria-hidden="true"></i>
+                <img class="headerImage" *ngSwitchCase="'icp'"  src="/assets/images/connections-playlist.png" aria-hidden="true">
+                <img class="headerImage" *ngSwitchCase="'ir'"   src="/assets/images/instructional-resource.png" aria-hidden="true">
+                <img class="headerImage" *ngSwitchCase="'fasr'" src="/assets/images/formative-strategy.png" aria-hidden="true">
+                <img class="headerImage" *ngSwitchCase="'asr'"  src="/assets/images/accessibility-strategy.png" aria-hidden="true">
+                <img class="headerImage" *ngSwitchCase="'plr'"  src="/assets/images/professional-learning.png" aria-hidden="true">
+                <img class="headerImage" *ngSwitchCase="'iaip'" src="/assets/images/iaip 1.png" aria-hidden="true">
             </ng-container>
             {{landing.title}}
         </h1>
@@ -56,7 +56,7 @@
             <h2>Start Using {{landing.howDoIUse}}</h2>
 
             <!-- Select grade and subject -->
-            <div  *ngIf="landing.type !== 'iaip'">
+            <div  *ngIf="landing.type !== 'iaip' && landing.type !== 'plr'">
               <div class="select-group">
                 <div class="select-control-group selectDDL">
                   <select class="select" [ngClass]="{'select-placeholder' : selectedGrade == ''}" [(ngModel)]="selectedGrade">
@@ -85,8 +85,26 @@
                   <!-- (click)="emitAttachmentsClicked()">  -->
                 GO!
               </sbdl-button>&nbsp;&nbsp;&nbsp;
-              <a href="javascript:void(0)" (click)="onBrowseAllClick()">or browse all</a>
+              <a href="javascript:void(0)" (click)="onBrowseAllClick()">or browse all {{landing.howDoIUse}}</a>
 
+            </div>
+
+            <div  *ngIf="landing.type === 'plr'">
+              <div
+                class="text-container"
+                #textContainer>Type in search terms to find a Professional Learning topic.
+              </div>
+                
+              <!-- (submit)="search({query: $event}, true)" [(ngModel)]="filters.query" -->
+              <div style="background-color: white">
+                <sbdl-text-field
+                  style="font-style: italic;"
+                  placeholder="Formative Assessment, Smarter Balanced System, ect."
+                  fontAwesomeIcon="fa-search"
+                  submitButtonAriaLabel="search resources">
+                </sbdl-text-field>               
+              </div> 
+              <a href="javascript:void(0)" (click)="onBrowseAllClick()">or browse all {{landing.howDoIUse}}</a>
             </div>
 
             <div  *ngIf="landing.type === 'iaip'">
@@ -138,9 +156,15 @@
   </div>
 
   <section class="landing-howcaniuse">
-    <h2 style="margin-top: 30px;margin-left: 10rem;">How can I use {{landing.howDoIUse}}?</h2>
-    <ul style="list-style-type: none;">
-        <li *ngFor="let howUse of landing.howUse" style="margin-bottom: 15px;margin-left: 8rem;" class="blueImage">
+    <div class="watermarks">
+      <img class="waterspot green" src="/assets/images/green-spot-2.png" aria-hidden="true">
+      <img class="waterspot yellow" src="/assets/images/yellow-spot-6.png" aria-hidden="true">
+    </div>
+
+    <h2 style="margin-top:30px;margin-left: 12rem;">How can I use {{landing.howDoIUse}}?</h2>
+    <ul style="list-style-type: none;margin-left: 6rem;">
+        <li *ngFor="let howUse of landing.howUse; index as i;" 
+            [ngClass]="{'yellowImage' : (i + 1) % 3 == 1,'greenImage' : (i + 1) % 3 == 2,'blueImage' : (i + 1) % 3 == 0}">
             <h3>{{howUse.title}}</h3>   
             {{howUse.message}}
         </li>

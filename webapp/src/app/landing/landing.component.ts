@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Landing } from '../data/landing/model/landing.model';
 import { HowHelp } from '../data/landing/model/howhelp.model' ;
-//import { HowUse } from '../data/landing/model/howhelp.model';
 import { Grade } from '../data/resource/model/grade.model';
 import { Subject } from '../data/resource/model/subject.model';
+import {ResourceCodeType} from 'src/app/data/resource/model/resource-code-type.enum';
 
 @Component({
   selector: 'sbdl-landing',
@@ -18,7 +18,7 @@ export class LandingComponent implements OnInit {
   selectedGrade: string = "";
   subjects: Subject[];
   selectedSubject: string = "";
-
+  resourceCodeType = ResourceCodeType;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,17 +44,17 @@ export class LandingComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     this.resourceType = this.route.snapshot.paramMap.get('resourceType');
 
-    if (this.resourceType === "icp")
+    if (this.resourceType === ResourceCodeType.InterimConnectionsPlaylist.toString())
       this.getCP();
-    else if (this.resourceType === "ir")
+    else if (this.resourceType === ResourceCodeType.Instructional.toString())
       this.getIR();
-    else if (this.resourceType === "fasr")
+    else if (this.resourceType === ResourceCodeType.FormativeStrategy.toString())
       this.getFS();
-    else if (this.resourceType === "asr")
+    else if (this.resourceType === ResourceCodeType.AccessibilityStrategy.toString())
       this.getAS();      
-    else if (this.resourceType === "plr")
+    else if (this.resourceType === ResourceCodeType.ProfessionalLearning.toString())
       this.getPL();    
-    else if (this.resourceType === "iaip")
+    else if (this.resourceType === ResourceCodeType.InterimAssessmentItemPortal.toString())
       this.getIAI();  
   }
 
@@ -107,14 +107,23 @@ export class LandingComponent implements OnInit {
     landing.title = "Instructional Resources";
     landing.type = "ir";
     landing.howDoIUse = "Instructional";
-    landing.introTitle = "Instructional introTitle";
-    landing.introText = "Instructional introText";
+    landing.introTitle = "Connect student performance to instructional resources.";
+    landing.introText = "Playlist link students' results on interim assessments to ELA and math lessions matched to their knowledge and skills.  Playlists help educators ensure that students receive instruction tailored for their individual performance level - a key to accelerating learning.";
     landing.diveDeeperHeader = "Check out these additional resources to learn more about using the formative assessment process during instruction.";
     landing.howHelp = [ 
-      {id: 1, title: "Instructional title 1",  message: "Instructional  message 1" },
-      {id: 2, title: "Instructional title 2",  message: "Instructional  message 2" },
-      {id: 3, title: "Instructional title 3",  message: "Instructional  message 3" }
+      {id: 1, title: "Support Students",  message: "Use performance progressions to help identify where students are in their learning process and how they can progress to the next level." },
+      {id: 2, title: "Understand the Contest",  message: "Each playlist provides the knowledge and skills students need toachieve within a block of grade-level content." },
+      {id: 3, title: "Plan Instruction",  message: "Use student performance data to inform and plan instrutional next steps." },
+      {id: 3, title: "Take Action",  message: "Use teacher-created instructional resources to support student success." }
     ];      
+
+    landing.howUse = [
+      {id: 1, title: "Before Instruction",  message: "Use the content standards on the playlist with your curriclum to ensure you teach the grade-level content before giving an interim assessment." },
+      {id: 2, title: "During Instruction",  message: "Use Performance Progressions as an observation too; and make sure the Academic Vocabulary is part of instruction." },
+      {id: 3, title: "Maximize the Use of Interims",  message: "Each interim block has a corresponding playlist with performance progressions that describes what students know or can do for each tipic, as well as instructional resource you can use to support instuctional next steps." },
+      {id: 4, title: "Goal Setting and Success Criteria",  message: "Use Performance Progressions with students as a goal-setting tool.  Once you have identified where students are in their learning, use the progressions to differentiate instructionm and move learning forward." },
+    ];
+
     landing.diveDeeper = [
       {id: 1, title: "Formative Assessment Process Flier",  link: "https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf" },
       {id: 1, title: "Usability, Accessibility, and Accommodations Guidelines",  link: "https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf" },
@@ -131,9 +140,23 @@ export class LandingComponent implements OnInit {
     landing.title = "Formative Assessment Strategies";
     landing.type = "fasr";
     landing.howDoIUse = "Formative Assessment";
-    landing.introTitle = "Formative Assessment introTitle";
-    landing.introText = "Formative Assessment introText";
+    landing.introTitle = "Connect student performance to instructional resources.";
+    landing.introText = "Playlist link students' results on interim assessments to ELA and math lessions matched to their knowledge and skills.  Playlists help educators ensure that students receive instruction tailored for their individual performance level - a key to accelerating learning.";
     landing.diveDeeperHeader = "Check out these additional resources to learn more about the Formative Assessment Process.";
+    landing.howHelp = [ 
+      {id: 1, title: "Support Students",  message: "Use performance progressions to help identify where students are in their learning process and how they can progress to the next level." },
+      {id: 2, title: "Understand the Contest",  message: "Each playlist provides the knowledge and skills students need toachieve within a block of grade-level content." },
+      {id: 3, title: "Plan Instruction",  message: "Use student performance data to inform and plan instrutional next steps." },
+      {id: 3, title: "Take Action",  message: "Use teacher-created instructional resources to support student success." }
+    ];    
+
+    landing.howUse = [
+      {id: 1, title: "Before Instruction",  message: "Use the content standards on the playlist with your curriclum to ensure you teach the grade-level content before giving an interim assessment." },
+      {id: 2, title: "During Instruction",  message: "Use Performance Progressions as an observation too; and make sure the Academic Vocabulary is part of instruction." },
+      {id: 3, title: "Maximize the Use of Interims",  message: "Each interim block has a corresponding playlist with performance progressions that describes what students know or can do for each tipic, as well as instructional resource you can use to support instuctional next steps." },
+      {id: 4, title: "Goal Setting and Success Criteria",  message: "Use Performance Progressions with students as a goal-setting tool.  Once you have identified where students are in their learning, use the progressions to differentiate instructionm and move learning forward." },
+    ];
+
     landing.diveDeeper = [
       {id: 1, title: "Formative Assessment Process Flier",  link: "https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf" },
       {id: 1, title: "Usability, Accessibility, and Accommodations Guidelines",  link: "https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf" },
@@ -149,10 +172,24 @@ export class LandingComponent implements OnInit {
     landing.id = 4;
     landing.title = "Accessibility Instructional Strategies";
     landing.type = "asr";
-    landing.howDoIUse = "Accessibility";
-    landing.introTitle = "Accessibility introTitle";
+    landing.introTitle = "Connect student performance to instructional resources.";
+    landing.introText = "Playlist link students' results on interim assessments to ELA and math lessions matched to their knowledge and skills.  Playlists help educators ensure that students receive instruction tailored for their individual performance level - a key to accelerating learning.";
     landing.introText = "Accessibility introText";      
     landing.diveDeeperHeader = "Check out these additional resources to learn more about accessibility.";
+    landing.howHelp = [ 
+      {id: 1, title: "Support Students",  message: "Use performance progressions to help identify where students are in their learning process and how they can progress to the next level." },
+      {id: 2, title: "Understand the Contest",  message: "Each playlist provides the knowledge and skills students need toachieve within a block of grade-level content." },
+      {id: 3, title: "Plan Instruction",  message: "Use student performance data to inform and plan instrutional next steps." },
+      {id: 3, title: "Take Action",  message: "Use teacher-created instructional resources to support student success." }
+    ];    
+
+    landing.howUse = [
+      {id: 1, title: "Before Instruction",  message: "Use the content standards on the playlist with your curriclum to ensure you teach the grade-level content before giving an interim assessment." },
+      {id: 2, title: "During Instruction",  message: "Use Performance Progressions as an observation too; and make sure the Academic Vocabulary is part of instruction." },
+      {id: 3, title: "Maximize the Use of Interims",  message: "Each interim block has a corresponding playlist with performance progressions that describes what students know or can do for each tipic, as well as instructional resource you can use to support instuctional next steps." },
+      {id: 4, title: "Goal Setting and Success Criteria",  message: "Use Performance Progressions with students as a goal-setting tool.  Once you have identified where students are in their learning, use the progressions to differentiate instructionm and move learning forward." },
+    ];
+
     landing.diveDeeper = [
       {id: 1, title: "Formative Assessment Process Flier",  link: "https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf" },
       {id: 1, title: "Usability, Accessibility, and Accommodations Guidelines",  link: "https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf" },
@@ -168,10 +205,24 @@ export class LandingComponent implements OnInit {
     landing.id = 5;
     landing.title = "Professional Learning Resources";
     landing.type = "plr";
-    landing.howDoIUse = "Professional Learning";
-    landing.introTitle = "Professional Learning introTitle";
-    landing.introText = "Professional Learning introText";
+    landing.howDoIUse = "Professional Learning Resources";
+    landing.introTitle = "Connect student performance to instructional resources.";
+    landing.introText = "Playlist link students' results on interim assessments to ELA and math lessions matched to their knowledge and skills.  Playlists help educators ensure that students receive instruction tailored for their individual performance level - a key to accelerating learning.";
     landing.diveDeeperHeader = "Check out these additional resources to learn more about using a balanced assessment system.";
+    landing.howHelp = [ 
+      {id: 1, title: "Support Students",  message: "Use performance progressions to help identify where students are in their learning process and how they can progress to the next level." },
+      {id: 2, title: "Understand the Contest",  message: "Each playlist provides the knowledge and skills students need toachieve within a block of grade-level content." },
+      {id: 3, title: "Plan Instruction",  message: "Use student performance data to inform and plan instrutional next steps." },
+      {id: 3, title: "Take Action",  message: "Use teacher-created instructional resources to support student success." }
+    ];    
+
+    landing.howUse = [
+      {id: 1, title: "Before Instruction",  message: "Use the content standards on the playlist with your curriclum to ensure you teach the grade-level content before giving an interim assessment." },
+      {id: 2, title: "During Instruction",  message: "Use Performance Progressions as an observation too; and make sure the Academic Vocabulary is part of instruction." },
+      {id: 3, title: "Maximize the Use of Interims",  message: "Each interim block has a corresponding playlist with performance progressions that describes what students know or can do for each tipic, as well as instructional resource you can use to support instuctional next steps." },
+      {id: 4, title: "Goal Setting and Success Criteria",  message: "Use Performance Progressions with students as a goal-setting tool.  Once you have identified where students are in their learning, use the progressions to differentiate instructionm and move learning forward." },
+    ];
+    
     landing.diveDeeper = [
       {id: 1, title: "Formative Assessment Process Flier",  link: "https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf" },
       {id: 1, title: "Usability, Accessibility, and Accommodations Guidelines",  link: "https://portal.smarterbalanced.org/library/en/usability-accessibility-and-accommodations-guidelines.pdf" },
