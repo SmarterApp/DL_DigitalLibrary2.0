@@ -152,16 +152,30 @@
             </div>
           </div>
         </div>
+        
     </section>
-  </div>
 
+  </div>
+  <hr/>
   <section class="landing-howcaniuse">
     <div class="watermarks">
       <img class="waterspot green" src="/assets/images/green-spot-2.png" aria-hidden="true">
       <img class="waterspot yellow" src="/assets/images/yellow-spot-6.png" aria-hidden="true">
     </div>
 
-    <h2 style="margin-top:30px;margin-left: 12rem;">How can I use {{landing.howDoIUse}}?</h2>
+    <h2
+       style="margin-top:30px;margin-left: 10rem;">
+       <img src="/assets/images/vector-line.png"
+       style="
+          position: absolute;
+          z-index: 100;
+          left: 0;
+          margin-left: 39px;
+          margin-top: -211px;"
+            >
+       <img src="/assets/images/vector-arrow.png" aria-hidden="true">
+       How can I use {{landing.howDoIUse}}?
+      </h2>
     <ul style="list-style-type: none;margin-left: 6rem;">
         <li *ngFor="let howUse of landing.howUse; index as i;" 
             [ngClass]="{'yellowImage' : (i + 1) % 3 == 1,'greenImage' : (i + 1) % 3 == 2,'blueImage' : (i + 1) % 3 == 0}">
@@ -169,42 +183,47 @@
             {{howUse.message}}
         </li>
     </ul>
+    <hr/>
   </section>
 
-    <div *ngIf="landing.diveDeeper && landing.diveDeeper.length > 0">
-
-      <h2>Dive Deeper</h2>
-      {{landing.diveDeeperHeader}}
-
-      <ul>
-          <li *ngFor="let dd of landing.diveDeeper">
-              <a href={{dd.link}}
-                  aria-label="Formative Assessment Process Flier (opens in a new window)"
-                  class="link-card" target="_blank" #link>
-                  <div class="type-info">
-                      <span>{{dd.title}}</span>
-                      <i class="far fa-file-pdf" aria-hidden="true"></i>
-                  </div>
-              </a>
-          </li>
-      </ul>
-    </div>
-
-    <div *ngIf="landing.samplePlaylist && landing.samplePlaylist.length > 0">
-    <h2>Sample Playlists</h2>
-    <!-- look at sbdl-playlist-resources for sample -->
-    <!-- <ul>
-          <li *ngFor="let sp of landing.samplePlaylist">
-              <a href={{dd.link}}
-                  aria-label="Formative Assessment Process Flier (opens in a new window)"
-                  class="link-card" target="_blank" #link>
-                  <div class="type-info">
-                      <span>{{dd.title}}</span>
-                      <i class="far fa-file-pdf" aria-hidden="true"></i>
-                  </div>
-              </a>
-          </li>
-      </ul> -->
-    </div>
 </main>
+<aside class="right-margin">
+  
+  <img src="/assets/images/landing-icp.png" aria-hidden="true">
 
+  <div *ngIf="landing.diveDeeper && landing.diveDeeper.length > 0">
+
+    <h2>Dive Deeper</h2>
+    {{landing.diveDeeperHeader}}
+
+    <ul>
+        <li *ngFor="let dd of landing.diveDeeper">
+            <a href={{dd.link}}
+                aria-label="Formative Assessment Process Flier (opens in a new window)"
+                class="link-card" target="_blank" #link>
+                <div class="type-info">
+                    <span>{{dd.title}}</span>
+                    <i class="far fa-file-pdf" aria-hidden="true"></i>
+                </div>
+            </a>
+        </li>
+    </ul>
+  </div>
+
+  <div *ngIf="landing.samplePlaylist && landing.samplePlaylist.length > 0">
+  <h2>Sample Playlists</h2>
+  <!-- look at sbdl-playlist-resources for sample -->
+  <!-- <ul>
+        <li *ngFor="let sp of landing.samplePlaylist">
+            <a href={{dd.link}}
+                aria-label="Formative Assessment Process Flier (opens in a new window)"
+                class="link-card" target="_blank" #link>
+                <div class="type-info">
+                    <span>{{dd.title}}</span>
+                    <i class="far fa-file-pdf" aria-hidden="true"></i>
+                </div>
+            </a>
+        </li>
+    </ul> -->
+  </div>
+</aside>

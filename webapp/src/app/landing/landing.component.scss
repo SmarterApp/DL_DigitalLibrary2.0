@@ -216,7 +216,6 @@
     flex-direction: column;
     width: 100%;
     max-width: 100%;
-    margin-bottom: 25px;
 
     & > .watermarks {
       position: relative;
@@ -284,4 +283,32 @@
 
 .mdc-text-field input {
   font-style: italic;
+}
+
+.right-margin {
+  width: var(--nav-width);
+  min-width: var(--nav-width);
+  transition-property: width, min-width, margin-left, z-index;
+  z-index: 2;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in;
+
+  box-shadow: inset 10px 0px 18px -10px rgba(182, 109, 109, 0.2);
+
+  background-image: url("/assets/images/blue-spot-2.png");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: right 194px bottom, bottom left;
+  min-height: 80vh;
+  background-color: $white;
+  overflow-x: hidden;
+}
+
+hr {
+  background-color: $neutral-100;
+  border: none;
+  height: 2px;
+  max-width: unset;
+  width: 100%;
+  margin: 0;
 }
