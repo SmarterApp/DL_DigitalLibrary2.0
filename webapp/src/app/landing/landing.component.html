@@ -90,13 +90,20 @@
             </div>
 
             <div  *ngIf="landing.type === 'plr'">
-              <div
-                class="text-container"
-                #textContainer>Type in search terms to find a Professional Learning topic.
-              </div>
-                
-              <!-- (submit)="search({query: $event}, true)" [(ngModel)]="filters.query" -->
-              <div style="background-color: white">
+              <p>
+                Type in search terms to find a Professional Learning topic.
+              </p>
+              
+              <!-- (submit)="search({query: $event}, true)" [(ngModel)]="filters.query" 
+                for textbox:
+                  font-style: italic;
+                  font-size: 12px;
+
+                for icon:
+                  background-color: white;
+                  color: black;
+              -->
+              <div style="background-color: white;">
                 <sbdl-text-field
                   style="font-style: italic;"
                   placeholder="Formative Assessment, Smarter Balanced System, ect."
@@ -104,16 +111,17 @@
                   submitButtonAriaLabel="search resources">
                 </sbdl-text-field>               
               </div> 
-              <a href="javascript:void(0)" (click)="onBrowseAllClick()">or browse all {{landing.howDoIUse}}</a>
+              <p>              
+                <a style="margin-top: 10px;margin-bottom: 10px;" href="javascript:void(0)" (click)="onBrowseAllClick()">Or browse all {{landing.howDoIUse}}</a>
+              </p>
             </div>
 
             <div  *ngIf="landing.type === 'iaip'">
               <!-- For Authenticated, w/o access -->
               <div>
-                <div
-                  class="text-container"
-                  #textContainer>Use the botton below to go to the IAIP and access interim items.  To find items, you can search be interim assessment name or be content area.
-                </div>
+                <p>
+                  Use the botton below to go to the IAIP and access interim items.  To find items, you can search be interim assessment name or be content area.
+              </p>
 
                 <sbdl-button class="primary attachments-btn" >
                   <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
@@ -125,10 +133,8 @@
 
               <div>
                 <h3>Log in to Access the IAIP</h3>
-                <div
-                  class="text-container"
-                  #textContainer>Access to the IAIP is avilable to approved K-12 educators in participation member states.  Use the button below to log in and check for access.
-                </div>
+                <p>Access to the IAIP is avilable to approved K-12 educators in participation member states.  Use the button below to log in and check for access.
+                </p>
 
                 <sbdl-button class="primary attachments-btn" >
                   <i class="fas fa-badge-check"></i> LOG IN
@@ -140,14 +146,12 @@
 
               <div>
                 <h3>About the IAIP</h3>
-                <div
-                  class="text-container"
-                  #textContainer>Access to the IAIP is avilable to approved K-12 educators in participation member states. 
-                </div>
-                <div
-                  class="text-container"
-                  #textContainer>Unfortunately, your account has not been granted access.  Please contact your district or state support if you have questionsor believe this is an error. 
-              </div>
+                <p>
+                  Access to the IAIP is avilable to approved K-12 educators in participation member states. 
+                </p>
+                <p>
+                  Unfortunately, your account has not been granted access.  Please contact your district or state support if you have questionsor believe this is an error. 
+              </p>
               </div>
             </div>
           </div>
@@ -187,6 +191,7 @@
   </section>
 
 </main>
+
 <aside class="right-margin">
   
   <img src="/assets/images/landing-icp.png" aria-hidden="true">
@@ -194,10 +199,13 @@
   <div *ngIf="landing.diveDeeper && landing.diveDeeper.length > 0">
 
     <h2>Dive Deeper</h2>
-    {{landing.diveDeeperHeader}}
+    <p>
+      {{landing.diveDeeperHeader}}
+    </p>
 
     <ul>
-        <li *ngFor="let dd of landing.diveDeeper">
+        <li *ngFor="let dd of landing.diveDeeper"
+            style="margin-bottom: 5px;">
             <a href={{dd.link}}
                 aria-label="Formative Assessment Process Flier (opens in a new window)"
                 class="link-card" target="_blank" #link>
@@ -213,17 +221,16 @@
   <div *ngIf="landing.samplePlaylist && landing.samplePlaylist.length > 0">
   <h2>Sample Playlists</h2>
   <!-- look at sbdl-playlist-resources for sample -->
-  <!-- <ul>
-        <li *ngFor="let sp of landing.samplePlaylist">
-            <a href={{dd.link}}
-                aria-label="Formative Assessment Process Flier (opens in a new window)"
-                class="link-card" target="_blank" #link>
-                <div class="type-info">
-                    <span>{{dd.title}}</span>
-                    <i class="far fa-file-pdf" aria-hidden="true"></i>
-                </div>
-            </a>
+  <ul style="list-style-type: none">
+        <li *ngFor="let sp of landing.samplePlaylist"
+          style="margin-bottom: 5px;">
+          <p>
+            {{sp.title}}
+          </p>
+          <p>
+            {{sp.grade}}&nbsp;&nbsp;|&nbsp;&nbsp; {{sp.subject}}
+          </p>
         </li>
-    </ul> -->
+    </ul>
   </div>
 </aside>
