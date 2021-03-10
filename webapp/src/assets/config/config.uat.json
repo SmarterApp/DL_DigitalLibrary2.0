@@ -10,7 +10,8 @@
   "tenantConfigPath": "/assets/config/tenant.config.json",
   "apiServerHost": "https://api-uat.dl.smarterbalanced.org",
   "interimItemPortalUrl": "https://interim-uat.smarterbalanced.org/BrowseItems",
-  "enableAnalytics": true,
+  "enableAnalytics": false,
+  "GA4AnalyticsTrackingId": "G-K4E5LB0M90",
   "okta": {
     "clientId": "0oamt7hm566G44ZVm0h7",
     "issuer": "https://smarterbalanced.oktapreview.com/oauth2/ausr8b7sqjHONBENP0h7"

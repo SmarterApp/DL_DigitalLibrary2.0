@@ -35,9 +35,7 @@ ul {
   text-decoration: none;
 
   background-color: $white;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.2),
-    0 2px 2px rgba(0, 0, 0, 0.12),
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.12),
     0 0 2px rgba(0, 0, 0, 0.14);
 
   display: flex;
@@ -84,5 +82,11 @@ ul {
         width: max-content;
       }
     }
+  }
+}
+
+@-moz-document url-prefix() {
+  .fireFoxPadding {
+    padding-bottom: 25px;
   }
 }
