@@ -6,12 +6,16 @@ declare function AblePlayer(jqObj: any): void;
 
 @Component({
   selector: 'sbdl-able-player',
-  templateUrl: './able-player.component.html'
+  templateUrl: './able-player.component.html',
+  styleUrls: ['./able-player.component.scss']
 })
 export class AblePlayerComponent implements OnDestroy {
 
   @Input()
   youtubeVideoId: string;
+
+  @Input()
+  isTranscriptVisable: boolean;
 
   @ViewChild('video', { static: false })
   private videoElem: ElementRef;

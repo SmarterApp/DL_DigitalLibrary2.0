@@ -55,6 +55,7 @@
         <sbdl-able-player
           [hidden]="!previewMedia"
           [youtubeVideoId]="youtubeVideoId"
+          [isTranscriptVisable]="isTranscriptVisable"
         ></sbdl-able-player>
       </ng-template>
       <ng-template ngSwitchCaseDefault>
@@ -62,9 +63,26 @@
           Unrecognized media type: {{ attachment.mimeType }}
         </div>
       </ng-template>
-      <sbdl-button class="plain" (click)="hidePlayer()">
-        <i class="far fa-compress-alt" aria-hidden="true"></i> Close
-      </sbdl-button>
+      <span>
+        <sbdl-button 
+          style="float: left"
+          *ngIf="isTranscriptVisable" 
+          class="plain" (click)="hideTranscript()">
+          <i class="far fa-compress-alt" aria-hidden="true"></i> Hide Transcript
+        </sbdl-button>
+        <sbdl-button 
+          style="float: left"
+          *ngIf="!isTranscriptVisable" 
+          class="plain" (click)="showTranscript()">
+          <i class="far fa-compress-alt" aria-hidden="true"></i> Show Transcript
+        </sbdl-button>
+        <sbdl-button 
+          style="float: right"
+          class="plain" 
+          (click)="hidePlayer()">
+          <i class="far fa-compress-alt" aria-hidden="true"></i> Close
+        </sbdl-button>
+    </span>
     </div>
   </div>
   <div
