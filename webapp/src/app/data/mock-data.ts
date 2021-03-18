@@ -649,7 +649,7 @@ export const teaserPLContent: ProfessionalLearningResource = {
       description: '<p>Students take a few minutes to think about a question or prompt individually. Then, they pair with a designated partner to compare thoughts before sharing with the whole class.</p>'
     }
   ],
-  thingsToConsider: '',
+  thingsToConsider: loremIpsum,
   prefilteredIaipLink: "",
 };
 
