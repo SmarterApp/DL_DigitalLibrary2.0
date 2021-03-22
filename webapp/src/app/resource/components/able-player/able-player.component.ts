@@ -20,6 +20,9 @@ export class AblePlayerComponent implements OnDestroy {
   @ViewChild('video', { static: false })
   private videoElem: ElementRef;
 
+  @ViewChild('transcriptArea', { static: false }) targetElement: any;    
+  result: string;
+
   private ablePlayerInst: any;
 
   constructor() { }
@@ -41,4 +44,10 @@ export class AblePlayerComponent implements OnDestroy {
 
   ngOnDestroy() {
   }
+
+  testTranscript(): boolean {
+        const transcriptText: string = this.targetElement.nativeElement.innerHTML;
+        return transcriptText.length > 0;
+  }
+
 }

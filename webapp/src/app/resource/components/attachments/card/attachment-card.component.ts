@@ -34,6 +34,7 @@ export class AttachmentCardComponent {
 
   previewMedia = false;
   isTranscriptVisable = false;
+  isTranscriptButtonsVisable = true;
   fileName: string;
   previewEnabled: boolean;
   youtubeVideoId: string;
@@ -88,5 +89,6 @@ export class AttachmentCardComponent {
 
   showTranscript(): void {
     this.isTranscriptVisable = true;
+    this.isTranscriptButtonsVisable = this.ablePlayer.testTranscript();
     }
 }
