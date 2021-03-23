@@ -2,7 +2,6 @@
 @import "typography";
 
 :host {
-
   .interim-container {
     margin: auto;
     position: relative;
@@ -25,7 +24,7 @@
       line-height: 160%;
     }
 
-    iframe {
+    video {
       margin-bottom: $spacer;
       width: 424px;
       height: 238px;

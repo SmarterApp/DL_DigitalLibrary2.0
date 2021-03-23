@@ -1,10 +1,13 @@
-import {AfterViewInit, Component, Input} from '@angular/core';
+import {AfterViewInit, Component, Input, ViewChild, ElementRef,} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {PrintableSectionComponent} from '../../printable-section.component';
 import {DocumentSectionType} from '../../components/outline/document-outline.model';
 import {TenantThemeService} from 'src/app/data/tenant-theme/tenant-theme.service';
+
+declare var jQuery: any;
+declare function AblePlayer(jqObj: any): void;
 
 @Component({
   selector: 'sbdl-playlist-interim',
@@ -16,7 +19,10 @@ export class PlaylistInterimComponent extends PrintableSectionComponent implemen
   @Input()
   content: string;
 
+  @ViewChild('video', { static: false }) private videoElem: ElementRef;
+
   contactUri$: Observable<string>;
+  private ablePlayer: any;
 
   constructor(
     sanitizer: DomSanitizer,
@@ -39,6 +45,15 @@ export class PlaylistInterimComponent extends PrintableSectionComponent implemen
         title: 'What are Interim Assessments?',
         type: DocumentSectionType.PlaylistInterim
       });
+    }
+
+    if (jQuery != "undefined") {
+      if (this.videoElem != null) {
+        if (!this.ablePlayer) {
+          const $videoElem_l = jQuery(this.videoElem.nativeElement);
+          this.ablePlayer = new AblePlayer($videoElem_l);
+        }
+      }
     }
   }
 }
