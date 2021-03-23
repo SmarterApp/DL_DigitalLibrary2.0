@@ -9,6 +9,7 @@ import {TenantThemeService} from 'src/app/data/tenant-theme/tenant-theme.service
 declare var jQuery: any;
 declare function AblePlayer(jqObj: any): void;
 
+
 @Component({
   selector: 'sbdl-playlist-interim',
   templateUrl: './playlist-interim.component.html',
@@ -23,6 +24,7 @@ export class PlaylistInterimComponent extends PrintableSectionComponent implemen
 
   contactUri$: Observable<string>;
   private ablePlayer: any;
+  private isTranscriptVisable: boolean = false;
 
   constructor(
     sanitizer: DomSanitizer,
@@ -56,4 +58,13 @@ export class PlaylistInterimComponent extends PrintableSectionComponent implemen
       }
     }
   }
+
+  hideTranscript(): void {
+    this.isTranscriptVisable = false;
+  }
+
+  showTranscript(): void {
+    this.isTranscriptVisable = true;
+  }
+
 }

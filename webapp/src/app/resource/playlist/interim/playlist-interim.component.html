@@ -10,19 +10,49 @@
       data-able-player 
       preload="auto" 
       data-youtube-id="Im-thuZCp4c" 
-      data-youtube-desc-id="Im-thuZCp4c">
+      data-youtube-desc-id="Im-thuZCp4c"
+      data-include-transcript="false"
+      data-transcript-div = "video-transcript-Im-thuZCp4c">
     </video>
 
-    <a href="https://portal.smarterbalanced.org/library/en/interim-assessments-overview.pdf"
-         aria-label="Interim Overview Flier (opens in a new window)."
-         target="_blank">
-      <h4>Interim Overview Flier</h4>
-    </a>
-    <p>
-      Dig into the details of the interim assessments available to you and browse a
-      complete list of assessments by grade and subject.
-    </p>
+    <div 
+      #transcriptArea
+      [ngClass]="{'transcriptHide': !isTranscriptVisable }"
+      id="video-transcript-Im-thuZCp4c">
+    </div>
 
+    <div>
+      <p>
+        <sbdl-button 
+          *ngIf="isTranscriptVisable" 
+          (click)="hideTranscript()"
+          class="plain">
+          <!-- 
+           -->
+          <i class="far fa-compress-alt" aria-hidden="true"></i> Hide Transcript
+        </sbdl-button>
+        <sbdl-button 
+          *ngIf="!isTranscriptVisable" 
+          (click)="showTranscript()" 
+          class="plain">
+          <!-- 
+          -->
+          <i class="far fa-expand-alt" aria-hidden="true"></i> Show Transcript
+        </sbdl-button>
+      </p>
+    </div>
+
+    <div>
+      <a href="https://portal.smarterbalanced.org/library/en/interim-assessments-overview.pdf"
+          aria-label="Interim Overview Flier (opens in a new window)."
+          target="_blank">
+        <h4>Interim Overview Flier</h4>
+      </a>
+      <p>
+        Dig into the details of the interim assessments available to you and browse a
+        complete list of assessments by grade and subject.
+      </p>
+    </div>
     <h3>Access Your Interim Assessments</h3>
     <p>
       Wondering how to access the interim assessments associated with this

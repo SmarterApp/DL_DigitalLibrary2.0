@@ -90,5 +90,5 @@ export class AttachmentCardComponent {
   showTranscript(): void {
     this.isTranscriptVisable = true;
     this.isTranscriptButtonsVisable = this.ablePlayer.testTranscript();
-    }
+  }
 }
