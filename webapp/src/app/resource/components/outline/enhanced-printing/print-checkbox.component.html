@@ -2,7 +2,7 @@
   <div #checkbox class="mdc-checkbox">
     <input type="checkbox"
            class="mdc-checkbox__native-control"
-           [disabled]="!documentSection.canPrint"
+           [attr.disabled]="!documentSection.canPrint"
            (change)="change($event.target.checked)"
            [id]="id">
     <div class="sbdl-print-checkbox-icon unchecked">
