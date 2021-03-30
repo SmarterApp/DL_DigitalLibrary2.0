@@ -10,6 +10,7 @@ import { emptyFilters } from '../data/search/search-filters.model';
 import { LoginWarningService } from './login-warning/login-warning.service';
 import {SearchService} from "../data/search/search.service";
 import {mockSearchResult} from "../app.module.spec";
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 const mockOnWarningClosed = new Observable<any>();
 const mockLoginWarningService = <LoginWarningService> {
@@ -22,7 +23,7 @@ describe('SearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, SbdlCommonModule, RouterTestingModule ],
+      imports: [ HttpClientTestingModule, FormsModule, SbdlCommonModule, RouterTestingModule ],
       declarations: [ SearchComponent, LoginWarningComponent ],
       providers: [
         { provide: ActivatedRoute,
