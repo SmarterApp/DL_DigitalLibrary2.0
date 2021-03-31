@@ -4,6 +4,10 @@ import {Subject, Subscription} from 'rxjs';
 declare var jQuery: any;
 declare function AblePlayer(jqObj: any): void;
 
+// AblePlayer version number 4.3
+// AblePlayer version number 4.3
+// AblePlayer version number 4.3
+
 @Component({
   selector: 'sbdl-able-player-float-ts',
   templateUrl: './able-player-float-ts.component.html',
