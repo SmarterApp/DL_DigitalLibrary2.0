@@ -11,6 +11,7 @@ import {UserService} from 'src/app/data/user/user.service';
 import {ConfirmationDialogService} from 'src/app/common/confirmation-dialog/confirmation-dialog.service';
 import {mockSearchResult, mockWindowObj} from '../../app.module.spec';
 import {SearchService} from "../../data/search/search.service";
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 const mockAuthService = jasmine.createSpyObj('OktaAuthService', ['loginRedirect']);
 
@@ -27,7 +28,7 @@ describe('SearchResultsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SearchModule, RouterTestingModule],
+      imports: [HttpClientTestingModule, SearchModule, RouterTestingModule],
       providers: [{
         provide: ActivatedRoute,
         useValue: {

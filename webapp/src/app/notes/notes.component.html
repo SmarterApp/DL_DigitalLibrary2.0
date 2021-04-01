@@ -13,7 +13,7 @@
   <angular-editor
     [config]="editorConfig"
     [(ngModel)]="noteContent"
-    [disabled]="saving">
+    [attr.disabled]="saving">
   </angular-editor>
   <div class="dialog-buttons">
     <sbdl-button (click)="cancelNote()" [hidden]="saving">Cancel</sbdl-button>
