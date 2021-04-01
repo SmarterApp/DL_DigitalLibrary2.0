@@ -1,0 +1,8 @@
+<div [id]="'video-chapters-' + youtubeVideoId"></div>
+<video #video
+  [id]="'video-player-' + youtubeVideoId"
+  data-able-player
+  preload="auto"
+  [attr.data-youtube-id]="youtubeVideoId"
+  [attr.data-youtube-desc-id]="youtubeVideoId"
+  [attr.data-chapters-div]="'video-chapters-' + youtubeVideoId"></video>

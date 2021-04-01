@@ -1,7 +1,7 @@
 <button
   #button
   class="mdc-button"
-  [disabled]="disabled"
+  [attr.disabled]="disabled"
   (blur)="onBlur($event)"
   (click)="click()"
   [attr.aria-label]="ariaLabel"

@@ -8,12 +8,13 @@ import {SbdlCommonModule} from './common/common.module';
 import {OktaAuthService} from '@okta/okta-angular';
 import {MockOktaAuthService, mockWindowObj} from './app.module.spec';
 import {APP_BASE_HREF} from '@angular/common';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        HttpClientTestingModule,
         RouterTestingModule,
         Angulartics2Module.forRoot(),
         HttpClientModule,

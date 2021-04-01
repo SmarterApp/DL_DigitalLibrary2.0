@@ -6,15 +6,22 @@ declare function AblePlayer(jqObj: any): void;
 
 @Component({
   selector: 'sbdl-able-player',
-  templateUrl: './able-player.component.html'
+  templateUrl: './able-player.component.html',
+  styleUrls: ['./able-player.component.scss']
 })
 export class AblePlayerComponent implements OnDestroy {
 
   @Input()
   youtubeVideoId: string;
 
+  @Input()
+  isTranscriptVisable: boolean;
+
   @ViewChild('video', { static: false })
   private videoElem: ElementRef;
+
+  @ViewChild('transcriptArea', { static: false }) targetElement: any;    
+  result: string;
 
   private ablePlayerInst: any;
 
@@ -37,4 +44,10 @@ export class AblePlayerComponent implements OnDestroy {
 
   ngOnDestroy() {
   }
+
+  testTranscript(): boolean {
+        const transcriptText: string = this.targetElement.nativeElement.innerHTML;
+        return transcriptText.length > 0;
+  }
+
 }

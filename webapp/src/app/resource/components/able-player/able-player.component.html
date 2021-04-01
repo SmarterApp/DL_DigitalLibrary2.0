@@ -9,4 +9,8 @@
   [attr.data-transcript-div]="'video-transcript-' + youtubeVideoId"
   data-include-transcript="false"
   ></video>
-<div [id]="'video-transcript-' + youtubeVideoId"></div>
+<div 
+  #transcriptArea
+  [ngClass]="{'transcriptHide': !isTranscriptVisable }"
+  [id]="'video-transcript-' + youtubeVideoId">
+</div>

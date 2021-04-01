@@ -10,13 +10,13 @@
     type="text"
     [formControl]="control"
     (keydown.enter)="onSubmitButtonClick()"
-    [disabled]="disabled"
+    [attr.disabled]="disabled"
     [placeholder]="placeholder || ''"
   >
   <sbdl-button
     class="primary"
     (click)="onSubmitButtonClick()"
-    [disabled]="disabled"
+    [attr.disabled]="disabled"
     [ariaLabel]="submitButtonAriaLabel"
   >
     <!-- TODO why not actually make this a button? -->
