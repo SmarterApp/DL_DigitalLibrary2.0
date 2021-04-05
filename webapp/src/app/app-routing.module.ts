@@ -18,6 +18,7 @@ import { LogoutComponent } from './layout/logout/logout.component';
 import { ERROR_PATH, OKTA_CALLBACK_PATH } from './common/constants';
 import { LoginComponent } from './layout/login/login.component';
 import { PageNotFoundComponent } from './layout/error/page-not-found/page-not-found.component';
+import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,9 @@ const routes: Routes = [
         path: 'search',
         component: SearchResultsComponent,
         resolve: { results: SearchResultsResolve }
+      }, {
+        path: 'landing/:resourceType',
+        component: LandingComponent
       }, {
         path: 'auth/login',
         component: LoginComponent

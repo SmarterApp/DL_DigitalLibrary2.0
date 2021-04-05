@@ -21,23 +21,57 @@
       <i class="far fa-search" aria-hidden="true"></i>
       <span>Find Resources</span>
     </a>
+
     <a
-      title="Formative Assessment Strategies"
-      [attr.aria-label]="'Formative Assessment Strategies'"
-      [routerLink]="[baseHref, 'search', { resourceTypes: ['fs'] }]"
-    >
-      <sbdl-icon icon="strategies" aria-hidden="true"></sbdl-icon>
-      <span>Formative Assessment Strategies</span>
+      title="Interim Connections Playlist"
+      [attr.aria-label]="'Interim Connections Playlist'"
+      [routerLink]="[baseHref, 'landing', 'playlist']">   
+
+      <i class="far fa-chart-network" aria-hidden="true"></i>
+      <span>Interim Connections Playlist</span>
     </a>
+
+    <a
+      title="Instructional Resources"
+      [attr.aria-label]="'Instructional Resources'"
+      [routerLink]="[baseHref, 'landing', 'instructional']">
+      <sbdl-icon icon="steps" aria-hidden="true"></sbdl-icon>
+      <span>Instructional Resources</span>
+    </a> 
+
+    <a
+      title="Formative Strategies"
+      [attr.aria-label]="'Formative Assessment Strategies'"
+      [routerLink]="[baseHref, 'landing', 'formative']">
+      <sbdl-icon icon="strategies" aria-hidden="true"></sbdl-icon>
+      <span>Formative Strategies</span>
+    </a>
+
     <a
       title="Accessibility Strategies"
       [attr.aria-label]="'Accessibility Strategies'"
-      [routerLink]="[baseHref, 'search', { resourceTypes: ['as'] }]"
-    >
+      [routerLink]="[baseHref, 'landing', 'accessibility']">
       <i class="far fa-universal-access" aria-hidden="true"></i>
       <span>Accessibility Strategies</span>
     </a>
+
     <a
+      title="Professional Learning Resource"
+      [attr.aria-label]="'Professional Learning Resource'"
+      [routerLink]="[baseHref, 'landing', 'professional']">
+      <sbdl-icon icon="goal" aria-hidden="true"></sbdl-icon>
+      <span>Professional Learning Resource</span>
+    </a>
+
+    <a
+      title="Interim Assessment Item Portal"
+      [attr.aria-label]="'Interim Assessment Item Portal'"
+      [routerLink]="[baseHref, 'landing', 'items']">
+      <i class="fas fa-badge-check" aria-hidden="true"></i>
+      <span>Interim Assessment Item Portal</span>
+    </a>
+
+    <!-- <a
     *ngIf="hasIaipAccess$ | async"
     title="Interim Assessment Item Portal"
     [attr.aria-label]="'Interim Assessment Item Portal (opens in a new window)'"
@@ -46,7 +80,7 @@
   >
     <i class="fas fa-badge-check" aria-hidden="true"></i>
     <span>Interim Assessment Item Portal</span>
-  </a>
+  </a> -->
   </div>
 
   <div class="links links-bottom">

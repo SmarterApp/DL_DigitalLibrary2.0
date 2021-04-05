@@ -18,6 +18,7 @@ import {NotesModule} from './notes/notes.module';
 import {OKTA_CALLBACK_PATH} from './common/constants';
 import { FormsModule} from '@angular/forms';
 import {GoogleAnalyticsService} from './google-analytics.service';
+import { LandingComponent } from './landing/landing.component';
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -35,7 +36,8 @@ export function initializeOkta(appConfig: AppConfig) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingComponent
   ],
   imports: [
     Angulartics2Module.forRoot(),
