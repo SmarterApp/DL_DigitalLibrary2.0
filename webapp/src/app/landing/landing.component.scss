@@ -42,6 +42,26 @@
     }
   }
 
+  .landing-splits {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    max-width: none;
+    margin-bottom: 40px;
+    padding: 2rem;
+
+    .landing-card {
+      //padding: $spacer $spacer;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      align-items: stretch;
+      min-width: 225px;
+    }
+  }
+
   .headerImage {
     width: 54px;
     height: 73px;
