@@ -1,0 +1,51 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+@import "mixins";
+
+:host {
+  display: grid;
+  grid-template:
+    "header properties"
+    "content properties"
+    "footer properties" / 1fr auto;
+  justify-items: stretch;
+  justify-content: space-between;
+  max-width: unset;
+
+  .landing-header {
+    grid-area: header;
+    box-sizing: border-box;
+    max-width: 1000px;
+    padding: 0 $spacer-lg;
+    justify-content: center;
+    justify-self: center;
+    width: -webkit-fill-available;
+
+    .top-header {
+      //display: flex;
+      float: right;
+      justify-content: space-between;
+      //width: 100%;
+      align-items: baseline;
+    }
+
+    h1 {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 45px;
+      line-height: 100%;
+      letter-spacing: -0.005em;
+      color: #4aa51d;
+      padding-top: 1em;
+    }
+  }
+
+  .headerImage {
+    width: 54px;
+    height: 73px;
+    left: 135px;
+    top: 95px;
+  }
+}

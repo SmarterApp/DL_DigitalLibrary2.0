@@ -1,6 +1,15 @@
 <main id="main">
 
+
+
     <div class="landing-header">
+
+        <div class="top-header">
+            <sbdl-landing-actions
+                [resourceType]="resourceType">
+            </sbdl-landing-actions>
+        </div>
+
         <span>
             <h1>
                 <ng-container [ngSwitch]="resourceType">

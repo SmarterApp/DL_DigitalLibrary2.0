@@ -1,0 +1,29 @@
+<button
+  class="mdc-icon-button material-icons"
+  title="Share"
+  [attr.aria-label]="'share this resource.'"
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+  (click)="shareOverlayOpen = !shareOverlayOpen"
+>
+  <i class="far fa-share"></i>
+</button>
+
+<ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayPanelClass="windowed"
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  [cdkConnectedOverlayOpen]="shareOverlayOpen"
+  [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayPositions]="shareOverlayPositions"
+  [cdkConnectedOverlayPush]="true"
+  (backdropClick)="shareOverlayOpen = false"
+>
+  <sbdl-share-form
+    cdkTrapFocus
+    cdkTrapFocusAutoCapture
+    [value]="shareValue"
+    (closed)="shareOverlayOpen = false"
+  ></sbdl-share-form>
+</ng-template>

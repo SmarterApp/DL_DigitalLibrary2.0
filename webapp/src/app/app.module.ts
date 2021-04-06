@@ -18,7 +18,8 @@ import {NotesModule} from './notes/notes.module';
 import {OKTA_CALLBACK_PATH} from './common/constants';
 import { FormsModule} from '@angular/forms';
 import {GoogleAnalyticsService} from './google-analytics.service';
-import { LandingComponent } from './landing/landing.component';
+import {LandingModule} from './landing/landing.module';
+
 
 export function initializeApp(appConfig: AppConfig) {
   return () => appConfig.load();
@@ -36,8 +37,7 @@ export function initializeOkta(appConfig: AppConfig) {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LandingComponent
+    AppComponent
   ],
   imports: [
     Angulartics2Module.forRoot(),
@@ -52,7 +52,8 @@ export function initializeOkta(appConfig: AppConfig) {
     ResourceModule,
     NotesModule,
     SbdlCommonModule,
-    FormsModule
+    FormsModule,
+    LandingModule
   ],
   providers: [
     {
