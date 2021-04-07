@@ -20,6 +20,7 @@ import {LoginComponent} from '../layout/login/login.component';
 import {ConfirmationDialogComponent} from './confirmation-dialog/confirmation-dialog.component';
 import {CategorizedResourceSummaryComponent} from './categorized-resource-summary/categorized-resource-summary.component';
 import {ResourceTypeIconComponent} from './resource-type-icon/resource-type-icon.component';
+import {AblePlayerComponentFloatTS} from 'src/app/common/controls/able-player-float-ts/able-player-float-ts.component';
 
 // This object contains the components which can be loaded dyanmically via
 // the dynamic-html component.
@@ -53,7 +54,8 @@ const dynamicOptions = {
     ConfirmationDialogComponent,
     LoginComponent,
     CategorizedResourceSummaryComponent,
-    ResourceTypeIconComponent
+    ResourceTypeIconComponent,
+    AblePlayerComponentFloatTS
   ],
   exports: [
     ButtonComponent,
@@ -67,7 +69,8 @@ const dynamicOptions = {
     TextFieldComponent,
     FilterChipsetComponent,
     ConfirmationDialogComponent,
-    ResourceTypeIconComponent
+    ResourceTypeIconComponent,
+    AblePlayerComponentFloatTS
   ],
   providers: [
     DynamicHTMLRenderer,
