@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Grade } from '../data/resource/model/grade.model';
 import { Subject } from '../data/resource/model/subject.model';
+import {Subscription} from 'rxjs';
+import { LandingPage } from '../data/landing/model/landingPage.model';
+import { LandingService } from '../data/landing/landing.service';
 
 @Component({
   selector: 'sbdl-landing',
@@ -18,6 +21,7 @@ export class LandingComponent implements OnInit {
   selectedSubject: string = "";
 
   constructor(private route: ActivatedRoute,
+    private landingService: LandingService,
     private router: Router) { 
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
@@ -66,6 +70,9 @@ export class LandingComponent implements OnInit {
         this.title = "UnKnown";
         break; 
       } 
+
+
+      this.landingService.get();
    } 
 
   }
