@@ -14,6 +14,7 @@ import { InstructionalResource } from './model/instructional.model';
 import { AccessibilityStrategyResource } from './model/accessibility-strategy.model';
 import { FormativeStrategyResource } from './model/formative-strategy.model';
 import { ProfessionalLearningResource } from './model/professional-learning.model';
+import { PlaylistResource } from './model/playlist.model';
 import { EmbedStrategyLinksService } from './embed-strategy-links.service';
 import { Bookmark } from '../bookmarks/bookmark.model';
 import { teaserIRContent, teaserFAContent, teaserASContent, teaserPLContent, teaserCPContent } from 'src/app/data/mock-data';
@@ -248,7 +249,7 @@ export class ResourceService {
     };
   }
 
-  private fillOutASContent(properties: ResourceProperties, json: any): FormativeStrategyResource {
+  private fillOutASContent(properties: ResourceProperties, json: any): AccessibilityStrategyResource {
     return {
       ...json,
       properties,
@@ -258,7 +259,7 @@ export class ResourceService {
     };
   }
 
-  private fillOutPLContent(properties: ResourceProperties, json: any): FormativeStrategyResource {
+  private fillOutPLContent(properties: ResourceProperties, json: any): ProfessionalLearningResource {
     return {
       ...json,
       properties,
@@ -269,7 +270,7 @@ export class ResourceService {
     };
   }
 
-  private fillOutCPContent(properties: ResourceProperties, json: any): FormativeStrategyResource {
+  private fillOutCPContent(properties: ResourceProperties, json: any): PlaylistResource {
     return {
       ...json,
       properties,
