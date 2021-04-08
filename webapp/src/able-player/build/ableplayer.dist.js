@@ -9201,7 +9201,28 @@ if (thisObj.useTtml && (trackSrc.endsWith('.xml') || trackText.startsWith('<?xml
 
 				// But first, capture current settings so they can be restored later
 				this.preFullScreenWidth = this.$ableWrapper.width();
-				this.preFullScreenHeight = this.$ableWrapper.height();
+				
+				// ************ START OF READ ME!!! START OF READ ME!!! ********************
+				// ************ START OF READ ME!!! START OF READ ME!!! ********************
+				// ************ START OF READ ME!!! START OF READ ME!!! ********************
+
+				// AblePlayer has an issue: https://github.com/ableplayer/ableplayer/issues/436 
+				// This cause the player to grow vertically every time the player is made full 
+				// screen and then returned to size.  The code in the distribution file has a 
+				// ‘fix’.  It a quick fix that works in all the places T4T is using it.  Check 
+				// the issue if it’s resolved.
+	  
+				// If you need to update to a new version of able player, this will need to be 
+				// retested and the ‘fix’ may need to be reapplied.
+
+				if (this.preFullScreenHeight  === undefined) {
+					this.preFullScreenHeight = this.$ableWrapper.height() - 100.36;
+				}
+
+				// ************ END OF READ ME!!!    END OF READ ME!!! ********************
+				// ************ END OF READ ME!!!    END OF READ ME!!! ********************
+				// ************ END OF READ ME!!!    END OF READ ME!!! ********************
+
 				if (el.requestFullscreen) {
 					el.requestFullscreen();
 				}
@@ -9254,7 +9275,7 @@ if (thisObj.useTtml && (trackSrc.endsWith('.xml') || trackText.startsWith('<?xml
 					// this is only possible if they pressed Escape to exit fullscreen mode
 					thisObj.fullscreen = false;
 					thisObj.restoringAfterFullScreen = true;
-					thisObj.resizePlayer(thisObj.preFullScreenWidth,thisObj.preFullScreenHeight);
+					thisObj.resizePlayer(thisObj.preFullScreenWidth,thisObj.preFullScreenHeight);	
 				}
 				// NOTE: The fullscreenchange (or browser-equivalent) event is triggered twice
 				// when exiting fullscreen via the "Exit fullscreen" button (only once if using Escape)
