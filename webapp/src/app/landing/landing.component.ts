@@ -70,9 +70,6 @@ export class LandingComponent implements OnInit {
         this.title = "UnKnown";
         break; 
       } 
-
-
-      this.landingService.get();
    } 
 
   }

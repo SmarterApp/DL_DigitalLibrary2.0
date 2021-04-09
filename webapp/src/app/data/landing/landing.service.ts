@@ -23,12 +23,11 @@ export class LandingService {
   //   //   .get('/api/landing')
   //   //   .pipe(map(resp => resp.bookmarks.map(this.bookmarkFromJson)));
 
-    get(): Observable<LandingPage> {
-      console.log(LANDINGPAGE_OBJECT);
-      //return of();
-      return of(null);
-    }
-  
+  get(resourceType: string): Observable<LandingPage> {
+    console.log(LANDINGPAGE_OBJECT);
+    //return of();
+    return of(LANDINGPAGE_OBJECT);
+  }
 } 
 
 

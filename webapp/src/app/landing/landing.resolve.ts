@@ -10,10 +10,10 @@ import { LandingService } from '../data/landing/landing.service';
 })
 export class LandingResolve implements Resolve<LandingPage> {
     constructor(
-      private landingPageService: LandingService) { }
+      private service: LandingService) { }
 
-    resolve() {
-        return this.landingPageService.get();
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        return this.service.get(route.params.resourceType);
     }
 
 }
