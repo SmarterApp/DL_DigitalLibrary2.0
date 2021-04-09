@@ -5,6 +5,7 @@ import { Subject } from '../data/resource/model/subject.model';
 import {Subscription} from 'rxjs';
 import { LandingPage } from '../data/landing/model/landingPage.model';
 import { LandingService } from '../data/landing/landing.service';
+import {LANDINGPAGE_OBJECT} from '../data/landing/mockdata';
 
 @Component({
   selector: 'sbdl-landing',
@@ -19,6 +20,7 @@ export class LandingComponent implements OnInit {
   subjects: Subject[];
   selectedGrade: string = "";
   selectedSubject: string = "";
+  landingPage: LandingPage;
 
   constructor(private route: ActivatedRoute,
     private landingService: LandingService,
@@ -30,7 +32,8 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
     const routeParams = this.route.snapshot.paramMap;
     this.resourceType = this.route.snapshot.paramMap.get('resourceType');
-
+    this.landingPage = LANDINGPAGE_OBJECT;
+    
     switch(this.resourceType) { 
       case "playlist": { 
          this.resourceCode = "ICP";
@@ -70,6 +73,8 @@ export class LandingComponent implements OnInit {
         this.title = "UnKnown";
         break; 
       } 
+
+      
    } 
 
   }

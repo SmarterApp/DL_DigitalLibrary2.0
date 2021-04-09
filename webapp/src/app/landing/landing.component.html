@@ -28,16 +28,54 @@
     <section class="landing-splits">
 
         <div class="landing-card">
-            <h3>Left Side</h3>
+            <h3 style="margin-top: .9rem;">{{landingPage.taglineSection.header}}</h3>
+            <div style="margin-bottom: 20px;"
+                class="text-container"
+                #textContainer>{{landingPage.taglineSection.description}}
+            </div>
 
+            <h2 style="font-weight: bold;">How will they help me?</h2>
+            <dynamic-html style="margin-left: -22px;" [content]="landingPage.howItHelpsSection.description"></dynamic-html>
         </div>
 
         <div class="landing-card">
-            <h3>Right Side</h3>
             <sbdl-able-player-float-ts class="video"
                 [youtubeVideoId]="'jJPAU1zOAp4'">
             </sbdl-able-player-float-ts>  
         </div>
+    </section>
+
+    <hr/>
+
+    <section class="landing-howcaniuse">
+        <div class="watermarks">
+            <img class="waterspot green" src="/assets/images/green-spot-2.png" aria-hidden="true">
+            <img class="waterspot yellow" src="/assets/images/yellow-spot-6.png" aria-hidden="true">
+          </div>
+
+          <h2
+          style="margin-top:30px;margin-left: 10rem;">
+          <img src="/assets/images/vector-line.png"
+          style="
+             position: absolute;
+             z-index: 100;
+             left: 0;
+             margin-left: 39px;
+             margin-top: -211px;"
+               >
+          <img src="/assets/images/vector-arrow.png" aria-hidden="true">
+          {{landingPage.howToUseSection.header}}
+         </h2>
+
+         <ul style="list-style-type: none;margin-left: 6rem;">
+            <li *ngFor="let howUse of landingPage.howToUseSection.subSections; index as i;" 
+                [ngClass]="{'yellowImage' : (i + 1) % 3 == 1,'greenImage' : (i + 1) % 3 == 2,'blueImage' : (i + 1) % 3 == 0}">
+                <h3>{{howUse.title}}</h3>   
+                {{howUse.description}}
+            </li>
+        </ul>
+
+        <hr/>
     </section>
 </main>
 

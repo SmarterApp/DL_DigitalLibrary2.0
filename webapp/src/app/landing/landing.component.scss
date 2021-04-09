@@ -60,6 +60,7 @@
       flex: 1;
       align-items: stretch;
       min-width: 225px;
+      margin-left: $spacer-md;
     }
   }
 
@@ -72,9 +73,81 @@
 
   .video {
     max-width: 427px;
-    margin-top: $spacer-md;
+    //margin-top: $spacer-md;
     padding: 0 0.25rem;
     width: 427px;
     height: 240px;
+  }
+
+  h3 {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 23.4px;
+    line-height: 133%;
+  }
+
+  hr {
+    background-color: $neutral-100;
+    border: none;
+    height: 2px;
+    max-width: unset;
+    width: 100%;
+    margin: 0;
+  }
+  .landing-howcaniuse {
+    background: $neutral-50;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+
+    & > .watermarks {
+      position: relative;
+      width: 100%;
+
+      .yellow {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: rotate(90deg);
+      }
+
+      .green {
+        position: absolute;
+        right: -30px;
+        top: 110px;
+        transform: rotate(270deg);
+      }
+    }
+
+    h1 {
+      font-size: 34px;
+      font-weight: 600;
+    }
+
+    .caption.emphasis-medium {
+      font-size: $font-size-body-2;
+      max-width: 550px;
+      text-align: center;
+    }
+
+    li {
+      padding-left: 57px;
+      padding-top: 3px;
+      margin-bottom: 15px;
+    }
+
+    li.blueImage {
+      background: url("src/assets/images/blue-spot.png") no-repeat left top;
+    }
+
+    li.yellowImage {
+      background: url("src/assets/images/yellow-spot-4.png") no-repeat left top;
+    }
+
+    li.greenImage {
+      background: url("src/assets/images/green-spot-3.png") no-repeat left top;
+    }
   }
 }
