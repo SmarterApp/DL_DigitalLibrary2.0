@@ -58,7 +58,7 @@ export const LANDINGPAGE_OBJECT: LandingPage =
 			{
 				'id': 1400,
 				'title': 'Understanding Tools for Teachers',
-				'detail': ''
+				'detail': 'Grade 5 | Math'
 			},
 			{
 				'id': 242,

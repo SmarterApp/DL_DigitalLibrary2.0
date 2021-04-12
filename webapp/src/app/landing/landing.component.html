@@ -1,7 +1,4 @@
 <main id="main">
-
-
-
     <div class="landing-header">
 
         <div class="top-header">
@@ -27,21 +24,68 @@
 
     <section class="landing-splits">
 
-        <div class="landing-card">
-            <h3 style="margin-top: .9rem;">{{landingPage.taglineSection.header}}</h3>
-            <div style="margin-bottom: 20px;"
+        <div class="landing-card" style="max-width: 550px;">
+            <h5 style="margin-top: .9rem;">{{landingPage.taglineSection.header}}</h5>
+            <div style="margin-bottom: 2em;"
                 class="text-container"
                 #textContainer>{{landingPage.taglineSection.description}}
             </div>
 
-            <h2 style="font-weight: bold;">How will they help me?</h2>
+            <h3 style="margin-bottom: .5em;">How will they help me?</h3>
             <dynamic-html style="margin-left: -22px;" [content]="landingPage.howItHelpsSection.description"></dynamic-html>
         </div>
 
-        <div class="landing-card">
-            <sbdl-able-player-float-ts class="video"
-                [youtubeVideoId]="'jJPAU1zOAp4'">
-            </sbdl-able-player-float-ts>  
+        <div class="landing-card" style="max-width: 430px;">
+            <div>
+                <sbdl-able-player-float-ts class="video"
+                    [youtubeVideoId]="'jJPAU1zOAp4'">
+                </sbdl-able-player-float-ts>  
+            </div>  
+            <div style="background-color: #E0F7FF;padding: 20px;min-width: 300px;border-radius: 15px;margin-top: 10px;">
+                <h5>{{landingPage.callToActionSection.header}}</h5>
+
+                <p>{{landingPage.callToActionSection.description}}</p>
+
+                <div  *ngIf="resourceType === 'professional' || resourceType === 'accessibility'|| resourceType === 'formative'">
+                    <!-- <p>Search text</p>
+                    <p>professional</p>
+                    <p>accessibility</p>
+                    <p>formative</p> -->
+                    <div style="background-color: white;">
+                        <sbdl-text-field
+                          style="font-style: italic;"
+                          placeholder="{{landingPage.callToActionSection.promptText}}"      
+                          fontAwesomeIcon="fa-search"
+                          submitButtonAriaLabel="search resources">
+                        </sbdl-text-field>               
+                      </div> 
+                      <p>              
+                        <a style="margin-top: 10px;margin-bottom: 10px;" href="javascript:void(0)" (click)="onBrowseAllClick()">{{landingPage.callToActionSection.browseLinkText}}</a>
+                      </p>
+                </div>
+                <div  *ngIf="resourceType === 'instructional' || resourceType === 'playlist'">
+                    <!-- <p>subject grade</p>
+                    <p>playlist</p>
+                    <p>instructional</p> -->
+                    <div class="select-group">
+                        <div class="select-control-group selectDDL">
+                            <!--   [ngClass]="{'select-placeholder' : selectedGrade == ''}" [(ngModel)]="selectedGrade" -->
+                            <select class="select" [ngClass]="{'select-placeholder' : selectedGrade == ''}"> 
+                                <option value="" disabled>Select a grade</option>
+                                <option *ngFor="let g of grades" value="{{g.code}}">
+                                  {{ g.longName }}
+                                </option>
+                            </select>
+                            <i class="far fa-chevron-square-down fa-lg select-icon"></i>
+                        </div>
+                      </div>
+                </div>
+                <div  *ngIf="resourceType === 'items'">
+                    <p>login options</p>
+                    <p>Interim Assessment Item Portal</p>
+                </div>
+                
+            </div>
         </div>
     </section>
 
@@ -53,29 +97,30 @@
             <img class="waterspot yellow" src="/assets/images/yellow-spot-6.png" aria-hidden="true">
           </div>
 
-          <h2
-          style="margin-top:30px;margin-left: 10rem;">
+          <h3 style="margin-top:30px;margin-left: 150px;">
           <img src="/assets/images/vector-line.png"
           style="
              position: absolute;
              z-index: 100;
              left: 0;
-             margin-left: 39px;
+             margin-left: 27px;
              margin-top: -211px;"
                >
           <img src="/assets/images/vector-arrow.png" aria-hidden="true">
           {{landingPage.howToUseSection.header}}
-         </h2>
+         </h3>
 
          <ul style="list-style-type: none;margin-left: 6rem;">
             <li *ngFor="let howUse of landingPage.howToUseSection.subSections; index as i;" 
                 [ngClass]="{'yellowImage' : (i + 1) % 3 == 1,'greenImage' : (i + 1) % 3 == 2,'blueImage' : (i + 1) % 3 == 0}">
-                <h3>{{howUse.title}}</h3>   
-                {{howUse.description}}
+                <h5>{{howUse.title}}</h5>   
+                <div class="text-container-2">
+                    {{howUse.description}}
+                </div>
             </li>
         </ul>
 
-        <hr/>
+        <hr style="margin-top: 2em;"/>
     </section>
 </main>
 
@@ -83,4 +128,79 @@
     
     <img src="/assets/images/landing-icp.png" aria-hidden="true">
 
-</aside>    
+    <div *ngIf="landingPage.diveDeeperSection && landingPage.diveDeeperSection.links.length > 0">
+
+        <h5>Dive Deeper</h5>
+        <p>
+          {{landingPage.diveDeeperSection.description}}
+        </p>
+    
+        <ul>
+            <li *ngFor="let dd of landingPage.diveDeeperSection.links"
+                style="margin-bottom: 5px;margin-left: -20px;">
+                <a href={{dd.url}}
+                    aria-label="Formative Assessment Process Flier (opens in a new window)"
+                     target="_blank" #link>
+                    <div class="type-info">
+                        <span>{{dd.label}}</span>
+                        <i class="far fa-file-pdf" aria-hidden="true"></i>
+                    </div>
+                </a>
+            </li>
+        </ul>
+      </div>
+
+
+      <div *ngIf="landingPage.sampleSection && landingPage.sampleSection.sampleResources.length > 0">
+        <h5>Sample Playlists</h5>
+
+        <p>
+            {{landingPage.sampleSection.header}}
+        </p>
+
+        <!-- look at sbdl-playlist-resources for sample -->
+        <ul style="list-style-type: none;padding-left: 0px;">
+              <li *ngFor="let sp of landingPage.sampleSection.sampleResources"
+                style="margin-bottom: 5px;    
+                  background-image: url(/assets/images/file-attachment-card-bg.png);
+                  background-repeat: no-repeat;
+                  background-size: 8px 100%;
+                  border-radius: 2px;
+                  margin-bottom: 1rem;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: stretch;
+                  color: #21262F;
+                  position: relative;
+                  overflow: hidden;
+                  box-shadow: 0 1px 3px rgb(0 0 0 / 20%), 0 2px 2px rgb(0 0 0 / 12%), 0 0 2px rgb(0 0 0 / 14%);
+                  padding: 0rem 1rem 1rem 1.5rem;">
+                <a href="/resource/{{sp.id}}"
+                    [attr.aria-label]="sp.title + ' (opens in a new window)'"
+                    class="noUnderline"
+                    target="_blank">
+                    <div>
+                        <div style="display: flex;
+                                    justify-content: space-between;
+                                    margin-top: .75em;">
+                            <span>
+                                {{sp.title}}
+                            </span>
+                            <ng-container [ngSwitch]="resourceType">
+                                <i class="far fa-chart-network imageBug" *ngSwitchCase="'playlist'"aria-hidden="true"></i>
+                                <sbdl-icon icon="steps" class="imageBug" *ngSwitchCase="'instructional'" aria-hidden="true"></sbdl-icon>
+                                <sbdl-icon icon="strategies" class="imageBug" *ngSwitchCase="'formative'" aria-hidden="true"></sbdl-icon>
+                                <i class="far fa-universal-access imageBug" *ngSwitchCase="'accessibility'" aria-hidden="true"></i>
+                                <sbdl-icon icon="goal" class="imageBug" *ngSwitchCase="'professional'"  aria-hidden="true"></sbdl-icon>
+                                <i class="fas fa-badge-check imageBug" *ngSwitchCase="'items'" aria-hidden="true"></i>
+                            </ng-container>
+                        </div>              
+                        <p *ngIf="sp.detail && sp.detail.length > 0" class="sampleDetail">
+                            {{sp.detail}}
+                        </p>
+                    </div>
+                </a>
+              </li>
+          </ul>
+        </div>
+<!-- </aside>     -->

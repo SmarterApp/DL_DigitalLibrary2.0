@@ -38,11 +38,13 @@ export class LandingComponent implements OnInit {
       case "playlist": { 
          this.resourceCode = "ICP";
          this.title = "Interim Connections Playlists";
+         this.loadDDL();
          break; 
       } 
       case "instructional": { 
         this.resourceCode = "IR";
         this.title = "Instructional Resources";
+        this.loadDDL();
         break; 
       }       
       case "formative": { 
