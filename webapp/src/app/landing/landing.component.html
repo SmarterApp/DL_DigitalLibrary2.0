@@ -8,7 +8,7 @@
         </div>
 
         <span>
-            <h1>
+            <h1 style="margin-left: .5em;">
                 <ng-container [ngSwitch]="resourceType">
                     <img class="headerImage" *ngSwitchCase="'playlist'"  src="/assets/images/connections-playlist.png" aria-hidden="true">
                     <img class="headerImage" *ngSwitchCase="'instructional'"   src="/assets/images/instructional-resource.png" aria-hidden="true">
@@ -25,7 +25,7 @@
     <section class="landing-splits">
 
         <div class="landing-card" style="max-width: 550px;">
-            <h5 style="margin-top: .9rem;">{{landingPage.taglineSection.header}}</h5>
+            <h5 style="margin-top: 2rem;">{{landingPage.taglineSection.header}}</h5>
             <div style="margin-bottom: 2em;"
                 class="text-container"
                 #textContainer>{{landingPage.taglineSection.description}}
@@ -65,8 +65,21 @@
                 </div>
                 <div  *ngIf="resourceType === 'instructional' || resourceType === 'playlist'">
                     <!-- <p>subject grade</p>
-                    <p>playlist</p>
+                    <p>playlist</p>[(ngModel)]="selectedSubject"
                     <p>instructional</p> -->
+
+                    <div class="select-group">
+                        <div class="select-control-group selectDDL">
+                          <select class="select" [ngClass]="{'select-placeholder' : selectedSubject == ''}" >
+                            <option value="" disabled>Select a subject</option>
+                            <option *ngFor="let s of subjects" value="{{s.code}}">
+                              {{ s.fullName }}
+                            </option>
+                          </select>
+                          <i class="far fa-chevron-square-down fa-lg select-icon"></i>
+                        </div> 
+                      </div>
+
                     <div class="select-group">
                         <div class="select-control-group selectDDL">
                             <!--   [ngClass]="{'select-placeholder' : selectedGrade == ''}" [(ngModel)]="selectedGrade" -->
@@ -78,7 +91,14 @@
                             </select>
                             <i class="far fa-chevron-square-down fa-lg select-icon"></i>
                         </div>
-                      </div>
+                    </div>
+
+
+                    <sbdl-button  class="primary" >
+                        <!-- (click)="emitAttachmentsClicked()">  -->
+                      GO!
+                    </sbdl-button>&nbsp;&nbsp;&nbsp;
+                    <a href="javascript:void(0)" (click)="onBrowseAllClick()">or browse all</a>
                 </div>
                 <div  *ngIf="resourceType === 'items'">
                     <p>login options</p>
@@ -107,8 +127,13 @@
              margin-top: -211px;"
                >
           <img src="/assets/images/vector-arrow.png" aria-hidden="true">
-          {{landingPage.howToUseSection.header}}
          </h3>
+
+         <h3 style="max-width: 645px;
+         margin-left: 191px;
+         margin-top: -55px;">
+            {{landingPage.howToUseSection.header}}
+        </h3>
 
          <ul style="list-style-type: none;margin-left: 6rem;">
             <li *ngFor="let howUse of landingPage.howToUseSection.subSections; index as i;" 

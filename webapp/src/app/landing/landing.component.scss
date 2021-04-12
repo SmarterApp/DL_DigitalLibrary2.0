@@ -16,7 +16,7 @@
   .landing-header {
     grid-area: header;
     box-sizing: border-box;
-    max-width: 1100px;
+    max-width: 1000px;
     padding: 0 $spacer-lg;
     justify-content: center;
     justify-self: center;
@@ -51,6 +51,7 @@
     max-width: 1000px;
     margin-bottom: 40px;
     padding: 2rem;
+    padding-top: 0rem;
     min-height: 425px;
 
     .landing-card {
