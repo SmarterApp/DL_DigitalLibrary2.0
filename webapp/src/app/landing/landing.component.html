@@ -24,6 +24,7 @@
 
     <section class="landing-splits">
 
+        <!-- The left hand side -->
         <div class="landing-card" style="max-width: 550px;">
             <h5 style="margin-top: 2rem;">{{landingPage.taglineSection.header}}</h5>
             <div style="margin-bottom: 2em;"
@@ -35,12 +36,15 @@
             <dynamic-html style="margin-left: -22px;" [content]="landingPage.howItHelpsSection.description"></dynamic-html>
         </div>
 
+        <!-- The right hand side -->
         <div class="landing-card" style="max-width: 430px;">
             <div>
                 <sbdl-able-player-float-ts class="video"
                     [youtubeVideoId]="'jJPAU1zOAp4'">
                 </sbdl-able-player-float-ts>  
             </div>  
+
+
             <div style="background-color: #E0F7FF;padding: 20px;min-width: 300px;border-radius: 15px;margin-top: 10px;">
                 <h5>{{landingPage.callToActionSection.header}}</h5>
 
@@ -60,9 +64,11 @@
                         </sbdl-text-field>               
                       </div> 
                       <p>              
-                        <a style="margin-top: 10px;margin-bottom: 10px;" href="javascript:void(0)" (click)="onBrowseAllClick()">{{landingPage.callToActionSection.browseLinkText}}</a>
+                        <a style="margin-top: 10px;margin-bottom: 10px;" href="javascript:void(0)" (click)="onFilterResourcesClick()">{{landingPage.callToActionSection.browseLinkText}}</a>
                       </p>
                 </div>
+
+
                 <div  *ngIf="resourceType === 'instructional' || resourceType === 'playlist'">
                     <!-- <p>subject grade</p>
                     <p>playlist</p>[(ngModel)]="selectedSubject"
@@ -94,15 +100,24 @@
                     </div>
 
 
-                    <sbdl-button  class="primary" >
-                        <!-- (click)="emitAttachmentsClicked()">  -->
+                    <sbdl-button  class="primary"
+                        (click)="onFilterResourcesSubjectAndGradeClick()"> 
                       GO!
                     </sbdl-button>&nbsp;&nbsp;&nbsp;
-                    <a href="javascript:void(0)" (click)="onBrowseAllClick()">or browse all</a>
+                    <a href="javascript:void(0)" (click)="onFilterResourcesClick()">or browse all</a>
                 </div>
+
+
                 <div  *ngIf="resourceType === 'items'">
-                    <p>login options</p>
-                    <p>Interim Assessment Item Portal</p>
+                    <!-- <p>login options</p>
+                    <p>Interim Assessment Item Portal</p> -->
+                    <sbdl-button class="primary attachments-btn" >
+                        <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
+                    </sbdl-button>
+                    <br>
+                    <sbdl-button class="primary attachments-btn">
+                        &nbsp;&nbsp;&nbsp;&nbsp;LOG IN&nbsp;&nbsp;&nbsp;&nbsp;
+                    </sbdl-button>
                 </div>
                 
             </div>
@@ -208,7 +223,7 @@
                         <div style="display: flex;
                                     justify-content: space-between;
                                     margin-top: .75em;">
-                            <span>
+                            <span style="max-width: 275px;">
                                 {{sp.title}}
                             </span>
                             <ng-container [ngSwitch]="resourceType">

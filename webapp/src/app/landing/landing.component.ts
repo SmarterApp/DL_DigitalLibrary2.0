@@ -6,6 +6,18 @@ import {Subscription} from 'rxjs';
 import { LandingPage } from '../data/landing/model/landingPage.model';
 import { LandingService } from '../data/landing/landing.service';
 import {LANDINGPAGE_OBJECT} from '../data/landing/mockdata';
+import { SessionStateKey } from '../common/enums/session-state-key.enum';
+import { SearchFilters, emptyFilters } from '../data/search/search-filters.model';
+
+export class SearchQueryParams {
+  query?: string;
+  claims?: string;
+  grades?: string;
+  subjects?: string;
+  targets?: string;
+  standards?: string;
+  resourceTypes?: string;
+}
 
 @Component({
   selector: 'sbdl-landing',
@@ -13,7 +25,9 @@ import {LANDINGPAGE_OBJECT} from '../data/landing/mockdata';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
+  params: SearchQueryParams;
   resourceType: string;
+  resourceTypeSearch: string;
   resourceCode: string;
   title: string;
   grades: Grade[];
@@ -21,6 +35,7 @@ export class LandingComponent implements OnInit {
   selectedGrade: string = "";
   selectedSubject: string = "";
   landingPage: LandingPage;
+  private filterResourcesClicked: boolean;
 
   constructor(private route: ActivatedRoute,
     private landingService: LandingService,
@@ -37,34 +52,40 @@ export class LandingComponent implements OnInit {
     switch(this.resourceType) { 
       case "playlist": { 
          this.resourceCode = "ICP";
+         this.resourceTypeSearch = "cp";
          this.title = "Interim Connections Playlists";
          this.loadDDL();
          break; 
       } 
       case "instructional": { 
-        this.resourceCode = "IR";
+        this.resourceCode = "ir";
+        this.resourceTypeSearch = "ir";
         this.title = "Instructional Resources";
         this.loadDDL();
         break; 
       }       
       case "formative": { 
         this.resourceCode = "FASR";
+        this.resourceTypeSearch = "fs";
         this.title = "Formative Assessment Strategies";
         break; 
       }          
       case "accessibility": { 
         this.resourceCode = "ASR";
+        this.resourceTypeSearch = "as";
         this.title = "Accessibility Instructional Strategies";
         break; 
       }  
       case "professional": { 
         this.resourceCode = "PLR";
+        this.resourceTypeSearch = "pl";
         this.title = "Professional Learning Resources";
         break; 
       }        
       case "items": { 
         this.resourceCode = "IAIP";
         this.title = "Interim Assessment Item Portal";
+        this.resourceTypeSearch = "";
         break; 
       }  
 
@@ -73,6 +94,7 @@ export class LandingComponent implements OnInit {
         // TODOJR: redirect to home page
         this.resourceCode = "NA";
         this.title = "UnKnown";
+        this.resourceTypeSearch = "";
         break; 
       } 
 
@@ -80,7 +102,24 @@ export class LandingComponent implements OnInit {
    } 
 
   }
+
+  onFilterResourcesSubjectAndGradeClick()
+  {
+    const params: SearchQueryParams = new SearchQueryParams();
+    params.resourceTypes = this.resourceTypeSearch;
+    this.router.navigate(['search', params]);
+  }
   
+  onFilterResourcesClick() {
+    const params: SearchQueryParams = new SearchQueryParams();
+    params.resourceTypes = this.resourceTypeSearch;
+    params.grades = 'g3';
+    params.subjects = 'math';
+    
+    this.router.navigate(['search', params]);
+
+  }
+
   loadDDL() {
     this.grades = [
       { code: 'g3', shortName: '3', longName: 'Grade 3' },
