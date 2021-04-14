@@ -8,6 +8,7 @@ import {A11yModule} from '@angular/cdk/a11y';
 import { LandingComponent } from './landing.component';
 import { LandingActionsComponent } from './landing-actions/landing-actions.component';
 import { ResourceModule } from '../resource/resource.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ResourceModule } from '../resource/resource.module';
     ResourceModule,
     RouterModule,
     A11yModule,
-    OverlayModule
+    OverlayModule,
+    FormsModule
   ]
 })
 export class LandingModule { }

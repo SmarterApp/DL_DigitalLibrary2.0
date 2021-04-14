@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Grade } from '../data/resource/model/grade.model';
 import { Subject } from '../data/resource/model/subject.model';
-import {Subscription} from 'rxjs';
 import { LandingPage } from '../data/landing/model/landingPage.model';
 import { LandingService } from '../data/landing/landing.service';
-import {LANDINGPAGE_OBJECT} from '../data/landing/mockdata';
-import { SessionStateKey } from '../common/enums/session-state-key.enum';
-import { SearchFilters, emptyFilters } from '../data/search/search-filters.model';
+import { LANDINGPAGE_OBJECT } from '../data/landing/mockdata';
 
 export class SearchQueryParams {
   query?: string;
@@ -24,6 +21,7 @@ export class SearchQueryParams {
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
+
 export class LandingComponent implements OnInit {
   params: SearchQueryParams;
   resourceType: string;
@@ -90,34 +88,30 @@ export class LandingComponent implements OnInit {
       }  
 
       default: { 
-
-        // TODOJR: redirect to home page
-        this.resourceCode = "NA";
-        this.title = "UnKnown";
-        this.resourceTypeSearch = "";
+        this.router.navigate(['']);
         break; 
       } 
-
-      
    } 
-
   }
 
   onFilterResourcesSubjectAndGradeClick()
   {
     const params: SearchQueryParams = new SearchQueryParams();
     params.resourceTypes = this.resourceTypeSearch;
+    if (this.selectedGrade !== ""){
+      params.grades = this.selectedGrade;
+    }
+
+    if (this.selectedSubject !== ""){
+      params.subjects = this.selectedSubject;
+    }
     this.router.navigate(['search', params]);
   }
   
   onFilterResourcesClick() {
     const params: SearchQueryParams = new SearchQueryParams();
     params.resourceTypes = this.resourceTypeSearch;
-    params.grades = 'g3';
-    params.subjects = 'math';
-    
     this.router.navigate(['search', params]);
-
   }
 
   loadDDL() {
