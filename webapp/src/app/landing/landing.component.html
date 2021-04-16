@@ -107,13 +107,24 @@
                 <div  *ngIf="resourceType === 'items'">
                     <!-- <p>login options</p>
                     <p>Interim Assessment Item Portal</p> -->
-                    <sbdl-button class="primary attachments-btn" >
-                        <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
-                    </sbdl-button>
+                    <div *ngIf="iaip_type === 'unauthenticateduser'">
+                        <p>Access to the IAIP is available to approved K-12 educators in participating member states. Use the button below to log in and check for access</p>
+                        <sbdl-button class="primary attachments-btn" (click)="login()">
+                            &nbsp;&nbsp;&nbsp;&nbsp;LOG IN&nbsp;&nbsp;&nbsp;&nbsp;
+                        </sbdl-button>
+                    </div>
+                    <div *ngIf="iaip_type === 'authenticatedIAIP'">
+                        <p>Use the button below to go to the IAIP and access interim items. To find items, you can search by interim assessment name or by content area</p>                        
+                        <sbdl-button class="primary attachments-btn" (click)="openInterimItems()">
+                            <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
+                        </sbdl-button>
+                    </div>
+                    <div *ngIf="iaip_type === 'authenticated'">
+                        <p>Access to the IAIP is available to approved K-12 educators in participating member states.</p>
+                        <p>Unfortunately, you account has not been granted access. Please contact your district or state support if you have questions or believe this is an error</p>                        
+                    </div>
                     <br>
-                    <sbdl-button class="primary attachments-btn">
-                        &nbsp;&nbsp;&nbsp;&nbsp;LOG IN&nbsp;&nbsp;&nbsp;&nbsp;
-                    </sbdl-button>
+
                 </div>
                 
             </div>

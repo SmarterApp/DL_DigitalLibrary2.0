@@ -5,6 +5,7 @@ import { Subject } from '../data/resource/model/subject.model';
 import { LandingPage } from '../data/landing/model/landingPage.model';
 import { LandingService } from '../data/landing/landing.service';
 import { LANDINGPAGE_OBJECT } from '../data/landing/mockdata';
+import { AppConfig } from 'src/app/common/config/app.config';
 
 export class SearchQueryParams {
   query?: string;
@@ -32,6 +33,8 @@ export class LandingComponent implements OnInit {
   selectedGrade: string = "";
   selectedSubject: string = "";
   landingPage: LandingPage;
+  interimItemPortalUrl = '#';
+  iaip_type: string = "unauthenticateduser"; // "authenticated" "authenticatedIAIP" "unauthenticateduser"
   private filterResourcesClicked: boolean;
 
   constructor(private route: ActivatedRoute,
@@ -80,6 +83,7 @@ export class LandingComponent implements OnInit {
         break; 
       }        
       case "items": { 
+        this.interimItemPortalUrl = AppConfig.settings.interimItemPortalUrl;
         this.title = "Interim Assessment Item Portal";
         this.resourceTypeSearch = "";
         break; 
@@ -117,6 +121,14 @@ export class LandingComponent implements OnInit {
     // params.resourceTypes = this.resourceTypeSearch;
     // params.query = newParams.query;
     // this.router.navigate(['search', params]);
+  }
+
+  openInterimItems() {
+    //window.open(this.interimItemPortalUrl, "_blank");
+  }
+
+  login() {
+    //this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: this.router.url }});
   }
 
   loadDDL() {
