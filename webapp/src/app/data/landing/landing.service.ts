@@ -46,7 +46,7 @@ export class LandingService {
       break; 
     }  
 
-    }
+  }
 
     const testlanding  = this.dataService
       // .get(`/api/landing_page/${this.resourceCode}`)
