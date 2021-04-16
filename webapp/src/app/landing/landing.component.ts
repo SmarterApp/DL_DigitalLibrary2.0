@@ -13,7 +13,6 @@ import { LandingService } from '../data/landing/landing.service';
 })
 export class LandingComponent implements OnInit {
   resourceType: string;
-  resourceCode: string;
   title: string;
   grades: Grade[];
   subjects: Subject[];
@@ -28,37 +27,36 @@ export class LandingComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.route.data.subscribe(data => {
+      if (data.landing) {
+        console.log(data.landing);
+      }
+    });
     const routeParams = this.route.snapshot.paramMap;
     this.resourceType = this.route.snapshot.paramMap.get('resourceType');
 
     switch(this.resourceType) { 
       case "playlist": { 
-         this.resourceCode = "ICP";
          this.title = "Interim Connections Playlists";
          break; 
       } 
       case "instructional": { 
-        this.resourceCode = "IR";
         this.title = "Instructional Resources";
         break; 
       }       
       case "formative": { 
-        this.resourceCode = "FASR";
         this.title = "Formative Assessment Strategies";
         break; 
       }          
       case "accessibility": { 
-        this.resourceCode = "ASR";
         this.title = "Accessibility Instructional Strategies";
         break; 
       }  
       case "professional": { 
-        this.resourceCode = "PLR";
         this.title = "Professional Learning Resources";
         break; 
       }        
       case "items": { 
-        this.resourceCode = "IAIP";
         this.title = "Interim Assessment Item Portal";
         break; 
       }  
@@ -66,7 +64,6 @@ export class LandingComponent implements OnInit {
       default: { 
 
         // TODOJR: redirect to home page
-        this.resourceCode = "NA";
         this.title = "UnKnown";
         break; 
       } 
