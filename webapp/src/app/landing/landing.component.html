@@ -25,7 +25,7 @@
     <section class="landing-splits">
 
         <!-- The left hand side -->
-        <div class="landing-card" style="max-width: 550px;">
+        <div class="landing-card landing-card-left">
             <h5 style="margin-top: 2rem;">{{landingPage.taglineSection.header}}</h5>
             <div style="margin-bottom: 2em;"
                 class="text-container"
@@ -37,15 +37,14 @@
         </div>
 
         <!-- The right hand side -->
-        <div class="landing-card" style="max-width: 430px;">
+        <div class="landing-card landing-card-right">
             <div>
                 <sbdl-able-player-float-ts class="video"
                     [youtubeVideoId]="'jJPAU1zOAp4'">
                 </sbdl-able-player-float-ts>  
             </div>  
 
-
-            <div style="background-color: #E0F7FF;padding: 20px;min-width: 300px;border-radius: 15px;margin-top: 10px;">
+            <div class="callToActionBackground">
                 <h5>{{landingPage.callToActionSection.header}}</h5>
 
                 <p>{{landingPage.callToActionSection.description}}</p>
@@ -55,8 +54,10 @@
                     <p>professional</p>
                     <p>accessibility</p>
                     <p>formative</p> -->
-                    <div style="background-color: white;">
+                    <div>
                         <sbdl-text-field
+                          isSmallerText="'true'"
+                          (submit)="search({query: $event})"
                           style="font-style: italic;"
                           placeholder="{{landingPage.callToActionSection.promptText}}"      
                           fontAwesomeIcon="fa-search"
@@ -125,19 +126,13 @@
         <div class="watermarks">
             <img class="waterspot green" src="/assets/images/green-spot-2.png" aria-hidden="true">
             <img class="waterspot yellow" src="/assets/images/yellow-spot-6.png" aria-hidden="true">
-          </div>
+        </div>
 
-          <h3 style="margin-top:30px;margin-left: 150px;">
+        <h3 style="margin-top:30px;margin-left: 150px;">
           <img src="/assets/images/vector-line.png"
-          style="
-             position: absolute;
-             z-index: 100;
-             left: 0;
-             margin-left: 27px;
-             margin-top: -211px;"
-               >
+               class="howCanIuse-Vector">
           <img src="/assets/images/vector-arrow.png" aria-hidden="true">
-         </h3>
+        </h3>
 
          <h3 style="max-width: 645px;
          margin-left: 191px;
@@ -196,20 +191,7 @@
         <!-- look at sbdl-playlist-resources for sample -->
         <ul style="list-style-type: none;padding-left: 0px;">
               <li *ngFor="let sp of landingPage.sampleSection.sampleResources"
-                style="margin-bottom: 5px;    
-                  background-image: url(/assets/images/file-attachment-card-bg.png);
-                  background-repeat: no-repeat;
-                  background-size: 8px 100%;
-                  border-radius: 2px;
-                  margin-bottom: 1rem;
-                  display: flex;
-                  flex-direction: column;
-                  align-items: stretch;
-                  color: #21262F;
-                  position: relative;
-                  overflow: hidden;
-                  box-shadow: 0 1px 3px rgb(0 0 0 / 20%), 0 2px 2px rgb(0 0 0 / 12%), 0 0 2px rgb(0 0 0 / 14%);
-                  padding: 0rem 1rem 1rem 1.5rem;">
+                class="samplePlaylistLIItem">
                 <a href="/resource/{{sp.id}}"
                     [attr.aria-label]="sp.title + ' (opens in a new window)'"
                     class="noUnderline"
@@ -235,7 +217,6 @@
                         </p>
                     </div>
                 </a>
-              </li>
-          </ul>
-        </div>
-<!-- </aside>     -->
+            </li>
+        </ul>
+    </div>

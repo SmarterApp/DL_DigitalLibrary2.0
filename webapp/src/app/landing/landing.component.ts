@@ -96,22 +96,29 @@ export class LandingComponent implements OnInit {
 
   onFilterResourcesSubjectAndGradeClick()
   {
-    const params: SearchQueryParams = new SearchQueryParams();
-    params.resourceTypes = this.resourceTypeSearch;
-    if (this.selectedGrade !== ""){
-      params.grades = this.selectedGrade;
-    }
+    // const params: SearchQueryParams = new SearchQueryParams();
+    // params.resourceTypes = this.resourceTypeSearch;
+    // if (this.selectedGrade !== ""){
+    //   params.grades = this.selectedGrade;
+    // }
 
-    if (this.selectedSubject !== ""){
-      params.subjects = this.selectedSubject;
-    }
-    this.router.navigate(['search', params]);
+    // if (this.selectedSubject !== ""){
+    //   params.subjects = this.selectedSubject;
+    // }
+    // this.router.navigate(['search', params]);
   }
   
   onFilterResourcesClick() {
-    const params: SearchQueryParams = new SearchQueryParams();
-    params.resourceTypes = this.resourceTypeSearch;
-    this.router.navigate(['search', params]);
+    // const params: SearchQueryParams = new SearchQueryParams();
+    // params.resourceTypes = this.resourceTypeSearch;
+    // this.router.navigate(['search', params]);
+  }
+
+  search(newParams: SearchQueryParams) {
+    // const params: SearchQueryParams = new SearchQueryParams();
+    // params.resourceTypes = this.resourceTypeSearch;
+    // params.query = newParams.query;
+    // this.router.navigate(['search', params]);
   }
 
   loadDDL() {
