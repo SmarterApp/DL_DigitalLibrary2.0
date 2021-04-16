@@ -15,5 +15,5 @@ export class LandingResolve implements Resolve<LandingPage> {
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         return this.service.get(route.params.resourceType);
     }
-
+    
 }

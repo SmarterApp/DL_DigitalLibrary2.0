@@ -25,8 +25,7 @@ export class SearchQueryParams {
 export class LandingComponent implements OnInit {
   params: SearchQueryParams;
   resourceType: string;
-  resourceTypeSearch: string;
-  resourceCode: string;
+  resourceTypeSearch: string;  // TODOJR: delete var
   title: string;
   grades: Grade[];
   subjects: Subject[];
@@ -43,45 +42,44 @@ export class LandingComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.route.data.subscribe(data => {
+      if (data.landing) {
+        console.log(data.landing);
+      }
+    });
     const routeParams = this.route.snapshot.paramMap;
     this.resourceType = this.route.snapshot.paramMap.get('resourceType');
     this.landingPage = LANDINGPAGE_OBJECT;
     
     switch(this.resourceType) { 
       case "playlist": { 
-         this.resourceCode = "ICP";
          this.resourceTypeSearch = "cp";
          this.title = "Interim Connections Playlists";
          this.loadDDL();
          break; 
       } 
       case "instructional": { 
-        this.resourceCode = "ir";
         this.resourceTypeSearch = "ir";
         this.title = "Instructional Resources";
         this.loadDDL();
         break; 
       }       
       case "formative": { 
-        this.resourceCode = "FASR";
         this.resourceTypeSearch = "fs";
         this.title = "Formative Assessment Strategies";
         break; 
       }          
       case "accessibility": { 
-        this.resourceCode = "ASR";
         this.resourceTypeSearch = "as";
         this.title = "Accessibility Instructional Strategies";
         break; 
       }  
       case "professional": { 
-        this.resourceCode = "PLR";
         this.resourceTypeSearch = "pl";
         this.title = "Professional Learning Resources";
         break; 
       }        
       case "items": { 
-        this.resourceCode = "IAIP";
         this.title = "Interim Assessment Item Portal";
         this.resourceTypeSearch = "";
         break; 

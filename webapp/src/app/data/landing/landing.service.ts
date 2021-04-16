@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { Map } from 'immutable';
 import { DataService } from '../data.service';
 import { LandingPage } from './model/landingPage.model';
 import { TaglineSection } from './model/taglineSection.model';
@@ -15,33 +16,49 @@ import {LANDINGPAGE_OBJECT} from './mockdata';
   providedIn: 'root'
 })
 export class LandingService {
-
+  resourceCode: string;
   constructor(private dataService: DataService) { }
 
-  // get() { //: Observable<LandingPage> {
-  //   // return this.dataService
-  //   //   .get('/api/landing')
-  //   //   .pipe(map(resp => resp.bookmarks.map(this.bookmarkFromJson)));
-
   get(resourceType: string): Observable<LandingPage> {
-    console.log(LANDINGPAGE_OBJECT);
-    //return of();
-    return of(LANDINGPAGE_OBJECT);
+    switch(resourceType) {
+      case "playlist": { 
+        this.resourceCode = "pl";
+        break; 
+     } 
+     case "instructional": { 
+      this.resourceCode = "ir";
+      break; 
+    }       
+    case "formative": { 
+      this.resourceCode = "fs";
+      break; 
+    }          
+    case "accessibility": { 
+      this.resourceCode = "as";
+      break; 
+    }  
+    case "professional": { 
+      this.resourceCode = "pl";
+      break; 
+    }        
+    case "items": { 
+      this.resourceCode = "iaip";
+      break; 
+    }  
+
+  }
+
+    const testlanding  = this.dataService
+      // .get(`/api/landing_page/${this.resourceCode}`)
+      // .pipe(map(this.landingFromJson));
+      // return testlanding;
+      return of(LANDINGPAGE_OBJECT);
+  }
+
+  landingFromJson(landingJson: any): LandingPage {
+    const testlanding  = landingJson;
+    return {
+      ...landingJson
+    } as LandingPage;
   }
 } 
-
-
-// export const landingPageContent: LandingPage = {
-//   type: 'pl',
-//   taglineSection: {
-//     header: "Strengthen your teaching practice by growing your expertise",
-//     "Strengthen your teaching practice by growing your expertise",
-//   },
-//   // howItHelpsSection
-//   // callToActionSection
-//   // howToUseSection
-//   // diveDeeperSection
-//   // sampleSection
-//   marketingGraphicUri: '',
-//   marketingVideoLink: ''
-// }
