@@ -10,7 +10,6 @@ import { HowToUseSection } from './model/howToUseSection.model';
 import { DiveDeeperSection } from './model/diveDeeperSection.model';
 import { SampleSection } from './model/sampleSection.model';
 import { Observable, of, ReplaySubject } from 'rxjs';
-import {LANDINGPAGE_OBJECT} from './mockdata';
 
 @Injectable({
   providedIn: 'root'
