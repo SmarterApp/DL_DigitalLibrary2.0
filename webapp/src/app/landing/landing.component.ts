@@ -53,7 +53,7 @@ export class LandingComponent implements OnInit {
         break; 
       }          
       case "accessibility": { 
-        this.title = "Accessibility Instructional Strategies";
+        this.title = "Accessibility Strategies";
         break; 
       }  
       case "professional": { 
@@ -86,7 +86,7 @@ export class LandingComponent implements OnInit {
       { code: 'ghs', shortName: 'HS', longName: 'High School' }];
 
     this.subjects = [
-      { code: 'ela', shortName: 'eng', fullName: 'English Language Arts' },
-      { code: 'math', shortName: 'math', fullName: 'Mathematics' }];
+      { code: 'ela', shortName: 'ELA', fullName: 'English Language Arts' },
+      { code: 'math', shortName: 'MATH', fullName: 'Mathematics' }];
   }
 }
