@@ -4,7 +4,6 @@ import { Grade } from '../data/resource/model/grade.model';
 import { Subject } from '../data/resource/model/subject.model';
 import { LandingPage } from '../data/landing/model/landingPage.model';
 import { LandingService } from '../data/landing/landing.service';
-import { LANDINGPAGE_OBJECT } from '../data/landing/mockdata';
 import { AppConfig } from 'src/app/common/config/app.config';
 
 export class SearchQueryParams {
@@ -37,6 +36,7 @@ export class LandingComponent implements OnInit {
   iaip_type: string = "unauthenticateduser"; // "authenticated" "authenticatedIAIP" "unauthenticateduser"
   private filterResourcesClicked: boolean;
 
+  json: string;
   constructor(private route: ActivatedRoute,
     private landingService: LandingService,
     private router: Router) { 
@@ -47,12 +47,13 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(data => {
       if (data.landing) {
-        console.log(data.landing);
+        this.json = JSON.stringify(data.landing);
+        this.landingPage = data.landing;
+        console.log(this.landingPage);
       }
     });
     const routeParams = this.route.snapshot.paramMap;
     this.resourceType = this.route.snapshot.paramMap.get('resourceType');
-    this.landingPage = LANDINGPAGE_OBJECT;
     
     switch(this.resourceType) { 
       case "playlist": { 

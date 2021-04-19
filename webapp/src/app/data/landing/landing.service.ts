@@ -10,7 +10,6 @@ import { HowToUseSection } from './model/howToUseSection.model';
 import { DiveDeeperSection } from './model/diveDeeperSection.model';
 import { SampleSection } from './model/sampleSection.model';
 import { Observable, of, ReplaySubject } from 'rxjs';
-import {LANDINGPAGE_OBJECT} from './mockdata';
 
 @Injectable({
   providedIn: 'root'
@@ -49,10 +48,9 @@ export class LandingService {
   }
 
     const testlanding  = this.dataService
-      // .get(`/api/landing_page/${this.resourceCode}`)
-      // .pipe(map(this.landingFromJson));
-      // return testlanding;
-      return of(LANDINGPAGE_OBJECT);
+      .get(`/api/landing_page/${this.resourceCode}`)
+      .pipe(map(this.landingFromJson));
+      return testlanding;
   }
 
   landingFromJson(landingJson: any): LandingPage {
