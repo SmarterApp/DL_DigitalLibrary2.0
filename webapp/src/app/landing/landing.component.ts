@@ -18,7 +18,9 @@ export class LandingComponent implements OnInit {
   subjects: Subject[];
   selectedGrade: string = "";
   selectedSubject: string = "";
+  landingPage: LandingPage;
 
+  json: string;
   constructor(private route: ActivatedRoute,
     private landingService: LandingService,
     private router: Router) { 
@@ -29,7 +31,9 @@ export class LandingComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(data => {
       if (data.landing) {
-        console.log(data.landing);
+        this.json = JSON.stringify(data.landing);
+        this.landingPage = data.landing;
+        console.log(this.landingPage);
       }
     });
     const routeParams = this.route.snapshot.paramMap;
