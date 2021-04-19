@@ -21,7 +21,7 @@ export class LandingService {
   get(resourceType: string): Observable<LandingPage> {
     switch(resourceType) {
       case "playlist": { 
-        this.resourceCode = "pl";
+        this.resourceCode = "cp";
         break; 
      } 
      case "instructional": { 

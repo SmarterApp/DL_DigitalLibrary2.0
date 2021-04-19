@@ -6,6 +6,8 @@ import { LandingPage } from '../data/landing/model/landingPage.model';
 import { LandingService } from '../data/landing/landing.service';
 import { AppConfig } from 'src/app/common/config/app.config';
 
+const YT_MATCH_VID = /.*youtube.*v=([^&]+).*$|.*youtu.be\/([^&?]+).*$|.*youtube\/embed\/([^&?]+).*$/;
+
 export class SearchQueryParams {
   query?: string;
   claims?: string;
@@ -33,7 +35,8 @@ export class LandingComponent implements OnInit {
   selectedSubject: string = "";
   landingPage: LandingPage;
   interimItemPortalUrl = '#';
-  iaip_type: string = "unauthenticateduser"; // "authenticated" "authenticatedIAIP" "unauthenticateduser"
+  youtubeVideoId: string = '';
+
   private filterResourcesClicked: boolean;
 
   json: string;
@@ -49,6 +52,7 @@ export class LandingComponent implements OnInit {
       if (data.landing) {
         this.json = JSON.stringify(data.landing);
         this.landingPage = data.landing;
+        this.youtubeVideoId = extractYouTubeVideoId(this.landingPage.marketingVideoLink);
         console.log(this.landingPage);
       }
     });
@@ -75,7 +79,7 @@ export class LandingComponent implements OnInit {
       }          
       case "accessibility": { 
         this.resourceTypeSearch = "as";
-        this.title = "Accessibility Instructional Strategies";
+        this.title = "Accessibility Strategies";
         break; 
       }  
       case "professional": { 
@@ -99,37 +103,37 @@ export class LandingComponent implements OnInit {
 
   onFilterResourcesSubjectAndGradeClick()
   {
-    // const params: SearchQueryParams = new SearchQueryParams();
-    // params.resourceTypes = this.resourceTypeSearch;
-    // if (this.selectedGrade !== ""){
-    //   params.grades = this.selectedGrade;
-    // }
+    const params: SearchQueryParams = new SearchQueryParams();
+    params.resourceTypes = this.resourceTypeSearch;
+    if (this.selectedGrade !== ""){
+      params.grades = this.selectedGrade;
+    }
 
-    // if (this.selectedSubject !== ""){
-    //   params.subjects = this.selectedSubject;
-    // }
-    // this.router.navigate(['search', params]);
+    if (this.selectedSubject !== ""){
+      params.subjects = this.selectedSubject;
+    }
+    this.router.navigate(['search', params]);
   }
   
   onFilterResourcesClick() {
-    // const params: SearchQueryParams = new SearchQueryParams();
-    // params.resourceTypes = this.resourceTypeSearch;
-    // this.router.navigate(['search', params]);
+    const params: SearchQueryParams = new SearchQueryParams();
+    params.resourceTypes = this.resourceTypeSearch;
+    this.router.navigate(['search', params]);
   }
 
   search(newParams: SearchQueryParams) {
-    // const params: SearchQueryParams = new SearchQueryParams();
-    // params.resourceTypes = this.resourceTypeSearch;
-    // params.query = newParams.query;
-    // this.router.navigate(['search', params]);
+    const params: SearchQueryParams = new SearchQueryParams();
+    params.resourceTypes = this.resourceTypeSearch;
+    params.query = newParams.query;
+    this.router.navigate(['search', params]);
   }
 
   openInterimItems() {
-    //window.open(this.interimItemPortalUrl, "_blank");
+    window.open(this.interimItemPortalUrl, "_blank");
   }
 
   login() {
-    //this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: this.router.url }});
+    this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: this.router.url }});
   }
 
   loadDDL() {
@@ -143,7 +147,21 @@ export class LandingComponent implements OnInit {
       { code: 'ghs', shortName: 'HS', longName: 'High School' }];
 
     this.subjects = [
-      { code: 'ela', shortName: 'eng', fullName: 'English Language Arts' },
-      { code: 'math', shortName: 'math', fullName: 'Mathematics' }];
+      { code: 'ela', shortName: 'ELA', fullName: 'English Language Arts' },
+      { code: 'math', shortName: 'MATH', fullName: 'Mathematics' }];
+  }
+}
+
+function extractYouTubeVideoId(url: string): string {
+  const matches = url.match(YT_MATCH_VID);
+
+  if (url.length > 0) {
+    if (!matches) {
+      throw new Error('Cannot extract video ID from unrecognized YouTube URL pattern:' + url);
+    }
+    return matches[1] || matches[2] || matches[3];
+  }
+  else {
+    return '';
   }
 }

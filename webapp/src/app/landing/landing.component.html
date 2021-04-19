@@ -38,18 +38,21 @@
 
         <!-- The right hand side -->
         <div class="landing-card landing-card-right">
-            <div>
+            <div *ngIf="youtubeVideoId.length > 0">
                 <sbdl-able-player-float-ts class="video"
-                    [youtubeVideoId]="'jJPAU1zOAp4'">
+                    [youtubeVideoId]="youtubeVideoId">
                 </sbdl-able-player-float-ts>  
             </div>  
+            <div style="height: 350px;" *ngIf="youtubeVideoId.length === 0">
+
+            </div>
 
             <div class="callToActionBackground">
                 <h5>{{landingPage.callToActionSection.header}}</h5>
 
                 <p>{{landingPage.callToActionSection.description}}</p>
 
-                <div  *ngIf="resourceType === 'professional' || resourceType === 'accessibility'|| resourceType === 'formative'">
+                <div  *ngIf="landingPage.callToActionSection.version === 'textSearch'">
                     <!-- <p>Search text</p>
                     <p>professional</p>
                     <p>accessibility</p>
@@ -68,9 +71,9 @@
                         <a style="margin-top: 10px;margin-bottom: 10px;" href="javascript:void(0)" (click)="onFilterResourcesClick()">{{landingPage.callToActionSection.browseLinkText}}</a>
                       </p>
                 </div>
+                
 
-
-                <div  *ngIf="resourceType === 'instructional' || resourceType === 'playlist'">
+                <div  *ngIf="landingPage.callToActionSection.version === 'dropdownSearch'">
                     <div class="select-group">
                         <div class="select-control-group selectDDL">
                           <select class="select" [ngClass]="{'select-placeholder' : selectedSubject == ''}" [(ngModel)]="selectedSubject">
@@ -105,28 +108,22 @@
 
 
                 <div  *ngIf="resourceType === 'items'">
-                    <!-- <p>login options</p>
-                    <p>Interim Assessment Item Portal</p> -->
-                    <div *ngIf="iaip_type === 'unauthenticateduser'">
-                        <p>Access to the IAIP is available to approved K-12 educators in participating member states. Use the button below to log in and check for access</p>
+                    <div *ngIf="landingPage.callToActionSection.version === 'loginPrompt'">
                         <sbdl-button class="primary attachments-btn" (click)="login()">
                             &nbsp;&nbsp;&nbsp;&nbsp;LOG IN&nbsp;&nbsp;&nbsp;&nbsp;
                         </sbdl-button>
                     </div>
-                    <div *ngIf="iaip_type === 'authenticatedIAIP'">
-                        <p>Use the button below to go to the IAIP and access interim items. To find items, you can search by interim assessment name or by content area</p>                        
+                    <div *ngIf="landingPage.callToActionSection.version === 'browseIAIP'">
                         <sbdl-button class="primary attachments-btn" (click)="openInterimItems()">
                             <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
                         </sbdl-button>
                     </div>
-                    <div *ngIf="iaip_type === 'authenticated'">
+                    <div *ngIf="landingPage.callToActionSection.version === 'noIAIP'">
                         <p>Access to the IAIP is available to approved K-12 educators in participating member states.</p>
                         <p>Unfortunately, you account has not been granted access. Please contact your district or state support if you have questions or believe this is an error</p>                        
                     </div>
                     <br>
-
                 </div>
-                
             </div>
         </div>
     </section>
@@ -146,8 +143,8 @@
         </h3>
 
          <h3 style="max-width: 645px;
-         margin-left: 191px;
-         margin-top: -55px;">
+                margin-left: 191px;
+                margin-top: -55px;">
             {{landingPage.howToUseSection.header}}
         </h3>
 
@@ -167,7 +164,7 @@
 
 <aside class="right-margin">
     
-    <img src="/assets/images/landing-icp.png" aria-hidden="true">
+    <img src={{landingPage.marketingGraphicUri}} aria-hidden="true">
 
     <div *ngIf="landingPage.diveDeeperSection && landingPage.diveDeeperSection.links.length > 0">
 
@@ -192,16 +189,16 @@
       </div>
 
 
-      <div *ngIf="landingPage.sampleSection && landingPage.sampleSection.sampleResources.length > 0">
+      <div *ngIf="landingPage.sampleSections && landingPage.sampleSections.sampleResources.length > 0">
         <h5>Sample Playlists</h5>
 
         <p>
-            {{landingPage.sampleSection.header}}
+            {{landingPage.sampleSections.header}}
         </p>
 
         <!-- look at sbdl-playlist-resources for sample -->
         <ul style="list-style-type: none;padding-left: 0px;">
-              <li *ngFor="let sp of landingPage.sampleSection.sampleResources"
+              <li *ngFor="let sp of landingPage.sampleSections.sampleResources"
                 class="samplePlaylistLIItem">
                 <a href="/resource/{{sp.id}}"
                     [attr.aria-label]="sp.title + ' (opens in a new window)'"
