@@ -1,0 +1,48 @@
+<main id="main">
+
+
+
+    <div class="landing-header">
+
+        <div class="top-header">
+            <sbdl-landing-actions
+                [resourceType]="resourceType">
+            </sbdl-landing-actions>
+        </div>
+
+        <span>
+            <h1>
+                <ng-container [ngSwitch]="resourceType">
+                    <img class="headerImage" *ngSwitchCase="'playlist'"  src="/assets/images/connections-playlist.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'instructional'"   src="/assets/images/instructional-resource.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'formative'" src="/assets/images/formative-strategy.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'accessibility'"  src="/assets/images/accessibility-strategy.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'professional'"  src="/assets/images/professional-learning.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'items'" src="/assets/images/iaip 1.png" aria-hidden="true">
+                </ng-container>
+                {{title}}
+            </h1>
+        </span>
+    </div>
+
+    <section class="landing-splits">
+
+        <div class="landing-card">
+            <h3>Left Side</h3>
+
+        </div>
+
+        <div class="landing-card">
+            <h3>Right Side</h3>
+            <sbdl-able-player-float-ts class="video"
+                [youtubeVideoId]="'jJPAU1zOAp4'">
+            </sbdl-able-player-float-ts>  
+        </div>
+    </section>
+</main>
+
+<aside class="right-margin">
+  
+    <img src="/assets/images/landing-icp.png" aria-hidden="true">
+
+</aside>    

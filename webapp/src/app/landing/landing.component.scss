@@ -1,0 +1,80 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+@import "mixins";
+
+:host {
+  display: grid;
+  grid-template:
+    "header properties"
+    "content properties"
+    "footer properties" / 1fr auto;
+  justify-items: stretch;
+  justify-content: space-between;
+  max-width: unset;
+
+  .landing-header {
+    grid-area: header;
+    box-sizing: border-box;
+    max-width: 1000px;
+    padding: 0 $spacer-lg;
+    justify-content: center;
+    justify-self: center;
+    width: -webkit-fill-available;
+
+    .top-header {
+      //display: flex;
+      float: right;
+      justify-content: space-between;
+      //width: 100%;
+      align-items: baseline;
+    }
+
+    h1 {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 45px;
+      line-height: 100%;
+      letter-spacing: -0.005em;
+      color: #4aa51d;
+      padding-top: 1em;
+    }
+  }
+
+  .landing-splits {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    max-width: none;
+    margin-bottom: 40px;
+    padding: 2rem;
+    min-height: 425px;
+
+    .landing-card {
+      //padding: $spacer $spacer;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      align-items: stretch;
+      min-width: 225px;
+    }
+  }
+
+  .headerImage {
+    width: 54px;
+    height: 73px;
+    left: 135px;
+    top: 95px;
+  }
+
+  .video {
+    max-width: 427px;
+    margin-top: $spacer-md;
+    padding: 0 0.25rem;
+    width: 427px;
+    height: 240px;
+  }
+}
