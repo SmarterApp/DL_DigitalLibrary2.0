@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Grade } from '../data/resource/model/grade.model';
 import { Subject } from '../data/resource/model/subject.model';
+import {Subscription} from 'rxjs';
+import { LandingPage } from '../data/landing/model/landingPage.model';
+import { LandingService } from '../data/landing/landing.service';
 
 @Component({
   selector: 'sbdl-landing',
@@ -10,51 +13,54 @@ import { Subject } from '../data/resource/model/subject.model';
 })
 export class LandingComponent implements OnInit {
   resourceType: string;
-  resourceCode: string;
   title: string;
   grades: Grade[];
   subjects: Subject[];
   selectedGrade: string = "";
   selectedSubject: string = "";
+  landingPage: LandingPage;
 
+  json: string;
   constructor(private route: ActivatedRoute,
+    private landingService: LandingService,
     private router: Router) { 
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
     }
 
   ngOnInit() {
+    this.route.data.subscribe(data => {
+      if (data.landing) {
+        this.json = JSON.stringify(data.landing);
+        this.landingPage = data.landing;
+        console.log(this.landingPage);
+      }
+    });
     const routeParams = this.route.snapshot.paramMap;
     this.resourceType = this.route.snapshot.paramMap.get('resourceType');
 
     switch(this.resourceType) { 
       case "playlist": { 
-         this.resourceCode = "ICP";
          this.title = "Interim Connections Playlists";
          break; 
       } 
       case "instructional": { 
-        this.resourceCode = "IR";
         this.title = "Instructional Resources";
         break; 
       }       
       case "formative": { 
-        this.resourceCode = "FASR";
         this.title = "Formative Assessment Strategies";
         break; 
       }          
       case "accessibility": { 
-        this.resourceCode = "ASR";
-        this.title = "Accessibility Instructional Strategies";
+        this.title = "Accessibility Strategies";
         break; 
       }  
       case "professional": { 
-        this.resourceCode = "PLR";
         this.title = "Professional Learning Resources";
         break; 
       }        
       case "items": { 
-        this.resourceCode = "IAIP";
         this.title = "Interim Assessment Item Portal";
         break; 
       }  
@@ -62,7 +68,6 @@ export class LandingComponent implements OnInit {
       default: { 
 
         // TODOJR: redirect to home page
-        this.resourceCode = "NA";
         this.title = "UnKnown";
         break; 
       } 
@@ -81,7 +86,7 @@ export class LandingComponent implements OnInit {
       { code: 'ghs', shortName: 'HS', longName: 'High School' }];
 
     this.subjects = [
-      { code: 'ela', shortName: 'eng', fullName: 'English Language Arts' },
-      { code: 'math', shortName: 'math', fullName: 'Mathematics' }];
+      { code: 'ela', shortName: 'ELA', fullName: 'English Language Arts' },
+      { code: 'math', shortName: 'MATH', fullName: 'Mathematics' }];
   }
 }
