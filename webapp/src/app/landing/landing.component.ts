@@ -27,7 +27,7 @@ export class SearchQueryParams {
 export class LandingComponent implements OnInit {
   params: SearchQueryParams;
   resourceType: string;
-  resourceTypeSearch: string;  // TODOJR: delete var
+  resourceTypeSearch: string;
   title: string;
   grades: Grade[];
   subjects: Subject[];
@@ -37,26 +37,19 @@ export class LandingComponent implements OnInit {
   interimItemPortalUrl = '#';
   youtubeVideoId: string = '';
 
-  private filterResourcesClicked: boolean;
-
-  json: string;
   constructor(private route: ActivatedRoute,
     private landingService: LandingService,
     private router: Router) { 
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-
     }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       if (data.landing) {
-        this.json = JSON.stringify(data.landing);
         this.landingPage = data.landing;
         this.youtubeVideoId = extractYouTubeVideoId(this.landingPage.marketingVideoLink);
-        console.log(this.landingPage);
       }
     });
-    const routeParams = this.route.snapshot.paramMap;
     this.resourceType = this.route.snapshot.paramMap.get('resourceType');
     
     switch(this.resourceType) { 
