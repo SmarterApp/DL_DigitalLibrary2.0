@@ -19,7 +19,7 @@
       [routerLink]="[baseHref, 'search']"
     >
     <div class="imageArea" routerLinkActive="selectedBackground">
-      <i class="far fa-search" aria-hidden="true"  style="margin: 6.5px;"></i>
+      <i class="far fa-search center" aria-hidden="true"></i>
     </div>
     <span>Find Resources</span>
     </a>
@@ -29,7 +29,7 @@
       [attr.aria-label]="'Interim Connections Playlist'"
       [routerLink]="[baseHref, 'landing', 'playlist']">   
       <div class="imageArea" routerLinkActive="selectedBackground">
-        <i class="far fa-chart-network" aria-hidden="true" style="margin: 4px 3.9;"></i>
+        <i class="far fa-chart-network" aria-hidden="true" style="margin: 6.5px 3.9px;"></i>
       </div>
       <span>Interim Connections Playlist</span>
     </a>
@@ -39,7 +39,7 @@
       [attr.aria-label]="'Instructional Resources'"
       [routerLink]="[baseHref, 'landing', 'instructional']">
       <div class="imageArea" routerLinkActive="selectedBackground">
-        <sbdl-icon icon="steps" aria-hidden="true"  style="margin: 6.5px;"></sbdl-icon>
+        <sbdl-icon icon="steps" aria-hidden="true"  class="center"></sbdl-icon>
       </div>
       <span>Instructional Resources</span>
     </a> 
@@ -49,7 +49,7 @@
       [attr.aria-label]="'Formative Assessment Strategies'"
       [routerLink]="[baseHref, 'landing', 'formative']">
       <div class="imageArea" routerLinkActive="selectedBackground">
-        <sbdl-icon icon="strategies" aria-hidden="true"  style="margin: 6.5px"></sbdl-icon>
+        <sbdl-icon icon="strategies" aria-hidden="true" class="center"></sbdl-icon>
       </div>
       <span>Formative Strategies</span>
     </a>
@@ -58,8 +58,8 @@
       title="Accessibility Strategies"
       [attr.aria-label]="'Accessibility Strategies'"
       [routerLink]="[baseHref, 'landing', 'accessibility']">
-      <div class="imageArea"      routerLinkActive="selectedBackground">
-        <i class="far fa-universal-access" aria-hidden="true"  style="margin: 6.5px;"></i>
+      <div class="imageArea" routerLinkActive="selectedBackground">
+        <i class="far fa-universal-access center" aria-hidden="true"></i>
       </div>
       <span>Accessibility Strategies</span>
     </a>
@@ -71,7 +71,8 @@
       <div class="imageArea" routerLinkActive="selectedBackground">
         <sbdl-icon 
           icon="goal" 
-          aria-hidden="true"  style="margin: 6.5px 6.5px;"></sbdl-icon>
+          class="center"
+          aria-hidden="true"></sbdl-icon>
       </div>
       <span>Professional Learning Resource</span>
     </a>
@@ -81,23 +82,10 @@
       [attr.aria-label]="'Interim Assessment Item Portal'"
       [routerLink]="[baseHref, 'landing', 'items']">
       <div class="imageArea" routerLinkActive="selectedBackground">
-        <i class="fas fa-badge-check" aria-hidden="true"
-          style="margin: 6.5px;"></i>
+        <i class="fas fa-badge-check center" aria-hidden="true"></i>
       </div>
       <span>Interim Assessment Item Portal</span>
     </a>
-
-    <!-- TODOJR: Remove -->
-    <!-- <a
-    *ngIf="hasIaipAccess$ | async"
-    title="Interim Assessment Item Portal"
-    [attr.aria-label]="'Interim Assessment Item Portal (opens in a new window)'"
-    [href]='interimItemPortalUrl'
-    target="_blank"
-  >
-    <i class="fas fa-badge-check" aria-hidden="true"></i>
-    <span>Interim Assessment Item Portal</span>
-  </a> -->
   </div>
 
   <div class="links links-bottom">
@@ -108,7 +96,9 @@
       [attr.aria-label]="'Bookmarks & Notes'"
       [routerLink]="[baseHref, 'bookmarks']"
     >
-      <i class="far fa-bookmark" aria-hidden="true"></i>
+      <div class="imageArea" routerLinkActive="selectedBackground">
+        <i class="far fa-bookmark center" aria-hidden="true"></i>
+      </div>
       <span>Bookmarks &amp; Notes</span>
     </a>
     <button
@@ -117,7 +107,7 @@
       [attr.aria-label]="'Login'"
       (click)="login()"
     >
-      <i class="far fa-sign-in-alt" aria-hidden="true"></i>
+      <i class="far fa-sign-in-alt center" aria-hidden="true"></i>
       <span>Login</span>
     </button>
     <a
@@ -126,7 +116,7 @@
       [attr.aria-label]="'Logout'"
       [routerLink]="[baseHref, 'auth', 'logout']"
     >
-      <i class="far fa-sign-out-alt" aria-hidden="true"></i>
+      <i class="far fa-sign-out-alt center" aria-hidden="true"></i>
       <span>Logout</span>
     </a>
   </div>
