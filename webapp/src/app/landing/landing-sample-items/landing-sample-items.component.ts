@@ -4,7 +4,7 @@ import { LandingPage } from '../../data/landing/model/landingPage.model';
 @Component({
   selector: 'sbdl-landing-sample-items',
   templateUrl: './landing-sample-items.component.html',
-  styleUrls: ['./landing-sample-items.component.scss']
+  styleUrls: ['../landing-common.component.scss']
 })
 export class LandingSampleItemsComponent implements OnInit {
 

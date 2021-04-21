@@ -1,8 +1,6 @@
 <!-- Sample sections -->
 <div *ngIf="landingPage.sampleSections && landingPage.sampleSections.sampleResources.length > 0">
-    <h5>Sample Playlists</h5>
-
-    <p>{{landingPage.sampleSections.header}}</p>
+    <h5>{{landingPage.sampleSections.header}}</h5>
 
     <ul style="list-style-type: none;padding-left: 0px;">
         <li *ngFor="let sp of landingPage.sampleSections.sampleResources" class="samplePlaylistLIItem">
@@ -15,13 +13,13 @@
                         <span style="max-width: 275px;">
                             {{sp.title}}
                         </span>
-                        <ng-container [ngSwitch]="resourceType">
-                            <i class="far fa-chart-network imageBug" *ngSwitchCase="'playlist'"aria-hidden="true"></i>
-                            <sbdl-icon icon="steps" class="imageBug" *ngSwitchCase="'instructional'" aria-hidden="true"></sbdl-icon>
-                            <sbdl-icon icon="strategies" class="imageBug" *ngSwitchCase="'formative'" aria-hidden="true"></sbdl-icon>
-                            <i class="far fa-universal-access imageBug" *ngSwitchCase="'accessibility'" aria-hidden="true"></i>
-                            <sbdl-icon icon="goal" class="imageBug" *ngSwitchCase="'professional'"  aria-hidden="true"></sbdl-icon>
-                            <i class="fas fa-badge-check imageBug" *ngSwitchCase="'items'" aria-hidden="true"></i>
+                        <ng-container [ngSwitch]="landingPage.type">
+                            <i class="far fa-chart-network imageBug" *ngSwitchCase="'cp'"aria-hidden="true"></i>
+                            <sbdl-icon icon="steps" class="imageBug" *ngSwitchCase="'ir'" aria-hidden="true"></sbdl-icon>
+                            <sbdl-icon icon="strategies" class="imageBug" *ngSwitchCase="'fs'" aria-hidden="true"></sbdl-icon>
+                            <i class="far fa-universal-access imageBug" *ngSwitchCase="'as'" aria-hidden="true"></i>
+                            <sbdl-icon icon="goal" class="imageBug" *ngSwitchCase="'pl'"  aria-hidden="true"></sbdl-icon>
+                            <i class="fas fa-badge-check imageBug" *ngSwitchCase="'iaip'" aria-hidden="true"></i>
                         </ng-container>
                     </div>              
                     <p *ngIf="sp.detail && sp.detail.length > 0" class="sampleDetail">

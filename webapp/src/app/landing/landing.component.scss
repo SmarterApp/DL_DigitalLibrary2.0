@@ -282,59 +282,6 @@
     overflow-y: auto;
     overflow-x: hidden;
     padding: 1.5rem;
-
-    h5 {
-      margin-bottom: $spacer-sm;
-      color: $brand-green;
-      margin-top: $spacer-lg;
-    }
-
-    .imageBug {
-      vertical-align: -0.125em;
-      color: #007da3;
-      width: 1.5em;
-      display: inline-block;
-      font-size: inherit;
-      height: 1.5em;
-      vertical-align: -0.125em;
-    }
-
-    .sampleDetail {
-      font-family: Open Sans;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 13.2px;
-      line-height: 18px;
-      margin-bottom: 0px;
-    }
-
-    .noUnderline {
-      text-decoration: none;
-    }
-
-    .samplePlaylistLIItem {
-      margin-bottom: 5px;
-      background-image: url(/assets/images/file-attachment-card-bg.png);
-      background-repeat: no-repeat;
-      background-size: 8px 100%;
-      border-radius: 2px;
-      margin-bottom: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      color: #21262f;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 1px 3px rgb(0 0 0 / 20%), 0 2px 2px rgb(0 0 0 / 12%),
-        0 0 2px rgb(0 0 0 / 14%);
-      padding: 0rem 1rem 1rem 1.5rem;
-    }
-
-    .sampleSectionItem {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 0.75em;
-    }
   }
 
   .howToUseListItems {

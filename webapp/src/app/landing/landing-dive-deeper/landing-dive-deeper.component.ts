@@ -4,7 +4,7 @@ import { LandingPage } from '../../data/landing/model/landingPage.model';
 @Component({
   selector: 'sbdl-landing-dive-deeper',
   templateUrl: './landing-dive-deeper.component.html',
-  styleUrls: ['./landing-dive-deeper.component.scss']
+  styleUrls: ['../landing-common.component.scss']
 })
 export class LandingDiveDeeperComponent implements OnInit {
 
