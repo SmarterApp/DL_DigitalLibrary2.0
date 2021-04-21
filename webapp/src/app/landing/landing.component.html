@@ -3,13 +3,13 @@
 
         <div class="top-header">
             <sbdl-landing-actions
-                [resourceType]="resourceType">
+                [landingType]="landingType">
             </sbdl-landing-actions>
         </div>
 
         <span>
             <h1 style="margin-left: .5em;">
-                <ng-container [ngSwitch]="resourceType">
+                <ng-container [ngSwitch]="landingType">
                     <img class="headerImage" *ngSwitchCase="'playlist'" src="/assets/images/connections-playlist.png" aria-hidden="true">
                     <img class="headerImage" *ngSwitchCase="'instructional'" src="/assets/images/instructional-resource.png" aria-hidden="true">
                     <img class="headerImage" *ngSwitchCase="'formative'" src="/assets/images/formative-strategy.png" aria-hidden="true">
@@ -219,7 +219,7 @@
                             <span style="max-width: 275px;">
                                 {{sp.title}}
                             </span>
-                            <ng-container [ngSwitch]="resourceType">
+                            <ng-container [ngSwitch]="landingType">
                                 <i class="far fa-chart-network imageBug" *ngSwitchCase="'playlist'"aria-hidden="true"></i>
                                 <sbdl-icon icon="steps" class="imageBug" *ngSwitchCase="'instructional'" aria-hidden="true"></sbdl-icon>
                                 <sbdl-icon icon="strategies" class="imageBug" *ngSwitchCase="'formative'" aria-hidden="true"></sbdl-icon>

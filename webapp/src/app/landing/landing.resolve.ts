@@ -13,7 +13,7 @@ export class LandingResolve implements Resolve<LandingPage> {
       private service: LandingService) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        return this.service.get(route.params.resourceType);
+        return this.service.get(route.params.landingType);
     }
     
 }
