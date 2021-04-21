@@ -18,8 +18,8 @@ export class LandingService {
   resourceCode: string;
   constructor(private dataService: DataService) { }
 
-  get(resourceType: string): Observable<LandingPage> {
-    switch(resourceType) {
+  get(landingType: string): Observable<LandingPage> {
+    switch(landingType) {
       case "playlist": { 
         this.resourceCode = "cp";
         break; 

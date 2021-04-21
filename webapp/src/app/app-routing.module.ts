@@ -52,7 +52,7 @@ const routes: Routes = [
         component: SearchResultsComponent,
         resolve: { results: SearchResultsResolve }
       }, {
-        path: 'landing/:resourceType',
+        path: 'landing/:landingType',
         component: LandingComponent,
         resolve: {
           landing: LandingResolve

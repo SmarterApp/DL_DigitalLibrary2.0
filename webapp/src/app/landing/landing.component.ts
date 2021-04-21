@@ -26,7 +26,7 @@ export class SearchQueryParams {
 
 export class LandingComponent implements OnInit {
   params: SearchQueryParams;
-  resourceType: string;
+  landingType: string;
   resourceTypeSearch: string;
   title: string;
   grades: Grade[];
@@ -50,9 +50,9 @@ export class LandingComponent implements OnInit {
         this.youtubeVideoId = extractYouTubeVideoId(this.landingPage.marketingVideoLink);
       }
     });
-    this.resourceType = this.route.snapshot.paramMap.get('resourceType');
+    this.landingType = this.route.snapshot.paramMap.get('landingType');
     
-    switch(this.resourceType) { 
+    switch(this.landingType) { 
       case "playlist": { 
          this.resourceTypeSearch = "cp";
          this.title = "Interim Connections Playlists";
