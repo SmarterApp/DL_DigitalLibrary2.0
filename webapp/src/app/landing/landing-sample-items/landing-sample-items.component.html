@@ -1,0 +1,34 @@
+<!-- Sample sections -->
+<div *ngIf="landingPage.sampleSections && landingPage.sampleSections.sampleResources.length > 0">
+    <h5>Sample Playlists</h5>
+
+    <p>{{landingPage.sampleSections.header}}</p>
+
+    <ul style="list-style-type: none;padding-left: 0px;">
+        <li *ngFor="let sp of landingPage.sampleSections.sampleResources" class="samplePlaylistLIItem">
+            <a href="/resource/{{sp.id}}"
+                [attr.aria-label]="sp.title + ' (opens in a new window)'"
+                class="noUnderline"
+                target="_blank">
+                <div>
+                    <div class="sampleSectionItem">
+                        <span style="max-width: 275px;">
+                            {{sp.title}}
+                        </span>
+                        <ng-container [ngSwitch]="resourceType">
+                            <i class="far fa-chart-network imageBug" *ngSwitchCase="'playlist'"aria-hidden="true"></i>
+                            <sbdl-icon icon="steps" class="imageBug" *ngSwitchCase="'instructional'" aria-hidden="true"></sbdl-icon>
+                            <sbdl-icon icon="strategies" class="imageBug" *ngSwitchCase="'formative'" aria-hidden="true"></sbdl-icon>
+                            <i class="far fa-universal-access imageBug" *ngSwitchCase="'accessibility'" aria-hidden="true"></i>
+                            <sbdl-icon icon="goal" class="imageBug" *ngSwitchCase="'professional'"  aria-hidden="true"></sbdl-icon>
+                            <i class="fas fa-badge-check imageBug" *ngSwitchCase="'items'" aria-hidden="true"></i>
+                        </ng-container>
+                    </div>              
+                    <p *ngIf="sp.detail && sp.detail.length > 0" class="sampleDetail">
+                        {{sp.detail}}
+                    </p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
