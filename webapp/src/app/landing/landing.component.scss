@@ -17,6 +17,7 @@
     grid-area: header;
     box-sizing: border-box;
     max-width: 1000px;
+    min-width: 500px;
     padding: 0 $spacer-lg;
     justify-content: center;
     justify-self: center;
@@ -59,7 +60,7 @@
       flex-direction: column;
       flex: 1;
       align-items: stretch;
-      min-width: 430px;
+      min-width: 375px;
       margin-left: $spacer-md;
     }
 
@@ -69,6 +70,7 @@
 
     .landing-card-right {
       max-width: 430px;
+      margin-right: 50px;
     }
   }
 
@@ -287,5 +289,22 @@
   .howToUseListItems {
     list-style-type: none;
     margin-left: 6rem;
+    margin-right: 3rem;
+  }
+
+  .right-margin-small {
+    max-width: 100%;
+    align-items: center;
+
+    .split {
+      width: 47%;
+      float: left;
+      min-width: 350px;
+      margin-bottom: 2em;
+    }
+
+    .split-left {
+      margin-right: 25px;
+    }
   }
 }

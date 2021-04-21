@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Grade } from '../data/resource/model/grade.model';
 import { Subject } from '../data/resource/model/subject.model';
@@ -36,14 +36,21 @@ export class LandingComponent implements OnInit {
   landingPage: LandingPage;
   interimItemPortalUrl = '#';
   youtubeVideoId: string = '';
+  readingModeDefaultWidth = 1350;
+  resizeTimeout;
+  private wasSmall: boolean;
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     private landingService: LandingService,
-    private router: Router) { 
+    private router: Router,
+    @Inject('Window') private window: Window,
+    ) { 
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     }
 
   ngOnInit() {
+    this.onResize();
     this.route.data.subscribe(data => {
       if (data.landing) {
         this.landingPage = data.landing;
@@ -127,6 +134,18 @@ export class LandingComponent implements OnInit {
 
   login() {
     this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: this.router.url }});
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event?) {
+    clearTimeout(this.resizeTimeout);
+    this.resizeTimeout = setTimeout(this.doResize, 150);
+  }
+
+  doResize = () =>  {
+    const isSmall = this.window.innerWidth < this.readingModeDefaultWidth;
+    //console.log(this.window.innerWidth.toString() + isSmall);
+    this.wasSmall = isSmall;
   }
 
   loadDDL() {

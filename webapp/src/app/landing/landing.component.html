@@ -44,7 +44,6 @@
                 </sbdl-able-player-float-ts>  
             </div>  
             <div style="height: 380px;" *ngIf="youtubeVideoId.length === 0">
-
             </div>
 
             <div class="callToActionBackground">
@@ -162,16 +161,16 @@
 
     </section>
 
-    <section style="max-width: 100%">
+    <section  *ngIf="wasSmall" class="right-margin-small">
 
         <div style="margin: 1em;margin-left: 3em;">
-            <div style="width: 47%;float: left;min-width: 350px;margin-right: 25px;margin-bottom: 2em;">
+            <div *ngIf="landingPage.diveDeeperSection && landingPage.diveDeeperSection.links.length > 0" class="split split-left">
                 <sbdl-landing-dive-deeper
                     [landingPage]="landingPage">
                 </sbdl-landing-dive-deeper>
             </div>
             
-            <div style="width: 47%;float: left;min-width: 350px;margin-bottom: 2em;">
+            <div class="split">
                 <sbdl-landing-sample-items
                     [landingPage]="landingPage">
                 </sbdl-landing-sample-items>
@@ -184,7 +183,7 @@
 </main>
 
 <!-- Start of the right margin -->
-<aside class="right-margin">
+<aside *ngIf="!wasSmall"  class="right-margin">
     
     <img src={{landingPage.marketingGraphicUri}} aria-hidden="true">
 
