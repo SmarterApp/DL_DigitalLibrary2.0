@@ -284,6 +284,16 @@
     overflow-y: auto;
     overflow-x: hidden;
     padding: 1.5rem;
+
+    .scroll {
+      position: fixed;
+      max-height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      transition-property: width, min-width;
+      transition-duration: 0.5s;
+      transition-timing-function: ease-in;
+    }
   }
 
   .howToUseListItems {

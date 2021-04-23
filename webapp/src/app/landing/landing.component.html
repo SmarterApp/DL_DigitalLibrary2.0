@@ -163,39 +163,42 @@
 
     <section  *ngIf="wasSmall" class="right-margin-small">
 
-        <div style="margin: 1em;margin-left: 3em;">
-            <div *ngIf="landingPage.diveDeeperSection && landingPage.diveDeeperSection.links.length > 0" class="split split-left">
-                <sbdl-landing-dive-deeper
-                    [landingPage]="landingPage">
-                </sbdl-landing-dive-deeper>
+        <div>
+            <div style="margin: 1em;margin-left: 3em;">
+                <div *ngIf="landingPage.diveDeeperSection && landingPage.diveDeeperSection.links.length > 0" class="split split-left">
+                    <sbdl-landing-dive-deeper
+                        [landingPage]="landingPage">
+                    </sbdl-landing-dive-deeper>
+                </div>
+                
+                <div class="split">
+                    <sbdl-landing-sample-items
+                        [landingPage]="landingPage">
+                    </sbdl-landing-sample-items>
+                </div>
             </div>
-            
-            <div class="split">
-                <sbdl-landing-sample-items
-                    [landingPage]="landingPage">
-                </sbdl-landing-sample-items>
-            </div>
-        
         </div>
         <br>
-        <hr/>
+        <hr style="clear: both;"/>
     </section>
 </main>
 
 <!-- Start of the right margin -->
 <aside *ngIf="!wasSmall"  class="right-margin">
-    
-    <img src={{landingPage.marketingGraphicUri}} aria-hidden="true">
+    <div class="scroll">
 
-    <!-- Deeper section -->
-    <sbdl-landing-dive-deeper
-        [landingPage]="landingPage">
-    </sbdl-landing-dive-deeper>
+        <img src={{landingPage.marketingGraphicUri}} aria-hidden="true">
+
+        <!-- Deeper section -->
+        <sbdl-landing-dive-deeper
+            [landingPage]="landingPage">
+        </sbdl-landing-dive-deeper>
 
 
-    <!-- Sample sections -->
-    <sbdl-landing-sample-items
-        [landingPage]="landingPage">
-    </sbdl-landing-sample-items>        
+        <!-- Sample sections -->
+        <sbdl-landing-sample-items
+            [landingPage]="landingPage">
+        </sbdl-landing-sample-items>        
 
+    </div>
 </aside>

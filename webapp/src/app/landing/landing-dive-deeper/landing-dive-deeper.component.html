@@ -9,13 +9,9 @@
     <ul>
         <li *ngFor="let dd of landingPage.diveDeeperSection.links"
             style="margin-bottom: 5px;margin-left: -20px;">
-            <a href={{dd.url}}
+            <a href={{dd.url}} style="display: inline;"
                 aria-label="Formative Assessment Process Flier (opens in a new window)"
-                    target="_blank" #link>
-                <div class="type-info">
-                    <span>{{dd.label}}</span>
-                    <i class="far fa-file-pdf" aria-hidden="true"></i>
-                </div>
+                    target="_blank" #link>{{dd.label}}
             </a>
         </li>
     </ul>

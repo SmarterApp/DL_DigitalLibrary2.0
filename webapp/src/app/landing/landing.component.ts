@@ -36,9 +36,11 @@ export class LandingComponent implements OnInit {
   landingPage: LandingPage;
   interimItemPortalUrl = '#';
   youtubeVideoId: string = '';
-  readingModeDefaultWidth = 1350;
+  removeRightMarginSize = 1350;
+  returnRightMarginSize = 1300;
   resizeTimeout;
-  private wasSmall: boolean;
+  wasSmall: boolean;
+  lastSize: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -139,13 +141,24 @@ export class LandingComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(event?) {
     clearTimeout(this.resizeTimeout);
-    this.resizeTimeout = setTimeout(this.doResize, 150);
+    this.resizeTimeout = setTimeout(this.doResize, 100);
   }
 
   doResize = () =>  {
-    const isSmall = this.window.innerWidth < this.readingModeDefaultWidth;
-    //console.log(this.window.innerWidth.toString() + isSmall);
+    const isSmall = this.window.innerWidth < this.removeRightMarginSize;
+
+    if (isSmall)
+    {
+        if (this.window.innerWidth > this.lastSize && this.window.innerWidth > this.returnRightMarginSize) {
+          this.wasSmall = false;
+          this.lastSize = this.window.innerWidth;
+          console.log(this.window.innerWidth.toString() + ': N/A');
+          return;
+        }
+    }
+    console.log(this.window.innerWidth.toString() + ': ' + isSmall);
     this.wasSmall = isSmall;
+    this.lastSize = this.window.innerWidth;
   }
 
   loadDDL() {
