@@ -89,4 +89,25 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
       filters.forEach(x => x.selected = paramCodes.indexOf(x.code) !== -1);
     }
   }
+
+  private getResults() : ResourceSummary[] {
+    if ((this.filters.resourceTypes[0].code === "as"  ||
+         this.filters.resourceTypes[0].code === "fs"  ||
+         this.filters.resourceTypes[0].code === "pl") && 
+         !this.filters.query) {
+      return this.renderedResults.sort(this.sortFunc);
+    }
+
+    return this.renderedResults;
+  }
+
+  sortFunc(a, b) {
+    if ( a.properties.title < b.properties.title ){
+      return -1;
+    }
+    if ( a.properties.title > b.properties.title ){
+      return 1;
+    }
+    return 0;
+  }
 }

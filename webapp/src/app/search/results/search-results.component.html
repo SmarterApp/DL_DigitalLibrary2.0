@@ -9,7 +9,7 @@
   <section #results class="search-results">
     <h2 class="offscreen">Search Results</h2><!-- accessibility -->
     <sbdl-search-result-card
-      *ngFor="let result of renderedResults"
+      *ngFor="let result of getResults()"
       [resource]="result"
     ></sbdl-search-result-card>
   </section>
