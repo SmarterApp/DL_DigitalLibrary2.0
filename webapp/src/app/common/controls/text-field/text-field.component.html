@@ -1,9 +1,11 @@
 <div
   #textField
   class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon mdc-text-field--no-label"
+  [ngClass]="{'smaller_outline': isSmallerText}"
 >
   <!-- TODO use a form and the browser-default enter key behavior -->
   <input
+    [ngClass]="{'smaller_input': isSmallerText}"
     id="tf-outlined"
     class="mdc-text-field__input"
     autocomplete="off"
@@ -14,6 +16,7 @@
     [placeholder]="placeholder || ''"
   >
   <sbdl-button
+    [ngClass]="{'smaller_button': isSmallerText}"
     class="primary"
     (click)="onSubmitButtonClick()"
     [attr.disabled]="disabled"

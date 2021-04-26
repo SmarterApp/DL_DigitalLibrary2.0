@@ -9,7 +9,7 @@ import {ConnectedPosition} from '@angular/cdk/overlay';
 export class LandingActionsComponent implements OnInit {
 
   @Input()
-  resourceType: string;
+  landingType: string;
 
   @ViewChild('shareButton', { static: false, read: ViewContainerRef })
   shareContainer: ViewContainerRef;
@@ -31,7 +31,7 @@ export class LandingActionsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.shareValue = `${location.protocol}//${location.host}/landing/${this.resourceType}`;
+    this.shareValue = `${location.protocol}//${location.host}/landing/${this.landingType}`;
   }
 
 }

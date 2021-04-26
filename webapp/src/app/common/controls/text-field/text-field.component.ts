@@ -38,6 +38,9 @@ export class TextFieldComponent extends AbstractFormControlValueAccessor impleme
   @Input()
   submitButtonAriaLabel = '';
 
+  @Input()
+  isSmallerText:boolean = false;
+
   @Output()
   submit = new EventEmitter<string>();
 
