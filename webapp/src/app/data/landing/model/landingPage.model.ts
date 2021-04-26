@@ -12,7 +12,7 @@ export interface LandingPage {
     callToActionSection : CallToActionSection;
     howToUseSection: HowToUseSection;
     diveDeeperSection: DiveDeeperSection;
-    sampleSection: SampleSection;
+    sampleSections: SampleSection;
     marketingGraphicUri: string;
     marketingVideoLink: string;
   }
