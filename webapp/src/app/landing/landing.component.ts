@@ -152,11 +152,9 @@ export class LandingComponent implements OnInit {
         if (this.window.innerWidth > this.lastSize && this.window.innerWidth > this.returnRightMarginSize) {
           this.wasSmall = false;
           this.lastSize = this.window.innerWidth;
-          console.log(this.window.innerWidth.toString() + ': N/A');
           return;
         }
     }
-    console.log(this.window.innerWidth.toString() + ': ' + isSmall);
     this.wasSmall = isSmall;
     this.lastSize = this.window.innerWidth;
   }
