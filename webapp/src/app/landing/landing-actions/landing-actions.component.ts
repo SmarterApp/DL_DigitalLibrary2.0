@@ -3,8 +3,7 @@ import {ConnectedPosition} from '@angular/cdk/overlay';
 
 @Component({
   selector: 'sbdl-landing-actions',
-  templateUrl: './landing-actions.component.html',
-  styleUrls: ['./landing-actions.component.scss']
+  templateUrl: './landing-actions.component.html'
 })
 export class LandingActionsComponent implements OnInit {
 

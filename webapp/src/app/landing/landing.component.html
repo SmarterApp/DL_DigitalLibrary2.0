@@ -44,7 +44,6 @@
                 </sbdl-able-player-float-ts>  
             </div>  
             <div style="height: 380px;" *ngIf="youtubeVideoId.length === 0">
-
             </div>
 
             <div class="callToActionBackground">
@@ -159,67 +158,47 @@
         </ul>
 
         <hr style="margin-top: 2em;"/>
+
+    </section>
+
+    <section  *ngIf="wasSmall" class="right-margin-small">
+
+        <div>
+            <div style="margin: 1em;margin-left: 3em;">
+                <div *ngIf="landingPage.diveDeeperSection && landingPage.diveDeeperSection.links.length > 0" class="split split-left">
+                    <sbdl-landing-dive-deeper
+                        [landingPage]="landingPage">
+                    </sbdl-landing-dive-deeper>
+                </div>
+                
+                <div class="split">
+                    <sbdl-landing-sample-items
+                        [landingPage]="landingPage">
+                    </sbdl-landing-sample-items>
+                </div>
+            </div>
+        </div>
+        <br>
+        <hr style="clear: both;"/>
     </section>
 </main>
 
 <!-- Start of the right margin -->
-<aside class="right-margin">
-    
-    <img src={{landingPage.marketingGraphicUri}} aria-hidden="true">
+<aside *ngIf="!wasSmall"  class="right-margin">
+    <div class="scroll">
 
-    <!-- Deeper section -->
-    <div *ngIf="landingPage.diveDeeperSection && landingPage.diveDeeperSection.links.length > 0">
+        <img src={{landingPage.marketingGraphicUri}} aria-hidden="true">
 
-        <h5>Dive Deeper</h5>
-        <p>
-          {{landingPage.diveDeeperSection.description}}
-        </p>
-    
-        <ul>
-            <li *ngFor="let dd of landingPage.diveDeeperSection.links"
-                style="margin-bottom: 5px;margin-left: -20px;">
-                <a href={{dd.url}}
-                    aria-label="Formative Assessment Process Flier (opens in a new window)"
-                     target="_blank" #link>
-                    <div class="type-info">
-                        <span>{{dd.label}}</span>
-                        <i class="far fa-file-pdf" aria-hidden="true"></i>
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </div>
+        <!-- Deeper section -->
+        <sbdl-landing-dive-deeper
+            [landingPage]="landingPage">
+        </sbdl-landing-dive-deeper>
 
-    <!-- Sample sections -->
-    <div *ngIf="landingPage.sampleSections && landingPage.sampleSections.sampleResources.length > 0">
-        <h5>{{landingPage.sampleSections.header}}</h5>
- 
-        <ul style="list-style-type: none;padding-left: 0px;">
-            <li *ngFor="let sp of landingPage.sampleSections.sampleResources" class="samplePlaylistLIItem">
-                <a href="/resource/{{sp.id}}"
-                    [attr.aria-label]="sp.title + ' (opens in a new window)'"
-                    class="noUnderline"
-                    target="_blank">
-                    <div>
-                        <div class="sampleSectionItem">
-                            <span style="max-width: 275px;">
-                                {{sp.title}}
-                            </span>
-                            <ng-container [ngSwitch]="landingType">
-                                <i class="far fa-chart-network imageBug" *ngSwitchCase="'playlist'"aria-hidden="true"></i>
-                                <sbdl-icon icon="steps" class="imageBug" *ngSwitchCase="'instructional'" aria-hidden="true"></sbdl-icon>
-                                <sbdl-icon icon="strategies" class="imageBug" *ngSwitchCase="'formative'" aria-hidden="true"></sbdl-icon>
-                                <i class="far fa-universal-access imageBug" *ngSwitchCase="'accessibility'" aria-hidden="true"></i>
-                                <sbdl-icon icon="goal" class="imageBug" *ngSwitchCase="'professional'"  aria-hidden="true"></sbdl-icon>
-                                <i class="fas fa-badge-check imageBug" *ngSwitchCase="'items'" aria-hidden="true"></i>
-                            </ng-container>
-                        </div>              
-                        <p *ngIf="sp.detail && sp.detail.length > 0" class="sampleDetail">
-                            {{sp.detail}}
-                        </p>
-                    </div>
-                </a>
-            </li>
-        </ul>
+
+        <!-- Sample sections -->
+        <sbdl-landing-sample-items
+            [landingPage]="landingPage">
+        </sbdl-landing-sample-items>        
+
     </div>
 </aside>

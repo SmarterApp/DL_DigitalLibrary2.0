@@ -9,11 +9,15 @@ import { LandingComponent } from './landing.component';
 import { LandingActionsComponent } from './landing-actions/landing-actions.component';
 import { ResourceModule } from '../resource/resource.module';
 import { FormsModule } from '@angular/forms';
+import { LandingDiveDeeperComponent } from './landing-dive-deeper/landing-dive-deeper.component';
+import { LandingSampleItemsComponent } from './landing-sample-items/landing-sample-items.component';
 
 @NgModule({
   declarations: [
     LandingComponent,
-    LandingActionsComponent
+    LandingActionsComponent,
+    LandingDiveDeeperComponent,
+    LandingSampleItemsComponent
   ],
   imports: [
     SbdlCommonModule,
