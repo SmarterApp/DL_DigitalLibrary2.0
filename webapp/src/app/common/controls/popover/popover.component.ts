@@ -23,6 +23,7 @@ import {MathJaxService} from "../../mathjax.service";
 export class PopoverComponent implements AfterViewInit {
 
   public isVisible: boolean;
+  top: number;
 
   @HostBinding('style')
   cssVarStyle: SafeStyle;
@@ -60,12 +61,20 @@ export class PopoverComponent implements AfterViewInit {
 
     const offset = this.options.offset;
     if (offset) {
+
+      //TODOJR: cleanup code
       const rect = this.container.nativeElement.getBoundingClientRect();
       const height = rect.bottom - rect.top;
-      const top = this.options.placement === 'top' ? offset.top - height - 28 : offset.top;
+      this.top = this.options.placement === 'top' ? offset.top - height - 28 : offset.top;
+      const position = this.options.isScrollable ? 'position: absolute' : 'position: fixed; z-index: 10';
 
+      console.log('this.window.innerHeight:' + this.window.innerHeight);
+      //this.top = this.window.innerHeight;
+
+      const toppie = this.top
       setTimeout( () => {
-        this.cssVarStyle = this.sanitizer.bypassSecurityTrustStyle(`position: absolute; top: ${top}px; left: ${offset.left}px`);
+        this.cssVarStyle = this.sanitizer.bypassSecurityTrustStyle(`${position}; top: ${toppie}px; left: ${offset.left}px`);
+        //this.cssVarStyle = this.sanitizer.bypassSecurityTrustStyle(`position: fixed; z-index: 10; top: ${top}px; left: ${offset.left}px`);
         this.isVisible = true;
       }, 0);
       setTimeout(() => {
