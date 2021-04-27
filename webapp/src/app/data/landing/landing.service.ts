@@ -1,14 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { Map } from 'immutable';
 import { DataService } from '../data.service';
 import { LandingPage } from './model/landingPage.model';
-import { TaglineSection } from './model/taglineSection.model';
-import { HowItHelpsSection } from './model/howItHelpsSection.model';
-import { CallToActionSection } from './model/callToActionSection.model';
-import { HowToUseSection } from './model/howToUseSection.model';
-import { DiveDeeperSection } from './model/diveDeeperSection.model';
-import { SampleSection } from './model/sampleSection.model';
 import { Observable, of, ReplaySubject } from 'rxjs';
 
 @Injectable({
