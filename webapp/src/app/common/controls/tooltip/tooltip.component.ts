@@ -83,13 +83,11 @@ export class TooltipComponent implements OnInit, OnMount {
     const rect = el.getBoundingClientRect();
     const width = rect.right - rect.left;
 
+    console.log("offset:" + rect);
     console.log(rect);
 
     const scrollLeft = this.window.pageXOffset || document.documentElement.scrollLeft;
     const scrollTop = this.window.pageYOffset || document.documentElement.scrollTop;
-
-    console.log(scrollLeft);
-    console.log(scrollTop);
 
     if (this.isScrollable){
       return { top: rect.top + scrollTop, left: rect.left + scrollLeft + width / 2 + 24 };

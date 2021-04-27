@@ -78,10 +78,17 @@ export class PopoverComponent implements AfterViewInit {
         this.isVisible = true;
       }, 0);
       setTimeout(() => {
-        if (!this.inView(rect)) {
-          this.container.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+        console.log("this.options.offset");
+        console.log(this.options.offset);
+        if (!this.inView(rect, this.options.offset as DOMRect)) {
+          console.log("scrollIntoView");
+          this.container.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+          //this.container.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
         }
         this.closeButton.nativeElement.focus();
+        console.log("done");
+        console.log("done");
+        console.log("done");
       });
     }
   }
@@ -102,7 +109,17 @@ export class PopoverComponent implements AfterViewInit {
     }
   }
 
-  inView(bounding: DOMRect): boolean {
+  inView(bounding: DOMRect, offset: DOMRect): boolean {
+    console.log("bounding: DOMRect");
+    console.log(bounding);
+    console.log("offset");
+    console.log(offset);
+    console.log("bounding.top >= 0:" + (bounding.top >= 0)) ;
+    console.log("bounding.left >= 0:" + (bounding.left >= 0)) ;
+    console.log("bounding.bottom <= this.window.innerHeight:" + (bounding.bottom <= this.window.innerHeight));
+    console.log("this.window.innerHeight:" + (this.window.innerHeight));
+    console.log("bounding.right <= this.window.innerWidth:" + (bounding.right <= this.window.innerWidth));
+    console.log("this.window.innerWidth:" + (this.window.innerWidth));
     return (bounding.top >= 0 &&
             bounding.left >= 0 &&
             bounding.bottom <= this.window.innerHeight &&
