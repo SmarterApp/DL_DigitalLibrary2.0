@@ -255,7 +255,7 @@ export class ResourceService {
       properties,
       attachments: json.attachmentsExist ? teaserASContent.attachments : [],
       thingsToConsider: json.thingsToConsiderExist ? teaserASContent.thingsToConsider : null,
-      instructionalUse: json.instructionalUseExist ? teaserASContent.instructionalUse : null,
+      instructionalUse: teaserASContent.instructionalUse,
       sampleItemContent: teaserASContent.sampleItemContent,
     };
   }
