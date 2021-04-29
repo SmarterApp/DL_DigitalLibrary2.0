@@ -90,7 +90,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     }
   }
 
-  private getResults() : ResourceSummary[] {
+  getResults() : ResourceSummary[] {
     if (this.filters.resourceTypes.length > 0) {
       if ((this.filters.resourceTypes[0].code === "as"  ||
           this.filters.resourceTypes[0].code === "fs"  ||
