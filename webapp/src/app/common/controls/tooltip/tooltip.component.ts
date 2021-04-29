@@ -82,31 +82,10 @@ export class TooltipComponent implements OnInit, OnMount {
   private offset(el) {
     const rect = el.getBoundingClientRect();
     const width = rect.right - rect.left;
-
-    //TODOJR: cleanup code
-    console.log("tooltip");
-    console.log("tooltip");
-    console.log("tooltip");
-
-    console.log("offset:" + rect); 
-    console.log(rect);
-
     const scrollLeft = this.window.pageXOffset || document.documentElement.scrollLeft;
-    console.log("this.window.pageXOffset: " + this.window.pageXOffset);
-    console.log("document.documentElement.scrollLeft: " + document.documentElement.scrollLeft);
-    console.log("scrollLeft: " + scrollLeft);
-
     const scrollTop = this.window.pageYOffset || document.documentElement.scrollTop;
 
-    console.log("this.window.pageYOffset: " + this.window.pageYOffset);
-    console.log("document.documentElement.scrollTop: " + document.documentElement.scrollTop);
-    console.log("scrollTop: " + scrollTop);
-
-    console.log("top: rect.top + scrollTop: " + (rect.top + scrollTop));
-
     if (this.isScrollable){
-      console.log("Return from offset");
-      console.log({ top: rect.top + scrollTop, left: rect.left + scrollLeft + width / 2 + 24 });
       return { top: rect.top + scrollTop, left: rect.left + scrollLeft + width / 2 + 24, actualTop: rect.top, actualLeft: rect.left };
     }
     return { top: rect.top, left: rect.left + width / 2 + 24, actualTop: rect.top, actualLeft: rect.left };
