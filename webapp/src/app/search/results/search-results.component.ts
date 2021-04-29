@@ -91,13 +91,14 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   }
 
   private getResults() : ResourceSummary[] {
-    if ((this.filters.resourceTypes[0].code === "as"  ||
-         this.filters.resourceTypes[0].code === "fs"  ||
-         this.filters.resourceTypes[0].code === "pl") && 
-         !this.filters.query) {
-      return this.renderedResults.sort(this.sortFunc);
+    if (this.filters.resourceTypes.length > 0) {
+      if ((this.filters.resourceTypes[0].code === "as"  ||
+          this.filters.resourceTypes[0].code === "fs"  ||
+          this.filters.resourceTypes[0].code === "pl") && 
+          !this.filters.query) {
+        return this.renderedResults.sort(this.sortFunc);
+      }
     }
-
     return this.renderedResults;
   }
 
