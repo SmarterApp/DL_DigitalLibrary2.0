@@ -169,12 +169,14 @@
     margin: 0;
   }
 
-  .text-container {
+  .tagline-text {
     font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 19px;
-    line-height: 150%;
+    color: #636974;
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 2em;
   }
 
   .text-container-2 {
@@ -195,7 +197,7 @@
 
   .callToActionBackground {
     background-color: #e0f7ff;
-    padding: 15px;
+    padding: 25px;
     min-width: 300px;
     border-radius: 15px;
     margin-top: 10px;
@@ -317,4 +319,35 @@
       margin-right: 25px;
     }
   }
+
+  .filter-loader {
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: wait;
+    height: 100vh;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+  }
+
+  .filter-spinner-container {
+    margin: 60vh 15vw;
+    width: 6rem;
+    svg {
+      color: $neutral-500;
+      font-size: 6rem;
+    }
+  }
+}
+
+.landing-card {
+  ::ng-deep {
+    .able {
+      box-shadow: none;
+    }
+  }
+}
+
+.howItHelpsSection {
+  margin-left: -22px;
 }

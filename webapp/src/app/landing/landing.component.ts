@@ -41,6 +41,7 @@ export class LandingComponent implements OnInit {
   resizeTimeout;
   wasSmall: boolean;
   lastSize: number;
+  filterLoading = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -56,6 +57,7 @@ export class LandingComponent implements OnInit {
     this.route.data.subscribe(data => {
       if (data.landing) {
         this.landingPage = data.landing;
+        this.landingPage.howItHelpsSection.description = this.landingPage.howItHelpsSection.description.split('<li>').join('<li style="font-size: 1rem;">');
         this.youtubeVideoId = extractYouTubeVideoId(this.landingPage.marketingVideoLink);
       }
     });
@@ -105,6 +107,7 @@ export class LandingComponent implements OnInit {
 
   onFilterResourcesSubjectAndGradeClick()
   {
+    this.filterLoading = true;
     const params: SearchQueryParams = new SearchQueryParams();
     params.resourceTypes = this.resourceTypeSearch;
     if (this.selectedGrade !== ""){
@@ -115,12 +118,15 @@ export class LandingComponent implements OnInit {
       params.subjects = this.selectedSubject;
     }
     this.router.navigate(['search', params]);
+    this.filterLoading = false;
   }
   
   onFilterResourcesClick() {
+    this.filterLoading = true;
     const params: SearchQueryParams = new SearchQueryParams();
     params.resourceTypes = this.resourceTypeSearch;
     this.router.navigate(['search', params]);
+    this.filterLoading = false;
   }
 
   search(newParams: SearchQueryParams) {

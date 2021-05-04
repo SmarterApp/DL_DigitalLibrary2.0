@@ -27,13 +27,13 @@
         <!-- The left hand side -->
         <div class="landing-card landing-card-left">
             <h5 style="margin-top: 2em;">{{landingPage.taglineSection.header}}</h5>
-            <div style="margin-bottom: 2em;"
-                class="text-container"
-                #textContainer>{{landingPage.taglineSection.description}}
-            </div>
+            <dynamic-html 
+                class="tagline-text"
+                [content]="landingPage.taglineSection.description">
+            </dynamic-html>
 
             <h3 style="margin-bottom: .5em;">How will they help me?</h3>
-            <dynamic-html style="margin-left: -22px;" [content]="landingPage.howItHelpsSection.description"></dynamic-html>
+            <dynamic-html class="howItHelpsSection" [content]="landingPage.howItHelpsSection.description"></dynamic-html>
         </div>
 
         <!-- The right hand side -->
@@ -47,6 +47,11 @@
             </div>
 
             <div class="callToActionBackground">
+                <div *ngIf="filterLoading" class="filter-loader">
+                    <div class="filter-spinner-container">
+                      <i class="fas fa-spinner fa-pulse" aria-label="Loading..."></i>
+                    </div>
+                </div>
                 <h5>{{landingPage.callToActionSection.header}}</h5>
 
                 <dynamic-html class="text-container-3" [content]="landingPage.callToActionSection.description"></dynamic-html>
@@ -151,9 +156,9 @@
             <li *ngFor="let howUse of landingPage.howToUseSection.subSections; index as i;" 
                 [ngClass]="{'yellowImage' : (i + 1) % 3 == 1,'greenImage' : (i + 1) % 3 == 2,'blueImage' : (i + 1) % 3 == 0}">
                 <h5>{{howUse.title}}</h5>   
-                <div class="text-container-2">
-                    {{howUse.description}}
-                </div>
+                <dynamic-html class="text-container-2"
+                    [content]="howUse.description">
+                </dynamic-html>
             </li>
         </ul>
 
