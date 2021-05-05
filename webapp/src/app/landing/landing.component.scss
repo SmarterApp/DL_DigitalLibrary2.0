@@ -13,21 +13,25 @@
   justify-content: space-between;
   max-width: unset;
 
+  .landing-content {
+    margin-top: 1rem;
+    position: relative;
+  }
+
   .landing-header {
     grid-area: header;
     box-sizing: border-box;
-    max-width: 1000px;
+    max-width: calc(var(--measure) + 8rem);
     min-width: 500px;
     padding: 0 $spacer-lg;
-    justify-content: center;
+    justify-content: flex-end;
     justify-self: center;
     width: -webkit-fill-available;
 
     .top-header {
-      //display: flex;
-      float: right;
-      justify-content: space-between;
-      //width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
       align-items: baseline;
     }
 
@@ -44,16 +48,15 @@
   }
 
   .landing-splits {
+    min-height: 200px;
+    max-width: 1200px;
+    min-width: 500px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin: 2rem;
     width: 100%;
-    max-width: 1000px;
-    margin-bottom: 40px;
-    padding: 2rem;
-    padding-top: 0rem;
-    min-height: 425px;
 
     .landing-card {
       display: flex;
@@ -65,7 +68,7 @@
     }
 
     .landing-card-left {
-      max-width: 550px;
+      max-width: 600px;
     }
 
     .landing-card-right {
@@ -83,7 +86,6 @@
 
   .video {
     max-width: 427px;
-    //margin-top: $spacer-md;
     padding: 0 0.25rem;
     width: 427px;
     height: 240px;
@@ -169,12 +171,14 @@
     margin: 0;
   }
 
-  .text-container {
+  .tagline-text {
     font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 19px;
-    line-height: 150%;
+    color: #636974;
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 2em;
   }
 
   .text-container-2 {
@@ -195,7 +199,7 @@
 
   .callToActionBackground {
     background-color: #e0f7ff;
-    padding: 15px;
+    padding: 25px;
     min-width: 300px;
     border-radius: 15px;
     margin-top: 10px;
@@ -209,12 +213,21 @@
     margin-top: -211px;
   }
 
+  .howCanIuse-Arrow {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    margin-left: 152px;
+    margin-top: 1px;
+  }
+
   .landing-howcaniuse {
+    align-items: center;
     background: $neutral-50;
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 100%;
+    max-width: unset;
 
     & > .watermarks {
       position: relative;
@@ -266,8 +279,7 @@
   }
 
   .right-margin {
-    width: var(--nav-width);
-    min-width: var(--nav-width);
+    min-width: 340px;
     transition-property: width, min-width; //, margin-left, z-index;
     z-index: 2;
     transition-duration: 0.5s;
@@ -283,7 +295,8 @@
     background-color: $white;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 1.5rem;
+    padding-top: 1.5rem;
+    padding-right: 1.5rem;
 
     .scroll {
       position: fixed;
@@ -302,9 +315,14 @@
     margin-right: 3rem;
   }
 
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .right-margin-small {
     max-width: 100%;
-    align-items: center;
 
     .split {
       width: 47%;
@@ -317,4 +335,46 @@
       margin-right: 25px;
     }
   }
+
+  .filter-loader {
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: wait;
+    height: 100vh;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+  }
+
+  .filter-spinner-container {
+    margin: 60vh 15vw;
+    width: 6rem;
+    svg {
+      color: $neutral-500;
+      font-size: 6rem;
+    }
+  }
+}
+
+.landing-card {
+  ::ng-deep {
+    .able {
+      box-shadow: none;
+    }
+  }
+}
+
+.howItHelpsSection {
+  margin-left: -22px;
+}
+
+.thumbnail-container {
+  display: inline-block;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 20%), 0 3px 4px rgb(0 0 0 / 12%),
+    0 3px 3px rgb(0 0 0 / 14%);
+  border-radius: 4px;
+  margin: 1.5rem;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
 }

@@ -21,8 +21,7 @@
 
 .smaller_input {
   background: $white !important;
-  font-style: italic;
-  font-size: 12px;
+  font-size: 14px;
   width: 100%;
   padding-left: 10px !important;
   padding-right: 10px !important;
@@ -31,6 +30,10 @@
 
 .smaller_button {
   background: $white !important;
+}
+
+.smaller_hint {
+  font-style: italic;
 }
 
 .smaller_outline {

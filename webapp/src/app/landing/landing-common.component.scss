@@ -16,7 +16,7 @@ h5 {
 
 .imageBug {
   vertical-align: -0.125em;
-  color: #007da3;
+  color: #21262f;
   width: 1.5em;
   display: inline-block;
   font-size: inherit;
@@ -27,10 +27,11 @@ h5 {
 .sampleDetail {
   font-family: Open Sans;
   font-style: normal;
-  font-weight: normal;
   font-size: 13.2px;
   line-height: 18px;
   margin-bottom: 0px;
+  color: #21262f;
+  font-weight: 500;
 }
 
 .noUnderline {
@@ -60,4 +61,11 @@ h5 {
   display: flex;
   justify-content: space-between;
   margin-top: 0.75em;
+  color: #21262f;
+  font-weight: 500;
+}
+
+.rightSideSections {
+  max-width: 300px;
+  margin: 1.5rem;
 }

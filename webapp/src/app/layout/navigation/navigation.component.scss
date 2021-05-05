@@ -77,8 +77,6 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-
-      background-color: rgba($neutral-900, 0.2);
       border: none;
       border-radius: $spacer-xs;
       box-sizing: border-box;
@@ -122,10 +120,8 @@
     }
   }
 
-  .selectedBackground {
+  .selectedBackgroundIsActive {
     background-color: black;
-    // width: 30px;
-    // height: 30px;
   }
 
   .imageArea {
@@ -133,6 +129,9 @@
     height: 35px;
   }
 
+  .selectedBackgroundNotActive {
+    background-color: rgba($neutral-900, 0.2);
+  }
   .watercolor {
     position: absolute;
     overflow: hidden;
