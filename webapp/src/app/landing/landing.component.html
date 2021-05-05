@@ -1,4 +1,5 @@
-<main id="main">
+<main id="main" class="landing-content">
+
     <div class="landing-header">
 
         <div class="top-header">
@@ -8,7 +9,7 @@
         </div>
 
         <span>
-            <h1 style="margin-left: .5em;">
+            <h1 style="text-align: center;">
                 <ng-container [ngSwitch]="landingType">
                     <img class="headerImage" *ngSwitchCase="'playlist'" src="/assets/images/connections-playlist.png" aria-hidden="true">
                     <img class="headerImage" *ngSwitchCase="'instructional'" src="/assets/images/instructional-resource.png" aria-hidden="true">
@@ -132,24 +133,19 @@
     </section>
 
     <!-- Start of 'How Can I use this' section  -->
-    <hr/>
-
     <section class="landing-howcaniuse">
+
+        <hr/>
+
         <div class="watermarks">
             <img class="waterspot green" src="/assets/images/green-spot-2.png" aria-hidden="true">
             <img class="waterspot yellow" src="/assets/images/yellow-spot-6.png" aria-hidden="true">
         </div>
 
-        <h3 style="margin-top:30px;margin-left: 150px;">
-          <img src="/assets/images/vector-line.png"
-               class="howCanIuse-Vector">
-          <img src="/assets/images/vector-arrow.png" aria-hidden="true">
-        </h3>
-
-         <h3 style="max-width: 645px;
-                margin-left: 191px;
-                margin-top: -55px;">
-            {{landingPage.howToUseSection.header}}
+        <h3 style="margin-top: 33px;margin-left: -44px;">
+          <img src="/assets/images/vector-line.png" class="howCanIuse-Vector">
+          <img src="/assets/images/vector-arrow.png" class="howCanIuse-Arrow">
+          {{landingPage.howToUseSection.header}}
         </h3>
 
          <ul class="howToUseListItems">
@@ -168,7 +164,7 @@
 
     <section  *ngIf="wasSmall" class="right-margin-small">
 
-        <div>
+        <div class="center">
             <div style="margin: 1em;margin-left: 3em;">
                 <div *ngIf="landingPage.diveDeeperSection && landingPage.diveDeeperSection.links.length > 0" class="split split-left">
                     <sbdl-landing-dive-deeper
@@ -176,7 +172,7 @@
                     </sbdl-landing-dive-deeper>
                 </div>
                 
-                <div class="split">
+                <div *ngIf="landingPage.sampleSections && landingPage.sampleSections.sampleResources.length > 0" class="split">
                     <sbdl-landing-sample-items
                         [landingPage]="landingPage">
                     </sbdl-landing-sample-items>
@@ -192,7 +188,10 @@
 <aside *ngIf="!wasSmall"  class="right-margin">
     <div class="scroll">
 
-        <img src={{landingPage.marketingGraphicUri}} aria-hidden="true">
+        <img 
+            class="thumbnail-container"
+            src={{landingPage.marketingGraphicUri}} 
+            aria-hidden="true">
 
         <!-- Deeper section -->
         <sbdl-landing-dive-deeper

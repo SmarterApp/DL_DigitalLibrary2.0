@@ -36,8 +36,8 @@ export class LandingComponent implements OnInit {
   landingPage: LandingPage;
   interimItemPortalUrl = '#';
   youtubeVideoId: string = '';
-  removeRightMarginSize = 1350;
-  returnRightMarginSize = 1300;
+  removeRightMarginSize = 1150;
+  returnRightMarginSize = 900;
   resizeTimeout;
   wasSmall: boolean;
   lastSize: number;
