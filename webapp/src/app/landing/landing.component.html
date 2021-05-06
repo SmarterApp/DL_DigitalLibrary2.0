@@ -137,18 +137,30 @@
 
         <hr/>
 
-        <div class="watermarks">
-            <img class="waterspot green" src="/assets/images/green-spot-2.png" aria-hidden="true">
-            <img class="waterspot yellow" src="/assets/images/yellow-spot-6.png" aria-hidden="true">
-        </div>
+        <table style="width: 100%;max-width: unset;">
+            <tr>
+                <td>
+                    <h3 style="margin-top: 33px;margin-left: -44px;">
+                        <span>
+                            <img src="/assets/images/vector-line.png" class="howCanIuse-Vector">
+                            <img src="/assets/images/vector-arrow.png" class="howCanIuse-Arrow">
+                            <h3 style="margin-left: 235px;">{{landingPage.howToUseSection.header}}</h3>
+                        </span>
+                    </h3>
+                </td>
+                <td>
+                    <div>
+                        <img class="yellow"
+                         src="/assets/images/yellow-spot-6.png" aria-hidden="true">                        
+                        <img class="green"
+                            src="/assets/images/green-spot-2.png" aria-hidden="true">
+                    </div>
+                </td>
+            </tr>
+        </table>
 
-        <h3 style="margin-top: 33px;margin-left: -44px;">
-            <span>
-                <img src="/assets/images/vector-line.png" class="howCanIuse-Vector">
-                <img src="/assets/images/vector-arrow.png" class="howCanIuse-Arrow">
-                <h3 style="margin-left: 235px;">{{landingPage.howToUseSection.header}}</h3>
-            </span>
-        </h3>
+
+
 
          <ul class="howToUseListItems">
             <li *ngFor="let howUse of landingPage.howToUseSection.subSections; index as i;" 
