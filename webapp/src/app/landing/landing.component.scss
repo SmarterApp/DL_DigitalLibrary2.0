@@ -231,20 +231,6 @@
     & > .watermarks {
       position: relative;
       width: 100%;
-
-      .yellow {
-        position: absolute;
-        top: 0;
-        right: 0;
-        transform: rotate(90deg);
-      }
-
-      .green {
-        position: absolute;
-        right: -30px;
-        top: 110px;
-        transform: rotate(270deg);
-      }
     }
 
     h1 {
@@ -376,4 +362,17 @@
   width: 300px;
   height: 300px;
   overflow: hidden;
+}
+
+.green {
+  transform: rotate(270deg);
+  margin-top: 110px;
+  float: right;
+  margin-right: -155px;
+}
+
+.yellow {
+  transform: rotate(90deg);
+  margin-top: -4px;
+  float: right;
 }
