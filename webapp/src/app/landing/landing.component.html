@@ -9,7 +9,7 @@
         </div>
 
         <span>
-            <h1 style="text-align: center;">
+            <h1 style="margin-left: 32px;">
                 <ng-container [ngSwitch]="landingType">
                     <img class="headerImage" *ngSwitchCase="'playlist'" src="/assets/images/connections-playlist.png" aria-hidden="true">
                     <img class="headerImage" *ngSwitchCase="'instructional'" src="/assets/images/instructional-resource.png" aria-hidden="true">
@@ -143,9 +143,11 @@
         </div>
 
         <h3 style="margin-top: 33px;margin-left: -44px;">
-          <img src="/assets/images/vector-line.png" class="howCanIuse-Vector">
-          <img src="/assets/images/vector-arrow.png" class="howCanIuse-Arrow">
-          {{landingPage.howToUseSection.header}}
+            <span>
+                <img src="/assets/images/vector-line.png" class="howCanIuse-Vector">
+                <img src="/assets/images/vector-arrow.png" class="howCanIuse-Arrow">
+                <h3 style="margin-left: 235px;">{{landingPage.howToUseSection.header}}</h3>
+            </span>
         </h3>
 
          <ul class="howToUseListItems">

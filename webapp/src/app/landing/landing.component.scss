@@ -21,9 +21,9 @@
   .landing-header {
     grid-area: header;
     box-sizing: border-box;
-    max-width: calc(var(--measure) + 8rem);
     min-width: 500px;
-    padding: 0 $spacer-lg;
+    padding-right: 4rem;
+    padding-left: 1.8rem;
     justify-content: flex-end;
     justify-self: center;
     width: -webkit-fill-available;
@@ -49,7 +49,7 @@
 
   .landing-splits {
     min-height: 200px;
-    max-width: 1200px;
+    max-width: 99%;
     min-width: 500px;
     display: flex;
     flex-direction: row;
@@ -68,7 +68,7 @@
     }
 
     .landing-card-left {
-      max-width: 600px;
+      max-width: 625px;
     }
 
     .landing-card-right {
@@ -222,7 +222,6 @@
   }
 
   .landing-howcaniuse {
-    align-items: center;
     background: $neutral-50;
     display: flex;
     flex-direction: column;

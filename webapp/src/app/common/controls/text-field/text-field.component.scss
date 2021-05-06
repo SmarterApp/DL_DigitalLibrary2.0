@@ -59,3 +59,27 @@
     }
   }
 }
+
+.placeholder-text input::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.placeholder-text input:-moz-placeholder {
+  font-style: italic;
+}
+
+.placeholder-text input::-moz-placeholder {
+  font-style: italic;
+}
+
+.placeholder-text input:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.placeholder-text input::-ms-input-placeholder {
+  font-style: italic;
+}
+
+.placeholder-text input::placeholder {
+  font-style: italic;
+}
