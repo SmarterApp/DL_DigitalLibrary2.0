@@ -39,10 +39,11 @@
       display: flex;
       justify-content: space-between;
       .link-title {
-        max-width: 200px;
+        max-width: 190px;
         font-size: 13.2px;
       }
       .link-icon {
+        min-width: 1.5em;
         width: 1.5em;
       }
     }
