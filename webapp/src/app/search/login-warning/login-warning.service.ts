@@ -74,7 +74,8 @@ export class LoginWarningService implements OnDestroy {
     const popover = this.popoverService.openOnBody(popoverRef, {
       offset: this.offset(this.initiatingElementRef.nativeElement),
       cssClass: 'tooltip',
-      placement: 'bottom'
+      placement: 'bottom',
+      isScrollable: true
     });
 
     this.storageService.setLoginWarningDisplayed(sessionKey, true);

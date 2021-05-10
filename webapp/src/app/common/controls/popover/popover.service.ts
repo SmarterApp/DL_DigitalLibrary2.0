@@ -77,6 +77,10 @@ export interface PopoverOptions {
    */
   offset: Offset;
 
+  /**
+   * When scrolled, will the tooltip move.
+   */
+   isScrollable: boolean;
 }
 
 export interface Offset {
