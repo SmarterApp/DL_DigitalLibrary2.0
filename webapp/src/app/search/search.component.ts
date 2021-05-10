@@ -127,6 +127,15 @@ export class SearchComponent implements  AfterViewInit, OnInit, OnDestroy {
         this.search({ query: this.filters.query }, false);
       }
     });
+
+    // Fix for a FireFox issue where the search page
+    // does not scroll to the top of the page
+    // when redirect from the landing pages
+    if ((navigator.userAgent.toLowerCase().indexOf('firefox') > -1) && this.params.resourceTypes && 
+      (this.params.resourceTypes === 'fs' ||
+       this.params.resourceTypes === 'as' ||
+       this.params.resourceTypes === 'pl'))
+       window.scrollTo(0,0);
   }
 
   ngAfterViewInit() {

@@ -33,6 +33,9 @@ export class TooltipComponent implements OnInit, OnMount {
   @Input()
   readMoreUrl: string;
 
+  @Input()
+  isScrollable: boolean = true;
+
   dynamicLoadedContent: string;
   popover: PopoverComponent;
   popoverCloseSubscription: Subscription;
@@ -60,7 +63,8 @@ export class TooltipComponent implements OnInit, OnMount {
     this.popover = this.popoverService.openOnBody(this.tooltipPopover, {
       offset: this.offset(this.tooltipContainer.nativeElement),
       cssClass: 'tooltip',
-      placement: 'top'
+      placement: 'top',
+      isScrollable: this.isScrollable,
     });
     this.popover.onClose.subscribe(this.close);
   }
@@ -78,10 +82,12 @@ export class TooltipComponent implements OnInit, OnMount {
   private offset(el) {
     const rect = el.getBoundingClientRect();
     const width = rect.right - rect.left;
-
     const scrollLeft = this.window.pageXOffset || document.documentElement.scrollLeft;
     const scrollTop = this.window.pageYOffset || document.documentElement.scrollTop;
 
-    return { top: rect.top + scrollTop, left: rect.left + scrollLeft + width / 2 + 24 };
+    if (this.isScrollable){
+      return { top: rect.top + scrollTop, left: rect.left + scrollLeft + width / 2 + 24, actualTop: rect.top, actualLeft: rect.left };
+    }
+    return { top: rect.top, left: rect.left + width / 2 + 24, actualTop: rect.top, actualLeft: rect.left };
   }
 }

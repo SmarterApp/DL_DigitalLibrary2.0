@@ -4,30 +4,82 @@
 @import "@material/button/mdc-button";
 
 .mdc-text-field {
-    width: 100%;
+  width: 100%;
 }
 
 .mdc-text-field.mdc-text-field--focused {
-    @include mdc-text-field-label-color($action-900);
-    @include mdc-text-field-focused-outline-color($action-100);
+  @include mdc-text-field-label-color($action-900);
+  @include mdc-text-field-focused-outline-color($action-100);
 }
 
 .mdc-text-field__icon {
-    // background-color: $action-700;
-    color: $white !important;
-    position: relative !important;
+  // background-color: $action-700;
+  color: $white !important;
+  position: relative !important;
+  margin-top: 1rem;
+}
 
-    margin-top: 1rem;
+.smaller_input {
+  background: $white !important;
+  font-size: 14px;
+  width: 100%;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  height: 38px !important;
+}
+
+.smaller_button {
+  background: $white !important;
+}
+
+.smaller_hint {
+  font-style: italic;
+}
+
+.smaller_outline {
+  height: 46px !important;
+  border: 4px solid #e0f7ff !important;
+  border-radius: 4px !important;
+  box-shadow: 0px 4px 5px rgb(0 0 0 / 20%), 0px 3px 14px rgb(0 0 0 / 12%),
+    0px 8px 10px rgb(0 0 0 / 14%);
 }
 
 ::ng-deep {
-    .mdc-text-field {
-        .primary > .mdc-button:not(:disabled) {
-            min-width: 34px;
-            height: 34px;
-            display: block;
-            margin-top: 11px;
-            margin-right: 11px
-        }
+  .mdc-text-field {
+    .primary > .mdc-button:not(:disabled) {
+      min-width: 34px;
+      height: 34px;
+      display: block;
+      margin-top: 2px;
+      margin-right: 2px;
     }
+
+    .mdc-notched-outline > * {
+      border: none;
+    }
+  }
+}
+
+.placeholder-text input::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.placeholder-text input:-moz-placeholder {
+  font-style: italic;
+}
+
+.placeholder-text input::-moz-placeholder {
+  font-style: italic;
+}
+
+.placeholder-text input:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.placeholder-text input::-ms-input-placeholder {
+  font-style: italic;
+}
+
+.placeholder-text input::placeholder {
+  font-style: italic;
 }

@@ -1,0 +1,18 @@
+<!-- Deeper section -->
+<div *ngIf="landingPage.diveDeeperSection && landingPage.diveDeeperSection.links.length > 0" class="rightSideSections">
+
+    <h5>Dive Deeper</h5>
+    <p style="margin-right: 1rem;">
+        {{landingPage.diveDeeperSection.description}}
+    </p>
+
+    <ul>
+        <li *ngFor="let dd of landingPage.diveDeeperSection.links"
+            style="margin-bottom: 5px;margin-left: -20px;">
+            <a href={{dd.url}} style="display: inline;"
+                aria-label="Formative Assessment Process Flier (opens in a new window)"
+                    target="_blank" #link>{{dd.label}}
+            </a>
+        </li>
+    </ul>
+</div>

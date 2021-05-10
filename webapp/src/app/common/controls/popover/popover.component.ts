@@ -23,6 +23,7 @@ import {MathJaxService} from "../../mathjax.service";
 export class PopoverComponent implements AfterViewInit {
 
   public isVisible: boolean;
+  top: number;
 
   @HostBinding('style')
   cssVarStyle: SafeStyle;
@@ -60,16 +61,18 @@ export class PopoverComponent implements AfterViewInit {
 
     const offset = this.options.offset;
     if (offset) {
+
       const rect = this.container.nativeElement.getBoundingClientRect();
       const height = rect.bottom - rect.top;
-      const top = this.options.placement === 'top' ? offset.top - height - 28 : offset.top;
+      this.top = this.options.placement === 'top' ? offset.top - height - 28 : offset.top;
+      const position = this.options.isScrollable ? 'position: absolute' : 'position: fixed; z-index: 10';
 
       setTimeout( () => {
-        this.cssVarStyle = this.sanitizer.bypassSecurityTrustStyle(`position: absolute; top: ${top}px; left: ${offset.left}px`);
+        this.cssVarStyle = this.sanitizer.bypassSecurityTrustStyle(`${position}; top: ${this.top}px; left: ${offset.left}px`);
         this.isVisible = true;
       }, 0);
       setTimeout(() => {
-        if (!this.inView(rect)) {
+        if (!this.inView(rect, this.options.offset)) {
           this.container.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
         }
         this.closeButton.nativeElement.focus();
@@ -93,11 +96,10 @@ export class PopoverComponent implements AfterViewInit {
     }
   }
 
-  inView(bounding: DOMRect): boolean {
-    return (bounding.top >= 0 &&
-            bounding.left >= 0 &&
-            bounding.bottom <= this.window.innerHeight &&
-            bounding.right <= this.window.innerWidth);
+  inView(bounding: DOMRect, offset: any): boolean {
+    return (offset.actualTop - bounding.height >= 0 &&
+            offset.actualLeft - (bounding.width / 2) >= 0 &&
+            offset.actualLeft + (bounding.width / 2) <= this.window.innerWidth);
   }
 
   close() {

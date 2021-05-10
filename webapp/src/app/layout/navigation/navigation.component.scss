@@ -3,7 +3,6 @@
 @import "typography";
 
 :host {
-
   .grid {
     display: grid;
     grid-template-columns: max-content;
@@ -32,7 +31,8 @@
     height: 56px;
 
     /* 16dp — Elevation */
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2), 0px 6px 30px rgba(0, 0, 0, 0.12), 0px 16px 24px rgba(0, 0, 0, 0.14);
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2),
+      0px 6px 30px rgba(0, 0, 0, 0.12), 0px 16px 24px rgba(0, 0, 0, 0.14);
     border-radius: 0px 4px 4px 0px;
 
     position: relative;
@@ -64,6 +64,10 @@
     }
   }
 
+  .center {
+    margin: 6.5px;
+  }
+
   .links {
     display: flex;
     flex-direction: column;
@@ -73,8 +77,6 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-
-      background-color: rgba($neutral-900, 0.2);
       border: none;
       border-radius: $spacer-xs;
       box-sizing: border-box;
@@ -91,7 +93,8 @@
       min-width: 32px;
       text-decoration: none;
 
-      sbdl-icon, svg {
+      sbdl-icon,
+      svg {
         font-size: 22px;
         margin-right: $spacer-sm;
         min-width: 22px;
@@ -117,6 +120,18 @@
     }
   }
 
+  .selectedBackgroundIsActive {
+    background-color: black;
+  }
+
+  .imageArea {
+    width: 35px;
+    height: 35px;
+  }
+
+  .selectedBackgroundNotActive {
+    background-color: rgba($neutral-900, 0.2);
+  }
   .watercolor {
     position: absolute;
     overflow: hidden;
@@ -129,7 +144,13 @@
     z-index: -1;
 
     &:before {
-      background: linear-gradient(180deg, rgba(127, 132, 140, 0.72) 0%, rgba(65, 72, 83, 0.72) 53.65%, rgba(48, 54, 64, 0.72) 100%), url("/assets/images/tx11-grey.png");
+      background: linear-gradient(
+          180deg,
+          rgba(127, 132, 140, 0.72) 0%,
+          rgba(65, 72, 83, 0.72) 53.65%,
+          rgba(48, 54, 64, 0.72) 100%
+        ),
+        url("/assets/images/tx11-grey.png");
       background-blend-mode: multiply, normal;
       background-position-x: -600px;
 
@@ -154,8 +175,12 @@
       width: 150px;
       height: 75px;
 
-      img.full { opacity: 1; }
-      img.small { opacity: 0; }
+      img.full {
+        opacity: 1;
+      }
+      img.small {
+        opacity: 0;
+      }
     }
 
     .links {
@@ -165,9 +190,9 @@
           max-width: 311px;
           max-height: 18px;
           opacity: 1;
+          padding-left: 3px;
         }
       }
     }
-
   }
 }
