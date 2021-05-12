@@ -1,4 +1,4 @@
-<main id="main" class="landing-content">
+<<main id="main" class="landing-content" #LandingPage>
 
     <div class="landing-header">
 
@@ -11,12 +11,12 @@
         <span>
             <h1 style="margin-left: 32px;">
                 <ng-container [ngSwitch]="landingType">
-                    <img class="headerImage" *ngSwitchCase="'playlist'" src="/assets/images/connections-playlist.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'instructional'" src="/assets/images/instructional-resource.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'formative'" src="/assets/images/formative-strategy.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'accessibility'" src="/assets/images/accessibility-strategy.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'professional'" src="/assets/images/professional-learning.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'items'" src="/assets/images/iaip 1.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'playlist'" src="https://qa.webapp.dl.smarterbalanced.org/assets/images/connections-playlist.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'instructional'" src="https://qa.webapp.dl.smarterbalanced.org/assets/images/instructional-resource.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'formative'" src="https://qa.webapp.dl.smarterbalanced.org/assets/images/formative-strategy.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'accessibility'" src="https://qa.webapp.dl.smarterbalanced.org/assets/images/accessibility-strategy.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'professional'" src="https://qa.webapp.dl.smarterbalanced.org/assets/images/professional-learning.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'items'" src="https://qa.webapp.dl.smarterbalanced.org/assets/images/iaip 1.png" aria-hidden="true">
                 </ng-container>
                 {{title}}
             </h1>
@@ -39,13 +39,10 @@
 
         <!-- The right hand side -->
         <div class="landing-card landing-card-right">
-            <div *ngIf="youtubeVideoId.length > 0">
-                <sbdl-able-player-float-ts class="video"
-                    [youtubeVideoId]="youtubeVideoId">
-                </sbdl-able-player-float-ts>  
-            </div>  
-            <div style="height: 380px;" *ngIf="youtubeVideoId.length === 0">
-            </div>
+            <img 
+            class="thumbnail-container"
+            src={{landingPage.marketingGraphicUri}} 
+            aria-hidden="true">
 
             <div class="callToActionBackground">
                 <div *ngIf="filterLoading" class="filter-loader">
@@ -219,4 +216,4 @@
         </sbdl-landing-sample-items>        
         <br><br>
     </div>
-</aside>
+</aside>>
