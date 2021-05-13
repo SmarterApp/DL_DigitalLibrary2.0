@@ -189,8 +189,8 @@ export class LandingComponent implements OnInit {
   ngAfterViewInit() {
     const before = "" +
     "<!DOCTYPE html> " +
-    "<html>" +
-      "<head>" + this.getStyles() +
+    "<html>" + this.getStyles() +
+      "<body>" + 
       "<table class='pageMargin'><tbody>" + 
         "<tr>" + this.getHeader() + "</tr>" +
         "<tr>" + this.getTitle() + "</tr>" +
@@ -198,6 +198,7 @@ export class LandingComponent implements OnInit {
         "<tr>" + this.getHowWillItHelp() + "</tr>" +
         "<tr>" + this.getStartUsing() + "</tr>" +
       "</tbody></table>" +
+      //"<div class='footer'>Footer 1</div>" +
         //this.getPage1() +
         
         "<div style ='display:block; clear:both; page-break-before:always;'>" +
@@ -205,9 +206,11 @@ export class LandingComponent implements OnInit {
         "<table class='pageMargin'><tbody>" + 
          this.getHowCanIUse() +
          this.getRightSide() +
+         
         "</tbody></table>";
+        //"<div class='footer'>Footer 2</div>" 
         // this.getPage2() +
-    const after = '</body>    </html>';
+    const after = ' <footer id="footer">footer</footer> </body>    </html>';
     //const image = '<img src="https://qa.webapp.dl.smarterbalanced.org/assets/svg/tft-logo-full.svg">'
     //const body = this.lp.nativeElement.innerHTML;
     //const body = '<h5>' + this.landingPage.taglineSection.header + '</h5>'
@@ -230,7 +233,7 @@ export class LandingComponent implements OnInit {
     ".lpImage {height: 225px;width: 225px;}" +
     ".shadow {box-shadow: 0 1px 8px rgb(0 0 0 / 20%), 0 3px 4px rgb(0 0 0 / 12%), 0 3px 3px rgb(0 0 0 / 14%); border-radius: 4px; margin: 1.5rem;}" +
     ".SBImage {width: 79px;height: 21px;}" +
-    ".footer {position:fixed;bottom:0px;left:0px;width:100%;color:#CCC;background:#333;padding:8px;}"+
+    //".footer {position:fixed;bottom:0px;left:0px;width:100%;color:#CCC;background:#333;padding:8px;}"+
     ".bold {font-weight: bold;}" +
     ".colorGreen {color: #3C8517;}" +
     "li {max-width: 90%;}" + 
@@ -240,6 +243,19 @@ export class LandingComponent implements OnInit {
                         "display: flex;align-items: center;text-transform: uppercase;width: 200px;}" +
     "a.button {-webkit-appearance: button;-moz-appearance: button;appearance: button;text-decoration: none;}" +
     "hr {background-color: lightgray;border: none;height: 2px;max-width: unset;width: 100%;margin: 0px;margin-top: 15px;margin-bottom: 15px;}" +
+    //"div.footer {display: block; text-align: center;position: running(footer);}" +
+    //"@page {@bottom-center { content: element(footer) }}" +
+
+    // "@media print {@page {" +
+    // "  @bottom-left {content: 'FOOTER';}" +
+    // "        @bottom-center {content: 'Page ' counter(page) ' of ' counter(pages);}" +
+    // "        @bottom-right {content: 'The end';}}}" +
+
+
+    "@media print {@page {margin: 1mm; @bottom-left {content: 'Here: ' counter(page);}}}" +
+    "body {margin-bottom: 50px;}" +
+    "#footer {position: fixed;bottom: 0;width: 100%;height: 50px;font-size: 6pt;color: #777;background: red;opacity: 0.5;}" +
+    "#footer:after {counter-increment: page;content: counter(page);}" +
     "</style>";
   }
 
