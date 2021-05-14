@@ -1,4 +1,4 @@
-import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Grade } from '../data/resource/model/grade.model';
 import { Subject } from '../data/resource/model/subject.model';
@@ -42,6 +42,8 @@ export class LandingComponent implements OnInit {
   wasSmall: boolean;
   lastSize: number;
   filterLoading = false;
+  // TODOJR: need logic to get the current url
+  urlHome: string = 'https://qa.webapp.dl.smarterbalanced.org';
 
   constructor(
     private route: ActivatedRoute,
@@ -179,6 +181,339 @@ export class LandingComponent implements OnInit {
       { code: 'ela', shortName: 'ELA', fullName: 'English Language Arts' },
       { code: 'math', shortName: 'MATH', fullName: 'Mathematics' }];
   }
+
+  onPrintPage() {
+    console.log(window.location.href)
+    console.log(this.router.url);
+    console.log(this.buildPrintHTML());
+  }
+  ngAfterViewInit() {
+    
+  }
+
+  buildPrintHTML() : string {
+    return "" +
+    "<!DOCTYPE html> " +
+    "<html>" +
+    this.getStyles() +
+    "<body>" + 
+    this.createPage1() +
+    this.createPageBreak() +
+    this.createPage2() +
+    "</body>" + 
+    "</html>";
+  }
+
+  getStyles(): string {
+    return "" +
+    "<link href='https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Open+Sans:300,400,600,700&display=swap' rel='stylesheet'/>" +
+    "<style> " +
+    ".pageMargin {margin: 12px;margin-top: 25px;margin-left: 17px;width: 100%;max-width: 840px;}" +
+    ".T4TImage {width: 105px;margin-right: 30px;}" +
+    ".headerImage {width: 50px;margin-right: 15px;}" +
+    ".headerBorder {width: 10%;border-right: 2px solid lightgray;max-width: 100%;white-space: nowrap;}" +
+    ".headerLink {margin-left: 30px;font-family: Montserrat;font-style: normal;text-decoration: none;color: #636974;}" +
+    "h1 {color: #3C8517;font-family: Montserrat;font-style: normal;font-weight: bold;font-size: 36px;line-height: 100%;margin-top: 25px;margin-bottom: 15px;}" +
+    "h2 {font-family: Montserrat;font-style: normal;font-weight: normal;font-size: 20px;line-height: 120%;margin: 0px;margin-top: 1.0rem;}" +
+    ".regText {font-family: Open Sans;font-style: normal;font-weight: normal;font-size: 16px;line-height: 140%;margin: 0px;padding: 0px;vertical-align: text-bottom;padding-top: 5px;}" +
+    ".smText {font-size: 12px;}" +
+    ".lpImage {height: 225px;width: 225px;}" +
+    ".shadow {box-shadow: 0 1px 8px rgb(0 0 0 / 20%), 0 3px 4px rgb(0 0 0 / 12%), 0 3px 3px rgb(0 0 0 / 14%); border-radius: 4px; margin: 1.5rem;}" +
+    ".SBImage {width: 79px;height: 21px;}" +
+    //".footer {position:fixed;bottom:0px;left:0px;width:100%;padding:8px;}"+
+    ".bold {font-weight: bold;}" +
+    ".colorGreen {color: #3C8517;}" +
+    "li {max-width: 90%;}" + 
+    "a {color: #007da3;}" + 
+    ".callToActionBackground {background-color: #e0f7ff;padding: 15px;border-radius: 15px;max-width: 93%;}" +
+    ".callToActionButton {margin-left: 50px;color: white;background-color: #0080A7;padding: 20px;border-radius: 15px;max-width: 65%;" +
+                        "font-family: Open Sans;font-style: normal;font-weight: 600;font-size: 16px;line-height: 110%;" + 
+                        "display: flex;align-items: center;text-transform: uppercase;width: 200px;}" +
+    "a.button {-webkit-appearance: button;-moz-appearance: button;appearance: button;text-decoration: none;}" +
+    "hr {background-color: lightgray;border: none;height: 2px;max-width: unset;width: 100%;margin: 0px;margin-top: 15px;margin-bottom: 15px;}" +
+    ".copyright {font-family: Open Sans;font-size: 10px;color: #21262F;margin: 2px 0px;}" +
+    //"div.footer {display: block; text-align: center;position: running(footer);}" +
+    //"@page {@bottom-center { content: element(footer) }}" +
+
+    // "@media print {@page {" +
+    // "  @bottom-left {content: 'FOOTER';}" +
+    // "        @bottom-center {content: 'Page ' counter(page) ' of ' counter(pages);}" +
+    // "        @bottom-right {content: 'The end';}}}" +
+
+
+    // "@media print {@page {margin: 1mm; @bottom-left {content: 'Here: ' counter(page);}}}" +
+    // "body {margin-bottom: 50px;}" +
+    ".footer {position: fixed;bottom: 0;width: 100%;height: 50px;font-size: 6pt;color: #777;background: red;opacity: 0.5;}" +
+    //".footer:after {counter-increment: page;content: counter(page);}" +
+    "</style>";
+  }
+
+  createPage1() : string {
+    return "" +
+    "<table class='pageMargin'><tbody>" + 
+    "<tr>" + this.getHeader() + "</tr>" +
+    "<tr>" + this.getTitle() + "</tr>" +
+    "<tr>" + this.getTagLine() + "</tr>" +
+    "<tr>" + this.getHowWillItHelp() + "</tr>" +
+    "<tr>" + this.getStartUsing() + "</tr>" +
+    "</tbody></table>" + 
+    this.getPage1Footer();
+  }
+
+  getHeader(): string {
+    return "" +
+      "<td class='headerBorder'>" +
+      "<img class='T4TImage' src='" + this.urlHome + "/assets/svg/tft-logo-full.svg'>" +
+      "</td><td>" +
+      "<a class='headerLink' href='" + this.urlHome + "/landing/" + this.landingType + "'" +
+      "target='blank'>SmarterToolsForTeachers.org/" + this.landingType + "</a>" +
+      "</td>";
+  } 
+
+  getTitle() : string {
+    var image = "";
+
+    switch(this.landingType) { 
+      case "playlist": { 
+        image = "connections-playlist.png";
+         break; 
+      } 
+      case "instructional": { 
+        image = "instructional-resource.png";
+         break; 
+      } 
+      case "formative": { 
+        image = "formative-strategy.png";
+         break; 
+      } 
+      case "accessibility": { 
+        image = "accessibility-strategy.png";
+         break; 
+      } 
+      case "professional": { 
+        image = "professional-learning.png";
+         break; 
+      } 
+      case "items": { 
+        image = "iaip 1.png";
+         break; 
+      } 
+   } 
+    
+    return "" +
+    "<td colspan=2>" +
+    "<h1>" +
+    "<img class='headerImage' src='" + this.urlHome + "/assets/images/" + image + "'>" +
+    this.title + 
+    "</h1></td>";
+  }
+
+  getTagLine(): string {
+    return "" +
+    "<td colspan=2>" +
+    "<table style='width:100%;'><tbody>" +
+      "<tr>" +
+        "<td style='width:75%;'>" +
+          "<h2>" + this.landingPage.taglineSection.header + "</h2>" +
+        "</td>" +
+        "<td rowspan=2 style='width:25%;'>" + "<img class='lpImage shadow' src='" + this.landingPage.marketingGraphicUri  + "'>" + "</td>" +
+      "</tr>" +
+      "<tr><td class='regText'>" + this.landingPage.taglineSection.description + "</td></tr>" +
+    "</tbody></table>" + 
+    "</td>";
+  }
+
+  getHowWillItHelp(): string {
+    return "" +
+    "<td colspan=2 class='regText' style='width:100%;'>" +
+    "<h2 class='bold'>How will they help me?</h2>" + 
+    "<div style='margin-left: -15px;width:100%;'>" + this.landingPage.howItHelpsSection.description.replace("<ul>", "<ul style='width: 100%;'>") + "</div>" +
+    "</td>";
+  }
+
+  getStartUsing (): string {
+    var msg = "";
+
+    switch(this.landingType) { 
+      case "playlist": { 
+        msg = "Interim Connections Playlists are available exclusively on Tools for Teachers. Login to access resources.";
+         break; 
+      } 
+      case "instructional": { 
+        msg = "Instructional Resources are available exclusively on Tools for Teachers. Login to access resources.";
+         break; 
+      } 
+      case "formative": { 
+        msg = "Formative Strategies are available exclusively on Tools for Teachers. Login to access them.";
+         break; 
+      } 
+      case "accessibility": { 
+        msg = "Accessibility Strategies are available exclusively on Tools for Teachers. Visit the site to access them.";
+         break; 
+      } 
+      case "professional": { 
+        msg = "Professional Learning Resources are available exclusively on Tools for Teachers. Login to access resources.";
+         break; 
+      } 
+      case "items": { 
+        msg = "The IAIP is available exclusively to approved K-12 educators in participating member states via Tools for Teachers.";
+         break; 
+      } 
+   } 
+    return "" +
+    "<td colspan=2>" +
+    "<div class='callToActionBackground'>" +
+    "<table style='width: 100%;'><tr><td>" +
+      "<h2 style='margin-top: 0px'>" + this.landingPage.callToActionSection.header + "</h2>" +
+      //"<br/>" +
+      "<p class='regText'>" + msg + "</p>" + 
+    "</td>" + 
+    "<td>" +
+    "<a class='callToActionButton button' href='" + this.urlHome + "/landing/" + this.landingType + "'" +
+    "target='blank'>GO TO TOOLS<br>FOR TEACHERS" +
+    
+    "<svg xmlns='http://www.w3.org/2000/svg' style='margin-left: 15px' width='40' height='40' fill='currentColor' class='bi bi-arrow-right' viewBox='0 0 16 16'> " +
+       "<path fill-rule='evenodd' d='M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z'/>  </svg>" +
+
+    "</a></td>" + 
+    "</tr>" +
+    "</table>" +
+    "</div>" +
+    "</td>";
+  }
+
+  getPage1Footer(): string {
+    return "" +
+    "</span class='footer'><table class='pageMargin' style='margin-top: 0px;'>" +
+    "<tr>" +
+    "<td><p class='regText smText'> Page X of 2</p></td>" + 
+    "<td style='text-align: right;padding-right: 15px;'> <img class='SBImage' src='" + this.urlHome +  "/assets/images/SmarterBalanced_Logo_Horizontal_Color.png'>"+
+    "<br><p class='copyright'>© 2021 The Regents of the University of California</p></td>" +
+    "</tr>" +
+    "</table></div>";
+  }
+
+  createPageBreak() : string {
+    return  "<div style ='display:block; clear:both; page-break-before:always;'></div>"
+  }
+
+  createPage2() : string {
+    return "" +
+    "<table class='pageMargin'><tbody>" + 
+    "<tr>" + this.getHowCanIUse() + "</tr>" +
+    "<tr>" + this.getRightSide() + "</tr>" +
+    "</tbody></table>"; 
+    //this.getPage2Footer();
+  }
+
+  getHowCanIUse (): string {
+    return "" +
+    "<td colspan=2>" +
+    "<h2 class='bold'>" + this.landingPage.howToUseSection.header + "</h2>" +
+    this.getHowCanIUseGetItems() +
+    "</td>";
+  }
+  
+  getHowCanIUseGetItems(): string {
+    var value = "";
+    var image = "";
+    for (let i = 0; i < this.landingPage.howToUseSection.subSections.length; i++) {
+
+      if (((i+1) % 3) === 1) {
+        image = "yellow-spot-4.png";
+      }
+      else if (((i+1) % 3) === 2) {
+        image = "green-spot-3.png";
+      }
+      else {
+        image = "blue-spot.png";
+      }
+
+      value = value + "<tr><td rowspan=2 style='vertical-align: top;'>" +
+      "<img style='height: 36px;margin-top: 10px;margin-right: 15px;' src='" + this.urlHome + "/assets/images/" + image + "'>" +
+      "</td><td><h2>" + this.landingPage.howToUseSection.subSections[i].title +"</h2>" + 
+        "</td></tr>" +
+        "<tr><td>" +
+        "<p class='regText'>" + this.landingPage.howToUseSection.subSections[i].description + "</p>" +
+        "</td></tr>";
+    }
+
+    return value;
+  }
+
+  getRightSide (): string {
+    var content = "";
+    if (this.landingPage.sampleSections.sampleResources.length > 0) {
+      content = "<td style='width: 50%'>" + this.getRightSideSamplePlaylist() + "</td>" +
+                "<td style='width: 50%'>" + this.getRightSideSampleDiveDeeper() + "</td>";
+      }
+      else {
+        content = "<td style='width: 100%'>" + this.getRightSideSampleDiveDeeper() + "</td>";
+      }
+
+    return "" +
+    "<td colspan=2>" +
+    "<table style='width: 100%'>" + 
+    "<tr><td colspan=2><hr></td></tr>" +
+    "<tr style='vertical-align: top;'>" + 
+    content + 
+    "</tr></table>" + 
+    "</td>";
+  }
+
+  getRightSideSamplePlaylist (): string {
+    return "<table><tr><td><h2 class='bold colorGreen'>" + this.landingPage.sampleSections.header + "</h2></td></tr>" + 
+    "<tr><td><p class='regText'>Access these samples without needing to log into the site.</p></tr></td>" +
+    this.getRightSideSamplePlaylistItems() +
+    "</table>";
+  }
+
+  getRightSideSamplePlaylistItems(): string {
+    var value = "";
+    var urlValue = "";
+
+    for (let i = 0; i < this.landingPage.sampleSections.sampleResources.length; i++) {
+      value = value + "<tr><td>" +
+      "<br><a class='regText' href='" + this.urlHome + "/resource/" + this.landingPage.sampleSections.sampleResources[i].id + "'" +
+      "target='blank'>"  + this.landingPage.sampleSections.sampleResources[i].title + "</a>" +
+      "<br><p class='regText' style='margin: 0px;'>" + this.landingPage.sampleSections.sampleResources[i].detail + "</p>" +
+      "</tr></td>";
+    }
+
+    return value;
+  }
+
+  getRightSideSampleDiveDeeper (): string {
+    return "<table><tr><td><h2 class='bold colorGreen'>" + "Dive Deeper" + "</h2></td></tr>" + 
+
+    "<tr><td><p class='regText'>" + this.landingPage.diveDeeperSection.description + "</p></tr></td>" +
+    this.getRightSideSampleDiveDeeperItems() +
+    "</table>";
+  }
+
+  getRightSideSampleDiveDeeperItems(): string {
+    var value = "<tr><td><ul>";
+    for (let i = 0; i < this.landingPage.diveDeeperSection.links.length; i++) {
+      value += "<li style='margin-bottom: 15px;'>" +  
+      "<a class='regText' href=" + this.landingPage.diveDeeperSection.links[i].url + " style='display: inline;margin-bottom: 15px;'" +
+      "aria-label='" + this.landingPage.diveDeeperSection.links[i].label + " (opens in a new window)'" +
+      "target='_blank' #link>" + this.landingPage.diveDeeperSection.links[i].label + "</a>" +
+      "</li>";
+    }
+    value += "</ul></tr></td>";
+    return value;
+  }
+
+  // getPage2Footer(): string {
+  //   return "" +
+  //   "</span  ><table>" +
+  //   "<tr>" +
+  //   "<td>pagenum</td>" + 
+  //   "<td> <img class='SBImage' src='" + this.urlHome +  "assets/images/SmarterBalanced_Logo_Horizontal_Color.png'>"+
+  //   "copyright</td>" +
+  //   "</tr>" +
+  //   "</table></div>";
+  //}
 }
 
 function extractYouTubeVideoId(url: string): string {
