@@ -1,4 +1,4 @@
-import { Component, HostListener, Inject, OnInit, AfterViewInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Grade } from '../data/resource/model/grade.model';
 import { Subject } from '../data/resource/model/subject.model';
@@ -42,8 +42,8 @@ export class LandingComponent implements OnInit {
   wasSmall: boolean;
   lastSize: number;
   filterLoading = false;
-  // TODOJR: need logic to get the current url
   urlHome: string = 'https://qa.webapp.dl.smarterbalanced.org';
+  headerImage: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -69,33 +69,39 @@ export class LandingComponent implements OnInit {
       case "playlist": { 
          this.resourceTypeSearch = "cp";
          this.title = "Interim Connections Playlists";
+         this.headerImage = "/assets/images/connections-playlist.png";
          this.loadDDL();
          break; 
       } 
       case "instructional": { 
         this.resourceTypeSearch = "ir";
         this.title = "Instructional Resources";
+        this.headerImage = "/assets/images/instructional-resource.png";
         this.loadDDL();
         break; 
       }       
       case "formative": { 
         this.resourceTypeSearch = "fs";
         this.title = "Formative Assessment Strategies";
+        this.headerImage = "/assets/images/formative-strategy.png";
         break; 
       }          
       case "accessibility": { 
         this.resourceTypeSearch = "as";
         this.title = "Accessibility Strategies";
+        this.headerImage = "/assets/images/accessibility-strategy.png";
         break; 
       }  
       case "professional": { 
         this.resourceTypeSearch = "pl";
         this.title = "Professional Learning Resources";
+        this.headerImage = "/assets/images/professional-learning.png";
         break; 
       }        
       case "items": { 
         this.interimItemPortalUrl = AppConfig.settings.interimItemPortalUrl;
         this.title = "Interim Assessment Item Portal";
+        this.headerImage = "/assets/images/iaip 1.png";
         this.resourceTypeSearch = "";
         break; 
       }  
@@ -183,12 +189,17 @@ export class LandingComponent implements OnInit {
   }
 
   onPrintPage() {
-    console.log(window.location.href)
-    console.log(this.router.url);
+
+    // TODOJR: may be able to remove this logic when docker is done
+    if (window.location.origin.toLowerCase().includes("localhost")) {
+      this.urlHome = 'https://qa.webapp.dl.smarterbalanced.org';
+    }
+    else {
+      this.urlHome = window.location.origin;
+    }
+
+    //TODOJR: here is the logic to call api2pdf
     console.log(this.buildPrintHTML());
-  }
-  ngAfterViewInit() {
-    
   }
 
   buildPrintHTML() : string {
@@ -220,7 +231,6 @@ export class LandingComponent implements OnInit {
     ".lpImage {height: 225px;width: 225px;}" +
     ".shadow {box-shadow: 0 1px 8px rgb(0 0 0 / 20%), 0 3px 4px rgb(0 0 0 / 12%), 0 3px 3px rgb(0 0 0 / 14%); border-radius: 4px; margin: 1.5rem;}" +
     ".SBImage {width: 79px;height: 21px;}" +
-    //".footer {position:fixed;bottom:0px;left:0px;width:100%;padding:8px;}"+
     ".bold {font-weight: bold;}" +
     ".colorGreen {color: #3C8517;}" +
     "li {max-width: 90%;}" + 
@@ -232,19 +242,7 @@ export class LandingComponent implements OnInit {
     "a.button {-webkit-appearance: button;-moz-appearance: button;appearance: button;text-decoration: none;}" +
     "hr {background-color: lightgray;border: none;height: 2px;max-width: unset;width: 100%;margin: 0px;margin-top: 15px;margin-bottom: 15px;}" +
     ".copyright {font-family: Open Sans;font-size: 10px;color: #21262F;margin: 2px 0px;}" +
-    //"div.footer {display: block; text-align: center;position: running(footer);}" +
-    //"@page {@bottom-center { content: element(footer) }}" +
-
-    // "@media print {@page {" +
-    // "  @bottom-left {content: 'FOOTER';}" +
-    // "        @bottom-center {content: 'Page ' counter(page) ' of ' counter(pages);}" +
-    // "        @bottom-right {content: 'The end';}}}" +
-
-
-    // "@media print {@page {margin: 1mm; @bottom-left {content: 'Here: ' counter(page);}}}" +
-    // "body {margin-bottom: 50px;}" +
     ".footer {position: fixed;bottom: 0;width: 100%;height: 50px;font-size: 6pt;color: #777;background: red;opacity: 0.5;}" +
-    //".footer:after {counter-increment: page;content: counter(page);}" +
     "</style>";
   }
 
@@ -271,39 +269,10 @@ export class LandingComponent implements OnInit {
   } 
 
   getTitle() : string {
-    var image = "";
-
-    switch(this.landingType) { 
-      case "playlist": { 
-        image = "connections-playlist.png";
-         break; 
-      } 
-      case "instructional": { 
-        image = "instructional-resource.png";
-         break; 
-      } 
-      case "formative": { 
-        image = "formative-strategy.png";
-         break; 
-      } 
-      case "accessibility": { 
-        image = "accessibility-strategy.png";
-         break; 
-      } 
-      case "professional": { 
-        image = "professional-learning.png";
-         break; 
-      } 
-      case "items": { 
-        image = "iaip 1.png";
-         break; 
-      } 
-   } 
-    
     return "" +
     "<td colspan=2>" +
     "<h1>" +
-    "<img class='headerImage' src='" + this.urlHome + "/assets/images/" + image + "'>" +
+    "<img class='headerImage' src='" + this.urlHome + this.headerImage + "'>" +
     this.title + 
     "</h1></td>";
   }
@@ -360,12 +329,12 @@ export class LandingComponent implements OnInit {
          break; 
       } 
    } 
+
     return "" +
     "<td colspan=2>" +
     "<div class='callToActionBackground'>" +
     "<table style='width: 100%;'><tr><td>" +
       "<h2 style='margin-top: 0px'>" + this.landingPage.callToActionSection.header + "</h2>" +
-      //"<br/>" +
       "<p class='regText'>" + msg + "</p>" + 
     "</td>" + 
     "<td>" +
@@ -383,12 +352,13 @@ export class LandingComponent implements OnInit {
   }
 
   getPage1Footer(): string {
+    const copyrightYear = (new Date()).getFullYear();
     return "" +
     "</span class='footer'><table class='pageMargin' style='margin-top: 0px;'>" +
     "<tr>" +
     "<td><p class='regText smText'> Page X of 2</p></td>" + 
     "<td style='text-align: right;padding-right: 15px;'> <img class='SBImage' src='" + this.urlHome +  "/assets/images/SmarterBalanced_Logo_Horizontal_Color.png'>"+
-    "<br><p class='copyright'>© 2021 The Regents of the University of California</p></td>" +
+    "<br><p class='copyright'>© " + copyrightYear + " The Regents of the University of California</p></td>" +
     "</tr>" +
     "</table></div>";
   }
@@ -403,6 +373,7 @@ export class LandingComponent implements OnInit {
     "<tr>" + this.getHowCanIUse() + "</tr>" +
     "<tr>" + this.getRightSide() + "</tr>" +
     "</tbody></table>"; 
+    // TODOJR: ????? need or remove
     //this.getPage2Footer();
   }
 
@@ -504,6 +475,7 @@ export class LandingComponent implements OnInit {
     return value;
   }
 
+  // TODOJR: ????? need or remove
   // getPage2Footer(): string {
   //   return "" +
   //   "</span  ><table>" +

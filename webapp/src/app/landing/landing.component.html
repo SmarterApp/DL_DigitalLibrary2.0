@@ -11,14 +11,7 @@
 
         <span>
             <h1 style="margin-left: 32px;">
-                <ng-container [ngSwitch]="landingType">
-                    <img class="headerImage" *ngSwitchCase="'playlist'" src="/assets/images/connections-playlist.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'instructional'" src="/assets/images/instructional-resource.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'formative'" src="/assets/images/formative-strategy.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'accessibility'" src="/assets/images/accessibility-strategy.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'professional'" src="/assets/images/professional-learning.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'items'" src="/assets/images/iaip 1.png" aria-hidden="true">
-                </ng-container>
+                <img class="headerImage" src="{{headerImage}}" aria-hidden="true">
                 {{title}}
             </h1>
         </span>
