@@ -1,4 +1,4 @@
-import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit, ViewChild, ElementRef  } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Grade } from '../data/resource/model/grade.model';
 import { Subject } from '../data/resource/model/subject.model';
@@ -9,7 +9,7 @@ import { AppConfig } from 'src/app/common/config/app.config';
 const YT_MATCH_VID = /.*youtube.*v=([^&]+).*$|.*youtu.be\/([^&?]+).*$|.*youtube\/embed\/([^&?]+).*$/;
 
 export class SearchQueryParams {
-  query?: string;
+  query?: string; 
   claims?: string;
   grades?: string;
   subjects?: string;
@@ -25,6 +25,9 @@ export class SearchQueryParams {
 })
 
 export class LandingComponent implements OnInit {
+
+  @ViewChild("outsideElement", {static: true}) outsideElement : ElementRef;
+  @ViewChild('modalView', {static: true}) modalView$ : ElementRef;
   params: SearchQueryParams;
   landingType: string;
   resourceTypeSearch: string;
@@ -44,6 +47,7 @@ export class LandingComponent implements OnInit {
   filterLoading = false;
   urlHome: string = 'https://qa.webapp.dl.smarterbalanced.org';
   headerImage: string;
+  showAblePlayer: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -59,7 +63,7 @@ export class LandingComponent implements OnInit {
     this.route.data.subscribe(data => {
       if (data.landing) {
         this.landingPage = data.landing;
-        this.landingPage.howItHelpsSection.description = this.landingPage.howItHelpsSection.description.split('<li>').join('<li style="font-size: 1rem;">');
+        this.landingPage.howItHelpsSection.description = this.landingPage.howItHelpsSection.description.split('<li>').join('<li style="font-size: 1rem;">').split('"').join("'").replace(/[^\x20-\x7E]/gmi, "");
         this.youtubeVideoId = extractYouTubeVideoId(this.landingPage.marketingVideoLink);
       }
     });
@@ -152,12 +156,23 @@ export class LandingComponent implements OnInit {
     this.router.navigate(['/auth/login'], { queryParams: { redirectUrl: this.router.url }});
   }
 
+  openModal() {
+    this.showAblePlayer = false;
+    this.modalView$.nativeElement.classList.add('visible');
+  }
+
+  closeModal() {
+    this.showAblePlayer = true;
+    this.modalView$.nativeElement.classList.remove('visible');
+  }
+
+
   @HostListener('window:resize', ['$event'])
   onResize(event?) {
     clearTimeout(this.resizeTimeout);
     this.resizeTimeout = setTimeout(this.doResize, 100);
   }
-
+  
   doResize = () =>  {
     const isSmall = this.window.innerWidth <= this.removeRightMarginSize;
 
@@ -172,6 +187,24 @@ export class LandingComponent implements OnInit {
     this.wasSmall = isSmall;
     this.lastSize = this.window.innerWidth;
   }
+
+  @HostListener('document:click', ['$event.target'])
+  public onClick(targetElement) {
+    if (!this.showAblePlayer) {
+      const outsideElement = this.outsideElement.nativeElement.contains(targetElement);
+
+      if (outsideElement) {
+        this.closeModal();
+      } 
+    }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+    handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.code === "Escape") {
+      this.closeModal();
+    }
+}
 
   loadDDL() {
     this.grades = [
@@ -188,7 +221,7 @@ export class LandingComponent implements OnInit {
       { code: 'math', shortName: 'MATH', fullName: 'Mathematics' }];
   }
 
-  onPrintPage() {
+  async onPrintPage() {
 
     // TODOJR: may be able to remove this logic when docker is done
     if (window.location.origin.toLowerCase().includes("localhost")) {
@@ -198,8 +231,25 @@ export class LandingComponent implements OnInit {
       this.urlHome = window.location.origin;
     }
 
+    //const client = new Api2PdfClient("<YOUR-API2PDF-KEY>");
+
+//   let response: Api2Pdf.Response | undefined = undefined;
+//   try {
+//     response = await client.headlessChromeFromUrl("<YOUR-URL>");
+//   } catch (e) {
+    
+//   }
+
+// if(response && response.success) {
+//   console.log("File is available as PDF here:", response.pdf);
+// } else {
+//   console.error("PDF conversion failed with:", response.error);
+// }
     //TODOJR: here is the logic to call api2pdf
     console.log(this.buildPrintHTML());
+    console.log(this.getPage1Footer());
+
+    this.openModal();
   }
 
   buildPrintHTML() : string {
@@ -211,6 +261,7 @@ export class LandingComponent implements OnInit {
     this.createPage1() +
     this.createPageBreak() +
     this.createPage2() +
+    this.getPage1Footer() +
     "</body>" + 
     "</html>";
   }
@@ -241,8 +292,10 @@ export class LandingComponent implements OnInit {
                         "display: flex;align-items: center;text-transform: uppercase;width: 200px;}" +
     "a.button {-webkit-appearance: button;-moz-appearance: button;appearance: button;text-decoration: none;}" +
     "hr {background-color: lightgray;border: none;height: 2px;max-width: unset;width: 100%;margin: 0px;margin-top: 15px;margin-bottom: 15px;}" +
-    ".copyright {font-family: Open Sans;font-size: 10px;color: #21262F;margin: 2px 0px;}" +
-    ".footer {position: fixed;bottom: 0;width: 100%;height: 50px;font-size: 6pt;color: #777;background: red;opacity: 0.5;}" +
+    //".copyright {font-family: Open Sans;font-size: 10px;color: #21262F;margin-right: 20px;text-align: right;}" +
+    //".footerCRandImage {position: fixed;bottom: 0;width: 100%;height: 50px;font-size: 6pt;color: #777;background: red;opacity: 0.5;}" +
+
+    "#footerCRandImage {position: fixed;bottom: 0;width: 100%;}" +
     "</style>";
   }
 
@@ -254,8 +307,7 @@ export class LandingComponent implements OnInit {
     "<tr>" + this.getTagLine() + "</tr>" +
     "<tr>" + this.getHowWillItHelp() + "</tr>" +
     "<tr>" + this.getStartUsing() + "</tr>" +
-    "</tbody></table>" + 
-    this.getPage1Footer();
+    "</tbody></table>";
   }
 
   getHeader(): string {
@@ -352,17 +404,18 @@ export class LandingComponent implements OnInit {
   }
 
   getPage1Footer(): string {
-    const copyrightYear = (new Date()).getFullYear();
-    return "" +
-    "</span class='footer'><table class='pageMargin' style='margin-top: 0px;'>" +
-    "<tr>" +
-    "<td><p class='regText smText'> Page X of 2</p></td>" + 
-    "<td style='text-align: right;padding-right: 15px;'> <img class='SBImage' src='" + this.urlHome +  "/assets/images/SmarterBalanced_Logo_Horizontal_Color.png'>"+
-    "<br><p class='copyright'>© " + copyrightYear + " The Regents of the University of California</p></td>" +
-    "</tr>" +
-    "</table></div>";
+    return "" + 
+    "<footer id='footerCRandImage'>" +
+    "<div style='float: right;width:100%;'>" +
+    "<img class='SBImage' style='float: right;padding-right: 2.2em;padding-top: 2em;' src='" + this.urlHome +  "/assets/images/SmarterBalanced_Logo_Horizontal_Color.png'>" +
+    "</div></footer>";
   }
 
+  getFooterPage(): string {
+    const copyrightYear = (new Date()).getFullYear();
+    return "<div class='page-footer' style='width:100%; padding-left: 6em; text-align:left;font-family: Open Sans; font-size:8px;'>Page <span class='pageNumber'></span> of <span class='totalPages'></span></div><div class='page-footer' style='width:100%; text-align:right; font-size:8px;font-family: Open Sans;display: inline; padding-right: 6em;'>© " + copyrightYear + " The Regents of the University of California</div>";
+  }
+  
   createPageBreak() : string {
     return  "<div style ='display:block; clear:both; page-break-before:always;'></div>"
   }
@@ -373,8 +426,6 @@ export class LandingComponent implements OnInit {
     "<tr>" + this.getHowCanIUse() + "</tr>" +
     "<tr>" + this.getRightSide() + "</tr>" +
     "</tbody></table>"; 
-    // TODOJR: ????? need or remove
-    //this.getPage2Footer();
   }
 
   getHowCanIUse (): string {
@@ -474,20 +525,9 @@ export class LandingComponent implements OnInit {
     value += "</ul></tr></td>";
     return value;
   }
-
-  // TODOJR: ????? need or remove
-  // getPage2Footer(): string {
-  //   return "" +
-  //   "</span  ><table>" +
-  //   "<tr>" +
-  //   "<td>pagenum</td>" + 
-  //   "<td> <img class='SBImage' src='" + this.urlHome +  "assets/images/SmarterBalanced_Logo_Horizontal_Color.png'>"+
-  //   "copyright</td>" +
-  //   "</tr>" +
-  //   "</table></div>";
-  //}
 }
 
+ 
 function extractYouTubeVideoId(url: string): string {
   const matches = url.match(YT_MATCH_VID);
 

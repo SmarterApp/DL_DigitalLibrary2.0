@@ -33,7 +33,7 @@
 
         <!-- The right hand side -->
         <div class="landing-card landing-card-right">
-            <div *ngIf="youtubeVideoId.length > 0">
+            <div [hidden]="!showAblePlayer" *ngIf="youtubeVideoId.length > 0">
                 <sbdl-able-player-float-ts class="video"
                     [youtubeVideoId]="youtubeVideoId">
                 </sbdl-able-player-float-ts>  
@@ -190,6 +190,26 @@
         <br>
         <hr style="clear: both;"/>
     </section>
+
+    <div #outsideElement>
+        <div class="modal-view-container">
+          <div #modalView class="modal view">
+            <div class="modal-view-details">
+                <sbdl-button-icon
+                #closeButton
+                class="close-button"
+                aria-label="close"
+                (click)="closeModal()"
+              >
+                  <i icon="circle-close"></i>
+              </sbdl-button-icon>                
+              <p style="text-align: center;margin-top: 0; margin-bottom: 0;height: 100%;">
+                <object data="http://localhost:4200/assets/images/ToolsForTeathers-LP.pdf" type="application/pdf"  style="max-width: none; width: 820px;height: 100%;max-height: none;" ></object>
+              </p>
+            </div>
+          </div>
+        </div>
+    </div>
 </main>
 
 <!-- Start of the right margin -->

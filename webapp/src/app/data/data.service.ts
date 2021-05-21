@@ -51,6 +51,12 @@ export class DataService {
       catchError(this.handleError));
   }
 
+  postapi2pdf(url: string, obj: any, params?: any): Observable<any> {
+    return this.makeOptions(url, params).pipe(
+      flatMap(reqCtx => this.httpService.post(reqCtx.fullUrl, obj, reqCtx.options)),
+      catchError(this.handleError));
+  }
+
   delete(url: string, params?: any): Observable<any> {
     return this.makeOptions(url, params).pipe(
       flatMap(reqCtx => this.httpService.delete(reqCtx.fullUrl, reqCtx.options)),
