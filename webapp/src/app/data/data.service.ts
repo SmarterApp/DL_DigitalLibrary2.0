@@ -51,8 +51,8 @@ export class DataService {
       catchError(this.handleError));
   }
 
-  postapi2pdf(url: string, obj: any, params?: any): Observable<any> {
-    return this.makeOptions(url, params).pipe(
+  postapi2pdf(url: string, obj: any): Observable<any> {
+    return this.makeOptionsapi2pdf().pipe(
       flatMap(reqCtx => this.httpService.post(reqCtx.fullUrl, obj, reqCtx.options)),
       catchError(this.handleError));
   }
@@ -102,6 +102,21 @@ export class DataService {
 
         return result;
       }));
+  }
+
+  private makeOptionsapi2pdf(): Observable<RequestContext> {
+
+    const fullUrl = AppConfig.settings.api2pdfHost;
+
+    const options = {
+      headers: new HttpHeaders({'Authorization': '29795e25-a83e-4d50-bcbc-a18d4d559800'}),
+    };
+
+    return this.currentUser.pipe(
+            map(user => {
+              const result = { fullUrl, options };
+         return result;
+       }));              
   }
 
   private handleError(error: HttpErrorResponse) {

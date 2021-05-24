@@ -44,7 +44,22 @@ export class LandingService {
       .get(`/api/landing_page/${this.resourceCode}`)
       .pipe(map(this.landingFromJson));
       return testlanding;
-  }
+  } 
+
+  postapi2pdf(html: string, footer: string, filename: string) : Observable<any>{
+
+    var payload = {
+      "html": html,
+      "inlinePdf": false,
+      "fileName": filename,
+      "options": {
+        "displayHeaderFooter": true,
+        "footerTemplate": footer
+      }
+    }; 
+
+    return this.dataService.postapi2pdf("", payload);
+  } 
 
   landingFromJson(landingJson: any): LandingPage {
     const testlanding  = landingJson;

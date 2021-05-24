@@ -5,6 +5,8 @@ import { Subject } from '../data/resource/model/subject.model';
 import { LandingPage } from '../data/landing/model/landingPage.model';
 import { LandingService } from '../data/landing/landing.service';
 import { AppConfig } from 'src/app/common/config/app.config';
+import { stripSummaryForJitFileSuffix } from '@angular/compiler/src/aot/util';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 const YT_MATCH_VID = /.*youtube.*v=([^&]+).*$|.*youtu.be\/([^&?]+).*$|.*youtube\/embed\/([^&?]+).*$/;
 
@@ -48,12 +50,15 @@ export class LandingComponent implements OnInit {
   urlHome: string = 'https://qa.webapp.dl.smarterbalanced.org';
   headerImage: string;
   showAblePlayer: boolean = true;
+  pdfData: any;
 
   constructor(
     private route: ActivatedRoute,
     private landingService: LandingService,
     private router: Router,
+    private sanitizer: DomSanitizer,
     @Inject('Window') private window: Window,
+    
     ) { 
       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     }
@@ -233,22 +238,14 @@ export class LandingComponent implements OnInit {
 
     //const client = new Api2PdfClient("<YOUR-API2PDF-KEY>");
 
-//   let response: Api2Pdf.Response | undefined = undefined;
-//   try {
-//     response = await client.headlessChromeFromUrl("<YOUR-URL>");
-//   } catch (e) {
-    
-//   }
+    var fileName = "ToolsForTeachers-" + this.title;
 
-// if(response && response.success) {
-//   console.log("File is available as PDF here:", response.pdf);
-// } else {
-//   console.error("PDF conversion failed with:", response.error);
-// }
-    //TODOJR: here is the logic to call api2pdf
-    console.log(this.buildPrintHTML());
-    console.log(this.getPage1Footer());
+    this.landingService.postapi2pdf(this.buildPrintHTML(), this.getPage1Footer(), "ToolsForTeachers-" + this.title + ".pdf").subscribe(r => {this.stuff(r)});
+  }
 
+  stuff(results: any) {
+    //this.pdfData =  "http://localhost:4200/assets/images/ToolsForTeathers-LP.pdf";
+    this.pdfData = this.sanitizer.bypassSecurityTrustResourceUrl("http://localhost:4200/assets/images/ToolsForTeathers-LP.pdf");
     this.openModal();
   }
 

@@ -42,7 +42,7 @@ export class MockDataService implements PublicPart<DataService> {
     return of(undefined);
   }
 
-  postapi2pdf(url: string, obj: any, params?: any): Observable<any> {
+  postapi2pdf(url: string, obj: any): Observable<any> {
     return of(undefined);
   }
 
