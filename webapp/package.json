@@ -41,6 +41,7 @@
     "@okta/okta-angular": "^1.4.0",
     "@okta/okta-auth-js": "4.0.0",
     "angulartics2": "^7.5.2",
+    "api2pdf": "^1.1.1",
     "immutable": "^4.0.0-rc.12",
     "lodash.flatmap": "^4.5.0",
     "lodash.groupby": "^4.6.0",

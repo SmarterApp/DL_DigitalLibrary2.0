@@ -451,33 +451,24 @@
   content: "";
 }
 
-.modal-view-details button {
+.close-button {
   position: absolute;
-  top: 0.22rem;
-  right: 1.8rem;
+  top: 65px;
+  left: 15px;
   background: none;
-  color: white;
+  color: #3c78d8;
   border-radius: 2px;
   border: none;
-  font-size: 16px;
+  font-size: inherit;
   padding: 0;
-  text-transform: uppercase;
   sbdl-icon {
     cursor: pointer;
+    color: black;
+    font-size: 25px;
+    padding: 0;
   }
 }
 
-// .close-button {
-//   display: inline;
-//   font-family: inherit;
-//   font-size: inherit;
-//   padding: 0;
-
-//   position: absolute;
-//   top: 0.2rem;
-//   right: 0.5rem;
-
-//   sbdl-icon {
-//     cursor: pointer;
-//   }
-// }
+button.mdc-icon-button {
+  padding: 0;
+}
