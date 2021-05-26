@@ -6,6 +6,7 @@ export interface IAppConfig {
     tenantConfigPath: string;
     apiServerHost: string;
     api2pdfHost: string;
+    api2pdfAuthorization: string;
     interimItemPortalUrl: string;
     enableAnalytics: boolean;
     GA4AnalyticsTrackingId: string;

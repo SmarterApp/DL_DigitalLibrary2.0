@@ -10,6 +10,7 @@
   "tenantConfigPath": "/assets/config/tenant.config.json",
   "apiServerHost": "https://api.dl.smarterbalanced.org",
   "api2pdfHost": "https://v2018.api2pdf.com/chrome/html",
+  "api2pdfAuthorization": "29795e25-a83e-4d50-bcbc-a18d4d559800",
   "interimItemPortalUrl": "https://interimitems.smartertoolsforteachers.org/BrowseItems",
   "enableAnalytics": true,
   "GA4AnalyticsTrackingId": "G-R6S1ZM1X5W",
