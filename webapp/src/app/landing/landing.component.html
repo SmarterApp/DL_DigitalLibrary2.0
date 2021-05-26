@@ -1,4 +1,10 @@
 <main id="main" class="landing-content">
+    
+    <div *ngIf="isWaitDisplayed" class="filter-loader">
+        <div class="filter-spinner-container">
+          <i class="fas fa-spinner fa-pulse" aria-label="Loading..."></i>
+        </div>
+    </div>
 
     <div class="landing-header">
 
@@ -42,11 +48,6 @@
             </div>
 
             <div class="callToActionBackground">
-                <div *ngIf="filterLoading" class="filter-loader">
-                    <div class="filter-spinner-container">
-                      <i class="fas fa-spinner fa-pulse" aria-label="Loading..."></i>
-                    </div>
-                </div>
                 <h5>{{landingPage.callToActionSection.header}}</h5>
 
                 <dynamic-html class="text-container-3" [content]="landingPage.callToActionSection.description"></dynamic-html>
@@ -194,9 +195,8 @@
     <div #outsideElement>
         <div class="modal-view-container">
           <div #modalView class="modal view">
-
             <div class="modal-view-details">
-                <div class="close-button"> 
+                <div class="close-button">  
                     <sbdl-button-icon
                     #closeButton
                     buttonTitle="Close"
@@ -205,9 +205,18 @@
                         <sbdl-icon icon="circle-close"></sbdl-icon>
                     </sbdl-button-icon> 
                 </div>
-                <p style="text-align: center;margin-top: 0; margin-bottom: 0;height: 100%;">
+                <div style="height: calc(100% - 105px);">
                     <object [attr.data]="pdfData" type="application/pdf"  style="max-width: none; width: 820px;height: 100%;max-height: none;" ></object>
-                  </p>
+                    <!-- <object data="http://localhost:4200/assets/mock-downloads/ToolsForTeathers-LP.pdf" type="application/pdf"  style="max-width: none; width: 820px;height: 100%;max-height: none;" ></object> -->
+                </div>
+                <div class="close-button-bottom">  
+                    <sbdl-button
+                    class="primary"
+                    #closeButton
+                    buttonTitle="Close"
+                    (click)="closeModal()">Close
+                    </sbdl-button> 
+                </div>
             </div>
           </div>
         </div>

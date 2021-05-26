@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Grade } from '../data/resource/model/grade.model';
 import { Subject } from '../data/resource/model/subject.model';
 import { LandingPage } from '../data/landing/model/landingPage.model';
+import { api2pdfResponce } from '../data/landing/model/api2pdfResponce.model';
 import { LandingService } from '../data/landing/landing.service';
 import { AppConfig } from 'src/app/common/config/app.config';
-import { stripSummaryForJitFileSuffix } from '@angular/compiler/src/aot/util';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 const YT_MATCH_VID = /.*youtube.*v=([^&]+).*$|.*youtu.be\/([^&?]+).*$|.*youtube\/embed\/([^&?]+).*$/;
@@ -46,7 +46,7 @@ export class LandingComponent implements OnInit {
   resizeTimeout;
   wasSmall: boolean;
   lastSize: number;
-  filterLoading = false;
+  isWaitDisplayed = false;
   urlHome: string = 'https://qa.webapp.dl.smarterbalanced.org';
   headerImage: string;
   showAblePlayer: boolean = true;
@@ -124,7 +124,7 @@ export class LandingComponent implements OnInit {
 
   onFilterResourcesSubjectAndGradeClick()
   {
-    this.filterLoading = true;
+    this.isWaitDisplayed = true;
     const params: SearchQueryParams = new SearchQueryParams();
     params.resourceTypes = this.resourceTypeSearch;
     if (this.selectedGrade !== ""){
@@ -135,15 +135,15 @@ export class LandingComponent implements OnInit {
       params.subjects = this.selectedSubject;
     }
     this.router.navigate(['search', params]);
-    this.filterLoading = false;
+    this.isWaitDisplayed = false;
   }
   
   onFilterResourcesClick() {
-    this.filterLoading = true;
+    this.isWaitDisplayed = true;
     const params: SearchQueryParams = new SearchQueryParams();
     params.resourceTypes = this.resourceTypeSearch;
     this.router.navigate(['search', params]);
-    this.filterLoading = false;
+    this.isWaitDisplayed = false;
   }
 
   search(newParams: SearchQueryParams) {
@@ -227,6 +227,20 @@ export class LandingComponent implements OnInit {
   }
 
   async onPrintPage() {
+    this.isWaitDisplayed = true;
+    this.landingService.postapi2pdf(this.buildPrintHTML(), 
+                                    this.getFooterPage(), 
+                                    "ToolsForTeachers-" + this.title + ".pdf")
+        .subscribe(r => {this.responseapi2pdf(r)});
+  }
+
+  responseapi2pdf(results: api2pdfResponce) {
+    this.pdfData = this.sanitizer.bypassSecurityTrustResourceUrl(results.pdf);
+    this.openModal();
+    this.isWaitDisplayed = false;
+  }
+
+  buildPrintHTML() : string {
 
     // TODOJR: may be able to remove this logic when docker is done
     if (window.location.origin.toLowerCase().includes("localhost")) {
@@ -236,20 +250,6 @@ export class LandingComponent implements OnInit {
       this.urlHome = window.location.origin;
     }
 
-    //const client = new Api2PdfClient("<YOUR-API2PDF-KEY>");
-
-    var fileName = "ToolsForTeachers-" + this.title;
-
-    this.landingService.postapi2pdf(this.buildPrintHTML(), this.getPage1Footer(), "ToolsForTeachers-" + this.title + ".pdf").subscribe(r => {this.stuff(r)});
-  }
-
-  stuff(results: any) {
-    //this.pdfData =  "http://localhost:4200/assets/images/ToolsForTeathers-LP.pdf";
-    this.pdfData = this.sanitizer.bypassSecurityTrustResourceUrl("http://localhost:4200/assets/images/ToolsForTeathers-LP.pdf");
-    this.openModal();
-  }
-
-  buildPrintHTML() : string {
     return "" +
     "<!DOCTYPE html> " +
     "<html>" +
@@ -258,7 +258,7 @@ export class LandingComponent implements OnInit {
     this.createPage1() +
     this.createPageBreak() +
     this.createPage2() +
-    this.getPage1Footer() +
+    this.getPageFooterSBLogo() +
     "</body>" + 
     "</html>";
   }
@@ -289,9 +289,6 @@ export class LandingComponent implements OnInit {
                         "display: flex;align-items: center;text-transform: uppercase;width: 200px;}" +
     "a.button {-webkit-appearance: button;-moz-appearance: button;appearance: button;text-decoration: none;}" +
     "hr {background-color: lightgray;border: none;height: 2px;max-width: unset;width: 100%;margin: 0px;margin-top: 15px;margin-bottom: 15px;}" +
-    //".copyright {font-family: Open Sans;font-size: 10px;color: #21262F;margin-right: 20px;text-align: right;}" +
-    //".footerCRandImage {position: fixed;bottom: 0;width: 100%;height: 50px;font-size: 6pt;color: #777;background: red;opacity: 0.5;}" +
-
     "#footerCRandImage {position: fixed;bottom: 0;width: 100%;}" +
     "</style>";
   }
@@ -306,6 +303,15 @@ export class LandingComponent implements OnInit {
     "<tr>" + this.getStartUsing() + "</tr>" +
     "</tbody></table>";
   }
+  
+  getTitle() : string {
+    return "" +
+    "<td colspan=2>" +
+    "<h1>" +
+    "<img class='headerImage' src='" + this.urlHome + this.headerImage + "'>" +
+    this.title + 
+    "</h1></td>";
+  }
 
   getHeader(): string {
     return "" +
@@ -316,15 +322,6 @@ export class LandingComponent implements OnInit {
       "target='blank'>SmarterToolsForTeachers.org/" + this.landingType + "</a>" +
       "</td>";
   } 
-
-  getTitle() : string {
-    return "" +
-    "<td colspan=2>" +
-    "<h1>" +
-    "<img class='headerImage' src='" + this.urlHome + this.headerImage + "'>" +
-    this.title + 
-    "</h1></td>";
-  }
 
   getTagLine(): string {
     return "" +
@@ -400,7 +397,7 @@ export class LandingComponent implements OnInit {
     "</td>";
   }
 
-  getPage1Footer(): string {
+  getPageFooterSBLogo(): string {
     return "" + 
     "<footer id='footerCRandImage'>" +
     "<div style='float: right;width:100%;'>" +

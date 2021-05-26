@@ -109,7 +109,8 @@ export class DataService {
     const fullUrl = AppConfig.settings.api2pdfHost;
 
     const options = {
-      headers: new HttpHeaders({'Authorization': '29795e25-a83e-4d50-bcbc-a18d4d559800'}),
+      headers: new HttpHeaders({'Authorization': '29795e25-a83e-4d50-bcbc-a18d4d559800',
+                                'binary': 'true'}),
     };
 
     return this.currentUser.pipe(

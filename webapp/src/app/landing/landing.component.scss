@@ -324,16 +324,29 @@
   .filter-loader {
     background-color: rgba(255, 255, 255, 0.4);
     cursor: wait;
-    height: 100vh;
-    left: 0;
-    position: absolute;
+    position: fixed;
     top: 0;
-    width: 100vw;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
   }
 
   .filter-spinner-container {
-    margin: 60vh 15vw;
-    width: 6rem;
+    z-index: 999999;
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+    display: block;
+
     svg {
       color: $neutral-500;
       font-size: 6rem;
@@ -423,12 +436,11 @@
   position: fixed;
   left: 50%;
   top: 50%;
-  /* padding: 25px 25px 50px 25px; */
-  //width: 65%;
-  height: 85%;
+  padding: 15px;
+  height: 90%;
   max-width: 100%;
   transform: translate(-50%, -50%);
-  border-radius: 2px;
+  border-radius: 8px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
 }
 
@@ -452,23 +464,27 @@
 }
 
 .close-button {
-  position: absolute;
-  top: 65px;
-  left: 15px;
+  float: right;
   background: none;
   color: #3c78d8;
   border-radius: 2px;
   border: none;
   font-size: inherit;
   padding: 0;
+  margin-bottom: 12px;
+  margin-right: 10px;
   sbdl-icon {
     cursor: pointer;
-    color: black;
     font-size: 25px;
     padding: 0;
+    margin: 0;
   }
 }
 
-button.mdc-icon-button {
-  padding: 0;
+.close-button-bottom {
+  float: right;
+  margin: 10px 15px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

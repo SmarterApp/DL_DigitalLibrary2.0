@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { DataService } from '../data.service';
 import { LandingPage } from './model/landingPage.model';
+import { api2pdfResponce } from './model/api2pdfResponce.model';
 import { Observable, of, ReplaySubject } from 'rxjs';
 
 @Injectable({
@@ -50,7 +51,7 @@ export class LandingService {
 
     var payload = {
       "html": html,
-      "inlinePdf": false,
+      "inlinePdf": true,
       "fileName": filename,
       "options": {
         "displayHeaderFooter": true,
@@ -58,7 +59,12 @@ export class LandingService {
       }
     }; 
 
-    return this.dataService.postapi2pdf("", payload);
+    // var payload = {
+    //   "html": "<p>Hello World</p>"
+    // };
+
+    return this.dataService.postapi2pdf("", payload)
+      .pipe(map(this.api2pdfResponceFromJson));;
   } 
 
   landingFromJson(landingJson: any): LandingPage {
@@ -66,5 +72,11 @@ export class LandingService {
     return {
       ...landingJson
     } as LandingPage;
+  }
+
+  api2pdfResponceFromJson(api2pdfResponceJson: any): api2pdfResponce {
+    return {
+      ...api2pdfResponceJson
+    } as api2pdfResponce;
   }
 } 
