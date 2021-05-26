@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, ViewChild, ViewContainerRef, ElementRef } from '@angular/core';
+import { Component,
+  OnInit, 
+  Input, 
+  ViewChild, 
+  ViewContainerRef, 
+  ElementRef, 
+  EventEmitter,
+  Output } from '@angular/core';
 import {ConnectedPosition} from '@angular/cdk/overlay';
 
 @Component({
@@ -15,6 +22,9 @@ export class LandingActionsComponent implements OnInit {
 
   @ViewChild('sharePopover', { static: false })
   sharePopover: ElementRef;
+
+  @Output()
+  printPage = new EventEmitter();
 
   shareValue: string;
   shareOverlayOpen: boolean;
@@ -33,4 +43,7 @@ export class LandingActionsComponent implements OnInit {
     this.shareValue = `${location.protocol}//${location.host}/landing/${this.landingType}`;
   }
 
+  printLandingPage () {
+    this.printPage.emit();
+  }
 }

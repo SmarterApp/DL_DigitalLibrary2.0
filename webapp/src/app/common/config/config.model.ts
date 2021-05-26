@@ -5,6 +5,7 @@ export interface IAppConfig {
     logging: { console: boolean, aws: boolean, level: LoggerLevel };
     tenantConfigPath: string;
     apiServerHost: string;
+    api2pdfHost: string;
     interimItemPortalUrl: string;
     enableAnalytics: boolean;
     GA4AnalyticsTrackingId: string;
