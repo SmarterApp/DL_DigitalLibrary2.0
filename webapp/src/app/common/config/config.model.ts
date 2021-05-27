@@ -7,6 +7,7 @@ export interface IAppConfig {
     apiServerHost: string;
     api2pdfHost: string;
     api2pdfAuthorization: string;
+    api2pdfIsDockerVersion: boolean;
     interimItemPortalUrl: string;
     enableAnalytics: boolean;
     GA4AnalyticsTrackingId: string;

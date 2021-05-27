@@ -50,13 +50,43 @@ export class DataService {
       flatMap(reqCtx => this.httpService.post(reqCtx.fullUrl, obj, reqCtx.options)),
       catchError(this.handleError));
   }
-
+  
   postapi2pdf(url: string, obj: any): Observable<any> {
-    return this.makeOptionsapi2pdf().pipe(
+    return this.makeOptionsapi2pdfTest().pipe(
       flatMap(reqCtx => this.httpService.post(reqCtx.fullUrl, obj, reqCtx.options)),
       catchError(this.handleError));
-  }
 
+    // if (AppConfig.settings.api2pdfIsDockerVersion) {
+    //   return this.postapi2pdf2(obj);
+    // }
+    // else {
+    //   return this.makeOptionsapi2pdf().pipe(
+    //     flatMap(reqCtx => this.httpService.post(reqCtx.fullUrl, obj, reqCtx.options)),
+    //     catchError(this.handleError));
+    // }
+  }
+  
+  private postapi2pdf2(obj: any): Observable<Object> {
+
+    const fullUrl = AppConfig.settings.api2pdfHost;
+    const options = {
+      headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
+                                'binary': 'true',
+                                'Content-Type':  'application/octet-stream'}),
+      responseType : 'arraybuffer',
+    } as any;
+
+
+    // const options = {
+    //   headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
+    //                             'binary': 'true',
+    //                             'Content-Type':  'application/octet-stream'}),
+    //   responseType : 'arraybuffer'
+    // };
+
+    return this.httpService.post(fullUrl, obj, options);
+  }
+  
   delete(url: string, params?: any): Observable<any> {
     return this.makeOptions(url, params).pipe(
       flatMap(reqCtx => this.httpService.delete(reqCtx.fullUrl, reqCtx.options)),
@@ -114,11 +144,57 @@ export class DataService {
     };
 
     return this.currentUser.pipe(
-            map(user => {
-              const result = { fullUrl, options };
-         return result;
-       }));              
+      map(user => {
+        const result = { fullUrl, options };
+   return result;
+ }));              
+}
+
+private makeOptionsapi2pdfTest(): Observable<RequestContext> {
+
+  const fullUrl = AppConfig.settings.api2pdfHost;
+
+  const options2WebService = {
+    headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
+                              'binary': 'true'}),
+  };
+
+  const options2Docker = {
+    headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
+                              'binary': 'true',
+                              'Content-Type':  'application/octet-stream'}),
+    responseType : 'arraybuffer',
+  } as any;
+
+  var options = AppConfig.settings.api2pdfIsDockerVersion ?  options2Docker : options2WebService;
+  return this.currentUser.pipe(
+    map(user => {
+      const result = { fullUrl, options };
+    return result;
+      }));              
   }
+
+  
+// private postapi2pdf2(obj: any): Observable<Object> {
+
+//   const fullUrl = AppConfig.settings.api2pdfHost;
+//   const options = {
+//     headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
+//                               'binary': 'true',
+//                               'Content-Type':  'application/octet-stream'}),
+//     responseType : 'arraybuffer',
+//   } as any;
+
+
+//   // const options = {
+//   //   headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
+//   //                             'binary': 'true',
+//   //                             'Content-Type':  'application/octet-stream'}),
+//   //   responseType : 'arraybuffer'
+//   // };
+
+//   return this.httpService.post(fullUrl, obj, options);
+// }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -127,9 +203,15 @@ export class DataService {
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+      try {
+        console.error(
+          `Backend returned code ${error.status}, ` +
+          `body was: ${error.error}`);
+      } catch (error) {
+          console.error(error);
+          // expected output: ReferenceError: nonExistentFunction is not defined
+          // Note - error messages will vary depending on browser
+        }
     }
 
     // TODO: Log somewhere?

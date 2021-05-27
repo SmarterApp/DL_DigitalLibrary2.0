@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Grade } from '../data/resource/model/grade.model';
 import { Subject } from '../data/resource/model/subject.model';
 import { LandingPage } from '../data/landing/model/landingPage.model';
-import { api2pdfResponce } from '../data/landing/model/api2pdfResponce.model';
+import { api2pdfResponse } from '../data/landing/model/api2pdfResponse.model';
 import { LandingService } from '../data/landing/landing.service';
 import { AppConfig } from 'src/app/common/config/app.config';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
@@ -229,11 +229,19 @@ export class LandingComponent implements OnInit {
     this.landingService.postapi2pdf(this.buildPrintHTML(), 
                                     this.getFooterPage(), 
                                     "ToolsForTeachers-" + this.title + ".pdf")
-        .subscribe(r => {this.responseapi2pdf(r)});
+        .subscribe(r => {this.responseapi2pdf(r)})
   }
 
-  responseapi2pdf(results: api2pdfResponce) {
-    this.pdfData = this.sanitizer.bypassSecurityTrustResourceUrl(results.pdf);
+  responseapi2pdf(results: any) {
+    if (AppConfig.settings.api2pdfIsDockerVersion) {
+      var file = new Blob([results], {type: 'application/pdf'});
+      var fileURL = URL.createObjectURL(file);
+      this.pdfData = this.sanitizer.bypassSecurityTrustResourceUrl(fileURL);
+    }
+    else {
+      var r = results as api2pdfResponse;
+      this.pdfData = this.sanitizer.bypassSecurityTrustResourceUrl(r.pdf);
+    }
     this.openModal();
     this.isWaitDisplayed = false;
   }

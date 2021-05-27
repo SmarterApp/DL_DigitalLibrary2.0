@@ -1,4 +1,4 @@
-export interface api2pdfResponce {
+export interface api2pdfResponse {
     success: boolean;
     error: string | null;
     pdf?: string;
