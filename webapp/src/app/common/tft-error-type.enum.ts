@@ -43,6 +43,6 @@ export const errorMessages: Map<TftErrorType, TftErrorMessage> = new Map([
   }],
   [TftErrorType.Unknown, {
     title: 'Tools for Teachers has encountered an error.',
-    message: 'An error has occured that we cannot automatically correct. We apologize for the inconvenience.'
+    message: 'Please clear your browser cache and log in again to try resolving the problem. We apologize for the inconvenience.'
   }],
 ]);
