@@ -41,10 +41,10 @@ export class LandingService {
     }  
 
   }
-    const testlanding  = this.dataService
-      .get(`/api/landing_page/${this.resourceCode}`)
-      .pipe(map(this.landingFromJson));
-      return testlanding;
+  
+    return this.dataService
+        .get(`/api/landing_page/${this.resourceCode}`)
+        .pipe(map(this.landingFromJson));
   }
 
   postapi2pdf(html: string, footer: string, filename: string) : Observable<any>{

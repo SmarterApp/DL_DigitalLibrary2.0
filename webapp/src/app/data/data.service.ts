@@ -57,19 +57,6 @@ export class DataService {
       catchError(this.handleError));
   }
   
-  private postapi2pdf2(obj: any): Observable<Object> {
-
-    const fullUrl = AppConfig.settings.api2pdfHost;
-    const options = {
-      headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
-                                'binary': 'true',
-                                'Content-Type':  'application/octet-stream'}),
-      responseType : 'arraybuffer',
-    } as any;
-
-    return this.httpService.post(fullUrl, obj, options);
-  }
-  
   delete(url: string, params?: any): Observable<any> {
     return this.makeOptions(url, params).pipe(
       flatMap(reqCtx => this.httpService.delete(reqCtx.fullUrl, reqCtx.options)),
