@@ -229,10 +229,10 @@ export class LandingComponent implements OnInit {
     this.landingService.postapi2pdf(this.buildPrintHTML(), 
                                     this.getFooterPage(), 
                                     "ToolsForTeachers-" + this.title + ".pdf")
-        .subscribe(r => {this.responseapi2pdf(r)})
+        .subscribe(r => {this.responseApi2pdf(r)})
   }
 
-  responseapi2pdf(results: any) {
+  responseApi2pdf(results: any) {
     if (AppConfig.settings.api2pdfIsDockerVersion) {
       var file = new Blob([results], {type: 'application/pdf'});
       var fileURL = URL.createObjectURL(file);
@@ -248,11 +248,7 @@ export class LandingComponent implements OnInit {
 
   buildPrintHTML() : string {
 
-    // TODOJR: may be able to remove this logic when docker is done
-    if (window.location.origin.toLowerCase().includes("localhost")) {
-      this.urlHome = 'https://qa.webapp.dl.smarterbalanced.org';
-    }
-    else {
+    if (!window.location.origin.toLowerCase().includes("localhost")) {
       this.urlHome = window.location.origin;
     }
 

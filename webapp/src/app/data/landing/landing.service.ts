@@ -41,7 +41,6 @@ export class LandingService {
     }  
 
   }
-
     const testlanding  = this.dataService
       .get(`/api/landing_page/${this.resourceCode}`)
       .pipe(map(this.landingFromJson));
@@ -70,7 +69,6 @@ export class LandingService {
   } 
 
   landingFromJson(landingJson: any): LandingPage {
-    const testlanding  = landingJson;
     return {
       ...landingJson
     } as LandingPage;
