@@ -52,18 +52,9 @@ export class DataService {
   }
   
   postapi2pdf(url: string, obj: any): Observable<any> {
-    return this.makeOptionsapi2pdfTest().pipe(
+    return this.makeOptionsapi2pdf().pipe(
       flatMap(reqCtx => this.httpService.post(reqCtx.fullUrl, obj, reqCtx.options)),
       catchError(this.handleError));
-
-    // if (AppConfig.settings.api2pdfIsDockerVersion) {
-    //   return this.postapi2pdf2(obj);
-    // }
-    // else {
-    //   return this.makeOptionsapi2pdf().pipe(
-    //     flatMap(reqCtx => this.httpService.post(reqCtx.fullUrl, obj, reqCtx.options)),
-    //     catchError(this.handleError));
-    // }
   }
   
   private postapi2pdf2(obj: any): Observable<Object> {
@@ -75,14 +66,6 @@ export class DataService {
                                 'Content-Type':  'application/octet-stream'}),
       responseType : 'arraybuffer',
     } as any;
-
-
-    // const options = {
-    //   headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
-    //                             'binary': 'true',
-    //                             'Content-Type':  'application/octet-stream'}),
-    //   responseType : 'arraybuffer'
-    // };
 
     return this.httpService.post(fullUrl, obj, options);
   }
@@ -134,23 +117,7 @@ export class DataService {
       }));
   }
 
-  private makeOptionsapi2pdf(): Observable<RequestContext> {
-
-    const fullUrl = AppConfig.settings.api2pdfHost;
-
-    const options = {
-      headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
-                                'binary': 'true'}),
-    };
-
-    return this.currentUser.pipe(
-      map(user => {
-        const result = { fullUrl, options };
-   return result;
- }));              
-}
-
-private makeOptionsapi2pdfTest(): Observable<RequestContext> {
+private makeOptionsapi2pdf(): Observable<RequestContext> {
 
   const fullUrl = AppConfig.settings.api2pdfHost;
 
@@ -174,28 +141,6 @@ private makeOptionsapi2pdfTest(): Observable<RequestContext> {
       }));              
   }
 
-  
-// private postapi2pdf2(obj: any): Observable<Object> {
-
-//   const fullUrl = AppConfig.settings.api2pdfHost;
-//   const options = {
-//     headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
-//                               'binary': 'true',
-//                               'Content-Type':  'application/octet-stream'}),
-//     responseType : 'arraybuffer',
-//   } as any;
-
-
-//   // const options = {
-//   //   headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
-//   //                             'binary': 'true',
-//   //                             'Content-Type':  'application/octet-stream'}),
-//   //   responseType : 'arraybuffer'
-//   // };
-
-//   return this.httpService.post(fullUrl, obj, options);
-// }
-
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -203,15 +148,9 @@ private makeOptionsapi2pdfTest(): Observable<RequestContext> {
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
-      try {
-        console.error(
-          `Backend returned code ${error.status}, ` +
-          `body was: ${error.error}`);
-      } catch (error) {
-          console.error(error);
-          // expected output: ReferenceError: nonExistentFunction is not defined
-          // Note - error messages will vary depending on browser
-        }
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
     }
 
     // TODO: Log somewhere?
