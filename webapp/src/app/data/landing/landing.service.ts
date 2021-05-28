@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { DataService } from '../data.service';
 import { LandingPage } from './model/landingPage.model';
+import { api2pdfResponse } from './model/api2pdfResponse.model';
 import { Observable, of, ReplaySubject } from 'rxjs';
+import { AppConfig } from 'src/app/common/config/app.config';
 
 @Injectable({
   providedIn: 'root'
@@ -39,17 +41,42 @@ export class LandingService {
     }  
 
   }
-
-    const testlanding  = this.dataService
-      .get(`/api/landing_page/${this.resourceCode}`)
-      .pipe(map(this.landingFromJson));
-      return testlanding;
+  
+    return this.dataService
+        .get(`/api/landing_page/${this.resourceCode}`)
+        .pipe(map(this.landingFromJson));
   }
 
+  postapi2pdf(html: string, footer: string, filename: string) : Observable<any>{
+
+    var payload = {
+      "html": html,
+      "inlinePdf": true,
+      "fileName": filename,
+      "options": {
+        "displayHeaderFooter": true,
+        "footerTemplate": footer
+      }
+    }; 
+
+    if (AppConfig.settings.api2pdfIsDockerVersion) {
+      return this.dataService.postapi2pdf("",payload);
+    }
+    else {
+      return this.dataService.postapi2pdf("", payload)
+        .pipe(map(this.api2pdfResponseFromJson));
+    }
+  } 
+
   landingFromJson(landingJson: any): LandingPage {
-    const testlanding  = landingJson;
     return {
       ...landingJson
     } as LandingPage;
+  }
+
+  api2pdfResponseFromJson(api2pdfResponseJson: any): api2pdfResponse {
+    return {
+      ...api2pdfResponseJson
+    } as api2pdfResponse;
   }
 } 

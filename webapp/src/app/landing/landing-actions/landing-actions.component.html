@@ -1,5 +1,4 @@
 <button
-  style="float: right;"
   class="mdc-icon-button material-icons"
   title="Share"
   [attr.aria-label]="'share this resource.'"
@@ -28,3 +27,10 @@
     (closed)="shareOverlayOpen = false"
   ></sbdl-share-form>
 </ng-template>
+<!-- (click)="togglePrintingMode()" -->
+
+<sbdl-button-icon buttonTitle="Print" (click)="printLandingPage()">
+  <div>
+    <i class="fas fa-print"></i>
+  </div>
+</sbdl-button-icon>

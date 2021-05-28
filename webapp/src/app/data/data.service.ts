@@ -50,7 +50,13 @@ export class DataService {
       flatMap(reqCtx => this.httpService.post(reqCtx.fullUrl, obj, reqCtx.options)),
       catchError(this.handleError));
   }
-
+  
+  postapi2pdf(url: string, obj: any): Observable<any> {
+    return this.makeOptionsapi2pdf().pipe(
+      flatMap(reqCtx => this.httpService.post(reqCtx.fullUrl, obj, reqCtx.options)),
+      catchError(this.handleError));
+  }
+  
   delete(url: string, params?: any): Observable<any> {
     return this.makeOptions(url, params).pipe(
       flatMap(reqCtx => this.httpService.delete(reqCtx.fullUrl, reqCtx.options)),
@@ -96,6 +102,30 @@ export class DataService {
 
         return result;
       }));
+  }
+
+private makeOptionsapi2pdf(): Observable<RequestContext> {
+
+  const fullUrl = AppConfig.settings.api2pdfHost;
+
+  const options2WebService = {
+    headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
+                              'binary': 'true'}),
+  };
+
+  const options2Docker = {
+    headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
+                              'binary': 'true',
+                              'Content-Type':  'application/octet-stream'}),
+    responseType : 'arraybuffer',
+  } as any;
+
+  var options = AppConfig.settings.api2pdfIsDockerVersion ?  options2Docker : options2WebService;
+  return this.currentUser.pipe(
+    map(user => {
+      const result = { fullUrl, options };
+    return result;
+      }));              
   }
 
   private handleError(error: HttpErrorResponse) {

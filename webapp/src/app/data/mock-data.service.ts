@@ -23,7 +23,7 @@ export class MockDataService implements PublicPart<DataService> {
     { pattern: /\/file_documents\/[0-9]*/, result: '/assets/mock-downloads/video-game-credits.pdf' }
   ];
 
-  constructor(private logger: LoggingService) {
+  constructor(private logger: LoggingService) { 
     this.logger.warn('Mock data service loaded.');
   }
 
@@ -39,6 +39,10 @@ export class MockDataService implements PublicPart<DataService> {
   }
 
   post(url: string, obj: any): Observable<any> {
+    return of(undefined);
+  }
+
+  postapi2pdf(url: string, obj: any): Observable<any> {
     return of(undefined);
   }
 

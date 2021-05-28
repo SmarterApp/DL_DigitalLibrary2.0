@@ -1,23 +1,23 @@
 <main id="main" class="landing-content">
 
+    <div *ngIf="isWaitDisplayed" class="filter-loader">
+        <div class="filter-spinner-container">
+          <i class="fas fa-spinner fa-pulse" aria-label="Loading..."></i>
+        </div>
+    </div>
+
     <div class="landing-header">
 
         <div class="top-header">
             <sbdl-landing-actions
+                (printPage)="onPrintPage()"
                 [landingType]="landingType">
             </sbdl-landing-actions>
         </div>
 
         <span>
             <h1 style="margin-left: 32px;">
-                <ng-container [ngSwitch]="landingType">
-                    <img class="headerImage" *ngSwitchCase="'playlist'" src="/assets/images/connections-playlist.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'instructional'" src="/assets/images/instructional-resource.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'formative'" src="/assets/images/formative-strategy.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'accessibility'" src="/assets/images/accessibility-strategy.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'professional'" src="/assets/images/professional-learning.png" aria-hidden="true">
-                    <img class="headerImage" *ngSwitchCase="'items'" src="/assets/images/iaip 1.png" aria-hidden="true">
-                </ng-container>
+                <img class="headerImage" src="{{headerImage}}" aria-hidden="true">
                 {{title}}
             </h1>
         </span>
@@ -39,7 +39,7 @@
 
         <!-- The right hand side -->
         <div class="landing-card landing-card-right">
-            <div *ngIf="youtubeVideoId.length > 0">
+            <div [hidden]="!showAblePlayer" *ngIf="youtubeVideoId.length > 0">
                 <sbdl-able-player-float-ts class="video"
                     [youtubeVideoId]="youtubeVideoId">
                 </sbdl-able-player-float-ts>  
@@ -48,11 +48,6 @@
             </div>
 
             <div class="callToActionBackground">
-                <div *ngIf="filterLoading" class="filter-loader">
-                    <div class="filter-spinner-container">
-                      <i class="fas fa-spinner fa-pulse" aria-label="Loading..."></i>
-                    </div>
-                </div>
                 <h5>{{landingPage.callToActionSection.header}}</h5>
 
                 <dynamic-html class="text-container-3" [content]="landingPage.callToActionSection.description"></dynamic-html>
@@ -196,6 +191,36 @@
         <br>
         <hr style="clear: both;"/>
     </section>
+    
+    <div #outsideElement>
+        <div class="modal-view-container">
+          <div #modalView class="modal view">
+            <div class="modal-view-details">
+                <div class="close-button">  
+                    <sbdl-button-icon
+                    #closeButton
+                    buttonTitle="Close"
+                    aria-label="close"
+                    (click)="closeModal()">
+                        <sbdl-icon icon="circle-close"></sbdl-icon>
+                    </sbdl-button-icon> 
+                </div>
+                <div style="height: calc(100% - 105px);">
+                    <object [attr.data]="pdfData" type="application/pdf"  style="max-width: none; width: 820px;height: 100%;max-height: none;" ></object>
+                    <!-- <object data="http://localhost:4200/assets/mock-downloads/ToolsForTeathers-LP.pdf" type="application/pdf"  style="max-width: none; width: 820px;height: 100%;max-height: none;" ></object> -->
+                </div>
+                <div class="close-button-bottom">  
+                    <sbdl-button
+                    class="primary"
+                    #closeButton
+                    buttonTitle="Close"
+                    (click)="closeModal()">Close
+                    </sbdl-button> 
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
 </main>
 
 <!-- Start of the right margin -->
