@@ -1,5 +1,5 @@
 <div class="watermarks">
-  <img class="waterspot green" src="/assets/images/green-spot-2.png" aria-hidden="true">
+   <img class="waterspot green" src="/assets/images/green-spot-2.png" aria-hidden="true">
   <img class="waterspot yellow" src="/assets/images/yellow-spot-6.png" aria-hidden="true">
   <img class="waterspot blue" src="/assets/images/blue-spot-3.png" aria-hidden="true">
 </div>
@@ -49,27 +49,18 @@
 
 <section class="promoted-videos">
 
-
   <div class="promoted-video">
     <h2>Smarter Balanced<br>Tools for Teachers</h2>
-    <iframe
-      src="https://www.youtube.com/embed/jJPAU1zOAp4"
-      alt="Smarter Balanced Tools for Teachers"
-      frameborder="0"
-      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen="allowfullscreen"
-    ></iframe>
+    <sbdl-able-player-float-ts class="video"
+      [youtubeVideoId]="'jJPAU1zOAp4'">
+    </sbdl-able-player-float-ts>
   </div>
 
   <div class="promoted-video">
     <h2>Understanding the Formative Assessment Process</h2>
-    <iframe
-      src="https://www.youtube.com/embed/wpwZCqvt70U"
-      alt="Understanding the Smarter Balanced Interim Assessments"
-      frameborder="0"
-      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen="allowfullscreen"
-    ></iframe>
+    <sbdl-able-player-float-ts  class="video"
+      [youtubeVideoId]="'wpwZCqvt70U'">
+    </sbdl-able-player-float-ts>
   </div>
 </section>
 

@@ -5,6 +5,7 @@ import { HomeComponent } from './home.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { ResourceModule } from '../resource/resource.module';
 import { SearchModule } from '../search/search.module';
+import { SbdlCommonModule } from '../common/common.module';
 
 @NgModule({
   declarations: [HomeComponent],
@@ -13,7 +14,8 @@ import { SearchModule } from '../search/search.module';
     PipesModule,
     RouterModule,
     ResourceModule,
-    SearchModule
+    SearchModule,
+    SbdlCommonModule
   ]
 })
 export class HomeModule { }

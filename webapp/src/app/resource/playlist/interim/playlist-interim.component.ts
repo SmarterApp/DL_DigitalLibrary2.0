@@ -1,10 +1,11 @@
-import {AfterViewInit, Component, Input} from '@angular/core';
+import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {PrintableSectionComponent} from '../../printable-section.component';
 import {DocumentSectionType} from '../../components/outline/document-outline.model';
 import {TenantThemeService} from 'src/app/data/tenant-theme/tenant-theme.service';
+import {AblePlayerComponent} from 'src/app/resource/components/able-player/able-player.component';
 
 @Component({
   selector: 'sbdl-playlist-interim',
@@ -16,6 +17,11 @@ export class PlaylistInterimComponent extends PrintableSectionComponent implemen
   @Input()
   content: string;
 
+  @ViewChild(AblePlayerComponent, { static: false })
+  private ablePlayer: AblePlayerComponent;
+  isTranscriptVisable = false;
+  isTranscriptButtonsVisable = true;
+  
   contactUri$: Observable<string>;
 
   constructor(
@@ -40,5 +46,20 @@ export class PlaylistInterimComponent extends PrintableSectionComponent implemen
         type: DocumentSectionType.PlaylistInterim
       });
     }
+
+    this.showPlayer();
+  }
+
+  showPlayer(): void {
+    this.ablePlayer.show();
+  }
+
+  hideTranscript(): void {
+    this.isTranscriptVisable = false;
+  }
+
+  showTranscript(): void {
+    this.isTranscriptVisable = true;
+    this.isTranscriptButtonsVisable = this.ablePlayer.testTranscript();
   }
 }

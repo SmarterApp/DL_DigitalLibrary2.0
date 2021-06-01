@@ -5,13 +5,28 @@
       What are Interim Assessments?
     </h3>
 
-    <iframe
-      src="https://www.youtube.com/embed/Im-thuZCp4c"
-      alt="Understanding Interim Assessments"
-      frameborder="0"
-      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen="allowfullscreen"
-    ></iframe>
+    <sbdl-able-player
+      class="video"
+      [youtubeVideoId]="'Im-thuZCp4c'"
+      [isTranscriptVisable]="isTranscriptVisable">
+    </sbdl-able-player>
+
+    <div>
+      <p>
+        <sbdl-button 
+          *ngIf="isTranscriptVisable" 
+          (click)="hideTranscript()"
+          class="plain">
+          <i class="far fa-compress-alt" aria-hidden="true"></i> Hide Transcript
+        </sbdl-button>
+        <sbdl-button 
+          *ngIf="!isTranscriptVisable" 
+          (click)="showTranscript()" 
+          class="plain">
+          <i class="far fa-expand-alt" aria-hidden="true"></i> Show Transcript
+        </sbdl-button>
+      </p>
+    </div>
 
     <a href="https://portal.smarterbalanced.org/library/en/interim-assessments-overview.pdf"
          aria-label="Interim Overview Flier (opens in a new window)."

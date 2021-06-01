@@ -13,6 +13,12 @@
     <h3>Description</h3>
     <dynamic-html [content]="overview.description"></dynamic-html>
 
+    <div class="primary" *ngIf="(hasIaipAccess$ | async) && isInterimItemPortalVisable">
+      <sbdl-button *ngIf="(hasIaipAccess$ | async)" class="primary" (click)="openInterimItems()">
+        <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
+      </sbdl-button>    
+    </div>
+
     <h3>Why is this important for students to learn?</h3>
     <dynamic-html [content]="overview.importance"></dynamic-html>
 

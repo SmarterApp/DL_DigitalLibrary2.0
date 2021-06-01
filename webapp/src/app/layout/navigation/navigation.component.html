@@ -17,36 +17,99 @@
       title="Find Resources"
       [attr.aria-label]="'Find Resources'"
       [routerLink]="[baseHref, 'search']"
+      routerLinkActive #rlaSearch="routerLinkActive"
+      [ngClass]="{'selectedBackgroundIsActive': rlaSearch.isActive, 
+                 'selectedBackgroundNotActive': !rlaSearch.isActive}"
     >
-      <i class="far fa-search" aria-hidden="true"></i>
-      <span>Find Resources</span>
+    <div class="imageArea">
+      <i class="far fa-search center" aria-hidden="true"></i>
+    </div>
+    <span>Find Resources</span>
     </a>
+
     <a
-      title="Formative Assessment Strategies"
-      [attr.aria-label]="'Formative Assessment Strategies'"
-      [routerLink]="[baseHref, 'search', { resourceTypes: ['fs'] }]"
-    >
-      <sbdl-icon icon="strategies" aria-hidden="true"></sbdl-icon>
-      <span>Formative Assessment Strategies</span>
+      title="Interim Connections Playlists"
+      [attr.aria-label]="'Interim Connections Playlists'"
+      [routerLink]="[baseHref, 'landing', 'playlist']"
+      routerLinkActive #rlaPlaylist="routerLinkActive"
+      [ngClass]="{'selectedBackgroundIsActive': rlaPlaylist.isActive, 
+                 'selectedBackgroundNotActive': !rlaPlaylist.isActive}"
+      >   
+      <div class="imageArea">
+        <i class="far fa-chart-network" aria-hidden="true" style="margin: 6.5px 3.9px;"></i>
+      </div>
+      <span>Interim Connections Playlists</span>
     </a>
+
+    <a
+      title="Instructional Resources"
+      [attr.aria-label]="'Instructional Resources'"
+      [routerLink]="[baseHref, 'landing', 'instructional']"
+      routerLinkActive #rlaInstructional="routerLinkActive"
+      [ngClass]="{'selectedBackgroundIsActive': rlaInstructional.isActive, 
+                 'selectedBackgroundNotActive': !rlaInstructional.isActive}"
+      >
+      <div class="imageArea" >
+        <sbdl-icon icon="steps" aria-hidden="true"  class="center"></sbdl-icon>
+      </div>
+      <span>Instructional Resources</span>
+    </a> 
+
+    <a
+      title="Formative Strategies"
+      [attr.aria-label]="'Formative Assessment Strategies'"
+      [routerLink]="[baseHref, 'landing', 'formative']"
+      routerLinkActive #rlaFormative="routerLinkActive"
+      [ngClass]="{'selectedBackgroundIsActive': rlaFormative.isActive, 
+                 'selectedBackgroundNotActive': !rlaFormative.isActive}">
+      <div class="imageArea">
+        <sbdl-icon icon="strategies" aria-hidden="true" class="center"></sbdl-icon>
+      </div>
+      <span>Formative Strategies</span>
+    </a>
+
     <a
       title="Accessibility Strategies"
       [attr.aria-label]="'Accessibility Strategies'"
-      [routerLink]="[baseHref, 'search', { resourceTypes: ['as'] }]"
-    >
-      <i class="far fa-universal-access" aria-hidden="true"></i>
+      [routerLink]="[baseHref, 'landing', 'accessibility']"
+      routerLinkActive #rlaAccessibility="routerLinkActive"
+      [ngClass]="{'selectedBackgroundIsActive': rlaAccessibility.isActive, 
+                 'selectedBackgroundNotActive': !rlaAccessibility.isActive}">
+      <div class="imageArea">
+        <i class="far fa-universal-access center" aria-hidden="true"></i>
+      </div>
       <span>Accessibility Strategies</span>
     </a>
+
     <a
-    *ngIf="hasIaipAccess$ | async"
-    title="Interim Assessment Item Portal"
-    [attr.aria-label]="'Interim Assessment Item Portal (opens in a new window)'"
-    [href]='interimItemPortalUrl'
-    target="_blank"
-  >
-    <i class="fas fa-badge-check" aria-hidden="true"></i>
-    <span>Interim Assessment Item Portal</span>
-  </a>
+      title="Professional Learning Resources"
+      [attr.aria-label]="'Professional Learning Resources'"
+      [routerLink]="[baseHref, 'landing', 'professional']"
+      routerLinkActive #rlaProfessional="routerLinkActive"
+      [ngClass]="{'selectedBackgroundIsActive': rlaProfessional.isActive, 
+                 'selectedBackgroundNotActive': !rlaProfessional.isActive}">
+      <div class="imageArea">
+        <sbdl-icon 
+          icon="goal" 
+          class="center"
+          aria-hidden="true"></sbdl-icon>
+      </div>
+      <span>Professional Learning Resources</span>
+    </a>
+
+    <a
+      title="Interim Assessment Item Portal"
+      [attr.aria-label]="'Interim Assessment Item Portal'"
+      [routerLink]="[baseHref, 'landing', 'items']"
+      routerLinkActive #rlaItems="routerLinkActive"
+      [ngClass]="{'selectedBackgroundIsActive': rlaItems.isActive, 
+                 'selectedBackgroundNotActive': !rlaItems.isActive}"
+      >
+      <div class="imageArea">
+        <i class="fas fa-badge-check center" aria-hidden="true"></i>
+      </div>
+      <span>Interim Assessment Item Portal</span> 
+    </a>
   </div>
 
   <div class="links links-bottom">
@@ -56,26 +119,39 @@
       title="Bookmarks & Notes"
       [attr.aria-label]="'Bookmarks & Notes'"
       [routerLink]="[baseHref, 'bookmarks']"
+      routerLinkActive #rlaBookmarks="routerLinkActive"
+      [ngClass]="{'selectedBackgroundIsActive': rlaBookmarks.isActive, 
+                 'selectedBackgroundNotActive': !rlaBookmarks.isActive}"
     >
-      <i class="far fa-bookmark" aria-hidden="true"></i>
+      <div class="imageArea">
+        <i class="far fa-bookmark center" aria-hidden="true"></i>
+      </div>
       <span>Bookmarks &amp; Notes</span>
     </a>
     <button
+      class="test"
       *ngIf="!(hasToken$ | async)"
       title="Login"
       [attr.aria-label]="'Login'"
       (click)="login()"
+      routerLinkActive #rlaLogin="routerLinkActive"
+      [ngClass]="{'selectedBackgroundIsActive': rlaLogin.isActive, 
+                 'selectedBackgroundNotActive': !rlaLogin.isActive}"
     >
-      <i class="far fa-sign-in-alt" aria-hidden="true"></i>
+      <i class="far fa-sign-in-alt center" aria-hidden="true"></i>
       <span>Login</span>
     </button>
     <a
+      class="test"
       *ngIf="hasToken$ | async"
       title="Logout"
       [attr.aria-label]="'Logout'"
       [routerLink]="[baseHref, 'auth', 'logout']"
+      routerLinkActive #rlaLogout="routerLinkActive"
+      [ngClass]="{'selectedBackgroundIsActive': rlaLogout.isActive, 
+                 'selectedBackgroundNotActive': !rlaLogout.isActive}"
     >
-      <i class="far fa-sign-out-alt" aria-hidden="true"></i>
+      <i class="far fa-sign-out-alt center" aria-hidden="true"></i>
       <span>Logout</span>
     </a>
   </div>

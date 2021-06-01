@@ -1,22 +1,25 @@
 <div
   #textField
-  class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon mdc-text-field--no-label"
+  class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon mdc-text-field--no-label placeholder-text"
+  [ngClass]="{'smaller_outline': isSmallerText}"
 >
   <!-- TODO use a form and the browser-default enter key behavior -->
   <input
+    [ngClass]="{'smaller_input': isSmallerText}"
     id="tf-outlined"
     class="mdc-text-field__input"
     autocomplete="off"
     type="text"
     [formControl]="control"
     (keydown.enter)="onSubmitButtonClick()"
-    [disabled]="disabled"
+    [attr.disabled]="disabled"
     [placeholder]="placeholder || ''"
   >
   <sbdl-button
+    [ngClass]="{'smaller_button': isSmallerText}"
     class="primary"
     (click)="onSubmitButtonClick()"
-    [disabled]="disabled"
+    [attr.disabled]="disabled"
     [ariaLabel]="submitButtonAriaLabel"
   >
     <!-- TODO why not actually make this a button? -->

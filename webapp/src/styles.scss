@@ -6,7 +6,7 @@
 @import "@material/chips/mdc-chips";
 
 // CDK styles
-@import '~@angular/cdk/overlay-prebuilt.css';
+@import "~@angular/cdk/overlay-prebuilt.css";
 
 // SBAC Digital Library UI Kit
 @import "ui-kit/colors";
@@ -18,8 +18,8 @@
 @import "mixins";
 
 :root {
-    --measure: 85ch;
-    --nav-width: 331px;
+  --measure: 85ch;
+  --nav-width: 331px;
 }
 
 html {
@@ -28,7 +28,7 @@ html {
 }
 
 * {
-    max-width: var(--measure);
+  max-width: var(--measure);
 }
 
 html,
@@ -38,15 +38,21 @@ header,
 nav,
 main,
 footer {
-    max-width: none;
+  max-width: none;
+}
+
+iframe {
+  max-width: 100%;
 }
 
 body {
-    background-color: $white;
-    margin: 0;
+  background-color: $white;
+  margin: 0;
 }
 
-.print-only { display: none; }
+.print-only {
+  display: none;
+}
 .offscreen {
   height: 1px;
   width: 1px;
@@ -60,8 +66,12 @@ body {
     --measure: 100ch;
   }
 
-  .print-only { display: block; }
-  .offscreen { display: none; }
+  .print-only {
+    display: block;
+  }
+  .offscreen {
+    display: none;
+  }
 
   @page {
     /* This is what we actually want to use for the printed footers. But CSS3

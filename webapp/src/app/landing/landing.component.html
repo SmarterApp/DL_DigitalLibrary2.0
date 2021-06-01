@@ -1,0 +1,222 @@
+<main id="main" class="landing-content">
+
+    <div class="landing-header">
+
+        <div class="top-header">
+            <sbdl-landing-actions
+                [landingType]="landingType">
+            </sbdl-landing-actions>
+        </div>
+
+        <span>
+            <h1 style="margin-left: 32px;">
+                <ng-container [ngSwitch]="landingType">
+                    <img class="headerImage" *ngSwitchCase="'playlist'" src="/assets/images/connections-playlist.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'instructional'" src="/assets/images/instructional-resource.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'formative'" src="/assets/images/formative-strategy.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'accessibility'" src="/assets/images/accessibility-strategy.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'professional'" src="/assets/images/professional-learning.png" aria-hidden="true">
+                    <img class="headerImage" *ngSwitchCase="'items'" src="/assets/images/iaip 1.png" aria-hidden="true">
+                </ng-container>
+                {{title}}
+            </h1>
+        </span>
+    </div>
+
+    <section class="landing-splits">
+
+        <!-- The left hand side -->
+        <div class="landing-card landing-card-left">
+            <h5 style="margin-top: 2em;">{{landingPage.taglineSection.header}}</h5>
+            <dynamic-html 
+                class="tagline-text"
+                [content]="landingPage.taglineSection.description">
+            </dynamic-html>
+
+            <h3 style="margin-bottom: .5em;">How will they help me?</h3>
+            <dynamic-html class="howItHelpsSection" [content]="landingPage.howItHelpsSection.description"></dynamic-html>
+        </div>
+
+        <!-- The right hand side -->
+        <div class="landing-card landing-card-right">
+            <div *ngIf="youtubeVideoId.length > 0">
+                <sbdl-able-player-float-ts class="video"
+                    [youtubeVideoId]="youtubeVideoId">
+                </sbdl-able-player-float-ts>  
+            </div>  
+            <div style="height: 380px;" *ngIf="youtubeVideoId.length === 0">
+            </div>
+
+            <div class="callToActionBackground">
+                <div *ngIf="filterLoading" class="filter-loader">
+                    <div class="filter-spinner-container">
+                      <i class="fas fa-spinner fa-pulse" aria-label="Loading..."></i>
+                    </div>
+                </div>
+                <h5>{{landingPage.callToActionSection.header}}</h5>
+
+                <dynamic-html class="text-container-3" [content]="landingPage.callToActionSection.description"></dynamic-html>
+
+                <div  *ngIf="landingPage.callToActionSection.version === 'textSearch'">
+                    <!-- Search text -->
+                    <div style="margin-top: 10px;">
+                        <sbdl-text-field
+                          isSmallerText="'true'"
+                          (submit)="search({query: $event})"
+                          placeholder="{{landingPage.callToActionSection.promptText}}"      
+                          fontAwesomeIcon="fa-search"
+                          submitButtonAriaLabel="search resources">
+                        </sbdl-text-field>               
+                    </div> 
+                    <p style="margin-top: 10px;">              
+                        <a href="javascript:void(0)" (click)="onFilterResourcesClick()">{{landingPage.callToActionSection.browseLinkText}}</a>
+                    </p>
+                </div>
+                
+                <div  *ngIf="landingPage.callToActionSection.version === 'dropdownSearch'">
+                    <!-- search ddl -->
+                    <div class="select-group">
+                        <div class="select-control-group selectDDL">
+                          <select class="select" [ngClass]="{'select-placeholder' : selectedSubject == ''}" [(ngModel)]="selectedSubject">
+                            <option  value="">Select a subject</option>
+                            <option  *ngFor="let s of subjects" value="{{s.code}}">
+                              {{ s.fullName }}
+                            </option>
+                          </select>
+                          <i class="far fa-chevron-square-down fa-lg select-icon"></i>
+                        </div> 
+                    </div>
+
+                    <div class="select-group">
+                        <div class="select-control-group selectDDL">
+                            <select class="select" [ngClass]="{'select-placeholder' : selectedGrade == ''}" [(ngModel)]="selectedGrade">
+                                <option value="">Select a grade</option>
+                                <option *ngFor="let g of grades" value="{{g.code}}">
+                                  {{ g.longName }}
+                                </option>
+                            </select>
+                            <i class="far fa-chevron-square-down fa-lg select-icon"></i>
+                        </div>
+                    </div>
+                    <br>
+                    <sbdl-button  class="primary"
+                        (click)="onFilterResourcesSubjectAndGradeClick()"> 
+                      GO!
+                    </sbdl-button>&nbsp;&nbsp;&nbsp;
+                    <a href="javascript:void(0)" (click)="onFilterResourcesClick()">or browse all</a>
+                </div>
+
+                <!-- IAIP AREA -->
+                <div *ngIf="landingPage.callToActionSection.version === 'loginPrompt'">
+                    <!-- NOT Logged in -->
+                    <br>
+                    <sbdl-button class="primary attachments-btn" (click)="login()">
+                        &nbsp;&nbsp;&nbsp;&nbsp;LOG IN&nbsp;&nbsp;&nbsp;&nbsp;
+                    </sbdl-button>
+                    <br>
+                </div>
+                <div *ngIf="landingPage.callToActionSection.version === 'browseIAIP'">
+                    <!-- Logged on with IAIP access -->
+                    <br>
+                    <sbdl-button class="primary attachments-btn" (click)="openInterimItems()">
+                        <i class="fas fa-badge-check"></i> VIEW INTERIM ITEMS
+                    </sbdl-button>
+                    <br>
+                </div>
+                <div *ngIf="landingPage.callToActionSection.version === 'noIAIP'">
+                    <!-- Logged on WITHOUT IAIP access -->
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Start of 'How Can I use this' section  -->
+    <section class="landing-howcaniuse">
+
+        <hr/>
+
+        <table style="width: 100%;max-width: unset;">
+            <tr>
+                <td>
+                    <h3 style="margin-top: 33px;margin-left: -44px;">
+                        <span>
+                            <img src="/assets/images/vector-line.png" class="howCanIuse-Vector">
+                            <img src="/assets/images/vector-arrow.png" class="howCanIuse-Arrow">
+                            <h3 style="margin-left: 235px;">{{landingPage.howToUseSection.header}}</h3>
+                        </span>
+                    </h3>
+                </td>
+                <td>
+                    <div>
+                        <img class="yellow"
+                         src="/assets/images/yellow-spot-6.png" aria-hidden="true">                        
+                        <img class="green"
+                            src="/assets/images/green-spot-2.png" aria-hidden="true">
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+
+
+
+         <ul class="howToUseListItems">
+            <li *ngFor="let howUse of landingPage.howToUseSection.subSections; index as i;" 
+                [ngClass]="{'yellowImage' : (i + 1) % 3 == 1,'greenImage' : (i + 1) % 3 == 2,'blueImage' : (i + 1) % 3 == 0}">
+                <h5>{{howUse.title}}</h5>   
+                <dynamic-html class="text-container-2"
+                    [content]="howUse.description">
+                </dynamic-html>
+            </li>
+        </ul>
+
+        <hr style="margin-top: 2em;"/>
+
+    </section>
+
+    <section  *ngIf="wasSmall" class="right-margin-small">
+
+        <div class="center">
+            <div style="margin: 1em;margin-left: 3em;">
+                <div *ngIf="landingPage.diveDeeperSection && landingPage.diveDeeperSection.links.length > 0" class="split split-left">
+                    <sbdl-landing-dive-deeper
+                        [landingPage]="landingPage">
+                    </sbdl-landing-dive-deeper>
+                </div>
+                
+                <div *ngIf="landingPage.sampleSections && landingPage.sampleSections.sampleResources.length > 0" class="split">
+                    <sbdl-landing-sample-items
+                        [landingPage]="landingPage">
+                    </sbdl-landing-sample-items>
+                </div>
+            </div>
+        </div>
+        <br>
+        <hr style="clear: both;"/>
+    </section>
+</main>
+
+<!-- Start of the right margin -->
+<aside *ngIf="!wasSmall"  class="right-margin">
+    <div class="scroll">
+
+        <img 
+            class="thumbnail-container"
+            src={{landingPage.marketingGraphicUri}} 
+            aria-hidden="true">
+
+        <!-- Deeper section -->
+        <sbdl-landing-dive-deeper
+            [landingPage]="landingPage">
+        </sbdl-landing-dive-deeper>
+
+
+        <!-- Sample sections -->
+        <sbdl-landing-sample-items
+            [landingPage]="landingPage">
+        </sbdl-landing-sample-items>        
+        <br><br>
+    </div>
+</aside>
