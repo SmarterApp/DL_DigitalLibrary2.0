@@ -1,13 +1,16 @@
 <main id="main" class="landing-content">
 
+    <!-- The waiting spinner  -->
     <div *ngIf="isWaitDisplayed" class="filter-loader">
         <div class="filter-spinner-container">
           <i class="fas fa-spinner fa-pulse" aria-label="Loading..."></i>
         </div>
     </div>
 
+
     <div class="landing-header">
 
+        <!-- The actions at the top of the page -->
         <div class="top-header">
             <sbdl-landing-actions
                 (printPage)="onPrintPage()"
@@ -15,6 +18,7 @@
             </sbdl-landing-actions>
         </div>
 
+        <!-- The resource logo and title -->
         <span>
             <h1 style="margin-left: 32px;">
                 <img class="headerImage" src="{{headerImage}}" aria-hidden="true">
@@ -25,20 +29,25 @@
 
     <section class="landing-splits">
 
-        <!-- The left hand side -->
+        <!-- The left hand side: -->
         <div class="landing-card landing-card-left">
+
+            <!-- The tag line section -->
             <h5 style="margin-top: 2em;">{{landingPage.taglineSection.header}}</h5>
             <dynamic-html 
                 class="tagline-text"
                 [content]="landingPage.taglineSection.description">
             </dynamic-html>
 
+            <!-- How will it help section -->
             <h3 style="margin-bottom: .5em;">How will they help me?</h3>
             <dynamic-html class="howItHelpsSection" [content]="landingPage.howItHelpsSection.description"></dynamic-html>
         </div>
 
         <!-- The right hand side -->
         <div class="landing-card landing-card-right">
+
+            <!-- able player or blank space -->
             <div [hidden]="!showAblePlayer" *ngIf="youtubeVideoId.length > 0">
                 <sbdl-able-player-float-ts class="video"
                     [youtubeVideoId]="youtubeVideoId">
@@ -47,7 +56,10 @@
             <div style="height: 380px;" *ngIf="youtubeVideoId.length === 0">
             </div>
 
+            <!-- call to action section -->
             <div class="callToActionBackground">
+
+                <!-- Header -->
                 <h5>{{landingPage.callToActionSection.header}}</h5>
 
                 <dynamic-html class="text-container-3" [content]="landingPage.callToActionSection.description"></dynamic-html>
@@ -69,7 +81,8 @@
                 </div>
                 
                 <div  *ngIf="landingPage.callToActionSection.version === 'dropdownSearch'">
-                    <!-- search ddl -->
+                    <!-- search ddls -->
+                    <!-- subject -->
                     <div class="select-group">
                         <div class="select-control-group selectDDL">
                           <select class="select" [ngClass]="{'select-placeholder' : selectedSubject == ''}" [(ngModel)]="selectedSubject">
@@ -82,6 +95,7 @@
                         </div> 
                     </div>
 
+                    <!-- Grade -->
                     <div class="select-group">
                         <div class="select-control-group selectDDL">
                             <select class="select" [ngClass]="{'select-placeholder' : selectedGrade == ''}" [(ngModel)]="selectedGrade">
@@ -94,6 +108,8 @@
                         </div>
                     </div>
                     <br>
+
+                    <!-- actions to search -->
                     <sbdl-button  class="primary"
                         (click)="onFilterResourcesSubjectAndGradeClick()"> 
                       GO!
@@ -132,6 +148,7 @@
 
         <hr/>
 
+        <!-- The images of arrow and spots at the top of the section -->
         <table style="width: 100%;max-width: unset;">
             <tr>
                 <td>
@@ -154,10 +171,8 @@
             </tr>
         </table>
 
-
-
-
-         <ul class="howToUseListItems">
+        <!-- The list of items for how can i use -->
+        <ul class="howToUseListItems">
             <li *ngFor="let howUse of landingPage.howToUseSection.subSections; index as i;" 
                 [ngClass]="{'yellowImage' : (i + 1) % 3 == 1,'greenImage' : (i + 1) % 3 == 2,'blueImage' : (i + 1) % 3 == 0}">
                 <h5>{{howUse.title}}</h5>   
@@ -171,9 +186,11 @@
 
     </section>
 
+    <!-- if the page is too small, display the dive deeper and sample items  -->
     <section  *ngIf="wasSmall" class="right-margin-small">
 
         <div class="center">
+            <!-- Deeper section -->
             <div style="margin: 1em;margin-left: 3em;">
                 <div *ngIf="landingPage.diveDeeperSection && landingPage.diveDeeperSection.links.length > 0" class="split split-left">
                     <sbdl-landing-dive-deeper
@@ -181,6 +198,7 @@
                     </sbdl-landing-dive-deeper>
                 </div>
                 
+                <!-- Sample sections -->
                 <div *ngIf="landingPage.sampleSections && landingPage.sampleSections.sampleResources.length > 0" class="split">
                     <sbdl-landing-sample-items
                         [landingPage]="landingPage">
@@ -192,27 +210,31 @@
         <hr style="clear: both;"/>
     </section>
     
+    <!-- The modal window for printing the landing page -->
     <div #outsideElement>
         <div class="modal-view-container">
           <div #modalView class="modal view">
             <div class="modal-view-details">
+                <!-- X button on the top -->
                 <div class="close-button">  
                     <sbdl-button-icon
                     #closeButton
                     buttonTitle="Close"
                     aria-label="close"
                     (click)="closeModal()">
-                        <sbdl-icon icon="circle-close"></sbdl-icon>
+                        <sbdl-icon style="padding: 3px;" icon="circle-close"></sbdl-icon>
                     </sbdl-button-icon> 
                 </div>
+
+                <!-- The PDF -->
                 <div style="height: calc(100% - 105px);">
                     <object [attr.data]="pdfData" type="application/pdf"  style="max-width: none; width: 820px;height: 100%;max-height: none;" ></object>
-                    <!-- <object data="http://localhost:4200/assets/mock-downloads/ToolsForTeathers-LP.pdf" type="application/pdf"  style="max-width: none; width: 820px;height: 100%;max-height: none;" ></object> -->
                 </div>
+
+                <!-- The close button on the bottom -->
                 <div class="close-button-bottom">  
                     <sbdl-button
                     class="primary"
-                    #closeButton
                     buttonTitle="Close"
                     (click)="closeModal()">Close
                     </sbdl-button> 

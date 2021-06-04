@@ -47,8 +47,15 @@ export class LandingService {
         .pipe(map(this.landingFromJson));
   }
 
+  
+  // This will setup the payload and the header options
+  // Note: to support creating a pdf from html, api2pdf only has a post available 
   postapi2pdf(html: string, footer: string, filename: string) : Observable<any>{
 
+    // create the payload object
+    // see these for more info on payload options:
+    // https://app.swaggerhub.com/apis-docs/api2pdf/api2pdf/1.0.0#/Headless%20Chrome/chromeFromHtmlPost
+    // https://www.api2pdf.com/documentation/advanced-options-headless-chrome/
     var payload = {
       "html": html,
       "inlinePdf": true,
@@ -59,9 +66,14 @@ export class LandingService {
       }
     }; 
 
+    // Test to see if using Docker or api2pdf endpoint
+    // The response is not the same
+    // Docker: returns a file stream
     if (AppConfig.settings.api2pdfIsDockerVersion) {
       return this.dataService.postapi2pdf("",payload);
     }
+    
+    // api2pdf endpoint: returns json and will populate the object api2pdfResponse
     else {
       return this.dataService.postapi2pdf("", payload)
         .pipe(map(this.api2pdfResponseFromJson));
