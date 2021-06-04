@@ -51,6 +51,10 @@ export class DataService {
       catchError(this.handleError));
   }
   
+  // This will do the actual post to the api2pdf site
+  //    reqCtx.fullUrl will have the url from the consig settings
+  //    obj: the payload (html, footer, file name and settings)
+  //    reqCtx.options: the header options needed for the two types of call (Docker or api2pdf endpoint)
   postapi2pdf(url: string, obj: any): Observable<any> {
     return this.makeOptionsapi2pdf().pipe(
       flatMap(reqCtx => this.httpService.post(reqCtx.fullUrl, obj, reqCtx.options)),
@@ -104,15 +108,29 @@ export class DataService {
       }));
   }
 
+// This method will setup the request object to call api2pdf
+// The config settings are in folder webapp\src\assets\config\
+//    The URL is in the setting value for api2pdfHost
+//    If Authorization is used (this would be for the actual api2pfd endpoint) the setting value is api2pdfAuthorization.
+//      otherwise, it is ignored.
+//      one more setting is used, api2pdfIsDockerVersion, if true, the docker image is used. False, the api2pdf end point
+//        This is needed because the http headers and result are not the same.
 private makeOptionsapi2pdf(): Observable<RequestContext> {
 
+  // The endpoint url
+  // api2pdf endpoint: https://v2018.api2pdf.com/chrome/html
+  // docker image endpoint as of 6/2/2021: https://api2pdf-dev.dl.smarterbalanced.org/pdf/html
+  // note: the end of the end points are not the same
   const fullUrl = AppConfig.settings.api2pdfHost;
 
+  // The http header for the api2pdf endpoint
+  // the response
   const options2WebService = {
     headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
                               'binary': 'true'}),
   };
 
+  // The http header for the docker endpoint
   const options2Docker = {
     headers: new HttpHeaders({'Authorization': AppConfig.settings.api2pdfAuthorization, 
                               'binary': 'true',
