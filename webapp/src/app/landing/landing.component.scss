@@ -479,10 +479,16 @@
   }
 }
 
-.close-button-bottom {
-  float: right;
+.modal-bottom-container {
+  display: flex;
+  justify-content: flex-end;
   margin: 10px 15px;
   position: absolute;
   bottom: 0;
   right: 0;
 }
+
+.middle-bottom-button {
+  margin: 0 10px 0 10px;
+}
+

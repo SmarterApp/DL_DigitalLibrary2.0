@@ -231,14 +231,27 @@
                     <object [attr.data]="pdfData" type="application/pdf"  style="max-width: none; width: 820px;height: 100%;max-height: none;" ></object>
                 </div>
 
-                <!-- The close button on the bottom -->
-                <div class="close-button-bottom">  
+
+                <!-- Bottom Buttons -->
+                <div class="modal-bottom-container">
                     <sbdl-button
-                    class="primary"
-                    buttonTitle="Close"
-                    (click)="closeModal()">Close
+                        class="primary"
+                        buttonTitle="Print"
+                        (click)="printPDF()">Print
                     </sbdl-button> 
-                </div>
+
+                    <sbdl-button
+                        class="primary middle-bottom-button"
+                        buttonTitle="Download"
+                        (click)="downloadPDF()">Download
+                    </sbdl-button>
+
+                    <sbdl-button
+                        class="primary"
+                        buttonTitle="Close"
+                        (click)="closeModal()">Close
+                    </sbdl-button>
+                </div>              
             </div>
           </div>
         </div>
