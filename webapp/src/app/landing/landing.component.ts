@@ -7,7 +7,6 @@ import { api2pdfResponse } from '../data/landing/model/api2pdfResponse.model';
 import { LandingService } from '../data/landing/landing.service';
 import { AppConfig } from 'src/app/common/config/app.config';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import * as FileSaver from 'file-saver';
 import * as printJS from 'print-js';
 
 
@@ -202,17 +201,31 @@ export class LandingComponent implements OnInit {
     printJS(this.getPdfUrl())
   }
 
-  downloadPDF() {
+  async downloadPDF() {
     let pdfUrl = this.getPdfUrl();
     let title = `${this.title}.pdf`;
 
-    FileSaver.saveAs(pdfUrl, title);
+    let blob = await fetch(pdfUrl).then(r => r.blob());
+    this.downloadFile(blob, title);
+
   }
 
   getPdfUrl(){
     return String(Object.values(this.pdfData)[0]);
   }
 
+  downloadFile(blob, fileName){
+    const link = document.createElement('a');
+    // create a blobURI pointing to our Blob
+    link.href = URL.createObjectURL(blob);
+    link.download = fileName;
+    // some browser needs the anchor to be in the doc
+    document.body.append(link);
+    link.click();
+    link.remove();
+    // in case the Blob uses a lot of memory
+    setTimeout(() => URL.revokeObjectURL(link.href), 7000);
+  };
 
   // Part of responsiveness, handles the resize event
   @HostListener('window:resize', ['$event'])

@@ -235,20 +235,24 @@
                 <!-- Bottom Buttons -->
                 <div class="modal-bottom-container">
                     <sbdl-button
+                        #bottomPrintButton
                         class="primary"
                         buttonTitle="Print"
+                        aria-label="print"
                         (click)="printPDF()">Print
                     </sbdl-button> 
 
                     <sbdl-button
                         class="primary middle-bottom-button"
                         buttonTitle="Download"
+                        aria-label="download"
                         (click)="downloadPDF()">Download
                     </sbdl-button>
 
                     <sbdl-button
                         class="primary"
                         buttonTitle="Close"
+                        aria-label="close"
                         (click)="closeModal()">Close
                     </sbdl-button>
                 </div>              
