@@ -9,9 +9,9 @@
   },
   "tenantConfigPath": "/assets/config/tenant.config.json",
   "apiServerHost": "https://api-dev.dl.smarterbalanced.org",
-  "api2pdfHost": "https://v2018.api2pdf.com/chrome/html",
-  "api2pdfAuthorization": "29795e25-a83e-4d50-bcbc-a18d4d559800",
-  "api2pdfIsDockerVersion": false,
+  "api2pdfHost": "https://y1qvl9scd1.execute-api.us-west-2.amazonaws.com/dev/pdf/html",
+  "api2pdfAuthorization": "",
+  "api2pdfIsDockerVersion": true,
   "interimItemPortalUrl": "https://interim-stage.smarterbalanced.org/BrowseItems",
   "enableAnalytics": false,
   "GA4AnalyticsTrackingId": "G-K4E5LB0M90",
@@ -20,3 +20,4 @@
     "issuer": "https://smarterbalanced.oktapreview.com/oauth2/ausr8b7sqjHONBENP0h7"
   }
 }
+
