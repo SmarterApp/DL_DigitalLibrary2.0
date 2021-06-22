@@ -34,6 +34,7 @@
     "@kolkov/angular-editor": "^1.0.0-rc.2",
     "@material/button": "^3.2.0",
     "@material/chips": "^3.2.0",
+    "@material/dialog": "^3.2.0",
     "@material/form-field": "^4.0.0",
     "@material/icon-button": "^3.2.0",
     "@material/ripple": "^3.2.0",

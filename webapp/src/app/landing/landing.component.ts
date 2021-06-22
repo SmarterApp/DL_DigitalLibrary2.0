@@ -8,7 +8,8 @@ import { LandingService } from '../data/landing/landing.service';
 import { AppConfig } from 'src/app/common/config/app.config';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import * as printJS from 'print-js';
-
+import {MDCDialog} from '@material/dialog';
+import { createFocusTrapInstance } from '@material/dialog/util';
 
 // Used to pull the youtube Id for use with Able Player
 const YT_MATCH_VID = /.*youtube.*v=([^&]+).*$|.*youtu.be\/([^&?]+).*$|.*youtube\/embed\/([^&?]+).*$/;
@@ -31,11 +32,8 @@ export class SearchQueryParams {
 })
 
 export class LandingComponent implements OnInit {
-  // 2 named UI elements used as part of the modal print process
-  @ViewChild("outsideElement", { static: true }) outsideElement: ElementRef;
-  @ViewChild('modalView', { static: true }) modalView$: ElementRef;
-  @ViewChild('closeButton', { static: false }) closeButton: ElementRef;
   params: SearchQueryParams;
+  printModal: MDCDialog;
   landingType: string;
   resourceTypeSearch: string;
   title: string;
@@ -63,10 +61,6 @@ export class LandingComponent implements OnInit {
   // Need a public url to access the images and other resource for api2pdf process
   urlHome: string = 'https://qa.webapp.dl.smarterbalanced.org';
   headerImage: string;
-
-  // needed to hide able player when displaying the printing modal 
-  // the z-index on Able Player will make it sit on top of the model window.
-  showAblePlayer: boolean = true;
   pdfData: any;     // The PDF that will bind to the html 
 
   constructor(
@@ -143,6 +137,10 @@ export class LandingComponent implements OnInit {
     }
   }
 
+  ngAfterViewInit(){
+    this.printModal = new MDCDialog(document.querySelector('.mdc-dialog'));
+  }
+
   // the next few methods handle all the search options
   // this handles when grade and subject is displayed
   onFilterResourcesSubjectAndGradeClick() {
@@ -188,13 +186,12 @@ export class LandingComponent implements OnInit {
   }
 
   openModal() {
-    this.showAblePlayer = false;
-    this.modalView$.nativeElement.classList.add('visible');
+    this.printModal.open()
+    createFocusTrapInstance
   }
 
   closeModal() {
-    this.showAblePlayer = true;
-    this.modalView$.nativeElement.classList.remove('visible');
+    this.printModal.close()
   }
 
   printPDF() {
@@ -265,25 +262,6 @@ export class LandingComponent implements OnInit {
     this.lastSize = this.window.innerWidth;
   }
 
-  // handles the modal close when user clicks off the modal
-  @HostListener('document:click', ['$event.target'])
-  public onClick(targetElement) {
-    if (!this.showAblePlayer) {
-      const outsideElement = this.outsideElement.nativeElement.contains(targetElement);
-
-      if (outsideElement) {
-        this.closeModal();
-      }
-    }
-  }
-
-  // handles the esc key when the model is displayed
-  @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.code === "Escape") {
-      this.closeModal();
-    }
-  }
 
   // hard coded grades and subjects (for now)
   loadDDL() {
@@ -335,30 +313,8 @@ export class LandingComponent implements OnInit {
 
   // the main method to build the html for the pdf
   buildPrintHTML(): string {
-
     if (!window.location.origin.toLowerCase().includes("localhost")) {
       this.urlHome = window.location.origin;
-    }
-    else {
-      if (AppConfig.settings.api2pdfIsDockerVersion) {
-        alert("Developer message: To get landing pages printing to work from localhost, find this message.")
-      }
-      //************************************************************************************ */
-      // Read me
-      // Read me
-      // Read me
-      // printing landing pages uses a Docker image of api2pdf.  When developing using localhost
-      // this causes a Cross-Origin Resource Sharing (CORS) issue/error with the api.
-      // The work around is to open a browser with security disable.
-      // For Chrome on windows:
-      //    1. Open command window.
-      //    2. change the folder to the location of Chrome.  
-      //          cd C:\Program Files (x86)\Google\Chrome\Application
-      //    3. run
-      //          chrome.exe --disable-web-security --user-data-dir="c:/ChromeDevSession"
-      //        Note: you will need to create the folder c:/ChromeDevSession
-      //    4. run the web app normally.
-      //************************************************************************************ */
     }
 
     return "" +
