@@ -3,7 +3,7 @@
     <!-- The waiting spinner  -->
     <div *ngIf="isWaitDisplayed" class="filter-loader">
         <div class="filter-spinner-container">
-          <i class="fas fa-spinner fa-pulse" aria-label="Loading..."></i>
+            <i class="fas fa-spinner fa-pulse" aria-label="Loading..."></i>
         </div>
     </div>
 
@@ -12,9 +12,7 @@
 
         <!-- The actions at the top of the page -->
         <div class="top-header">
-            <sbdl-landing-actions
-                (printPage)="onPrintPage()"
-                [landingType]="landingType">
+            <sbdl-landing-actions (printPage)="onPrintPage()" [landingType]="landingType">
             </sbdl-landing-actions>
         </div>
 
@@ -34,25 +32,23 @@
 
             <!-- The tag line section -->
             <h5 style="margin-top: 2em;">{{landingPage.taglineSection.header}}</h5>
-            <dynamic-html 
-                class="tagline-text"
-                [content]="landingPage.taglineSection.description">
+            <dynamic-html class="tagline-text" [content]="landingPage.taglineSection.description">
             </dynamic-html>
 
             <!-- How will it help section -->
             <h3 style="margin-bottom: .5em;">How will they help me?</h3>
-            <dynamic-html class="howItHelpsSection" [content]="landingPage.howItHelpsSection.description"></dynamic-html>
+            <dynamic-html class="howItHelpsSection" [content]="landingPage.howItHelpsSection.description">
+            </dynamic-html>
         </div>
 
         <!-- The right hand side -->
         <div class="landing-card landing-card-right">
 
             <!-- able player or blank space -->
-            <div [hidden]="!showAblePlayer" *ngIf="youtubeVideoId.length > 0">
-                <sbdl-able-player-float-ts class="video"
-                    [youtubeVideoId]="youtubeVideoId">
-                </sbdl-able-player-float-ts>  
-            </div>  
+            <div [hidden]="!!printModal?.isOpen" *ngIf="youtubeVideoId.length > 0">
+                <sbdl-able-player-float-ts class="video" [youtubeVideoId]="youtubeVideoId">
+                </sbdl-able-player-float-ts>
+            </div>
             <div style="height: 380px;" *ngIf="youtubeVideoId.length === 0">
             </div>
 
@@ -62,46 +58,47 @@
                 <!-- Header -->
                 <h5>{{landingPage.callToActionSection.header}}</h5>
 
-                <dynamic-html class="text-container-3" [content]="landingPage.callToActionSection.description"></dynamic-html>
+                <dynamic-html class="text-container-3" [content]="landingPage.callToActionSection.description">
+                </dynamic-html>
 
-                <div  *ngIf="landingPage.callToActionSection.version === 'textSearch'">
+                <div *ngIf="landingPage.callToActionSection.version === 'textSearch'">
                     <!-- Search text -->
                     <div style="margin-top: 10px;">
-                        <sbdl-text-field
-                          isSmallerText="'true'"
-                          (submit)="search({query: $event})"
-                          placeholder="{{landingPage.callToActionSection.promptText}}"      
-                          fontAwesomeIcon="fa-search"
-                          submitButtonAriaLabel="search resources">
-                        </sbdl-text-field>               
-                    </div> 
-                    <p style="margin-top: 10px;">              
-                        <a href="javascript:void(0)" (click)="onFilterResourcesClick()">{{landingPage.callToActionSection.browseLinkText}}</a>
+                        <sbdl-text-field isSmallerText="'true'" (submit)="search({query: $event})"
+                            placeholder="{{landingPage.callToActionSection.promptText}}" fontAwesomeIcon="fa-search"
+                            submitButtonAriaLabel="search resources">
+                        </sbdl-text-field>
+                    </div>
+                    <p style="margin-top: 10px;">
+                        <a href="javascript:void(0)"
+                            (click)="onFilterResourcesClick()">{{landingPage.callToActionSection.browseLinkText}}</a>
                     </p>
                 </div>
-                
-                <div  *ngIf="landingPage.callToActionSection.version === 'dropdownSearch'">
+
+                <div *ngIf="landingPage.callToActionSection.version === 'dropdownSearch'">
                     <!-- search ddls -->
                     <!-- subject -->
                     <div class="select-group">
                         <div class="select-control-group selectDDL">
-                          <select class="select" [ngClass]="{'select-placeholder' : selectedSubject == ''}" [(ngModel)]="selectedSubject">
-                            <option  value="">Select a subject</option>
-                            <option  *ngFor="let s of subjects" value="{{s.code}}">
-                              {{ s.fullName }}
-                            </option>
-                          </select>
-                          <i class="far fa-chevron-square-down fa-lg select-icon"></i>
-                        </div> 
+                            <select class="select" [ngClass]="{'select-placeholder' : selectedSubject == ''}"
+                                [(ngModel)]="selectedSubject">
+                                <option value="">Select a subject</option>
+                                <option *ngFor="let s of subjects" value="{{s.code}}">
+                                    {{ s.fullName }}
+                                </option>
+                            </select>
+                            <i class="far fa-chevron-square-down fa-lg select-icon"></i>
+                        </div>
                     </div>
 
                     <!-- Grade -->
                     <div class="select-group">
                         <div class="select-control-group selectDDL">
-                            <select class="select" [ngClass]="{'select-placeholder' : selectedGrade == ''}" [(ngModel)]="selectedGrade">
+                            <select class="select" [ngClass]="{'select-placeholder' : selectedGrade == ''}"
+                                [(ngModel)]="selectedGrade">
                                 <option value="">Select a grade</option>
                                 <option *ngFor="let g of grades" value="{{g.code}}">
-                                  {{ g.longName }}
+                                    {{ g.longName }}
                                 </option>
                             </select>
                             <i class="far fa-chevron-square-down fa-lg select-icon"></i>
@@ -110,9 +107,8 @@
                     <br>
 
                     <!-- actions to search -->
-                    <sbdl-button  class="primary"
-                        (click)="onFilterResourcesSubjectAndGradeClick()"> 
-                      GO!
+                    <sbdl-button class="primary" (click)="onFilterResourcesSubjectAndGradeClick()">
+                        GO!
                     </sbdl-button>&nbsp;&nbsp;&nbsp;
                     <a href="javascript:void(0)" (click)="onFilterResourcesClick()">or browse all</a>
                 </div>
@@ -146,7 +142,7 @@
     <!-- Start of 'How Can I use this' section  -->
     <section class="landing-howcaniuse">
 
-        <hr/>
+        <hr />
 
         <!-- The images of arrow and spots at the top of the section -->
         <table style="width: 100%;max-width: unset;">
@@ -162,10 +158,8 @@
                 </td>
                 <td>
                     <div>
-                        <img class="yellow"
-                         src="/assets/images/yellow-spot-6.png" aria-hidden="true">                        
-                        <img class="green"
-                            src="/assets/images/green-spot-2.png" aria-hidden="true">
+                        <img class="yellow" src="/assets/images/yellow-spot-6.png" aria-hidden="true">
+                        <img class="green" src="/assets/images/green-spot-2.png" aria-hidden="true">
                     </div>
                 </td>
             </tr>
@@ -173,97 +167,95 @@
 
         <!-- The list of items for how can i use -->
         <ul class="howToUseListItems">
-            <li *ngFor="let howUse of landingPage.howToUseSection.subSections; index as i;" 
+            <li *ngFor="let howUse of landingPage.howToUseSection.subSections; index as i;"
                 [ngClass]="{'yellowImage' : (i + 1) % 3 == 1,'greenImage' : (i + 1) % 3 == 2,'blueImage' : (i + 1) % 3 == 0}">
-                <h5>{{howUse.title}}</h5>   
-                <dynamic-html class="text-container-2"
-                    [content]="howUse.description">
+                <h5>{{howUse.title}}</h5>
+                <dynamic-html class="text-container-2" [content]="howUse.description">
                 </dynamic-html>
             </li>
         </ul>
 
-        <hr style="margin-top: 2em;"/>
+        <hr style="margin-top: 2em;" />
 
     </section>
 
     <!-- if the page is too small, display the dive deeper and sample items  -->
-    <section  *ngIf="wasSmall" class="right-margin-small">
+    <section *ngIf="wasSmall" class="right-margin-small">
 
         <div class="center">
             <!-- Deeper section -->
             <div style="margin: 1em;margin-left: 3em;">
-                <div *ngIf="landingPage.diveDeeperSection && landingPage.diveDeeperSection.links.length > 0" class="split split-left">
-                    <sbdl-landing-dive-deeper
-                        [landingPage]="landingPage">
+                <div *ngIf="landingPage.diveDeeperSection && landingPage.diveDeeperSection.links.length > 0"
+                    class="split split-left">
+                    <sbdl-landing-dive-deeper [landingPage]="landingPage">
                     </sbdl-landing-dive-deeper>
                 </div>
-                
+
                 <!-- Sample sections -->
-                <div *ngIf="landingPage.sampleSections && landingPage.sampleSections.sampleResources.length > 0" class="split">
-                    <sbdl-landing-sample-items
-                        [landingPage]="landingPage">
+                <div *ngIf="landingPage.sampleSections && landingPage.sampleSections.sampleResources.length > 0"
+                    class="split">
+                    <sbdl-landing-sample-items [landingPage]="landingPage">
                     </sbdl-landing-sample-items>
                 </div>
             </div>
         </div>
         <br>
-        <hr style="clear: both;"/>
+        <hr style="clear: both;" />
     </section>
-    
+
     <!-- The modal window for printing the landing page -->
-    <div #outsideElement>
-        <div class="modal-view-container">
-          <div #modalView class="modal view">
-            <div class="modal-view-details">
-                <!-- X button on the top -->
-                <div class="close-button">  
-                    <sbdl-button-icon
-                    #closeButton
-                    buttonTitle="Close"
-                    aria-label="close"
-                    (click)="closeModal()">
-                        <sbdl-icon style="padding: 3px;" icon="circle-close"></sbdl-icon>
-                    </sbdl-button-icon> 
+    <div class="mdc-dialog">
+        <div class="mdc-dialog__container">
+            <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="print-modal"
+                aria-describedby="my-dialog-content" cdkTrapFocus>
+                <h2 class="mdc-dialog__title dialog-header" id="print-modal">
+                    Print Preview
+                    <sbdl-button-icon class="primary" buttonTitle="Close" (click)="closeModal()" cdkFocusRegionStart
+                        tabindex="0">
+                        <i class="far fa-times-circle"></i>
+                    </sbdl-button-icon>
+                </h2>
+                <div class="mdc-dialog__content" id="my-dialog-content">
+                    <!-- The PDF -->
+                    <div style="height: calc(100% - 105px);">
+                        <object [attr.data]="pdfData" type="application/pdf"
+                            style="max-width: none; width: 820px;height: 100%;max-height: none;"></object>
+                    </div>
                 </div>
 
-                <!-- The PDF -->
-                <div style="height: calc(100% - 105px);">
-                    <object [attr.data]="pdfData" type="application/pdf"  style="max-width: none; width: 820px;height: 100%;max-height: none;" ></object>
-                </div>
+                <div class="mdc-dialog__actions">
+                    <sbdl-button #bottomPrintButton class="primary" buttonTitle="Print" aria-label="print"
+                        (click)="printPDF()">Print
+                    </sbdl-button>
 
-                <!-- The close button on the bottom -->
-                <div class="close-button-bottom">  
-                    <sbdl-button
-                    class="primary"
-                    buttonTitle="Close"
-                    (click)="closeModal()">Close
-                    </sbdl-button> 
+                    <sbdl-button class="primary middle-bottom-button" buttonTitle="Download" aria-label="download"
+                        (click)="downloadPDF()">Download
+                    </sbdl-button>
+
+                    <sbdl-button class="primary" buttonTitle="Close" aria-label="close" (click)="closeModal()"
+                        cdkFocusRegionEnd>Close
+                    </sbdl-button>
                 </div>
             </div>
-          </div>
         </div>
+        <div class="mdc-dialog__scrim"></div>
     </div>
 </main>
 
 <!-- Start of the right margin -->
-<aside *ngIf="!wasSmall"  class="right-margin">
+<aside *ngIf="!wasSmall" class="right-margin">
     <div class="scroll">
 
-        <img 
-            class="thumbnail-container"
-            src={{landingPage.marketingGraphicUri}} 
-            aria-hidden="true">
+        <img class="thumbnail-container" src={{landingPage.marketingGraphicUri}} aria-hidden="true">
 
         <!-- Deeper section -->
-        <sbdl-landing-dive-deeper
-            [landingPage]="landingPage">
+        <sbdl-landing-dive-deeper [landingPage]="landingPage">
         </sbdl-landing-dive-deeper>
 
 
         <!-- Sample sections -->
-        <sbdl-landing-sample-items
-            [landingPage]="landingPage">
-        </sbdl-landing-sample-items>        
+        <sbdl-landing-sample-items [landingPage]="landingPage">
+        </sbdl-landing-sample-items>
         <br><br>
     </div>
 </aside>
