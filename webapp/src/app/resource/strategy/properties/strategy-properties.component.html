@@ -21,20 +21,23 @@
 </div>
 
 <div *ngIf="!isFormative()">
-  <h3 class="subject">
+    
+  <ng-content></ng-content>
+
+  <p *ngIf="properties.subject.shortName !== 'UT'" class="subject">
     {{ properties.subject.fullName }} 
     <sbdl-tooltip *ngIf="properties.subject.shortName === 'DS' || properties.subject.shortName == 'Designated Supports'" 
          text="Accessibility resources that are available to students based on a student need indicated by an educator (or team of educators) with parent/guardian and student input.">
     <sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
 
-    <sbdl-tooltip *ngIf="properties.subject.shortName === 'UT' || properties.subject.shortName == 'Universal Tool'" 
+    <!-- <sbdl-tooltip *ngIf="properties.subject.shortName === 'UT' || properties.subject.shortName == 'Universal Tool'" 
          text="Accessibility resources that are available to students based on student preference and selection.">
-    <sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
+    <sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip> -->
 
     <sbdl-tooltip *ngIf="properties.subject.shortName === 'AC' || properties.subject.shortName == 'Accommodations'" 
          text="Accessibility resources that are available to students based on student need indicated by the student's Individual Education Program (IEP) or 504 plan.">
     <sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
-  </h3>
+  </p>
 
   <h4 class="link-title">Learn more about accessibility.</h4>
 

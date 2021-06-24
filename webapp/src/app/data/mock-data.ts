@@ -57,6 +57,7 @@ export const mockInstructionalResource: InstructionalResource = {
     authorOrg: '',
     authors: [''],
     claims: [],
+    categories: [],
     grades: [],
     image: '',
     lastUpdatedDate: new Date(),
@@ -87,7 +88,8 @@ export const mockInstructionalResource: InstructionalResource = {
     interpret: '',
     act: ''
   },
-  listConnectionsPlaylists: []
+  listConnectionsPlaylists: [],
+  uaagTiers: []
 };
 
 
@@ -265,6 +267,7 @@ export const teaserIRContent: InstructionalResource = {
       'Angie Shindelar',
       'Robert Parkin'
     ],
+    categories: [],
     claims: [
       {
         code: 'math-c1',
@@ -303,6 +306,7 @@ export const teaserIRContent: InstructionalResource = {
     ],
     title: 'Come to the Table'
   },
+  uaagTiers: [],
   attachments: [
     {
       category: 'Supplemental Material',
@@ -458,6 +462,7 @@ export const teaserFAContent: FormativeStrategyResource = {
   properties: {
     authorOrg: 'Smarter Balanced',
     authors: [],
+    categories: [],
     claims: [],
     grades: [],
     image: 'https://s3-us-west-2.amazonaws.com/api-dev.dl.smarterbalanced.org/Images/23/Gallery+Walk_+-+Serene+Cook.png',
@@ -471,6 +476,7 @@ export const teaserFAContent: FormativeStrategyResource = {
     targets: [],
     title: 'Gallery Walk'
   },
+  uaagTiers: [],
   overview: {
     overview: '<p>This discussion technique allows students to be actively engaged as they walk through the classroom. They share ideas and respond to meaningful questions, documents, images, problem-solving situations, or texts individually or in small groups.</p>',
     studentBenefits: '<p>Using this tool can help students:</p>\r\n<ul>\r\n<li>analyze information.</li>\r\n<li>reflect on learning.</li>\r\n<li>actively listen.</li>\r\n<li>provide peer feedback.</li>\r\n<li>practice using oral and written language.</li>\r\n<li>observe a new way to solve a problem.</li>\r\n<li>create questions.</li>\r\n</ul>',
@@ -504,6 +510,7 @@ export const teaserASContent: AccessibilityStrategyResource = {
   properties: {
     authorOrg: 'Smarter Balanced',
     authors: [],
+    categories: [],
     claims: [],
     grades: [],
     image: 'https://s3-us-west-2.amazonaws.com/api-dev.dl.smarterbalanced.org/Images/68/Writing+Tools+-+Serene+Cook.png',
@@ -517,6 +524,7 @@ export const teaserASContent: AccessibilityStrategyResource = {
     targets: [],
     title: 'Writing Tools'
   },
+  uaagTiers: [],
   overview: {
     overview: '',
     studentBenefits: '',
@@ -540,6 +548,7 @@ export const teaserPLContent: ProfessionalLearningResource = {
   properties: {
     authorOrg: 'Smarter Balanced',
     authors: [],
+    categories: [],
     claims: [],
     grades: [],
     image: 'https://s3-us-west-2.amazonaws.com/api-dev.dl.smarterbalanced.org/Images/247/247.jpg',
@@ -553,6 +562,7 @@ export const teaserPLContent: ProfessionalLearningResource = {
     targets: [],
     title: 'IAB Use 4: Using IABS as a Tool to Support Student Mastery'
   },
+  uaagTiers: [],
   overview: {
     overview: '',
     learningGoal: '',
@@ -662,6 +672,7 @@ export const teaserCPContent: PlaylistResource = {
     authors: [
       'Smarter Balanced Educators'
     ],
+    categories: [],
     claims: [
       {
         code: 'ela-c2',
@@ -705,6 +716,7 @@ export const teaserCPContent: PlaylistResource = {
     ],
     title: 'Language and Vocabulary Use'
   },
+  uaagTiers: [],
   overview: {
     description: '<p>Students can produce effective and well-grounded writing for a range of purposes and audiences strategically using precise language and vocabulary (including academic words, domain-specific vocabulary, and figurative language) and style appropriate to the purpose and audience when revising or composing texts.</p>',
     importance: '<ul>\r\n<li>Express ideas precisely.</li>\r\n<li>Use specific vocabulary that conveys shades of meaning.</li>\r\n<li>Determine appropriate vocabulary to convey experiences or events and/or to explain a topic.</li>\r\n<li>To ensure that a student&rsquo;s or author&rsquo;s message (for purpose and audience) comes through as intended, by using precise language and phrasing.</li>\r\n</ul>',

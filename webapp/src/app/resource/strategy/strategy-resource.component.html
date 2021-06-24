@@ -1,6 +1,6 @@
 <header class="resource-header">
   <div class="top-header">
-    <img src="/assets/images/yellow-spot.png" aria-hidden="true">
+    <img src="/assets/images/yellow-spot.png" aria-hidden="true" />
     <sbdl-actions
       [hasNotes]="notes.length > 0"
       [notesVisible]="notesVisible"
@@ -47,14 +47,18 @@
     (notesVisibilityChanged)="noteModeChanged.emit($event)"
   ></sbdl-strategy-content>
 </main>
-<aside class="resource-properties" [ngClass]="{hidden: notesVisible}">
-  <sbdl-resource-properties
-    [properties]="resource.properties"
-  >
+<aside class="resource-properties" [ngClass]="{ hidden: notesVisible }">
+  <sbdl-resource-properties [properties]="resource.properties">
     <sbdl-strategy-properties
       [properties]="resource.properties"
       [resourceType]="resource.type"
-    ></sbdl-strategy-properties>
+    >
+      <sbdl-educational-details
+        [properties]="resource.properties"
+        [resourceType]="resource.type"
+        [uaagTiers]="resource.uaagTiers"
+      ></sbdl-educational-details>
+    </sbdl-strategy-properties>
   </sbdl-resource-properties>
 </aside>
 <aside
@@ -73,7 +77,7 @@
 </aside>
 <footer
   class="resource-footer"
-  [ngClass]="{'reading-mode': readingMode, 'full-mode': !readingMode}">
-  <sbdl-footer
-  ></sbdl-footer>
+  [ngClass]="{ 'reading-mode': readingMode, 'full-mode': !readingMode }"
+>
+  <sbdl-footer></sbdl-footer>
 </footer>
