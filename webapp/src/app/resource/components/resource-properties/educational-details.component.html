@@ -127,7 +127,7 @@
           style="white-space: nowrap"
         >
           <span class="gradient-hover">
-            {{ category.title }}{{ isLast ? "" : ", " }}
+            {{ category.title }}{{ isLast ? "" : ",&nbsp;" }}
           </span>
         </sbdl-tooltip>
       </span>
@@ -152,12 +152,14 @@
         <sbdl-tooltip
           [title]="tier.title | uppercase"
           [text]="'<p>' + tier.description + '</p>'"
+          [readMoreUrl]="tier.uaagLink"
+          readMoreText="Open the UAAG"
           [isScrollable]="false"
           class="educational-details-link"
           style="white-space: nowrap"
         >
           <span class="gradient-hover">
-            {{ tier.title }}{{ isLast ? "" : ", " }}
+            {{ tier.title }}{{ isLast ? "" : ",&nbsp;" }}
           </span>
         </sbdl-tooltip>
       </span>
