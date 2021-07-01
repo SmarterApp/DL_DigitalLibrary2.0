@@ -48,8 +48,8 @@
       *ngIf="properties.targets && properties.targets.length > 0"
       class="value"
     >
-      <div
-        *ngFor="let target of orderedTargets"
+      <span
+        *ngFor="let target of orderedTargets; let isLast = last"
         title="{{ target.description }}"
       >
         <sbdl-tooltip
@@ -59,9 +59,9 @@
           class="educational-details-link"
           style="white-space: nowrap"
         >
-          <span class="gradient-hover">{{ target.number }}</span>
+          <span class="gradient-hover">{{ target.number }} {{ isLast ? "" : ",&nbsp;" }}</span>
         </sbdl-tooltip>
-      </div>
+      </span>
     </div>
 
     <!-- Standards -->
@@ -69,15 +69,15 @@
       *ngIf="properties.standards && properties.standards.length > 0"
       [ngPlural]="properties.standards.length"
     >
-      <ng-template ngPluralCase="=1">Content Standard</ng-template>
-      <ng-template ngPluralCase="other">Content Standards</ng-template>
+      <ng-template ngPluralCase="=1">Standard</ng-template>
+      <ng-template ngPluralCase="other">Standards</ng-template>
     </label>
     <div
       *ngIf="properties.standards && properties.standards.length > 0"
       class="value"
     >
-      <div
-        *ngFor="let standard of orderedStandards"
+      <span
+        *ngFor="let standard of orderedStandards; let isLast = last"
         title="{{ standard.title }}"
       >
         <sbdl-tooltip
@@ -86,9 +86,9 @@
           [isScrollable]="false"
           class="educational-details-link"
           style="white-space: nowrap"
-          ><span class="gradient-hover">{{ standard.title }}</span>
+          ><span class="gradient-hover">{{ standard.title }}{{ isLast ? "" : ",&nbsp;" }}</span>
         </sbdl-tooltip>
-      </div>
+      </span>
     </div>
   </div>
 </div>

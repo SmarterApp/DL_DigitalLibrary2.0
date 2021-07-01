@@ -59,6 +59,7 @@ import {ProgressionScaleButtonComponent} from './playlist/topics/progression-sca
 import {ProtectedContentComponent} from './components/protected-content/protected-content.component';
 import {ResourceThumbnailComponent} from './components/resource-thumbnail/resource-thumbnail.component';
 import {InstructionalPlaylistsComponent} from './instructional/instructional-playlists/instructional-playlists.component';
+import {InstructionalRemoteComponent} from './instructional/instructional-remote/instructional-remote.component';
 import {ShareFormComponent} from './components/share-form/share-form.component';
 import {A11yModule} from '@angular/cdk/a11y';
 import {OverlayModule} from '@angular/cdk/overlay';
@@ -120,6 +121,7 @@ import {LayoutModule} from '../layout/layout.module';
     ProtectedContentComponent,
     ResourceThumbnailComponent,
     InstructionalPlaylistsComponent,
+    InstructionalRemoteComponent,
     ShareFormComponent
   ],
     imports: [
