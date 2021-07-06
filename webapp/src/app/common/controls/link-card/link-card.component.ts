@@ -9,7 +9,7 @@ export class LinkCardComponent implements OnInit {
   @Input()
   text: string;
   @Input()
-  resourceUrl: string = "https://smartertoolsforteachers.org/resource/1458";
+  resourceUrl: string;
   @Input()
   description: string;
   @Input()
@@ -18,6 +18,5 @@ export class LinkCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log(this.resourceUrl)
   }
 }
