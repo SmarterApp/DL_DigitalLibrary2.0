@@ -31,7 +31,7 @@ h3, h4 {
 }
 
 .details {
-  font-family: $font-family-title;
+  // font-family: $font-family-title;
   display: grid;
   grid-template-areas: "label value";
   grid-row-gap: $spacer;
@@ -42,7 +42,7 @@ h3, h4 {
   > label {
     grid-area: "label";
     font-style: normal;
-    font-weight: 200;
+    // font-weight: 200;
     font-size: 14.1px;
     line-height: 117%;
     letter-spacing: -0.021em;
