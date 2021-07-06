@@ -21,6 +21,7 @@ import {ConfirmationDialogComponent} from './confirmation-dialog/confirmation-di
 import {CategorizedResourceSummaryComponent} from './categorized-resource-summary/categorized-resource-summary.component';
 import {ResourceTypeIconComponent} from './resource-type-icon/resource-type-icon.component';
 import {AblePlayerComponentFloatTS} from 'src/app/common/controls/able-player-float-ts/able-player-float-ts.component';
+import { LinkCardComponent } from './controls/link-card/link-card.component';
 
 // This object contains the components which can be loaded dyanmically via
 // the dynamic-html component.
@@ -55,7 +56,8 @@ const dynamicOptions = {
     LoginComponent,
     CategorizedResourceSummaryComponent,
     ResourceTypeIconComponent,
-    AblePlayerComponentFloatTS
+    AblePlayerComponentFloatTS,
+    LinkCardComponent,
   ],
   exports: [
     ButtonComponent,
@@ -70,7 +72,8 @@ const dynamicOptions = {
     FilterChipsetComponent,
     ConfirmationDialogComponent,
     ResourceTypeIconComponent,
-    AblePlayerComponentFloatTS
+    AblePlayerComponentFloatTS,
+    LinkCardComponent
   ],
   providers: [
     DynamicHTMLRenderer,

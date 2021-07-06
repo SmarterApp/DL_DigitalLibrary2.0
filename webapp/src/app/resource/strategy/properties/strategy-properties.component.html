@@ -1,18 +1,28 @@
 <div *ngIf="isFormative()">
-  <h3 class="link-title">Learn how this strategy relates to the Formative Assessment Process.</h3>
+  <h3 class="link-title">
+    Learn how this strategy relates to the Formative Assessment Process.
+  </h3>
 
-  <a href="https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf"
-     aria-label="Formative Assessment Process Flier (opens in a new window)"
-     class="link-card" target="_blank" #link>
+  <a
+    href="https://portal.smarterbalanced.org/library/en/formative-assessment-process.pdf"
+    aria-label="Formative Assessment Process Flier (opens in a new window)"
+    class="link-card"
+    target="_blank"
+    #link
+  >
     <div class="type-info">
       <span>Formative Assessment Process Flier</span>
       <i class="far fa-file-pdf" aria-hidden="true"></i>
     </div>
   </a>
 
-  <a href="https://www.youtube.com/watch?v=wpwZCqvt70U"
-     aria-label="Understanding the Formative Assessment Process (opens in a new window)"
-     class="link-card" target="_blank" #link>
+  <a
+    href="https://www.youtube.com/watch?v=wpwZCqvt70U"
+    aria-label="Understanding the Formative Assessment Process (opens in a new window)"
+    class="link-card"
+    target="_blank"
+    #link
+  >
     <div class="type-info">
       <span>Understanding the Formative Assessment Process</span>
       <i class="fab fa-youtube" aria-hidden="true"></i>
@@ -21,47 +31,50 @@
 </div>
 
 <div *ngIf="!isFormative()">
-    
   <ng-content></ng-content>
 
   <p *ngIf="properties.subject.shortName !== 'UT'" class="subject">
-    {{ properties.subject.fullName }} 
-    <sbdl-tooltip *ngIf="properties.subject.shortName === 'DS' || properties.subject.shortName == 'Designated Supports'" 
-         text="Accessibility resources that are available to students based on a student need indicated by an educator (or team of educators) with parent/guardian and student input.">
-    <sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
+    {{ properties.subject.fullName }}
+    <sbdl-tooltip
+      *ngIf="
+        properties.subject.shortName === 'DS' ||
+        properties.subject.shortName == 'Designated Supports'
+      "
+      text="Accessibility resources that are available to students based on a student need indicated by an educator (or team of educators) with parent/guardian and student input."
+    >
+      <sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon
+    ></sbdl-tooltip>
 
     <!-- <sbdl-tooltip *ngIf="properties.subject.shortName === 'UT' || properties.subject.shortName == 'Universal Tool'" 
          text="Accessibility resources that are available to students based on student preference and selection.">
     <sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip> -->
 
-    <sbdl-tooltip *ngIf="properties.subject.shortName === 'AC' || properties.subject.shortName == 'Accommodations'" 
-         text="Accessibility resources that are available to students based on student need indicated by the student's Individual Education Program (IEP) or 504 plan.">
-    <sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon></sbdl-tooltip>
+    <sbdl-tooltip
+      *ngIf="
+        properties.subject.shortName === 'AC' ||
+        properties.subject.shortName == 'Accommodations'
+      "
+      text="Accessibility resources that are available to students based on student need indicated by the student's Individual Education Program (IEP) or 504 plan."
+    >
+      <sbdl-icon class="tooltip-icon" icon="info"></sbdl-icon
+    ></sbdl-tooltip>
   </p>
 
   <p>Learn more about accessibility.</p>
 
-  <a href="https://smartertoolsforteachers.org/resource/1458"
-     aria-label="Understanding the Individual Student Assessment Accessibility Profile (opens in a new window)"
-     class="link-card" target="_blank" #link>
-    <div class="type-info">
-      <span>Understanding the Individual Student Assessment Accessibility Profile</span>
-      <sbdl-icon 
-          icon="goal" 
-          class="center icon-large"
-          aria-hidden="true"></sbdl-icon>
-    </div>
-  </a>
+  <sbdl-link-card
+    resourceUrl="https://smartertoolsforteachers.org/resource/1458"
+    text="Understanding the Individual Student Assessment Accessibility Profile"
+    description="Understanding the Individual Student Assessment Accessibility Profile"
+    icon="goal"
+  >
+  </sbdl-link-card>
 
-  <a href="https://smartertoolsforteachers.org/resource/1459"
-     aria-label="Individual Student Assessment Accessibility Profile: A Tool to Support Students (opens in a new window)"
-     class="link-card" target="_blank" #link>
-    <div class="type-info">
-      <span>Individual Student Assessment Accessibility Profile: A Tool to Support Students</span>
-      <sbdl-icon 
-          icon="goal" 
-          class="center icon-large"
-          aria-hidden="true"></sbdl-icon>
-    </div>
-  </a>
+  <sbdl-link-card
+    resourceUrl="https://smartertoolsforteachers.org/resource/1459"
+    text="Individual Student Assessment Accessibility Profile: A Tool to Support Students"
+    description="Individual Student Assessment Accessibility Profile: A Tool to Support Students (opens in a new window)"
+    icon="goal"
+  >
+  </sbdl-link-card>
 </div>
