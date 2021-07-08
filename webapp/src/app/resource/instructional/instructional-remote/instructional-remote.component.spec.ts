@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 import { InstructionalRemoteComponent } from './instructional-remote.component';
 
@@ -8,7 +10,8 @@ describe('InstructionalRemoteComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InstructionalRemoteComponent ]
+      declarations: [ InstructionalRemoteComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

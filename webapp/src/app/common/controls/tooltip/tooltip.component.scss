@@ -2,7 +2,10 @@
 @import "spacing";
 @import "typography";
 
-:hover,
+:hover {
+  cursor: pointer;
+}
+
 :host {
   cursor: pointer;
   color: $info-500;
