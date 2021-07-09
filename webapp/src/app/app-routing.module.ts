@@ -63,6 +63,21 @@ const routes: Routes = [
       }, {
         path: 'auth/logout',
         component: LogoutComponent
+      }, { 
+        path: 'instructional',
+        redirectTo: '/landing/instructional',
+      }, { 
+        path: 'professional',
+        redirectTo: '/landing/professional',
+      }, { 
+        path: 'formative',
+        redirectTo: '/landing/formative',
+      }, { 
+        path: 'accessibility',
+        redirectTo: '/landing/accessibility',
+      }, { 
+        path: 'playlist',
+        redirectTo: '/landing/playlist',
       }, {
         path: OKTA_CALLBACK_PATH,
         component: LoginCallbackComponent
