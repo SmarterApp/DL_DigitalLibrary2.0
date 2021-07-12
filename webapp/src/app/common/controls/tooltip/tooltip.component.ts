@@ -63,6 +63,10 @@ export class TooltipComponent implements OnInit, OnMount {
   constructor(@Inject('Window') private window: Window, private popoverService: PopoverService) {
   }
 
+  getReadMoreTextLabel() {
+    return this.readMoreText || "Keep Reading";
+  }
+
   openTooltipPopover() {
     this.popover = this.popoverService.openOnBody(this.tooltipPopover, {
       offset: this.offset(this.tooltipContainer.nativeElement),
