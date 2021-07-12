@@ -10,7 +10,12 @@
 
   text-decoration: none;
   color: inherit;
-  border-left: solid #5fc1ed 0.3em;
+
+  background-image: url('/assets/images/file-attachment-card-bg.png');
+  background-repeat: no-repeat;
+  background-size: 8px 100%;
+  border-radius: 2px;
+
   margin-bottom: $spacer;
   margin-right: $spacer;
   // cursor: pointer;
@@ -28,10 +33,13 @@
   .type-info {
     display: flex;
     justify-content: space-between;
+    margin-left: 0.8em;
   }
 
   sbdl-icon,
   sbdl-resource-type-icon {
+    font-size: 1.5em;
+    color: #009FCF;
     min-width: 8%;
     max-width: 12%;
   }
