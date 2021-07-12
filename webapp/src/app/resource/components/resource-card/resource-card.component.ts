@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from "@angular/core";
 
 @Component({
-  selector: "sbdl-link-card",
-  templateUrl: "./link-card.component.html",
-  styleUrls: ["./link-card.component.scss"],
+  selector: "sbdl-resource-card",
+  templateUrl: "./resource-card.component.html",
+  styleUrls: ["./resource-card.component.scss"],
 })
-export class LinkCardComponent implements OnInit {
+export class ResourceCardComponent implements OnInit {
   @Input()
   text: string;
   @Input()

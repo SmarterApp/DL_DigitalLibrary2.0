@@ -13,6 +13,7 @@ import {AblePlayerComponent} from './components/able-player/able-player.componen
 import {ActionsComponent} from './components/actions/actions.component';
 import {AttachmentsComponent} from './components/attachments/attachments.component';
 import {AttachmentCardComponent} from './components/attachments/card/attachment-card.component';
+import {ResourceCardComponent} from './components/resource-card/resource-card.component';
 import {PreviewComponent} from './components/attachments/preview/preview.component';
 import {EducationalDetailsComponent} from './components/resource-properties/educational-details.component';
 import {HeaderComponent} from './components/header/header.component';
@@ -73,6 +74,7 @@ import {LayoutModule} from '../layout/layout.module';
     ActionsComponent,
     AttachmentsComponent,
     AttachmentCardComponent,
+    ResourceCardComponent,
     PreviewComponent,
     EducationalDetailsComponent,
     HeaderComponent,
@@ -135,6 +137,7 @@ import {LayoutModule} from '../layout/layout.module';
         LayoutModule
     ],
   exports: [
+    ResourceCardComponent,
     ResourceSummaryCardComponent,
     ShareFormComponent
   ],

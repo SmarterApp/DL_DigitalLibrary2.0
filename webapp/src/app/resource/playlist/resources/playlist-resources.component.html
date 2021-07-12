@@ -1,15 +1,19 @@
 <div class="playlist-resources">
-<h3>Playlist Resources</h3>
-<p class="caption emphasis-medium">Quick links to the referenced materials.</p>
-<a #resourceRef
-   [attr.aria-label]="resource.title + ' (opens in a new window)'"
-   class="link-card"
-   *ngFor="let resource of resources"
-   [routerLink]="['/resource', resource.id]" target="_blank">
-  <div class="type-info">
-    <span class="link-title">{{ resource.title }}</span>
-    <sbdl-resource-type-icon class="link-icon" [type]="resource.type"></sbdl-resource-type-icon>
-  </div>
-</a>
-</div>
+  <h3>Playlist Resources</h3>
 
+  <p class="caption emphasis-medium">
+    Quick links to the referenced materials.
+  </p>
+
+  <sbdl-resource-card
+    *ngFor="let resource of resources"
+    resourceUrl="/resource/{{ resource.id }}"
+    [text]="resource.title"
+    [attr.aria-label]="resource.title + ' (opens in a new window)'"
+  >
+    <sbdl-resource-type-icon
+      class="link-icon"
+      [type]="resource.type"
+    ></sbdl-resource-type-icon>
+  </sbdl-resource-card>
+</div>

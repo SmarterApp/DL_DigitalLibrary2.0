@@ -30,8 +30,16 @@
     justify-content: space-between;
   }
 
-  sbdl-icon {
+  sbdl-icon,
+  sbdl-resource-type-icon {
     min-width: 8%;
     max-width: 12%;
+  }
+}
+
+
+::ng-deep {
+  .icon svg {
+    max-width: none;
   }
 }
