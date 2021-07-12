@@ -210,10 +210,17 @@
                 aria-describedby="my-dialog-content" cdkTrapFocus>
                 <h2 class="mdc-dialog__title dialog-header" id="print-modal">
                     Print Preview
-                    <sbdl-button-icon class="primary" buttonTitle="Close" (click)="closeModal()" cdkFocusRegionStart
-                        tabindex="0">
+
+                    <button
+                        class="topCloseButton mdc-icon-button material-icons"
+                        buttonTitle="Close" 
+                        aria-label="Close"
+                        (click)="closeModal()"
+                        data-mdc-dialog-button-default
+                        data-mdc-dialog-initial-focus
+                        >
                         <i class="far fa-times-circle"></i>
-                    </sbdl-button-icon>
+                    </button>
                 </h2>
                 <div class="mdc-dialog__content" id="my-dialog-content">
                     <!-- The PDF -->
@@ -232,8 +239,7 @@
                         (click)="downloadPDF()">Download
                     </sbdl-button>
 
-                    <sbdl-button class="primary" buttonTitle="Close" aria-label="close" (click)="closeModal()"
-                        cdkFocusRegionEnd>Close
+                    <sbdl-button class="primary" buttonTitle="Close" aria-label="close" (click)="closeModal()">Close
                     </sbdl-button>
                 </div>
             </div>
