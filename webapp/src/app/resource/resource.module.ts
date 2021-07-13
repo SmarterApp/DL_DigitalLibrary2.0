@@ -13,6 +13,7 @@ import {AblePlayerComponent} from './components/able-player/able-player.componen
 import {ActionsComponent} from './components/actions/actions.component';
 import {AttachmentsComponent} from './components/attachments/attachments.component';
 import {AttachmentCardComponent} from './components/attachments/card/attachment-card.component';
+import {ResourceCardComponent} from './components/resource-card/resource-card.component';
 import {PreviewComponent} from './components/attachments/preview/preview.component';
 import {EducationalDetailsComponent} from './components/resource-properties/educational-details.component';
 import {HeaderComponent} from './components/header/header.component';
@@ -59,6 +60,7 @@ import {ProgressionScaleButtonComponent} from './playlist/topics/progression-sca
 import {ProtectedContentComponent} from './components/protected-content/protected-content.component';
 import {ResourceThumbnailComponent} from './components/resource-thumbnail/resource-thumbnail.component';
 import {InstructionalPlaylistsComponent} from './instructional/instructional-playlists/instructional-playlists.component';
+import {InstructionalRemoteComponent} from './instructional/instructional-remote/instructional-remote.component';
 import {ShareFormComponent} from './components/share-form/share-form.component';
 import {A11yModule} from '@angular/cdk/a11y';
 import {OverlayModule} from '@angular/cdk/overlay';
@@ -72,6 +74,7 @@ import {LayoutModule} from '../layout/layout.module';
     ActionsComponent,
     AttachmentsComponent,
     AttachmentCardComponent,
+    ResourceCardComponent,
     PreviewComponent,
     EducationalDetailsComponent,
     HeaderComponent,
@@ -120,6 +123,7 @@ import {LayoutModule} from '../layout/layout.module';
     ProtectedContentComponent,
     ResourceThumbnailComponent,
     InstructionalPlaylistsComponent,
+    InstructionalRemoteComponent,
     ShareFormComponent
   ],
     imports: [
@@ -133,6 +137,7 @@ import {LayoutModule} from '../layout/layout.module';
         LayoutModule
     ],
   exports: [
+    ResourceCardComponent,
     ResourceSummaryCardComponent,
     ShareFormComponent
   ],

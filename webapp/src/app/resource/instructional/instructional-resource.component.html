@@ -53,12 +53,15 @@
   >
     <sbdl-educational-details
       [properties]="resource.properties"
+      [resourceType]="resource.type"
     ></sbdl-educational-details>
+
+    <sbdl-instructional-remote></sbdl-instructional-remote>
 
     <sbdl-instructional-playlists
       [playlists]="resource.listConnectionsPlaylists"
       [subjectCode]="resource.properties.subject.code"
-    ></sbdl-instructional-playlists>
+    ></sbdl-instructional-playlists> 
   </sbdl-resource-properties>
 </aside>
 <aside

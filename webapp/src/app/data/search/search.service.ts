@@ -18,6 +18,7 @@ import {byOrdering, byString, Comparator, on} from '../../common/sorting/sorting
 import {UserService} from "../user/user.service";
 import {User} from "../user/user.model";
 import {share, take, tap} from "rxjs/operators";
+import { Category } from '../resource/model/category.model';
 
 interface BumpySearchResults {
   results: ResourceSummary[];
@@ -169,6 +170,7 @@ export class SearchService {
       properties: {
         authorOrg: json.authorOrganization,
         authors:   json.resourceAuthors.map(ra => ra.name),
+        categories:    json.categories? json.categories.map(this.categoryFromJson) : [],
         claims:    json.claims.map(this.claimFromJson),
         grades:    json.grades.map(this.gradeFromJson),
         standards: json.standards.map(this.standardFromJson),
@@ -198,6 +200,15 @@ export class SearchService {
 
     // If we've not found any summary TODO: throw an error?
     return '';
+  }
+
+  private categoryFromJson(jsonCategory: any): Category {
+    console.log(jsonCategory)
+    return {
+      code: jsonCategory.code,
+      description: jsonCategory.description,
+      title: jsonCategory.title
+    };
   }
 
   private claimFromJson(jsonClaim: any): Claim {

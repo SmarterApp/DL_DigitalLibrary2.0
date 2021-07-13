@@ -1,0 +1,10 @@
+@import "colors";
+@import "spacing";
+@import "typography";
+@import "@material/ripple/mdc-ripple";
+
+// shared with playlist-resources
+h3 {
+  margin-bottom: $spacer-sm;
+  color: $brand-green;
+}

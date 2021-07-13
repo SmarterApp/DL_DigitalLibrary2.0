@@ -1,65 +1,159 @@
-<div class="subject-grades">
+<div *ngIf="!isAccesibilityResource()" class="subject-grades">
   <!-- TODO: better mapping strategy fo claim images; accessibility -->
-  <img *ngIf="properties.claims.length > 0" [src]="getClaimImagePath(properties.subject, properties.claims[0])" alt="">
+  <img
+    *ngIf="properties.claims.length > 0"
+    [src]="getClaimImagePath(properties.subject, properties.claims[0])"
+    alt=""
+  />
   <div>
     <h3 class="subject">{{ properties.subject.shortName }}</h3>
     <h4 class="grades">
-      <span [ngPlural]="properties.grades.length" >
+      <span [ngPlural]="properties.grades.length">
         <ng-template ngPluralCase="=1">Grade</ng-template>
         <ng-template ngPluralCase="other">Grades</ng-template>
       </span>
-      {{ gradeShortNames | join:  { conjunction: 'and'} }}
+      {{ gradeShortNames | join: { conjunction: "and" } }}
     </h4>
+  </div>
+</div>
+
+<div *ngIf="isAccesibilityResource()" class="subject-grades">
+  <img [src]="getAccesibilityImagePath()" alt="Accesibility Icon" />
+  <div>
+    <h3 class="subject">{{ resourceType }}</h3>
   </div>
 </div>
 
 <div class="details">
   <!-- Claims -->
-  <label *ngIf="properties.claims && properties.claims.length > 0"
-         [ngPlural]="properties.claims.length">
+  <label
+    *ngIf="properties.claims && properties.claims.length > 0"
+    [ngPlural]="properties.claims.length"
+  >
     <ng-template ngPluralCase="=1">Claim</ng-template>
     <ng-template ngPluralCase="other">Claims</ng-template>
   </label>
   <div *ngIf="properties.claims && properties.claims.length > 0" class="value">
     <div *ngFor="let claim of properties.claims" title="{{ claim.title }}">
-      {{claim.number}}: {{ claim.title }}
+      {{ claim.number }}: {{ claim.title }}
     </div>
   </div>
 
   <!-- Targets -->
-  <label *ngIf="properties.targets && properties.targets.length > 0"
-         [ngPlural]="properties.targets.length">
+  <label
+    *ngIf="properties.targets && properties.targets.length > 0"
+    [ngPlural]="properties.targets.length"
+  >
     <ng-template ngPluralCase="=1">Target</ng-template>
     <ng-template ngPluralCase="other">Targets</ng-template>
   </label>
-  <div *ngIf="properties.targets && properties.targets.length > 0" class="value">
-    <div *ngFor="let target of orderedTargets" title="{{ target.description }}">
-      <sbdl-tooltip [title]="'TARGET '+target.number"
-                    [text]="'<p>'+target.description+'</p>'"
-                    [isScrollable] = "false"
-                    class="educational-details-link"
-                    style="white-space:nowrap;">
-        <span class="gradient-hover">{{ target.number }}</span>
+  <div
+    *ngIf="properties.targets && properties.targets.length > 0"
+    class="value"
+  >
+    <span
+      *ngFor="let target of orderedTargets; let isLast = last"
+      title="{{ target.description }}"
+    >
+      <sbdl-tooltip
+        [title]="'TARGET ' + target.number"
+        [text]="'<p>' + target.description + '</p>'"
+        [isScrollable]="false"
+        class="educational-details-link"
+        style="white-space: nowrap"
+      >
+        <span class="gradient-hover"
+          >{{ target.number }} {{ isLast ? "" : ",&nbsp;" }}</span
+        >
       </sbdl-tooltip>
-    </div>
+    </span>
   </div>
 
   <!-- Standards -->
-  <label *ngIf="properties.standards && properties.standards.length > 0"
-         [ngPlural]="properties.standards.length">
-    <ng-template ngPluralCase="=1">Content Standard</ng-template>
-    <ng-template ngPluralCase="other">Content Standards</ng-template>
+  <label
+    *ngIf="properties.standards && properties.standards.length > 0"
+    [ngPlural]="properties.standards.length"
+  >
+    <ng-template ngPluralCase="=1">Standard</ng-template>
+    <ng-template ngPluralCase="other">Standards</ng-template>
   </label>
-  <div *ngIf="properties.standards && properties.standards.length > 0" class="value">
-    <div *ngFor="let standard of orderedStandards" title="{{ standard.title }}">
-      <sbdl-tooltip [title]="'STANDARD '+standard.title"
-                    [text]="'<p>'+standard.description+'</p>'"
-                    [isScrollable] = "false"
-                    class="educational-details-link"
-                    style="white-space:nowrap;"
-      ><span class="gradient-hover">{{standard.title}}</span>
+  <div
+    *ngIf="properties.standards && properties.standards.length > 0"
+    class="value"
+  >
+    <span
+      *ngFor="let standard of orderedStandards; let isLast = last"
+      title="{{ standard.title }}"
+    >
+      <sbdl-tooltip
+        [title]="'STANDARD ' + standard.title"
+        [text]="'<p>' + standard.description + '</p>'"
+        [isScrollable]="false"
+        class="educational-details-link"
+        style="white-space: nowrap"
+        ><span class="gradient-hover"
+          >{{ standard.title }}{{ isLast ? "" : ",&nbsp;" }}</span
+        >
       </sbdl-tooltip>
-    </div>
+    </span>
   </div>
 
+  <!-- Category -->
+  <label
+    *ngIf="properties.categories && properties.categories.length > 0"
+    [ngPlural]="properties.categories.length"
+  >
+    <ng-template ngPluralCase="=1">Category</ng-template>
+    <ng-template ngPluralCase="other">Category</ng-template>
+  </label>
+  <div
+    *ngIf="properties.categories && properties.categories.length > 0"
+    class="value"
+  >
+    <span
+      *ngFor="let category of properties.categories; let isLast = last"
+      title="{{ category.title }}"
+    >
+      <sbdl-tooltip
+        [title]="category.title | uppercase"
+        [text]="'<p>' + category.description + '</p>'"
+        [isScrollable]="false"
+        class="educational-details-link"
+        style="white-space: nowrap"
+      >
+        <span class="gradient-hover">
+          {{ category.title }}{{ isLast ? "" : ",&nbsp;" }}
+        </span>
+      </sbdl-tooltip>
+    </span>
+  </div>
+
+  <!-- UAAG Tier -->
+  <label
+    *ngIf="uaagTiers && uaagTiers.length > 0"
+    [ngPlural]="uaagTiers.length"
+  >
+    <ng-template ngPluralCase="=1">UAAG Tier</ng-template>
+    <ng-template ngPluralCase="other">UAAG Tier</ng-template>
+  </label>
+  <div *ngIf="uaagTiers && uaagTiers.length > 0" class="value">
+    <span
+      *ngFor="let tier of uaagTiers; let isLast = last"
+      title="{{ tier.title }}"
+    >
+      <sbdl-tooltip
+        [title]="tier.title | uppercase"
+        [text]="'<p>' + tier.description + '</p>'"
+        [readMoreUrl]="tier.uaagLink"
+        readMoreText="Open the UAAG"
+        [isScrollable]="false"
+        class="educational-details-link"
+        style="white-space: nowrap"
+      >
+        <span class="gradient-hover">
+          {{ tier.title }}{{ isLast ? "" : ",&nbsp;" }}
+        </span>
+      </sbdl-tooltip>
+    </span>
+  </div>
 </div>

@@ -1,6 +1,7 @@
 import { ResourceAttachment } from './attachment.model';
 import { ResourceType } from './resource-type.enum';
 import { ResourceProperties } from './properties.model';
+import { UaagTier } from './uaagTier.model';
 
 export interface Resource {
   id: number;
@@ -10,4 +11,5 @@ export interface Resource {
   attachments: ResourceAttachment[];
   thingsToConsider: string;
   prefilteredIaipLink: string;
+  uaagTiers: UaagTier[]
 }

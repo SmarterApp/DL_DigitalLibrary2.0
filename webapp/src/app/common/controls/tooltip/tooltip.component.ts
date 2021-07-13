@@ -32,6 +32,9 @@ export class TooltipComponent implements OnInit, OnMount {
    */
   @Input()
   readMoreUrl: string;
+  
+  @Input()
+  readMoreText: string = "Keep Reading";
 
   @Input()
   isScrollable: boolean = true;
@@ -50,6 +53,7 @@ export class TooltipComponent implements OnInit, OnMount {
     this.title = attrs.get('title');
     this.text = attrs.get('text');
     this.readMoreUrl = attrs.get('readmoreurl');
+    this.readMoreText = attrs.get('readmoretext');
     this.dynamicLoadedContent = content;
   }
 
@@ -57,6 +61,10 @@ export class TooltipComponent implements OnInit, OnMount {
   }
 
   constructor(@Inject('Window') private window: Window, private popoverService: PopoverService) {
+  }
+
+  getReadMoreTextLabel() {
+    return this.readMoreText || "Keep Reading";
   }
 
   openTooltipPopover() {
