@@ -366,7 +366,8 @@
 
 .thumbnail-container {
   display: inline-block;
-  box-shadow: 0 1px 8px rgb(0 0 0 / 20%), 0 3px 4px rgb(0 0 0 / 12%), 0 3px 3px rgb(0 0 0 / 14%);
+  box-shadow: 0 1px 8px rgb(0 0 0 / 20%), 0 3px 4px rgb(0 0 0 / 12%),
+    0 3px 3px rgb(0 0 0 / 14%);
   border-radius: 4px;
   margin: 1.5rem;
   width: 300px;
@@ -407,25 +408,22 @@
   }
 }
 
-.mdc-dialog .mdc-dialog__surface {
-  height: 100%;
-}
+::ng-deep {
+  .mdc-dialog .mdc-dialog__surface {
+    height: 100%;
+  }
 
-#my-dialog-content > div {
-  height: 100% !important;
-}
+  #my-dialog-content > div {
+    height: 100% !important;
+  }
+  
+  .dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-.dialog-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.mdc-dialog__title::before {
-  content: none
-}
-
-#closeButton {
-  color: red !important;
-
+  .mdc-dialog__title::before {
+    content: none;
+  }
 }
