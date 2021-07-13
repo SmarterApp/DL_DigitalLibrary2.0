@@ -78,6 +78,9 @@ const routes: Routes = [
       }, { 
         path: 'playlist',
         redirectTo: '/landing/playlist',
+      }, { 
+        path: 'items',
+        redirectTo: '/landing/items',
       }, {
         path: OKTA_CALLBACK_PATH,
         component: LoginCallbackComponent
